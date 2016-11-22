@@ -73,13 +73,16 @@ gulp.task('sass:srcmap', function () {
     flexbox: true
   };
 
-  return gulp.src(base_dir+"/scss/*.{sass,scss}")
+  return gulp.src("./scss/*.{sass,scss}")
     .pipe( sourcemaps.init() )      /* use source maps*/
     .pipe(sass( undefined ).on('error', sass.logError))  /* no scss options specified */
     .pipe(autoprefixer(auto_prefixer_options))
     .pipe(sourcemaps.write('./'))    /* write source maps to same directory as destination css */
     .pipe(gulp.dest("css"));
 });
+
+//alias
+gulp.task('scss',['sass:srcmap']);
 //
 //
 gulp.task('watch', function () {

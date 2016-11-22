@@ -1,10 +1,9 @@
-/// <reference path="../typings/react/react-global.d.ts" />
+import { profilerFactory } from "./map-tools";
 
-function hello(compiler: string) {
-    console.log(`Hello from ${compiler}`);
-	return <a>Hello this is a test in JSX stuff</a>;
-}
-hello("TypeScript");
+console.log('hello');
 
+let prob = profilerFactory('gaussian',{sigma:4});
 
+let ans = prob(15);
 
+console.log(ans);
