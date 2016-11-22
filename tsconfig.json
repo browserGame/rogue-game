@@ -1,0 +1,10 @@
+{
+	"files": [
+        	"src/main.tsx"
+    	],
+    	"compilerOptions": {
+        	"noImplicitAny": true,
+        	"target": "es5",
+		"jsx":"react"
+    	}
+}

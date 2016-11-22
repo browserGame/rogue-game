@@ -1,0 +1,324 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "react/react.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-autosuggest/react-autosuggest.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-bootstrap-daterangepicker/react-bootstrap-daterangepicker.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-big-calendar/react-big-calendar.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "moment/moment.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "daterangepicker/daterangepicker.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-bootstrap-table/react-bootstrap-table.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-bootstrap/react-bootstrap.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-breadcrumbs/react-breadcrumbs.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-router/react-router.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-router/history.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "node/node.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-bytesize-icons/react-bytesize-icons.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-codemirror/react-codemirror.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-color/react-color.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-calendar-timeline/react-calendar-timeline.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-cropper/react-cropper.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "cropperjs/cropperjs.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-css-modules/react-css-modules.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-css-transition-replace/react-css-transition-replace.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "codemirror/codemirror.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-css-transition-group.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-data-grid/react-data-grid.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-datagrid/react-datagrid.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-datepicker/react-datepicker.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-daterange-picker/react-daterange-picker.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "moment-range/moment-range.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-day-picker/react-day-picker.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-dnd-html5-backend/react-dnd-html5-backend.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-dnd/react-dnd-html5-backend.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-dnd/react-dnd.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-dnd/react-dnd-test-backend.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-dropzone/react-dropzone.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-fa/react-fa.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-file-input/react-file-input.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-file-reader-input/react-file-reader-input.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-flex/react-flex.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-fontawesome/react-fontawesome.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-flexr/react-flexr.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-ga/react-ga.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-helmet/react-helmet.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-highlighter/react-highlighter.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-holder/react-holder.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-i18next/react-i18next.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "i18next/i18next.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-imageloader/react-imageloader.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-infinite/react-infinite.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-input-calendar/react-input-calendar.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-intl-redux/react-intl-redux.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-redux/react-redux.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "redux/redux.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-is-deprecated/react-is-deprecated.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-jsonschema-form/react-jsonschema-form.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-intl/react-intl.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-measure/react-measure.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-mixin/react-mixin.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-mdl/react-mdl.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-modal/react-modal.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-motion-slider/react-motion-slider.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-motion/react-motion.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-native-orientation/react-native-orientation.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-native-sortable-list/react-native-sortable-list.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-notification-system/react-notification-system.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-onclickoutside/react-onclickoutside.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-props-decorators/react-props-decorators.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-redux-i18n/react-redux-i18n.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-redux-toastr/react-redux-toastr.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-relay/react-relay.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-responsive/react-responsive.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-router-bootstrap/react-router-bootstrap.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-router-redux/react-router-redux-2.x.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-router-redux/react-router-redux.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-scroll/react-scroll.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-scrollbar/react-scrollbar.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-select/react-select.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-side-effect/react-side-effect.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-slick/react-slick.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-sortable-hoc/react-sortable-hoc.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-transition-group.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-split-pane/react-split-pane.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-swf/react-swf.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-swipeable-views/react-swipeable-views.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-swipeable/react-swipeable.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-native/react-native.0.29.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-syntax-highlighter/react-syntax-highlighter.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-tagcloud/react-tagcloud.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-tabs/react-tabs.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-tap-event-plugin/react-tap-event-plugin.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-textarea-autosize/react-textarea-autosize.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-user-tour/react-user-tour.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-virtualized/react-virtualized.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-widgets/react-widgets.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-create-fragment.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-perf.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-linked-state-mixin.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-pure-render-mixin.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-shallow-compare.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-test-utils.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-spinkit/react-spinkit.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-addons-update.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react/react-global.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "reactcss/reactcss.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    },
+    "react-native/react-native.d.ts": {
+      "commit": "7dc3b09e3ad2a8de14330d6c84efe3e6d76fd79b"
+    }
+  }
+}

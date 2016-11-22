@@ -1,0 +1,103 @@
+f(x) = exp((x-µ)^2/(2*sd^2)
+
+sd = number of usable positions /2
+u=average postion
+
+
+even number 4x4 minimum, this means that only a room of minimal 8 can be split
+splitting needs 2 walls so this means  10 grid will be reduced in one place
+rule if there is no more then 
+
+########
+#......#
+#......#
+#......#  ==>
+#......#
+#......#
+#####.d#
+
+ dont cut it if there is only one wall
+#####!##!####
+#....!..!...#
+#....!..!...#
+#....!..!...#  ==>
+#....!..!...#
+#....!..!...#
+#####!##!#d##
+
+################
+#....xxxxxx....#
+#....xxxxxx....#
+#....xxxxxx....# ==>
+#....xxxxxx....#
+#....xxxxxx....#
+############d###
+     o   e      (o=position of origin,e=end position)
+6 -1 = 5 'x' are usable for double wall
+
+range = number of cells
+
+forumla for assigning probablities to cells
+
+normalize
+for normal distro
+
+z = (u-n)/(sigma)   z(n) =  (N/2-n)/(N/2)
+z(0) = 1  => exp(0.5*(1)²)
+z(N) = -1 =>  exp(0.5*(-1)²)
+z(N/2) = 0 =>  exp(0)=1
+
+normalize
+"quantilize"
+
+
+
+if there is only 1 then skip dividing
+
+else profile->multinomal->normalize->map.2.uniform->choose position
+
+1)create walls (hard stop on number of walls or no more elligable rooms to divvy up)
+2)display walls (in rooms in any case)
+3)look how to connect adjacent rooms rooms with doors
+4)start with sibblings in leaves then work your way up picking candiates
+
+
+  F
+A-B-D-E
+  G
+
+B-ADEFG
+
+B Hsplit B2 B3
+
+  F   F 
+A-B2-B3-D-E
+  G   G
+
+B2-AFG-B3
+B3-B3-F-G-D-E
+
+
+
+
+
+########
+#..##..#
+#..##..#
+#..d...#  ==>
+#..##..#
+#..##..#
+######d#
+
+
+########
+#..##..#
+#..##..#
+#..d...#  ==>
+#..##..#
+#..##..#
+######d#
+
+
+n = width - 4*2
+
