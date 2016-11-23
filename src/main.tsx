@@ -1,9 +1,12 @@
-import { profilerFactory } from "./map-tools";
+import { profilerFactory, multinomial_random_sample } from "./map-tools";
 
-console.log('hello');
+console.log('003');
+
 
 let prob = profilerFactory('gaussian',{sigma:4});
 
-let ans = prob(15);
+let ans = prob(11);
 
-console.log(ans);
+let picker = multinomial_random_sample(ans);
+
+console.log(picker);

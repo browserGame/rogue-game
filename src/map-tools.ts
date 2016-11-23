@@ -12,6 +12,23 @@ interface fn_profilerFactory {
     (name: string, options: NumberProps): fn_Profiler;
 }
 
+
+interface Cell {
+    t: number,//top
+    r: number,//right
+    l: number,//left
+    b: number//bottom
+    finished: boolean;//finis
+}
+
+interface Room {
+    parent:Room;
+    room: Cell;
+    id: number;
+    children: Room[];
+    connected: Room[];
+}
+
 function normalize(arr: number[]): number[] {
     let tsum = arr.reduce((rsum, itm) => {
         rsum += itm;
@@ -25,7 +42,6 @@ function normalize(arr: number[]): number[] {
     });
 }
 
-
 export function profilerFactory(name: string, options: NumberProps): fn_Profiler {
     switch (name) {
         case "gaussian":
@@ -35,10 +51,10 @@ export function profilerFactory(name: string, options: NumberProps): fn_Profiler
                     throw new Error('Invalid Argument, N must be at least >= 2');
                 }
                 let σ = N / (options['sigma'] || 4);
-                let µ = N / 2;
+                let µ = (N - 1) / 2;
                 for (let i = 0; i < N; i++) {
                     let t_2 = Math.pow((i - µ) / (σ), 2);
-                    let ans = Math.exp(0.5 * t_2);
+                    let ans = Math.exp(-0.5 * t_2);
                     rc.push(ans);
                 }
                 return normalize(rc);
@@ -46,7 +62,27 @@ export function profilerFactory(name: string, options: NumberProps): fn_Profiler
         default:
             throw new Error("Invalid profiler used");
     }
+}
 
+export function multinomial_random_sample(multinomial_arr: number[]): number {
+
+    let cdf = multinomial_arr.reduce((aggr, v) => {
+        aggr.sum += v;
+        aggr.arr.push(aggr.sum);
+        return aggr;
+    }, { sum: 0, arr: [] })
+        .arr;
+
+    let sample = Math.random();
+
+    for (let i = 0; i < cdf.length; i++) {
+        let left = cdf[i - 1] || 0;
+        let right = cdf[i];
+        if (sample >= left && sample < right) {
+            return i;
+        }
+    }
+    throw new Error('Propability uniform multinomial Mapping error');
 }
 
 
