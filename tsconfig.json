@@ -1,10 +1,16 @@
 {
-	"files": [
-        	"src/main.tsx"
-    	],
-    	"compilerOptions": {
-        	"noImplicitAny": true,
-        	"target": "es5",
-		"jsx":"react"
-    	}
+  "files": [
+    "src/main.tsx"
+  ],
+  "compilerOptions": {
+    "strictNullChecks":false,
+    "noImplicitAny": true,
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+	"module":"commonjs",
+"sourceMap":true,
+"outDir":"./dist/"
+  }
+
 }

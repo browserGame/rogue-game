@@ -30,8 +30,8 @@ rule if there is no more then
 #....xxxxxx....#
 #....xxxxxx....# ==>
 #....xxxxxx....#
-#....xxxxxx....#
-############d###
+#...xxx...#
+#########d###
      o   e      (o=position of origin,e=end position)
 6 -1 = 5 'x' are usable for double wall
 

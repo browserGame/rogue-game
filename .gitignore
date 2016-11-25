@@ -5,6 +5,7 @@ npm-debug.log*
 dist/
 typings/
 .vscode/
+css/
 
 # Runtime data
 pids
