@@ -12,11 +12,10 @@ interface fn_profilerFactory {
 
 
 export interface Cell {
-    t: number,//top
-    r: number,//right
-    l: number,//left
-    b: number//bottom
-    finished: boolean;//finished
+    t: number;//top
+    r: number;//right
+    l: number;//left
+    b: number;//bottom
 }
 
 export interface Room {
@@ -26,6 +25,7 @@ export interface Room {
     id_room: number;
     upDown?: Room[];
     leftRight?: Room[];
+    entrance?: number[];
 }
 
 function normalize(arr: number[]): number[] {
@@ -179,8 +179,7 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
     return;
 }
 
-export function formatDungeon(width: number, height: number, level: number, prob: fn_Profiler):Room 
-{
+export function formatDungeon(width: number, height: number, level: number, prob: fn_Profiler): Room {
     let room: Room = {
         parent: null,
         id_room: 10,
@@ -195,6 +194,131 @@ export function formatDungeon(width: number, height: number, level: number, prob
     createDungeonRooms(room, prob);
     return room;
 }
+
+
+function collectRoomsSharingBottomWall(r: Room, buttomWall: number): Room[] {
+    let rc: Room[] = [];
+    if (!r.leftRight && !r.upDown) {
+        if (r.room.b == buttomWall) {
+            return [r];
+        }
+    }
+    if (r.leftRight) {
+        rc.splice(0, 0, ...collectRoomsSharingBottomWall(r.leftRight[0], buttomWall));
+        rc.splice(0, 0, ...collectRoomsSharingBottomWall(r.leftRight[1], buttomWall));
+    }
+    if (r.upDown) {
+        rc.splice(0, 0, ...collectRoomsSharingBottomWall(r.upDown[1], buttomWall));
+    }
+    return rc;
+}
+
+function collectRoomsSharingRightWall(r: Room, rightWall: number): Room[] {
+    let rc: Room[] = [];
+    if (!r.leftRight && !r.upDown) {
+        if (r.room.r == rightWall) {
+            return [r];
+        }
+    }
+    if (r.leftRight) {
+        rc.splice(0, 0, ...collectRoomsSharingRightWall(r.leftRight[1], rightWall));
+
+    }
+    if (r.upDown) {
+        rc.splice(0, 0, ...collectRoomsSharingRightWall(r.upDown[0], rightWall));
+        rc.splice(0, 0, ...collectRoomsSharingRightWall(r.upDown[1], rightWall));
+    }
+    return rc;
+}
+
+function collectRoomsSharingTopWall(r: Room, topWall: number): Room[] {
+    let rc: Room[] = [];
+    if (!r.leftRight && !r.upDown) {
+        if (r.room.t == topWall) {
+            return [r];
+        }
+    }
+    if (r.leftRight) {
+        rc.splice(0, 0, ...collectRoomsSharingTopWall(r.leftRight[0], topWall));
+        rc.splice(0, 0, ...collectRoomsSharingTopWall(r.leftRight[1], topWall));
+    }
+    if (r.upDown) {
+        rc.splice(0, 0, ...collectRoomsSharingTopWall(r.upDown[0], topWall));
+    }
+    return rc;
+}
+
+function collectRoomsSharingLeftWall(r: Room, leftWall: number): Room[] {
+    let rc: Room[] = [];
+    if (!r.leftRight && !r.upDown) {
+        if (r.room.l == leftWall) {
+            return [r];
+        }
+    }
+    if (r.upDown) {
+        rc.splice(0, 0, ...collectRoomsSharingLeftWall(r.upDown[0], leftWall));
+        rc.splice(0, 0, ...collectRoomsSharingLeftWall(r.upDown[1], leftWall));
+    }
+    if (r.leftRight) {
+        rc.splice(0, 0, ...collectRoomsSharingLeftWall(r.leftRight[0], leftWall));
+    }
+    return rc;
+}
+
+export function createDoors(root: Room): void {
+
+
+
+
+
+    if (!root.upDown && !root.leftRight) {
+        //shouldnt be here
+        return;
+    }
+    if (root.upDown && root.leftRight) {
+        throw new Error("This room has both upDown and leftRight defined, room_id =" + root.id_room);
+    }
+    if (root.entrance) {
+        //if (!root.parent) {
+        //    return; //abort
+        // }
+        //createDoors(root.parent);//move up
+        return;
+    }
+    //no doors defined in this room
+    let childRooms = root.upDown || root.leftRight;
+    createDoors(childRooms[0]);
+    createDoors(childRooms[1]);
+    let rooms: Room[];
+    console.log('roomid',root.id_room);
+    if (root.upDown) {
+        let horizontalWallBottom = root.upDown[0].room.b;
+        let roomsTopSide = collectRoomsSharingBottomWall(root.upDown[0], horizontalWallBottom);
+        let roomsBottomSide = collectRoomsSharingTopWall(root.upDown[1], horizontalWallBottom + 1);
+        console.log('updown', horizontalWallBottom, roomsTopSide, roomsBottomSide);
+        //createDoorchooseDoreInterect(roomsTopSide, roomsBottomSide);
+    }
+    if (root.leftRight) {
+        let verticalWallRight = root.leftRight[0].room.r;
+        let roomsLeftSide = collectRoomsSharingRightWall(root.leftRight[0], verticalWallRight);
+        let roomsRightSide = collectRoomsSharingLeftWall(root.leftRight[1], verticalWallRight + 1);
+        console.log('leftright', verticalWallRight, roomsLeftSide, roomsRightSide);
+    }
+    //onsole.log('id:[%d], rooms [%j]', root.id_room, rooms);
+    return;
+    //console.log(rooms);
+
+
+
+
+
+
+
+
+}
+
+
+
 /*
 #         #
 0123456789A

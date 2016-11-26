@@ -1,16 +1,20 @@
-import { Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon } from "./map-tools";
+import { Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon,createDoors } from "./map-tools";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 let profiler = profilerFactory('gaussian', { sigma: 16 });
 
 let result: Room = formatDungeon(50, 50, 5, profiler);
+
+let selection = createDoors(result);
+
 console.log(result);
+console.log(selection);
 
 function App(prop: { dungeon: Room }) {
 
     function drawRoomRecursive(ctx: CanvasRenderingContext2D, room: Room): void {
-         console.log(room.room.r,room.room.b);
+         //console.log(room.room.r,room.room.b);
          for (let i= room.room.l; i <= room.room.r; i++ ){
              ctx.fillRect(1+i*6, room.room.t*6+1,4,4);
              ctx.fillRect(1+i*6, room.room.b*6+1,4,4);
