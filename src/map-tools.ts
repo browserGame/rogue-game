@@ -10,12 +10,18 @@ interface fn_profilerFactory {
     (name: string, options: NumberProps): fn_Profiler;
 }
 
+export interface GridPoint {
+    x: number;
+    y: number;
+    [index: string]: number;
+}
 
 export interface Cell {
     t: number;//top
     r: number;//right
     l: number;//left
     b: number;//bottom
+    [index: string]: number;
 }
 
 export interface Room {
@@ -25,7 +31,7 @@ export interface Room {
     id_room: number;
     upDown?: Room[];
     leftRight?: Room[];
-    entrance?: number[];
+    entrance?: GridPoint[];
 }
 
 function normalize(arr: number[]): number[] {
@@ -265,11 +271,142 @@ function collectRoomsSharingLeftWall(r: Room, leftWall: number): Room[] {
     return rc;
 }
 
+function createIntersectProcessor(direction: string, roomGroups: Room[][]): Function {
+
+    let propsScan: string[];
+    let propsCut: string[];
+    let doorCoords: string[];
+    switch (direction) {
+        case "horizontal":
+            propsScan = ["l", "r"];
+            propsCut = ["t", "b"];
+            doorCoords = ["x", "y"];
+            break;
+        case "vertical":
+            propsScan = ["t", "b"];
+            propsCut = ["l", "r"];
+            doorCoords = ["y", "x"];
+            break;
+        default:
+            throw new Error("Wrong direction value:" + direction);
+    }
+
+    function sort_func(a: Room, b: Room): number {
+        return a.room[propsScan[0]] - b.room[propsScan[0]];
+    }
+
+    return function () {
+        let intersects: { f: Room, s: Room, region: { start: number, stop: number } }[] = [];
+        let firstArr = roomGroups[0].sort(sort_func);
+        let secondArr = roomGroups[1].sort(sort_func);
+        for (let i = 0; i < firstArr.length; i++) {
+            let s1 = firstArr[i].room[propsScan[0]] + 1;
+            let e1 = firstArr[i].room[propsScan[1]] - 1;
+            for (let j = 0; j < secondArr.length; j++) {
+                let s2 = secondArr[j].room[propsScan[0]] + 1;
+                let e2 = secondArr[j].room[propsScan[1]] - 1;
+                
+                // 1.
+                //   |--|
+                // |------|
+                if (s2 <= s1 && e2 >= e1) {
+                    intersects.push({
+                        f: firstArr[i],
+                        s: secondArr[j],
+                        region: {
+                            start: s1,
+                            stop: e1
+                        }
+                    });
+                    continue;
+                }
+                //2.
+                //|------|
+                //  |--|
+                if (s1 <= s2 && e1 >= e2) {
+                    intersects.push({
+                        f: firstArr[i],
+                        s: secondArr[j],
+                        region: {
+                            start: s2,
+                            stop: e2
+                        }
+                    });
+                    continue;
+                }
+                //3.
+                //   |------|
+                // |----|
+                if (s1 >= s2 && s1 <= e2 && e1 >= e2) {
+                    intersects.push({
+                        f: firstArr[i],
+                        s: secondArr[j],
+                        region: {
+                            start: s1,
+                            stop: e2
+                        }
+                    });
+                    continue;
+                }
+                //4.
+                //   |------|
+                //       |----|
+                if (s2 >= s1 && s2 <= e1 && e2 >= e1) {
+                    intersects.push({
+                        f: firstArr[i],
+                        s: secondArr[j],
+                        region: {
+                            start: s2,
+                            stop: e1
+                        }
+                    });
+                    continue;
+                }
+                console.log('no intersect');
+            }//forj
+        }//fori
+        let probabilities = normalize(intersects.map((itm) => {
+            return (itm.region.stop - itm.region.start) + 1;
+        }));
+       
+        let selected = multinomial_random_sample(probabilities);
+        let length_uniform_prop = intersects[selected].region.stop - intersects[selected].region.start + 1;
+        let arr: number[] = new Array<number>(length_uniform_prop);
+        for (let i = 0; i < length_uniform_prop; i++) { arr[i] = 1; };
+        let door_position = intersects[selected].region.start + multinomial_random_sample(normalize(arr));
+        //shortcuts
+        let firstRoom = intersects[selected].f;
+        let secondRoom = intersects[selected].s;
+        firstRoom.entrance = firstRoom.entrance || [];
+        secondRoom.entrance = secondRoom.entrance || [];
+
+        let obj: { [index: string]: number } = {};
+        //first room:
+        //horizontal wall splitting (top/down) rooms
+        //  x->doorpos  /check
+        //  y->b        /check
+        //vertical wall splitting (left/right) rooms
+        //  x->right  /check
+        //  y->doorpos  /check 
+        obj[doorCoords[1]] = firstRoom.room[propsCut[1]];
+        obj[doorCoords[0]] = door_position;
+        firstRoom.entrance.push(Object.assign({}, obj) as GridPoint);
+        //second room:
+        //horizontal wall splitting (top/down) rooms
+        //  x->doorpos  /check
+        //  y->t        /check
+        //vertical wall splitting (left/right) rooms
+        //  x->left 
+        //  y->doorpos /check 
+        obj[doorCoords[1]] = secondRoom.room[propsCut[0]];
+        obj[doorCoords[0]] = door_position;
+        secondRoom.entrance.push(Object.assign({}, obj) as GridPoint as GridPoint);
+        console.log("door will be created here:", { intersect: intersects[selected], door_position, arr: normalize(arr) });
+    }
+
+}
+
 export function createDoors(root: Room): void {
-
-
-
-
 
     if (!root.upDown && !root.leftRight) {
         //shouldnt be here
@@ -279,10 +416,7 @@ export function createDoors(root: Room): void {
         throw new Error("This room has both upDown and leftRight defined, room_id =" + root.id_room);
     }
     if (root.entrance) {
-        //if (!root.parent) {
-        //    return; //abort
-        // }
-        //createDoors(root.parent);//move up
+        console.log('Entrance object detected bailing out')
         return;
     }
     //no doors defined in this room
@@ -290,39 +424,22 @@ export function createDoors(root: Room): void {
     createDoors(childRooms[0]);
     createDoors(childRooms[1]);
     let rooms: Room[];
-    console.log('roomid',root.id_room);
+    let intersectProcessor;
+    //console.log('roomid', root.id_room);
     if (root.upDown) {
         let horizontalWallBottom = root.upDown[0].room.b;
         let roomsTopSide = collectRoomsSharingBottomWall(root.upDown[0], horizontalWallBottom);
         let roomsBottomSide = collectRoomsSharingTopWall(root.upDown[1], horizontalWallBottom + 1);
-        console.log('updown', horizontalWallBottom, roomsTopSide, roomsBottomSide);
-        //createDoorchooseDoreInterect(roomsTopSide, roomsBottomSide);
+        //console.log('updown', horizontalWallBottom, roomsTopSide, roomsBottomSide);
+        intersectProcessor = createIntersectProcessor('horizontal', [roomsTopSide, roomsBottomSide]);
     }
     if (root.leftRight) {
         let verticalWallRight = root.leftRight[0].room.r;
         let roomsLeftSide = collectRoomsSharingRightWall(root.leftRight[0], verticalWallRight);
         let roomsRightSide = collectRoomsSharingLeftWall(root.leftRight[1], verticalWallRight + 1);
-        console.log('leftright', verticalWallRight, roomsLeftSide, roomsRightSide);
+        //console.log('leftright', verticalWallRight, roomsLeftSide, roomsRightSide);
+        intersectProcessor = createIntersectProcessor('vertical', [roomsLeftSide, roomsRightSide]);
     }
-    //onsole.log('id:[%d], rooms [%j]', root.id_room, rooms);
+    intersectProcessor();
     return;
-    //console.log(rooms);
-
-
-
-
-
-
-
-
 }
-
-
-
-/*
-#         #
-0123456789A
-    012
-createDungeon(null);
-
-*/
