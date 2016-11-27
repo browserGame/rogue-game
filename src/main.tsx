@@ -4,8 +4,7 @@ import * as ReactDOM from 'react-dom';
 
 let profiler = profilerFactory('gaussian', { sigma: 16 });
 
-let result: Room = formatDungeon(50, 50, 5, profiler);
-
+let result: Room = formatDungeon(50, 50, 10, profiler);
 createDoors(result);
 
 //console.log(result);
@@ -67,4 +66,6 @@ function App(prop: { dungeon: Room }) {
 
 }
 
-ReactDOM.render(<App dungeon={result} />, document.getElementById('container-anchor'));
+window.onload = function(event){
+  ReactDOM.render(<App dungeon={result} />, document.getElementById('container-anchor'));
+}

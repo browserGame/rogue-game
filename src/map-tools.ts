@@ -198,6 +198,9 @@ export function formatDungeon(width: number, height: number, level: number, prob
         level: level
     };
     createDungeonRooms(room, prob);
+    createDoors(room);
+    let rooms = flatMapRooms(room);
+
     return room;
 }
 
@@ -305,7 +308,7 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
             for (let j = 0; j < secondArr.length; j++) {
                 let s2 = secondArr[j].room[propsScan[0]] + 1;
                 let e2 = secondArr[j].room[propsScan[1]] - 1;
-                
+
                 // 1.
                 //   |--|
                 // |------|
@@ -368,7 +371,7 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         let probabilities = normalize(intersects.map((itm) => {
             return (itm.region.stop - itm.region.start) + 1;
         }));
-       
+
         let selected = multinomial_random_sample(probabilities);
         let length_uniform_prop = intersects[selected].region.stop - intersects[selected].region.start + 1;
         let arr: number[] = new Array<number>(length_uniform_prop);
@@ -443,3 +446,58 @@ export function createDoors(root: Room): void {
     intersectProcessor();
     return;
 }
+
+//flatMapRooms
+//all romms in an arry sorted in ascending order of l,t coordinates
+//formatDungeon, actually format 50x50 tiles with information about icons etc 
+//create Layers
+
+function flatMapRooms(root: Room): Room[] {
+    let rc: Room[] = [];
+
+    function collect(node: Room) {
+        if (!node.leftRight && !node.upDown) {
+            rc.push(node);
+            return;
+        }
+        let children = node.leftRight || node.upDown;
+        collect(children[0]);
+        collect(children[1]);
+    }
+    collect(root);
+    return rc;
+}
+
+function sortRooms(a: Room, b: Room) {
+    if (a.room.t > b.room.t) {
+        return 1;
+    }
+    if (a.room.t < b.room.t) {
+        return -1;
+    }
+    if (a.room.l > b.room.l) {
+        return 1;
+    }
+    if (a.room.l < b.room.l) {
+        return -1;
+    }
+    return 0;
+}
+
+function fillArr(arr: number[], v: number) {
+    for (let k = 0; k <= arr.length; k++) {
+        arr[k] = v;
+    }
+}
+
+function createTiles(root: Room): number[] {
+    let grid: number[];
+    
+    let width = root.room.r-root.room.l+1;
+    let height = root.room.b-root.room.t+1;
+
+    grid = new Array(width*height);
+    fillArr(grid,root.id_room); 
+    return grid;
+}
+
