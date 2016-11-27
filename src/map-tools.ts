@@ -1,3 +1,5 @@
+import { crypt_floor } from "./media";
+
 export interface NumberProps {
     [propname: string]: number;
 }
@@ -10,9 +12,11 @@ interface fn_profilerFactory {
     (name: string, options: NumberProps): fn_Profiler;
 }
 
-export interface GridPoint {
+export interface Door {
     x: number;
     y: number;
+    hasDoor: number;
+    connectingRoom: number;
     [index: string]: number;
 }
 
@@ -31,7 +35,10 @@ export interface Room {
     id_room: number;
     upDown?: Room[];
     leftRight?: Room[];
-    entrance?: GridPoint[];
+    entrance?: Door[];
+    decorations?: number[];//extra decorations untop of the floor, lights, spiderwebs, etc
+    layout?: number[]; //base scaffolding, floor, walls
+    dungeonObjects?: number[];//state changeble objects (doors, chest, bookshelves) belong to this class
 }
 
 function normalize(arr: number[]): number[] {
@@ -186,7 +193,7 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
 }
 
 export function formatDungeon(width: number, height: number, level: number, prob: fn_Profiler): Room {
-    let room: Room = {
+    let root: Room = {
         parent: null,
         id_room: 10,
         room: {
@@ -197,11 +204,15 @@ export function formatDungeon(width: number, height: number, level: number, prob
         } as Cell,
         level: level
     };
-    createDungeonRooms(room, prob);
-    createDoors(room);
-    let rooms = flatMapRooms(room);
-
-    return room;
+    createDungeonRooms(root, prob);
+    createDoors(root);
+    let rooms = flatMapRooms(root).sort(sortRooms);
+    let media_base_layout = crypt_floor();
+    for (let room of rooms) {
+        formatRoom(room, media_base_layout);
+        //formatRoom(room,media);
+    }
+    return root;
 }
 
 
@@ -383,6 +394,8 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         firstRoom.entrance = firstRoom.entrance || [];
         secondRoom.entrance = secondRoom.entrance || [];
 
+        // the door shall be placed in the wall of either the first or the secon, choose 50/50 
+        let flipcoin = (multinomial_random_sample([0.5, 0.5]) == 1);
         let obj: { [index: string]: number } = {};
         //first room:
         //horizontal wall splitting (top/down) rooms
@@ -393,7 +406,9 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         //  y->doorpos  /check 
         obj[doorCoords[1]] = firstRoom.room[propsCut[1]];
         obj[doorCoords[0]] = door_position;
-        firstRoom.entrance.push(Object.assign({}, obj) as GridPoint);
+        (obj as Door).hasDoor = flipcoin ? 1 : 0;
+        (obj as Door).connectingRoom = secondRoom.id_room;
+        firstRoom.entrance.push(Object.assign({}, obj) as Door);
         //second room:
         //horizontal wall splitting (top/down) rooms
         //  x->doorpos  /check
@@ -403,8 +418,11 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         //  y->doorpos /check 
         obj[doorCoords[1]] = secondRoom.room[propsCut[0]];
         obj[doorCoords[0]] = door_position;
-        secondRoom.entrance.push(Object.assign({}, obj) as GridPoint as GridPoint);
-        console.log("door will be created here:", { intersect: intersects[selected], door_position, arr: normalize(arr) });
+        (obj as Door).hasDoor = flipcoin ? 0 : 1;
+        (obj as Door).connectingRoom = firstRoom.id_room;
+        secondRoom.entrance.push(Object.assign({}, obj) as Door);
+
+        console.log("entrace will be created here:", { intersect: intersects[selected], door_position, arr: normalize(arr) });
     }
 
 }
@@ -485,19 +503,23 @@ function sortRooms(a: Room, b: Room) {
 }
 
 function fillArr(arr: number[], v: number) {
-    for (let k = 0; k <= arr.length; k++) {
+    for (let k = 0; k < arr.length; k++) {
         arr[k] = v;
     }
 }
 
-function createTiles(root: Room): number[] {
-    let grid: number[];
-    
-    let width = root.room.r-root.room.l+1;
-    let height = root.room.b-root.room.t+1;
+function formatRoom(room: Room, media_layout: any): void {
 
-    grid = new Array(width*height);
-    fillArr(grid,root.id_room); 
-    return grid;
+    if (room.leftRight || room.upDown) {
+        return;//not an actual room
+    }
+    let width = room.room.r - room.room.l + 1;
+    let height = room.room.b - room.room.t + 1;
+    room.layout = new Array(width * height);
+    room.decorations = new Array(width * height);
+    room.dungeonObjects = new Array(width * height);
+    fillArr(room.layout, 0);
+    fillArr(room.decorations, 0);
+    fillArr(room.dungeonObjects, 0);
+    //TODO JKF: so far here, make base layout
 }
-

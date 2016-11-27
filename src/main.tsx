@@ -1,11 +1,11 @@
-import { Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon, createDoors, GridPoint } from "./map-tools";
+import { Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon, Door } from "./map-tools";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 let profiler = profilerFactory('gaussian', { sigma: 16 });
 
 let result: Room = formatDungeon(50, 50, 10, profiler);
-createDoors(result);
+
 
 //console.log(result);
 //console.log(selection);
@@ -22,13 +22,21 @@ function App(prop: { dungeon: Room }) {
                 }
             }
         }
-        ctx.fillStyle = 'rgb(190,80,80)'
-        let g: GridPoint;
+      
+        let g: Door;
         let doors = room.entrance || [];
+      
         for (let j = 0; j < doors.length; j++) {
             g = doors[j];
+            if (g.hasDoor){
+                ctx.fillStyle="rgb(250,40,250)";
+            }
+            else {
+                ctx.fillStyle="rgb(40,250,250)";
+            }
             ctx.fillRect(1 + g.x * 6, 1 + g.y * 6, 4, 4);
         }
+          ctx.fillStyle = 'rgb(190,80,80)'
         if (room.leftRight) {
             drawRoomRecursive(ctx, room.leftRight[0]);
             drawRoomRecursive(ctx, room.leftRight[1]);
