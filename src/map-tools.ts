@@ -1,4 +1,4 @@
-import { crypt_floor } from "./media";
+import { BaseImageOrientation, Sprite, ImageSprites, crypt_floor, } from "./media";
 
 export interface NumberProps {
     [propname: string]: number;
@@ -96,6 +96,19 @@ export function multinomial_random_sample(multinomial_arr: number[]): number {
         }
     }
     throw new Error('Propability uniform multinomial Mapping error');
+}
+
+export interface Sample<T> {
+    probablility: number;
+    payload: T;
+}
+
+export function sampleOfList<T>(sSpace: Sample<T>[]): T {
+    let probabilities: number[] = sSpace.map((itm: Sample<T>) => {
+        return itm.probablility;
+    });
+    let idx = multinomial_random_sample(normalize(probabilities));
+    return sSpace[idx].payload;
 }
 
 
@@ -210,7 +223,6 @@ export function formatDungeon(width: number, height: number, level: number, prob
     let media_base_layout = crypt_floor();
     for (let room of rooms) {
         formatRoom(room, media_base_layout);
-        //formatRoom(room,media);
     }
     return root;
 }
@@ -502,24 +514,229 @@ function sortRooms(a: Room, b: Room) {
     return 0;
 }
 
+function sortSprites(a: Sprite, b: Sprite) {
+    return a.id - b.id;
+}
+
 function fillArr(arr: number[], v: number) {
     for (let k = 0; k < arr.length; k++) {
         arr[k] = v;
     }
 }
 
-function formatRoom(room: Room, media_layout: any): void {
+function formatRoom(room: Room, media_layout: ImageSprites): void {
 
-    if (room.leftRight || room.upDown) {
-        return;//not an actual room
-    }
     let width = room.room.r - room.room.l + 1;
     let height = room.room.b - room.room.t + 1;
+    //wall random probablities
+    let horizontal_wall_choices: Sample<BaseImageOrientation>[] = [{
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        probablility: 1
+    }, {
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        probablility: 1
+    }];
+
+
+    let vertical_wall_choices: Sample<BaseImageOrientation>[] = [{
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        probablility: 1
+    }, {
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        probablility: 1
+    }];
+
+    let horizontal_wall_asymetric_choices: Sample<BaseImageOrientation>[] = [{
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        probablility: 1
+    }, {
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        probablility: 3 // 3x higher chance to select this option
+    }];
+
+
+    let vertical_wall_asymmetric_choices: Sample<BaseImageOrientation>[] = [{
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        probablility: 1
+    }, {
+        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        probablility: 3 // 3x higher chance to select this option
+    }];
+
+    let floor_asymetric_choices: Sample<BaseImageOrientation>[] = [{
+        payload: BaseImageOrientation.NORMAL_FLOOR,
+        probablility: 4 // 4/7 chance of being selected
+    }, {
+        payload: BaseImageOrientation.CRACKED_FLOOR,
+        probablility: 1 // 1/7 chance of being selected
+    }, {
+        payload: BaseImageOrientation.CIRCLE_FLOOR,
+        probablility: 1 // 1/7 chance of being selected
+    }, {
+        payload: BaseImageOrientation.HALF_CIRCLE_FLOOR,
+        probablility: 1 // 1/7 chance of being selected
+    }
+    ];
+
+
+    function formatWalls(node: Room) {
+
+
+        let x, y;
+
+        node.entrance.forEach((entrance: Door) => {
+            x = entrance.x - node.room.l;
+            y = entrance.y - node.room.t;
+            let idx = x + y * width;
+            //left-wall
+            if (x == 0) {
+                //handle Room-corner cases in case you are next a door on the bottom wall or top wall
+                if (y == 1) {
+                    if (node.layout[idx - width]) {
+                        node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                    }
+                    else {
+                        node.layout[idx - width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                    }
+                    node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                    return;
+                }
+                //handle Corner case left-bottom corner 
+                if (entrance.y == node.room.b - 1) {
+                    if (node.layout[idx + width]) {
+                        node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                    }
+                    else {
+                        node.layout[idx + width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                    }
+                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╗
+                    return;
+                }
+                //regular case
+                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                return;
+            }
+            //top wall
+            if (y == 0) {
+                //handle Room-corner cases in case you are next a door on the bottom wall or top wall
+                //top left corner
+                if (x == 1) {
+                    if (node.layout[idx - 1]) {
+                        node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                    }
+                    else {
+                        node.layout[idx - 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
+                    }
+                    node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    return;
+                }
+                //handle Corner case top-right corner 
+                if (entrance.x == node.room.r - 1) {
+                    if (node.layout[idx + 1]) {
+                        node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    }
+                    else {
+                        node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
+                    }
+                    node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                    return;
+                }
+                //regular case
+                node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                return;
+            }
+            //right wall
+            if (x == node.room.r) {
+                //top right corner
+                if (y == 1) {
+                    if (node.layout[idx - width]) {
+                        node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚ 
+                    }
+                    else {
+                        node.layout[idx - width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                    }
+                    node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔
+                    return;
+                }
+                //bottom right corner
+                if (entrance.y == node.room.b - 1) {
+                    if (node.layout[idx + width]) {
+                        node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;  
+                    }
+                    else {
+                        node.layout[idx + width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                    }
+                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    return;
+                }
+                //regular case
+                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;
+                return;
+            }
+            //bottom wall
+            if (y == node.room.b) {
+                //bottom left corner
+                if (x == 1) {
+                    if (node.layout[idx - 1]) {
+                        node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                    }
+                    else {
+                        node.layout[idx - 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
+                    }
+                    node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔
+                    return;
+                }
+                //bottom right corner
+                if (entrance.x == node.room.r - 1) {
+                    if (node.layout[idx + 1]) {
+                        node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;  
+                    }
+                    else {
+                        node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                    }
+                    node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    return;
+                }
+                //regular case
+                node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;
+                return;
+            }
+            throw new Error("Internal Error:Unreachable code");
+        });
+        //get all the walls-parts that werent handled
+        //top and bottom wall
+        for (let x = 0; x < width; x++) {
+            room.layout[x] = room.layout[x]
+                || sampleOfList<BaseImageOrientation>(horizontal_wall_asymetric_choices);
+            room.layout[x + width * room.room.b] = room.layout[x + width * room.room.b]
+                || sampleOfList<BaseImageOrientation>(horizontal_wall_asymetric_choices);
+        }
+        //right and left wall
+        for (let y = 0; y < height; y++) {
+            room.layout[y * width] = room.layout[y * width]
+                || sampleOfList<BaseImageOrientation>(vertical_wall_asymmetric_choices);
+            room.layout[y * width + room.room.r] = room.layout[y * width + room.room.r]
+                || sampleOfList<BaseImageOrientation>(vertical_wall_asymmetric_choices);
+        }
+    }//end of formatWalls
+
     room.layout = new Array(width * height);
     room.decorations = new Array(width * height);
     room.dungeonObjects = new Array(width * height);
+
     fillArr(room.layout, 0);
     fillArr(room.decorations, 0);
     fillArr(room.dungeonObjects, 0);
-    //TODO JKF: so far here, make base layout
+    
+    formatWalls(room);
+    //leftovers get to be floors
+    for (let i = 0; i < room.layout.length; i++) {
+        room.layout[i] = room.layout[i]
+            || sampleOfList<BaseImageOrientation>(floor_asymetric_choices);
+    }
 }
+

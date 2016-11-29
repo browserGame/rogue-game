@@ -48,90 +48,123 @@
 
 //  door,door_open
 
-/**
-   
-  
-  
-  
- */
+export enum BaseImageOrientation {
+    TOP_LEFT_CORNER = 1, //╔
+    TOP_RIGHT_CORNER,//╗
+    TOP_BOTTOM_LEFT_CORNER,//╚
+    TOP_BOTTOM_RIGHT_CORNER,////╝ 
+    WALL_VERT_NORMAL,//║ 
+    WALL_VERT_CRACKED,//║ 
+    WALL_HORIZONTAL_CRACKED,//═
+    WALL_HORIZONTAL_CRYPT,//═
+    NORMAL_FLOOR,//
+    CIRCLE_FLOOR,
+    CRACKED_FLOOR,
+    HALF_CIRCLE_FLOOR
+}
+
+export const SPRITE_WIDTH: number = 24;
+export const SPRITE_HEIGHT: number = 24;
 
 
-export function crypt_floor(): any {
+export interface Sprite {
+    id: BaseImageOrientation;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+}
+
+export interface ImageSprites {
+    url: string;
+    sprites: Sprite[];
+}
+
+export function crypt_floor(): ImageSprites {
     return {
         url: "/vendor/floor_crypt.png",
-        items: {
-            top_top_left_corner: {
-                x: 384,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            top_top_right_corner: {
-                x: 408,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            top_bottom_left_corner: {
-                x: 432,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            top_bottom_right_corner: {
-                x: 456,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            wall_side_1: {
-                x: 336,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            wall_side_2: {
-                x: 120,
-                y: 24,
-                w: 24,
-                h: 24
-            },
-            top_top_2: {
-                x: 144,
-                y: 24,
-                w: 24,
-                h: 24
-            },
-            top_top_1: {
-                x: 264,
-                y: 24,
-                w: 24,
-                h: 24
-            },
-            normal_floor: {
-                x: 72,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            circle_floor: {
-                x: 96,
-                y: 0,
-                w: 24,
-                h: 24
-            },
-            cracked_floor: {
-                x: 120,
-                y: 0,
-                h: 24,
-                w: 24
-            },
-            half_circle_foor: {
-                x: 144,
-                y: 0,
-                w: 24,
-                h: 24
-            }
-        }
+        sprites: [{
+            id: BaseImageOrientation.TOP_LEFT_CORNER,//╔
+            x: 16,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.TOP_RIGHT_CORNER,//╗
+            x: 17,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER,//╚
+            x: 18,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER,//╝  
+            x: 19,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.WALL_VERT_NORMAL,// ║ 
+            x: 336,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.WALL_VERT_CRACKED,// ║
+            x: 5,
+            y: 1,
+            w: 1,
+            h: 1
+        }, {
+            id: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,//═
+            x: 6,
+            y: 1,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+            x: 11,
+            y: 1,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.NORMAL_FLOOR,
+            x: 3,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.CIRCLE_FLOOR,
+            x: 4,
+            y: 0,
+            w: 1,
+            h: 1
+        },
+        {
+            id: BaseImageOrientation.CRACKED_FLOOR,
+            x: 5,
+            y: 0,
+            h: 1,
+            w: 1
+        },
+        {
+            id: BaseImageOrientation.HALF_CIRCLE_FLOOR,
+            x: 6,
+            y: 0,
+            w: 1,
+            h: 1
+        }]
     };
 }
