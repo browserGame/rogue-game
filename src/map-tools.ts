@@ -1,4 +1,4 @@
-import { BaseImageOrientation, Sprite, ImageSprites, crypt_floor, } from "./media";
+import { BaseImageOrientation, Sprite, ImageSprites, crypt_floor, SPRITE_WIDTH, SPRITE_HEIGHT } from "./media";
 
 export interface NumberProps {
     [propname: string]: number;
@@ -30,6 +30,7 @@ export interface Cell {
 
 export interface Room {
     parent: Room | null;
+    dungeon_sprites: HTMLImageElement,
     room: Cell;
     level: number;// count down to zero
     id_room: number;
@@ -114,6 +115,7 @@ export function sampleOfList<T>(sSpace: Sample<T>[]): T {
 
 function cloneRoom(r: Room) {
     let rc: Room = {
+        dungeon_sprites: r.dungeon_sprites,
         parent: r.parent,
         room: Object.assign({}, r.room),
         level: r.level,
@@ -215,14 +217,15 @@ export function formatDungeon(width: number, height: number, level: number, prob
             r: width,
             b: height
         } as Cell,
-        level: level
+        level: level,
+        dungeon_sprites: document.getElementById("floor_crypt") as HTMLImageElement
     };
     createDungeonRooms(root, prob);
     createDoors(root);
     let rooms = flatMapRooms(root).sort(sortRooms);
-    let media_base_layout = crypt_floor();
+    let media_base_layout = crypt_floor(root.dungeon_sprites);
     for (let room of rooms) {
-        formatRoom(room, media_base_layout);
+        formatRoom(room);
     }
     return root;
 }
@@ -477,10 +480,13 @@ export function createDoors(root: Room): void {
     return;
 }
 
+//
 //flatMapRooms
+//
 //all romms in an arry sorted in ascending order of l,t coordinates
 //formatDungeon, actually format 50x50 tiles with information about icons etc 
 //create Layers
+//
 
 function flatMapRooms(root: Room): Room[] {
     let rc: Room[] = [];
@@ -524,7 +530,7 @@ function fillArr(arr: number[], v: number) {
     }
 }
 
-function formatRoom(room: Room, media_layout: ImageSprites): void {
+function formatRoom(room: Room): void {
 
     let width = room.room.r - room.room.l + 1;
     let height = room.room.b - room.room.t + 1;
@@ -539,10 +545,10 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
 
 
     let vertical_wall_choices: Sample<BaseImageOrientation>[] = [{
-        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        payload: BaseImageOrientation.WALL_VERT_CRACKED,
         probablility: 1
     }, {
-        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        payload: BaseImageOrientation.WALL_VERT_NORMAL,
         probablility: 1
     }];
 
@@ -556,10 +562,10 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
 
 
     let vertical_wall_asymmetric_choices: Sample<BaseImageOrientation>[] = [{
-        payload: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,
+        payload: BaseImageOrientation.WALL_VERT_CRACKED,
         probablility: 1
     }, {
-        payload: BaseImageOrientation.WALL_HORIZONTAL_CRYPT,
+        payload: BaseImageOrientation.WALL_VERT_NORMAL,
         probablility: 3 // 3x higher chance to select this option
     }];
 
@@ -580,7 +586,6 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
 
 
     function formatWalls(node: Room) {
-
 
         let x, y;
 
@@ -643,12 +648,12 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
                     return;
                 }
                 //regular case
-                node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
-                node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
                 return;
             }
             //right wall
-            if (x == node.room.r) {
+            if (x == width - 1) {
                 //top right corner
                 if (y == 1) {
                     if (node.layout[idx - width]) {
@@ -677,7 +682,7 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
                 return;
             }
             //bottom wall
-            if (y == node.room.b) {
+            if (y == height - 1) {
                 //bottom left corner
                 if (x == 1) {
                     if (node.layout[idx - 1]) {
@@ -695,9 +700,9 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
                         node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;  
                     }
                     else {
-                        node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
+                        node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
                     }
-                    node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
                     return;
                 }
                 //regular case
@@ -707,21 +712,35 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
             }
             throw new Error("Internal Error:Unreachable code");
         });
-        //get all the walls-parts that werent handled
-        //top and bottom wall
+        //get all the wall corners that werent handled
+        node.layout[0] = node.layout[0] || BaseImageOrientation.TOP_LEFT_CORNER;
+        node.layout[width - 1] = node.layout[width - 1] || BaseImageOrientation.TOP_RIGHT_CORNER;
+        node.layout[node.layout.length - width] = node.layout[node.layout.length - width]
+            || BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;
+        node.layout[node.layout.length - 1] = node.layout[node.layout.length - 1]
+            || BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;
+        
+        //get the entrances
+        node.entrance.forEach((itm: Door) => {
+            let ry = itm.y-node.room.t;
+            let rx = itm.x-node.room.l;
+            node.layout[ry * width + rx] = sampleOfList<BaseImageOrientation>(floor_asymetric_choices);
+        });
+
         for (let x = 0; x < width; x++) {
-            room.layout[x] = room.layout[x]
+            node.layout[x] = node.layout[x]
                 || sampleOfList<BaseImageOrientation>(horizontal_wall_asymetric_choices);
-            room.layout[x + width * room.room.b] = room.layout[x + width * room.room.b]
+            node.layout[x + width * (height-1)] = node.layout[x + width *(height-1)]
                 || sampleOfList<BaseImageOrientation>(horizontal_wall_asymetric_choices);
         }
         //right and left wall
         for (let y = 0; y < height; y++) {
-            room.layout[y * width] = room.layout[y * width]
+            node.layout[y * width] = node.layout[y * width]
                 || sampleOfList<BaseImageOrientation>(vertical_wall_asymmetric_choices);
-            room.layout[y * width + room.room.r] = room.layout[y * width + room.room.r]
+            node.layout[y * width + width-1] = node.layout[y * width + width-1]
                 || sampleOfList<BaseImageOrientation>(vertical_wall_asymmetric_choices);
         }
+
     }//end of formatWalls
 
     room.layout = new Array(width * height);
@@ -731,7 +750,7 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
     fillArr(room.layout, 0);
     fillArr(room.decorations, 0);
     fillArr(room.dungeonObjects, 0);
-    
+
     formatWalls(room);
     //leftovers get to be floors
     for (let i = 0; i < room.layout.length; i++) {
@@ -740,3 +759,59 @@ function formatRoom(room: Room, media_layout: ImageSprites): void {
     }
 }
 
+/**
+ * drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+Given an image, this function takes the area of the source image specified by 
+the rectangle whose top-left corner is (sx, sy) 
+and whose width and height are sWidth and sHeight 
+and draws it into the canvas, placing it on the canvas at (dx, dy) and scaling it to the size specified by dWidth and dHeight.
+ */
+
+export function sizeCanvas(rootCell: Cell, cellSize: number): { width: number, height: number } {
+    console.log('rootcell:', rootCell);
+    let width = (rootCell.r - rootCell.l + 1) * cellSize + 2;
+    let height = (rootCell.b - rootCell.t + 1) * cellSize + 2;
+    return { width, height };
+}
+
+export function renderRooms(ctx: CanvasRenderingContext2D, root: Room, cellSize: number) {
+
+    let rooms = flatMapRooms(root).sort(sortRooms);
+    let dungeon_rooms_media = crypt_floor(root.dungeon_sprites);
+    for (let room of rooms) {
+        console.log("----ROOM---", room);
+        renderRoom(ctx, room, dungeon_rooms_media, cellSize);
+    }
+}
+
+export function renderRoom(
+    ctx: CanvasRenderingContext2D,
+    node: Room,
+    sprites: ImageSprites,
+    cellSize: number) {
+
+    let ox = node.room.l * cellSize + 1;
+    let oy = node.room.t * cellSize + 1;
+    let width = node.room.r - node.room.l + 1;
+
+    for (let i = 0; i < node.layout.length; i++) {
+        let rx = i % width;
+        let ry = Math.round((i - rx) / width);
+
+        let ax = ox + rx * cellSize;
+        let ay = oy + ry * cellSize;
+
+        let sprite = sprites.select(node.layout[i]);
+        console.log('ox:[%d], oy:[%d], rx:[%d], ry:[%d] , ax:[%d], ay:[%d]',
+            ox, oy, rx, ry, ax, ay, sprite);
+        ctx.drawImage(sprites.img,
+            sprite.x * SPRITE_WIDTH,
+            sprite.y * SPRITE_HEIGHT,
+            sprite.w * SPRITE_WIDTH,
+            sprite.h * SPRITE_HEIGHT,
+            ax, ay, cellSize, cellSize);
+        /*ox + rx * cellSize,
+        oy + ry * cellSize,
+        cellSize, cellSize);*/
+    }
+}

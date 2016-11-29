@@ -1,18 +1,18 @@
-import { Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon, Door } from "./map-tools";
+import { sizeCanvas, renderRooms, renderRoom, Room, Cell, profilerFactory, multinomial_random_sample, formatDungeon, Door } from "./map-tools";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 let profiler = profilerFactory('gaussian', { sigma: 16 });
 
-let result: Room = formatDungeon(50, 50, 10, profiler);
+let result: Room = formatDungeon(25, 25, 5, profiler);
 
 
-//console.log(result);
+console.log(result);
 //console.log(selection);
 
 function App(prop: { dungeon: Room }) {
 
-    function drawRoomRecursive(ctx: CanvasRenderingContext2D, room: Room): void {
+   /* function drawRoomRecursive(ctx: CanvasRenderingContext2D, room: Room): void {
         //console.log(room.room.r,room.room.b);
         ctx.fillStyle = 'rgb(80,80,80)';
         if (!room.leftRight && !room.upDown) {
@@ -22,21 +22,21 @@ function App(prop: { dungeon: Room }) {
                 }
             }
         }
-      
+
         let g: Door;
         let doors = room.entrance || [];
-      
+
         for (let j = 0; j < doors.length; j++) {
             g = doors[j];
-            if (g.hasDoor){
-                ctx.fillStyle="rgb(250,40,250)";
+            if (g.hasDoor) {
+                ctx.fillStyle = "rgb(250,40,250)";
             }
             else {
-                ctx.fillStyle="rgb(40,250,250)";
+                ctx.fillStyle = "rgb(40,250,250)";
             }
             ctx.fillRect(1 + g.x * 6, 1 + g.y * 6, 4, 4);
         }
-          ctx.fillStyle = 'rgb(190,80,80)'
+        ctx.fillStyle = 'rgb(190,80,80)'
         if (room.leftRight) {
             drawRoomRecursive(ctx, room.leftRight[0]);
             drawRoomRecursive(ctx, room.leftRight[1]);
@@ -45,17 +45,19 @@ function App(prop: { dungeon: Room }) {
             drawRoomRecursive(ctx, room.upDown[0]);
             drawRoomRecursive(ctx, room.upDown[1]);
         }
-    }
+    }*/
 
 
     function drawDungeon(canvasElt: HTMLCanvasElement) {
-        console.log('drawing the canvas');
+
+        console.log('drawing the canvas', canvasElt.width, canvasElt.height);
         let ctx = canvasElt.getContext("2d");
-        let canvas_width = (prop.dungeon.room.r + 1) * 6 + 2;
-        let canvas_height = (prop.dungeon.room.b + 1) * 6 + 2;
-        canvasElt.width = canvas_width;
-        canvasElt.height = canvas_height;
-        ctx.clearRect(0, 0, canvas_width, canvas_height);
+        ctx.mozImageSmoothingEnabled = false;
+        ctx.webkitImageSmoothingEnabled = false;
+        ctx.msImageSmoothingEnabled = false;
+        ctx.clearRect(0, 0, canvasElt.width, canvasElt.height);
+        renderRooms(ctx, prop.dungeon, 48);
+        /*
         ctx.globalAlpha = 1;
         ctx.lineWidth = 1;
         ctx.lineCap = 'square';
@@ -67,13 +69,15 @@ function App(prop: { dungeon: Room }) {
         }
         ctx.fillStyle = "rgb(0,0,0)";
         drawRoomRecursive(ctx, prop.dungeon);
-
+        */
     }
 
-    return (<div className="canvas-cup"><canvas ref={(canvasElt) => drawDungeon(canvasElt)}>Hello</canvas></div>);
+    let { width, height } = sizeCanvas(prop.dungeon.room, 48);
+
+    return (<div className="canvas-cup"><canvas width={width} height={height} ref={(canvasElt) => drawDungeon(canvasElt)}>Hello</canvas></div>);
 
 }
 
-window.onload = function(event){
-  ReactDOM.render(<App dungeon={result} />, document.getElementById('container-anchor'));
+window.onload = function (event) {
+    ReactDOM.render(<App dungeon={result} />, document.getElementById('container-anchor'));
 }
