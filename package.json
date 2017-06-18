@@ -25,7 +25,6 @@
     "url": "https://github.com/jacobbogers/rogue-game/issues"
   },
   "homepage": "https://github.com/jacobbogers/rogue-game#readme",
-
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/chai": "^3.5.0",
@@ -33,7 +32,6 @@
     "@types/express-session": "0.0.32",
     "@types/graphql": "^0.9.1",
     "@types/mocha": "^2.2.41",
-    "@types/moment": "^2.13.0",
     "@types/node": "^6.0.69",
     "@types/pg": "^6.1.39",
     "@types/pg-pool": "0.0.2",
@@ -79,9 +77,8 @@
     "cross-env": "^4.0.0",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
-    "graphql": "^0.9.6",
-    "graphql-server-express": "^0.7.2",
-    "graphql-tools": "^0.11.0",
+    "graphql-server-express": "^0.8.5",
+    "graphql-tools": "^1.0.0",
     "install": "^0.9.3",
     "mailgun-js": "^0.10.1",
     "merge2": "^1.0.3",
@@ -90,12 +87,10 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^3.0.5",
-    "tracer": "^0.8.7",
-    "uid-safe": "^2.1.4",
-    "morgen": "^1.7.0",
     "response-time": "^2.3.2",
-    "serve-favicon": "^2.3.2"
-    
+    "serve-favicon": "^2.3.2",
+    "tracer": "^0.8.7",
+    "uid-safe": "^2.1.4"
   },
   "optionalDependencies": {}
 }
