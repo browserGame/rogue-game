@@ -26,10 +26,14 @@ export interface CodedItems {
     'V': 1; //grave-stone
     'X': 1; //teleport
     'Y': 1; //cross tombstone
+    'Z': 1; //shield
     '^': 1; //door north
     '>': 1; //door east
     '<': 1; //door west
     'v': 1; //door south
+    'é': 1; //carpet
+    '&': 1; //treasure chest
+    'µ': 1; //stairs change level
 }
 
 export interface Symbol {
@@ -171,7 +175,7 @@ export const dungeon: Layout[] = [
     {
         symbols: [
             { e: '^', door: 'inset:5' },
-            { e: 'v', door: '8' },
+            { e: 'v', door: '12' },
             { e: '<', door: 'inset:7' },
             { e: 'L', color: 'gold' },
             { e: 'J', color: 'green' },
@@ -199,5 +203,128 @@ export const dungeon: Layout[] = [
 #K........K#
 ######v#####
 `
-    }
+    },
+    {
+        symbols: [
+            { e: '^', door: 'inset:8' },
+            { e: 'v', door: 'inset:9' },
+            { e: '>', door: '6' },
+            { m: '1', e: 'T', has: 'stone:1:yellow' },
+            { e: 'T' },
+            { e: 'J', color: 'cyan' },
+            { e: 'G', has: 'gold:5' },
+        ],
+        id: '7',
+        room: `
+#####^#####
+#.........#
+#.....1Z..#
+#A........#
+#.......T.>
+#.........#
+#..J.....G#
+#K........#
+##v########
+`
+    },
+    {
+        symbols: [
+            { e: 'v', door: '7' },
+            { e: 'v', door: 'inset:9' },
+            { e: '>', door: '6' },
+            { m: '1', e: 'T', has: 'stone:1:yellow' },
+            { e: 'T' },
+            { e: 'J', color: 'cyan' },
+            { e: 'G', has: 'gold:5' },
+        ],
+        id: '8',
+        room: `
+##########
+#.......K#
+#......3.#
+#........#
+#.....12.#
+#........#
+#....F.N.#
+#........#
+#........#
+#........#
+#..A....K#
+#####v####
+`
+    },
+    {
+        symbols: [
+            { e: '^', door: '7' },
+            { e: '<', door: 'inset:10' },
+            { e: '&', has: 'elixer,spellbook,gold:70' },
+            { e: 'T' },
+            { e: 'J', color: 'gold', has: 'gold:4,stone:green' },
+            { e: 'F', has: 'gold:3' },
+        ],
+        id: '9',
+        room: [`
+#####^#####
+##.......##
+#K!.&...!.#
+#...ééé...#
+#...ééé...#
+<...ééé...#
+#...J.....#
+#.!..F..!M#
+##.......##
+###########
+`, `
+###########
+##.......##
+#.........#
+#.........#
+#....F....#
+#.........#
+#.........#
+#.........#
+##.......##
+###########
+`,
+        ]
+    },
+    {
+        symbols: [
+            { e: '^', door: 'inset:11' },
+            { e: '>', door: '9' },
+            { m: '1', e: 'F', has: 'gold:2,bottle:water' },
+            { e: 'µ', door: 'level:2' },
+            { m: '3', e: 'F', has: 'gold:2' },
+            { e: 'J', color: 'red', has: 'trap-trigger:1' },
+            { e: 'T', has: 'gold:5' },
+            { e: 'G', has: 'gold:1' },
+            { e: 'E', has: 'gold:3' },
+            { m: '2', e: 'F', has: 'gold:3' }
+        ],
+        id: '10',
+        room: `
+####^######
+#........K#
+#.1.Q.A...#
+#...A.A...#
+#...µ.....#
+#...A...3.#
+#.J..A....#
+#.........#
+#.T..A....>
+#.......EG#
+#.........#
+#.........#
+#........2#
+#.........#
+#K........#
+###########
+`
+    },
 ];
+
+/*
+
+*/
+
+
