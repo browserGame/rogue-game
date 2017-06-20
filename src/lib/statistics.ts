@@ -27,13 +27,13 @@ export interface NumberProps {
     [propname: string]: number;
 }
 
-export interface fn_Profiler {
+export interface FnProfiler {
     (N: number): number[];
 }
-
-interface fn_profilerFactory {
-    (name: string, options: NumberProps): fn_Profiler;
-}
+/*
+interface FnProfilerFactory {
+    (name: string, options: NumberProps): FnProfiler;
+}*/
 
 
 export function normalize(arr: number[], scale: number = 1): number[] {
@@ -50,10 +50,10 @@ export function normalize(arr: number[], scale: number = 1): number[] {
     });
 }
 
-export function profilerFactory(name: string, options: NumberProps): fn_Profiler {
+export function profilerFactory(name: string, options: NumberProps): FnProfiler {
     switch (name) {
-        case "gaussian":
-            return function (N: number) {
+        case 'gaussian':
+            return function profiler(N: number) {
                 let rc: number[] = [];
                 if (!N) {
                     throw new Error('Invalid Argument, N must be at least >= 2');
@@ -66,9 +66,9 @@ export function profilerFactory(name: string, options: NumberProps): fn_Profiler
                     rc.push(ans);
                 }
                 return normalize(rc);
-            }
+            };
         default:
-            throw new Error("Invalid profiler used");
+            throw new Error('Invalid profiler used');
     }
 }
 

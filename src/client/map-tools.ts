@@ -23,8 +23,25 @@ SOFTWARE.
 */
 
 
-import { BaseImageOrientation, Sprite, ImageSprites, crypt_floor, crypt_decorations, SPRITE_WIDTH, SPRITE_HEIGHT } from "./media";
-import { profilerFactory, Sample, sampleOfList, sampleOfListNoReplacement, normalize, fn_Profiler, multinomial_random_sample } from "./statistics";
+import {
+    BaseImageOrientation,
+
+    ImageSprites,
+    crypt_floor,
+    crypt_decorations,
+    SPRITE_WIDTH,
+    SPRITE_HEIGHT
+} from './media';
+
+import {
+
+    Sample,
+    sampleOfList,
+    sampleOfListNoReplacement,
+    normalize,
+    FnProfiler,
+    multinomial_random_sample
+} from '../lib/statistics';
 
 
 export interface Door {
@@ -36,26 +53,26 @@ export interface Door {
 }
 
 export interface Cell {
-    t: number;//top
-    r: number;//right
-    l: number;//left
-    b: number;//bottom
+    t: number; //top
+    r: number; //right
+    l: number; //left
+    b: number; //bottom
     [index: string]: number;
 }
 
 export interface Room {
     parent: Room | null;
-    dungeon_sprites: HTMLImageElement,
-    decorator_sprites: HTMLImageElement,
+    dungeon_sprites: HTMLImageElement;
+    decorator_sprites: HTMLImageElement;
     room: Cell;
-    level: number;// count down to zero
+    level: number; // count down to zero
     id_room: number;
     upDown?: Room[];
     leftRight?: Room[];
-    entrance?: Door[];
-    decorations?: number[];//extra decorations untop of the floor, lights, spiderwebs, etc
-    layout?: number[]; //base scaffolding, floor, walls
-    dungeonObjects?: number[];//state changeble objects (doors, chest, bookshelves) belong to this class
+    entrance: Door[];
+    decorations: number[]; //extra decorations untop of the floor, lights, spiderwebs, etc
+    layout: number[]; //base scaffolding, floor, walls
+    dungeonObjects?: number[]; //state changeble objects (doors, chest, bookshelves) belong to this class
 }
 
 
@@ -131,17 +148,20 @@ function sample_without_replacement(multinomial_arr: number[]): { idx: number, n
 
 function cloneRoom(r: Room) {
     let rc: Room = {
+        decorations:[],
         dungeon_sprites: r.dungeon_sprites,
         decorator_sprites: r.decorator_sprites,
         parent: r.parent,
         room: Object.assign({}, r.room),
         level: r.level,
         id_room: r.id_room,
+        entrance: [],
+        layout:[]
     };
     return rc;
 }
 
-var global_pk: number = 0;
+let global_pk: number = 0;
 
 function incr_pk(): number {
     return ++global_pk;
@@ -149,7 +169,7 @@ function incr_pk(): number {
 
 
 
-function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
+function createDungeonRooms(root: Room | null, profiler: FnProfiler): void {
 
     const WALL_DISTANCE: number = 4;
 
@@ -161,7 +181,7 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
     if (root.upDown || root.leftRight) {
         let cpy = Object.assign({}, root);
         delete cpy.parent;
-        throw new Error("This room is already used" + JSON.stringify(cpy));
+        throw new Error('This room is already used' + JSON.stringify(cpy));
     }
     root.id_room = incr_pk();
     if (!root.level) {
@@ -176,7 +196,7 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
     let up_down_direction = false;
     switch (true) {
         case allow_up_down && allow_left_right:
-            up_down_direction = (multinomial_random_sample([0.5, 0.5]) == 0);
+            up_down_direction = (multinomial_random_sample([0.5, 0.5]) === 0);
             break;
         case allow_up_down:
             up_down_direction = true;
@@ -184,6 +204,7 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
         case allow_left_right:
             up_down_direction = false;
             break;
+        default:
     }
 
     let length: number;
@@ -226,8 +247,11 @@ function createDungeonRooms(root: Room | null, profiler: fn_Profiler): void {
     return;
 }
 
-export function formatDungeon(width: number, height: number, level: number, prob: fn_Profiler): Room {
+export function formatDungeon(width: number, height: number, level: number, prob: FnProfiler): Room {
     let root: Room = {
+        decorations:[],
+        entrance: [],
+        layout:[],
         parent: null,
         id_room: 10,
         room: {
@@ -237,13 +261,13 @@ export function formatDungeon(width: number, height: number, level: number, prob
             b: height
         } as Cell,
         level: level,
-        dungeon_sprites: document.getElementById("floor_crypt") as HTMLImageElement,
-        decorator_sprites: document.getElementById("decor_props") as HTMLImageElement
+        dungeon_sprites: document.getElementById('floor_crypt') as HTMLImageElement,
+        decorator_sprites: document.getElementById('decor_props') as HTMLImageElement
     };
     createDungeonRooms(root, prob);
     createDoors(root);
     let rooms = flatMapRooms(root).sort(sortRooms);
-    let media_base_layout = crypt_floor(root.dungeon_sprites);
+    //let media_base_layout = crypt_floor(root.dungeon_sprites);
     for (let room of rooms) {
         formatRoom(room);
         decorateRoom(room);
@@ -255,7 +279,7 @@ export function formatDungeon(width: number, height: number, level: number, prob
 function collectRoomsSharingBottomWall(r: Room, buttomWall: number): Room[] {
     let rc: Room[] = [];
     if (!r.leftRight && !r.upDown) {
-        if (r.room.b == buttomWall) {
+        if (r.room.b === buttomWall) {
             return [r];
         }
     }
@@ -272,7 +296,7 @@ function collectRoomsSharingBottomWall(r: Room, buttomWall: number): Room[] {
 function collectRoomsSharingRightWall(r: Room, rightWall: number): Room[] {
     let rc: Room[] = [];
     if (!r.leftRight && !r.upDown) {
-        if (r.room.r == rightWall) {
+        if (r.room.r === rightWall) {
             return [r];
         }
     }
@@ -290,7 +314,7 @@ function collectRoomsSharingRightWall(r: Room, rightWall: number): Room[] {
 function collectRoomsSharingTopWall(r: Room, topWall: number): Room[] {
     let rc: Room[] = [];
     if (!r.leftRight && !r.upDown) {
-        if (r.room.t == topWall) {
+        if (r.room.t === topWall) {
             return [r];
         }
     }
@@ -307,7 +331,7 @@ function collectRoomsSharingTopWall(r: Room, topWall: number): Room[] {
 function collectRoomsSharingLeftWall(r: Room, leftWall: number): Room[] {
     let rc: Room[] = [];
     if (!r.leftRight && !r.upDown) {
-        if (r.room.l == leftWall) {
+        if (r.room.l === leftWall) {
             return [r];
         }
     }
@@ -327,25 +351,25 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
     let propsCut: string[];
     let doorCoords: string[];
     switch (direction) {
-        case "horizontal":
-            propsScan = ["l", "r"];
-            propsCut = ["t", "b"];
-            doorCoords = ["x", "y"];
+        case 'horizontal':
+            propsScan = ['l', 'r'];
+            propsCut = ['t', 'b'];
+            doorCoords = ['x', 'y'];
             break;
-        case "vertical":
-            propsScan = ["t", "b"];
-            propsCut = ["l", "r"];
-            doorCoords = ["y", "x"];
+        case 'vertical':
+            propsScan = ['t', 'b'];
+            propsCut = ['l', 'r'];
+            doorCoords = ['y', 'x'];
             break;
         default:
-            throw new Error("Wrong direction value:" + direction);
+            throw new Error('Wrong direction value:' + direction);
     }
 
     function sort_func(a: Room, b: Room): number {
         return a.room[propsScan[0]] - b.room[propsScan[0]];
     }
 
-    return function () {
+    return function processor() {
         let intersects: { f: Room, s: Room, region: { start: number, stop: number } }[] = [];
         let firstArr = roomGroups[0].sort(sort_func);
         let secondArr = roomGroups[1].sort(sort_func);
@@ -422,7 +446,7 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         let selected = multinomial_random_sample(probabilities);
         let length_uniform_prop = intersects[selected].region.stop - intersects[selected].region.start + 1;
         let arr: number[] = new Array<number>(length_uniform_prop);
-        for (let i = 0; i < length_uniform_prop; i++) { arr[i] = 1; };
+        arr.fill(1);
         let door_position = intersects[selected].region.start + multinomial_random_sample(normalize(arr));
         //shortcuts
         let firstRoom = intersects[selected].f;
@@ -431,7 +455,7 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         secondRoom.entrance = secondRoom.entrance || [];
 
         // the door shall be placed in the wall of either the first or the secon, choose 50/50 
-        let flipcoin = (multinomial_random_sample([0.5, 0.5]) == 1);
+        let flipcoin = (multinomial_random_sample([0.5, 0.5]) === 1);
         let obj: { [index: string]: number } = {};
         //first room:
         //horizontal wall splitting (top/down) rooms
@@ -459,7 +483,7 @@ function createIntersectProcessor(direction: string, roomGroups: Room[][]): Func
         secondRoom.entrance.push(Object.assign({}, obj) as Door);
 
         //console.log("entrace will be created here:", { intersect: intersects[selected], door_position, arr: normalize(arr) });
-    }
+    };
 
 }
 
@@ -470,17 +494,17 @@ export function createDoors(root: Room): void {
         return;
     }
     if (root.upDown && root.leftRight) {
-        throw new Error("This room has both upDown and leftRight defined, room_id =" + root.id_room);
+        throw new Error('This room has both upDown and leftRight defined, room_id =' + root.id_room);
     }
     if (root.entrance) {
-        console.log('Entrance object detected bailing out')
+        console.log('Entrance object detected bailing out');
         return;
     }
     //no doors defined in this room
-    let childRooms = root.upDown || root.leftRight;
+    let childRooms = <Room[]>(root.upDown || root.leftRight);
     createDoors(childRooms[0]);
     createDoors(childRooms[1]);
-    let rooms: Room[];
+
     let intersectProcessor;
     //console.log('roomid', root.id_room);
     if (root.upDown) {
@@ -497,7 +521,7 @@ export function createDoors(root: Room): void {
         //console.log('leftright', verticalWallRight, roomsLeftSide, roomsRightSide);
         intersectProcessor = createIntersectProcessor('vertical', [roomsLeftSide, roomsRightSide]);
     }
-    intersectProcessor();
+    (<Function>intersectProcessor)();
     return;
 }
 
@@ -509,7 +533,7 @@ function flatMapRooms(root: Room): Room[] {
             rc.push(node);
             return;
         }
-        let children = node.leftRight || node.upDown;
+        let children = <Room[]>(node.leftRight || node.upDown);
         collect(children[0]);
         collect(children[1]);
     }
@@ -533,15 +557,7 @@ function sortRooms(a: Room, b: Room) {
     return 0;
 }
 
-function sortSprites(a: Sprite, b: Sprite) {
-    return a.id - b.id;
-}
 
-function fillArr(arr: number[], v: number) {
-    for (let k = 0; k < arr.length; k++) {
-        arr[k] = v;
-    }
-}
 
 function initRoom(room: Room): void {
 
@@ -552,9 +568,9 @@ function initRoom(room: Room): void {
     room.decorations = new Array(width * height);
     room.dungeonObjects = new Array(width * height);
 
-    fillArr(room.layout, 0);
-    fillArr(room.decorations, 0);
-    fillArr(room.dungeonObjects, 0);
+    room.layout.fill(0);
+    room.decorations.fill(0);
+    room.dungeonObjects.fill(0);
 
 }
 
@@ -563,130 +579,131 @@ function formatWalls(node: Room) {
     let width = node.room.r - node.room.l + 1;
     let height = node.room.b - node.room.t + 1;
 
-    let x, y;
+    let x: number;
+    let y: number;
 
     node.entrance.forEach((entrance: Door) => {
         x = entrance.x - node.room.l;
         y = entrance.y - node.room.t;
         let idx = x + y * width;
         //left-wall
-        if (x == 0) {
+        if (x === 0) {
             //handle Room-corner cases in case you are next a door on the bottom wall or top wall
-            if (y == 1) {
+            if (y === 1) {
                 if (node.layout[idx - width]) {
-                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╝
                 }
                 else {
                     node.layout[idx - width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
                 }
-                node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
                 return;
             }
             //handle Corner case left-bottom corner 
-            if (entrance.y == node.room.b - 1) {
+            if (entrance.y === node.room.b - 1) {
                 if (node.layout[idx + width]) {
-                    node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                    node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
                 }
                 else {
                     node.layout[idx + width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
                 }
-                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╗
+                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╗
                 return;
             }
             //regular case
-            node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
-            node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+            node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╝
+            node.layout[idx + width] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
             return;
         }
         //top wall
-        if (y == 0) {
+        if (y === 0) {
             //handle Room-corner cases in case you are next a door on the bottom wall or top wall
             //top left corner
-            if (x == 1) {
+            if (x === 1) {
                 if (node.layout[idx - 1]) {
-                    node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                    node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╝
                 }
                 else {
                     node.layout[idx - 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
                 }
-                node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚
                 return;
             }
             //handle Corner case top-right corner 
-            if (entrance.x == node.room.r - 1) {
+            if (entrance.x === node.room.r - 1) {
                 if (node.layout[idx + 1]) {
-                    node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                    node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚
                 }
                 else {
                     node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
                 }
-                node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+                node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╝
                 return;
             }
             //regular case
-            node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
-            node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER;//╝
+            node.layout[idx + 1] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚
+            node.layout[idx - 1] = BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER; //╝
             return;
         }
         //right wall
-        if (x == width - 1) {
+        if (x === width - 1) {
             //top right corner
-            if (y == 1) {
+            if (y === 1) {
                 if (node.layout[idx - width]) {
-                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚ 
+                    node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚ 
                 }
                 else {
                     node.layout[idx - width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
                 }
-                node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔
+                node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER; //╔
                 return;
             }
             //bottom right corner
-            if (entrance.y == node.room.b - 1) {
+            if (entrance.y === node.room.b - 1) {
                 if (node.layout[idx + width]) {
-                    node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;  
+                    node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER; //╔;  
                 }
                 else {
                     node.layout[idx + width] = sampleOfList<BaseImageOrientation>(horizontal_wall_choices);
                 }
-                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
+                node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚
                 return;
             }
             //regular case
-            node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER;//╚
-            node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;
+            node.layout[idx - width] = BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER; //╚
+            node.layout[idx + width] = BaseImageOrientation.TOP_LEFT_CORNER; //╔;
             return;
         }
         //bottom wall
-        if (y == height - 1) {
+        if (y === height - 1) {
             //bottom left corner
-            if (x == 1) {
+            if (x === 1) {
                 if (node.layout[idx - 1]) {
-                    node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                    node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
                 }
                 else {
                     node.layout[idx - 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
                 }
-                node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔
+                node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER; //╔
                 return;
             }
             //bottom right corner
-            if (entrance.x == node.room.r - 1) {
+            if (entrance.x === node.room.r - 1) {
                 if (node.layout[idx + 1]) {
-                    node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;  
+                    node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER; //╔;  
                 }
                 else {
                     node.layout[idx + 1] = sampleOfList<BaseImageOrientation>(vertical_wall_choices);
                 }
-                node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
+                node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
                 return;
             }
             //regular case
-            node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER;//╗
-            node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER;//╔;
+            node.layout[idx - 1] = BaseImageOrientation.TOP_RIGHT_CORNER; //╗
+            node.layout[idx + 1] = BaseImageOrientation.TOP_LEFT_CORNER; //╔;
             return;
         }
-        throw new Error("Internal Error:Unreachable code");
+        throw new Error('Internal Error:Unreachable code');
     });
     //get all the wall corners that werent handled
     node.layout[0] = node.layout[0] || BaseImageOrientation.TOP_LEFT_CORNER;
@@ -737,17 +754,17 @@ function decorateRoom(room: Room): void {
     for (let door of room.entrance) {
         let idx = (door.x - room.room.l) + (door.y - room.room.t) * width;
         //right wall?
-        if (door.x == room.room.r) {
+        if (door.x === room.room.r) {
             room.decorations[idx - 1] = -1; // position unavailable   
         }
-        if (door.x == room.room.l) {
+        if (door.x === room.room.l) {
             room.decorations[idx + 1] = -1; // position unavailable  
         }
-        if (door.y == room.room.t) {
-            room.decorations[idx + width] = -1
+        if (door.y === room.room.t) {
+            room.decorations[idx + width] = -1;
         }
-        if (door.y == room.room.b) {
-            room.decorations[idx - width] = -1
+        if (door.y === room.room.b) {
+            room.decorations[idx - width] = -1;
         }
     }
 
@@ -772,17 +789,17 @@ function decorateRoom(room: Room): void {
             lower_right_corner,
             lower_left_corner
         ]
-            .filter((v) => { return room.decorations[v] != -1; })
+            .filter((v) => { return room.decorations[v] !== -1; })
             .map((v) => {
                 return { probability: 1, payload: v };
-            })
+            });
 
     //Baysian style conditional probability: room has cobwebs? yes /no    
-    if (multinomial_random_sample([6 / 26, 20 / 26]) == 1) {
+    if (multinomial_random_sample([6 / 26, 20 / 26]) === 1) {
         //cobwebs
         let max_cobwebs = multinomial_random_sample(normalize([7, 10, 3])) + 1;
         let cursor: { selected: number, next: Sample<number>[] } = { selected: 0, next: cobweb_choices };
-        console.log("max_cobwebs")
+        console.log('max_cobwebs');
         while (max_cobwebs > 0 && cursor.next.length > 0) {
             cursor = sampleOfListNoReplacement(cursor.next);
             //what kind of cobweb did we pick
@@ -806,18 +823,18 @@ function decorateRoom(room: Room): void {
     }
     //place skulls on the floors
     //collect the -1's and random place skulls
-    let collect: number[] = room.decorations.reduce((p, v, i, arr) => {
+    let collect: number[] = room.decorations.reduce((p, v, i) => {
         if (v === 0) {
             p.push(i);
         }
         return p;
-    }, []);
-    let samples: Sample<number>[] = collect.map((v, i) => {
+    }, [] as number[]);
+    let samples: Sample<number>[] = collect.map((v) => {
         return { probability: 1, payload: v } as Sample<number>;
     });
     console.log('---ROOOM----');
     while (
-        multinomial_random_sample([0.625, 1 - 0.625]) == 0 //geometric distribution effect
+        multinomial_random_sample([0.625, 1 - 0.625]) === 0 //geometric distribution effect
         &&
         samples.length > 0
     ) {

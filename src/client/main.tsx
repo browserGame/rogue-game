@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import { sizeCanvas, renderRooms, renderRoom, Room, Cell, formatDungeon, Door } from "./map-tools";
-import { profilerFactory } from "./statistics";
+import { sizeCanvas, renderRooms,  Room,  formatDungeon  } from './map-tools';
+import { profilerFactory } from '../lib/statistics';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
@@ -76,10 +76,14 @@ function App(prop: { dungeon: Room }) {
     function drawDungeon(canvasElt: HTMLCanvasElement) {
 
         console.log('drawing the canvas', canvasElt.width, canvasElt.height);
-        let ctx = canvasElt.getContext("2d");
-        ctx.mozImageSmoothingEnabled = false;
-        ctx.webkitImageSmoothingEnabled = false;
-        ctx.msImageSmoothingEnabled = false;
+        let ctx = canvasElt.getContext('2d');
+        if (!ctx){
+            throw new Error('no canvas');
+        }
+        ctx['mozImageSmoothingEnabled'] = false;
+        ctx['webkitImageSmoothingEnabled'] = false;
+        (ctx as any)['msImageSmoothingEnabled'] = false;
+        ctx.imageSmoothingEnabled = false;
         ctx.clearRect(0, 0, canvasElt.width, canvasElt.height);
         renderRooms(ctx, prop.dungeon, 48);
         /*
@@ -103,6 +107,6 @@ function App(prop: { dungeon: Room }) {
 
 }
 
-window.onload = function (event) {
+window.onload = function onLoad() {
     ReactDOM.render(<App dungeon={result} />, document.getElementById('container-anchor'));
-}
+};

@@ -72,26 +72,26 @@ SOFTWARE.
 
 export enum BaseImageOrientation {
     TOP_LEFT_CORNER = 1, //╔
-    TOP_RIGHT_CORNER,//╗
-    TOP_BOTTOM_LEFT_CORNER,//╚
-    TOP_BOTTOM_RIGHT_CORNER,////╝ 
-    WALL_VERT_NORMAL,//║ //5
-    WALL_VERT_CRACKED,//║ //6
-    WALL_HORIZONTAL_CRACKED,//═7
-    WALL_HORIZONTAL_CRYPT,//═8
-    NORMAL_FLOOR,//9
-    CIRCLE_FLOOR,//10
-    CRACKED_FLOOR,//11
-    HALF_CIRCLE_FLOOR,//12,
+    TOP_RIGHT_CORNER, //╗
+    TOP_BOTTOM_LEFT_CORNER, //╚
+    TOP_BOTTOM_RIGHT_CORNER, ////╝ 
+    WALL_VERT_NORMAL, //║ //5
+    WALL_VERT_CRACKED, //║ //6
+    WALL_HORIZONTAL_CRACKED, //═7
+    WALL_HORIZONTAL_CRYPT, //═8
+    NORMAL_FLOOR, //9
+    CIRCLE_FLOOR, //10
+    CRACKED_FLOOR, //11
+    HALF_CIRCLE_FLOOR, //12,
     //
-    SKELETON_REMAINS_BONES_SKULL = 20,//i see this the most
+    SKELETON_REMAINS_BONES_SKULL = 20, //i see this the most
     SKELETON_REMAINS_SMALL_02,
     SKELETON_REMAINS_SMALL_03,
     SKELETON_REMAINS_SMALL_04,
     SKELETON_REMAINS_BIG_SKULL_ON_BONES,
     SKELETON_REMAINS_SMALL_05,
-    SKELETON_REMAINS_BONES_ALOT,//skip this
-    SKELETON_REMAINS_LOTS_OF_SKULLS,//never see this
+    SKELETON_REMAINS_BONES_ALOT, //skip this
+    SKELETON_REMAINS_LOTS_OF_SKULLS, //never see this
     SPIDER_WEB_UPPER_LEFT = 50,
     SPIDER_WEB_UPPER_RIGHT,
     SPIDER_WEB_LOWER_RIGHT,
@@ -123,48 +123,48 @@ export function crypt_floor(img: HTMLImageElement): ImageSprites {
     return {
         img: img,
         sprites: [{
-            id: BaseImageOrientation.TOP_LEFT_CORNER,//╔
+            id: BaseImageOrientation.TOP_LEFT_CORNER, //╔
             x: 16,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.TOP_RIGHT_CORNER,//╗
+            id: BaseImageOrientation.TOP_RIGHT_CORNER, //╗
             x: 17,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER,//╚
+            id: BaseImageOrientation.TOP_BOTTOM_LEFT_CORNER, //╚
             x: 18,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER,//╝  
+            id: BaseImageOrientation.TOP_BOTTOM_RIGHT_CORNER, //╝  
             x: 19,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.WALL_VERT_NORMAL,// ║ 
+            id: BaseImageOrientation.WALL_VERT_NORMAL, // ║ 
             x: 14,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.WALL_VERT_CRACKED,// ║
+            id: BaseImageOrientation.WALL_VERT_CRACKED, // ║
             x: 5,
             y: 1,
             w: 1,
             h: 1
         }, {
-            id: BaseImageOrientation.WALL_HORIZONTAL_CRACKED,//═
+            id: BaseImageOrientation.WALL_HORIZONTAL_CRACKED, //═
             x: 6,
             y: 1,
             w: 1,
@@ -205,9 +205,9 @@ export function crypt_floor(img: HTMLImageElement): ImageSprites {
             w: 1,
             h: 1
         }],
-        select: function (id: BaseImageOrientation): Sprite | null {
-            let value: Sprite = this.sprites.find((itm: Sprite): boolean => {
-                return itm.id == id;
+        select: function select(id: BaseImageOrientation): Sprite {
+            let value: Sprite = <Sprite>this.sprites.find((itm: Sprite): boolean => {
+                return itm.id === id;
             });
             return value;
         }
@@ -215,52 +215,57 @@ export function crypt_floor(img: HTMLImageElement): ImageSprites {
 }
 
 export function crypt_decorations(img: HTMLImageElement): ImageSprites {
-
-    return {
+    /*
+    export interface ImageSprites {
+        img: HTMLImageElement;
+        sprites: Sprite[];
+        select(id: BaseImageOrientation): Sprite | null;
+    }*/
+    let rc: ImageSprites = {
         img: img,
         sprites: [{
-            id: BaseImageOrientation.SKELETON_REMAINS_BONES_SKULL,//╔
+            id: BaseImageOrientation.SKELETON_REMAINS_BONES_SKULL, //╔
             x: 0,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_02,//╗
+            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_02, //╗
             x: 1,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_03,//╚
+            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_03, //╚
             x: 2,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_04,//╝  
+            id: BaseImageOrientation.SKELETON_REMAINS_SMALL_04, //╝  
             x: 3,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.SKELETON_REMAINS_BONES_ALOT,// ║ 
+            id: BaseImageOrientation.SKELETON_REMAINS_BONES_ALOT, // ║ 
             x: 4,
             y: 0,
             w: 1,
             h: 1
         },
         {
-            id: BaseImageOrientation.SKELETON_REMAINS_LOTS_OF_SKULLS,// ║
+            id: BaseImageOrientation.SKELETON_REMAINS_LOTS_OF_SKULLS, // ║
             x: 0,
             y: 1,
             w: 1,
             h: 1
         }, {
-            id: BaseImageOrientation.SKELETON_REMAINS_BIG_SKULL_ON_BONES,//═
+            id: BaseImageOrientation.SKELETON_REMAINS_BIG_SKULL_ON_BONES, //═
             x: 1,
             y: 1,
             w: 1,
@@ -301,11 +306,12 @@ export function crypt_decorations(img: HTMLImageElement): ImageSprites {
             w: 1,
             h: 1
         }],
-        select: function (id: BaseImageOrientation): Sprite | null {
-            let value: Sprite = this.sprites.find((itm: Sprite): boolean => {
-                return itm.id == id;
+        select: function select(id: BaseImageOrientation): Sprite {
+            let value: Sprite = <Sprite>this.sprites.find((itm: Sprite): boolean => {
+                return itm.id === id;
             });
             return value;
         }
     };
+    return rc;
 }

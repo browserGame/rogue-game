@@ -1,11 +1,12 @@
+#this section added by J. Bogers
+.awcache
+dist/
+TODO
+
 # Logs
 logs
 *.log
 npm-debug.log*
-dist/
-typings/
-.vscode/
-css/
 
 # Runtime data
 pids
