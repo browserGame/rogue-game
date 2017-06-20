@@ -23,7 +23,7 @@ export interface CodedItems {
     'S': 1; //bear trap
     'T': 1; //skelton-enemy
     'U': 1; //red carpet
-    'V': 1; //grave-stone
+    'V': 1; //tombstone
     'X': 1; //teleport
     'Y': 1; //cross tombstone
     'Z': 1; //shield
@@ -34,6 +34,7 @@ export interface CodedItems {
     'é': 1; //carpet
     '&': 1; //treasure chest
     'µ': 1; //stairs change level
+    '{': 1; //beer barrel
 }
 
 export interface Symbol {
@@ -320,11 +321,30 @@ export const dungeon: Layout[] = [
 #K........#
 ###########
 `
-    },
+    }, 
+    {
+        symbols: [
+            { e: 'v', door: '10' },
+            { e: 'J', color:'red', has:'gold:1' },
+            { m: '1', e: '{', has: 'gold:2,stone:white' },
+            { m: 'µ', door: 'level:2' },
+            { m: '3', e: 'F', has: 'gold:2' },
+            { e: 'J', color: 'red', has: 'trap-trigger:1' }
+        ],
+        id: '11',
+        room: `
+###########
+#.1....A..#
+#..A......#
+#...OOO...#
+#...OOO...#
+#.J.OOO...#
+#.........#
+#....F.{..#
+#.........#
+#####v#####
+`
+    }
 ];
-
-/*
-
-*/
 
 
