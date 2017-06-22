@@ -394,7 +394,7 @@ export const dungeon: Layout[] = [
     {
         symbols: [
             { e: '^', door: '13' },
-            { e: 'v', door: 'inset:30' },
+            { e: 'v', door: 'inset:20' },
             { e: '<', door: 'inset:15' },
         ],
         id: '14',
@@ -415,7 +415,7 @@ export const dungeon: Layout[] = [
         symbols: [
             { e: '^', door: '14' },
         ],
-        id: '30',
+        id: '20',
         room: `
 ###^####
 #......#
