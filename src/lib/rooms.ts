@@ -17,7 +17,7 @@ export interface CodedItems {
     'M': 1; //coin
     'N': 1; //quest-result
     'O': 1; //water
-    'P': 1; //tourch
+    //'P': 1; //tourch
     'Q': 1; //quest regenerator
     'R': 1; //pentagram
     'S': 1; //bear trap
@@ -38,6 +38,11 @@ export interface CodedItems {
     '"': 1; //death-totum
     '(': 1; //lava
     '@': 1; //green wizard shaman throws fire
+    '*': 1; //table
+    'w': 1; //spikes
+    'z': 1; //closet 
+    '!': 1; //tourch
+    'm': 1; //half moon trap 
 }
 
 export interface Symbol {
@@ -48,6 +53,7 @@ export interface Symbol {
     has?: string;
     color?: string;
     init?: string;
+    fromTrap?: string;
 }
 
 export interface Layout {
@@ -509,9 +515,9 @@ export const dungeon: Layout[] = [
         symbols: [
             { e: '^', door: 'inset:19' },
             { e: '>', door: '15' },
-            { e: 'G', has:'gold:1' },
-            { m: '2', e:'@',  has:'boots:red' },
-            { e: '@', has:'coin:1' },
+            { e: 'G', has: 'gold:1' },
+            { m: '2', e: '@', has: 'boots:red' },
+            { e: '@', has: 'coin:1' },
         ],
         id: '18',
         room:
@@ -536,7 +542,7 @@ export const dungeon: Layout[] = [
     {
         symbols: [
             { e: 'v', door: '18' },
-            { e: 'V', has:'gold:2' },
+            { e: 'V', has: 'gold:2' },
         ],
         id: '19',
         room:
@@ -549,8 +555,188 @@ export const dungeon: Layout[] = [
 #####v##
 `
     }
+    ,
+    {
+        symbols: [
+            { e: '^', door: 'inset:21' },
+            { e: 'v', has: 'inset:26' },
+            { e: '<', has: '12' },
+            { e: '>', has: 'inset:25' },
+            { e: 'M', has: 'gold:1' },
+            { e: 'F', has: 'gold:4' }
+        ],
+        id: '21',
+        room:
+        `
+###^#######
+#......M..#
+#.........#
+#.........>
+#.w.......#
+#...{.....#
+#F........#
+#..S......#
+<......*..#
+#.........#
+#.........#
+#.......J.#
+#.........#
+#..L......#
+#.........#
+#######v###
+`
+    },
+    {
+        symbols: [
+            { e: '^', door: 'inset:23' },
+            { e: 'v', has: '21' },
+            { e: '^', has: 'inset:23' },
+            { e: 'v', has: '21' },
+            { e: 'J', color: 'blueish', has: 'gold:1' },
+            { e: 'G', has: 'gold:1' },
+            { e: 'V', has: 'milk' },
+            { e: 'z', has: 'chicken-bone:1' },
+            { e: 'F', has: 'stone:1:gold' },
+        ],
+        id: '22',
+        room:
+        `
+#######^###
+#........K#
+#.........#
+#.........#
+#.........#
+#.........#
+#........A#
+#.....J...#
+#...A.....#
+#.G.......#
+#.........#
+#......AV.#
+#..z......#
+#.........#
+#K...AFAK.#
+#####v#####
+`
+    },
+    {
+        symbols: [
+            { e: '^', door: 'inset:24' },
+            { e: 'v', has: '21' },
+            { e: '>', has: 'inset:32' },
+            { e: 'v', has: '21' },
+            { e: 'X', door: '' },
+            { e: 'L', has: 'gold' },
+            { e: '{', has: 'gold:1' },
+            { e: 'z', has: 'chicken-bone:1' },
+        ],
+        id: '23',
+        room:
+        `
+#^#######
+#......K#
+#.......#
+#.......#
+#.X....L#
+#.......#
+#.....A.#
+#.......#
+#.......#
+#.......>
+#.......#
+#.{.....#
+#.......#
+#.......#
+#K......#
+####v####
+`
+    },
+    {
+        symbols: [
+            { e: 'v', has: '23' },
+            { e: 'F', has: 'gold:4' },
+            { e: 'L', color: 'gold' }
+        ],
+        id: '24',
+        room:
+        `
+########
+#......#
+#......#
+#.F..L.#
+####...#
+#####v##
+`
+    },
+    {
+        symbols: [
+            { e: 'v', has: '23' },
+            { e: 'F', has: 'gold:4' },
+            { e: 'L', color: 'gold' },
+            { e: 'G', has: 'cheese' },
+            { m: '1', e: 'J', color: 'gray' },
+            { e: 'J', color: 'green' },
+            { m: '2', e: 'G', fromTrap: 'I' }
+        ],
+        id: '25',
+        room:
+        `
+###########
+#........K#
+#..1......#
+#..G......#
+#.........#
+#.........#
+<.......A.#
+#........2#
+#.J...B.I.#
+#.........#
+#K.......K#
+###########
+`
+    },
+    {
+        symbols: [
+            { e: '^', has: '21' },
+            { e: 'v', has: 'inset:27' },
+            { e: 'G', has: 'gold:5' },
+            { e: 'V', has: 'fish,mana,gold:1' },
+           ],
+        id: '26',
+        room:
+        `
+#######^#######
+#K.........A..#
+#......G......#
+#......A...A..#
+#.............#
+#...m......H..#
+#.............#
+#.............#
+#...V.........#
+#.............#
+#.............#
+#K...........A#
+#############v#
+`
+    },
+    {
+        symbols: [
+            { e: '^', has: '26' },
+            { e: 'm', has: 'gold:3' },
+            { m: '1', e:'L', color:'gold' },
+            { m: '2', e:'L', color:'green' },
+           ],
+        id: '27',
+        room:
+        `
+###^####
+#......#
+#.M.1..#
+#..1...#
+#...####
+########
+`
+    }
 ];
-
-
-
 
