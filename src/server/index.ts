@@ -4,6 +4,8 @@ import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
 
+import { compileDungeon } from '../lib/rooms';
+
 //import { SystemInfo } from '../lib/system';
 //import { registerAuth } from '../lib/authentication';
 
@@ -71,6 +73,12 @@ app.use('/', express.static(path.resolve('dist/client')));
 
 
 function init(): Promise<boolean> {
+    app.get('/processing', (req, resp) => {
+        req;
+        resp.set({ 'Content-Type': 'text/plain' });
+        resp.send(compileDungeon());
+    });
+
     app.get('/room/:width/:height', (req, resp) => {
         let width = Number.parseInt(req.params['width']);
         let height = Number.parseInt(req.params['height']);
@@ -82,7 +90,7 @@ function init(): Promise<boolean> {
             let line = new Array<string>(width);
             if (i === 0 || i === height - 1) {
                 line.fill('#');
-               // console.log(line);
+                // console.log(line);
                 return line.join('');
             }
             line = new Array<string>(width).fill('.');
@@ -90,7 +98,7 @@ function init(): Promise<boolean> {
             line[width - 1] = '#';
             return line.join('');
         });
-         resp.send(`width ${width}, height:${height}\n${grid.join('\n')}`);
+        resp.send(`width ${width}, height:${height}\n${grid.join('\n')}`);
 
     });
 
