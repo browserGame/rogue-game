@@ -953,10 +953,25 @@ const mockDungeon: Layout[] = [
     }
 ];
 
-export function compileDungeon(): string {
+//> String.fromCodePoint(0x2517)
+//'┗'
 
-    //let gWidth = 0;
-    //let gHeight = 0;
+//> String.fromCodePoint(0x2513)
+//'┓'
+
+//> String.fromCodePoint(0x251B)
+//'┛'
+
+//> String.fromCodePoint(0x250F)
+//'┏'
+
+//> String.fromCodePoint(0x2503)
+//'┃'
+
+//> String.fromCodePoint(0x2501)
+//'━'
+
+export function compileDungeon(): string {
 
     let finalRooms = new Map<number, Room>();
     let formattingTodo = new Map<number, Room>();

@@ -11,7 +11,7 @@
     "publish": "echo publish",
     "preinstall": "echo preinstall",
     "install": "echo install",
-    "postinstall": "npm run fixtypes",
+    "postinstall": "echo postinstall",
     "preuninstall": "echo preuninstall",
     "uninstall": "echo uninstall",
     "postuninstall": "echo postuninstall",
