@@ -61,7 +61,7 @@
   "homepage": "https://github.com/jacobbogers/rogue-game#readme",
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
-    "@types/chai": "^3.5.0",
+    "@types/chai": "^3.5.2",
     "@types/express": "^4.0.35",
     "@types/express-session": "0.0.32",
     "@types/graphql": "^0.9.1",

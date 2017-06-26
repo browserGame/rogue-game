@@ -71,6 +71,20 @@ export interface Door {
     inset: boolean;
 }
 
+export interface Vector {
+    x: number;
+    y: number;
+}
+
+export function addV(a: Vector, b: Vector): Vector {
+    return { x: a.x + b.x, y: a.y + b.y };
+}
+
+export function negV(a: Vector): Vector {
+    return { x: -a.x, y: -a.y };
+}
+
+/*
 export interface Room {
     id: number;
     room: string[];
@@ -79,7 +93,7 @@ export interface Room {
     l: number; //left position in global coordinates
     t: number; //top position global coordinates
     doors: Door[];
-}
+}*/
 
 const mockDungeon: Layout[] = [
     {
@@ -970,29 +984,381 @@ const mockDungeon: Layout[] = [
 
 //> String.fromCodePoint(0x2501)
 //'━'
+/*
+export interface WallCursor {
+    tx: number;
+    ty: number;
+    nx: number;
+    ny: number;
+    tbp: keyof WallCursor;
+    tb: number;
+    tt: string;
+    tn: string;
+    nt: string;
+    nn: string;
+    rx: number;
+    ry: number;
+}
+*/
+/*
+function createWallCursor(dir: string, d: Door): WallCursor {
+    let tx = -1;
+    let ty = 0;
+    let nx = 0;
+    let ny = -1;
+    let tbp: keyof WallCursor = 'tx';
+    let tb = 0;
+    let tt = '━';
+    let tn = '┗';
+    let nt = '┓';
+    let nn = '┃';
 
-export function compileDungeon(): string {
+    switch (dir) {
+        case '>':
+            tx = 0;
+            ty = 1;
+            nx = -1;
+            ny = 0;
+            tbp = 'ty';
+            tb = boundery;
+            tt = '┃';
+            tn = '┛';
+            nt = '┏';
+            nn = '━';
+            break;
+        case '<':
+            tx = 0;
+            ty = -1;
+            nx = 1;
+            ny = 0;
+            tbp = 'ty';
+            tb = 0;
+            tt = '┃';
+            tn = '┏';
+            nt = '┛';
+            nn = '━';
+            break;
+        case '^':
+            tx = 1;
+            ty = 0;
+            nx = -1;
+            ny = 0;
+            tbp = 'tx';
+            tb = boundery;
+            tt = '━';
+            tn = '┓';
+            nt = '┗';
+            nn = '━';
+            break;
+        case 'v':
+        default:
+            break;
+    }
+    return {
+        tx, ty, nx, ny, tbp, tb, tt, tn, nt, nn, rx, ry
+    };
+}*/
 
-    let finalRooms = new Map<number, Room>();
-    let formattingTodo = new Map<number, Room>();
+export class WallCursor {
+    private room: Room;
+
+    private t: Vector;
+    private n: Vector;
+    private tbp: 'ty' | 'tx';
+    private tb: number;
+    private tt: string;
+    private tn: string;
+    private nt: string;
+    private nn: string;
+    private dd: string;
+    private dir: string;
+
+    private p: Vector;
 
 
-    let rooms = mockDungeon.map((room) => {
+    private init() {
+        let d = this.room.doors[0];
+        let dir = '';
 
-        let firstLayer = room.room instanceof Array ? room.room[0] : room.room;
+        if (d.rx === 0) {
+            dir = '<';
+        }
 
-        //cleaned
-        let cRoom = firstLayer.split(/[\n\r]+/).filter((line) => line.length > 0);
-        let id = Number.parseInt(room.id);
-        let nr: Room = { id, room: [], w: 0, h: 0, l: 0, t: 0, doors: [] };
+        if (d.ry === 0) {
+            dir = '^';
+        }
+
+        if (d.rx > 0 && d.ry > 0 && d.ry < (this.room.h - 1)) {
+            dir = '>';
+        }
+
+        if (d.ry === (this.room.h - 1)) {
+            dir = 'v';
+        }
+
+        if (dir === '') {
+            throw new Error(`Could not create a Wall Cursor for Room ${this.room.id}`);
+        }
+        this.dir = dir;
+        this.p = { x: d.rx, y: d.ry };
+
+    }
+
+    private setCursorParams() {
+
+        switch (this.dir) {
+            case '>':
+                this.t = { x: 0, y: 1 };
+                this.n = { x: -1, y: 0 };
+                this.tbp = 'ty';
+                this.tb = this.room.h;
+                this.tt = '┃';
+                this.tn = '┛';
+                this.nt = '┏';
+                this.nn = '━';
+                this.dd = '┗';
+                break;
+            case '<':
+                this.t = { x: 0, y: -1 };
+                this.n = { x: 1, y: 0 };
+                this.tbp = 'ty';
+                this.tb = 0;
+                this.tt = '┃';
+                this.tn = '┏';
+                this.nt = '┛';
+                this.nn = '━';
+                this.dd = '┓';
+                break;
+            case '^':
+                this.t = { x: 1, y: 0 };
+                this.n = { x: 0, y: 1 };
+                this.tbp = 'tx';
+                this.tb = this.room.w;
+                this.tt = '━';
+                this.tn = '┓';
+                this.nt = '┗';
+                this.nn = '━';
+                this.dd = '┛';
+                break;
+            case 'v':
+            default:
+                this.t = { x: -1, y: 0 };
+                this.n = { x: 0, y: -1 };
+                this.tbp = 'tx';
+                this.tb = 0;
+                this.tt = '━';
+                this.tn = '┗';
+                this.nt = '┓';
+                this.nn = '┃';
+                this.dd = '┏';
+                break;
+        }
+    }
+
+    private turnCursor() {
+
+        let n = '<^>v'.split('').indexOf(this.dir);
+        if (n === -1) {
+            this.init();
+        }
+        else {
+            n = (n === 3) ? 0 : n + 1;
+            this.dir = '<^>v'[n];
+        }
+        this.setCursorParams();
+    }
 
 
-        function createDoor(dir: string, rx: number, ry: number): Door {
+    public step(): boolean {
+        let token = this.room.getToken(0, addV(this.p, this.t));
+        let normal = <string>this.room.getToken(0, addV(this.p, this.n));
+        if (token === undefined || '┗┓┛┏┃━#'.indexOf(normal) >= 0) {
+            this.turnCursor();
+            token = <string>this.room.getToken(0, addV(this.p, this.t));
+        }
+        if ('┗┓┛┏┃━#'.indexOf(normal) === -1 && '┗┓┛┏┃━#^>v<'.indexOf(token) === -1) {
+            this.turnCursor(); //270°
+            this.turnCursor();
+            this.turnCursor();
+            token = <string>this.room.getToken(0, addV(this.p, this.t));
+        }
+        if ('┗┓┛┏┃━'.indexOf(token) >= 0) {
+            return false;
+        }
+        this.p = addV(this.p, this.t);
+        //console.log(this.p);
+        return true;
+    }
+
+
+    public render(): boolean {
+
+        let token = this.room.getToken(0, this.p);
+        if (token === undefined) {
+            throw new Error(`x:${this.p.x}, y:${this.p.y} are outside confines of room ${this.room.id}`);
+        }
+        //its a door?
+        if ('<^>v'.indexOf(token) >= 0) {
+            return true; //nothing
+        }
+        //already wall?
+        if ('┗┓┛┏┃━'.indexOf(token) >= 0) {
+            return false; // all done
+        }
+        //undrawnwall.
+        if ('#' === token) {
+
+            let prev = addV(this.p, negV(this.t));
+            let nextToken = this.room.getToken(0, addV(this.p, this.t));
+            let tangentToken = <string>(this.room.getToken(0, addV(this.p, this.n)));
+            let prevToken = this.room.getToken(0, prev);
+            if (prevToken === undefined) { //error
+                throw new Error(`prevToken was undefined ${prev.x} , ${prev.y} `);
+            }
+            if (nextToken === undefined) {
+                if ('^<>v'.indexOf(tangentToken) >= 0) {
+                    this.room.setToken(0, this.p, this.tt);
+                }
+                else {
+                    this.room.setToken(0, this.p, this.tn);
+                }
+                return true;
+            }
+            if ('┗┓┛┏┃━#'.indexOf(prevToken) === -1) {// only possible if it is a opening for a door
+                if ('┗┓┛┏┃━#'.indexOf(tangentToken) >= 0) {
+                    this.room.setToken(0, this.p, this.nn);
+                }
+                else {
+                    this.room.setToken(0, this.p, this.nt);
+                }
+                return true;
+            }
+            if ('┗┓┛┏┃━#'.indexOf(tangentToken) === -1) {
+                if ('┗┓┛┏┃━#'.indexOf(nextToken) === -1) {
+                    this.room.setToken(0, this.p, this.dd);
+                }
+                else {
+                    this.room.setToken(0, this.p, this.tt);
+                }
+                return true;
+            }
+            if ('┗┓┛┏┃━#'.indexOf(tangentToken) >= 0) {
+                this.room.setToken(0, this.p, this.tn);
+                return true;
+            }
+
+        }
+        return true;
+    }
+
+    public renderWall() {
+        do {
+            this.render();
+        } while (this.step());
+    }
+
+
+
+    constructor(room: Room) {
+        this.room = room;
+        this.turnCursor();
+    }
+
+
+
+}
+
+export class Room {
+    private _id: number;
+    public t: number;
+    public l: number;
+    public doors: Door[];
+    public w: number;
+    public h: number;
+    public room: string[][];
+
+    public get id() {
+        return this._id;
+
+    }
+
+    private renderWalls() {
+        let cursor = new WallCursor(this);
+        cursor.renderWall();
+    }
+
+    private validateCoords(layer: number, x: number, y: number): string[] | undefined {
+        if (x < 0 || x >= this.w || y < 0 || y >= this.h) {
+            return undefined;
+        }
+        let f = this.room[layer];
+        if (!f) {
+            throw new Error(`This layer ${layer} doesnt exist in room ${this._id}`);
+        }
+        return f;
+    }
+
+    public getToken(layer: number, v: Vector): string | undefined {
+        let f = this.validateCoords(layer, v.x, v.y);
+        if (!f) {
+            return f;
+        }
+        return f[v.y][v.x];
+    }
+
+    public setToken(layer: number, v: Vector, token: string) {
+        let f = this.validateCoords(layer, v.x, v.y);
+        if (f) {
+            let n = f[v.y].split('');
+            n[v.x] = token[0];
+            f[v.y] = n.join('');
+        }
+    }
+
+    public stamp(matrix: string[], w: number) {
+        let fl = this.room[0];
+        fl = fl.map((s) => {
+            let raw = s.split('');
+            let i = 0;
+            while (raw[i] === '#') {
+                raw[i] = ' ';
+                i++;
+            }
+            i = s.length - 1;
+            while (raw[i] === '#') {
+                raw[i] = ' ';
+                i--;
+            }
+            return raw.join('');
+        });
+        fl.forEach((s, k) => {
+            let p = w * (this.t + k) + this.l;
+            matrix.splice(p, this.w, ...s.split(''));
+        });
+    }
+
+
+    public constructor(roomData: Layout) {
+        if (!(roomData.room instanceof Array)) {
+            roomData.room = [roomData.room];
+        }
+        this.room = roomData.room.map((layer) => {
+            return layer.split(/[\n\r]+/).filter((line) => line.length > 0);
+        });
+        this._id = Number.parseInt(roomData.id);
+        if (!Number.isInteger(this._id)) {
+            throw new TypeError(`${roomData.id} is not a valid Room ID`);
+        }
+
+        this.l = 0;
+        this.t = 0;
+
+        const createDoor = (dir: string, rx: number, ry: number): Door => {
             if ('^v><'.indexOf(dir) === -1) {
                 throw new Error('not a door signature');
             }
 
-            let selected = room.symbols.filter((d) => d.e === dir)[0];
+            let selected = roomData.symbols.filter((d) => d.e === dir)[0];
 
             if (selected) {
 
@@ -1008,41 +1374,67 @@ export function compileDungeon(): string {
                 }
             }
             throw new Error('Could not create door');
-        }
+        };
 
+        this.room.forEach((layer, i) => {
 
-        cRoom.reduce((prev, line, idx, arr) => {
-            if (line.length === 0) {
-                throw new TypeError(`room:${id} scanline has width 0, ${arr}`);
-            }
-            if (prev.w === 0) prev.w = line.length;
-            if (prev.w !== line.length) {
-                throw new TypeError(`room:${id} is not perfectly square, ${arr}`);
-            }
-            //scan for doors
-            ['^', 'v', '<', '>'].forEach((dir) => {
-                let x = line.indexOf(dir); // is there a door
-                if (x >= 0) {
-                    prev.doors.push(createDoor(dir, x, idx));
+            let roomInfo: { room: string[], w: number, h: number, doors: Door[] } = { room: [], w: 0, h: 0, doors: [] };
+
+            layer.reduce((prev, line, idx, arr) => {
+                if (line.length === 0) {
+                    throw new TypeError(`room:${this.id} scanline has width 0, ${arr}`);
                 }
-            });
-            if (idx === arr.length - 1) {
-                prev.h = arr.length;
+                if (prev.w === 0) prev.w = line.length;
+                if (prev.w !== line.length) {
+                    throw new TypeError(`room:${this.id} is not perfectly square, ${arr}`);
+                }
+
+                //scan for doors
+                '^v<>'.split('').forEach((dir) => {
+                    let x = line.indexOf(dir); // is there a door
+                    if (x >= 0) {
+                        prev.doors.push(createDoor(dir, x, idx));
+                    }
+                });
+                if (idx === arr.length - 1) {
+                    prev.h = arr.length;
+                }
+                prev.room.push(line);
+                return prev;
+            }, roomInfo);
+
+            if (i === 0) {
+                this.w = roomInfo.w;
+                this.h = roomInfo.h;
+                this.doors = roomInfo.doors;
+                this.renderWalls();
             }
-            prev.room.push(line);
-            return prev;
-        }, nr);
-        return nr;
+            else {
+                if (!(this.w === roomInfo.w && this.h === roomInfo.h)) {
+                    throw new TypeError(`layer index ${i} is different size from the base layer`);
+                }
+            }
+        });
+
+    }
+}
+
+
+export function compileDungeon(): string {
+
+    let finalRooms = new Map<number, Room>();
+    let formattingTodo = new Map<number, Room>();
+
+
+    let rooms = mockDungeon.map((roomData) => {
+        return new Room(roomData);
     });
-
-
 
     rooms.forEach((r) => formattingTodo.set(r.id, r));
 
-    finalRooms.clear();
 
     function formatRooms(room: Room) {
-        //already formatted?
+        /// Already formatted?
         let todo: Door[] = [];
         let done: Door[] = [];
 
@@ -1106,14 +1498,17 @@ export function compileDungeon(): string {
             formatRooms(r);
         }
     }
+    //
     // let gWidth = 0;
+    //
     let room = <Room>rooms.shift();
     formattingTodo.delete(room.id);
     finalRooms.set(room.id, room);
     room.doors.forEach((d) => {
-        //kickoff formatting
+        // kickoff formatting
         let r = <Room>formattingTodo.get(d.toRoom);
         formatRooms(r);
+        console.log(r);
     });
 
     console.log(util.format('%j',
@@ -1126,7 +1521,6 @@ export function compileDungeon(): string {
     let minLeft = 0;
 
     finalRooms.forEach((v: Room) => {
-
         minTop = Math.min(v.t, minTop);
         minLeft = Math.min(v.l, minLeft);
     });
@@ -1149,62 +1543,11 @@ export function compileDungeon(): string {
     matrix.fill(' ');
 
 
-    function plotRoom(r: Room) {
-
-        for (let k = 0; k < r.h; k++) {
-            let s = r.t * totalWidth + r.l + k * totalWidth;
-            switch (true) {
-                case (k === 0):
-                case (k === (r.h - 1)):
-                    matrix.fill('#', s, s + r.w);
-                    break;
-                default:
-                    matrix.fill('.', s + 1, s + r.w - 1);
-                    matrix[s] = '#';
-                    matrix[s + r.w - 1] = '#';
-
-            }
-            //matrix.fill('.', s, s + w);
-        }
-    }
-
-    function stampRoomId(r: Room) {
-        let s = (r.t + 1) * totalWidth + r.l + 1;
-        let str = `${r.id}`;
-        matrix.splice(s, str.length, ...str.split(''));
-    }
-
-    function plotDoors(r: Room) {
-
-        r.doors.forEach((d) => {
-
-            let s = (r.t + d.ry) * totalWidth + r.l + d.rx;
-            let c = '';
-            if (d.ry === 0) {
-                c = '^';
-            }
-            if (d.rx === 0) {
-                c = '<';
-            }
-            if (d.ry === (r.h - 1)) {
-                c = 'v';
-            }
-            if (d.rx === (r.w - 1)) {
-                c = '>';
-            }
-            matrix[s] = c;
-        });
-
-    }
-
-
 
     for (let i = 1; i <= 35; i++) {
         let room = <Room>finalRooms.get(i);
         if (room) {
-            plotRoom(room);
-            stampRoomId(room);
-            plotDoors(room);
+            room.stamp(matrix, totalWidth);
         }
     }
 
@@ -1215,8 +1558,6 @@ export function compileDungeon(): string {
         rc.push(line);
         console.log('>' + line + '<');
     }
-
-
     return rc.join('\n');
 
 }
