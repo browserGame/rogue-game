@@ -1059,6 +1059,7 @@ function createWallCursor(dir: string, d: Door): WallCursor {
     };
 }*/
 
+
 export class WallCursor {
     private room: Room;
 
@@ -1071,9 +1072,9 @@ export class WallCursor {
     private nt: string;
     private nn: string;
     private dd: string;
-    private dir: string;
+    protected dir: string;
 
-    private p: Vector;
+    protected p: Vector;
 
 
     private init() {
@@ -1104,7 +1105,7 @@ export class WallCursor {
 
     }
 
-    private setCursorParams() {
+    protected setCursorParams() {
 
         switch (this.dir) {
             case '>':
@@ -1158,16 +1159,10 @@ export class WallCursor {
     private turnCursor() {
 
         let n = '<^>v'.split('').indexOf(this.dir);
-        if (n === -1) {
-            this.init();
-        }
-        else {
-            n = (n === 3) ? 0 : n + 1;
-            this.dir = '<^>v'[n];
-        }
+        n = (n === 3) ? 0 : n + 1;
+        this.dir = '<^>v'[n];
         this.setCursorParams();
     }
-
 
     public step(): boolean {
         let token = this.room.getToken(0, addV(this.p, this.t));
@@ -1246,12 +1241,12 @@ export class WallCursor {
                 this.room.setToken(0, this.p, this.tn);
                 return true;
             }
-
         }
         return true;
     }
 
     public renderWall() {
+
         do {
             this.render();
         } while (this.step());
@@ -1261,11 +1256,38 @@ export class WallCursor {
 
     constructor(room: Room) {
         this.room = room;
-        this.turnCursor();
+        this.init();
+        this.setCursorParams();
     }
+}
 
 
 
+export class InnerWallCursor extends WallCursor {
+    constructor(room: Room) {
+        super(room);
+        //find upper right conrenr
+        let v: Vector = { x: -1, y: -1 };
+        room.room[0].reduce((prev, line, y) => {
+            if (prev.x > 0) {
+                return prev;
+            }
+            let x = line.indexOf('#');
+            if (x > 0) {
+                prev.x = x;
+                prev.y = y;
+            }
+            return prev;
+        }, v);
+        if (v.y === -1) {
+            throw new Error(`no inner wall for room ${room.id}`);
+        }
+        v.y++;
+        this.dir = '<';
+        this.setCursorParams();
+        this.p = v;
+
+    }
 }
 
 export class Room {
@@ -1285,6 +1307,29 @@ export class Room {
     private renderWalls() {
         let cursor = new WallCursor(this);
         cursor.renderWall();
+        let fl = this.room[0];
+        fl = fl.map((s) => {
+            let raw = s.split('');
+            let i = 0;
+            while (raw[i] === '#') {
+                raw[i] = ' ';
+                i++;
+            }
+            i = s.length - 1;
+            while (raw[i] === '#') {
+                raw[i] = ' ';
+                i--;
+            }
+            return raw.join('');
+        });
+        this.room[0] = fl;
+        try {
+            cursor = new InnerWallCursor(this);
+            cursor.renderWall();
+        }
+        catch (e) {
+            //no inner wallnothing
+        }
     }
 
     private validateCoords(layer: number, x: number, y: number): string[] | undefined {
@@ -1317,20 +1362,6 @@ export class Room {
 
     public stamp(matrix: string[], w: number) {
         let fl = this.room[0];
-        fl = fl.map((s) => {
-            let raw = s.split('');
-            let i = 0;
-            while (raw[i] === '#') {
-                raw[i] = ' ';
-                i++;
-            }
-            i = s.length - 1;
-            while (raw[i] === '#') {
-                raw[i] = ' ';
-                i--;
-            }
-            return raw.join('');
-        });
         fl.forEach((s, k) => {
             let p = w * (this.t + k) + this.l;
             matrix.splice(p, this.w, ...s.split(''));
@@ -1508,7 +1539,7 @@ export function compileDungeon(): string {
         // kickoff formatting
         let r = <Room>formattingTodo.get(d.toRoom);
         formatRooms(r);
-        console.log(r);
+       // console.log(r);
     });
 
     console.log(util.format('%j',
