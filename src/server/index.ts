@@ -4,19 +4,7 @@ import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
 
-import { compileDungeon } from '../lib/rooms';
-
-//import { SystemInfo } from '../lib/system';
-//import { registerAuth } from '../lib/authentication';
-
-//import Logger from '../lib/logger';
-
-//const logger = Logger.getLogger();
-
-/* init */
-/* init */
-
-//SystemInfo.createSystemInfo({ maxErrors: 5000, maxWarnings: 5000 });
+import { compileDungeon } from '../lib/MockDungeon';
 
 let app = express();
 
