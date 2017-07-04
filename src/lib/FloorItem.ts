@@ -1,5 +1,6 @@
 
 import { Vector } from './math';
+import { Symbol } from './Symbols';
 
 export interface AreaTypes {
     carpet: 1; // scan carpets
@@ -7,6 +8,7 @@ export interface AreaTypes {
     lantern: 1; // 
     'cobweb&Skulls': 1; //
     mutexItems: 1; // nothing covering these items or nothing below these items (carpets , skulls);
+    breakableItems: 1; //
 }
 
 export class FloorItem {
@@ -25,7 +27,7 @@ export class FloorItem {
     }
 }
 
-export type CreateAreaFunction = (raw: string[], zIndex?: number) => FloorItem | undefined;
+export type CreateAreaFunction = (raw: string[], zIndex?: number, meta?: Symbol[]) => FloorItem | undefined;
 
 export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunction {
 
@@ -88,6 +90,7 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
             };
         case 'carpet':
             return function carpet(raw: string[], zIndex = 0): FloorItem | undefined {
+
                 let rc = scanArea(/é/, raw);
                 if (rc) {
                     return new FloorItem(rc.type, rc.start, rc.end, zIndex, false);
@@ -111,14 +114,29 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
                 return;
             };
         case 'mutexItems':
-        ////CIRSwm  [c] secret pressure plate, [I] red pentagram, [R] pentagram, [S]  bear trap, [w] spikes, [m] half moon trap
-             return function misc(raw: string[], zIndex = 0): FloorItem | undefined {
+            ////CIRSwm  [c] secret pressure plate, [I] red pentagram, [R] pentagram, [S]  bear trap, [w] spikes, [m] half moon trap
+            return function misc(raw: string[], zIndex = 0): FloorItem | undefined {
                 let rc = scanArea(/[CIRSwm]/, raw);
                 if (rc) {
                     return new FloorItem(rc.type, rc.start, rc.end, zIndex, false);
                 }
                 return;
             };
+        case 'breakableItems':
+            return function misc(raw: string[], zIndex = 99, meta = []): FloorItem | undefined {
+
+                let regE = meta.filter((f) => f.m && f.e && 'BJPY{'.indexOf(f.e) >= 0).map((m) => m.m).join('');
+                let regExp = new RegExp('[BJPY{' + regE + ']');
+                let rc = scanArea(regExp, raw);
+                if (rc) {
+                    if (regE.indexOf(rc.type) >= 0) {
+                        //TODO make symbol class with some nice lookup methods
+                    }
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true);
+                }
+                return;
+            };
+
         default:
             throw new Error(`invalid AreaType: ${areaType}`);
     }

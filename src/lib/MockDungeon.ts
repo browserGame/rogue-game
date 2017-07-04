@@ -186,7 +186,7 @@ const mockDungeon: Layout[] = [
             { m: 'F', has: 'gold:4,gold:5' },
             { m: '1', e: 'F', has: 'gold:6,gold:3' },
             { m: '2', e: 'F', has: 'stone:green' },
-            { m: '3', e: 'B' },
+            { e: 'B' },
             { e: 'J', color: 'cyan' },
             { e: 'G', has: 'gold:5' },
             //N find crown of souls
@@ -195,7 +195,7 @@ const mockDungeon: Layout[] = [
         room: `
 ##########
 #.......K#
-#......3.#
+#......B.#
 #........#
 #.....12.#
 #........#

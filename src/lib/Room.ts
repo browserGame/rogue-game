@@ -12,6 +12,7 @@ const carpetExtractor = factoryAreaScanner('carpet');
 const lanternExtractor = factoryAreaScanner('lantern');
 const cobWebsAndSkullsExtractor = factoryAreaScanner('cobweb&Skulls');
 const mutexExtractor = factoryAreaScanner('mutexItems');
+const breakableExtractor = factoryAreaScanner('breakableItems');
 
 export interface Layout {
     room: string | string[];
@@ -75,7 +76,7 @@ export class Room {
         return f;
     }
 
-    private createBaseLayer(raw: string[][]) {
+    private createBaseLayer(raw: string[][], metaInfo: Symbol[]) {
         if (!this.room) {
             this.room = [];
         }
@@ -92,10 +93,10 @@ export class Room {
             carpets.push(c);
         }
 
-        let laterns: FloorItem[] = [];
+        let lanterns: FloorItem[] = [];
         for (let i = 0; i < raw.length; i++) {
             for (let la = lanternExtractor(raw[i]); la; la = lanternExtractor(raw[i])) {
-                laterns.push(la);
+                lanterns.push(la);
             }
         }
 
@@ -111,6 +112,13 @@ export class Room {
             mutexItems.push(mu);
         }
 
+        let breakableItems: FloorItem[] = [];
+        for (let i = 0; i < raw.length; i++) {
+            for (let bi = breakableExtractor(raw[i], 99, metaInfo); bi; bi = breakableExtractor(raw[0])) {
+                breakableItems.push(bi);
+            }
+        }
+
 
         let base = raw[0].slice(0); /*map((line) => {
             let rc = line.replace(/[^IRSwm\#\^><vAKµ]/g, '.');
@@ -118,11 +126,11 @@ export class Room {
             return rc;
         });*/
         this.room.unshift(base);
-        console.log('liquids:', liquidPools);
-        console.log('carpets:', carpets);
-        console.log('laterns:', laterns);
-        console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
-        console.log('mutexItems:', mutexItems);
+        liquidPools.length && console.log('liquids:', liquidPools);
+        carpets.length && console.log('carpets:', carpets);
+        lanterns.length && console.log('lanterns:', lanterns);
+        cobWebsAndSkulls.length && console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
+        mutexItems.length && console.log('mutexItems:', mutexItems);
         //add from each layer  carpets, water, lava, skulls
     }
 
@@ -215,7 +223,7 @@ export class Room {
         this.h = p.y;
         this.doors = [];
 
-        this.createBaseLayer(raw);
+        this.createBaseLayer(raw, roomData.symbols);
 
         const createDoor = (dir: string, rx: number, ry: number): Door => {
             if ('^v><'.indexOf(dir) === -1) {
