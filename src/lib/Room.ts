@@ -4,6 +4,14 @@ import { Symbol } from './Symbols';
 import { Door } from './Door';
 import { Vector } from './math';
 import { WallCursor, InnerWallCursor } from './WallCursor';
+import { factoryAreaScanner, FloorItem } from './FloorItem';
+
+
+const liquidExtracor = factoryAreaScanner('liquid');
+const carpetExtractor = factoryAreaScanner('carpet');
+const lanternExtractor = factoryAreaScanner('lantern');
+const cobWebsAndSkullsExtractor = factoryAreaScanner('cobweb&Skulls');
+const mutexExtractor = factoryAreaScanner('mutexItems');
 
 export interface Layout {
     room: string | string[];
@@ -71,13 +79,50 @@ export class Room {
         if (!this.room) {
             this.room = [];
         }
-        //copy walls, doors, floor decorations
-        let base = raw[0].map((line) => {
-            let rc = line.replace(/[^IRSwm\#\^><vAK\(éOµ]/g, '.');
+        // lava , water, mud & acid pools
+        let liquidPools: FloorItem[] = [];
+        for (let l = liquidExtracor(raw[0]); l; l = liquidExtracor(raw[0])) {
+            liquidPools.push(l);
+        }
+
+
+
+        let carpets: FloorItem[] = [];
+        for (let c = carpetExtractor(raw[0]); c; c = carpetExtractor(raw[0])) {
+            carpets.push(c);
+        }
+
+        let laterns: FloorItem[] = [];
+        for (let i = 0; i < raw.length; i++) {
+            for (let la = lanternExtractor(raw[i]); la; la = lanternExtractor(raw[i])) {
+                laterns.push(la);
+            }
+        }
+
+        let cobWebsAndSkulls: FloorItem[] = [];
+        for (let i = 0; i < raw.length; i++) {
+            for (let c = cobWebsAndSkullsExtractor(raw[i], i); c; c = cobWebsAndSkullsExtractor(raw[i], i)) {
+                cobWebsAndSkulls.push(c);
+            }
+        }
+
+        let mutexItems: FloorItem[] = [];
+        for (let mu = mutexExtractor(raw[0]); mu; mu = mutexExtractor(raw[0])) {
+            mutexItems.push(mu);
+        }
+
+
+        let base = raw[0].slice(0); /*map((line) => {
+            let rc = line.replace(/[^IRSwm\#\^><vAKµ]/g, '.');
             console.log(rc, line);
             return rc;
-        });
+        });*/
         this.room.unshift(base);
+        console.log('liquids:', liquidPools);
+        console.log('carpets:', carpets);
+        console.log('laterns:', laterns);
+        console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
+        console.log('mutexItems:', mutexItems);
         //add from each layer  carpets, water, lava, skulls
     }
 
@@ -146,8 +191,6 @@ export class Room {
     }
 
 
-
-
     public constructor(roomData: Layout) {
 
         if (!(roomData.room instanceof Array)) {
@@ -171,7 +214,7 @@ export class Room {
         this.w = p.x;
         this.h = p.y;
         this.doors = [];
-       
+
         this.createBaseLayer(raw);
 
         const createDoor = (dir: string, rx: number, ry: number): Door => {
