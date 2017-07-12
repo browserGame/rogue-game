@@ -1,6 +1,7 @@
 import { Vector } from './math';
 
 export class Door {
+
     private rx: number;
     private ry: number;
     private toRoom: number;
@@ -8,6 +9,7 @@ export class Door {
     private roomId: number;
     private _dir: string;
     private _open: boolean;
+    
     constructor(dir: string, rx: number, ry: number, inset: boolean, from: number, to: number) {
 
         if ('^v<>'.indexOf(dir) === -1) {
@@ -21,6 +23,7 @@ export class Door {
         this.roomId = from;
         this._open = false;
     }
+
     public stamp(matrix: string[], scanWidth: number) {
         let s = scanWidth * this.ry + this.rx;
         matrix[s] = this.inset ? this.dir : '.';

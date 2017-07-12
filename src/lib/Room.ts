@@ -1,6 +1,6 @@
 
 
-import { Symbol } from './Symbols';
+import { Symbol , DItem } from './Symbols';
 import { Door } from './Door';
 import { Vector } from './math';
 import { WallCursor, InnerWallCursor } from './WallCursor';
@@ -13,11 +13,14 @@ const lanternExtractor = factoryAreaScanner('lantern');
 const cobWebsAndSkullsExtractor = factoryAreaScanner('cobweb&Skulls');
 const mutexExtractor = factoryAreaScanner('mutexItems');
 const breakableExtractor = factoryAreaScanner('breakableItems');
+const enemyExtractor = factoryAreaScanner('enemy');
+const openableExtractor = factoryAreaScanner('openableItems');
+const consumableExtractor = factoryAreaScanner('consumables');
 
 export interface Layout {
     room: string | string[];
     id: string;
-    symbols: Symbol[];
+    symbols: (Symbol | DItem)[];
 }
 
 
@@ -83,41 +86,62 @@ export class Room {
         // lava , water, mud & acid pools
         let liquidPools: FloorItem[] = [];
         for (let l = liquidExtracor(raw[0]); l; l = liquidExtracor(raw[0])) {
-            liquidPools.push(l);
+            liquidPools.push(<FloorItem>l);
         }
 
 
 
         let carpets: FloorItem[] = [];
         for (let c = carpetExtractor(raw[0]); c; c = carpetExtractor(raw[0])) {
-            carpets.push(c);
+            carpets.push(<FloorItem>c);
         }
 
         let lanterns: FloorItem[] = [];
         for (let i = 0; i < raw.length; i++) {
             for (let la = lanternExtractor(raw[i]); la; la = lanternExtractor(raw[i])) {
-                lanterns.push(la);
+                lanterns.push(<FloorItem>la);
             }
         }
 
         let cobWebsAndSkulls: FloorItem[] = [];
         for (let i = 0; i < raw.length; i++) {
             for (let c = cobWebsAndSkullsExtractor(raw[i], i); c; c = cobWebsAndSkullsExtractor(raw[i], i)) {
-                cobWebsAndSkulls.push(c);
+                cobWebsAndSkulls.push(<FloorItem>c);
             }
         }
 
         let mutexItems: FloorItem[] = [];
         for (let mu = mutexExtractor(raw[0]); mu; mu = mutexExtractor(raw[0])) {
-            mutexItems.push(mu);
+            mutexItems.push(<FloorItem>mu);
         }
 
         let breakableItems: FloorItem[] = [];
         for (let i = 0; i < raw.length; i++) {
-            for (let bi = breakableExtractor(raw[i], 99, metaInfo); bi; bi = breakableExtractor(raw[0])) {
-                breakableItems.push(bi);
+            for (let bi = breakableExtractor(raw[i], 99, metaInfo); bi; bi = breakableExtractor(raw[i], 99, metaInfo)) {
+                breakableItems.push(<FloorItem>bi);
             }
         }
+       
+        for (let i = 0; i < raw.length; i++) {
+            for (let bi = enemyExtractor(raw[i], 99, metaInfo); bi; bi = enemyExtractor(raw[i], 99, metaInfo)) {
+                //breakableItems.push(<Enemy>bi);
+            }
+            // enemyExtractor
+        }
+        for (let i = 0; i < raw.length; i++) {
+            for (let bi = openableExtractor(raw[i], 99, metaInfo); bi; bi = openableExtractor(raw[i], 99, metaInfo)) {
+                //breakableItems.push(<Enemy>bi);
+            }
+            //enemyExtractor
+        }
+        for (let i = 0; i < raw.length; i++) {
+            for (let bi = consumableExtractor(raw[i], 99, metaInfo); bi; bi = consumableExtractor(raw[i], 99, metaInfo)) {
+                //breakableItems.push(<Enemy>bi);
+            }
+            //enemyExtractor
+        }
+
+        
 
 
         let base = raw[0].slice(0); /*map((line) => {
@@ -126,11 +150,11 @@ export class Room {
             return rc;
         });*/
         this.room.unshift(base);
-        liquidPools.length && console.log('liquids:', liquidPools);
-        carpets.length && console.log('carpets:', carpets);
-        lanterns.length && console.log('lanterns:', lanterns);
-        cobWebsAndSkulls.length && console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
-        mutexItems.length && console.log('mutexItems:', mutexItems);
+        //liquidPools.length && console.log('liquids:', liquidPools);
+        //carpets.length && console.log('carpets:', carpets);
+        //lanterns.length && console.log('lanterns:', lanterns);
+        //cobWebsAndSkulls.length && console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
+        //mutexItems.length && console.log('mutexItems:', mutexItems);
         //add from each layer  carpets, water, lava, skulls
     }
 
@@ -230,7 +254,7 @@ export class Room {
                 throw new Error('not a door signature');
             }
 
-            let selected = roomData.symbols.filter((d) => d.e === dir)[0];
+            let selected = <Symbol>roomData.symbols.filter((d) => d.e === dir)[0];
 
             if (selected) {
 

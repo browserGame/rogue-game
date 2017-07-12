@@ -9,25 +9,82 @@ export interface AreaTypes {
     'cobweb&Skulls': 1; //
     mutexItems: 1; // nothing covering these items or nothing below these items (carpets , skulls);
     breakableItems: 1; //
+    enemy: 1; //
+    openableItems: 1; //
+    consumables: 1; //
 }
 
 export class FloorItem {
     private type: string;
     private start: Vector;
     private end: Vector;
+    private canPlaceOnTop: boolean;
     private obstruction: boolean;
 
     private zIndex: number;
-    public constructor(t: string, start: Vector, end: Vector, zIndex: number, obstruction: boolean) {
+    public constructor(t: string, start: Vector, end: Vector, zIndex: number, obstruction: boolean, canPlaceOnTop: boolean) {
         this.start = Object.assign({}, start);
         this.end = Object.assign({}, end);
         this.type = t;
         this.zIndex = zIndex;
         this.obstruction = obstruction;
+        this.canPlaceOnTop = canPlaceOnTop;
     }
 }
 
-export type CreateAreaFunction = (raw: string[], zIndex?: number, meta?: Symbol[]) => FloorItem | undefined;
+export class Property {
+    private type: string;
+    private _pos: Vector; // where it is placed on the floor after it is dropped
+
+    constructor(t: string, pos: Vector) {
+        this.type = t;
+        this._pos = Object.assign({}, pos);
+
+    }
+
+    public set pos(v: Vector) {
+        this.pos = Object.assign({}, this._pos, v); //copy
+    }
+
+    public get pos() {
+        return Object.assign({}, this._pos); //copy
+    }
+}
+
+/**
+ * Consumables like Chees, bootles of potion etc, chicken-leg.
+ */
+export class Consumable extends Property {
+
+    private hp: number;
+
+    constructor(t: string, pos: Vector, hpDelta: number) {
+        super(t, pos);
+        this.hp = hpDelta;
+    }
+
+}
+
+export class Enemy {
+
+    private pos: Vector;
+    private contains: Property[]; //coins , gold, magic items
+    private xp: number; // experience points
+    private level: number; // efficacy of your experience points for attack and defense
+    private hp: number; // health pooints
+    private type: string;
+
+    public constructor(t: string, pos: Vector, health: number, experience: number, level: number) {
+        this.pos = Object.assign({}, pos);
+        this.type = t;
+        this.hp = health;
+        this.xp = experience;
+        this.level = level;
+        this.contains = [];
+    }
+}
+
+export type CreateAreaFunction = (raw: string[], zIndex?: number, meta?: Symbol[]) => FloorItem | Enemy | Consumable | undefined;
 
 export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunction {
 
@@ -54,6 +111,7 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
                 break;
             }
         }
+
         if (!type) {
             return;
         }
@@ -84,7 +142,7 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
             return function lavaWater(raw: string[], zIndex = 0): FloorItem | undefined {
                 let rc = scanArea(/[O\(]/, raw);
                 if (rc) {
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true /*obstruction*/, false /*canplaceontop*/);
                 }
                 return;
             };
@@ -93,15 +151,15 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
 
                 let rc = scanArea(/é/, raw);
                 if (rc) {
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false /*obstruction*/, true /*canplaceontop*/);
                 }
                 return;
             };
-        case 'lantern':
-            return function lantern(raw: string[], zIndex = 5): FloorItem | undefined {
+        case 'lantern'://nothing above a lantern
+            return function lantern(raw: string[], zIndex = 99): FloorItem | undefined {
                 let rc = scanArea(/!/, raw);
                 if (rc) {
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true /*obstruction*/, false /*canplaceontop*/);
                 }
                 return;
             };
@@ -109,7 +167,7 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
             return function cobwebSkulls(raw: string[], zIndex = 1): FloorItem | undefined {
                 let rc = scanArea(/[KA]/, raw);
                 if (rc) {
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false, true);
                 }
                 return;
             };
@@ -118,25 +176,111 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
             return function misc(raw: string[], zIndex = 0): FloorItem | undefined {
                 let rc = scanArea(/[CIRSwm]/, raw);
                 if (rc) {
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, false /*obstruction*/, false /*canplaceontop*/);
                 }
                 return;
             };
         case 'breakableItems':
-            return function misc(raw: string[], zIndex = 99, meta = []): FloorItem | undefined {
+            return function breakable(raw: string[], zIndex = 99, meta = []): FloorItem | undefined {
+                let pattern = 'BJPY{V';
+                let regE = meta.filter((f) => f.m && f.e && pattern.indexOf(f.e) >= 0).map((m) => m.m).join('');
 
-                let regE = meta.filter((f) => f.m && f.e && 'BJPY{'.indexOf(f.e) >= 0).map((m) => m.m).join('');
-                let regExp = new RegExp('[BJPY{' + regE + ']');
+                let regExp = new RegExp('[' + pattern + regE + ']');
                 let rc = scanArea(regExp, raw);
                 if (rc) {
-                    if (regE.indexOf(rc.type) >= 0) {
-                        //TODO make symbol class with some nice lookup methods
+                    for (let ms of meta) {
+                        if (ms.m === rc.type && ms.e !== undefined) {
+                            rc.type = ms.e; //map back
+                            break;
+                        }
+                        if (ms.e === rc.type && ms.m === undefined) {
+                            //do nothing
+                            break;
+                        }
                     }
-                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true);
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true /*obstruction*/, true /*canplaceontop*/);
+                }
+                return; 
+            };
+        case 'openableItems':
+            return function openable(raw: string[], zIndex = 99, meta = []): FloorItem | undefined {
+                let pattern = 'H&*zQU"';
+                let regE = meta.filter((f) => f.m && f.e && pattern.indexOf(f.e) >= 0).map((m) => m.m).join('');
+
+                let regExp = new RegExp('[' + pattern + regE + ']');
+                let rc = scanArea(regExp, raw);
+                if (rc) {
+                    for (let ms of meta) {
+                        if (ms.m === rc.type && ms.e !== undefined) {
+                            rc.type = ms.e; //map back
+                            break;
+                        }
+                        if (ms.e === rc.type && ms.m === undefined) {
+                            //do nothing
+                            break;
+                        }
+                    }
+                    return new FloorItem(rc.type, rc.start, rc.end, zIndex, true /*obstruction*/, false /*canplaceontop*/);
                 }
                 return;
             };
+            break;
+        case 'enemy':
+            return function enemies(raw: string[], zIndex = 99, meta = []): Enemy | undefined {
 
+                let pattern = 'EFGT@%';
+                let regE = meta.filter((f) => f.m && f.e && pattern.indexOf(f.e) >= 0).map((m) => m.m).join('');
+                let regExp = new RegExp('[' + pattern + regE + ']');
+                let rc = scanArea(regExp, raw);
+                zIndex;
+                if (rc) {
+                    let has: any;
+                    let realType = rc.type;
+                    let ms: Symbol;
+                    for (ms of meta) {
+                        has = ms.has;
+                        if (ms.m === rc.type && ms.e !== undefined) {
+                            realType = ms.e;
+                            break;
+                        }
+                        if (ms.e === rc.type && ms.m === undefined) {
+                            break;
+                        }
+                    }
+                    // now we have everything
+                    return new Enemy(realType, rc.start, 10, 10, 1);
+                }
+                return;
+            };
+            break;
+        case 'consumables':
+            return function consumables(raw: string[], zIndex = 99, meta = []): Consumable | undefined {
+
+                let pattern = 'LMZxut';
+                let regE = meta.filter((f) => f.m && f.e && pattern.indexOf(f.e) >= 0).map((m) => m.m).join('');
+                let regExp = new RegExp('[' + pattern + regE + ']');
+                let rc = scanArea(regExp, raw);
+                zIndex;
+                if (rc) {
+                    let has: any;
+                    let realType = rc.type;
+                    let ms: Symbol;
+                    for (ms of meta) {
+                        has = ms.has;
+                        if (ms.m === rc.type && ms.e !== undefined) {
+                            realType = ms.e;
+                            break;
+                        }
+                        if (ms.e === rc.type && ms.m === undefined) {
+                            break;
+                        }
+                    }
+                    // now we have everything
+                    return new Consumable(realType, rc.start, 10);
+                }
+                return;
+            };
+            break;
         default:
             throw new Error(`invalid AreaType: ${areaType}`);
     }

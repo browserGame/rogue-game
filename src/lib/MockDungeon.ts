@@ -3,14 +3,15 @@ import { Door } from './Door';
 
 
 
-
 const mockDungeon: Layout[] = [
     {
         symbols: [
-            { e: 'C', has: 'cheese:1,gold:1' },
-            { e: '>', door: '2' },
-            { e: 'B', has: 'gold:4' },
-            { e: 'E', has: 'gold:3' },
+            { e: 'C', has: 'cheese:1,gold:1' }, //Secret Pressure plate
+            { e: '>', door: '2' }, //door, done
+            { e: 'B', has: 'gold:4' }, //statue wizard
+            { e: 'E', has: 'gold:3' }, //goblin
+            { e: 'X', toRoomId: 28, toTelePort: 'X' }, //teleport
+            { e: 'B', initBroken: false },
         ],
         id: '1',
         room: [
@@ -21,7 +22,7 @@ const mockDungeon: Layout[] = [
 #.....A.#
 #..C....>
 #.F..E..#
-#.D.....#
+#.X.....#
 #K.....K#
 #########
 `,
@@ -39,10 +40,11 @@ const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            { m: '1', to: 'G' },
+            { m: '1', e: 'G' },
             { e: 'F', has: 'gold:3' },
-            { m: '3', to: 'F', has: 'gold:4' },
-            { m: '2', to: 'F', has: 'stone:1:grey' },
+            { m: '3', e: 'F', has: 'gold:4' },
+            { m: '4', e: 'F' },
+            { m: '2', e: 'F', has: 'stone:1:grey' },
             { e: 'J', has: 'stone:1:white', color: 'gold' },
             { e: '>', door: '3' },
             { e: '<', door: 'inset:1' },
@@ -83,9 +85,9 @@ const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            { m: '1', to: 'M', has: 'gold:2' },
+            { m: '1', e: 'M', has: 'gold:2' },
             { e: 'M', has: 'gold:3' },
-            { m: 'N', has: 'ring,points:2000,vitality:1030,wisdom:1015,agility' },
+            { e: 'N', has: 'ring,points:2000,vitality:1030,wisdom:1015,agility' },
             { e: '<', door: 'inset:2' },
             { e: '^', door: 'inset:4' },
             { e: 'v', door: '5' },
@@ -183,7 +185,7 @@ const mockDungeon: Layout[] = [
     {
         symbols: [
             { e: 'v', door: '7' },
-            { m: 'F', has: 'gold:4,gold:5' },
+            { e: 'F', has: 'gold:4,gold:5' },
             { m: '1', e: 'F', has: 'gold:6,gold:3' },
             { m: '2', e: 'F', has: 'stone:green' },
             { e: 'B' },
@@ -385,7 +387,7 @@ const mockDungeon: Layout[] = [
             { m: '1', e: 'F', },
             { e: 'M', has: 'gold:2' },
             { e: 'L', color: 'white' },
-            { e: 'J', color: 'green', has: 'coin:1,milk:1' },
+            { e: 'J', color: 'green', has: 'coin:1,bottle:milk:1' },
             { e: 'V', has: 'gold:1' },
             { m: '2', e: 'M', has: 'gold:3' },
         ],
@@ -475,7 +477,7 @@ const mockDungeon: Layout[] = [
 #..........#
 #..........#
 #....@.....#
-#.......X.1>
+#.......X..>
 #..........#
 #.........A#
 #.....Y....#
