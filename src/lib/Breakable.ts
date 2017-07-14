@@ -7,9 +7,10 @@ export interface BreakableProperties extends EntityProperties {
 
 
 export class Breakable extends Entity {
+    protected options: BreakableProperties;
     constructor(options: BreakableProperties) {
          super(options);
-         (<BreakableProperties>(this.options)).isBroken = options.isBroken;
+         this.options.isBroken = options.isBroken;
          this.walkOnTop = 'BloodBelow';
     }
 }

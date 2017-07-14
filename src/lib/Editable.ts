@@ -8,11 +8,10 @@ export interface EditableProperties extends EntityProperties {
 
 
 export class Editable extends Entity {
-    private hp: number;
+    protected  options: EditableProperties;
         
     constructor(options: EditableProperties) {
         super(options);
         this.walkOnTop = 'BloodBelow';
-        this.amount = options.amount;
     }
 }

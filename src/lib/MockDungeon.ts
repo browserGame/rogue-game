@@ -1,19 +1,16 @@
 import { Layout, Room } from './Room';
 import { Door } from './Door';
-
-
+import { WizardStatue, Vase, Coin, TelePort, Secret, Cheese, Doorway, Goblin, Bat, Rat, Stone } from './Symbols';
 
 const mockDungeon: Layout[] = [
     {
         symbols: [
-            { e: 'C', has: 'cheese:1,gold:1' }, //Secret Pressure plate
-            { e: '>', door: '2' }, //door, done
-            { e: 'B', has: 'gold:4' }, //statue wizard
-            { e: 'E', has: 'gold:3' }, //goblin
-            { e: 'X', toRoomId: 28, toTelePort: 'X' }, //teleport
-            { e: 'B', initBroken: false },
-        ],
-        id: '1',
+            <Secret>{ e: 'C', has: [<Cheese>{ e: 'q', hp: 15 }, <Coin>{ e: 'M', color:'gray', credit: 1 }] }, //Secret Pressure plate
+            <Doorway>{ e: '>', to: 2 }, //door, done
+            <WizardStatue>{ e: 'B', initBroken: false, has: [<Coin>{ e: 'M', amount: 4 }] }, //statue wizard
+            <Goblin>{ e: 'E', hp: 10, xp: 10, level: 1, has: [<Coin>{ e: 'M', amount: 3 }] }, //goblin
+            <TelePort>{ e: 'X', toRoomId: 28, toTelePort: 'X' }, //teleport
+        ], id: '1',
         room: [
             `
 #########
@@ -40,14 +37,14 @@ const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            { m: '1', e: 'G' },
-            { e: 'F', has: 'gold:3' },
-            { m: '3', e: 'F', has: 'gold:4' },
-            { m: '4', e: 'F' },
-            { m: '2', e: 'F', has: 'stone:1:grey' },
-            { e: 'J', has: 'stone:1:white', color: 'gold' },
-            { e: '>', door: '3' },
-            { e: '<', door: 'inset:1' },
+            <Rat>{ m: '1', e: 'G' },
+            <Bat>{ e: 'F', has: [<Coin>{ e: 'M', credit: 3 , color:'gold'}], hp: 10, xp: 3, level: 1 },
+            <Bat>{ m: '3', e: 'F', hp: 10, xp: 3, level: 1, has: [<Coin>{ e: 'M', color:'gold', credit: 4 }] },
+            <Bat>{ m: '4', e: 'F' },
+            <Bat>{ m: '2', e: 'F', has: [<Stone>{ e: 'L', color: 'gray' }] },
+            <Vase>{ e: 'J', initBroken: false, color: 'gold', has: [<Stone>{ e: 'L', color: 'white' }] },
+            <Doorway>{ e: '>', to: 3 },
+            <Doorway>{ e: '<', to: 1, inset: true },
             { m: '5', e: 'H', has: 'gold:3', init: 'half-open' },
             { m: '6', e: 'H', has: 'gold:3', init: 'closed' },
         ],
@@ -106,7 +103,7 @@ const mockDungeon: Layout[] = [
 `   },
     {
         symbols: [
-            { e: 'O', color: 'green' },
+            { e: '$' },
             { e: '^', door: 'inset:3' },
             { e: 'v', door: '6' },
             { e: '%', has: 'damaged-boots,magic-spell:defense,cracked-mace' }
@@ -116,12 +113,12 @@ const mockDungeon: Layout[] = [
 ####^######
 ##........#
 #.!.....!.#
-#..O......#
-#.........#
-#.....OO..#
-#....%OO..#
-#..OO.....#
-#..OO.....#
+#.$$......#
+#.$$......#
+#.....$$..#
+#....%$$..#
+#..$$.....#
+#..$$.....#
 #.!.....!.#
 ##.......##
 #####v#####
@@ -893,7 +890,7 @@ export function compileDungeon(): string {
 
 
     function formatRooms(room: Room) {
-        
+
         let RoomsTodo: Door[] = [];
         let RoomsDone: Door[] = [];
 
@@ -971,7 +968,7 @@ export function compileDungeon(): string {
 
     initRoom.doors.forEach((d) => {
         let r = formattingTodo.get(d.to);
-        if (r){
+        if (r) {
             formatRooms(r);
         }
     });

@@ -12,9 +12,12 @@ const stMap: { [index: string]: EType | EType[] | undefined } = {
     Carpet: [
         'Bones',
         'Chest',
-        'Gold'
+        'Gold',
+        'Goblin',
+        'Rat',
+        'Bat'
     ],
-    Bones: ['Chest', 'Lantarn', 'Gold'],
+    Bones: ['Chest', 'Bat', 'Rat', 'Goblin'],
     Gold: undefined,
 };
 
@@ -22,14 +25,10 @@ export interface EntityProperties {
     type: EType;
     topLeft: Vector;
     bottomRight: Vector;
-    
+
 }
 
-
-
-export type EType = 'Gold' | 'Lantarn' | 'Floor' | 'Water' | 'Acid' | 'Lava' | 'Bones' | 'Door' | 'Chest' | 'Carpet';
-
-
+export type EType = 'Gold' | 'Lantarn' | 'Floor' | 'Water' | 'Acid' | 'Lava' | 'Bones' | 'Door' | 'Chest' | 'Carpet' | 'Bat' | 'Rat' | 'Goblin' ;
 
 export abstract class Entity {
 
@@ -37,10 +36,10 @@ export abstract class Entity {
     private topLeft: Vector;
     private bottomRight: Vector;
     private itemsOnTop?: Entity[];
-    
+
     protected walkOnTop?: 'BloodAbove' | 'BloodBelow';
     protected options: EntityProperties;
-    
+
     private isPermissable(e: Entity): boolean {
         if (!(this.type in stMap)) {
             throw new Error(`No Items placeable above this: ${this.type}`);
@@ -50,7 +49,7 @@ export abstract class Entity {
         // Seperated because debugging
         //
         let rc = (possible || false) && possible.indexOf(e.type) >= 0;
-        
+
         return rc;
     }
 
@@ -66,7 +65,7 @@ export abstract class Entity {
     public addChild(e: Entity) {
         let cnt = e.IsIntersected(this);
         if (cnt < 4) { //partial overlap or not at all placed
-            if (cnt > 0){
+            if (cnt > 0) {
                 throw new Error('Partial Overlap!');
             }
             throw new Error('Cannot be placed on top');
@@ -101,7 +100,7 @@ export abstract class Entity {
             let p = points.reduce((ac, p) => {
                 let x = p[0];
                 let y = p[1];
-                if (i.tl.x <= x && i.br.x <= x && i.tl.y <= y && i.br.y >= y){
+                if (i.tl.x <= x && i.br.x <= x && i.tl.y <= y && i.br.y >= y) {
                     ac++;
                 }
                 return ac;
@@ -109,7 +108,7 @@ export abstract class Entity {
             return p;
         });
         return (rc[0] > 0 ? rc[0] : rc[1]);
-        
+
     }
 
     public get is() {
