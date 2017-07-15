@@ -1,6 +1,6 @@
 
 
-import { Symbol , DItem } from './Symbols';
+import { SymbolBase, DoorWay } from './Symbols';
 import { Door } from './Door';
 import { Vector } from './math';
 import { WallCursor, InnerWallCursor } from './WallCursor';
@@ -19,8 +19,8 @@ const consumableExtractor = factoryAreaScanner('consumables');
 
 export interface Layout {
     room: string | string[];
-    id: string;
-    symbols: (Symbol | DItem)[];
+    id: number;
+    symbols: (SymbolBase<any>)[];
 }
 
 
@@ -79,7 +79,7 @@ export class Room {
         return f;
     }
 
-    private createBaseLayer(raw: string[][], metaInfo: Symbol[]) {
+    private createBaseLayer(raw: string[][], metaInfo: SymbolBase<any>[]) {
         if (!this.room) {
             this.room = [];
         }
@@ -121,7 +121,7 @@ export class Room {
                 breakableItems.push(<FloorItem>bi);
             }
         }
-       
+
         for (let i = 0; i < raw.length; i++) {
             for (let bi = enemyExtractor(raw[i], 99, metaInfo); bi; bi = enemyExtractor(raw[i], 99, metaInfo)) {
                 //breakableItems.push(<Enemy>bi);
@@ -141,7 +141,7 @@ export class Room {
             //enemyExtractor
         }
 
-        
+
 
 
         let base = raw[0].slice(0); /*map((line) => {
@@ -229,7 +229,7 @@ export class Room {
             roomData.room = [roomData.room];
         }
 
-        this._id = Number.parseInt(roomData.id);
+        this._id = roomData.id;
 
         if (!Number.isInteger(this._id)) {
             throw new TypeError(`${roomData.id} is not a valid Room ID`);
@@ -254,22 +254,19 @@ export class Room {
                 throw new Error('not a door signature');
             }
 
-            let selected = <Symbol>roomData.symbols.filter((d) => d.e === dir)[0];
-
+            let selected = roomData.symbols.filter((d) => d.e === dir)[0];
             if (selected) {
-
-                if (selected.door) {
-                    let door = selected.door.toLocaleLowerCase();
-                    return new Door(
-                        dir,
-                        rx,
-                        ry,
-                        /^inset:/.test(door),
-                        this._id,
-                        Number.parseInt(door.replace(/^inset:/, ''))
-                    );
-                }
+                let doorWay = <DoorWay<any>>selected;
+                return new Door(
+                    dir,
+                    rx,
+                    ry,
+                    doorWay.inset || false,
+                    this._id,
+                    doorWay.toRoom
+                );
             }
+
             throw new Error('Could not create door');
         };
 

@@ -46,6 +46,7 @@ export interface CodedItems {
     'z': 1; //xx closet
     '&': 1; //xx treasure chest
     'H': 1; //xx coffin
+    '*': 1; //xx table
     //
     // activatable plating
     //
@@ -62,7 +63,6 @@ export interface CodedItems {
     //discoverables via breaking
     //
     'P': 1; //xx twirl-stone, looks like dna helix#
-    '*': 1; //xx table
     '{': 1; //xx beer barrel
     'Y': 1; //xx cross tombstone
     'V': 1; //xxx tombstone
@@ -97,11 +97,11 @@ export interface CodedItems {
     //
     'L': 1; //... stone
     'M': 1; //... coin, gold
-    'p': 1; //... treasure ring
     //
     // edibales
     //
-    's': 1; //   bottle (water and milk)
+    's': 1; //   bottle water
+    'p': 1; //   bottle milk
     'r': 1; //   chicken-bone
     'q': 1; //   cheese
     'i': 1; //   elixer
@@ -110,41 +110,66 @@ export interface CodedItems {
     'l': 1; //   magic-potion
 }
 
+export type Indirection = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'i';
 
 export interface SymbolBase<TokenType> {
-    m?: MapType;
+    m?: Indirection;
     e: TokenType;
 }
+//
+//quest reults
+//
+export type QuestResultType =
+    'N'; //ring treasure quest-result
 
-/** floor decoration types */
-
-export type DungeonFloorCoverType = 'K' | 'A' | 'é';
-
-export interface DungeonFloorCover<T extends DungeonFloorCoverType> extends SymbolBase<T> {
-
+export interface QuestResult<T extends QuestResultType> extends SymbolBase<T> {
+    credits: number;
+    vitality: number;
+    wisdom: number;
+    agility: number;
 }
 
+export type QuestRing = QuestResult<'N'>;
+//
+//dungeon floor coverings
+//
+export type DungeonFloorCoverType = 'K' | 'A' | 'é';
+export interface DungeonFloorCover<T extends DungeonFloorCoverType> extends SymbolBase<T> {
+    type: string;
+}
 export type Carpet = DungeonFloorCover<'é'>;
 export type CobWeb = DungeonFloorCover<'K'>;
 export type SkullBones = DungeonFloorCover<'A'>;
 //
 // doorways and portals
 //
-export type DoorwayType = '^' | '>' | '<' | 'v' | 'X' | 'µ';
+export type DoorType = '^' | '>' | '<' | 'v';
+export type PortalType = 'X';
+export type LevelStairsType = 'µ';
 
-
-export interface DoorOrPortal<T extends DoorwayType> extends SymbolBase<T> {
-
+export interface DoorWay<T extends DoorType> extends SymbolBase<T> {
+    toRoom: number;
+    inset?: boolean;
 }
+export type DoorLeft = DoorWay<'<'>;
+export type DoorRight = DoorWay<'>'>;
+export type DoorUp = DoorWay<'^'>;
+export type DoorBottom = DoorWay<'v'>;
 
+export interface TelePortal extends SymbolBase<'X'> {
+    toRoom: number;
+    portal: Indirection | 'X';
+}
+export interface LevelStairs extends SymbolBase<'µ'> {
+    toRoom: number;
+    stairs: Indirection | 'µ';
+    level: number;
+}
 //
 //obstructables
 //
-
 export type ObstructableType = '"' | '(' | '!' | 'U' | 'Q' | 'O' | '$';
-
 export interface Obstructable<T extends ObstructableType> extends SymbolBase<T> {
-
 }
 
 export type DeathTotem = Obstructable<'"'>;
@@ -154,146 +179,156 @@ export type Trader = Obstructable<'U'>;
 export type QuestGenerator = Obstructable<'Q'>;
 export type Water = Obstructable<'O'>;
 export type Acid = Obstructable<'$'>;
-
-
 //
 // Discovarable
 //
-
-export type DiscoverableType = 'z' | '&' | 'H';
+export type DiscoverableType = 'z' | '&' | 'H' |
+    '*';  // xx table // must avoid
 export interface Discoverable<T extends DiscoverableType> extends SymbolBase<T> {
-
+    initOpen: boolean;
+    has: (Edible<any> | Valuable<any> | Arsanal<any>)[];
+    context?: string;
 }
-
 export type Closet = Discoverable<'z'>;
 export type TreasureChest = Discoverable<'&'>;
 export type Coffin = Discoverable<'H'>;
-
+export type Table = Discoverable<'*'>;
 //
-// Activatable plating
+// actiatable plating
 //
-
-
-export type ActivatePlatingType = 'I' | 'm' | 'R' |'C';
+export type ActivatePlatingType = 'I' | 'm' | 'R' | 'C';
 
 export interface Activatable<T extends ActivatePlatingType> extends SymbolBase<T> {
-
 }
 
 export type RedPentagram = Activatable<'I'>;
 export type HalfMoonTrap = Activatable<'m'>;
 export type Pentagram = Activatable<'R'>;
 export type SecretPlate = Activatable<'C'>;
-
-
-
-//export type CCariable = Coin | Stone | Cheese;
-
-export interface Doorway extends SymbolBase<'>' | '<' | 'v' | '^'> {
-    to: number;
-    inset?: boolean;
+//
+// claw and spikes
+//
+export type ClawSpikesTypes = 'w' | 'S';
+export interface ClawSpikes<T extends ClawSpikesTypes> extends SymbolBase<T> {
 }
-
-/* Valuables */
-export type ValuableType = 'L' | 'M';
-
-export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
-    color: 'yellow' | 'green' | 'gold' | 'silver' | 'blue' | 'white' | 'gray';
-    credit: number;
-}
-
-export interface Coin extends Valuable<'M'> {
-
-}
-
-export interface Stone extends Valuable<'L'> {
-
-}
-
-/*  foods */
-/*  foods */
-/*  foods */
-
-export type ConsumableType = 'q' | 'r' | 's';
-
-export interface Consumable<T extends ConsumableType> extends SymbolBase<T> {
-    hp: number;
-    poisen?: number;
-}
-
-export interface ChickedBone extends Consumable<'r'> {
-
-}
-
-export interface Cheese extends Consumable<'q'> {
-
-}
-
-export interface Bottle extends Consumable<'s'> {
-    type: 'water';
-}
-
-
-export interface Secret extends SymbolBase<'C'> {
-    has: (Coin | Cheese | Stone)[];
-}
-
-
-/*  misc */
-export interface TelePort extends SymbolBase<'X'> {
-    toRoomId: number;
-    toTelePort: 'X' | MapType;
-}
-
-
-export interface Breakable<T extends BreakableType> extends SymbolBase<T> {
+export type Spikes = ClawSpikes<'w'>;
+export type BearTrap = ClawSpikes<'S'>;
+//
+// discoverable and walkable when opened
+//
+export type WalkOpenableTypes =
+    'P' | // xx twirl stone, looks like dna helix# 
+    '{' | //xx beer barrel
+    'Y' | //xx cross tombstone
+    'V' | //xxx tombstone
+    'J' | //xx vase 
+    'B'; //xx statue wizard
+export interface WalkOpenable<T extends WalkOpenableTypes> extends SymbolBase<T> {
     initBroken: boolean;
-    has: (Coin | Cheese | Stone)[];
+    has?: (Edible<any> | Valuable<any> | Arsanal<any>)[];
+    color?: string;
 }
+export type TwirlStone = WalkOpenable<'P'>;
+export type BeerBarrel = WalkOpenable<'{'>;
+export type CrossTombStone = WalkOpenable<'Y'>;
+export type TombStone = WalkOpenable<'V'>;
+export type Vase = WalkOpenable<'J'>;
+export type WizardStatue = WalkOpenable<'B'>;
+//
+// enemies
+//
+export type EnemyTypes = 'T' | //xxx skelton-enemy
+    '%' | //xx boss 
+    'E' | //xx goblin
+    'F' | //xx bat
+    'G' | //xx rat
+    '@'; //xx green wizard shaman throws fire
 
-
-export interface Vase extends Breakable<'J'> {
-
-}
-
-export interface WizardStatue extends Breakable<'B'> {
-
-}
-
-export interface Openable<T extends OpenableType> extends SymbolBase<T> {
-    initOpen: boolean;
-    has: (Coin | Cheese | Stone)[];
-}
-
-
-
-export interface Enemy<T extends EnemyType> extends SymbolBase<T> {
+export interface Enemy<T extends EnemyTypes> extends SymbolBase<T> {
+    triggeredBy?: Indirection | WalkOpenableTypes | ActivatePlatingType;
     hp: number;
     xp: number;
-    level: number;
-    has: (Coin | Cheese | Stone)[];
+    //dp: number;
+    has?: (Edible<any> | Valuable<any>)[];
 }
 
-export interface Goblin extends Enemy<'E'> {
+export type Skeleton = Enemy<'T'>;
+export type Boss = Enemy<'%'>;
+export type Goblin = Enemy<'E'>;
+export type Bat = Enemy<'F'>;
+export type Rat = Enemy<'G'>;
+export type GreenWizard = Enemy<'@'>;
+//
+//learnables
+//
+export type LearnableType = 'u';
+export interface MagicSpellBook extends SymbolBase<'u'> {
+    spell: string;
+}
+//
+//arsanal
+//
+export type ArsanalType =
+    'Z' |  //... shield
+    't' | //... mace
+    'x' | //... damaged boots
+    'à' | //... boots-red
+    '+' | //... cracked-mace
+    '~' | //... red-pants
+    'ç' | //... green-pants
+    'ù'; //... leather-boots
 
+export interface Arsanal<T extends ArsanalType> extends SymbolBase<T> {
+    addHp?: number;
+    addXp?: number;
+    addDp?: number;
 }
 
+export type Shield = Arsanal<'Z'>;
+export type Mace = Arsanal<'t'>;
+export type BootsRed = Arsanal<'à'>;
+export type BootsDamaged = Arsanal<'x'>;
+export type MaceCracked = Arsanal<'+'>;
+export type PantsRed = Arsanal<'~'>;
+export type PantsGreen = Arsanal<'ç'>;
+export type BootsLeather = Arsanal<'ù'>;
+//
+//valuables
+//
+export type ValuableType =
+    'L' | //... stone
+    'M'; //... coin, gold
 
-export interface Bat extends Enemy<'F'> {
-
-}
-
-export interface Rat extends Enemy<'G'> {
-
-}
-
-export type DItem = TelePort | SkullBones | Secret | Cheese | Coin | Doorway | Goblin | Bat | Rat | Stone | WizardStatue | Vase;
-
-export interface Symbol extends SymbolBase<any> {
-    to?: keyof CodedItems | (keyof CodedItems)[];
-    door?: string;
-    has?: string;
+export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
+    credit: number;
     color?: string;
-    init?: string;
-    fromTrap?: string;
 }
+export type Stone = Valuable<'L'>;
+export type Coin = Valuable<'M'>;
+//
+// edibales
+//
+export type EdibleType =
+    's' | //   bottle water
+    'p' | // bottle  milk
+    'r' | //   chicken-bone
+    'q' | //   cheese
+    'i' | //   elixer
+    ';' | //   fish
+    '§' | //   mana
+    'l'; //   magic-potion
+
+export interface Edible<T extends EdibleType> extends SymbolBase<T> {
+    addMana?: number;
+    addHp?: number;
+    poisen?: { add: number, release: number };
+}
+
+export type BottleWater = Edible<'s'>;
+export type BottleMilk = Edible<'p'>;
+export type ChickenBone = Edible<'r'>;
+export type Cheese = Edible<'q'>;
+export type Elixer = Edible<'i'>;
+export type Fish = Edible<';'>;
+export type Mana = Edible<'§'>;
+export type MagicPotion = Edible<'l'>;
