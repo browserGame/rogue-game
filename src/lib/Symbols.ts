@@ -5,116 +5,136 @@
 // [H&*zQU"] [H] Coffin, [&] Treasure, [*] Table, [z]  Closet
 // [LMZxut]
 // 
-export interface CodedItems {
+
+
+
+export const processors = {
+    doorWays: function doorWays(layer: string[], w: number, x: number, y: number, tag: string,   ) {
+        if ('>v<^'.indexOf(tag) >= 0) {
+            
+        }
+        layer;
+        w;
+        x;
+        y;
+    }
+};
+
+export interface CPU {
+    [index: string]: Function| 0;
+}
+
+export const codedItems: CPU = {
     //
     // primary
     //
-    '#': 1; //xx wall
-    '.': 1; //xx floor
+    '#': Function, //xx wall
+    '.': 0, //xx floor
     //
     //quest reults
     //
-    'N': 1; //treasure quest-result
+    N: 0, //treasure quest-result
     //
     //dungeon floor coverings
     //
-    'K': 1; //xx cobweb
-    'A': 1; //xx skull
-    'é': 1; //xx carpet
+    K: 0, //xx cobweb
+    A: 0, //xx skull
+    é: 0, //xx carpet
     //
     // doorways and portals
     //
-    '^': 1; //xx door north
-    '>': 1; //xx door east
-    '<': 1; //xx door west
-    'v': 1; //xx door south
-    'X': 1; //teleport
-    'µ': 1; //stairs change level
+    '^': processors.doorWays, //xx door north
+    '>': processors.doorWays, //xx door east
+    '<': processors.doorWays, //xx door west
+    v: processors.doorWays, //xx door south
+    X: 0, //teleport
+    µ: 0, //stairs change level
     //
     //obstructables
     //
-    '"': 1; //xx death-totum
-    '(': 1; //xx lava
-    '!': 1; //xx tourch
-    'U': 1; //xx trader
-    'Q': 1; //xx quest regenerator
-    'O': 1; //xx water
-    '$': 1; //acid bath
+    '"': 0, //xx death-totum
+    '(': 0, //xx lava
+    '!': 0, //xx tourch
+    U: 0, //xx trader
+    Q: 0, //xx quest regenerator
+    O: 0, //xx water
+    $: 0, //acid bath
     //
     // discoverables via unlocking / open
     //
-    'z': 1; //xx closet
-    '&': 1; //xx treasure chest
-    'H': 1; //xx coffin
-    '*': 1; //xx table
+    z: 0, //xx closet
+    '&': 0, //xx treasure chest
+    H: 0, //xx coffin
+    '*': 0, //xx table
     //
     // activatable plating
     //
-    'I': 1; //xx red pentagram trap
-    'm': 1; //xx half moon trap
-    'R': 1; //xx pentagram
-    'C': 1; //xx secret pressure plate
+    I: 0, //xx red pentagram trap
+    m: 0, //xx half moon trap
+    R: 0, //xx pentagram
+    C: 0, //xx secret pressure plate
     //
     // claws, spikes
     //
-    'w': 1; //xx spikes
-    'S': 1; //xx bear trap
+    w: 0, //xx spikes
+    S: 0, //xx bear trap
     //
     //discoverables via breaking
     //
-    'P': 1; //xx twirl-stone, looks like dna helix#
-    '{': 1; //xx beer barrel
-    'Y': 1; //xx cross tombstone
-    'V': 1; //xxx tombstone
-    'J': 1; //xx vase 
-    'B': 1; //xx statue wizard
+    P: 0, //xx twirl-stone, looks like dna helix#
+    '{': 0, //xx beer barrel
+    Y: 0, //xx cross tombstone
+    V: 0, //xxx tombstone
+    J: 0, //xx vase 
+    B: 0, //xx statue wizard
     //
     //enemies
     //
-    'T': 1; //xxx skelton-enemy
-    '%': 1; //xx boss 
-    'E': 1; //xx goblin
-    'F': 1; //xx bat
-    'G': 1; //xx rat
-    '@': 1; //xx green wizard shaman throws fire
+    T: 0, //xxx skelton-enemy
+    '%': 0, //xx boss 
+    E: 0, //xx goblin
+    F: 0, //xx bat
+    G: 0, //xx rat
+    '@': 0, //xx green wizard shaman throws fire
     //
     //learnables
     //
-    'u': 1; //... magic spellbook (earth-quake, defense, warrior shout)
+    u: 0, //... magic spellbook (earth-quake, defense, warrior shout)
     //
     //arsanal
     //
-    'Z': 1; //... shield
-    't': 1; //... mace
-    'x': 1; //... damaged boots
-    'à': 1; //... boots
-    '+': 1; //... cracked-mace
-    '~': 1; //... red-pants
-    'ç': 1; //... green-pants
-    'ù': 1; //... leather-boots
+    Z: 0, //... shield
+    t: 0, //... mace
+    x: 0, //... damaged boots
+    à: 0, //... boots
+    '+': 0, //... cracked-mace
+    '~': 0, //... red-pants
+    ç: 0, //... green-pants
+    ù: 0, //... leather-boots
     //
     //valuables
     //
-    'L': 1; //... stone
-    'M': 1; //... coin, gold
+    L: 0, //... stone
+    M: 0, //... coin, gold
     //
     // edibales
     //
-    's': 1; //   bottle water
-    'p': 1; //   bottle milk
-    'r': 1; //   chicken-bone
-    'q': 1; //   cheese
-    'i': 1; //   elixer
-    ';': 1; //   fish
-    '§': 1; //   mana
-    'l': 1; //   magic-potion
-}
+    s: 0, //   bottle water
+    p: 0, //   bottle milk
+    r: 0, //   chicken-bone
+    q: 0, //   cheese
+    i: 0, //   elixer
+    ';': 0, //   fish
+    '§': 0, //   mana
+    l: 0 //   magic-potion
+};
+
 
 export type Indirection = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'i';
 
-export interface SymbolBase<TokenType> {
+export interface SymbolBase<T> {
     m?: Indirection;
-    e: TokenType;
+    e: T;
 }
 //
 //quest reults

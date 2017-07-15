@@ -1,5 +1,12 @@
-import { Layout, Room } from './Room';
-import { Door } from './Door';
+import {
+    Layout,
+    //    $Room 
+} from './Room';
+
+import {
+    parseLayout
+} from './tools';
+
 import {
     SecretPlate,
     Cheese,
@@ -43,12 +50,9 @@ import {
     TwirlStone,
     PantsGreen,
     Mace
-
-
-
 } from './Symbols';
 
-const mockDungeon: Layout[] = [
+export const mockDungeon: Layout[] = [
     {
         symbols: [
             <SecretPlate>{
@@ -101,7 +105,7 @@ const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            <Rat>{ m: '1', e: 'G' , xp:10, hp:10 },
+            <Rat>{ m: '1', e: 'G', xp: 10, hp: 10 },
             <Bat>{
                 e: 'F', has: [
                     <Coin>{ e: 'M', credit: 3, color: 'gold' }
@@ -111,9 +115,9 @@ const mockDungeon: Layout[] = [
                 m: '3', e: 'F', hp: 10, xp: 3, level: 1,
                 has: [<Coin>{ e: 'M', color: 'gold', credit: 4 }]
             },
-            <Bat>{ m: '4', e: 'F', xp:10, hp:10 },
+            <Bat>{ m: '4', e: 'F', xp: 10, hp: 10 },
             <Bat>{
-                m: '2', e: 'F', xp:10, hp:10,
+                m: '2', e: 'F', xp: 10, hp: 10,
                 has: [<Stone>{ e: 'L', color: 'gray', credit: 1 }]
             },
             <Vase>{
@@ -134,7 +138,7 @@ const mockDungeon: Layout[] = [
             },
         ],
         id: 2,
-        room: `
+        room: [`
 ##############
 #K...........#
 #...1.F......#
@@ -147,7 +151,7 @@ const mockDungeon: Layout[] = [
 <...5..6.....#
 #A...........#
 ##############
-`
+`]
     },
     {
         symbols: [
@@ -160,14 +164,14 @@ const mockDungeon: Layout[] = [
             <DoorBottom>{ e: 'v', toRoom: 3 }
         ],
         id: 4,
-        room: `
+        room: [`
 ########
 #......#
 #......#
 #.L..F.#
 ####...#
 #####v##
-`
+`]
     },
     {
         symbols: [
@@ -179,7 +183,7 @@ const mockDungeon: Layout[] = [
             <DoorBottom>{ e: 'v', toRoom: 5 },
         ],
         id: 3,
-        room: `
+        room: [`
 ######^######
 ###......####
 <.........M.#
@@ -189,7 +193,7 @@ const mockDungeon: Layout[] = [
 ###........##
 ###N.......##
 ########v####
-`   },
+`]   },
     {
         symbols: [
             <Acid>{ e: '$' },
@@ -204,7 +208,7 @@ const mockDungeon: Layout[] = [
             }
         ],
         id: 5,
-        room: `
+        room: [`
 ####^######
 ##........#
 #.!.....!.#
@@ -217,7 +221,7 @@ const mockDungeon: Layout[] = [
 #.!.....!.#
 ##.......##
 #####v#####
-`
+`]
     },
     {
         symbols: [
@@ -239,7 +243,7 @@ const mockDungeon: Layout[] = [
             }
         ],
         id: 6,
-        room: `
+        room: [`
 ######^#####
 #K........K#
 #..........#
@@ -256,7 +260,7 @@ const mockDungeon: Layout[] = [
 #.S........#
 #K........K#
 ######v#####
-`
+`]
     },
     {
         symbols: [
@@ -273,7 +277,7 @@ const mockDungeon: Layout[] = [
             <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'gold' }] },
         ],
         id: 7,
-        room: `
+        room: [`
 ###^#######
 #.........#
 #.....1Z..#
@@ -283,7 +287,7 @@ const mockDungeon: Layout[] = [
 #..J.....G#
 #K........#
 ##v########
-`
+`]
     },
     {
         symbols: [
@@ -324,7 +328,7 @@ const mockDungeon: Layout[] = [
             }//N find crown of souls
         ],
         id: 8,
-        room: `
+        room: [`
 ##########
 #.......K#
 #......B.#
@@ -337,7 +341,7 @@ const mockDungeon: Layout[] = [
 #........#
 #..A....K#
 ######v###
-`
+`]
     },
     {
         symbols: [
@@ -438,7 +442,7 @@ const mockDungeon: Layout[] = [
             }
         ],
         id: 10,
-        room: `
+        room: [`
 ####^######
 #........K#
 #.1.Q.A...#
@@ -455,7 +459,7 @@ const mockDungeon: Layout[] = [
 #.........#
 #K........#
 ###########
-`
+`]
     },
     {
         symbols: [
@@ -469,10 +473,10 @@ const mockDungeon: Layout[] = [
                     <Stone>{ e: 'L', credit: 4, color: 'gold' }
                 ]
             }, // 'gold:3,stone:gold' },
-            <Vase>{ e: 'J', initBroken: false, color: 'red' },
+           
         ],
         id: 11,
-        room: `
+        room: [`
 ###########
 #.!....A..#
 #..A......#
@@ -483,7 +487,7 @@ const mockDungeon: Layout[] = [
 #....F.{..#
 #.........#
 #####v#####
-`
+`]
     },
     {
         symbols: [
@@ -524,14 +528,14 @@ const mockDungeon: Layout[] = [
             <DoorBottom>{ e: 'v', toRoom: 14, inset: true },
         ],
         id: 13,
-        room: `
+        room: [`
 ####^###
 #......#
 #......#
 #K.....#
 ####...#
 ####v###
-`
+`]
     },
     {
         symbols: [
@@ -540,7 +544,7 @@ const mockDungeon: Layout[] = [
             <DoorLeft>{ e: '<', toRoom: 15, inset: true },
         ],
         id: 14,
-        room: `
+        room: [`
 #####^#####
 #KA.......#
 #....R....#
@@ -551,21 +555,21 @@ const mockDungeon: Layout[] = [
 #.........#
 #K........#
 #########v#
-`
+`]
     },
     {
         symbols: [
             <DoorUp>{ e: '^', toRoom: 14 },
         ],
         id: 20,
-        room: `
+        room:[ `
 ###^####
 #......#
 #......#
 #......#
 #K..####
 ########
-`
+`]
     },
     {
         symbols: [
@@ -591,7 +595,7 @@ const mockDungeon: Layout[] = [
             <Coin>{ m: '2', e: 'M', credit: 3, color: 'gold' },
         ],
         id: 15,
-        room: `
+        room: [`
 ########^#####
 #............#
 #....µ.....1.#
@@ -603,7 +607,7 @@ const mockDungeon: Layout[] = [
 #............#
 #............#
 ##########v###
-`
+`]
     }
     ,
     {
@@ -611,14 +615,14 @@ const mockDungeon: Layout[] = [
             <DoorBottom>{ e: 'v', toRoom: 15 },
         ],
         id: 16,
-        room: `
+        room: [`
 ########
 #......#
 #..B...#
 #......#
 #...####
 ##v#####
-`
+`]
     },
     {
         symbols: [
@@ -674,7 +678,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 18,
         room:
-        `
+        [`
 #####^######
 #K........K#
 #..2....GV.#
@@ -690,7 +694,7 @@ const mockDungeon: Layout[] = [
 #..........#
 #...A......#
 ############
-`
+`]
     },
     {
         symbols: [
@@ -704,14 +708,14 @@ const mockDungeon: Layout[] = [
         ],
         id: 19,
         room:
-        `
+       [ `
 ########
 #......#
 #.A....#
 #....V.#
 ####...#
 #####v##
-`
+`]
     }
     ,
     {
@@ -731,7 +735,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 21,
         room:
-        `
+       [ `
 ###^#######
 #......M..#
 #.........#
@@ -748,7 +752,7 @@ const mockDungeon: Layout[] = [
 #..A......#
 #.........#
 #######v###
-`
+`]
     },
     {
         symbols: [
@@ -782,7 +786,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 22,
         room:
-        `
+        [`
 #######^###
 #........K#
 #.........#
@@ -799,7 +803,7 @@ const mockDungeon: Layout[] = [
 #.........#
 #K...AFA.K#
 #####v#####
-`
+`]
     },
     {
         symbols: [
@@ -815,7 +819,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 23,
         room:
-        `
+        [`
 #^#######
 #......K#
 #.......#
@@ -832,7 +836,7 @@ const mockDungeon: Layout[] = [
 #.......#
 #K......#
 ####v####
-`
+`]
     },
     {
         symbols: [
@@ -846,14 +850,14 @@ const mockDungeon: Layout[] = [
         ],
         id: 24,
         room:
-        `
+       [ `
 ########
 #......#
 #......#
 #.F..L.#
 ####...#
 #####v##
-`
+`]
     },
     {
         symbols: [
@@ -866,7 +870,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 25,
         room:
-        `
+       [ `
 ###########
 #........K#
 #..1......#
@@ -879,7 +883,7 @@ const mockDungeon: Layout[] = [
 #.........#
 #K.......K#
 ###########
-`
+`]
     },
     {
         symbols: [
@@ -896,7 +900,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 26,
         room:
-        `
+       [ `
 #######^#######
 #K.........A..#
 #......G......#
@@ -910,7 +914,7 @@ const mockDungeon: Layout[] = [
 #.............#
 #K...........A#
 #############v#
-`
+`]
     },
     {
         symbols: [
@@ -922,14 +926,14 @@ const mockDungeon: Layout[] = [
         ],
         id: 27,
         room:
-        `
+       [ `
 ###^####
 #......#
 #.M.1..>
 #..2...#
 #...####
 ########
-`
+`]
     },
     {
         symbols: [
@@ -945,7 +949,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 28,
         room:
-        `
+       [ `
 ##########^#####
 #K............K#
 #..A.......M...#
@@ -957,7 +961,7 @@ const mockDungeon: Layout[] = [
 #.*..........w.#
 #K............K#
 ################
-`
+`]
     },
     {
         symbols: [
@@ -974,7 +978,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 29,
         room:
-        `
+       [ `
 ######^#####
 #K.......A.#
 #..........#
@@ -991,7 +995,7 @@ const mockDungeon: Layout[] = [
 #....21....#
 #..........#
 ######v#####
-`
+`]
     },
     {
         symbols: [
@@ -1000,14 +1004,14 @@ const mockDungeon: Layout[] = [
         ],
         id: 30,
         room:
-        `
+       [ `
 ##^#####
 #......#
 #...@..#
 #......#
 #...####
 ##v#####
-`
+`]
     },
     {
         symbols: [
@@ -1026,7 +1030,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 31,
         room:
-        `
+       [ `
 ##########
 #........#
 #........#
@@ -1042,7 +1046,7 @@ const mockDungeon: Layout[] = [
 #...G....#
 #.......K#
 #####v####
-`
+`]
     },
     {
         symbols: [
@@ -1098,7 +1102,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 32,
         room:
-        `
+        [`
 ############^###
 #..............#
 #.......A..1A..#
@@ -1113,27 +1117,27 @@ const mockDungeon: Layout[] = [
 #.......c......#
 #..............#
 #######v########
-`
+`]
     },
     {
         symbols: [
-          /*  { e: '^', door: '32' },
-            { m: '1', e: 'L', color: 'green' },
-            { m: '2', e: 'L', color: 'white' },
-            { m: '3', e: '&', has: 'mace,gold:1,stone:gray' },
-            {
-                m: '4',
-                e: '&',
-                has: 'magic-potion,leather-boots,gold:4'
-            },
-            { e: 'G', has: 'gold:5' },
-            { e: 'J', color: 'green' },
-            { m: '6', e: 'L', color: 'gold' },
-*/
+            /*  { e: '^', door: '32' },
+              { m: '1', e: 'L', color: 'green' },
+              { m: '2', e: 'L', color: 'white' },
+              { m: '3', e: '&', has: 'mace,gold:1,stone:gray' },
+              {
+                  m: '4',
+                  e: '&',
+                  has: 'magic-potion,leather-boots,gold:4'
+              },
+              { e: 'G', has: 'gold:5' },
+              { e: 'J', color: 'green' },
+              { m: '6', e: 'L', color: 'gold' },
+  */
         ],
         id: 33,
         room:
-        `
+        [`
 #####^#####
 #K.A..1F..#
 #...2..z..#
@@ -1144,7 +1148,7 @@ const mockDungeon: Layout[] = [
 #.........#
 #.......A.#
 ###########
-`
+`]
     },
     {
         symbols: [
@@ -1158,7 +1162,7 @@ const mockDungeon: Layout[] = [
         ],
         id: 34,
         room:
-        `
+       [ `
 ###########
 #K........#
 #.........#
@@ -1167,153 +1171,161 @@ const mockDungeon: Layout[] = [
 #.L....S..#
 #...A.....#
 #####v#####
-`
+`]
     }
 ];
 
 
 export function compileDungeon(): string {
 
-    let finalRooms = new Map<number, Room>();
-    let formattingTodo = new Map<number, Room>();
 
-
-    let rooms = mockDungeon.map((roomData) => {
-        return new Room(roomData);
-    });
-
-    rooms.forEach((r) => formattingTodo.set(r.id, r));
-
-
-    function formatRooms(room: Room) {
-
-        let RoomsTodo: Door[] = [];
-        let RoomsDone: Door[] = [];
-
-        if (finalRooms.has(room.id)) {
-            return;
-        }
-
-        let doors = room.doors;
-        doors.forEach((d) => {
-            if (finalRooms.has(d.to)) {
-                RoomsDone.push(d);
-            }
-            else {
-                RoomsTodo.push(d);
-            }
-        });
-
-        if (!RoomsDone.length) {
-            throw new Error(`room ${room.id} cannot be formatted, not connected to a reference`);
-        }
-
-
-        let fr = <Room>finalRooms.get(RoomsDone[0].to);
-        let door = RoomsDone[0];
-        let myId = room.id;
-        let toId = fr.id;
-        let counterDoor = fr.doors.filter((d) => d.to === myId)[0];
-
-        if (!counterDoor) {
-            throw new Error(`room ${myId} has no counterpart in room ${toId}`);
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y === 0) {
-            room.t = fr.t - room.h;
-            room.l = fr.l + counterDoor.p.x - door.p.x;
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y === (fr.h - 1)) {
-            room.t = fr.t + fr.h;
-            room.l = fr.l + counterDoor.p.x - door.p.x;
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y > 0 && counterDoor.p.y < (fr.h - 1)) {
-            room.l = fr.l + fr.w;
-            room.t = fr.t + counterDoor.p.y - door.p.y;
-        }
-
-        if (counterDoor.p.x === 0) {
-            room.l = fr.l - room.w;
-            room.t = fr.t + counterDoor.p.y - door.p.y;
-        }
-
-        finalRooms.set(room.id, room);
-        formattingTodo.delete(room.id);
-
-        for (let d of RoomsTodo) {
-            let r = formattingTodo.get(d.to);
-            if (!r) {
-                throw new Error(`Room ${d.to} is not found in todo`);
-            }
-            formattingTodo.delete(r.id);
-            formatRooms(r);
-        }
+    for (let layout of mockDungeon) {
+        parseLayout(layout);
     }
 
-    //
-    // let gWidth = 0;
-    //
-
-    let initRoom = <Room>rooms.shift();
-
-    formattingTodo.delete(initRoom.id);
-
-    finalRooms.set(initRoom.id, initRoom);
-
-    initRoom.doors.forEach((d) => {
-        let r = formattingTodo.get(d.to);
-        if (r) {
-            formatRooms(r);
-        }
-    });
-
-    console.log(`${JSON.stringify({ nrDone: finalRooms.size, nrTodo: formattingTodo.size })}`);
-
-
-    let totalWidth = 0;
-    let totalHeight = 0;
-
-    let minTop = 0;
-    let minLeft = 0;
-
-    finalRooms.forEach((v: Room) => {
-        minTop = Math.min(v.t, minTop);
-        minLeft = Math.min(v.l, minLeft);
-    });
-
-    finalRooms.forEach((v: Room) => {
-        v.t -= minTop;
-        v.l -= minLeft;
-    });
-
-    finalRooms.forEach((v: Room) => {
-        totalWidth = Math.max(v.l + v.w, totalWidth);
-        totalHeight = Math.max(v.t + v.h, totalHeight);
-    });
-
-    console.log({ totalWidth, totalHeight });
-
-    // ascii formatting, just for testing
-
-    let matrix = new Array(totalWidth * totalHeight);
-    matrix.fill(' ');
-
-    for (let i = 1; i <= 35; i++) {
-        let room = <Room>finalRooms.get(i);
-        if (room) {
-            room.stamp(matrix, totalWidth);
-        }
-    }
-
-    let rc: string[] = [];
-
-    for (let i = 0; i < totalHeight; i++) {
-        let line = matrix.slice(i * totalWidth, (i + 1) * totalWidth).join('');
-        rc.push(line);
-        console.log('>' + line + '<');
-    }
-    return rc.join('\n');
+    /*  let finalRooms = new Map<number, Room>();
+      let formattingTodo = new Map<number, Room>();
+  
+      let rooms = mockDungeon.map((roomData) => {
+          return new Room(roomData);
+      });
+  
+      return 'meh';
+  
+      rooms.forEach((r) => formattingTodo.set(r.id, r));
+  
+  
+      function formatRooms(room: $Room) {
+  
+          let RoomsTodo: number[] = [];
+          let RoomsDone: number = [];
+  
+          if (finalRooms.has(room.id)) {
+              return;
+          }
+  
+          let doors = room.doors;
+          doors.forEach((d) => {
+              if (finalRooms.has(d.to)) {
+                  RoomsDone.push(d);
+              }
+              else {
+                  RoomsTodo.push(d);
+              }
+          });
+  
+          if (!RoomsDone.length) {
+              throw new Error(`room ${room.id} cannot be formatted, not connected to a reference`);
+          }
+  
+  
+          let fr = <Room>finalRooms.get(RoomsDone[0].to);
+          let door = RoomsDone[0];
+          let myId = room.id;
+          let toId = fr.id;
+          let counterDoor = fr.doors.filter((d) => d.to === myId)[0];
+  
+          if (!counterDoor) {
+              throw new Error(`room ${myId} has no counterpart in room ${toId}`);
+          }
+  
+          if (counterDoor.p.x > 0 && counterDoor.p.y === 0) {
+              room.t = fr.t - room.h;
+              room.l = fr.l + counterDoor.p.x - door.p.x;
+          }
+  
+          if (counterDoor.p.x > 0 && counterDoor.p.y === (fr.h - 1)) {
+              room.t = fr.t + fr.h;
+              room.l = fr.l + counterDoor.p.x - door.p.x;
+          }
+  
+          if (counterDoor.p.x > 0 && counterDoor.p.y > 0 && counterDoor.p.y < (fr.h - 1)) {
+              room.l = fr.l + fr.w;
+              room.t = fr.t + counterDoor.p.y - door.p.y;
+          }
+  
+          if (counterDoor.p.x === 0) {
+              room.l = fr.l - room.w;
+              room.t = fr.t + counterDoor.p.y - door.p.y;
+          }
+  
+          finalRooms.set(room.id, room);
+          formattingTodo.delete(room.id);
+  
+          for (let d of RoomsTodo) {
+              let r = formattingTodo.get(d.to);
+              if (!r) {
+                  throw new Error(`Room ${d.to} is not found in todo`);
+              }
+              formattingTodo.delete(r.id);
+              formatRooms(r);
+          }
+      }
+  
+      //
+      // let gWidth = 0;
+      //
+  
+      let initRoom = <Room>rooms.shift();
+  
+      formattingTodo.delete(initRoom.id);
+  
+      finalRooms.set(initRoom.id, initRoom);
+  
+      initRoom.doors.forEach((d) => {
+          let r = formattingTodo.get(d.to);
+          if (r) {
+              formatRooms(r);
+          }
+      });
+  
+      console.log(`${JSON.stringify({ nrDone: finalRooms.size, nrTodo: formattingTodo.size })}`);
+  
+  
+      let totalWidth = 0;
+      let totalHeight = 0;
+  
+      let minTop = 0;
+      let minLeft = 0;
+  
+      finalRooms.forEach((v: Room) => {
+          minTop = Math.min(v.t, minTop);
+          minLeft = Math.min(v.l, minLeft);
+      });
+  
+      finalRooms.forEach((v: Room) => {
+          v.t -= minTop;
+          v.l -= minLeft;
+      });
+  
+      finalRooms.forEach((v: Room) => {
+          totalWidth = Math.max(v.l + v.w, totalWidth);
+          totalHeight = Math.max(v.t + v.h, totalHeight);
+      });
+  
+      console.log({ totalWidth, totalHeight });
+  
+      // ascii formatting, just for testing
+  
+      let matrix = new Array(totalWidth * totalHeight);
+      matrix.fill(' ');
+  
+      for (let i = 1; i <= 35; i++) {
+          let room = <Room>finalRooms.get(i);
+          if (room) {
+              room.stamp(matrix, totalWidth);
+          }
+      }
+  
+      let rc: string[] = [];
+  
+      for (let i = 0; i < totalHeight; i++) {
+          let line = matrix.slice(i * totalWidth, (i + 1) * totalWidth).join('');
+          rc.push(line);
+          console.log('>' + line + '<');
+      }
+      return rc.join('\n');
+      */
+    return '';
 
 }

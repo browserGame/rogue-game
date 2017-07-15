@@ -1,12 +1,17 @@
 
 
-import { SymbolBase, DoorWay } from './Symbols';
-import { Door } from './Door';
+import { SymbolBase } from './Symbols';
 import { Vector } from './math';
+import { Door } from './Door';
 import { WallCursor, InnerWallCursor } from './WallCursor';
-import { factoryAreaScanner, FloorItem } from './FloorItem';
+//import { factoryAreaScanner, FloorItem } from './FloorItem';
+import {
+   // validateMetrics,
+    //createPalette,
+    //    ItemPalette 
+} from './tools';
 
-
+/*
 const liquidExtracor = factoryAreaScanner('liquid');
 const carpetExtractor = factoryAreaScanner('carpet');
 const lanternExtractor = factoryAreaScanner('lantern');
@@ -16,23 +21,32 @@ const breakableExtractor = factoryAreaScanner('breakableItems');
 const enemyExtractor = factoryAreaScanner('enemy');
 const openableExtractor = factoryAreaScanner('openableItems');
 const consumableExtractor = factoryAreaScanner('consumables');
+*/
 
 export interface Layout {
-    room: string | string[];
+    room: string[];
     id: number;
-    symbols: (SymbolBase<any>)[];
+    symbols: (SymbolBase<string>)[];
 }
 
-
+export interface $Room {
+    pk: number;
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+    doors: Door[];
+}
 
 export class Room {
     private _id: number;
     public t: number;
     public l: number;
-    public doors: Door[];
     public w: number;
     public h: number;
+
     public room: string[][];
+    public doors: Door[];
 
 
     public get id() {
@@ -64,7 +78,7 @@ export class Room {
             cursor.renderWall();
         }
         catch (e) {
-            //no inner wallnothing
+            //no inner wall--nothing
         }
     }
 
@@ -79,147 +93,21 @@ export class Room {
         return f;
     }
 
-    private createBaseLayer(raw: string[][], metaInfo: SymbolBase<any>[]) {
-        if (!this.room) {
-            this.room = [];
-        }
-        // lava , water, mud & acid pools
-        let liquidPools: FloorItem[] = [];
-        for (let l = liquidExtracor(raw[0]); l; l = liquidExtracor(raw[0])) {
-            liquidPools.push(<FloorItem>l);
-        }
-
-
-
-        let carpets: FloorItem[] = [];
-        for (let c = carpetExtractor(raw[0]); c; c = carpetExtractor(raw[0])) {
-            carpets.push(<FloorItem>c);
-        }
-
-        let lanterns: FloorItem[] = [];
-        for (let i = 0; i < raw.length; i++) {
-            for (let la = lanternExtractor(raw[i]); la; la = lanternExtractor(raw[i])) {
-                lanterns.push(<FloorItem>la);
-            }
-        }
-
-        let cobWebsAndSkulls: FloorItem[] = [];
-        for (let i = 0; i < raw.length; i++) {
-            for (let c = cobWebsAndSkullsExtractor(raw[i], i); c; c = cobWebsAndSkullsExtractor(raw[i], i)) {
-                cobWebsAndSkulls.push(<FloorItem>c);
-            }
-        }
-
-        let mutexItems: FloorItem[] = [];
-        for (let mu = mutexExtractor(raw[0]); mu; mu = mutexExtractor(raw[0])) {
-            mutexItems.push(<FloorItem>mu);
-        }
-
-        let breakableItems: FloorItem[] = [];
-        for (let i = 0; i < raw.length; i++) {
-            for (let bi = breakableExtractor(raw[i], 99, metaInfo); bi; bi = breakableExtractor(raw[i], 99, metaInfo)) {
-                breakableItems.push(<FloorItem>bi);
-            }
-        }
-
-        for (let i = 0; i < raw.length; i++) {
-            for (let bi = enemyExtractor(raw[i], 99, metaInfo); bi; bi = enemyExtractor(raw[i], 99, metaInfo)) {
-                //breakableItems.push(<Enemy>bi);
-            }
-            // enemyExtractor
-        }
-        for (let i = 0; i < raw.length; i++) {
-            for (let bi = openableExtractor(raw[i], 99, metaInfo); bi; bi = openableExtractor(raw[i], 99, metaInfo)) {
-                //breakableItems.push(<Enemy>bi);
-            }
-            //enemyExtractor
-        }
-        for (let i = 0; i < raw.length; i++) {
-            for (let bi = consumableExtractor(raw[i], 99, metaInfo); bi; bi = consumableExtractor(raw[i], 99, metaInfo)) {
-                //breakableItems.push(<Enemy>bi);
-            }
-            //enemyExtractor
-        }
-
-
-
-
-        let base = raw[0].slice(0); /*map((line) => {
-            let rc = line.replace(/[^IRSwm\#\^><vAKµ]/g, '.');
-            console.log(rc, line);
-            return rc;
-        });*/
-        this.room.unshift(base);
-        //liquidPools.length && console.log('liquids:', liquidPools);
-        //carpets.length && console.log('carpets:', carpets);
-        //lanterns.length && console.log('lanterns:', lanterns);
-        //cobWebsAndSkulls.length && console.log('cobWebsAndSkulls:', cobWebsAndSkulls);
-        //mutexItems.length && console.log('mutexItems:', mutexItems);
-        //add from each layer  carpets, water, lava, skulls
-    }
-
-    private getRoomMetrics(raw: string[][]): Vector {
-
-        let roomMetric = raw.reduce((checkRoom, layer, layerIdx, arrLayers) => {
-            let layerMetric: Vector = { x: 0, y: 0 };
-            layer.reduce((checkLayer, line, y, arr) => {
-                if (line.length === 0) {
-                    throw new TypeError(`room:${this.id} , layer:${layerIdx} scanline ${y} has width 0, ${arr}`);
-                }
-                if (checkLayer.x === 0) checkLayer.x = line.length;
-                if (checkLayer.x !== line.length) {
-                    throw new TypeError(`room:${this.id} , layer:${layerIdx} envelope is not perfectly rectangular, ${arr}`);
-                }
-                if (y === arr.length - 1) {
-                    checkLayer.y = arr.length;
-                }
-                return checkLayer;
-            }, layerMetric);
-            if (layerIdx === 0) {
-                return layerMetric;
-            }
-            if (layerMetric.x !== checkRoom.x || layerMetric.y !== checkRoom.y) {
-                throw new TypeError(`room:${this.id} , layer:${layerIdx} layout differs from Room, ${arrLayers[layerIdx]}`);
-            }
-            return layerMetric;
-        }, {} as any);
-        return roomMetric;
-    }
-
     public getToken(layer: number, v: Vector): string | undefined {
         let f = this.validateCoords(layer, v.x, v.y);
         if (!f) {
-            return f;
+            return undefined;
         }
-        return f[v.y][v.x];
+        let s = v.y * this.w + v.x;
+        return f[s];
     }
 
     public setToken(layer: number, v: Vector, token: string) {
         let f = this.validateCoords(layer, v.x, v.y);
         if (f) {
-            let n = f[v.y].split('');
-            n[v.x] = token[0];
-            f[v.y] = n.join('');
+            let s = v.y * this.w + v.x;
+            f[s] = token;
         }
-    }
-
-    public stamp(matrix: string[], w: number) {
-        let floor = new Array<string>(this.h * this.w);
-        let fl = this.room[0];
-
-        fl.forEach((s, k) => {
-            floor.splice(k * this.w, this.w, ...s.split(''));
-        });
-
-        this.doors.forEach((d) => {
-            d.stamp(floor, this.w);
-        });
-
-        for (let i = 0; i < this.h; i++) {
-            let s = w * (i + this.t) + this.l;
-            matrix.splice(s, this.w, ...floor.slice(i * this.w, (i + 1) * this.w));
-        }
-
     }
 
 
@@ -231,55 +119,47 @@ export class Room {
 
         this._id = roomData.id;
 
-        if (!Number.isInteger(this._id)) {
+        if (roomData.id < 0 || !Number.isInteger(roomData.id)) {
             throw new TypeError(`${roomData.id} is not a valid Room ID`);
         }
 
         this.l = 0;
         this.t = 0;
-
-        let raw = roomData.room.map((layer) => {
-            return layer.split(/[\n\r]+/).filter((line) => line.length > 0);
-        });
-
-        let p = this.getRoomMetrics(raw);
-        this.w = p.x;
-        this.h = p.y;
         this.doors = [];
 
-        this.createBaseLayer(raw, roomData.symbols);
-
-        const createDoor = (dir: string, rx: number, ry: number): Door => {
-            if ('^v><'.indexOf(dir) === -1) {
-                throw new Error('not a door signature');
-            }
-
-            let selected = roomData.symbols.filter((d) => d.e === dir)[0];
-            if (selected) {
-                let doorWay = <DoorWay<any>>selected;
-                return new Door(
-                    dir,
-                    rx,
-                    ry,
-                    doorWay.inset || false,
-                    this._id,
-                    doorWay.toRoom
-                );
-            }
-
-            throw new Error('Could not create door');
-        };
-
-        this.room[0].forEach((line, y) => {
-            //scan for doors
-            '^v<>'.split('').forEach((dir) => {
-                let x = line.indexOf(dir); // is there a door
-                if (x >= 0) {
-                    this.doors.push(createDoor(dir, x, y));
-                }
-            });
+        let raw = roomData.room.map((layer) => {
+            return layer.split(/[\n\r]+/).filter((line) => line);
         });
+
+       // let p = validateMetrics(raw); // will throw typeError
+        //this.w = p.x;
+       // this.h = p.y;
+
+        //let symbolMap = new Map<string, SymbolBase<string>>();
+
+
+        // create true room grid
+        raw = raw.map((layer) => {
+            let matrix: string[] = [];
+            layer.reduce((acc, line) => {
+                acc.push.apply(acc, line.split(''));
+                return acc;
+            }, matrix);
+            return matrix;
+        });
+
+        //let symbolMap = mapSymbols(roomData.symbols);
+
+        //for (let layer of raw) {
+        //parseLayerData(layer, p.x, '#.', symbolMap);
+        //console.log('roomItems:', roomItems);
+        //}
+        return;
+
+
+
         this.renderWalls();
 
     }
 }
+

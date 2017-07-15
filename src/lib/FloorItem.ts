@@ -1,6 +1,6 @@
 
 import { Vector } from './math';
-import { Symbol } from './Symbols';
+import { SymbolBase as Symbol } from './Symbols';
 
 export interface AreaTypes {
     carpet: 1; // scan carpets
@@ -84,7 +84,7 @@ export class Enemy {
     }
 }
 
-export type CreateAreaFunction = (raw: string[], zIndex?: number, meta?: Symbol[]) => FloorItem | Enemy | Consumable | undefined;
+export type CreateAreaFunction = (raw: string[], zIndex?: number, meta?: Symbol<any>[]) => FloorItem | Enemy | Consumable | undefined;
 
 export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunction {
 
@@ -234,11 +234,11 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
                 let rc = scanArea(regExp, raw);
                 zIndex;
                 if (rc) {
-                    let has: any;
+                    //let has: any;
                     let realType = rc.type;
-                    let ms: Symbol;
+                    let ms: Symbol<any>;
                     for (ms of meta) {
-                        has = ms.has;
+                        //has = ms.has;
                         if (ms.m === rc.type && ms.e !== undefined) {
                             realType = ms.e;
                             break;
@@ -262,11 +262,11 @@ export function factoryAreaScanner(areaType: keyof AreaTypes): CreateAreaFunctio
                 let rc = scanArea(regExp, raw);
                 zIndex;
                 if (rc) {
-                    let has: any;
+                    //let has: any;
                     let realType = rc.type;
-                    let ms: Symbol;
+                    let ms: Symbol<any>;
                     for (ms of meta) {
-                        has = ms.has;
+                       // has = ms.has;
                         if (ms.m === rc.type && ms.e !== undefined) {
                             realType = ms.e;
                             break;
