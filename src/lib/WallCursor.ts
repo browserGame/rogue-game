@@ -1,212 +1,262 @@
-import { Room } from './Room';
+import { $Room, $Item } from './Room';
 import { Vector, addV, negV } from './math';
+import { Door } from './Door';
 
 
-export class WallCursor {
-    private room: Room;
+function createCursor(coords: Vector[], width: number, height: number, doors: Door[], pk: number) {
 
-    private t: Vector;
-    private n: Vector;
+    let marked = coords.map((vec) => {
+        let w: $Item = { tag: '#', p: vec };
+        return w;
+    });
+
+    // add doors
+    marked.splice(0, 0, ...doors.map((d) => {
+        let wd: $Item = { tag: d.dir, p: d.p };
+        return wd;
+    }));
+
+    const fidx = (p: Vector): $Item | undefined => {
+        if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height) {
+            let i = marked.findIndex((itm) => p.x === itm.p.x && p.y === itm.p.y);
+            return (i === -1) ? { tag: '.', p } : marked[i];
+        }
+        return undefined;
+    };
+
+    let t: Vector;
+    let n: Vector;
 
     // private tb: number;
-    private tt: string;
-    private tn: string;
-    private nt: string;
-    private nn: string;
-    private dd: string;
-    protected dir: string;
+    let tt: string;
+    let tn: string;
+    let nt: string;
+    let nn: string;
+    let dd: string;
 
-    protected p: Vector;
+    let { dir, p } = doors[0];
 
+    const has = (arr: string, i?: $Item) => {
+        if (!(i && i.tag)) {
+            return false;
+        }
+        return arr.indexOf(i.tag) >= 0;
+    };
 
-    private init() {
-        let firstDoor = this.room.doors[0];
-        this.dir = firstDoor.dir;
-        this.p = firstDoor.p;
+    const set = (p: Vector, mark: string) => {
+        let itm = fidx(p);
+        if (!itm) {
+            if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height) {
+                marked.push({ tag: mark[0], p });
+            }
+        }
+        else {
+            itm.tag = mark[0];
+        }
+    };
 
-    }
+    const setCursorParams = () => {
 
-    protected setCursorParams() {
-
-        switch (this.dir) {
+        switch (dir) {
             case '>':
-                this.t = { x: 0, y: 1 };
-                this.n = { x: -1, y: 0 };
+                t = { x: 0, y: 1 };
+                n = { x: -1, y: 0 };
 
                 //this.tb = this.room.h;
-                this.tt = '┃';
-                this.tn = '┛';
-                this.nt = '┏';
-                this.nn = '━';
-                this.dd = '┗';
+                tt = '┃';
+                tn = '┛';
+                nt = '┏';
+                nn = '━';
+                dd = '┗';
                 break;
             case '<':
-                this.t = { x: 0, y: -1 };
-                this.n = { x: 1, y: 0 };
+                t = { x: 0, y: -1 };
+                n = { x: 1, y: 0 };
 
                 //this.tb = 0;
-                this.tt = '┃';
-                this.tn = '┏';
-                this.nt = '┛';
-                this.nn = '━';
-                this.dd = '┓';
+                tt = '┃';
+                tn = '┏';
+                nt = '┛';
+                nn = '━';
+                dd = '┓';
                 break;
             case '^':
-                this.t = { x: 1, y: 0 };
-                this.n = { x: 0, y: 1 };
+                t = { x: 1, y: 0 };
+                n = { x: 0, y: 1 };
 
                 //this.tb = this.room.w;
-                this.tt = '━';
-                this.tn = '┓';
-                this.nt = '┗';
-                this.nn = '━';
-                this.dd = '┛';
+                tt = '━';
+                tn = '┓';
+                nt = '┗';
+                nn = '┃';
+                dd = '┛';
                 break;
             case 'v':
             default:
-                this.t = { x: -1, y: 0 };
-                this.n = { x: 0, y: -1 };
+                t = { x: -1, y: 0 };
+                n = { x: 0, y: -1 };
 
                 //this.tb = 0;
-                this.tt = '━';
-                this.tn = '┗';
-                this.nt = '┓';
-                this.nn = '┃';
-                this.dd = '┏';
+                tt = '━';
+                tn = '┗';
+                nt = '┓';
+                nn = '┃';
+                dd = '┏';
                 break;
         }
-    }
+    };
 
-    private turnCursor() {
-
-        let n = '<^>v'.split('').indexOf(this.dir);
+    const turnCursor = () => {
+        let n = '<^>v'.split('').indexOf(dir);
         n = (n === 3) ? 0 : n + 1;
-        this.dir = '<^>v'[n];
-        this.setCursorParams();
-    }
+        dir = <any>'<^>v'[n];
+        setCursorParams();
+    };
 
-    public step(): boolean {
-        let token = this.room.getToken(0, addV(this.p, this.t));
-        let normal = <string>this.room.getToken(0, addV(this.p, this.n));
-        if (token === undefined || '┗┓┛┏┃━#'.indexOf(normal) >= 0) {
-            this.turnCursor();
-            token = <string>this.room.getToken(0, addV(this.p, this.t));
+    const step = (): boolean => {
+        let token = fidx(addV(p, t));
+        let normal = fidx(addV(p, n)); //always yields a result
+        if (token === undefined || has('┗┓┛┏┃━#', normal)) {
+            turnCursor();
+            token = fidx(addV(p, t));
         }
-        if ('┗┓┛┏┃━#'.indexOf(normal) === -1 && '┗┓┛┏┃━#^>v<'.indexOf(token) === -1) {
-            this.turnCursor(); //270°
-            this.turnCursor();
-            this.turnCursor();
-            token = <string>this.room.getToken(0, addV(this.p, this.t));
+        if (has('┗┓┛┏┃━#', normal) === false && has('┗┓┛┏┃━#^>v<', token) === false) {
+            turnCursor(); //270°
+            turnCursor();
+            turnCursor();
+            token = fidx(addV(p, t));
         }
-        if ('┗┓┛┏┃━'.indexOf(token) >= 0) {
+        if (has('┗┓┛┏┃━', token)) {
             return false;
         }
-        this.p = addV(this.p, this.t);
+        p = addV(p, t);
         //console.log(this.p);
         return true;
-    }
+    };
 
+    const render = (): boolean => {
 
-    public render(): boolean {
-
-        let token = this.room.getToken(0, this.p);
+        let token = fidx(p);
         if (token === undefined) {
-            throw new Error(`x:${this.p.x}, y:${this.p.y} are outside confines of room ${this.room.id}`);
+            throw new Error(`x:${p.x}, y:${p.y} are outside confines of room:${pk}`);
         }
         //its a door?
-        if ('<^>v'.indexOf(token) >= 0) {
+        if (has('<^>v', token)) {
             return true; //nothing
         }
         //already wall?
-        if ('┗┓┛┏┃━'.indexOf(token) >= 0) {
+        if (has('┗┓┛┏┃━', token)) {
             return false; // all done
         }
         //undrawnwall.
-        if ('#' === token) {
+        if ('#' === token.tag) {
 
-            let prev = addV(this.p, negV(this.t));
-            let nextToken = this.room.getToken(0, addV(this.p, this.t));
-            let tangentToken = <string>(this.room.getToken(0, addV(this.p, this.n)));
-            let prevToken = this.room.getToken(0, prev);
+            let prev = addV(p, negV(t));
+            let nextToken = fidx(addV(p, t));
+            let tangentToken = fidx(addV(p, n));
+            let prevToken = fidx(prev);
             if (prevToken === undefined) { //error
                 throw new Error(`prevToken was undefined ${prev.x} , ${prev.y} `);
             }
             if (nextToken === undefined) {
-                if ('^<>v'.indexOf(tangentToken) >= 0) {
-                    this.room.setToken(0, this.p, this.tt);
+                if (has('^<>v', tangentToken)) {
+                    set(p, tt);
                 }
                 else {
-                    this.room.setToken(0, this.p, this.tn);
+                    set(p, tn);
                 }
                 return true;
             }
-            if ('┗┓┛┏┃━#'.indexOf(prevToken) === -1) {// only possible if it is a opening for a door
-                if ('┗┓┛┏┃━#'.indexOf(tangentToken) >= 0) {
-                    this.room.setToken(0, this.p, this.nn);
+            if (has('┗┓┛┏┃━#', prevToken) === false) {// only possible if it is a opening for a door
+                if (has('┗┓┛┏┃━#', tangentToken)) {
+                    set(p, nn);
                 }
                 else {
-                    this.room.setToken(0, this.p, this.nt);
+                    set(p, nt);
                 }
                 return true;
             }
-            if ('┗┓┛┏┃━#'.indexOf(tangentToken) === -1) {
-                if ('┗┓┛┏┃━#'.indexOf(nextToken) === -1) {
-                    this.room.setToken(0, this.p, this.dd);
+            if (has('┗┓┛┏┃━#', tangentToken) === false) {
+                if (has('┗┓┛┏┃━#', nextToken) === false) {
+                    set(p, dd);
                 }
                 else {
-                    this.room.setToken(0, this.p, this.tt);
+                    set(p, tt);
                 }
                 return true;
             }
-            if ('┗┓┛┏┃━#'.indexOf(tangentToken) >= 0) {
-                this.room.setToken(0, this.p, this.tn);
+            if (has('┗┓┛┏┃━#', tangentToken)) {
+                set(p, tn);
                 return true;
             }
         }
         return true;
-    }
+    };
 
-    public renderWall() {
+    const chizzleOutsideWalls = () => {
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                let token = <$Item>fidx({ x, y });
+                if (token.tag === '#') {
+                    token.tag = ' ';
+                    continue;
+                }
+                break;
+            }
+            for (let x = width - 1; x >= 0; x--) {
+                let token = <$Item>fidx({ x, y });
+                if (token.tag === '#') {
+                    token.tag = ' ';
+                    continue;
+                }
+                break;
+            }
+        }
 
-        do {
-            this.render();
-        } while (this.step());
-    }
+    };
 
+    setCursorParams();
 
+    const moveToInnerWall = (): boolean => {
+        marked.sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x);
+        let itm = marked.find((i) => i.tag === '#');
+        if (!itm) {
+            return false;
+        }
+        dir = '<';
+        p = addV(itm.p, { x: 0, y: 1 });
+        setCursorParams();
+        return true;
+    };
 
-    constructor(room: Room) {
-        this.room = room;
-        this.init();
-        this.setCursorParams();
-    }
+    return {
+        step,
+        render,
+        chizzleOutsideWalls,
+        moveToInnerWall,
+        result: () => marked.sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x)
+    };
 }
 
+export function processWalls(matrix: string[], width: number, room: $Room, coords: Vector[]) {
+  
+    let height = matrix.length / width;
 
+    const cursor = createCursor(coords, width, height, room.doors, room.pk);
 
-export class InnerWallCursor extends WallCursor {
-    constructor(room: Room) {
-        super(room);
-        //find upper right conrenr
-        let v: Vector = { x: -1, y: -1 };
-        room.room[0].reduce((prev, line, y) => {
-            if (prev.x > 0) {
-                return prev;
-            }
-            let x = line.indexOf('#');
-            if (x > 0) {
-                prev.x = x;
-                prev.y = y;
-            }
-            return prev;
-        }, v);
-        if (v.y === -1) {
-            throw new Error(`no inner wall for room ${room.id}`);
-        }
-        v.y++;
-        this.dir = '<';
-        this.setCursorParams();
-        this.p = v;
+    do {
+        cursor.render();
+    } while (cursor.step());
 
+    cursor.chizzleOutsideWalls();
+    
+    // draw all inner walls
+    while (cursor.moveToInnerWall()) {
+        do {
+            cursor.render();
+        } while (cursor.step());
     }
+
+    room.walls.splice(0, room.walls.length, ...cursor.result());
+       
 }

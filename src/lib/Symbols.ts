@@ -1,3 +1,4 @@
+'use strict';
 // 
 // CIRSwm  [c] secret pressure plate, [I] red pentagram, [R] pentagram, [S]  bear trap, [w] spikes, [m] half moon trap
 // [BJPY{V] [B] Statue wizard, [J] vase, [P] twirl stone, [Y] Cross tombstone, [{] Beer barrel, [V] Tomb Stone    
@@ -6,127 +7,215 @@
 // [LMZxut]
 // 
 
+// -3 wall and floors
+// [#] wall
+// [.] floor
 
+//-2 (exclusive)
+// [X]teleport (can have battle and blood)
+// [µ]stairs
+// [(]lava
+// [Q] quest generator
+// [O] water
+// [$] acid bath
+
+//-1 nothing below/above but walkable or droppable items above or battle 
+// [I] red pentagram
+// [m] half moon trap
+// [R] pentagram
+// [C] secret pressure plate
+// [w] spikes
+// [S] bear trap
+
+// 0
+// [é] carpet, [=]blood , [A]skullsones, [K]cornercobweb
+// anything ranked above 0 can be placed above
+
+// 97 nothing above untill broken, after it broken
+//    allow for items above, walkabe or battle 
+//  [P] twirl stone
+//  [{] beer barrel
+//  [Y] cross tombstone
+//  [V] normal tombstone
+//  [J] vase
+//  [B] statue wizard
+
+// 98 ineventory items (only on cells 97,-1,0, or other 98)
+//    is stack
+// [u] magic speelbook
+// [Z] shield
+// [t] mace
+// [x] damage boots
+// [à] boots
+// [+] cracked-mace
+// [~] red-pants
+// [ç] green pants
+// [ù] leather-boots
+// [L] stone
+// [M] coin, gold
+// [s] bottle water
+// [p] bottle milk
+// [r] chicken-bone
+// [q] cheese
+// [i] elixer
+// [;] fish
+// [§] mana
+// [l] magic potion
+
+
+// 99 nothing above (this class mutall excludes) 
+// ["] death totum
+// [!]tourch
+// [U]trader
+// [N] quest-result
+// [z] closet
+// [&] treasure chest
+// [H] coffin
+// [*] table
+
+// 99 enemies , nothing above (walkable items)
+// [T] skeleton-warrior
+// [%] boss
+// [E] goblin
+// [F] bat
+// [G] rat
+// [@] green wizard shaman
+
+
+// 100 doorways always cover because horizontal
+// <^>v
+import {
+    Vector
+} from './math';
+
+import {
+    $Room
+} from './Room';
+
+import {
+  processWalls
+} from './WallCursor';
 
 export const processors = {
-    doorWays: function doorWays(layer: string[], w: number, x: number, y: number, tag: string,   ) {
-        if ('>v<^'.indexOf(tag) >= 0) {
-            
+    doorWays: function doorWays(matrix: string[], width: number, collector: $Room, coords: Vector[], si: DoorWay<DoorType>) {
+        if (coords.length > 1) {
+            throw new Error(`Room ${collector.pk} has multiple coords for door ${si.m || si.e}`);
         }
-        layer;
-        w;
-        x;
-        y;
-    }
+        width;
+        matrix;
+        collector.doors.push({ from: collector.pk, to: si.toRoom, inset: si.inset || false, p: coords[0], dir: si.e });
+    },
+    processWalls
 };
 
 export interface CPU {
-    [index: string]: Function| 0;
+    [index: string]: Function | 0;
 }
 
 export const codedItems: CPU = {
     //
     // primary
     //
-    '#': Function, //xx wall
-    '.': 0, //xx floor
+    '#': processors.processWalls, //xx wall
+    '.': 0x0, //xx floor
     //
     //quest reults
     //
-    N: 0, //treasure quest-result
+    N: 0x0, //treasure quest-result
     //
     //dungeon floor coverings
     //
-    K: 0, //xx cobweb
-    A: 0, //xx skull
-    é: 0, //xx carpet
+    K: 0x0, //xx cobweb, same as carpet, everything above
+    A: 0x0, //xx skull , floor or carper below, blood seeps below
+    é: 0x0, //xx carpet, like a floor nothing more, nothing below this
+    '=': 0x0, //"seeps to floor or carpet"
     //
     // doorways and portals
     //
-    '^': processors.doorWays, //xx door north
-    '>': processors.doorWays, //xx door east
-    '<': processors.doorWays, //xx door west
-    v: processors.doorWays, //xx door south
-    X: 0, //teleport
-    µ: 0, //stairs change level
+    '^': processors.doorWays, //xx door north ,top
+    '>': processors.doorWays, //xx door east  ,top
+    '<': processors.doorWays, //xx door west  ,top
+    v: processors.doorWays, //xx door south   ,top
+    X: 0x0, //teleport, exclusive
+    µ: 0x0, //stairs change level , exclusive  
     //
     //obstructables
     //
-    '"': 0, //xx death-totum
-    '(': 0, //xx lava
-    '!': 0, //xx tourch
-    U: 0, //xx trader
-    Q: 0, //xx quest regenerator
-    O: 0, //xx water
-    $: 0, //acid bath
+    '"': 0x0, //xx death-totum
+    '(': 0x0, //xx lava
+    '!': 0x0, //xx tourch
+    U: 0x0, //xx trader
+    Q: 0x0, //xx quest regenerator
+    O: 0x0, //xx water
+    $: 0x0, //acid bath
     //
     // discoverables via unlocking / open
     //
-    z: 0, //xx closet
-    '&': 0, //xx treasure chest
-    H: 0, //xx coffin
-    '*': 0, //xx table
+    z: 0x0, //xx closet
+    '&': 0x0, //xx treasure chest
+    H: 0x0, //xx coffin
+    '*': 0x0, //xx table
     //
     // activatable plating
     //
-    I: 0, //xx red pentagram trap
-    m: 0, //xx half moon trap
-    R: 0, //xx pentagram
-    C: 0, //xx secret pressure plate
+    I: 0x0, //xx red pentagram trap
+    m: 0x0, //xx half moon trap
+    R: 0x0, //xx pentagram
+    C: 0x0, //xx secret pressure plate
     //
     // claws, spikes
     //
-    w: 0, //xx spikes
-    S: 0, //xx bear trap
+    w: 0x0, //xx spikes
+    S: 0x0, //xx bear trap
     //
     //discoverables via breaking
     //
-    P: 0, //xx twirl-stone, looks like dna helix#
-    '{': 0, //xx beer barrel
-    Y: 0, //xx cross tombstone
-    V: 0, //xxx tombstone
-    J: 0, //xx vase 
-    B: 0, //xx statue wizard
+    P: 0x0, //xx twirl-stone, looks like dna helix#
+    '{': 0x0, //xx beer barrel
+    Y: 0x0, //xx cross tombstone
+    V: 0x0, //xxx tombstone
+    J: 0x0, //xx vase 
+    B: 0x0, //xx statue wizard
     //
     //enemies
     //
-    T: 0, //xxx skelton-enemy
-    '%': 0, //xx boss 
-    E: 0, //xx goblin
-    F: 0, //xx bat
-    G: 0, //xx rat
-    '@': 0, //xx green wizard shaman throws fire
+    T: 0x0, //xxx skelton-enemy
+    '%': 0x0, //xx boss 
+    E: 0x0, //xx goblin
+    F: 0x0, //xx bat
+    G: 0x0, //xx rat
+    '@': 0x0, //xx green wizard shaman throws fire
     //
     //learnables
     //
-    u: 0, //... magic spellbook (earth-quake, defense, warrior shout)
+    u: 0x0, //... magic spellbook (earth-quake, defense, warrior shout)
     //
     //arsanal
     //
-    Z: 0, //... shield
-    t: 0, //... mace
-    x: 0, //... damaged boots
-    à: 0, //... boots
-    '+': 0, //... cracked-mace
-    '~': 0, //... red-pants
-    ç: 0, //... green-pants
-    ù: 0, //... leather-boots
+    Z: 0x0, //... shield
+    t: 0x0, //... mace
+    x: 0x0, //... damaged boots
+    à: 0x0, //... boots
+    '+': 0x0, //... cracked-mace
+    '~': 0x0, //... red-pants
+    ç: 0x0, //... green-pants
+    ù: 0x0, //... leather-boots
     //
     //valuables
     //
-    L: 0, //... stone
-    M: 0, //... coin, gold
+    L: 0x0, //... stone
+    M: 0x0, //... coin, gold
     //
     // edibales
     //
-    s: 0, //   bottle water
-    p: 0, //   bottle milk
-    r: 0, //   chicken-bone
-    q: 0, //   cheese
-    i: 0, //   elixer
-    ';': 0, //   fish
-    '§': 0, //   mana
-    l: 0 //   magic-potion
+    s: 0x0, //   bottle water
+    p: 0x0, //   bottle milk
+    r: 0x0, //   chicken-bone
+    q: 0x0, //   cheese
+    i: 0x0, //   elixer
+    ';': 0x0, //   fish
+    '§': 0x0, //   mana
+    l: 0x0 //   magic-potion
 };
 
 

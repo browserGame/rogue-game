@@ -26,44 +26,66 @@ export function parseLayout(layout: Layout) {
     let width = p.x;
     let height = p.y;
 
+
+
+    // convert each array of lines into array grids-cells
+    raw = raw.map((layer, idx) => {
+        let matrix: string[] = [];
+        layer.reduce((acc, line) => {
+            acc.push.apply(acc, line.split(''));
+            return acc;
+        }, matrix);
+        return idx ? matrix.map( (c) => '#^<v>'.indexOf(c) >= 0 ? '.' : c ) : matrix;
+    });
+
     let room: $Room = {
         pk,
         top,
         left,
         width,
         height,
-        doors: []
+        doors: [],
+        walls: [],
+        base: raw[0]
     };
-    room;
 
-    // convert each array of lines into array grids-cells
-    raw = raw.map((layer) => {
-        let matrix: string[] = [];
-        layer.reduce((acc, line) => {
-            acc.push.apply(acc, line.split(''));
-            return acc;
-        }, matrix);
-        return matrix;
-    });
 
-    raw.map((matrix) => {
-        let itemPalette = createPalette(matrix, width, '.#');
-        Object.keys(itemPalette).forEach((key) => {
-            let si = metaInfo.get(key);
-            if (si) {
-                let processor = codedItems[si.e];
-                if (processor) {
-                    //processor(matrix, width, pk, si, room);
-                    console.log('processor found for type %s', si.e, itemPalette[key]);
-                }
-                else {
-                    //console.log('pk:%d, no ip for: %s->%s', pk, si.e, si.m);
-                }
+    raw.map((matrix, idx) => {
+        let itemPalette = createPalette(matrix, width, '.');
+        //process doors first
+        
+        let dtag: string[] = [];
+        '^<>v#'.split('').forEach((key) => {
+            if (key in itemPalette) {
+                dtag.push(key);
             }
+        });
+        
+        // add the rest
+        Object.keys(itemPalette).forEach((key) => {
+            if (dtag.indexOf(key) >= 0){
+                return;
+            }
+            dtag.push(key);
+        });
+
+        dtag.forEach((key) => {
+            let si = metaInfo.get(key);
+            let processor = codedItems[ (si && si.e) || key];
+            if (processor) {
+                 //   console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+                    processor(matrix, width, room, itemPalette[key], si);
+            }
+            else {
+               // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
+            }
+            console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
         });
     });
 
+    console.log(`walls:${room.walls.map((i) => i.tag).join('')}`);
 
+    return room;
 
 }
 

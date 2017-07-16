@@ -3,10 +3,10 @@
 import { SymbolBase } from './Symbols';
 import { Vector } from './math';
 import { Door } from './Door';
-import { WallCursor, InnerWallCursor } from './WallCursor';
+//import { WallCursor, InnerWallCursor } from './WallCursor';
 //import { factoryAreaScanner, FloorItem } from './FloorItem';
 import {
-   // validateMetrics,
+    // validateMetrics,
     //createPalette,
     //    ItemPalette 
 } from './tools';
@@ -29,13 +29,20 @@ export interface Layout {
     symbols: (SymbolBase<string>)[];
 }
 
+export interface $Item {
+    tag: string;
+    p: Vector;
+}
+
 export interface $Room {
     pk: number;
     top: number;
     left: number;
     width: number;
     height: number;
+    walls: $Item[];
     doors: Door[];
+    base: string[];
 }
 
 export class Room {
@@ -55,7 +62,7 @@ export class Room {
     }
 
     private renderWalls() {
-        let cursor = new WallCursor(this);
+      /*  let cursor = new WallCursor(this);
         cursor.renderWall();
         let fl = this.room[0];
         fl = fl.map((s) => {
@@ -79,7 +86,7 @@ export class Room {
         }
         catch (e) {
             //no inner wall--nothing
-        }
+        }*/
     }
 
     private validateCoords(layer: number, x: number, y: number): string[] | undefined {
@@ -131,9 +138,9 @@ export class Room {
             return layer.split(/[\n\r]+/).filter((line) => line);
         });
 
-       // let p = validateMetrics(raw); // will throw typeError
+        // let p = validateMetrics(raw); // will throw typeError
         //this.w = p.x;
-       // this.h = p.y;
+        // this.h = p.y;
 
         //let symbolMap = new Map<string, SymbolBase<string>>();
 
