@@ -1,0 +1,92 @@
+import {
+    $Room,
+    $Item
+} from './Room';
+
+import {
+    Vector, addV
+} from './math';
+
+export function processCobWeb(matrix: string[], width: number, room: $Room, coords: Vector[]) {
+    
+    //unused but tslint wants it
+    matrix;
+    width;
+        
+    const isWall = (v: Vector) => {
+        let f = room.walls.find((i) => {
+            return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
+        });
+        return !!f;
+    };
+    /**
+     * 
+     * @param v  the corner to be tested
+     * @param corner index 0, 1, 2, 3 , representing the corners in a box 
+     */
+    const isCorner = (v: Vector, corner: number): boolean => {
+        //upper left //jups with 3 steps
+        let templ: Vector[] = [
+            { x: -1, y: 1 },
+            { x: -1, y: 0 },
+            { x: -1, y: -1 },
+            { x: 0, y: -1 },
+            { x: 1, y: -1 },
+            //
+            { x: 1, y: 0 },
+            { x: 1, y: 1 },
+            { x: 0, y: 1 }
+        ];
+        //0,2,4,6 mod 8
+        /* 
+           top left //0
+           ***
+           *cs
+           *ss 
+
+           top right //+2
+           ***
+           sc*
+           ss*
+
+           bottom right //+2
+           ss*
+           sc*
+           ***
+
+           bottom left //+2
+
+           *ss
+           *cs
+           ***
+
+        */
+
+        let testCoords = templ.map((i) => addV(v, i)).map((_, idx, arr) => arr[(idx + corner * 2) % 8]);
+
+        let bools = testCoords.map((i) => isWall(i)); //this is always 1,1,1,1,1,0,0,0 (or should be)
+        let start = bools.findIndex((val) => val === false); // this is index 5
+        let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
+
+        return start === 5 && startReverse === 4;
+
+    };
+
+
+
+    /* 
+    There are different kind of cobwebs because cobwebs sit in the corners of rooms 
+    */
+
+    let validWebs = coords.map((v) => {
+        let selected = [0, 1, 2, 3].filter((corner) => isCorner(v, corner));
+        if (selected.length !== 1){
+            return undefined;
+        }
+        return { tag: `${selected[0]}`, p:v };
+    }).filter((i) => i !== undefined);
+
+    room.cobWebs.splice(0, room.cobWebs.length, ...validWebs);    
+
+}
+

@@ -11,18 +11,6 @@ import {
     //    ItemPalette 
 } from './tools';
 
-/*
-const liquidExtracor = factoryAreaScanner('liquid');
-const carpetExtractor = factoryAreaScanner('carpet');
-const lanternExtractor = factoryAreaScanner('lantern');
-const cobWebsAndSkullsExtractor = factoryAreaScanner('cobweb&Skulls');
-const mutexExtractor = factoryAreaScanner('mutexItems');
-const breakableExtractor = factoryAreaScanner('breakableItems');
-const enemyExtractor = factoryAreaScanner('enemy');
-const openableExtractor = factoryAreaScanner('openableItems');
-const consumableExtractor = factoryAreaScanner('consumables');
-*/
-
 export interface Layout {
     room: string[];
     id: number;
@@ -43,6 +31,8 @@ export interface $Room {
     walls: $Item[];
     doors: Door[];
     base: string[];
+    floor: $Item[];
+    cobWebs: $Item[];
 }
 
 export class Room {

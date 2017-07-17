@@ -26,8 +26,6 @@ export function parseLayout(layout: Layout) {
     let width = p.x;
     let height = p.y;
 
-
-
     // convert each array of lines into array grids-cells
     raw = raw.map((layer, idx) => {
         let matrix: string[] = [];
@@ -35,7 +33,7 @@ export function parseLayout(layout: Layout) {
             acc.push.apply(acc, line.split(''));
             return acc;
         }, matrix);
-        return idx ? matrix.map( (c) => '#^<v>'.indexOf(c) >= 0 ? '.' : c ) : matrix;
+        return idx ? matrix.join('').replace(/[#\^<v>.]/g, ' ').split('') : matrix;
     });
 
     let room: $Room = {
@@ -46,24 +44,25 @@ export function parseLayout(layout: Layout) {
         height,
         doors: [],
         walls: [],
+        floor: [],
         base: raw[0]
     };
 
 
     raw.map((matrix, idx) => {
-        let itemPalette = createPalette(matrix, width, '.');
+        let itemPalette = createPalette(matrix, width, ' ');
         //process doors first
-        
+
         let dtag: string[] = [];
-        '^<>v#'.split('').forEach((key) => {
+        '^<>v#.'.split('').forEach((key) => {
             if (key in itemPalette) {
                 dtag.push(key);
             }
         });
-        
+
         // add the rest
         Object.keys(itemPalette).forEach((key) => {
-            if (dtag.indexOf(key) >= 0){
+            if (dtag.indexOf(key) >= 0) {
                 return;
             }
             dtag.push(key);
@@ -71,19 +70,20 @@ export function parseLayout(layout: Layout) {
 
         dtag.forEach((key) => {
             let si = metaInfo.get(key);
-            let processor = codedItems[ (si && si.e) || key];
+            let processor = codedItems[(si && si.e) || key];
             if (processor) {
-                 //   console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
-                    processor(matrix, width, room, itemPalette[key], si);
+                //   console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+                processor(matrix, width, room, itemPalette[key], si);
             }
             else {
-               // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
+                // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
             }
             console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
         });
     });
 
     console.log(`walls:${room.walls.map((i) => i.tag).join('')}`);
+    console.log(`floors:${room.floor.map((i) => i.tag).join('')}`);
 
     return room;
 

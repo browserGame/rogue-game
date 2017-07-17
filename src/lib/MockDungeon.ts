@@ -81,7 +81,7 @@ export const mockDungeon: Layout[] = [
             <TelePortal>{ e: 'X', toRoom: 28, portal: 'X' },
         ], id: 1,
         room: [
-            `
+`
 #########
 #.......#
 #..A....#
@@ -92,7 +92,7 @@ export const mockDungeon: Layout[] = [
 #K.....K#
 #########
 `,
-            `
+`
 #########
 #.......#
 #.......#

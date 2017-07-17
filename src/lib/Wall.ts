@@ -194,6 +194,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: Do
     };
 
     const chizzleOutsideWalls = () => {
+        marked = marked.map((i) => { i.tag = i.tag.replace(/[\^v<>]/g, ' '); return i; });
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
                 let token = <$Item>fidx({ x, y });
@@ -239,7 +240,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: Do
 }
 
 export function processWalls(matrix: string[], width: number, room: $Room, coords: Vector[]) {
-  
+
     let height = matrix.length / width;
 
     const cursor = createCursor(coords, width, height, room.doors, room.pk);
@@ -249,7 +250,7 @@ export function processWalls(matrix: string[], width: number, room: $Room, coord
     } while (cursor.step());
 
     cursor.chizzleOutsideWalls();
-    
+
     // draw all inner walls
     while (cursor.moveToInnerWall()) {
         do {
@@ -258,5 +259,5 @@ export function processWalls(matrix: string[], width: number, room: $Room, coord
     }
 
     room.walls.splice(0, room.walls.length, ...cursor.result());
-       
+
 }

@@ -85,27 +85,22 @@
 // 100 doorways always cover because horizontal
 // <^>v
 import {
-    Vector
-} from './math';
+    processWalls
+} from './Wall';
 
 import {
-    $Room
-} from './Room';
+    processFloor
+} from './Floor';
 
 import {
-  processWalls
-} from './WallCursor';
+    processDoor
+} from './Door';
+
 
 export const processors = {
-    doorWays: function doorWays(matrix: string[], width: number, collector: $Room, coords: Vector[], si: DoorWay<DoorType>) {
-        if (coords.length > 1) {
-            throw new Error(`Room ${collector.pk} has multiple coords for door ${si.m || si.e}`);
-        }
-        width;
-        matrix;
-        collector.doors.push({ from: collector.pk, to: si.toRoom, inset: si.inset || false, p: coords[0], dir: si.e });
-    },
-    processWalls
+    door: <Function>processDoor, // because of typescript idiocy
+    wall: <Function>processWalls,
+    floor: <Function>processFloor
 };
 
 export interface CPU {
@@ -116,8 +111,8 @@ export const codedItems: CPU = {
     //
     // primary
     //
-    '#': processors.processWalls, //xx wall
-    '.': 0x0, //xx floor
+    '#': processors.wall, //xx wall
+    '.': processors.floor, //xx floor
     //
     //quest reults
     //
@@ -132,10 +127,10 @@ export const codedItems: CPU = {
     //
     // doorways and portals
     //
-    '^': processors.doorWays, //xx door north ,top
-    '>': processors.doorWays, //xx door east  ,top
-    '<': processors.doorWays, //xx door west  ,top
-    v: processors.doorWays, //xx door south   ,top
+    '^': processors.door, //xx door north ,top
+    '>': processors.door, //xx door east  ,top
+    '<': processors.door, //xx door west  ,top
+    v: processors.door, //xx door south   ,top
     X: 0x0, //teleport, exclusive
     µ: 0x0, //stairs change level , exclusive  
     //
