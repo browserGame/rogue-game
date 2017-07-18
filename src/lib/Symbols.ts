@@ -1,34 +1,28 @@
 'use strict';
-// 
-// CIRSwm  [c] secret pressure plate, [I] red pentagram, [R] pentagram, [S]  bear trap, [w] spikes, [m] half moon trap
-// [BJPY{V] [B] Statue wizard, [J] vase, [P] twirl stone, [Y] Cross tombstone, [{] Beer barrel, [V] Tomb Stone    
-// [EFGT@%]  [E] Goblin, [F] bat, [G] rat, [T] skeleton enemy, [@] green shaman [%] Boss    
-// [H&*zQU"] [H] Coffin, [&] Treasure, [*] Table, [z]  Closet
-// [LMZxut]
-// 
 
-// -3 wall and floors
+// -4 static untraversable, noting above this, generally these are "cut-outs"
 // [#] wall
-// [.] floor
-
-//-2 (exclusive)
-// [X]teleport (can have battle and blood)
-// [µ]stairs
 // [(]lava
-// [Q] quest generator
 // [O] water
 // [$] acid bath
 
-//-1 nothing below/above but walkable or droppable items above or battle 
+// -3 (nothing below these items, makes sense ,lol can have stuff on top, except level stairs)
+// [.] floor
+// [µ] level stairs (when you just walk out, you seem to "stand on it", monsters move around it)
+
+//-1 nothing below (except for floor) , walkable can do battle on it,  
 // [I] red pentagram
 // [m] half moon trap
 // [R] pentagram
 // [C] secret pressure plate
 // [w] spikes
 // [S] bear trap
+// [X]teleport (can have battle (me, not other enemies) and blood)
 
-// 0
+
+// 0 nothing below, except for floor (walkable can place stuff on it)
 // [é] carpet, [=]blood , [A]skullsones, [K]cornercobweb
+// blood will be on carpet or seep on floor
 // anything ranked above 0 can be placed above
 
 // 97 nothing above untill broken, after it broken
@@ -40,7 +34,8 @@
 //  [J] vase
 //  [B] statue wizard
 
-// 98 ineventory items (only on cells 97,-1,0, or other 98)
+
+// 98 ineventory items (only on cells 97,0,-1 (except teleport),-3 (except level stairs))
 //    is stack
 // [u] magic speelbook
 // [Z] shield
