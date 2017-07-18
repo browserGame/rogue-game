@@ -96,11 +96,15 @@ import {
     processDoor
 } from './Door';
 
+import {
+    processCobWeb
+} from './CobWeb';
 
 export const processors = {
     door: <Function>processDoor, // because of typescript idiocy
     wall: <Function>processWalls,
-    floor: <Function>processFloor
+    floor: <Function>processFloor,
+    cobweb: <Function>processCobWeb,
 };
 
 export interface CPU {
@@ -120,7 +124,7 @@ export const codedItems: CPU = {
     //
     //dungeon floor coverings
     //
-    K: 0x0, //xx cobweb, same as carpet, everything above
+    K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: 0x0, //xx skull , floor or carper below, blood seeps below
     é: 0x0, //xx carpet, like a floor nothing more, nothing below this
     '=': 0x0, //"seeps to floor or carpet"

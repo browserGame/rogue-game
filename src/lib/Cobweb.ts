@@ -1,6 +1,7 @@
+'use strict';
 import {
     $Room,
-    //$Item
+    $Item
 } from './Room';
 
 import {
@@ -8,11 +9,11 @@ import {
 } from './math';
 
 export function processCobWeb(matrix: string[], width: number, room: $Room, coords: Vector[]) {
-    
+
     //unused but tslint wants it
     matrix;
     width;
-        
+
     const isWall = (v: Vector) => {
         let f = room.walls.find((i) => {
             return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
@@ -68,7 +69,7 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
         let start = bools.findIndex((val) => val === false); // this is index 5
         let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
 
-        return start === 5 && startReverse === 4;
+        return start === 5 && startReverse === 3;
 
     };
 
@@ -80,13 +81,14 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
 
     let validWebs = coords.map((v) => {
         let selected = [0, 1, 2, 3].filter((corner) => isCorner(v, corner));
-        if (selected.length !== 1){
+        if (selected.length !== 1) {
             return undefined;
         }
-        return { tag: `${selected[0]}`, p:v };
+        let rc: $Item = { tag: `${selected[0]}`, p: v };
+        return rc;
     }).filter((i) => i !== undefined);
 
-    room.cobWebs.splice(0, room.cobWebs.length, ...validWebs);    
+    room.cobWebs.splice(0, room.cobWebs.length, ...validWebs);
 
 }
 

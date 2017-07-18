@@ -45,7 +45,8 @@ export function parseLayout(layout: Layout) {
         doors: [],
         walls: [],
         floor: [],
-        base: raw[0]
+        base: raw[0],
+        cobWebs: []
     };
 
 
