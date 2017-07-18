@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<anims>
+   <anim name="campfire" sprite_sheet="dungeon_objects" play_mode="play_once" loop="true" speed="400.00">
+        <frame duration="400.0">fire_1</frame>
+        <frame duration="400.0">fire_2</frame>
+    </anim>
+</anims>

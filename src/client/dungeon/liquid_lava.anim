@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<anims>
+    <anim name="liquid" sprite_sheet="liquid_lava" play_mode="play_once" loop="true" speed="900.00">
+        <frame duration="900.0">liquid</frame>
+        <frame duration="900.0">liquid_1</frame>
+    </anim>
+</anims>

@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<anims>
+    <anim name="assassin01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">assassin01_01</frame>
+        <frame duration="300.0">assassin01_02</frame>
+    </anim>
+    <anim name="assassin01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">assassin01_01</frame>
+        <frame duration="300.0">assassin01_02</frame>
+    </anim>
+    <anim name="assassin02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">assassin02_01</frame>
+        <frame duration="300.0">assassin02_02</frame>
+    </anim>
+    <anim name="assassin02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">assassin02_01</frame>
+        <frame duration="300.0">assassin02_02</frame>
+    </anim>
+    <anim name="viking01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">viking01_01</frame>
+        <frame duration="300.0">viking01_02</frame>
+    </anim>
+    <anim name="viking01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">viking01_01</frame>
+        <frame duration="300.0">viking01_02</frame>
+    </anim>
+    <anim name="viking02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">viking02_01</frame>
+        <frame duration="300.0">viking02_02</frame>
+    </anim>
+    <anim name="viking02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">viking02_01</frame>
+        <frame duration="300.0">viking02_02</frame>
+    </anim>
+    <anim name="viking03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">viking03_01</frame>
+        <frame duration="300.0">viking03_02</frame>
+    </anim>
+    <anim name="viking03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">viking03_01</frame>
+        <frame duration="300.0">viking03_02</frame>
+    </anim>
+    <anim name="darkelf01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">darkelf01_01</frame>
+        <frame duration="300.0">darkelf01_02</frame>
+    </anim>
+    <anim name="darkelf01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">darkelf01_01</frame>
+        <frame duration="300.0">darkelf01_02</frame>
+    </anim>
+    <anim name="darkelf02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">darkelf02_01</frame>
+        <frame duration="300.0">darkelf02_02</frame>
+    </anim>
+    <anim name="darkelf02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">darkelf02_01</frame>
+        <frame duration="300.0">darkelf02_02</frame>
+    </anim>
+    <anim name="darkelf03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">darkelf03_01</frame>
+        <frame duration="300.0">darkelf03_02</frame>
+    </anim>
+    <anim name="darkelf03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">darkelf03_01</frame>
+        <frame duration="300.0">darkelf03_02</frame>
+    </anim>
+    <anim name="darkelf04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">darkelf04_01</frame>
+        <frame duration="300.0">darkelf04_02</frame>
+    </anim>
+    <anim name="darkelf04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">darkelf04_01</frame>
+        <frame duration="300.0">darkelf04_02</frame>
+    </anim>
+    <anim name="darkelf05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">darkelf05_01</frame>
+        <frame duration="300.0">darkelf05_02</frame>
+    </anim>
+    <anim name="darkelf05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">darkelf05_01</frame>
+        <frame duration="300.0">darkelf05_02</frame>
+    </anim>
+    <anim name="elf01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf01_01</frame>
+        <frame duration="300.0">elf01_02</frame>
+    </anim>
+    <anim name="elf01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf01_01</frame>
+        <frame duration="300.0">elf01_02</frame>
+    </anim>
+    <anim name="elf02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf02_01</frame>
+        <frame duration="300.0">elf02_02</frame>
+    </anim>
+    <anim name="elf02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf02_01</frame>
+        <frame duration="300.0">elf02_02</frame>
+    </anim>
+    <anim name="elf03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf03_01</frame>
+        <frame duration="300.0">elf03_02</frame>
+    </anim>
+    <anim name="elf03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf03_01</frame>
+        <frame duration="300.0">elf03_02</frame>
+    </anim>
+    <anim name="elf04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf04_01</frame>
+        <frame duration="300.0">elf04_02</frame>
+    </anim>
+    <anim name="elf04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf04_01</frame>
+        <frame duration="300.0">elf04_02</frame>
+    </anim>
+    <anim name="elf05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf05_01</frame>
+        <frame duration="300.0">elf05_02</frame>
+    </anim>
+    <anim name="elf05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf05_01</frame>
+        <frame duration="300.0">elf05_02</frame>
+    </anim>
+    <anim name="elf06_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf06_01</frame>
+        <frame duration="300.0">elf06_02</frame>
+    </anim>
+    <anim name="elf06_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf06_01</frame>
+        <frame duration="300.0">elf06_02</frame>
+    </anim>
+    <anim name="elf07_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf07_01</frame>
+        <frame duration="300.0">elf07_02</frame>
+    </anim>
+    <anim name="elf07_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf07_01</frame>
+        <frame duration="300.0">elf07_02</frame>
+    </anim>
+    <anim name="elf08_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">elf08_01</frame>
+        <frame duration="300.0">elf08_02</frame>
+    </anim>
+    <anim name="elf08_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">elf08_01</frame>
+        <frame duration="300.0">elf08_02</frame>
+    </anim>
+    <anim name="grayelf01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf01_01</frame>
+        <frame duration="300.0">grayelf01_02</frame>
+    </anim>
+    <anim name="grayelf01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf01_01</frame>
+        <frame duration="300.0">grayelf01_02</frame>
+    </anim>
+    <anim name="grayelf02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf02_01</frame>
+        <frame duration="300.0">grayelf02_02</frame>
+    </anim>
+    <anim name="grayelf02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf02_01</frame>
+        <frame duration="300.0">grayelf02_02</frame>
+    </anim>
+    <anim name="grayelf03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf03_01</frame>
+        <frame duration="300.0">grayelf03_02</frame>
+    </anim>
+    <anim name="grayelf03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf03_01</frame>
+        <frame duration="300.0">grayelf03_02</frame>
+    </anim>
+    <anim name="grayelf04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf04_01</frame>
+        <frame duration="300.0">grayelf04_02</frame>
+    </anim>
+    <anim name="grayelf04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf04_01</frame>
+        <frame duration="300.0">grayelf04_02</frame>
+    </anim>
+    <anim name="grayelf05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf05_01</frame>
+        <frame duration="300.0">grayelf05_02</frame>
+    </anim>
+    <anim name="grayelf05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf05_01</frame>
+        <frame duration="300.0">grayelf05_02</frame>
+    </anim>
+    <anim name="grayelf06_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf06_01</frame>
+        <frame duration="300.0">grayelf06_02</frame>
+    </anim>
+    <anim name="grayelf06_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf06_01</frame>
+        <frame duration="300.0">grayelf06_02</frame>
+    </anim>
+    <anim name="grayelf07_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf07_01</frame>
+        <frame duration="300.0">grayelf07_02</frame>
+    </anim>
+    <anim name="grayelf07_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf07_01</frame>
+        <frame duration="300.0">grayelf07_02</frame>
+    </anim>
+    <anim name="grayelf08_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">grayelf08_01</frame>
+        <frame duration="300.0">grayelf08_02</frame>
+    </anim>
+    <anim name="grayelf08_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">grayelf08_01</frame>
+        <frame duration="300.0">grayelf08_02</frame>
+    </anim>
+    <anim name="lizard01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">lizard01_01</frame>
+        <frame duration="300.0">lizard01_02</frame>
+    </anim>
+    <anim name="lizard01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">lizard01_01</frame>
+        <frame duration="300.0">lizard01_02</frame>
+    </anim>
+    <anim name="lizard02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">lizard02_01</frame>
+        <frame duration="300.0">lizard02_02</frame>
+    </anim>
+    <anim name="lizard02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">lizard02_01</frame>
+        <frame duration="300.0">lizard02_02</frame>
+    </anim>
+    <anim name="lizard03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">lizard03_01</frame>
+        <frame duration="300.0">lizard03_02</frame>
+    </anim>
+    <anim name="lizard03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">lizard03_01</frame>
+        <frame duration="300.0">lizard03_02</frame>
+    </anim>
+    <anim name="lizard04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">lizard04_01</frame>
+        <frame duration="300.0">lizard04_02</frame>
+    </anim>
+    <anim name="lizard04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">lizard04_01</frame>
+        <frame duration="300.0">lizard04_02</frame>
+    </anim>
+    <anim name="lizard05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">lizard05_01</frame>
+        <frame duration="300.0">lizard05_02</frame>
+    </anim>
+    <anim name="lizard05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">lizard05_01</frame>
+        <frame duration="300.0">lizard05_02</frame>
+    </anim>
+    <anim name="gnome01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gnome01_01</frame>
+        <frame duration="300.0">gnome01_02</frame>
+    </anim>
+    <anim name="gnome01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gnome01_01</frame>
+        <frame duration="300.0">gnome01_02</frame>
+    </anim>
+    <anim name="gnome02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gnome02_01</frame>
+        <frame duration="300.0">gnome02_02</frame>
+    </anim>
+    <anim name="gnome02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gnome02_01</frame>
+        <frame duration="300.0">gnome02_02</frame>
+    </anim>
+    <anim name="gnome03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gnome03_01</frame>
+        <frame duration="300.0">gnome03_02</frame>
+    </anim>
+    <anim name="gnome03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gnome03_01</frame>
+        <frame duration="300.0">gnome03_02</frame>
+    </anim>
+    <anim name="gnome04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gnome04_01</frame>
+        <frame duration="300.0">gnome04_02</frame>
+    </anim>
+    <anim name="gnome04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gnome04_01</frame>
+        <frame duration="300.0">gnome04_02</frame>
+    </anim>
+    <anim name="gnome05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gnome05_01</frame>
+        <frame duration="300.0">gnome05_02</frame>
+    </anim>
+    <anim name="gnome05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gnome05_01</frame>
+        <frame duration="300.0">gnome05_02</frame>
+    </anim>
+    <anim name="werewolf01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">werewolf01_01</frame>
+        <frame duration="300.0">werewolf01_02</frame>
+    </anim>
+    <anim name="werewolf01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">werewolf01_01</frame>
+        <frame duration="300.0">werewolf01_02</frame>
+    </anim>
+    <anim name="werewolf02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">werewolf02_01</frame>
+        <frame duration="300.0">werewolf02_02</frame>
+    </anim>
+    <anim name="werewolf02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">werewolf02_01</frame>
+        <frame duration="300.0">werewolf02_02</frame>
+    </anim>
+    <anim name="werewolf03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">werewolf03_01</frame>
+        <frame duration="300.0">werewolf03_02</frame>
+    </anim>
+    <anim name="werewolf03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">werewolf03_01</frame>
+        <frame duration="300.0">werewolf03_02</frame>
+    </anim>
+    <anim name="werewolf04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">werewolf04_01</frame>
+        <frame duration="300.0">werewolf04_02</frame>
+    </anim>
+    <anim name="werewolf04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">werewolf04_01</frame>
+        <frame duration="300.0">werewolf04_02</frame>
+    </anim>
+    <anim name="minotaur01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">minotaur01_01</frame>
+        <frame duration="300.0">minotaur01_02</frame>
+    </anim>
+    <anim name="minotaur01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">minotaur01_01</frame>
+        <frame duration="300.0">minotaur01_02</frame>
+    </anim>
+    <anim name="minotaur02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">minotaur02_01</frame>
+        <frame duration="300.0">minotaur02_02</frame>
+    </anim>
+    <anim name="minotaur02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">minotaur02_01</frame>
+        <frame duration="300.0">minotaur02_02</frame>
+    </anim>
+    <anim name="minotaur03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">minotaur03_01</frame>
+        <frame duration="300.0">minotaur03_02</frame>
+    </anim>
+    <anim name="minotaur03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">minotaur03_01</frame>
+        <frame duration="300.0">minotaur03_02</frame>
+    </anim>
+    <anim name="gargoyle01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gargoyle01_01</frame>
+        <frame duration="300.0">gargoyle01_02</frame>
+    </anim>
+    <anim name="gargoyle01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gargoyle01_01</frame>
+        <frame duration="300.0">gargoyle01_02</frame>
+    </anim>
+    <anim name="gargoyle02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gargoyle02_01</frame>
+        <frame duration="300.0">gargoyle02_02</frame>
+    </anim>
+    <anim name="gargoyle02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gargoyle02_01</frame>
+        <frame duration="300.0">gargoyle02_02</frame>
+    </anim>
+    <anim name="gargoyle03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">gargoyle03_01</frame>
+        <frame duration="300.0">gargoyle03_02</frame>
+    </anim>
+    <anim name="gargoyle03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">gargoyle03_01</frame>
+        <frame duration="300.0">gargoyle03_02</frame>
+    </anim>
+    <anim name="robot01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">robot01_01</frame>
+        <frame duration="300.0">robot01_02</frame>
+    </anim>
+    <anim name="robot01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">robot01_01</frame>
+        <frame duration="300.0">robot01_02</frame>
+    </anim>
+    <anim name="robot02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">robot02_01</frame>
+        <frame duration="300.0">robot02_02</frame>
+    </anim>
+    <anim name="robot02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">robot02_01</frame>
+        <frame duration="300.0">robot02_02</frame>
+    </anim>
+    <anim name="robot03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">robot03_01</frame>
+        <frame duration="300.0">robot03_02</frame>
+    </anim>
+    <anim name="robot03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">robot03_01</frame>
+        <frame duration="300.0">robot03_02</frame>
+    </anim>
+    <anim name="robot04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">robot04_01</frame>
+        <frame duration="300.0">robot04_02</frame>
+    </anim>
+    <anim name="robot04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">robot04_01</frame>
+        <frame duration="300.0">robot04_02</frame>
+    </anim>
+    <anim name="robot05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">robot05_01</frame>
+        <frame duration="300.0">robot05_02</frame>
+    </anim>
+    <anim name="robot05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">robot05_01</frame>
+        <frame duration="300.0">robot05_02</frame>
+    </anim>
+    <anim name="genie01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">genie01_01</frame>
+        <frame duration="300.0">genie01_02</frame>
+    </anim>
+    <anim name="genie01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">genie01_01</frame>
+        <frame duration="300.0">genie01_02</frame>
+    </anim>
+    <anim name="tree01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">tree01_01</frame>
+        <frame duration="300.0">tree01_02</frame>
+    </anim>
+    <anim name="tree01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">tree01_01</frame>
+        <frame duration="300.0">tree01_02</frame>
+    </anim>
+    <anim name="chest01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">chest01_01</frame>
+        <frame duration="300.0">chest01_02</frame>
+    </anim>
+    <anim name="chest01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">chest01_01</frame>
+        <frame duration="300.0">chest01_02</frame>
+    </anim>
+    <anim name="blob01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob01_01</frame>
+        <frame duration="300.0">blob01_02</frame>
+    </anim>
+    <anim name="blob01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob01_01</frame>
+        <frame duration="300.0">blob01_02</frame>
+    </anim>
+    <anim name="blob02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob02_01</frame>
+        <frame duration="300.0">blob02_02</frame>
+    </anim>
+    <anim name="blob02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob02_01</frame>
+        <frame duration="300.0">blob02_02</frame>
+    </anim>
+    <anim name="bat_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bat_01</frame>
+        <frame duration="300.0">bat_02</frame>
+    </anim>
+    <anim name="bat_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bat_01</frame>
+        <frame duration="300.0">bat_02</frame>
+    </anim>
+    <anim name="bat02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bat02_01</frame>
+        <frame duration="300.0">bat02_02</frame>
+    </anim>
+    <anim name="bat02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bat02_01</frame>
+        <frame duration="300.0">bat02_02</frame>
+    </anim>
+    <anim name="minion01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">minion01_01</frame>
+        <frame duration="300.0">minion01_02</frame>
+    </anim>
+    <anim name="minion01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">minion01_01</frame>
+        <frame duration="300.0">minion01_02</frame>
+    </anim>
+    <anim name="spider01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">spider01_01</frame>
+        <frame duration="300.0">spider01_02</frame>
+    </anim>
+    <anim name="spider01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">spider01_01</frame>
+        <frame duration="300.0">spider01_02</frame>
+    </anim>
+    <anim name="spider02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">spider02_01</frame>
+        <frame duration="300.0">spider02_02</frame>
+    </anim>
+    <anim name="spider02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">spider02_01</frame>
+        <frame duration="300.0">spider02_02</frame>
+    </anim>
+    <anim name="rat_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">rat_01</frame>
+        <frame duration="300.0">rat_02</frame>
+    </anim>
+    <anim name="rat_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">rat_01</frame>
+        <frame duration="300.0">rat_02</frame>
+    </anim>
+    <anim name="rat02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">rat02_01</frame>
+        <frame duration="300.0">rat02_02</frame>
+    </anim>
+    <anim name="rat02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">rat02_01</frame>
+        <frame duration="300.0">rat02_02</frame>
+    </anim>
+    <anim name="snake01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">snake01_01</frame>
+    </anim>
+    <anim name="snake01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">snake01_01</frame>
+    </anim>
+    <anim name="bug01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bug01_01</frame>
+        <frame duration="300.0">bug01_02</frame>
+    </anim>
+    <anim name="bug01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bug01_01</frame>
+        <frame duration="300.0">bug01_02</frame>
+    </anim>
+    <anim name="bug02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bug02_01</frame>
+        <frame duration="300.0">bug02_02</frame>
+    </anim>
+    <anim name="bug02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bug02_01</frame>
+        <frame duration="300.0">bug02_02</frame>
+    </anim>
+    <anim name="wolf01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">wolf01_01</frame>
+        <frame duration="300.0">wolf01_02</frame>
+    </anim>
+    <anim name="wolf01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">wolf01_01</frame>
+        <frame duration="300.0">wolf01_02</frame>
+    </anim>
+    <anim name="wolf02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">wolf02_01</frame>
+        <frame duration="300.0">wolf02_01</frame>
+        <frame duration="300.0">wolf02_02</frame>
+    </anim>
+    <anim name="wolf02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">wolf02_01</frame>
+        <frame duration="300.0">wolf02_01</frame>
+        <frame duration="300.0">wolf02_02</frame>
+    </anim>
+    <anim name="wolf03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">wolf03_01</frame>
+        <frame duration="300.0">wolf03_02</frame>
+    </anim>
+    <anim name="wolf03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">wolf03_01</frame>
+        <frame duration="300.0">wolf03_02</frame>
+    </anim>
+    <anim name="eagle01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">eagle01_01</frame>
+        <frame duration="300.0">eagle01_02</frame>
+    </anim>
+    <anim name="eagle01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">eagle01_01</frame>
+        <frame duration="300.0">eagle01_02</frame>
+    </anim>
+    <anim name="eagle02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">eagle02_01</frame>
+        <frame duration="300.0">eagle02_02</frame>
+    </anim>
+    <anim name="eagle02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">eagle02_01</frame>
+        <frame duration="300.0">eagle02_02</frame>
+    </anim>
+    <anim name="eagle03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">eagle03_01</frame>
+        <frame duration="300.0">eagle03_02</frame>
+    </anim>
+    <anim name="eagle03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">eagle03_01</frame>
+        <frame duration="300.0">eagle03_02</frame>
+    </anim>
+    <anim name="orc01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc01_01</frame>
+        <frame duration="300.0">orc01_02</frame>
+    </anim>
+    <anim name="orc01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc01_01</frame>
+        <frame duration="300.0">orc01_02</frame>
+    </anim>
+    <anim name="orc02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc02_01</frame>
+        <frame duration="300.0">orc02_02</frame>
+    </anim>
+    <anim name="orc02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc02_01</frame>
+        <frame duration="300.0">orc02_02</frame>
+    </anim>
+    <anim name="orc03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc03_01</frame>
+        <frame duration="300.0">orc03_02</frame>
+    </anim>
+    <anim name="orc03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc03_01</frame>
+        <frame duration="300.0">orc03_02</frame>
+    </anim>
+    <anim name="orc04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc04_01</frame>
+        <frame duration="300.0">orc04_02</frame>
+    </anim>
+    <anim name="orc04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc04_01</frame>
+        <frame duration="300.0">orc04_02</frame>
+    </anim>
+    <anim name="orc05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc05_01</frame>
+        <frame duration="300.0">orc05_02</frame>
+    </anim>
+    <anim name="orc05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc05_01</frame>
+        <frame duration="300.0">orc05_02</frame>
+    </anim>
+    <anim name="orc06_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc06_01</frame>
+        <frame duration="300.0">orc06_02</frame>
+    </anim>
+    <anim name="orc06_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc06_01</frame>
+        <frame duration="300.0">orc06_02</frame>
+    </anim>
+    <anim name="orc07_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc07_01</frame>
+        <frame duration="300.0">orc07_02</frame>
+    </anim>
+    <anim name="orc07_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc07_01</frame>
+        <frame duration="300.0">orc07_02</frame>
+    </anim>
+    <anim name="orc08_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">orc08_01</frame>
+        <frame duration="300.0">orc08_02</frame>
+    </anim>
+    <anim name="orc08_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">orc08_01</frame>
+        <frame duration="300.0">orc08_02</frame>
+    </anim>
+    <anim name="troll01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">troll01_01</frame>
+        <frame duration="300.0">troll01_02</frame>
+    </anim>
+    <anim name="troll01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">troll01_01</frame>
+        <frame duration="300.0">troll01_02</frame>
+    </anim>
+    <anim name="troll02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">troll02_01</frame>
+        <frame duration="300.0">troll02_02</frame>
+    </anim>
+    <anim name="troll02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">troll02_01</frame>
+        <frame duration="300.0">troll02_02</frame>
+    </anim>
+    <anim name="ogre01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ogre01_01</frame>
+        <frame duration="300.0">ogre01_02</frame>
+    </anim>
+    <anim name="ogre01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ogre01_01</frame>
+        <frame duration="300.0">ogre01_02</frame>
+    </anim>
+    <anim name="ogre02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ogre02_01</frame>
+        <frame duration="300.0">ogre02_02</frame>
+    </anim>
+    <anim name="ogre02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ogre02_01</frame>
+        <frame duration="300.0">ogre02_02</frame>
+    </anim>
+    <anim name="knight01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">knight01_01</frame>
+        <frame duration="300.0">knight01_02</frame>
+    </anim>
+    <anim name="knight01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">knight01_01</frame>
+        <frame duration="300.0">knight01_02</frame>
+    </anim>
+    <anim name="knight02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">knight02_01</frame>
+        <frame duration="300.0">knight02_02</frame>
+    </anim>
+    <anim name="knight02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">knight02_01</frame>
+        <frame duration="300.0">knight02_02</frame>
+    </anim>
+	<anim name="knight03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">knight03_01</frame>
+        <frame duration="300.0">knight03_02</frame>
+    </anim>
+    <anim name="knight03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">knight03_01</frame>
+        <frame duration="300.0">knight03_02</frame>
+    </anim>
+    <anim name="mudmonster01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">mudmonster01_01</frame>
+        <frame duration="300.0">mudmonster01_02</frame>
+    </anim>
+    <anim name="mudmonster01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">mudmonster01_01</frame>
+        <frame duration="300.0">mudmonster01_02</frame>
+    </anim>
+    <anim name="mudmonster02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">mudmonster02_01</frame>
+        <frame duration="300.0">mudmonster02_02</frame>
+    </anim>
+    <anim name="mudmonster02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">mudmonster02_01</frame>
+        <frame duration="300.0">mudmonster02_02</frame>
+    </anim>
+    <anim name="mudmonster03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">mudmonster03_01</frame>
+        <frame duration="300.0">mudmonster03_02</frame>
+    </anim>
+    <anim name="mudmonster03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">mudmonster03_01</frame>
+        <frame duration="300.0">mudmonster03_02</frame>
+    </anim>
+    <anim name="zombie01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">zombie01_01</frame>
+        <frame duration="300.0">zombie01_02</frame>
+    </anim>
+    <anim name="zombie01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">zombie01_01</frame>
+        <frame duration="300.0">zombie01_02</frame>
+    </anim>
+    <anim name="zombie02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">zombie02_01</frame>
+        <frame duration="300.0">zombie02_02</frame>
+    </anim>
+    <anim name="zombie02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">zombie02_01</frame>
+        <frame duration="300.0">zombie02_02</frame>
+    </anim>
+    <anim name="skeleton_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">skeleton_01</frame>
+        <frame duration="300.0">skeleton_02</frame>
+    </anim>
+    <anim name="skeleton_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">skeleton_01</frame>
+        <frame duration="300.0">skeleton_02</frame>
+    </anim>
+    <anim name="skeleton02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">skeleton02_01</frame>
+        <frame duration="300.0">skeleton02_02</frame>
+    </anim>
+    <anim name="skeleton02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">skeleton02_01</frame>
+        <frame duration="300.0">skeleton02_02</frame>
+    </anim>
+    <anim name="skeleton03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">skeleton03_01</frame>
+        <frame duration="300.0">skeleton03_02</frame>
+    </anim>
+    <anim name="skeleton03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">skeleton03_01</frame>
+        <frame duration="300.0">skeleton03_02</frame>
+    </anim>
+    <anim name="ghost01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ghost01_01</frame>
+        <frame duration="300.0">ghost01_02</frame>
+    </anim>
+    <anim name="ghost01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ghost01_01</frame>
+        <frame duration="300.0">ghost01_02</frame>
+    </anim>
+    <anim name="ghost02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ghost02_01</frame>
+        <frame duration="300.0">ghost02_02</frame>
+    </anim>
+    <anim name="ghost02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ghost02_01</frame>
+        <frame duration="300.0">ghost02_02</frame>
+    </anim>
+    <anim name="mummy01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">mummy01_01</frame>
+        <frame duration="300.0">mummy01_02</frame>
+    </anim>
+    <anim name="mummy01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">mummy01_01</frame>
+        <frame duration="300.0">mummy01_02</frame>
+    </anim>
+    <anim name="mummy02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">mummy02_01</frame>
+        <frame duration="300.0">mummy02_02</frame>
+    </anim>
+    <anim name="mummy02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">mummy02_01</frame>
+        <frame duration="300.0">mummy02_02</frame>
+    </anim>
+    <anim name="death01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">death01_01</frame>
+        <frame duration="300.0">death01_02</frame>
+    </anim>
+    <anim name="death01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">death01_01</frame>
+        <frame duration="300.0">death01_02</frame>
+    </anim>
+    <anim name="death02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">death02_01</frame>
+        <frame duration="300.0">death02_02</frame>
+    </anim>
+    <anim name="death02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">death02_01</frame>
+        <frame duration="300.0">death02_02</frame>
+    </anim>
+    <anim name="death03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">death03_01</frame>
+        <frame duration="300.0">death03_02</frame>
+    </anim>
+    <anim name="death03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">death03_01</frame>
+        <frame duration="300.0">death03_02</frame>
+    </anim>
+    <anim name="vampire01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">vampire01_01</frame>
+        <frame duration="300.0">vampire01_02</frame>
+    </anim>
+    <anim name="vampire01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">vampire01_01</frame>
+        <frame duration="300.0">vampire01_02</frame>
+    </anim>
+    <anim name="vampire02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">vampire02_01</frame>
+        <frame duration="300.0">vampire02_02</frame>
+    </anim>
+    <anim name="vampire02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">vampire02_01</frame>
+        <frame duration="300.0">vampire02_02</frame>
+    </anim>
+    <anim name="vampire03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">vampire03_01</frame>
+        <frame duration="300.0">vampire03_02</frame>
+    </anim>
+    <anim name="vampire03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">vampire03_01</frame>
+        <frame duration="300.0">vampire03_02</frame>
+    </anim>
+    <anim name="witch01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">witch01_01</frame>
+        <frame duration="300.0">witch01_02</frame>
+    </anim>
+    <anim name="witch01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">witch01_01</frame>
+        <frame duration="300.0">witch01_02</frame>
+    </anim>
+    <anim name="witch02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">witch02_01</frame>
+        <frame duration="300.0">witch02_02</frame>
+    </anim>
+    <anim name="witch02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">witch02_01</frame>
+        <frame duration="300.0">witch02_02</frame>
+    </anim>
+    <anim name="witch03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">witch03_01</frame>
+        <frame duration="300.0">witch03_02</frame>
+    </anim>
+    <anim name="witch03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">witch03_01</frame>
+        <frame duration="300.0">witch03_02</frame>
+    </anim>
+    <anim name="dragon01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">dragon01_01</frame>
+        <frame duration="300.0">dragon01_02</frame>
+    </anim>
+    <anim name="dragon01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">dragon01_01</frame>
+        <frame duration="300.0">dragon01_02</frame>
+    </anim>
+    <anim name="dragon02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">dragon02_01</frame>
+        <frame duration="300.0">dragon02_02</frame>
+    </anim>
+    <anim name="dragon02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">dragon02_01</frame>
+        <frame duration="300.0">dragon02_02</frame>
+    </anim>
+    <anim name="dragon03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">dragon03_01</frame>
+        <frame duration="300.0">dragon03_02</frame>
+    </anim>
+    <anim name="dragon03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">dragon03_01</frame>
+        <frame duration="300.0">dragon03_02</frame>
+    </anim>
+    <anim name="dragon04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">dragon04_01</frame>
+        <frame duration="300.0">dragon04_02</frame>
+    </anim>
+    <anim name="dragon04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">dragon04_01</frame>
+        <frame duration="300.0">dragon04_02</frame>
+    </anim>
+    <anim name="yeti01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">yeti01_01</frame>
+        <frame duration="300.0">yeti01_02</frame>
+    </anim>
+    <anim name="yeti01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">yeti01_01</frame>
+        <frame duration="300.0">yeti01_02</frame>
+    </anim>
+    <anim name="yeti02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">yeti02_01</frame>
+        <frame duration="300.0">yeti02_02</frame>
+    </anim>
+    <anim name="yeti02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">yeti02_01</frame>
+        <frame duration="300.0">yeti02_02</frame>
+    </anim>
+    <anim name="worm01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">worm01_01</frame>
+        <frame duration="300.0">worm01_02</frame>
+    </anim>
+    <anim name="worm01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">worm01_01</frame>
+        <frame duration="300.0">worm01_02</frame>
+    </anim>
+    <anim name="worm02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">worm02_01</frame>
+        <frame duration="300.0">worm02_02</frame>
+    </anim>
+    <anim name="worm02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">worm02_01</frame>
+        <frame duration="300.0">worm02_02</frame>
+    </anim>
+    <anim name="bear01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bear01_01</frame>
+        <frame duration="300.0">bear01_02</frame>
+    </anim>
+    <anim name="bear01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bear01_01</frame>
+        <frame duration="300.0">bear01_02</frame>
+    </anim>
+    <anim name="bear02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bear02_01</frame>
+        <frame duration="300.0">bear02_02</frame>
+    </anim>
+    <anim name="bear02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bear02_01</frame>
+        <frame duration="300.0">bear02_02</frame>
+    </anim>
+    <anim name="bear03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">bear03_01</frame>
+        <frame duration="300.0">bear03_02</frame>
+    </anim>
+    <anim name="bear03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">bear03_01</frame>
+        <frame duration="300.0">bear03_02</frame>
+    </anim>
+    <anim name="scorpio01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">scorpio01_01</frame>
+        <frame duration="300.0">scorpio01_02</frame>
+    </anim>
+    <anim name="scorpio01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">scorpio01_01</frame>
+        <frame duration="300.0">scorpio01_02</frame>
+    </anim>
+    <anim name="scorpio02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">scorpio02_01</frame>
+        <frame duration="300.0">scorpio02_02</frame>
+    </anim>
+    <anim name="scorpio02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">scorpio02_01</frame>
+        <frame duration="300.0">scorpio02_02</frame>
+    </anim>
+    <anim name="scorpio03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">scorpio03_01</frame>
+        <frame duration="300.0">scorpio03_02</frame>
+    </anim>
+    <anim name="scorpio03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">scorpio03_01</frame>
+        <frame duration="300.0">scorpio03_02</frame>
+    </anim>
+    <anim name="ogre03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ogre03_01</frame>
+        <frame duration="300.0">ogre03_02</frame>
+    </anim>
+    <anim name="ogre03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ogre03_01</frame>
+        <frame duration="300.0">ogre03_02</frame>
+    </anim>
+    <anim name="ogre04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ogre04_01</frame>
+		<frame duration="300.0">ogre04_02</frame>
+    </anim>
+    <anim name="ogre04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ogre04_01</frame>
+		<frame duration="300.0">ogre04_02</frame>
+    </anim>
+    <anim name="fairy01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">fairy01_01</frame>
+        <frame duration="300.0">fairy01_02</frame>
+    </anim>
+    <anim name="fairy01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">fairy01_01</frame>
+        <frame duration="300.0">fairy01_02</frame>
+    </anim>
+    <anim name="devil01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">devil01_01</frame>
+        <frame duration="300.0">devil01_02</frame>
+    </anim>
+    <anim name="devil01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">devil01_01</frame>
+        <frame duration="300.0">devil01_02</frame>
+    </anim>
+    <anim name="blob03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob03_01</frame>
+        <frame duration="300.0">blob03_02</frame>
+    </anim>
+    <anim name="blob03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob03_01</frame>
+        <frame duration="300.0">blob03_02</frame>
+    </anim>
+    <anim name="blob04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob04_01</frame>
+        <frame duration="300.0">blob04_02</frame>
+    </anim>
+    <anim name="blob04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob04_01</frame>
+        <frame duration="300.0">blob04_02</frame>
+    </anim>
+    <anim name="tuber01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">tuber01_01</frame>
+        <frame duration="300.0">tuber01_02</frame>
+    </anim>
+    <anim name="tuber01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">tuber01_01</frame>
+        <frame duration="300.0">tuber01_02</frame>
+    </anim>
+    <anim name="tuber02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">tuber02_01</frame>
+        <frame duration="300.0">tuber02_02</frame>
+    </anim>
+    <anim name="tuber02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">tuber02_01</frame>
+        <frame duration="300.0">tuber02_02</frame>
+    </anim>
+    <anim name="liquiddrop01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">liquiddrop01_01</frame>
+        <frame duration="300.0">liquiddrop01_02</frame>
+    </anim>
+    <anim name="liquiddrop01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">liquiddrop01_01</frame>
+        <frame duration="300.0">liquiddrop01_02</frame>
+    </anim>
+    <anim name="liquiddrop02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">liquiddrop02_01</frame>
+        <frame duration="300.0">liquiddrop02_02</frame>
+    </anim>
+    <anim name="liquiddrop02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">liquiddrop02_01</frame>
+        <frame duration="300.0">liquiddrop02_02</frame>
+    </anim>
+    <anim name="liquiddrop03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">liquiddrop03_01</frame>
+        <frame duration="300.0">liquiddrop03_02</frame>
+    </anim>
+    <anim name="liquiddrop03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">liquiddrop03_01</frame>
+        <frame duration="300.0">liquiddrop03_02</frame>
+    </anim>
+    <anim name="liquiddrop04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">liquiddrop04_01</frame>
+        <frame duration="300.0">liquiddrop04_02</frame>
+    </anim>
+    <anim name="liquiddrop04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">liquiddrop04_01</frame>
+        <frame duration="300.0">liquiddrop04_02</frame>
+    </anim>
+    <anim name="eye01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">eye01_01</frame>
+        <frame duration="300.0">eye01_02</frame>
+    </anim>
+    <anim name="eye01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">eye01_01</frame>
+        <frame duration="300.0">eye01_02</frame>
+    </anim>
+    <anim name="eye02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">eye02_01</frame>
+        <frame duration="300.0">eye02_02</frame>
+    </anim>
+    <anim name="eye02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">eye02_01</frame>
+        <frame duration="300.0">eye02_02</frame>
+    </anim>
+    <anim name="geloman01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">geloman01_01</frame>
+        <frame duration="300.0">geloman01_02</frame>
+    </anim>
+    <anim name="geloman01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">geloman01_01</frame>
+        <frame duration="300.0">geloman01_02</frame>
+    </anim>
+    <anim name="geloman02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">geloman02_01</frame>
+        <frame duration="300.0">geloman02_02</frame>
+    </anim>
+    <anim name="geloman02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">geloman02_01</frame>
+        <frame duration="300.0">geloman02_02</frame>
+    </anim>
+    <anim name="geloman03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">geloman03_01</frame>
+        <frame duration="300.0">geloman03_02</frame>
+    </anim>
+    <anim name="geloman03_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">geloman03_01</frame>
+        <frame duration="300.0">geloman03_02</frame>
+    </anim>
+    <anim name="blob05_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob05_01</frame>
+        <frame duration="300.0">blob05_02</frame>
+    </anim>
+    <anim name="blob05_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob05_01</frame>
+        <frame duration="300.0">blob05_02</frame>
+    </anim>
+    <anim name="blob06_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob06_01</frame>
+        <frame duration="300.0">blob06_02</frame>
+    </anim>
+    <anim name="blob06_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob06_01</frame>
+        <frame duration="300.0">blob06_02</frame>
+    </anim>
+    <anim name="blob07_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">blob07_01</frame>
+        <frame duration="300.0">blob07_02</frame>
+    </anim>
+    <anim name="blob07_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">blob07_01</frame>
+        <frame duration="300.0">blob07_02</frame>
+    </anim>
+    <anim name="ethereal01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ethereal01_01</frame>
+        <frame duration="300.0">ethereal01_02</frame>
+    </anim>
+    <anim name="ethereal01_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ethereal01_01</frame>
+        <frame duration="300.0">ethereal01_02</frame>
+    </anim>
+    <anim name="ethereal02_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">ethereal02_01</frame>
+        <frame duration="300.0">ethereal02_02</frame>
+    </anim>
+    <anim name="ethereal02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">ethereal02_01</frame>
+        <frame duration="300.0">ethereal02_02</frame>
+    </anim>
+</anims>

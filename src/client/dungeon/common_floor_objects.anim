@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<anims>
+    <anim name="fountain_mana" sprite_sheet="common_floor_objects" play_mode="play_once" loop="true" speed="200.00">
+        <frame duration="125.0">fountain_mana_1</frame>
+        <frame duration="125.0">fountain_mana_2</frame>
+    </anim>
+    <anim name="fountain_hp" sprite_sheet="common_floor_objects" play_mode="play_once" loop="true" speed="200.00">
+        <frame duration="150.0">fountain_hp_1</frame>
+        <frame duration="150.0">fountain_hp_2</frame>
+    </anim>
+    <anim name="teleportation" sprite_sheet="common_floor_objects" play_mode="play_once" loop="true" speed="200.00">
+        <frame duration="200.0">teleportation_1</frame>
+        <frame duration="200.0">teleportation_2</frame>
+    </anim>
+    <anim name="quest_stone" sprite_sheet="common_floor_objects" play_mode="ping_pong" loop="true" speed="250.00">
+        <frame duration="250.0">quest_stone_1</frame>
+        <frame duration="250.0">quest_stone_2</frame>
+        <frame duration="250.0">quest_stone_3</frame>
+    </anim>
+	 <anim name="candles" sprite_sheet="common_floor_objects" play_mode="play_once" loop="true" speed="200.00">
+        <frame duration="200.0">candles_pedestral_1</frame>
+        <frame duration="200.0">candles_pedestral_2</frame>
+    </anim>
+    
+</anims>

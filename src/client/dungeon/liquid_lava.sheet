@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="liquid" texture="liquid_lava.png" ox="0" oy="0" x="0" y="0" width="24" height="24" />
+    <sheet name="liquid_1" texture="liquid_lava.png" ox="0" oy="0" x="24" y="0" width="24" height="24" />
+    <sheet name="top_top_left_corner" texture="liquid_lava.png" ox="0" oy="0" x="0" y="24" width="24" height="24" />
+    <sheet name="top_top_right_corner" texture="liquid_lava.png" ox="0" oy="0" x="48" y="24" width="24" height="24" />
+    <sheet name="top_bottom_left_corner" texture="liquid_lava.png" ox="0" oy="0" x="0" y="72" width="24" height="24" />
+    <sheet name="top_bottom_right_corner" texture="liquid_lava.png" ox="0" oy="0" x="48" y="72" width="24" height="24" />
+    <sheet name="top_left" texture="liquid_lava.png" ox="0" oy="0" x="0" y="48" width="24" height="24" />
+    <sheet name="top_right" texture="liquid_lava.png" ox="0" oy="0" x="48" y="48" width="24" height="24" />
+    <sheet name="top_bottom" texture="liquid_lava.png" ox="0" oy="0" x="24" y="72" width="24" height="24" />
+    <sheet name="top_single" texture="liquid_lava.png" ox="0" oy="0" x="24" y="48" width="24" height="24" />
+    <sheet name="top_top" texture="liquid_lava.png" ox="0" oy="0" x="24" y="24" width="24" height="24" />
+    <sheet name="inner_bottom_right" texture="liquid_lava.png" ox="0" oy="0" x="48" y="0" width="24" height="24" />
+    <sheet name="inner_top_right" texture="liquid_lava.png" ox="0" oy="0" x="72" y="0" width="24" height="24" />
+    <sheet name="inner_bottom_left" texture="liquid_lava.png" ox="0" oy="0" x="96" y="0" width="24" height="24" />
+    <sheet name="bottom_top_left" texture="liquid_lava.png" ox="0" oy="0" x="72" y="24" width="24" height="24" />
+    <sheet name="single_top" texture="liquid_lava.png" ox="0" oy="0" x="72" y="48" width="24" height="24" />
+    <sheet name="single_right" texture="liquid_lava.png" ox="0" oy="0" x="96" y="48" width="24" height="24" />
+    <sheet name="single_bottom" texture="liquid_lava.png" ox="0" oy="0" x="72" y="72" width="24" height="24" />
+    <sheet name="single_left" texture="liquid_lava.png" ox="0" oy="0" x="96" y="72" width="24" height="24" />
+    <sheet name="single_horizontal" texture="liquid_lava.png" ox="0" oy="0" x="0" y="96" width="24" height="24" />
+    <sheet name="single_vertical" texture="liquid_lava.png" ox="0" oy="0" x="24" y="96" width="24" height="24" />
+    <sheet name="single_cross" texture="liquid_lava.png" ox="0" oy="0" x="48" y="96" width="24" height="24" />
+</sheets>

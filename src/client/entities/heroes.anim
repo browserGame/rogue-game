@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<anims>
+    <anim name="warrior_idle" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">warrior_idle_01</frame>
+        <frame duration="300.0">warrior_idle_02</frame>
+    </anim>
+    <anim name="warrior_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">warrior_idle_01</frame>
+        <frame duration="300.0">warrior_idle_02</frame>
+    </anim>
+    <anim name="warrior_die" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="200.00">
+        <frame duration="1000.0">warrior_idle_01</frame>
+        <frame duration="1000.0">warrior_idle_02</frame>
+        <frame duration="300.0">warrior_idle_02</frame>
+    </anim>
+    <anim name="shaman_idle" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">shaman_idle_01</frame>
+        <frame duration="300.0">shaman_idle_02</frame>
+    </anim>
+    <anim name="shaman_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">shaman_idle_01</frame>
+        <frame duration="300.0">shaman_idle_02</frame>
+    </anim>
+    <anim name="shaman_die" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="200.00">
+        <frame duration="1000.0">shaman_idle_01</frame>
+        <frame duration="1000.0">shaman_idle_02</frame>
+        <frame duration="300.0">shaman_idle_02</frame>
+    </anim>
+    <anim name="wizard_idle" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="300.0">wizard_idle_01</frame>
+        <frame duration="300.0">wizard_idle_02</frame>
+    </anim>
+    <anim name="wizard_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">wizard_idle_01</frame>
+        <frame duration="300.0">wizard_idle_02</frame>
+    </anim>
+    <anim name="wizard_die" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="200.00">
+        <frame duration="1000.0">wizard_idle_01</frame>
+        <frame duration="1000.0">wizard_idle_02</frame>
+        <frame duration="300.0">wizard_idle_02</frame>
+    </anim>
+    <anim name="assassin_idle" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="500.00">
+        <frame duration="500.0">assassin_idle_01</frame>
+        <frame duration="500.0">assassin_idle_02</frame>
+    </anim>
+    <anim name="assassin_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">assassin_idle_01</frame>
+        <frame duration="300.0">assassin_idle_02</frame>
+    </anim>
+    <anim name="assassin_die" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="200.00">
+        <frame duration="1000.0">assassin_idle_01</frame>
+        <frame duration="1000.0">assassin_idle_02</frame>
+        <frame duration="300.0">assassin_idle_02</frame>
+    </anim>
+    <anim name="assassin_bow" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="150.00">
+        <frame duration="40.0">assassin_bow_01</frame>
+        <frame duration="90.0">assassin_bow_02</frame>
+		<frame duration="90.0">assassin_bow_03</frame>
+    </anim>
+	  <anim name="necrodancer_idle" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="150.0">cadence_idle_01</frame>
+        <frame duration="150.0">cadence_idle_02</frame>
+		<frame duration="150.0">cadence_idle_03</frame>
+		<frame duration="150.0">cadence_idle_04</frame>
+    </anim>
+	 <anim name="necrodancer_idle_shovel" sprite_sheet="heroes" play_mode="play_once" loop="true" speed="300.00">
+        <frame duration="150.0">cadence_shovel_idle_01</frame>
+        <frame duration="150.0">cadence_shovel_idle_02</frame>
+		<frame duration="150.0">cadence_shovel_idle_03</frame>
+		<frame duration="150.0">cadence_shovel_idle_04</frame>
+    </anim>
+    <anim name="necrodancer_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">cadence_idle_01</frame>
+        <frame duration="300.0">cadence_idle_02</frame>
+    </anim>
+    <anim name="necrodancer_die" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="200.00">
+        <frame duration="1000.0">cadence_idle_01</frame>
+        <frame duration="1000.0">cadence_idle_02</frame>
+        <frame duration="300.0">cadence_idle_02</frame>
+    </anim>
+</anims>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="skeleton_remains_01" texture="dungeon_decor_props.png" ox="12" oy="12" x="0" y="0" width="24" height="24" />
+    <sheet name="skeleton_remains_02" texture="dungeon_decor_props.png" ox="12" oy="12" x="24" y="0" width="24" height="24" />
+    <sheet name="skeleton_remains_03" texture="dungeon_decor_props.png" ox="12" oy="12" x="48" y="0" width="24" height="24" />
+    <sheet name="skeleton_remains_04" texture="dungeon_decor_props.png" ox="12" oy="12" x="72" y="0" width="24" height="24" />
+    <sheet name="skeleton_remains_05" texture="dungeon_decor_props.png" ox="12" oy="12" x="96" y="0" width="24" height="24" />
+    <sheet name="skeleton_remains_06" texture="dungeon_decor_props.png" ox="12" oy="12" x="0" y="24" width="24" height="24" />
+    <sheet name="skeleton_remains_07" texture="dungeon_decor_props.png" ox="12" oy="12" x="24" y="24" width="24" height="24" />
+    <sheet name="area12" texture="dungeon_decor_props.png" ox="12" oy="12" x="48" y="24" width="24" height="24" />
+    <sheet name="area13" texture="dungeon_decor_props.png" ox="12" oy="12" x="72" y="24" width="24" height="24" />
+    <sheet name="area14" texture="dungeon_decor_props.png" ox="12" oy="12" x="96" y="24" width="24" height="24" />
+    <sheet name="area20" texture="dungeon_decor_props.png" ox="12" oy="12" x="0" y="48" width="24" height="24" />
+    <sheet name="area21" texture="dungeon_decor_props.png" ox="12" oy="12" x="24" y="48" width="24" height="24" />
+    <sheet name="area22" texture="dungeon_decor_props.png" ox="12" oy="12" x="48" y="48" width="24" height="24" />
+    <sheet name="spiderweb_01" texture="dungeon_decor_props.png" ox="12" oy="12" x="72" y="48" width="24" height="24" />
+    <sheet name="spiderweb_02" texture="dungeon_decor_props.png" ox="12" oy="12" x="96" y="48" width="24" height="24" />
+    <sheet name="spiderweb_03" texture="dungeon_decor_props.png" ox="12" oy="12" x="0" y="72" width="24" height="24" />
+    <sheet name="spiderweb_04" texture="dungeon_decor_props.png" ox="12" oy="12" x="24" y="72" width="24" height="24" />
+    <sheet name="spiderweb_05" texture="dungeon_decor_props.png" ox="12" oy="12" x="48" y="72" width="24" height="24" />
+    <sheet name="spiderweb_06" texture="dungeon_decor_props.png" ox="12" oy="12" x="72" y="72" width="24" height="24" />
+    <sheet name="skeleton_remains_08" texture="dungeon_decor_props.png" ox="12" oy="12" x="96" y="72" width="24" height="24" />
+    <sheet name="area40" texture="dungeon_decor_props.png" ox="12" oy="12" x="0" y="96" width="24" height="24" />
+    <sheet name="area41" texture="dungeon_decor_props.png" ox="12" oy="12" x="24" y="96" width="24" height="24" />
+    <sheet name="area42" texture="dungeon_decor_props.png" ox="12" oy="12" x="48" y="96" width="24" height="24" />
+    <sheet name="area43" texture="dungeon_decor_props.png" ox="12" oy="12" x="72" y="96" width="24" height="24" />
+    <sheet name="skeleton_remains_08" texture="dungeon_decor_props.png" ox="12" oy="12" x="96" y="96" width="24" height="24" />
+</sheets>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="area0" texture="fog.png" ox="0" oy="0" x="0" y="0" width="16" height="16" />
+    <sheet name="area1" texture="fog.png" ox="0" oy="0" x="16" y="0" width="16" height="16" />
+    <sheet name="area2" texture="fog.png" ox="0" oy="0" x="32" y="0" width="16" height="16" />
+    <sheet name="area3" texture="fog.png" ox="0" oy="0" x="0" y="16" width="16" height="16" />
+    <sheet name="area4" texture="fog.png" ox="0" oy="0" x="16" y="16" width="16" height="16" />
+    <sheet name="area5" texture="fog.png" ox="0" oy="0" x="32" y="16" width="16" height="16" />
+    <sheet name="area6" texture="fog.png" ox="0" oy="0" x="0" y="32" width="16" height="16" />
+    <sheet name="area7" texture="fog.png" ox="0" oy="0" x="16" y="32" width="16" height="16" />
+    <sheet name="area8" texture="fog.png" ox="0" oy="0" x="32" y="32" width="16" height="16" />
+    <sheet name="area9" texture="fog.png" ox="0" oy="0" x="7" y="63" width="16" height="16" />
+    <sheet name="area10" texture="fog.png" ox="0" oy="0" x="23" y="63" width="16" height="16" />
+    <sheet name="area11" texture="fog.png" ox="0" oy="0" x="40" y="63" width="16" height="16" />
+    <sheet name="area12" texture="fog.png" ox="0" oy="0" x="8" y="79" width="16" height="16" />
+    <sheet name="area13" texture="fog.png" ox="0" oy="0" x="23" y="79" width="16" height="16" />
+    <sheet name="area14" texture="fog.png" ox="0" oy="0" x="40" y="79" width="16" height="16" />
+</sheets>

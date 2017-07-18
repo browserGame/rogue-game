@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="warrior_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="0" width="24" height="24" />
+    <sheet name="warrior_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="0" width="24" height="24" />
+    <sheet name="shaman_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="24" width="24" height="24" />
+    <sheet name="shaman_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="24" width="24" height="24" />
+    <sheet name="wizard_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="48" width="24" height="24" />
+    <sheet name="wizard_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="48" width="24" height="24" />
+    <sheet name="assassin_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="72" width="24" height="24" />
+    <sheet name="assassin_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="72" width="24" height="24" />
+    <sheet name="assassin_bow_01" texture="heroes.png" ox="11" oy="24" x="48" y="72" width="24" height="24" />
+    <sheet name="assassin_bow_02" texture="heroes.png" ox="11" oy="24" x="72" y="72" width="24" height="24" />
+    <sheet name="assassin_bow_03" texture="heroes.png" ox="11" oy="24" x="96" y="72" width="24" height="24" />
+    <sheet name="cadence_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="96" width="24" height="24" />
+    <sheet name="cadence_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="96" width="24" height="24" />
+    <sheet name="cadence_idle_03" texture="heroes.png" ox="11" oy="24" x="48" y="96" width="24" height="24" />
+    <sheet name="cadence_idle_04" texture="heroes.png" ox="11" oy="24" x="72" y="96" width="24" height="24" />
+	
+	<sheet name="cadence_shovel_idle_01" texture="heroes.png" ox="11" oy="24" x="48" y="0" width="24" height="24" />
+    <sheet name="cadence_shovel_idle_02" texture="heroes.png" ox="11" oy="24" x="72" y="0" width="24" height="24" />
+    <sheet name="cadence_shovel_idle_03" texture="heroes.png" ox="11" oy="24" x="48" y="24" width="24" height="24" />
+    <sheet name="cadence_shovel_idle_04" texture="heroes.png" ox="11" oy="24" x="72" y="24" width="24" height="24" />
+</sheets>
