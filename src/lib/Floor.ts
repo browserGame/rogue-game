@@ -1,6 +1,7 @@
 import {
     $Room,
-    $Item
+    $Item,
+    getNameSpace
 } from './Room';
 
 import {
@@ -14,7 +15,8 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
     let st = <Vector>room.doors[0].p;
 
     const isWall = (v: Vector) => {
-        let f = room.walls.find((i) => {
+        let walls = getNameSpace(room, 'walls');
+        let f = walls.find((i) => {
             return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
         });
         return !!f;
@@ -45,9 +47,9 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
             points.map((i) => addV(<Vector>p, i)).filter((i) => !(isWall(i) || isDone(i)) && i.x >= 0 && i.x < width && i.y >= 0 && i.y < height)
         );
     }
+    let floor = getNameSpace(room, 'floor');
+    floor.splice(0, floor.length, ...done.map((p) => <$Item>{ tag: '.', p }).sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x));
 
-    room.floor = done.map((p) => <$Item>{ tag: '.', p }).sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x);
-   
 }
 
 

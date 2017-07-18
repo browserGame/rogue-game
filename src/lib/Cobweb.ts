@@ -1,7 +1,8 @@
 'use strict';
 import {
     $Room,
-    $Item
+    $Item,
+    getNameSpace
 } from './Room';
 
 import {
@@ -15,7 +16,8 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
     width;
 
     const isWall = (v: Vector) => {
-        let f = room.walls.find((i) => {
+        let walls = getNameSpace(room, 'walls');
+        let f = walls.find((i) => {
             return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
         });
         return !!f;
@@ -88,7 +90,8 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
         return rc;
     }).filter((i) => i !== undefined);
 
-    room.cobWebs.splice(0, room.cobWebs.length, ...validWebs);
 
+    let cobWebs = getNameSpace(room, 'cobwebs');
+    cobWebs.splice(0, cobWebs.length, ...validWebs);
 }
 

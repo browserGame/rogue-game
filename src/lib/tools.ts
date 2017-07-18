@@ -1,7 +1,7 @@
 
 import { Vector } from './math';
 import { SymbolBase, codedItems } from './Symbols';
-import { Layout, $Room } from './Room';
+import { Layout, $Room, getNameSpace } from './Room';
 
 export function parseLayout(layout: Layout) {
 
@@ -43,10 +43,8 @@ export function parseLayout(layout: Layout) {
         width,
         height,
         doors: [],
-        walls: [],
-        floor: [],
         base: raw[0],
-        cobWebs: []
+        body: new Map()
     };
 
 
@@ -83,8 +81,8 @@ export function parseLayout(layout: Layout) {
         });
     });
 
-    console.log(`walls:${room.walls.map((i) => i.tag).join('')}`);
-    console.log(`floors:${room.floor.map((i) => i.tag).join('')}`);
+    console.log(`walls:${getNameSpace(room, 'walls').map((i) => i.tag).join('')}`);
+    console.log(`floors:${getNameSpace(room, 'floor').map((i) => i.tag).join('')}`);
 
     return room;
 
@@ -154,4 +152,18 @@ function validateMetrics(raw: string[][]): Vector {
         return checkRoom;
     }, roomMetric);
     return roomMetric;
+}
+
+
+export function flatten(...arr: any[]): any[] {
+    let rc = [];
+    for (let itm of arr) {
+        if (itm instanceof Array) {
+            let rc2 = flatten(...itm);
+            rc.push(...rc2);
+            continue;
+        }
+        rc.push(itm);
+    }
+    return rc;
 }

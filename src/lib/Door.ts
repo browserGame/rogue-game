@@ -1,9 +1,12 @@
 
 import { Vector } from './math';
 import { DoorType, DoorWay } from './Symbols';
-import { $Room } from './Room';
+import {
+    $Room,
+   // getNameSpace
+} from './Room';
 
-export interface Door {
+export interface $Door {
     from: number;
     to: number;
     inset: boolean;
@@ -11,13 +14,13 @@ export interface Door {
     dir: '^' | '<' | '>' | 'v';
 }
 
-export function processDoor(matrix: string[], width: number, collector: $Room, coords: Vector[], si: DoorWay<DoorType>) {
+export function processDoor(matrix: string[], width: number, room: $Room, coords: Vector[], si: DoorWay<DoorType>) {
     if (coords.length > 1) {
-        throw new Error(`Room ${collector.pk} has multiple coords for door ${si.m || si.e}`);
+        throw new Error(`Room ${room.pk} has multiple coords for door ${si.m || si.e}`);
     }
     width;
     matrix;
-    collector.doors.push({ from: collector.pk, to: si.toRoom, inset: si.inset || false, p: coords[0], dir: si.e });
+    room.doors.push({ from: room.pk, to: si.toRoom, inset: (si.inset || false), p: coords[0], dir: si.e });
 }
 
 

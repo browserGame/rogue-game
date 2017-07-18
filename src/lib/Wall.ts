@@ -1,9 +1,9 @@
-import { $Room, $Item } from './Room';
+import { $Room, $Item,  getNameSpace } from './Room';
 import { Vector, addV, negV } from './math';
-import { Door } from './Door';
+import { $Door } from './Door';
 
 
-function createCursor(coords: Vector[], width: number, height: number, doors: Door[], pk: number) {
+function createCursor(coords: Vector[], width: number, height: number, doors: $Door[], pk: number) {
 
     let marked = coords.map((vec) => {
         let w: $Item = { tag: '#', p: vec };
@@ -257,7 +257,7 @@ export function processWalls(matrix: string[], width: number, room: $Room, coord
             cursor.render();
         } while (cursor.step());
     }
-
-    room.walls.splice(0, room.walls.length, ...cursor.result());
+    let walls = getNameSpace(room, 'walls');
+    walls.splice(0, walls.length, ...cursor.result());
 
 }
