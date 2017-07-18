@@ -7,7 +7,7 @@ import {
 } from './Room';
 
 export interface $Door {
-    from: number;
+    //from: number;
     to: number;
     inset: boolean;
     p: Vector;
@@ -20,7 +20,7 @@ export function processDoor(matrix: string[], width: number, room: $Room, coords
     }
     width;
     matrix;
-    room.doors.push({ from: room.pk, to: si.toRoom, inset: (si.inset || false), p: coords[0], dir: si.e });
+    room.doors.push({ /*from: room.pk,*/ to: si.toRoom, inset: (si.inset || false), p: coords[0], dir: si.e });
 }
 
 

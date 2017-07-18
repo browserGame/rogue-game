@@ -1,7 +1,7 @@
 'use strict';
 import {
     $Room,
-    $Item,
+    $ItemCarpet,
     getNameSpace
 } from './Room';
 
@@ -17,8 +17,7 @@ export function processCarpet(matrix: string[], width: number, room: $Room, coor
 
     matrix;
     width;
-    console.log(`Carpet token is:`, si);
-
+   
     let cp = coords.slice(0);
     cp.sort((a, b) => a.y - b.y || a.x - b.x); //first is top-left, last is bottom right
     let first = cp[0];
@@ -41,9 +40,8 @@ export function processCarpet(matrix: string[], width: number, room: $Room, coor
     }
 
     let carpet = getNameSpace(room, 'carpet');
-    let itm: $Item = { tag: si.e, p: first, br: last, color: si.type };
+    let itm: $ItemCarpet = { tag: si.e, p: first, br: last, color: si.type };
     carpet.push(itm);
-
 
 }
 

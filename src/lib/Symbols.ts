@@ -104,6 +104,14 @@ import {
     processCarpet
 } from './Carpet';
 
+import {
+    processSkullAndBones
+} from './BonesFloor';
+
+import {
+    processTeleport
+} from './Teleport';
+
 export interface CPU {
     [index: string]: Function | 0;
 }
@@ -122,7 +130,7 @@ export const codedItems: CPU = {
     //dungeon floor coverings
     //
     K: processCobWeb, //xx cobweb, same as carpet, everything above
-    A: 0x0, //xx skull , floor or carper below, blood seeps below
+    A: processSkullAndBones, //xx skull , floor or carper below, blood seeps below
     é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
     '=': 0x0, //"seeps to floor or carpet"
     //
@@ -132,7 +140,7 @@ export const codedItems: CPU = {
     '>': processDoor, //xx door east  ,top
     '<': processDoor, //xx door west  ,top
     v: processDoor, //xx door south   ,top
-    X: 0x0, //teleport, exclusive
+    X: processTeleport, //teleport, exclusive
     µ: 0x0, //stairs change level , exclusive  
     //
     //obstructables

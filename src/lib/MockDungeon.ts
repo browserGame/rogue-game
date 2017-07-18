@@ -376,8 +376,8 @@ export const mockDungeon: Layout[] = [
             },
             <Carpet>{ e: 'é', type: 'blue' }
         ],
-    id: 9,
-    room: [`
+        id: 9,
+        room: [`
 #####^#####
 ##.......##
 #K!.&...!.#
@@ -402,50 +402,50 @@ export const mockDungeon: Layout[] = [
 `,
         ]
     },
-{
-    symbols: [
-        <DoorUp>{
-            e: '^', toRoom: 11, inset: true //'inset:11' 
-        },
-        <DoorRight>{ e: '>', toRoom: 9 },
-        <Bat>{
-            m: '1', e: 'F', has: [
-                <Coin>{ credit: 2, color: 'gold' },
-                <BottleWater>{ addHp: 10 }
-            ]
-            // 'gold:2,bottle:water' 
-        },
-        <LevelStairs>{ e: 'µ', toRoom: 99, stairs: 'µ', level: 2 },
-        <Bat>{
-            m: '3', e: 'F', has: [
-                <Coin>{ credit: 2, e: 'M', color: 'gold' }
-            ] // 'gold:2'
-        },
-        <Vase>{
-            e: 'J', initBroken: false, color: 'red'
-            // 'trap-trigger:1,T'
-        },
-        <Skeleton>{
-            e: 'T', triggeredBy: 'J', xp: 10, hp: 10, has: [
-                <Stone>{ e: 'L', color: 'gray', credit: 10 },
-                <BottleWater>{ e: 's', addHp: 10 }
-            ]
-            //'stone:grey,bottle:hp'
-        },
-        <Rat>{
-            e: 'G', hp: 10, xp: 10, has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }]// 'gold:1' 
-        },
-        <Goblin>{
-            e: 'E', hp: 10, xp: 10, has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }] // 'gold:3'
-        },
-        <Bat>{
-            m: '2', e: 'F', xp: 10, hp: 10, has: [
-                <Coin>{ e: 'M', credit: 3, color: 'gold' }
-            ] // 'gold:3'
-        }
-    ],
+    {
+        symbols: [
+            <DoorUp>{
+                e: '^', toRoom: 11, inset: true //'inset:11' 
+            },
+            <DoorRight>{ e: '>', toRoom: 9 },
+            <Bat>{
+                m: '1', e: 'F', has: [
+                    <Coin>{ credit: 2, color: 'gold' },
+                    <BottleWater>{ addHp: 10 }
+                ]
+                // 'gold:2,bottle:water' 
+            },
+            <LevelStairs>{ e: 'µ', toRoom: 99, stairs: 'µ', level: 2 },
+            <Bat>{
+                m: '3', e: 'F', has: [
+                    <Coin>{ credit: 2, e: 'M', color: 'gold' }
+                ] // 'gold:2'
+            },
+            <Vase>{
+                e: 'J', initBroken: false, color: 'red'
+                // 'trap-trigger:1,T'
+            },
+            <Skeleton>{
+                e: 'T', triggeredBy: 'J', xp: 10, hp: 10, has: [
+                    <Stone>{ e: 'L', color: 'gray', credit: 10 },
+                    <BottleWater>{ e: 's', addHp: 10 }
+                ]
+                //'stone:grey,bottle:hp'
+            },
+            <Rat>{
+                e: 'G', hp: 10, xp: 10, has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }]// 'gold:1' 
+            },
+            <Goblin>{
+                e: 'E', hp: 10, xp: 10, has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }] // 'gold:3'
+            },
+            <Bat>{
+                m: '2', e: 'F', xp: 10, hp: 10, has: [
+                    <Coin>{ e: 'M', credit: 3, color: 'gold' }
+                ] // 'gold:3'
+            }
+        ],
         id: 10,
-            room: [`
+        room: [`
 ####^######
 #........K#
 #.1.Q.A...#
@@ -463,23 +463,23 @@ export const mockDungeon: Layout[] = [
 #K........#
 ###########
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 10 },
-        <Vase>{
-            e: 'J', initBroken: false, color: 'red', has: [] // 'gold:1' 
-        },
-        <BeerBarrel>{
-            initBroken: false, e: '{', has: [
-                <Coin>{ e: 'M', credit: 3, color: 'gold' },
-                <Stone>{ e: 'L', credit: 4, color: 'gold' }
-            ]
-        }, // 'gold:3,stone:gold' },
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 10 },
+            <Vase>{
+                e: 'J', initBroken: false, color: 'red', has: [] // 'gold:1' 
+            },
+            <BeerBarrel>{
+                initBroken: false, e: '{', has: [
+                    <Coin>{ e: 'M', credit: 3, color: 'gold' },
+                    <Stone>{ e: 'L', credit: 4, color: 'gold' }
+                ]
+            }, // 'gold:3,stone:gold' },
 
-    ],
+        ],
         id: 11,
-            room: [`
+        room: [`
 ###########
 #.!....A..#
 #..A......#
@@ -491,22 +491,22 @@ export const mockDungeon: Layout[] = [
 #.........#
 #####v#####
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 6, inset: true },
-        <DoorRight>{ e: '>', toRoom: 21, inset: true },
-        <DoorBottom>{ e: 'v', toRoom: 13, inset: true },
-        <Vase>{ e: 'J', color: 'green' },
-        <TombStone>{
-            e: 'V', has: [
-                <Coin>{ credit: 1, color: 'gold', e: 'M' }
-            ] // 'gold:1' 
-        },
-        <Carpet>{ e: 'é', type: 'red' }
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 6, inset: true },
+            <DoorRight>{ e: '>', toRoom: 21, inset: true },
+            <DoorBottom>{ e: 'v', toRoom: 13, inset: true },
+            <Vase>{ e: 'J', color: 'green' },
+            <TombStone>{
+                e: 'V', has: [
+                    <Coin>{ credit: 1, color: 'gold', e: 'M' }
+                ] // 'gold:1' 
+            },
+            <Carpet>{ e: 'é', type: 'red' }
+        ],
         id: 12,
-            room: [`
+        room: [`
 #^#########
 #.........>
 #...ééé...#
@@ -523,15 +523,15 @@ export const mockDungeon: Layout[] = [
 #.........#
 ###########
 `]
-}
+    }
     ,
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 12 },
-        <DoorBottom>{ e: 'v', toRoom: 14, inset: true },
-    ],
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 12 },
+            <DoorBottom>{ e: 'v', toRoom: 14, inset: true },
+        ],
         id: 13,
-            room: [`
+        room: [`
 ####^###
 #......#
 #......#
@@ -539,15 +539,15 @@ export const mockDungeon: Layout[] = [
 ####...#
 ####v###
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 13 },
-        <DoorBottom>{ e: 'v', toRoom: 20, inset: true },
-        <DoorLeft>{ e: '<', toRoom: 15, inset: true },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 13 },
+            <DoorBottom>{ e: 'v', toRoom: 20, inset: true },
+            <DoorLeft>{ e: '<', toRoom: 15, inset: true },
+        ],
         id: 14,
-            room: [`
+        room: [`
 #####^#####
 #KA.......#
 #....R....#
@@ -559,13 +559,13 @@ export const mockDungeon: Layout[] = [
 #K........#
 #########v#
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 14 },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 14 },
+        ],
         id: 20,
-            room: [`
+        room: [`
 ###^####
 #......#
 #......#
@@ -573,32 +573,32 @@ export const mockDungeon: Layout[] = [
 #K..####
 ########
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 16, inset: true },
-        <DoorLeft>{ e: '<', toRoom: 18, inset: true },
-        <DoorRight>{ e: '>', toRoom: 14 },
-        <DoorBottom>{ e: 'v', toRoom: 17, inset: true },
-        <LevelStairs>{ e: 'µ', toRoom: 99, stairs: 'µ', level: 2 },
-        <Bat>{ m: '1', e: 'F', xp: 10, hp: 10 },
-        <Coin>{ e: 'M', credit: 2, color: 'gold' },
-        <Stone>{ e: 'L', color: 'white', credit: 4 },
-        <Vase>{
-            e: 'J', color: 'green', has: [
-                <Coin>{ e: 'M', credit: 1 },
-                <BottleMilk>{ e: 'p', addHp: 20 }
-            ] // 'coin:1,bottle:milk:1' 
-        },
-        <TombStone>{
-            e: 'V', has: [
-                <Coin>{ e: 'M', credit: 1, color: 'gold' }
-            ]
-        },
-        <Coin>{ m: '2', e: 'M', credit: 3, color: 'gold' },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 16, inset: true },
+            <DoorLeft>{ e: '<', toRoom: 18, inset: true },
+            <DoorRight>{ e: '>', toRoom: 14 },
+            <DoorBottom>{ e: 'v', toRoom: 17, inset: true },
+            <LevelStairs>{ e: 'µ', toRoom: 99, stairs: 'µ', level: 2 },
+            <Bat>{ m: '1', e: 'F', xp: 10, hp: 10 },
+            <Coin>{ e: 'M', credit: 2, color: 'gold' },
+            <Stone>{ e: 'L', color: 'white', credit: 4 },
+            <Vase>{
+                e: 'J', color: 'green', has: [
+                    <Coin>{ e: 'M', credit: 1 },
+                    <BottleMilk>{ e: 'p', addHp: 20 }
+                ] // 'coin:1,bottle:milk:1' 
+            },
+            <TombStone>{
+                e: 'V', has: [
+                    <Coin>{ e: 'M', credit: 1, color: 'gold' }
+                ]
+            },
+            <Coin>{ m: '2', e: 'M', credit: 3, color: 'gold' },
+        ],
         id: 15,
-            room: [`
+        room: [`
 ########^#####
 #............#
 #....µ.....1.#
@@ -611,14 +611,14 @@ export const mockDungeon: Layout[] = [
 #............#
 ##########v###
 `]
-}
+    }
     ,
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 15 },
-    ],
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 15 },
+        ],
         id: 16,
-            room: [`
+        room: [`
 ########
 #......#
 #..B...#
@@ -626,16 +626,16 @@ export const mockDungeon: Layout[] = [
 #...####
 ##v#####
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 15 },
-        <Carpet>{ e: 'é', type: 'blue' },
-        <Stone>{ e: 'L', color: 'green', credit: 2 }
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 15 },
+            <Carpet>{ e: 'é', type: 'blue' },
+            <Stone>{ e: 'L', color: 'green', credit: 2 }
+        ],
         id: 17,
-            room: [
-                `
+        room: [
+            `
 ###^###
 #A....#
 #.....#
@@ -644,7 +644,7 @@ export const mockDungeon: Layout[] = [
 #.....#
 #######
 `,
-                `
+            `
 #######
 #.....#
 #.ééé.#
@@ -653,7 +653,7 @@ export const mockDungeon: Layout[] = [
 #.....#
 #######
 `,
-                `
+            `
 #######
 #.....#
 #.!U!.#
@@ -662,26 +662,27 @@ export const mockDungeon: Layout[] = [
 #.....#
 #######
 `
-            ]
+        ]
 
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 19, inset: true },
-        <DoorRight>{ e: '>', toRoom: 15 },
-        <Rat>{ e: 'G', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] },
-        <GreenWizard>{
-            m: '2', e: '@', has: [
-                <BootsRed>{ e: 'à', addDp: 10, addXp: 10 }
-            ] // 'boots:red' 
-        },
-        <GreenWizard>{
-            e: '@', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] //'coin:1'
-        },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 19, inset: true },
+            <DoorRight>{ e: '>', toRoom: 15 },
+            <Rat>{ e: 'G', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] },
+            <GreenWizard>{
+                m: '2', e: '@', has: [
+                    <BootsRed>{ e: 'à', addDp: 10, addXp: 10 }
+                ] // 'boots:red' 
+            },
+            <GreenWizard>{
+                e: '@', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] //'coin:1'
+            },
+            <TelePortal>{ e: 'X', toRoom: 23, portal: 'X' }
+        ],
         id: 18,
-            room:
-    [`
+        room:
+        [`
 #####^######
 #K........K#
 #..2....GV.#
@@ -692,26 +693,26 @@ export const mockDungeon: Layout[] = [
 #.......X..>
 #..........#
 #.........A#
-#.....Y....#
+#..........#
 #..........#
 #..........#
 #...A......#
 ############
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 18 },
-        <TombStone>{
-            e: 'V', has: [
-                <Coin>{ e: 'M', credit: 2, color: 'gold' }
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 18 },
+            <TombStone>{
+                e: 'V', has: [
+                    <Coin>{ e: 'M', credit: 2, color: 'gold' }
 
-            ] /*'gold:2'*/
-        },
-    ],
+                ] /*'gold:2'*/
+            },
+        ],
         id: 19,
-            room:
-    [`
+        room:
+        [`
 ########
 #......#
 #.A....#
@@ -719,26 +720,26 @@ export const mockDungeon: Layout[] = [
 ####...#
 #####v##
 `]
-}
+    }
     ,
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 22, inset: true },
-        <DoorBottom>{ e: 'v', toRoom: 26, inset: true },
-        <DoorLeft>{ e: '<', toRoom: 12 },
-        <DoorRight>{ e: '>', toRoom: 25, inset: true },
-        <Vase>{ e: 'J', color: 'blue' },
-        <Bat>{
-            e: 'F', has: [
-                <Coin>{ e: 'M', color: 'gold', credit: 4 },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 22, inset: true },
+            <DoorBottom>{ e: 'v', toRoom: 26, inset: true },
+            <DoorLeft>{ e: '<', toRoom: 12 },
+            <DoorRight>{ e: '>', toRoom: 25, inset: true },
+            <Vase>{ e: 'J', color: 'blue' },
+            <Bat>{
+                e: 'F', has: [
+                    <Coin>{ e: 'M', color: 'gold', credit: 4 },
 
-            ] /*'gold:4'*/
-        },
-        <Coin>{ e: 'M', credit: 1, color: 'gold' }
-    ],
+                ] /*'gold:4'*/
+            },
+            <Coin>{ e: 'M', credit: 1, color: 'gold' }
+        ],
         id: 21,
-            room:
-    [`
+        room:
+        [`
 ###^#######
 #......M..#
 #.........#
@@ -756,40 +757,40 @@ export const mockDungeon: Layout[] = [
 #.........#
 #######v###
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 23, inset: true },
-        <DoorBottom>{ e: 'v', toRoom: 21 },
-        <Vase>{
-            e: 'J', color: 'blue', has: [
-                <Coin>{ e: 'M', credit: 1, color: 'gold' }
-            ] /*'gold:1'*/
-        },
-        <Rat>{
-            e: 'G', has: [
-                <Coin>{ e: 'M', credit: 1, color: 'gold' }
-            ] /*'gold:1'*/
-        },
-        <TombStone>{
-            e: 'V', initBroken: false, has: [
-                <BottleMilk>{ e: 'p', addHp: 20 }
-            ] /* 'milk'*/
-        },
-        <Closet>{
-            e: 'z', initOpen: false, has: [
-                <ChickenBone>{ e: 'r', addHp: 10 }
-            ] /*'chicken-bone:1'*/
-        },
-        <Bat>{
-            e: 'F', has: [
-                <Stone>{ color: 'gold', credit: 4, e: 'L' }
-            ] /*'stone:1:gold'*/
-        },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 23, inset: true },
+            <DoorBottom>{ e: 'v', toRoom: 21 },
+            <Vase>{
+                e: 'J', color: 'blue', has: [
+                    <Coin>{ e: 'M', credit: 1, color: 'gold' }
+                ] /*'gold:1'*/
+            },
+            <Rat>{
+                e: 'G', has: [
+                    <Coin>{ e: 'M', credit: 1, color: 'gold' }
+                ] /*'gold:1'*/
+            },
+            <TombStone>{
+                e: 'V', initBroken: false, has: [
+                    <BottleMilk>{ e: 'p', addHp: 20 }
+                ] /* 'milk'*/
+            },
+            <Closet>{
+                e: 'z', initOpen: false, has: [
+                    <ChickenBone>{ e: 'r', addHp: 10 }
+                ] /*'chicken-bone:1'*/
+            },
+            <Bat>{
+                e: 'F', has: [
+                    <Stone>{ color: 'gold', credit: 4, e: 'L' }
+                ] /*'stone:1:gold'*/
+            },
+        ],
         id: 22,
-            room:
-    [`
+        room:
+        [`
 #######^###
 #........K#
 #.........#
@@ -807,22 +808,23 @@ export const mockDungeon: Layout[] = [
 #K...AFA.K#
 #####v#####
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 24, inset: true /*door: 'inset:24'*/ },
-        <DoorBottom>{ e: 'v', toRoom: 22 },
-        <DoorRight>{ e: '>', toRoom: 32, inset: true },
-        <Stone>{ e: 'L', color: 'gold', credit: 4 },
-        <BeerBarrel>{
-            e: '{', has: [
-                <Coin>{ e: 'M', credit: 1, color: 'gold' }
-            ] /*'gold:1'*/
-        },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 24, inset: true /*door: 'inset:24'*/ },
+            <DoorBottom>{ e: 'v', toRoom: 22 },
+            <DoorRight>{ e: '>', toRoom: 32, inset: true },
+            <Stone>{ e: 'L', color: 'gold', credit: 4 },
+            <BeerBarrel>{
+                e: '{', has: [
+                    <Coin>{ e: 'M', credit: 1, color: 'gold' }
+                ] /*'gold:1'*/
+            },
+            <TelePortal>{ e: 'X', toRoom: 18, portal: 'X' }
+        ],
         id: 23,
-            room:
-    [`
+        room:
+        [`
 #^#######
 #......K#
 #.......#
@@ -840,20 +842,20 @@ export const mockDungeon: Layout[] = [
 #K......#
 ####v####
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 23 },
-        <Bat>{
-            e: 'F', xp: 10, hp: 10, has: [
-                <Coin>{ e: 'M', credit: 1, color: 'gold' }
-            ] /*'gold:2'*/
-        },
-        <Stone>{ e: 'L', color: 'green', credit: 3 }
-    ],
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 23 },
+            <Bat>{
+                e: 'F', xp: 10, hp: 10, has: [
+                    <Coin>{ e: 'M', credit: 1, color: 'gold' }
+                ] /*'gold:2'*/
+            },
+            <Stone>{ e: 'L', color: 'green', credit: 3 }
+        ],
         id: 24,
-            room:
-    [`
+        room:
+        [`
 ########
 #......#
 #......#
@@ -861,19 +863,19 @@ export const mockDungeon: Layout[] = [
 ####...#
 #####v##
 `]
-},
-{
-    symbols: [
-        <DoorLeft>{ e: '<', toRoom: 21 },
-        <Vase>{ m: '1', e: 'J', color: 'gray' },
-        <Rat>{ e: 'G', has: [<Cheese>{ e: 'q', addHp: 10 }] /*'cheese'*/ },
-        <Rat>{ m: '2', e: 'G', triggeredBy: 'I' },
-        <Vase>{ e: 'J', color: 'green' },
-        <RedPentagram>{ e: 'I', initOpen: false }
-    ],
+    },
+    {
+        symbols: [
+            <DoorLeft>{ e: '<', toRoom: 21 },
+            <Vase>{ m: '1', e: 'J', color: 'gray' },
+            <Rat>{ e: 'G', has: [<Cheese>{ e: 'q', addHp: 10 }] /*'cheese'*/ },
+            <Rat>{ m: '2', e: 'G', triggeredBy: 'I' },
+            <Vase>{ e: 'J', color: 'green' },
+            <RedPentagram>{ e: 'I', initOpen: false }
+        ],
         id: 25,
-            room:
-    [`
+        room:
+        [`
 ###########
 #........K#
 #..1......#
@@ -887,23 +889,23 @@ export const mockDungeon: Layout[] = [
 #K.......K#
 ###########
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 21 },
-        <DoorBottom>{ e: 'v', toRoom: 27, inset: true },
-        <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'grey', e: 'M' }] /*'gold:5'*/ },
-        <TombStone>{
-            e: 'V', initBroken: false, has: [
-                <Fish>{ e: ';', addHp: 15 },
-                <Mana>{ e: '§', addMana: 14 },
-                <Coin>{ e: 'M', credit: 1, color: 'grey' }
-            ] /*'fish,mana,gold:1'*/
-        },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 21 },
+            <DoorBottom>{ e: 'v', toRoom: 27, inset: true },
+            <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'grey', e: 'M' }] /*'gold:5'*/ },
+            <TombStone>{
+                e: 'V', initBroken: false, has: [
+                    <Fish>{ e: ';', addHp: 15 },
+                    <Mana>{ e: '§', addMana: 14 },
+                    <Coin>{ e: 'M', credit: 1, color: 'grey' }
+                ] /*'fish,mana,gold:1'*/
+            },
+        ],
         id: 26,
-            room:
-    [`
+        room:
+        [`
 #######^#######
 #K.........A..#
 #......G......#
@@ -918,18 +920,18 @@ export const mockDungeon: Layout[] = [
 #K...........A#
 #############v#
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 26 },
-        <DoorRight>{ e: '>', toRoom: 28, inset: true },
-        <Coin>{ e: 'M', credit: 3, color: 'gold' },
-        <Stone>{ m: '1', e: 'L', color: 'gold', credit: 3 },
-        <Stone>{ m: '2', e: 'L', color: 'green', credit: 4 },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 26 },
+            <DoorRight>{ e: '>', toRoom: 28, inset: true },
+            <Coin>{ e: 'M', credit: 3, color: 'gold' },
+            <Stone>{ m: '1', e: 'L', color: 'gold', credit: 3 },
+            <Stone>{ m: '2', e: 'L', color: 'green', credit: 4 },
+        ],
         id: 27,
-            room:
-    [`
+        room:
+        [`
 ###^####
 #......#
 #.M.1..>
@@ -937,22 +939,22 @@ export const mockDungeon: Layout[] = [
 #...####
 ########
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 29, inset: true },
-        <DoorLeft>{ e: '<', toRoom: 27 },
-        <Coin>{ e: 'M', credit: 2, color: 'gold' } /*'gold:2'*/,
-        <Bat>{ e: 'F', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] /*'gold:1'*/ },
-        <Vase>{ e: 'J', has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }], color: 'red' },
-        <Bat>{ m: '1', e: 'F', has: [<Coin>{ e: 'M', credit: 4, color: 'gray' }] /*'gold:4'*/ },
-        <Bat>{ m: '2', e: 'F', has: [<PantsRed>{ e: '~', addHp: 10 }] /*'red-pants'*/ },
-        <TelePortal>{ e: 'X', toRoom: 1, portal: 'X' },
-        <Table>{ e: '*', initOpen: false, context: 'with-paper' },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 29, inset: true },
+            <DoorLeft>{ e: '<', toRoom: 27 },
+            <Coin>{ e: 'M', credit: 2, color: 'gold' } /*'gold:2'*/,
+            <Bat>{ e: 'F', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] /*'gold:1'*/ },
+            <Vase>{ e: 'J', has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }], color: 'red' },
+            <Bat>{ m: '1', e: 'F', has: [<Coin>{ e: 'M', credit: 4, color: 'gray' }] /*'gold:4'*/ },
+            <Bat>{ m: '2', e: 'F', has: [<PantsRed>{ e: '~', addHp: 10 }] /*'red-pants'*/ },
+            <TelePortal>{ e: 'X', toRoom: 1, portal: 'X' },
+            <Table>{ e: '*', initOpen: false, context: 'with-paper' },
+        ],
         id: 28,
-            room:
-    [`
+        room:
+        [`
 ##########^#####
 #K............K#
 #..A.......M...#
@@ -965,23 +967,23 @@ export const mockDungeon: Layout[] = [
 #K............K#
 ################
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 30, inset: true },
-        <DoorBottom>{ e: 'v', toRoom: 28 },
-        <Vase>{ e: 'J', color: 'gold' },
-        <Table>{ e: '*', has: [<Coin>{ e: 'M', credit: 3 }] /*'gold:3'*/ },
-        <Stone>{ e: 'L', color: 'white', credit: 4 },
-        <Coin>{ e: 'M', credit: 1, color: 'gold' } /*'gold:1'*/,
-        <Closet>{ e: 'z', has: [<Coin>{ e: 'M', credit: 5, color: 'gold' }] /* 'gold:5'*/ },
-        <Coffin>{ e: 'H', has: [<Coin>{ e: 'M', credit: 1, color: 'gray' }] /*'gold:1'*/ },
-        <Rat>{ m: '2', e: 'G', xp: 10, hp: 10 },
-        <Bat>{ m: '1', e: 'F', xp: 10, hp: 10 },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 30, inset: true },
+            <DoorBottom>{ e: 'v', toRoom: 28 },
+            <Vase>{ e: 'J', color: 'gold' },
+            <Table>{ e: '*', has: [<Coin>{ e: 'M', credit: 3 }] /*'gold:3'*/ },
+            <Stone>{ e: 'L', color: 'white', credit: 4 },
+            <Coin>{ e: 'M', credit: 1, color: 'gold' } /*'gold:1'*/,
+            <Closet>{ e: 'z', has: [<Coin>{ e: 'M', credit: 5, color: 'gold' }] /* 'gold:5'*/ },
+            <Coffin>{ e: 'H', has: [<Coin>{ e: 'M', credit: 1, color: 'gray' }] /*'gold:1'*/ },
+            <Rat>{ m: '2', e: 'G', xp: 10, hp: 10 },
+            <Bat>{ m: '1', e: 'F', xp: 10, hp: 10 },
+        ],
         id: 29,
-            room:
-    [`
+        room:
+        [`
 ######^#####
 #K.......A.#
 #..........#
@@ -999,15 +1001,15 @@ export const mockDungeon: Layout[] = [
 #..........#
 ######v#####
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 31, inset: true /*'inset:31'*/ },
-        <DoorBottom>{ e: 'v', toRoom: 29 },
-    ],
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 31, inset: true /*'inset:31'*/ },
+            <DoorBottom>{ e: 'v', toRoom: 29 },
+        ],
         id: 30,
-            room:
-    [`
+        room:
+        [`
 ##^#####
 #......#
 #...@..#
@@ -1015,25 +1017,25 @@ export const mockDungeon: Layout[] = [
 #...####
 ##v#####
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 30 },
-        <Coin>{ e: 'M', credit: 15, color: 'gold' },
-        <Vase>{
-            e: 'J', color: 'green', has: [
-                <Coin>{ e: 'M', color: 'gold', credit: 5 }
-            ] /*'gold:6'*/
-        },
-        <Rat>{
-            e: 'G', has: [
-                <Coin>{ e: 'M', credit: 4, color: 'gold' }
-            ] /*'gold:4'*/
-        }
-    ],
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 30 },
+            <Coin>{ e: 'M', credit: 15, color: 'gold' },
+            <Vase>{
+                e: 'J', color: 'green', has: [
+                    <Coin>{ e: 'M', color: 'gold', credit: 5 }
+                ] /*'gold:6'*/
+            },
+            <Rat>{
+                e: 'G', has: [
+                    <Coin>{ e: 'M', credit: 4, color: 'gold' }
+                ] /*'gold:4'*/
+            }
+        ],
         id: 31,
-            room:
-    [`
+        room:
+        [`
 ##########
 #........#
 #........#
@@ -1050,62 +1052,62 @@ export const mockDungeon: Layout[] = [
 #.......K#
 #####v####
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 33, inset: true },
-        <DoorLeft>{ e: '<', toRoom: 23 },
-        <DoorUp>{ e: '^', toRoom: 34, inset: true },
-        <Rat>{
-            m: '1', e: 'G', has: [
-                <Fish>{ e: ';', addHp: 25 }
-            ] /*'fish'*/
-        },
-        <Bat>{
-            m: '2', e: 'F', xp: 10, hp: 10, has: [
-                <Coin>{ e: 'M', credit: 2, color: 'gold' }
-            ] /* 'gold:2'*/
-        },
-        <TwirlStone>{
-            e: 'P', initBroken: false, has: [
-                <BottleMilk>{ e: 'p', addHp: 25 }
-            ] /*'milk,gold:1'*/
-        },
-        <Stone>{ m: '3', e: 'L', color: 'gold', credit: 4 },
-        <Stone>{ m: '4', e: 'L', color: 'white', credit: 3 },
-        <Bat>{
-            m: '5', e: 'F', xp: 10, hp: 10, has: [
-                <Coin>{ e: 'M', credit: 4, color: 'gray' }
-            ] /*'gold:4'*/
-        },
-        <Stone>{ m: '6', e: 'L', color: 'gold', credit: 2 },
-        <Vase>{
-            m: '7', e: 'J', initBroken: false, color: 'blue', has: [
-                <MagicSpellBook>{ e: 'u', spell: 'earthquake' },
-                <Mace>{ e: 't', addHp: 100 }
-            ]
-            /* 'book-spell:earthquake,mace'*/
-        },
-        <Rat>{ m: '8', e: 'G', xp: 10, hp: 10 },
-        <Rat>{
-            m: '9', e: 'G', xp: 10, hp: 10, has: [
-                <Coin>{ e: 'M', color: 'gold', credit: 1 },
-                <Coin>{ e: 'M', color: 'silver', credit: 1 }
-            ] /* 'gold:1,silver:1'*/
-        },
-        <Bat>{ m: 'a', e: 'F', xp: 10, hp: 10 },
-        <Stone>{ m: 'b', e: 'L', color: 'gold', credit: 4 },
-        <Bat>{
-            m: 'c', e: 'F', xp: 10, hp: 10, has: [
-                <Fish>{ e: ';', addHp: 25, poisen: { add: 10, release: 2 } },
-                <Coin>{ e: 'M', credit: 2, color: 'gold' }
-            ] /* 'fish:gold:2'*/
-        },
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 33, inset: true },
+            <DoorLeft>{ e: '<', toRoom: 23 },
+            <DoorUp>{ e: '^', toRoom: 34, inset: true },
+            <Rat>{
+                m: '1', e: 'G', has: [
+                    <Fish>{ e: ';', addHp: 25 }
+                ] /*'fish'*/
+            },
+            <Bat>{
+                m: '2', e: 'F', xp: 10, hp: 10, has: [
+                    <Coin>{ e: 'M', credit: 2, color: 'gold' }
+                ] /* 'gold:2'*/
+            },
+            <TwirlStone>{
+                e: 'P', initBroken: false, has: [
+                    <BottleMilk>{ e: 'p', addHp: 25 }
+                ] /*'milk,gold:1'*/
+            },
+            <Stone>{ m: '3', e: 'L', color: 'gold', credit: 4 },
+            <Stone>{ m: '4', e: 'L', color: 'white', credit: 3 },
+            <Bat>{
+                m: '5', e: 'F', xp: 10, hp: 10, has: [
+                    <Coin>{ e: 'M', credit: 4, color: 'gray' }
+                ] /*'gold:4'*/
+            },
+            <Stone>{ m: '6', e: 'L', color: 'gold', credit: 2 },
+            <Vase>{
+                m: '7', e: 'J', initBroken: false, color: 'blue', has: [
+                    <MagicSpellBook>{ e: 'u', spell: 'earthquake' },
+                    <Mace>{ e: 't', addHp: 100 }
+                ]
+                /* 'book-spell:earthquake,mace'*/
+            },
+            <Rat>{ m: '8', e: 'G', xp: 10, hp: 10 },
+            <Rat>{
+                m: '9', e: 'G', xp: 10, hp: 10, has: [
+                    <Coin>{ e: 'M', color: 'gold', credit: 1 },
+                    <Coin>{ e: 'M', color: 'silver', credit: 1 }
+                ] /* 'gold:1,silver:1'*/
+            },
+            <Bat>{ m: 'a', e: 'F', xp: 10, hp: 10 },
+            <Stone>{ m: 'b', e: 'L', color: 'gold', credit: 4 },
+            <Bat>{
+                m: 'c', e: 'F', xp: 10, hp: 10, has: [
+                    <Fish>{ e: ';', addHp: 25, poisen: { add: 10, release: 2 } },
+                    <Coin>{ e: 'M', credit: 2, color: 'gold' }
+                ] /* 'fish:gold:2'*/
+            },
 
-    ],
+        ],
         id: 32,
-            room:
-    [`
+        room:
+        [`
 ############^###
 #..............#
 #.......A..1A..#
@@ -1121,40 +1123,40 @@ export const mockDungeon: Layout[] = [
 #..............#
 #######v########
 `]
-},
-{
-    symbols: [
-        <DoorUp>{ e: '^', toRoom: 32 },
-        <Stone>{ m: '1', e: 'L', color: 'green' },
-        <Stone>{ m: '2', e: 'L', color: 'white' },
-        <TreasureChest>{
-            m: '3', e: '&', initOpen: false, has: [
-                <Mace>{ e: 't', addXp: 100 },
-                <Coin>{ e: 'M', credit: 4, color: 'gold' },
-                <Stone>{ e: 'L', credit: 3, color: 'gray' }
-            ]
-        },
-        <TreasureChest>{
-            m: '4',
-            e: '&',
-            initOpen: false,
-            has: [
-                <MagicPotion>{ e: 'l', addHp: 60 }
-            ] /* 'magic-potion,leather-boots,gold:4'*/
-        },
-        <Rat>{
-            e: 'G', has: [
-                <Coin>{ e: 'M', credit: 5, color: 'gold' }
-            ]
-        },
-        <Vase>{ e: 'J', color: 'green' },
-        <Stone>{ m: '6', e: 'L', color: 'gold', credit: 4 },
-         <Carpet>{ e: 'é', type: 'red' }
+    },
+    {
+        symbols: [
+            <DoorUp>{ e: '^', toRoom: 32 },
+            <Stone>{ m: '1', e: 'L', color: 'green' },
+            <Stone>{ m: '2', e: 'L', color: 'white' },
+            <TreasureChest>{
+                m: '3', e: '&', initOpen: false, has: [
+                    <Mace>{ e: 't', addXp: 100 },
+                    <Coin>{ e: 'M', credit: 4, color: 'gold' },
+                    <Stone>{ e: 'L', credit: 3, color: 'gray' }
+                ]
+            },
+            <TreasureChest>{
+                m: '4',
+                e: '&',
+                initOpen: false,
+                has: [
+                    <MagicPotion>{ e: 'l', addHp: 60 }
+                ] /* 'magic-potion,leather-boots,gold:4'*/
+            },
+            <Rat>{
+                e: 'G', has: [
+                    <Coin>{ e: 'M', credit: 5, color: 'gold' }
+                ]
+            },
+            <Vase>{ e: 'J', color: 'green' },
+            <Stone>{ m: '6', e: 'L', color: 'gold', credit: 4 },
+            <Carpet>{ e: 'é', type: 'red' }
 
-    ],
+        ],
         id: 33,
-            room:
-    [`
+        room:
+        [`
 #####^#####
 #K.A..1F..#
 #...2..z..#
@@ -1166,20 +1168,20 @@ export const mockDungeon: Layout[] = [
 #.......A.#
 ###########
 `]
-},
-{
-    symbols: [
-        <DoorBottom>{ e: 'v', toRoom: 32 },
-        <Stone>{ e: 'L', color: 'white', credit: 4 },
-        <GreenWizard>{
-            e: '@', has: [
-                <PantsGreen>{ e: 'ç', addDp: 15 }
-            ] /*'pants-green'*/
-        }
-    ],
+    },
+    {
+        symbols: [
+            <DoorBottom>{ e: 'v', toRoom: 32 },
+            <Stone>{ e: 'L', color: 'white', credit: 4 },
+            <GreenWizard>{
+                e: '@', has: [
+                    <PantsGreen>{ e: 'ç', addDp: 15 }
+                ] /*'pants-green'*/
+            }
+        ],
         id: 34,
-            room:
-    [`
+        room:
+        [`
 ###########
 #K........#
 #.........#
@@ -1189,7 +1191,7 @@ export const mockDungeon: Layout[] = [
 #...A.....#
 #####v#####
 `]
-}
+    }
 ];
 
 

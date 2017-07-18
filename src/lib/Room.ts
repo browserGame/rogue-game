@@ -1,9 +1,10 @@
 
 
-import { SymbolBase } from './Symbols';
+import { SymbolBase, Indirection, PortalType } from './Symbols';
 import { Vector } from './math';
 import { flatten } from './tools';
-import { $Door 
+import {
+    $Door
 } from './Door';
 
 export interface Layout {
@@ -16,8 +17,17 @@ export interface $Item {
     namespace?: string;
     tag: string;
     p: Vector;
-    br?: Vector; // bottom right
-    color?: string;
+
+}
+
+export interface $ItemCarpet extends $Item {
+    br: Vector; // used by carpet , bottom right
+    color: string; // used by carpet
+}
+
+export interface $ItemPortal extends $Item {
+    toRoom: number;
+    portal: Indirection | PortalType;
 }
 
 export interface $Room {

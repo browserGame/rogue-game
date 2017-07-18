@@ -83,7 +83,8 @@ export function parseLayout(layout: Layout) {
     });
 
     //some debugging
-    ['walls', 'floors', 'cobwebs', 'carpet'].forEach((ns) => {
+    let keys = Array.from(room.body.keys());
+    keys.forEach((ns) => {
         console.log(`${ns}:${getNameSpace(room, ns).map((i) => i.tag).join('')}`);
     });
     return room;
