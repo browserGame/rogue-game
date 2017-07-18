@@ -100,12 +100,9 @@ import {
     processCobWeb
 } from './CobWeb';
 
-export const processors = {
-    door: <Function>processDoor, // because of typescript idiocy
-    wall: <Function>processWalls,
-    floor: <Function>processFloor,
-    cobweb: <Function>processCobWeb,
-};
+import {
+    processCarpet
+} from './Carpet';
 
 export interface CPU {
     [index: string]: Function | 0;
@@ -115,8 +112,8 @@ export const codedItems: CPU = {
     //
     // primary
     //
-    '#': processors.wall, //xx wall
-    '.': processors.floor, //xx floor
+    '#': processWalls, //xx wall
+    '.': processFloor, //xx floor
     //
     //quest reults
     //
@@ -126,15 +123,15 @@ export const codedItems: CPU = {
     //
     K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: 0x0, //xx skull , floor or carper below, blood seeps below
-    é: 0x0, //xx carpet, like a floor nothing more, nothing below this
+    é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
     '=': 0x0, //"seeps to floor or carpet"
     //
     // doorways and portals
     //
-    '^': processors.door, //xx door north ,top
-    '>': processors.door, //xx door east  ,top
-    '<': processors.door, //xx door west  ,top
-    v: processors.door, //xx door south   ,top
+    '^': processDoor, //xx door north ,top
+    '>': processDoor, //xx door east  ,top
+    '<': processDoor, //xx door west  ,top
+    v: processDoor, //xx door south   ,top
     X: 0x0, //teleport, exclusive
     µ: 0x0, //stairs change level , exclusive  
     //

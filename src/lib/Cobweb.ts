@@ -42,15 +42,15 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
         ];
         //0,2,4,6 mod 8
         /* 
-           top left //0
-           ***
+           top left //0    x***xsss
+           **x
            *cs
-           *ss 
+           xss 
 
            top right //+2
-           ***
-           sc*
-           ss*
+           x**   
+           sc*     
+           ssx
 
            bottom right //+2
            ss*
@@ -67,11 +67,14 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
 
         let testCoords = templ.map((i) => addV(v, i)).map((_, idx, arr) => arr[(idx + corner * 2) % 8]);
 
-        let bools = testCoords.map((i) => isWall(i)); //this is always 1,1,1,1,1,0,0,0 (or should be)
-        let start = bools.findIndex((val) => val === false); // this is index 5
-        let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
+        let pattern = testCoords.map((i) => isWall(i) ? '*' : 's' ).join(''); //this is always 1,1,1,1,1,0,0,0 (or should be)
 
-        return start === 5 && startReverse === 3;
+        return /^.\*{3}.s{3}$/.test(pattern);
+
+        //let start = bools.findIndex((val) => val === false); // this is index 5
+        //let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
+
+        
 
     };
 

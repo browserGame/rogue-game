@@ -1,4 +1,4 @@
-import { $Room, $Item,  getNameSpace } from './Room';
+import { $Room, $Item, getNameSpace } from './Room';
 import { Vector, addV, negV } from './math';
 import { $Door } from './Door';
 
@@ -213,6 +213,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: $D
                 break;
             }
         }
+        marked = marked.filter((i) => i.tag !== ' ');
 
     };
 

@@ -5,6 +5,7 @@ import { Layout, $Room, getNameSpace } from './Room';
 
 export function parseLayout(layout: Layout) {
 
+
     if (!(layout.room instanceof Array)) {
         layout.room = [layout.room];
     }
@@ -12,7 +13,7 @@ export function parseLayout(layout: Layout) {
     let metaInfo = mapSymbols(layout.symbols);
 
     const pk = layout.id;
-
+   
     let left = 0;
     let top = 0;
 
@@ -81,9 +82,10 @@ export function parseLayout(layout: Layout) {
         });
     });
 
-    console.log(`walls:${getNameSpace(room, 'walls').map((i) => i.tag).join('')}`);
-    console.log(`floors:${getNameSpace(room, 'floor').map((i) => i.tag).join('')}`);
-
+    //some debugging
+    ['walls', 'floors', 'cobwebs', 'carpet'].forEach((ns) => {
+        console.log(`${ns}:${getNameSpace(room, ns).map((i) => i.tag).join('')}`);
+    });
     return room;
 
 }

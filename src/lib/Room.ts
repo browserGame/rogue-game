@@ -16,6 +16,8 @@ export interface $Item {
     namespace?: string;
     tag: string;
     p: Vector;
+    br?: Vector; // bottom right
+    color?: string;
 }
 
 export interface $Room {
