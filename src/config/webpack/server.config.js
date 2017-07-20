@@ -1,9 +1,3 @@
-/*
-const nodeModules = require('fs').readdirSync('node_modules')
-    .filter(x => ['.bin'].indexOf(x) === -1)
-    .reduce((hash, mod, idx) => hash[mod] = `commonjs ${mod}`, {});
-*/
-
 const { resolve } = require('path');
 
 module.exports = {

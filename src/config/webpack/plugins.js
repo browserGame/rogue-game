@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const tools = require('./localTools');
 const p = process.env.NODE_ENV === 'production';
 
 /* this is more for documentation
@@ -25,14 +25,14 @@ const cleanServer = new (require('clean-webpack-plugin'))(['server'], {
     /* exclude: ['client']*/
 });
 
-const sharedProd = !p ? [] : flatten(
+const sharedProd = !p ? [] : [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
         sourceMap: true
     })
-);
+];
 
 const html = new (require('html-webpack-plugin'))({
     title: 'BookBarter',
@@ -71,7 +71,7 @@ const html = new (require('html-webpack-plugin'))({
     ]
 });
 
-clientProd = !p ? [] : flatten(
+clientProd = !p ? [] : [
     // Extract CSS from bundled JS
     new (require('extract-text-webpack-plugin'))('styles.css'),
     // Extract external code into a separate "vendor" bundle
@@ -94,23 +94,12 @@ clientProd = !p ? [] : flatten(
     new (require('inline-manifest-webpack-plugin'))({
         name: 'webpackManifest'
     })
-);
+];
 
-function flatten() {
-    let rc = [];
-    for (let itm of Array.from(arguments)) {
-        if (itm instanceof Array) {
-            let rc2 = flatten(...itm);
-            rc.push(...rc2);
-            continue;
-        }
-        rc.push(itm);
-    }
-    return rc;
-}
 
-const client = flatten(cleanClient, sharedProd, html, clientProd);
-const server = flatten(cleanServer, sharedProd);
+
+const client = tools.flatten(cleanClient, sharedProd, html, clientProd);
+const server = tools.flatten(cleanServer, sharedProd);
 
 
 module.exports = { client, server };

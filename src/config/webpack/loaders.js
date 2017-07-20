@@ -21,6 +21,19 @@ const css = {
     }
 };
 
+const inliner = {
+    test: /\.(png|jpg|gif)$/,
+    include: [],
+    use: [
+        {
+            loader: 'url-loader',
+            options: {
+                limit: 100 * 1024 * 1024 //100kb, just for test, i want to see the base64 string))
+            }
+        }
+    ]
+};
+
 const postcss = {
     loader: 'postcss-loader',
     options: {
@@ -102,4 +115,4 @@ const tslint = {
     ]
 };
 
-module.exports = { raw, styles, ts, tslint };
+module.exports = { raw, styles, ts, tslint, inliner };

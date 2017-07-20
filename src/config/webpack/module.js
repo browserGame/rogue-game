@@ -1,5 +1,5 @@
-const { raw, styles, ts, tslint } = require('./loaders');
+const { raw, styles, ts, tslint , inliner } = require('./loaders');
 
 module.exports = {
-  rules: [ raw, styles, tslint, ts ]
+  rules: [ raw, styles, tslint, ts , inliner ]
 };

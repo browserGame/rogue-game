@@ -85,6 +85,7 @@
     "cpr": "^2.0.2",
     "css-loader": "^0.28.3",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean": "^0.3.2",
     "gulp-tslint": "^8.1.0",
@@ -103,6 +104,7 @@
     "tslint": "^5.1.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.0-dev.20170428",
+    "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
     "webpack-node-externals": "^1.6.0"
   },
@@ -119,6 +121,7 @@
     "install": "^0.9.3",
     "mailgun-js": "^0.10.1",
     "merge2": "^1.0.3",
+    "mime-types": "^2.1.15",
     "moment": "^2.18.1",
     "npm": "^4.5.0",
     "react": "^15.5.4",

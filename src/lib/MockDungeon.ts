@@ -53,6 +53,10 @@ import {
     MagicPotion
 } from './Symbols';
 
+// testing png base64 stuff
+const enemies = require('./enemies.png');
+console.log('enemies=> ', enemies);
+
 export const mockDungeon: Layout[] = [
     {
         symbols: [
