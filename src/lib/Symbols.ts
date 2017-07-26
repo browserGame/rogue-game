@@ -8,16 +8,20 @@
 
 // -3 (nothing below these items, makes sense ,lol can have stuff on top, except level stairs)
 // [.] floor (done)
-// [µ] level stairs (when you just walk out, you seem to "stand on it", monsters move around it)
+// [µ] level stairs (done) (when you just walk out, you seem to "stand on it", monsters move around it)
 
 // -1 nothing below (except for floor) , walkable can do battle on it,  
+// FloorGlyphs
 // [I] red pentagram
 // [m] half moon trap
 // [R] pentagram
+// SecretPlates 
 // [C] secret pressure plate
+// Traps
 // [w] spikes
 // [S] bear trap
-// [X]teleport (done) (can have battle (me, not other enemies) and blood)
+// Teleports
+// [X] teleport (done) (can have battle (me, not other enemies) and blood)
 
 
 // 0 nothing below, except for floor (walkable can place stuff on it)
@@ -50,7 +54,7 @@
 // [s] bottle water
 // [p] bottle milk
 // [r] chicken-bone
-// [q] cheese
+// [q] (done so-far) cheese
 // [i] elixer
 // [;] fish
 // [§] mana
@@ -118,6 +122,13 @@ import {
     processTraps
 } from './Traps';
 
+import {
+    processSecret
+} from './Secret';
+
+import {
+    processEdible
+} from './Edible';
 
 export interface CPU {
     [index: string]: Function | 0;
@@ -172,7 +183,7 @@ export const codedItems: CPU = {
     I: 0x0, //xx red pentagram trap
     m: 0x0, //xx half moon trap
     R: 0x0, //xx pentagram
-    C: 0x0, //xx secret pressure plate
+    C: processSecret, //xx secret pressure plate
     //
     // claws, spikes
     //
@@ -219,14 +230,14 @@ export const codedItems: CPU = {
     //
     // edibales
     //
-    s: 0x0, //   bottle water
-    p: 0x0, //   bottle milk
-    r: 0x0, //   chicken-bone
-    q: 0x0, //   cheese
-    i: 0x0, //   elixer
-    ';': 0x0, //   fish
-    '§': 0x0, //   mana
-    l: 0x0 //   magic-potion
+    s: processEdible, //   bottle water
+    p: processEdible, //   bottle milk
+    r: processEdible, //   chicken-bone
+    q: processEdible, //   cheese
+    i: processEdible, //   elixer
+    ';': processEdible, //   fish
+    '§': processEdible, //   mana
+    l: processEdible //   magic-potion
 };
 
 
@@ -323,20 +334,27 @@ export type TreasureChest = Discoverable<'&'>;
 export type Coffin = Discoverable<'H'>;
 export type Table = Discoverable<'*'>;
 //
-// actiatable plating
+//  FloorSymbols (pentagrams, half moons etc)
 //
-export type ActivatePlatingType = 'I' | 'm' | 'R' | 'C';
+export type FloorGlyphsType = 'I' | 'm' | 'R'; //[I] red pentagram,  [m] half moon trap, [R] pentagram
 
-export interface Activatable<T extends ActivatePlatingType> extends SymbolBase<T> {
+export interface FloorGlyphs<I extends FloorGlyphsType> extends SymbolBase<I> {
+
 }
 
-export type RedPentagram = Activatable<'I'>;
-export type HalfMoonTrap = Activatable<'m'>;
-export type Pentagram = Activatable<'R'>;
-export type SecretPlate = Activatable<'C'>;
-//
+export type RedPentagram = FloorGlyphs<'I'>;
+export type HalfMoonTrap = FloorGlyphs<'m'>;
+export type Pentagram = FloorGlyphs<'R'>;
+
+// secretplates
+
+export type SecretPlateType = 'C';
+export interface SecretPlate extends SymbolBase<'C'> {
+    has: GeneralContent[];
+}
+
 // claw and spikes
-//
+
 export type ClawSpikesTypes = 'w' | 'S';
 export interface ClawSpikes<T extends ClawSpikesTypes> extends SymbolBase<T> {
     delHp: number;
@@ -382,7 +400,7 @@ export type EnemyTypes = 'T' | //xxx skelton-enemy
     '@'; //xx green wizard shaman throws fire
 
 export interface Enemy<T extends EnemyTypes> extends SymbolBase<T> {
-    triggeredBy?: Indirection | WalkOpenableTypes | ActivatePlatingType;
+    triggeredBy?: Indirection | WalkOpenableTypes | FloorGlyphsType;
     hp: number;
     xp: number;
     //dp: number;
@@ -429,6 +447,8 @@ export type MaceCracked = Arsanal<'+'>;
 export type PantsRed = Arsanal<'~'>;
 export type PantsGreen = Arsanal<'ç'>;
 export type BootsLeather = Arsanal<'ù'>;
+
+export type AllWeapons = Shield | Mace | BootsRed | BootsDamaged | MaceCracked | PantsRed | PantsGreen | BootsLeather;
 //
 //valuables
 //
@@ -442,6 +462,8 @@ export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
 }
 export type Stone = Valuable<'L'>;
 export type Coin = Valuable<'M'>;
+
+export type AllValuebles = Stone | Coin;
 //
 // edibales
 //
@@ -469,3 +491,13 @@ export type Elixer = Edible<'i'>;
 export type Fish = Edible<';'>;
 export type Mana = Edible<'§'>;
 export type MagicPotion = Edible<'l'>;
+
+export type AllEdibles = BottleWater | BottleMilk | ChickenBone | Cheese | Elixer | Fish | Mana;
+
+export function isEdible(ed: any): ed is AllEdibles {
+    return ed && 'sprqi;§l'.indexOf(ed.e) >= 0;
+}
+
+
+export type GeneralContent = (AllWeapons & AllValuebles & AllEdibles & MagicSpellBook);
+

@@ -33,6 +33,16 @@ export interface $Room {
     base: string[];
 }
 
+export function isRoom(r: any): r is $Room {
+    
+    let arr: (keyof $Room)[];
+    arr = ['pk', 'top', 'left', 'width', 'height'];
+
+    return arr.filter((f) => {
+        return !(typeof r[f] === 'number');
+    }).length === 0;
+}
+
 export function getNameSpace(r: $Room, key: string): $Item[] {
     let ns = r.body.get(key);
     if (!ns) {

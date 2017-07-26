@@ -51,7 +51,7 @@ import {
     PantsGreen,
     Mace,
     MagicPotion,
-   // Spikes,
+    // Spikes,
     BearTrap
 } from './Symbols';
 
@@ -59,9 +59,10 @@ import {
 export const mockDungeon: Layout[] = [
     {
         symbols: [
+            <Cheese>{ e: 'q', addHp: 5 },
             <SecretPlate>{
                 e: 'C', has: [
-                    <Cheese>{ e: 'q', hp: 15 },
+                    <Cheese>{ e: 'q', addHp: 15, poisen: { add: 7, release: 1 } },
                     <Coin>{ e: 'M', color: 'gray', credit: 1 }
                 ]
             },
@@ -86,7 +87,7 @@ export const mockDungeon: Layout[] = [
         room: [
             `
 #########
-#.......#
+#....q..#
 #..A....#
 #.....A.#
 #..C....>
@@ -248,8 +249,8 @@ export const mockDungeon: Layout[] = [
                     <Coin>{ credit: 2, color: 'gray' }
                 ]
             },
-            <BearTrap>{m:'4', e:'S', delHp: 10},
-            <BearTrap>{m:'5', e:'S', delHp: 15}
+            <BearTrap>{ m: '4', e: 'S', delHp: 10 },
+            <BearTrap>{ m: '5', e: 'S', delHp: 15 }
         ],
         id: 6,
         room: [`
@@ -878,7 +879,7 @@ export const mockDungeon: Layout[] = [
             <Rat>{ e: 'G', has: [<Cheese>{ e: 'q', addHp: 10 }] /*'cheese'*/ },
             <Rat>{ m: '2', e: 'G', triggeredBy: 'I' },
             <Vase>{ e: 'J', color: 'green' },
-            <RedPentagram>{ e: 'I', initOpen: false }
+            <RedPentagram>{ e: 'I' }
         ],
         id: 25,
         room:

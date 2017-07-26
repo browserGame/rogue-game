@@ -18,15 +18,6 @@ import {
     BearTrap
 } from './Symbols';
 
-/*
-export type ClawSpikesTypes = 'w' | 'S';
-export interface ClawSpikes<T extends ClawSpikesTypes> extends SymbolBase<T> {
-    delHp: number;
-}
-export type Spikes = ClawSpikes<'w'>;
-export type BearTrap = ClawSpikes<'S'>;
-*/
-
 export interface $ItemTrap extends $Item {
     delHp: number;
 }
