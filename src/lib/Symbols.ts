@@ -1,23 +1,23 @@
 'use strict';
 
 // -4 static untraversable, noting above this, generally these are "cut-outs"
-// [#] wall
-// [(]lava
-// [O] water
-// [$] acid bath
+// [#] wall (done)
+// [(] lava (done)  namespace liquid
+// [O] water (done) namespace liquid
+// [$] acid bath (done) namespace liquid
 
 // -3 (nothing below these items, makes sense ,lol can have stuff on top, except level stairs)
-// [.] floor
+// [.] floor (done)
 // [µ] level stairs (when you just walk out, you seem to "stand on it", monsters move around it)
 
-//-1 nothing below (except for floor) , walkable can do battle on it,  
+// -1 nothing below (except for floor) , walkable can do battle on it,  
 // [I] red pentagram
 // [m] half moon trap
 // [R] pentagram
 // [C] secret pressure plate
 // [w] spikes
 // [S] bear trap
-// [X]teleport (can have battle (me, not other enemies) and blood)
+// [X]teleport (done) (can have battle (me, not other enemies) and blood)
 
 
 // 0 nothing below, except for floor (walkable can place stuff on it)
@@ -33,7 +33,6 @@
 //  [V] normal tombstone
 //  [J] vase
 //  [B] statue wizard
-
 
 // 98 ineventory items (only on cells 97,0,-1 (except teleport),-3 (except level stairs))
 //    is stack
@@ -57,7 +56,6 @@
 // [§] mana
 // [l] magic potion
 
-
 // 99 nothing above (this class mutall excludes) 
 // ["] death totum
 // [!]tourch
@@ -76,9 +74,9 @@
 // [G] rat
 // [@] green wizard shaman
 
-
 // 100 doorways always cover because horizontal
 // <^>v
+
 import {
     processWalls
 } from './Wall';
@@ -104,8 +102,22 @@ import {
 } from './BonesFloor';
 
 import {
-    processTeleport
-} from './Teleport';
+    processLiquid
+} from './Liquid';
+
+import {
+    processPortal
+} from './Portal';
+
+
+import {
+    processStairs
+} from './LevelStairs';
+
+import {
+    processTraps
+} from './Traps';
+
 
 export interface CPU {
     [index: string]: Function | 0;
@@ -127,7 +139,7 @@ export const codedItems: CPU = {
     K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: processSkullAndBones, //xx skull , floor or carper below, blood seeps below
     é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
-    '=': 0x0, //"seeps to floor or carpet"
+    '=': 0x0, //"(bloodà) seeps to floor or carpet"
     //
     // doorways and portals
     //
@@ -135,18 +147,18 @@ export const codedItems: CPU = {
     '>': processDoor, //xx door east  ,top
     '<': processDoor, //xx door west  ,top
     v: processDoor, //xx door south   ,top
-    X: processTeleport, //teleport, exclusive
-    µ: 0x0, //stairs change level , exclusive  
+    X: processPortal, //teleport, exclusive
+    µ: processStairs, //stairs change level , exclusive  
     //
     //obstructables
     //
     '"': 0x0, //xx death-totum
-    '(': 0x0, //xx lava
+    '(': processLiquid, //xx lava
     '!': 0x0, //xx tourch
     U: 0x0, //xx trader
     Q: 0x0, //xx quest regenerator
-    O: 0x0, //xx water
-    $: 0x0, //acid bath
+    O: processLiquid, //xx water
+    $: processLiquid, //acid bath
     //
     // discoverables via unlocking / open
     //
@@ -164,8 +176,8 @@ export const codedItems: CPU = {
     //
     // claws, spikes
     //
-    w: 0x0, //xx spikes
-    S: 0x0, //xx bear trap
+    w: processTraps, //xx spikes
+    S: processTraps, //xx bear trap
     //
     //discoverables via breaking
     //
@@ -259,6 +271,7 @@ export interface DoorWay<T extends DoorType> extends SymbolBase<T> {
     toRoom: number;
     inset?: boolean;
 }
+
 export type DoorLeft = DoorWay<'<'>;
 export type DoorRight = DoorWay<'>'>;
 export type DoorUp = DoorWay<'^'>;
@@ -268,15 +281,23 @@ export interface TelePortal extends SymbolBase<'X'> {
     toRoom: number;
     portal: Indirection | 'X';
 }
+
 export interface LevelStairs extends SymbolBase<'µ'> {
     toRoom: number;
     stairs: Indirection | 'µ';
     level: number;
 }
+
 //
 //obstructables
 //
-export type ObstructableType = '"' | '(' | '!' | 'U' | 'Q' | 'O' | '$';
+// [(]lava
+// [O] water
+// [$] acid bath
+//
+export type LiquidType = '$' | '(' | 'O';
+export type ObstructableType = '"' | '!' | 'U' | 'Q' | LiquidType;
+
 export interface Obstructable<T extends ObstructableType> extends SymbolBase<T> {
 }
 
@@ -318,12 +339,15 @@ export type SecretPlate = Activatable<'C'>;
 //
 export type ClawSpikesTypes = 'w' | 'S';
 export interface ClawSpikes<T extends ClawSpikesTypes> extends SymbolBase<T> {
+    delHp: number;
 }
 export type Spikes = ClawSpikes<'w'>;
 export type BearTrap = ClawSpikes<'S'>;
+
 //
 // discoverable and walkable when opened
 //
+
 export type WalkOpenableTypes =
     'P' | // xx twirl stone, looks like dna helix# 
     '{' | //xx beer barrel
@@ -331,20 +355,25 @@ export type WalkOpenableTypes =
     'V' | //xxx tombstone
     'J' | //xx vase 
     'B'; //xx statue wizard
+
 export interface WalkOpenable<T extends WalkOpenableTypes> extends SymbolBase<T> {
     initBroken: boolean;
     has?: (Edible<any> | Valuable<any> | Arsanal<any>)[];
     color?: string;
 }
+
 export type TwirlStone = WalkOpenable<'P'>;
 export type BeerBarrel = WalkOpenable<'{'>;
 export type CrossTombStone = WalkOpenable<'Y'>;
 export type TombStone = WalkOpenable<'V'>;
 export type Vase = WalkOpenable<'J'>;
 export type WizardStatue = WalkOpenable<'B'>;
+
 //
 // enemies
 //
+
+
 export type EnemyTypes = 'T' | //xxx skelton-enemy
     '%' | //xx boss 
     'E' | //xx goblin

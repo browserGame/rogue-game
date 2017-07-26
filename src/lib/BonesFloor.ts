@@ -2,7 +2,6 @@
 'use strict';
 import {
     $Room,
-    $ItemCarpet,
     getNameSpace
 } from './Room';
 
@@ -13,6 +12,10 @@ import {
 import {
     Carpet
 } from './Symbols';
+
+import {
+    $ItemCarpet
+} from './Carpet';
 
 export function processSkullAndBones(matrix: string[], width: number, room: $Room, coords: Vector[]) {
     matrix;

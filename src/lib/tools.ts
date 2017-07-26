@@ -69,7 +69,8 @@ export function parseLayout(layout: Layout) {
         });
 
         dtag.forEach((key) => {
-            let si = metaInfo.get(key);
+            let si = metaInfo.get(key) || { e:key };
+            
             let processor = codedItems[(si && si.e) || key];
             if (processor) {
                 //   console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);

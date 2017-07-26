@@ -1,7 +1,8 @@
 import {
     $Room,
     $Item,
-    getNameSpace
+    getNameSpace,
+    getContentAt
 } from './Room';
 
 import {
@@ -14,12 +15,19 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
 
     let st = <Vector>room.doors[0].p;
 
-    const isWall = (v: Vector) => {
+    const isObstructable = (v: Vector) => {
+        let walls = getContentAt(room, v, '#┗┓┛┏┃━(O$é');
+        return !!walls;
+        // [#] wall (done)
+        // [(]lava
+        // [O] water
+        // [$] acid bath
+        /*
         let walls = getNameSpace(room, 'walls');
         let f = walls.find((i) => {
             return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
         });
-        return !!f;
+        return !!f;*/
     };
 
     let done: Vector[] = [];
@@ -29,11 +37,12 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
         return !!f;
     };
 
+
     let toDo: Vector[] = [];
     toDo.push(st);
 
     for (let p = toDo.pop(); p !== undefined; p = toDo.pop()) {
-        if (isWall(p) || isDone(p)) {
+        if (isObstructable(p) || isDone(p)) {
             continue;
         }
         done.push(p);
@@ -44,7 +53,7 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
             { x: 0, y: 1 } //down
         ];
         toDo.push.apply(toDo,
-            points.map((i) => addV(<Vector>p, i)).filter((i) => !(isWall(i) || isDone(i)) && i.x >= 0 && i.x < width && i.y >= 0 && i.y < height)
+            points.map((i) => addV(<Vector>p, i)).filter((i) => !(isObstructable(i) || isDone(i)) && i.x >= 0 && i.x < width && i.y >= 0 && i.y < height)
         );
     }
     let floor = getNameSpace(room, 'floor');
@@ -52,5 +61,24 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
 
 }
 
+export function floorExtrusion(room: $Room, i: $Item): void {
 
+    let floor = getNameSpace(room, 'floor');
 
+    let copy = floor.filter((f) => {
+
+        if (i.br) {
+            let rc = f.p.y <= i.br.y && f.p.x <= i.br.x && f.p.x >= i.p.x && f.p.y >= i.p.y;
+            return !rc;
+        }
+        return !(f.p.x === i.p.x && f.p.y === i.p.y);
+
+    });
+
+    if (floor.length !== copy.length){
+        console.log(` number of floor types reduced: ${floor.length - copy.length}`);
+    }
+
+    floor.splice(0, floor.length, ...copy);
+
+}

@@ -50,12 +50,11 @@ import {
     TwirlStone,
     PantsGreen,
     Mace,
-    MagicPotion
+    MagicPotion,
+   // Spikes,
+    BearTrap
 } from './Symbols';
 
-// testing png base64 stuff
-const enemies = require('./enemies.png');
-console.log('enemies=> ', enemies);
 
 export const mockDungeon: Layout[] = [
     {
@@ -202,7 +201,9 @@ export const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            <Acid>{ e: '$' },
+            <Acid>{ m: '1', e: '$' },
+            <Acid>{ m: '2', e: '$' },
+            <Acid>{ m: '3', e: '$' },
             <DoorUp>{ e: '^', toRoom: 3, inset: true },
             <DoorBottom>{ e: 'v', toRoom: 6 },
             <Boss>{
@@ -218,12 +219,12 @@ export const mockDungeon: Layout[] = [
 ####^######
 ##........#
 #.!.....!.#
-#.$$......#
-#.$$......#
-#.....$$..#
-#....%$$..#
-#..$$.....#
-#..$$.....#
+#.11......#
+#.11......#
+#.....22..#
+#....%22..#
+#..33.....#
+#..33.....#
 #.!.....!.#
 ##.......##
 #####v#####
@@ -246,7 +247,9 @@ export const mockDungeon: Layout[] = [
                     <Stone>{ credit: 1, color: 'gold' },
                     <Coin>{ credit: 2, color: 'gray' }
                 ]
-            }
+            },
+            <BearTrap>{m:'4', e:'S', delHp: 10},
+            <BearTrap>{m:'5', e:'S', delHp: 15}
         ],
         id: 6,
         room: [`
@@ -262,8 +265,8 @@ export const mockDungeon: Layout[] = [
 #....A.....#
 #....G.....#
 #.2...1....#
-#..SA......#
-#.S........#
+#..5A......#
+#.4........#
 #K........K#
 ######v#####
 `]
@@ -1200,7 +1203,6 @@ export const mockDungeon: Layout[] = [
 
 
 export function compileDungeon(): string {
-
 
     let roomsDone = new Map<number, $Room>();
     let roomsToDo = new Map<number, $Room>();
