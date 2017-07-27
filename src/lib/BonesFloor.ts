@@ -2,7 +2,8 @@
 'use strict';
 import {
     $Room,
-    getNameSpace
+    getNameSpace,
+    isValidArea
 } from './Room';
 
 import {
@@ -35,29 +36,15 @@ export function processCarpet(matrix: string[], width: number, room: $Room, coor
     matrix;
     width;
 
-    let cp = coords.slice(0);
-    cp.sort((a, b) => a.y - b.y || a.x - b.x); //first is top-left, last is bottom right
-    let first = cp[0];
-    let last = cp[cp.length - 1];
+    let result = isValidArea(coords);
 
-    let isValidCarpet = true;
-    end:
-    for (let x = first.x; x <= last.x; x++) {
-        for (let y = first.y; y <= last.y; y++) {
-            if (!cp.find((i) => i.x === x && i.y === y)) {
-                isValidCarpet = false;
-                break end;
-            }
-        }
-    }
-
-    if (!isValidCarpet) {
-        console.log(`room: ${room.pk} has an invalid carpet (${first.x},${first.y})->(${last.x},${last.y})`);
+    if (!result.isValid) {
+        console.log(`room: ${room.pk} has an invalid carpet (${result.first.x},${result.first.y})->(${result.last.x},${result.last.y})`);
         return; //do nothing
     }
 
     let carpet = getNameSpace(room, 'carpet');
-    let itm: $ItemCarpet = { tag: si.e, p: first, br: last, color: si.type };
+    let itm: $ItemCarpet = { tag: si.e, p: result.first, br: result.last, color: si.type };
     carpet.push(itm);
 
 }

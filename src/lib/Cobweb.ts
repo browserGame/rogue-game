@@ -2,7 +2,8 @@
 import {
     $Room,
     $Item,
-    getNameSpace
+    getNameSpace,
+    getContentAt
 } from './Room';
 
 import {
@@ -67,14 +68,14 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
 
         let testCoords = templ.map((i) => addV(v, i)).map((_, idx, arr) => arr[(idx + corner * 2) % 8]);
 
-        let pattern = testCoords.map((i) => isWall(i) ? '*' : 's' ).join(''); //this is always 1,1,1,1,1,0,0,0 (or should be)
+        let pattern = testCoords.map((i) => isWall(i) ? '*' : 's').join(''); //this is always 1,1,1,1,1,0,0,0 (or should be)
 
         return /^.\*{3}.s{3}$/.test(pattern);
 
         //let start = bools.findIndex((val) => val === false); // this is index 5
         //let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
 
-        
+
 
     };
 
@@ -87,6 +88,10 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
     let validWebs = coords.map((v) => {
         let selected = [0, 1, 2, 3].filter((corner) => isCorner(v, corner));
         if (selected.length !== 1) {
+            return undefined;
+        }
+        let tile = getContentAt(room, v, '.');
+        if (!tile){
             return undefined;
         }
         let rc: $Item = { tag: `${selected[0]}`, p: v };

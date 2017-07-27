@@ -1,64 +1,78 @@
 'use strict';
 
 // -4 static untraversable, noting above this, generally these are "cut-outs"
-// [#] wall (done)
-// [(] lava (done)  namespace liquid
-// [O] water (done) namespace liquid
-// [$] acid bath (done) namespace liquid
+//. [#] wall (done)
+//. [(] lava (done)  namespace liquid
+//. [O] water (done) namespace liquid
+//. [$] acid bath (done) namespace liquid
+//. [é] carpet (done), exception!!! traversable 
 
 // -3 (nothing below these items, makes sense ,lol can have stuff on top, except level stairs)
-// [.] floor (done)
-// [µ] level stairs (done) (when you just walk out, you seem to "stand on it", monsters move around it)
+//. [.] floor (done)
+//. [µ] level stairs (done) (when you just walk out, you seem to "stand on it", monsters move around it)
 
 // -1 nothing below (except for floor) , walkable can do battle on it,  
 // FloorGlyphs
-// [I] red pentagram
-// [m] half moon trap
-// [R] pentagram
+//. [I] red pentagram
+//. [m] half moon trap
+//. [R] pentagram
 // SecretPlates 
-// [C] secret pressure plate
+//. [C] secret pressure plate
 // Traps
-// [w] spikes
-// [S] bear trap
-// Teleports
-// [X] teleport (done) (can have battle (me, not other enemies) and blood)
-
+//. [w] spikes
+//. [S] bear trap
+//. Teleports
+//. [X] teleport (done) (can have battle (me, not other enemies) and blood)
 
 // 0 nothing below, except for floor (walkable can place stuff on it)
-// [é] carpet, [=]blood , [A]skullsones, [K]cornercobweb
+//  [=]blood , 
+//.  [A] skull-bones, 
+//.  [K] cornercobweb
 // blood will be on carpet or seep on floor
 // anything ranked above 0 can be placed above
 
 // 97 nothing above untill broken, after it broken
 //    allow for items above, walkabe or battle 
-//  [P] twirl stone
-//  [{] beer barrel
-//  [Y] cross tombstone
-//  [V] normal tombstone
-//  [J] vase
-//  [B] statue wizard
+//.  [P] twirl stone
+//.  [{] beer barrel
+//.  [Y] cross tombstone
+//.  [V] normal tombstone
+//.  [J] vase
+//.  [B] statue wizard
 
 // 98 ineventory items (only on cells 97,0,-1 (except teleport),-3 (except level stairs))
-//    is stack
-// [u] magic speelbook
-// [Z] shield
-// [t] mace
-// [x] damage boots
-// [à] boots
-// [+] cracked-mace
-// [~] red-pants
-// [ç] green pants
-// [ù] leather-boots
-// [L] stone
-// [M] coin, gold
-// [s] bottle water
-// [p] bottle milk
-// [r] chicken-bone
-// [q] (done so-far) cheese
-// [i] elixer
-// [;] fish
-// [§] mana
-// [l] magic potion
+// stackable  
+
+//knowable
+
+//.[u] magic speelbook
+
+//weapons    
+
+//. [Z] shield
+//. [t] mace
+//. [x] damage boots
+//. [à] boots
+//. [+] cracked-mace
+//. [~] red-pants
+//. [ç] green pants
+//. [ù] leather-boots
+
+//valuebles
+
+//. [L] stone
+//. [M] coin, gold
+
+//edibles
+
+//. [s] bottle water
+//. [p] bottle milk
+//. [r] chicken-bone
+//. [q] (done so-far) cheese
+//. [i] elixer
+//. [;] fish
+//. [§] mana
+//. [l] magic potion
 
 // 99 nothing above (this class mutall excludes) 
 // ["] death totum
@@ -71,15 +85,15 @@
 // [*] table
 
 // 99 enemies , nothing above (walkable items)
-// [T] skeleton-warrior
-// [%] boss
-// [E] goblin
-// [F] bat
-// [G] rat
-// [@] green wizard shaman
+// .[T] skeleton-warrior
+// .[%] boss
+// .[E] goblin
+// .[F] bat
+// .[G] rat
+// .[@] green wizard shaman
 
 // 100 doorways always cover because horizontal
-// <^>v
+// .<^>v
 
 import {
     processWalls
@@ -113,7 +127,6 @@ import {
     processPortal
 } from './Portal';
 
-
 import {
     processStairs
 } from './LevelStairs';
@@ -137,6 +150,20 @@ import {
 import {
     processEnemies
 } from './Enemy';
+
+
+import {
+    processWeapons
+} from './Weapon';
+
+import {
+    processBreakable
+} from './Breakable';
+
+import {
+    processKnowable
+} from './Knowable';
+
 
 export interface CPU {
     [index: string]: Function | 0;
@@ -200,12 +227,12 @@ export const codedItems: CPU = {
     //
     //discoverables via breaking
     //
-    P: 0x0, //xx twirl-stone, looks like dna helix#
-    '{': 0x0, //xx beer barrel
-    Y: 0x0, //xx cross tombstone
-    V: 0x0, //xxx tombstone
-    J: 0x0, //xx vase 
-    B: 0x0, //xx statue wizard
+    P: processBreakable, //xx twirl-stone, looks like dna helix#
+    '{': processBreakable, //xx beer barrel
+    Y: processBreakable, //xx cross tombstone
+    V: processBreakable, //xxx tombstone
+    J: processBreakable, //xx vase 
+    B: processBreakable, //xx statue wizard
     //
     //enemies
     //
@@ -218,18 +245,18 @@ export const codedItems: CPU = {
     //
     //learnables
     //
-    u: 0x0, //... magic spellbook (earth-quake, defense, warrior shout)
+    u: processKnowable, //... magic spellbook (earth-quake, defense, warrior shout)
     //
     //arsanal
     //
-    Z: 0x0, //... shield
-    t: 0x0, //... mace
-    x: 0x0, //... damaged boots
-    à: 0x0, //... boots
-    '+': 0x0, //... cracked-mace
-    '~': 0x0, //... red-pants
-    ç: 0x0, //... green-pants
-    ù: 0x0, //... leather-boots
+    Z: processWeapons, //... shield
+    t: processWeapons, //... mace
+    x: processWeapons, //... damaged boots
+    à: processWeapons, //... boots
+    '+': processWeapons, //... cracked-mace
+    '~': processWeapons, //... red-pants
+    ç: processWeapons, //... green-pants
+    ù: processWeapons, //... leather-boots
     //
     //valuables
     //
@@ -306,7 +333,6 @@ export interface LevelStairs extends SymbolBase<'µ'> {
     stairs: Indirection | 'µ';
     level: number;
 }
-
 //
 //obstructables
 //
@@ -357,7 +383,7 @@ export type Pentagram = FloorGlyphs<'R'>;
 
 export type SecretPlateType = 'C';
 export interface SecretPlate extends SymbolBase<'C'> {
-    has: GeneralContent[];
+    has: SIGeneralContent[];
 }
 
 // claw and spikes
@@ -373,7 +399,7 @@ export type BearTrap = ClawSpikes<'S'>;
 // discoverable and walkable when opened
 //
 
-export type WalkOpenableTypes =
+export type BreakableTypes =
     'P' | // xx twirl stone, looks like dna helix# 
     '{' | //xx beer barrel
     'Y' | //xx cross tombstone
@@ -381,18 +407,19 @@ export type WalkOpenableTypes =
     'J' | //xx vase 
     'B'; //xx statue wizard
 
-export interface WalkOpenable<T extends WalkOpenableTypes> extends SymbolBase<T> {
-    initBroken: boolean;
-    has?: (Edible<any> | Valuable<any> | Arsanal<any>)[];
+export interface Breakable<T extends BreakableTypes> extends SymbolBase<T> {
+    has: SIGeneralContent[];
     color?: string;
 }
 
-export type TwirlStone = WalkOpenable<'P'>;
-export type BeerBarrel = WalkOpenable<'{'>;
-export type CrossTombStone = WalkOpenable<'Y'>;
-export type TombStone = WalkOpenable<'V'>;
-export type Vase = WalkOpenable<'J'>;
-export type WizardStatue = WalkOpenable<'B'>;
+export type TwirlStone = Breakable<'P'>;
+export type BeerBarrel = Breakable<'{'>;
+export type CrossTombStone = Breakable<'Y'>;
+export type TombStone = Breakable<'V'>;
+export type Vase = Breakable<'J'>;
+export type WizardStatue = Breakable<'B'>;
+
+export type AllBreakables = TwirlStone | BeerBarrel | CrossTombStone | TombStone | Vase | WizardStatue;
 
 //
 // enemies
@@ -405,11 +432,11 @@ export type EnemyTypes = 'T' | //xxx skelton-enemy
     '@'; //xx green wizard shaman throws fire
 
 export interface Enemy<T extends EnemyTypes> extends SymbolBase<T> {
-    triggeredBy?: Indirection | WalkOpenableTypes | FloorGlyphsType;
+    triggeredBy?: Indirection | BreakableTypes | FloorGlyphsType;
     hp: number;
     xp: number;
-    //dp: number;
-    has: GeneralContent[];
+    level: number;
+    has: SIGeneralContent[];
 }
 
 export type Skeleton = Enemy<'T'>;
@@ -421,9 +448,9 @@ export type GreenWizard = Enemy<'@'>;
 
 export type AllEnemies = Skeleton | Boss | Goblin | Bat | Rat | GreenWizard;
 
-export function isEnemy(en: any): en is AllEnemies {
-    return en && 'T%EFG@'.indexOf(en.e) >= 0 && typeof en.hp === 'number' && en.xp === 'number';
-}
+//export function isEnemy(en: any): en is AllEnemies {
+//    return en && 'T%EFG@'.indexOf(en.e) >= 0 && typeof en.hp === 'number' && en.xp === 'number';
+//}
 
 
 //
@@ -433,10 +460,16 @@ export type LearnableType = 'u';
 export interface MagicSpellBook extends SymbolBase<'u'> {
     spell: string;
 }
+export type AllSpells = MagicSpellBook;
+
+export function isSpell(sp: any): sp is AllSpells {
+    return sp && sp.spell;
+}
+
 //
 //arsanal
 //
-export type ArsanalType =
+export type ArsenalType =
     'Z' |  //... shield
     't' | //... mace
     'x' | //... damaged boots
@@ -445,23 +478,32 @@ export type ArsanalType =
     '~' | //... red-pants
     'ç' | //... green-pants
     'ù'; //... leather-boots
-
-export interface Arsanal<T extends ArsanalType> extends SymbolBase<T> {
+//
+export interface Arsenal<T extends ArsenalType> extends SymbolBase<T> {
     addHp?: number;
     addXp?: number;
     addDp?: number;
 }
 
-export type Shield = Arsanal<'Z'>;
-export type Mace = Arsanal<'t'>;
-export type BootsRed = Arsanal<'à'>;
-export type BootsDamaged = Arsanal<'x'>;
-export type MaceCracked = Arsanal<'+'>;
-export type PantsRed = Arsanal<'~'>;
-export type PantsGreen = Arsanal<'ç'>;
-export type BootsLeather = Arsanal<'ù'>;
+export type Shield = Arsenal<'Z'>;
+export type Mace = Arsenal<'t'>;
+export type BootsRed = Arsenal<'à'>;
+export type BootsDamaged = Arsenal<'x'>;
+export type MaceCracked = Arsenal<'+'>;
+export type PantsRed = Arsenal<'~'>;
+export type PantsGreen = Arsenal<'ç'>;
+export type BootsLeather = Arsenal<'ù'>;
 
 export type AllWeapons = Shield | Mace | BootsRed | BootsDamaged | MaceCracked | PantsRed | PantsGreen | BootsLeather;
+
+export function isWeapon(w: any): w is AllWeapons {
+    if (!w) {
+        return false;
+    }
+    let c = typeof w.addHp === 'string' || typeof w.addXp === 'string' || typeof w.addDp === 'string';
+    return c && 'Ztàx+~çù'.indexOf(w.e) >= 0;
+}
+
 //
 //valuables
 //
@@ -477,10 +519,10 @@ export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
 export function isValuable(v: any): v is Stone | Coin {
     return (typeof v.e === 'string' && 'LM'.indexOf(v.e) >= 0 && typeof v.credit === 'number');
 }
-
+//
 export type Stone = Valuable<'L'>;
 export type Coin = Valuable<'M'>;
-
+//
 export type AllValuebles = Stone | Coin;
 //
 // edibales
@@ -517,5 +559,5 @@ export function isEdible(ed: any): ed is AllEdibles {
 }
 
 
-export type GeneralContent = AllValuebles | AllEdibles ;
+export type SIGeneralContent = AllValuebles | AllEdibles | AllSpells | AllWeapons;
 

@@ -12,32 +12,16 @@ import {
 
 import {
     SecretPlate,
-    
-    AllEdibles,
-    AllValuebles,
     //GeneralContent,
-
-    isEdible,
-    isValuable,
 } from './Symbols';
 
 import {
-    processEdible,
-    $ItemEdible,
-
-} from './Edible';
-
-import {
-    $ItemValuable,
-    processValuable
-} from './Valuables';
+    GeneralContents,
+    processContents
+} from './GeneralContent';
 
 export interface $ItemSecret extends $Item {
-    has: ($ItemValuable|$ItemEdible)[];
-}
-
-export function isSecretItem(s: any): s is $ItemSecret {
-    return s.e === 'C' && s.has instanceof Array;
+    has: GeneralContents[];
 }
 
 export function processSecret(matrix: string[], width: number, room: $Room, coords: Vector[], si: SecretPlate) {
@@ -57,17 +41,8 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
         p: coords[0],
         has: []
     };
-    si.has.forEach((c) => {
-        switch (true) {
-            case isEdible(c):
-                processEdible(matrix, width, itm, [{ x: -1, y: -1 }], <AllEdibles>c);
-                break;
-            case isValuable(c):
-                processValuable(matrix, width, itm, [{ x: -1, y: -1 }], <AllValuebles>c);
-            default:
-        }
-    });
-
+    si.has.forEach((c) => processContents(matrix, width, itm, c));
+ 
     // secret has to be on a tile (prolly has checks for carpets)
 
     let secret = getNameSpace(room, 'secret');

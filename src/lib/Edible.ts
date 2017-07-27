@@ -1,6 +1,5 @@
 'use strict';
 import {
-    $Room,
     isRoom,
     getNameSpace,
     $Item,
@@ -15,14 +14,10 @@ import {
   //  GeneralContent
 } from './Symbols';
 
-import {
-    $ItemSecret,
-    //isSecretItem
-} from './Secret';
 
 import {
-    $ItemEnemy
-} from './Enemy';
+    GeneralContainer
+} from './GeneralContainer';
 
 export interface $ItemEdible extends $Item {
     addMana: number;
@@ -33,7 +28,7 @@ export interface $ItemEdible extends $Item {
 export function processEdible(
     matrix: string[], 
     width: number, 
-    container: $Room | $ItemSecret | $ItemEnemy, 
+    container: GeneralContainer, 
     coords: Vector[], 
     si: AllEdibles) {
 

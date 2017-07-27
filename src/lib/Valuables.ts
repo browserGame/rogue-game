@@ -1,6 +1,5 @@
 'use strict';
 import {
-    $Room,
     isRoom,
     getNameSpace,
     $Item,
@@ -15,13 +14,8 @@ import {
 } from './Symbols';
 
 import {
-    $ItemSecret,
-    //isSecretItem
-} from './Secret';
-
-import {
-    $ItemEnemy
-} from './Enemy';
+    GeneralContainer
+} from './GeneralContainer';
 
 export interface $ItemValuable extends $Item {
     credit: number;
@@ -29,7 +23,7 @@ export interface $ItemValuable extends $Item {
 }
 
 
-export function processValuable(matrix: string[], width: number, container: $Room | $ItemSecret | $ItemEnemy, coords: Vector[], si: AllValuebles) {
+export function processValuable(matrix: string[], width: number, container: GeneralContainer, coords: Vector[], si: AllValuebles) {
 
     matrix;
     width;
@@ -52,11 +46,12 @@ export function processValuable(matrix: string[], width: number, container: $Roo
         console.log('drops', JSON.stringify(itm));
         return;
     }
+    //
+    // 
+    //
     if (!isRoom(container)) {
         container.has.push(itm);
         return;
     }
-
-
     console.log('Error, not a valid portal its not positioned on a floor tile:', JSON.stringify(itm));
 }

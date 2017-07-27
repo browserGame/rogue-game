@@ -12,29 +12,19 @@ import {
 
 import {
     AllEnemies,
-
-    AllEdibles,
-    AllValuebles,
-
-   
-
-    isEdible,
-    isValuable,
 } from './Symbols';
 
 import {
-    processEdible,
-    $ItemEdible,
-
-} from './Edible';
-
-import {
-    $ItemValuable,
-    processValuable
-} from './Valuables';
+    GeneralContents,
+    processContents
+} from './GeneralContent';
 
 export interface $ItemEnemy extends $Item {
-    has: ($ItemValuable|$ItemEdible)[];
+    xp: number;
+    hp: number;
+    level: number;
+    triggeredBy?: string;
+    has: GeneralContents[];
 }
 
 export function isEnemyItem(s: any): s is $ItemEnemy {
@@ -46,29 +36,18 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
     matrix;
     width;
 
-    //let fi = getContentAt(room, coords[0], '.');
-    //if (!fi) {
-    //    console.log('secret plate only possible on a floor tile:', coords[0]);
-    //    return;
-    //}
-
-
+   
     let itm: $ItemEnemy = {
         tag: si.e,
+        xp: si.xp,
+        hp: si.hp,
+        level: si.level,
         p: coords[0],
+        triggeredBy: si.triggeredBy,
         has: []
     };
-    si.has && si.has.forEach((c) => {
-        switch (true) {
-            case isEdible(c):
-                processEdible(matrix, width, itm, [{ x: -1, y: -1 }], <AllEdibles>c);
-                break;
-            case isValuable(c):
-                processValuable(matrix, width, itm, [{ x: -1, y: -1 }], <AllValuebles>c);
-            default:
-        }
-    });
-
+    si.has && si.has.forEach((c) => processContents(matrix, width, itm, c) );
+        
     // secret has to be on a tile (prolly has checks for carpets)
 
     let enemy = getNameSpace(room, 'enemy');
