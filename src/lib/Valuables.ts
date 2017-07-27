@@ -11,8 +11,7 @@ import {
 } from './math';
 
 import {
-    AllEdibles,
-  //  GeneralContent
+    AllValuebles
 } from './Symbols';
 
 import {
@@ -24,28 +23,22 @@ import {
     $ItemEnemy
 } from './Enemy';
 
-export interface $ItemEdible extends $Item {
-    addMana: number;
-    addHp: number;
-    poisen: { add: number, release: number };
+export interface $ItemValuable extends $Item {
+    credit: number;
+    color?: string;
 }
 
-export function processEdible(
-    matrix: string[], 
-    width: number, 
-    container: $Room | $ItemSecret | $ItemEnemy, 
-    coords: Vector[], 
-    si: AllEdibles) {
+
+export function processValuable(matrix: string[], width: number, container: $Room | $ItemSecret | $ItemEnemy, coords: Vector[], si: AllValuebles) {
 
     matrix;
     width;
 
-    let itm: $ItemEdible = {
+    let itm: $ItemValuable = {
         tag: si.e,
         p: coords[0],
-        addMana: si.addMana || 0,
-        addHp: si.addHp || 0,
-        poisen: si.poisen || { add: 0, release: 0 }
+        credit: si.credit,
+        color: si.color
     };
     //
     //

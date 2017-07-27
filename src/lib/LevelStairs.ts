@@ -20,14 +20,6 @@ import {
     floorExtrusion
 } from './Floor';
 
-/*
-export interface LevelStairs extends SymbolBase<'µ'> {
-    toRoom: number;
-    stairs: Indirection | 'µ';
-    level: number;
-}
-*/
-
 export interface $ItemStairs extends $Item {
     toRoom: number;
     alias?: Indirection;

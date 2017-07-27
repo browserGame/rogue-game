@@ -12,18 +12,28 @@ import {
 
 import {
     SecretPlate,
+    
     AllEdibles,
-    isEdible
+    AllValuebles,
+    //GeneralContent,
+
+    isEdible,
+    isValuable,
 } from './Symbols';
 
 import {
     processEdible,
-    $ItemEdible
+    $ItemEdible,
+
 } from './Edible';
 
+import {
+    $ItemValuable,
+    processValuable
+} from './Valuables';
 
 export interface $ItemSecret extends $Item {
-    has: $ItemEdible[];
+    has: ($ItemValuable|$ItemEdible)[];
 }
 
 export function isSecretItem(s: any): s is $ItemSecret {
@@ -52,6 +62,8 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
             case isEdible(c):
                 processEdible(matrix, width, itm, [{ x: -1, y: -1 }], <AllEdibles>c);
                 break;
+            case isValuable(c):
+                processValuable(matrix, width, itm, [{ x: -1, y: -1 }], <AllValuebles>c);
             default:
         }
     });

@@ -18,7 +18,7 @@ import {
     WizardStatue,
     Goblin,
     TelePortal,
-    BootsDamaged,
+    // BootsDamaged,
     Bat,
     Rat,
     Boss,
@@ -28,7 +28,7 @@ import {
     QuestRing,
     Acid,
     MagicSpellBook,
-    MaceCracked,
+    // MaceCracked,
     Skeleton,
     Elixer,
     TreasureChest,
@@ -39,16 +39,16 @@ import {
     Carpet,
     BottleMilk,
     GreenWizard,
-    BootsRed,
+    //BootsRed,
     ChickenBone,
     Closet,
     RedPentagram,
     Mana,
     Fish,
     Table,
-    PantsRed,
+    //PantsRed,
     TwirlStone,
-    PantsGreen,
+    //PantsGreen,
     Mace,
     MagicPotion,
     // Spikes,
@@ -134,12 +134,12 @@ export const mockDungeon: Layout[] = [
             <Coffin>{
                 m: '5', e: 'H',
                 has: [<Coin>{ e: 'M', credit: 3, color: 'gray' }],
-                initOpen: false
+
             },
             <Coffin>{
                 m: '6', e: 'H',
                 has: [<Coin>{ credit: 3, color: 'gold', e: 'M' }],
-                initOpen: false
+
             },
         ],
         id: 2,
@@ -208,10 +208,12 @@ export const mockDungeon: Layout[] = [
             <DoorUp>{ e: '^', toRoom: 3, inset: true },
             <DoorBottom>{ e: 'v', toRoom: 6 },
             <Boss>{
+                hp: 40,
+                xp: 100,
                 e: '%', has: [
-                    <BootsDamaged>{ addDp: 10 },
-                    <MagicSpellBook>{ spell: 'defense' },
-                    <MaceCracked>{ addHp: 40 },
+                    //<BootsDamaged>{ addDp: 10 },
+                    //<MagicSpellBook>{ spell: 'defense' },
+                    //<MaceCracked>{ addHp: 40 },
                 ] // 'damaged-boots,magic-spell:defense,cracked-mace'
             }
         ],
@@ -679,8 +681,12 @@ export const mockDungeon: Layout[] = [
             <DoorRight>{ e: '>', toRoom: 15 },
             <Rat>{ e: 'G', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] },
             <GreenWizard>{
-                m: '2', e: '@', has: [
-                    <BootsRed>{ e: 'à', addDp: 10, addXp: 10 }
+                m: '2',
+                e: '@',
+                xp: 30,
+                hp: 10,
+                has: [
+                    // <BootsRed>{ e: 'à', addDp: 10, addXp: 10 }
                 ] // 'boots:red' 
             },
             <GreenWizard>{
@@ -786,7 +792,7 @@ export const mockDungeon: Layout[] = [
                 ] /* 'milk'*/
             },
             <Closet>{
-                e: 'z', initOpen: false, has: [
+                e: 'z', has: [
                     <ChickenBone>{ e: 'r', addHp: 10 }
                 ] /*'chicken-bone:1'*/
             },
@@ -956,9 +962,9 @@ export const mockDungeon: Layout[] = [
             <Bat>{ e: 'F', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] /*'gold:1'*/ },
             <Vase>{ e: 'J', has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }], color: 'red' },
             <Bat>{ m: '1', e: 'F', has: [<Coin>{ e: 'M', credit: 4, color: 'gray' }] /*'gold:4'*/ },
-            <Bat>{ m: '2', e: 'F', has: [<PantsRed>{ e: '~', addHp: 10 }] /*'red-pants'*/ },
+            <Bat>{ m: '2', e: 'F', xp: 10, hp: 3, has: [/*<PantsRed>{ e: '~', addHp: 10 }*/] /*'red-pants'*/ },
             <TelePortal>{ e: 'X', toRoom: 1, portal: 'X' },
-            <Table>{ e: '*', initOpen: false, context: 'with-paper' },
+            <Table>{ e: '*', context: 'with-paper' },
         ],
         id: 28,
         room:
@@ -1138,7 +1144,7 @@ export const mockDungeon: Layout[] = [
             <Stone>{ m: '1', e: 'L', color: 'green' },
             <Stone>{ m: '2', e: 'L', color: 'white' },
             <TreasureChest>{
-                m: '3', e: '&', initOpen: false, has: [
+                m: '3', e: '&', has: [
                     <Mace>{ e: 't', addXp: 100 },
                     <Coin>{ e: 'M', credit: 4, color: 'gold' },
                     <Stone>{ e: 'L', credit: 3, color: 'gray' }
@@ -1147,7 +1153,6 @@ export const mockDungeon: Layout[] = [
             <TreasureChest>{
                 m: '4',
                 e: '&',
-                initOpen: false,
                 has: [
                     <MagicPotion>{ e: 'l', addHp: 60 }
                 ] /* 'magic-potion,leather-boots,gold:4'*/
@@ -1182,8 +1187,8 @@ export const mockDungeon: Layout[] = [
             <DoorBottom>{ e: 'v', toRoom: 32 },
             <Stone>{ e: 'L', color: 'white', credit: 4 },
             <GreenWizard>{
-                e: '@', has: [
-                    <PantsGreen>{ e: 'ç', addDp: 15 }
+                e: '@', xp: 10, hp: 40, has: [
+                    // <PantsGreen>{ e: 'ç', addDp: 15 }
                 ] /*'pants-green'*/
             }
         ],

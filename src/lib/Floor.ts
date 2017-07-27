@@ -22,12 +22,7 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
         // [(]lava
         // [O] water
         // [$] acid bath
-        /*
-        let walls = getNameSpace(room, 'walls');
-        let f = walls.find((i) => {
-            return i.p.x === v.x && i.p.y === v.y && '#┗┓┛┏┃━'.indexOf(i.tag) >= 0;
-        });
-        return !!f;*/
+       
     };
 
     let done: Vector[] = [];

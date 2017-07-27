@@ -130,6 +130,14 @@ import {
     processEdible
 } from './Edible';
 
+import {
+    processValuable
+} from './Valuables';
+
+import {
+    processEnemies
+} from './Enemy';
+
 export interface CPU {
     [index: string]: Function | 0;
 }
@@ -201,12 +209,12 @@ export const codedItems: CPU = {
     //
     //enemies
     //
-    T: 0x0, //xxx skelton-enemy
-    '%': 0x0, //xx boss 
-    E: 0x0, //xx goblin
-    F: 0x0, //xx bat
-    G: 0x0, //xx rat
-    '@': 0x0, //xx green wizard shaman throws fire
+    T: processEnemies, //xxx skelton-enemy
+    '%': processEnemies, //xx boss 
+    E: processEnemies, //xx goblin
+    F: processEnemies, //xx bat
+    G: processEnemies, //xx rat
+    '@': processEnemies, //xx green wizard shaman throws fire
     //
     //learnables
     //
@@ -225,8 +233,8 @@ export const codedItems: CPU = {
     //
     //valuables
     //
-    L: 0x0, //... stone
-    M: 0x0, //... coin, gold
+    L: processValuable, //... stone
+    M: processValuable, //... coin, gold
     //
     // edibales
     //
@@ -325,8 +333,7 @@ export type Acid = Obstructable<'$'>;
 export type DiscoverableType = 'z' | '&' | 'H' |
     '*';  // xx table // must avoid
 export interface Discoverable<T extends DiscoverableType> extends SymbolBase<T> {
-    initOpen: boolean;
-    has: (Edible<any> | Valuable<any> | Arsanal<any>)[];
+    has: any; //GeneralContent[];
     context?: string;
 }
 export type Closet = Discoverable<'z'>;
@@ -390,8 +397,6 @@ export type WizardStatue = WalkOpenable<'B'>;
 //
 // enemies
 //
-
-
 export type EnemyTypes = 'T' | //xxx skelton-enemy
     '%' | //xx boss 
     'E' | //xx goblin
@@ -404,7 +409,7 @@ export interface Enemy<T extends EnemyTypes> extends SymbolBase<T> {
     hp: number;
     xp: number;
     //dp: number;
-    has?: (Edible<any> | Valuable<any>)[];
+    has: GeneralContent[];
 }
 
 export type Skeleton = Enemy<'T'>;
@@ -413,6 +418,14 @@ export type Goblin = Enemy<'E'>;
 export type Bat = Enemy<'F'>;
 export type Rat = Enemy<'G'>;
 export type GreenWizard = Enemy<'@'>;
+
+export type AllEnemies = Skeleton | Boss | Goblin | Bat | Rat | GreenWizard;
+
+export function isEnemy(en: any): en is AllEnemies {
+    return en && 'T%EFG@'.indexOf(en.e) >= 0 && typeof en.hp === 'number' && en.xp === 'number';
+}
+
+
 //
 //learnables
 //
@@ -460,6 +473,11 @@ export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
     credit: number;
     color?: string;
 }
+
+export function isValuable(v: any): v is Stone | Coin {
+    return (typeof v.e === 'string' && 'LM'.indexOf(v.e) >= 0 && typeof v.credit === 'number');
+}
+
 export type Stone = Valuable<'L'>;
 export type Coin = Valuable<'M'>;
 
@@ -499,5 +517,5 @@ export function isEdible(ed: any): ed is AllEdibles {
 }
 
 
-export type GeneralContent = (AllWeapons & AllValuebles & AllEdibles & MagicSpellBook);
+export type GeneralContent = AllValuebles | AllEdibles ;
 
