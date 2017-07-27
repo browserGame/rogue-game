@@ -1,5 +1,5 @@
 
-import {  
+import {
     $Room
 } from './Room';
 
@@ -15,7 +15,10 @@ import {
     $ItemBreakable
 } from './Breakable';
 
+import {
+    $ItemOpenable
+} from './Openable';
 
 
-export type GeneralContainer = $Room | $ItemSecret | $ItemEnemy | $ItemBreakable ;
+export type GeneralContainer = $Room | $ItemSecret | $ItemEnemy | $ItemBreakable | $ItemOpenable;
 

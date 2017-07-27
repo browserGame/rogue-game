@@ -164,6 +164,9 @@ import {
     processKnowable
 } from './Knowable';
 
+import {
+    processOpenable
+} from './Openable';
 
 export interface CPU {
     [index: string]: Function | 0;
@@ -208,10 +211,10 @@ export const codedItems: CPU = {
     //
     // discoverables via unlocking / open
     //
-    z: 0x0, //xx closet
-    '&': 0x0, //xx treasure chest
-    H: 0x0, //xx coffin
-    '*': 0x0, //xx table
+    z: processOpenable, //xx closet
+    '&': processOpenable, //xx treasure chest
+    H: processOpenable, //xx coffin
+    '*': processOpenable, //xx table
     //
     // activatable plating
     //
@@ -356,16 +359,16 @@ export type Acid = Obstructable<'$'>;
 //
 // Discovarable
 //
-export type DiscoverableType = 'z' | '&' | 'H' |
-    '*';  // xx table // must avoid
+export type DiscoverableType = 'z' | '&' | 'H' | '*';
 export interface Discoverable<T extends DiscoverableType> extends SymbolBase<T> {
-    has: any; //GeneralContent[];
-    context?: string;
+    has: SIGeneralContent[];
+
 }
 export type Closet = Discoverable<'z'>;
 export type TreasureChest = Discoverable<'&'>;
 export type Coffin = Discoverable<'H'>;
 export type Table = Discoverable<'*'>;
+export type AllOpenables = Closet | TreasureChest | Coffin | Table;
 //
 //  FloorSymbols (pentagrams, half moons etc)
 //
@@ -552,7 +555,7 @@ export type Fish = Edible<';'>;
 export type Mana = Edible<'§'>;
 export type MagicPotion = Edible<'l'>;
 
-export type AllEdibles = BottleWater | BottleMilk | ChickenBone | Cheese | Elixer | Fish | Mana;
+export type AllEdibles = BottleWater | BottleMilk | ChickenBone | Cheese | Elixer | Fish | Mana | MagicPotion;
 
 export function isEdible(ed: any): ed is AllEdibles {
     return ed && 'sprqi;§l'.indexOf(ed.e) >= 0;
