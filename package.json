@@ -16,6 +16,10 @@
   },
   "license": "ISC",
   "author": "jacob bogers",
+  "browser:disabled": "./dist/client/bundle.js",
+  "browser:doc":"https://github.com/defunctzombie/package-browser-field-spec",
+  "module:disabled":"",
+  "module:doc":"https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md",
   "main": "makes no sense when we deploy as library ./dist/index.js",
   "repository": {
     "type": "git",

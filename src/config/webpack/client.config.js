@@ -13,7 +13,7 @@ module.exports = {
     devtool: require('./devtool'),
     module: require('./module'),
     plugins: require('./plugins').client,
-    resolve: require('./resolve'),
+    resolve: require('./resolve').client,
 };
 
 for (const rule of module.exports.module.rules) {

@@ -17,7 +17,7 @@ module.exports = {
     externals: require('./externals'),
     module: require('./module'),
     plugins: require('./plugins').server,
-    resolve: require('./resolve'),
+    resolve: require('./resolve').server,
 };
 
 // Server files live in <projectRoot>/src/{server,lib}
