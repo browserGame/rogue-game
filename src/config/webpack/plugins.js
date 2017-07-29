@@ -35,7 +35,7 @@ const sharedProd = !p ? [] : [
 ];
 
 const html = new (require('html-webpack-plugin'))({
-    title: 'BookBarter',
+    title: 'Quest For Dunguen (HTML5 version)',
     filename: 'index.html',
     template: require('html-webpack-template'),
     appMountId: 'app',
@@ -66,7 +66,7 @@ const html = new (require('html-webpack-plugin'))({
     meta: [
         {
             name: 'description',
-            content: 'Book/DVD/Blue-ray trading club, don\'t copy but trade your second hand movies/books for others you haven\'t seen.'
+            content: 'Rogue game, Quest for Dungeon remake in HTML5'
         }
     ]
 });

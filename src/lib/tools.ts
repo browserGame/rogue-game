@@ -77,9 +77,10 @@ export function parseLayout(layout: Layout) {
                 processor(matrix, width, room, itemPalette[key], si);
             }
             else {
+                 console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
                 // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
             }
-            console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+            //console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
         });
     });
 

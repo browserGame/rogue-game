@@ -22,13 +22,13 @@ const css = {
 };
 
 const inliner = {
-    test: /\.(png|jpg|gif)$/,
+    test: /\.(png|jpg|gif|anim|sheet)$/,
     include: [],
     use: [
         {
             loader: 'url-loader',
             options: {
-                limit: 100 * 1024 * 1024 //100kb, just for test, i want to see the base64 string))
+                limit: 1 // * 1024 //embed if the resource is 1kb or less
             }
         }
     ]

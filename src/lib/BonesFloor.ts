@@ -43,9 +43,9 @@ export function processCarpet(matrix: string[], width: number, room: $Room, coor
         return; //do nothing
     }
 
-    let carpet = getNameSpace(room, 'carpet');
+    let bones = getNameSpace(room, 'bones-floor');
     let itm: $ItemCarpet = { tag: si.e, p: result.first, br: result.last, color: si.type };
-    carpet.push(itm);
+    bones.push(itm);
 
 }
 

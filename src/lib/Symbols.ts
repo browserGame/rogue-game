@@ -79,10 +79,10 @@
 // [!]tourch
 // [U]trader
 // [N] quest-result
-// [z] closet
-// [&] treasure chest
-// [H] coffin
-// [*] table
+// .[z] closet
+// .[&] treasure chest
+// .[H] coffin
+// .[*] table
 
 // 99 enemies , nothing above (walkable items)
 // .[T] skeleton-warrior
@@ -168,6 +168,14 @@ import {
     processOpenable
 } from './Openable';
 
+import {
+    processSpecial
+} from './Special';
+
+import {
+    processGlyphs
+} from './FloorGlyph';
+
 export interface CPU {
     [index: string]: Function | 0;
 }
@@ -201,11 +209,12 @@ export const codedItems: CPU = {
     //
     //obstructables
     //
-    '"': 0x0, //xx death-totum
+    '"': processSpecial, //xx death-totum
     '(': processLiquid, //xx lava
-    '!': 0x0, //xx tourch
-    U: 0x0, //xx trader
-    Q: 0x0, //xx quest regenerator
+    '!': processSpecial, //xx tourch
+    U: processSpecial, //xx trader
+    Q: processSpecial, //xx quest regenerator
+
     O: processLiquid, //xx water
     $: processLiquid, //acid bath
     //
@@ -218,9 +227,9 @@ export const codedItems: CPU = {
     //
     // activatable plating
     //
-    I: 0x0, //xx red pentagram trap
-    m: 0x0, //xx half moon trap
-    R: 0x0, //xx pentagram
+    I: processGlyphs, //xx red pentagram trap
+    m: processGlyphs, //xx half moon trap
+    R: processGlyphs, //xx pentagram
     C: processSecret, //xx secret pressure plate
     //
     // claws, spikes
@@ -286,7 +295,7 @@ export interface SymbolBase<T> {
     e: T;
 }
 //
-//quest reults
+//quest results
 //
 export type QuestResultType =
     'N'; //ring treasure quest-result
@@ -346,16 +355,24 @@ export interface LevelStairs extends SymbolBase<'µ'> {
 export type LiquidType = '$' | '(' | 'O';
 export type ObstructableType = '"' | '!' | 'U' | 'Q' | LiquidType;
 
+
+
 export interface Obstructable<T extends ObstructableType> extends SymbolBase<T> {
 }
 
-export type DeathTotem = Obstructable<'"'>;
+
 export type Lava = Obstructable<'('>;
+export type Water = Obstructable<'O'>;
+export type Acid = Obstructable<'$'>;
+export type AllLiquids = Lava | Water | Acid;
+
 export type Torch = Obstructable<'!'>;
 export type Trader = Obstructable<'U'>;
 export type QuestGenerator = Obstructable<'Q'>;
-export type Water = Obstructable<'O'>;
-export type Acid = Obstructable<'$'>;
+export type DeathTotem = Obstructable<'"'>;
+
+export type SpecialtyItems = Torch | Trader | QuestGenerator | DeathTotem;
+
 //
 // Discovarable
 //
@@ -381,6 +398,8 @@ export interface FloorGlyphs<I extends FloorGlyphsType> extends SymbolBase<I> {
 export type RedPentagram = FloorGlyphs<'I'>;
 export type HalfMoonTrap = FloorGlyphs<'m'>;
 export type Pentagram = FloorGlyphs<'R'>;
+
+export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
 
 // secretplates
 
