@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sounds>
+ <!-- General Menus -->
+  <sound name="general_menu_selected" filename="fx/general_menu_selected.wav" category="fx" loop="false" stream="false" />  
+  <sound name="general_menu_open" filename="fx/general_menu_open.wav" category="fx" loop="false" stream="false" />  
+  <sound name="save_slot_toggle" filename="fx/save_slot_toggle.wav" category="fx" loop="false" stream="false" />    
+  <sound name="save_slot_delete_save" filename="fx/save_slot_delete_save.wav" category="fx" loop="false" stream="false" />   
+  <sound name="checkbox_toggle" filename="fx/checkbox_toggle.wav" category="fx" loop="false" stream="false" />   
+    
+  
+ <!-- End General Menus -->
+ 
+  <sound name="in_game_level_up" filename="fx/in_game_level_up.wav" category="fx" loop="false" stream="false" />   
+  <sound name="ingame_coins_sound" filename="fx/ingame_coins_sound.wav" category="fx" loop="false" stream="false" />  
+  <sound name="ingame_lost" filename="fx/ingame_lost.ogg" category="fx" loop="false" stream="false" />   
+  <sound name="ingame_chest_open" filename="fx/ingame_chest_open.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_shrine_activate" filename="fx/ingame_shrine_activate.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_teleport" filename="fx/ingame_teleport.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingamemenu_place_item" filename="fx/ingamemenu_place_item.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="mainbar_ability_changed" filename="fx/mainbar_ability_changed.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="mainbar_action_type_changed" filename="fx/mainbar_action_type_changed.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="quest_completed" filename="fx/quest_completed.wav" category="fx" loop="false" stream="false" />  
+  <sound name="quest_new" filename="fx/quest_new.wav" category="fx" loop="false" stream="false" />
+  <sound name="ingame_attack_sword" filename="fx/ingame_attack_sword.wav" category="fx" loop="false" stream="false" />
+  <sound name="ingame_attack_mace" filename="fx/ingame_attack_mace.wav" category="fx" loop="false" stream="false" />
+  <sound name="ingame_attack_bow" filename="fx/ingame_attack_bow.wav" category="fx" loop="false" stream="false" />  
+  <sound name="ingame_attack_staff" filename="fx/ingame_attack_staff.wav" category="fx" loop="false" stream="false" />  
+  <sound name="ingame_door_open" filename="fx/ingame_door_open.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_door_close" filename="fx/ingame_door_close.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_door_unlock" filename="fx/ingame_door_unlock.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_drink" filename="fx/ingame_drink.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_eat" filename="fx/ingame_eat.wav" category="fx" loop="false" stream="false" />
+  <sound name="ingame_skill_learned" filename="fx/ingame_skill_learned.wav" category="fx" loop="false" stream="false" />
+  <sound name="ingame_resource_fountain" filename="fx/ingame_resource_fountain.wav" category="fx" loop="false" stream="false" />
+  
+  
+  <sound name="in_game_walk_stairs" filename="fx/in_game_walk_stairs.wav" category="fx" loop="false" stream="false" /> 
+  
+  <sound name="ingame_ceramic_breaks" filename="fx/ingame_ceramic_breaks.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_wood_breaks" filename="fx/ingame_wood_breaks.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_bookshelf_inspect" filename="fx/ingame_bookshelf_inspect.wav" category="fx" loop="false" stream="false" /> 
+  
+  <sound name="in_game_monster_spawned" filename="fx/in_game_monster_spawned.wav" category="fx" loop="false" stream="false" />   
+    
+  <!-- HERO -->
+  <sound name="hero_dies" filename="fx/hero_dies.wav" category="fx" loop="false" stream="false" />   
+  <sound name="evil_laugh" filename="fx/evil_laugh.wav" category="fx" loop="false" stream="false" /> 
+    
+  <!--Placement of items on INVENTORY -->
+  <sound name="ingamemenu_place_item" filename="fx/ingamemenu_place_item.wav" category="fx" loop="false" stream="false" /> 
+  <sound name="ingame_menus_bar_button" filename="fx/ingame_menus_bar_button.wav" category="fx" loop="false" stream="false" /> 
+  
+  <sound name="ingame_store_purchase" filename="fx/ingame_store_purchase.wav" category="fx" loop="false" stream="false" />
+  <!-- END Placement of items on INVENTORY -->
+  
+  <!-- Abilities -->
+   <sound name="ability_fireball" filename="fx/ability_fireball.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_thunder" filename="fx/ability_thunder.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_heal" filename="fx/ability_heal.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_shield" filename="fx/ability_shield.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_berserk" filename="fx/ability_berserk.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_earth_shake" filename="fx/ability_earth_shake.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_essence_absorber" filename="fx/ability_essence_absorber.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_empowerment" filename="fx/ability_empowerment.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_summon" filename="fx/ability_summon.wav" category="fx" loop="false" stream="false" />    
+   <sound name="ability_magic_01" filename="fx/ability_magic_01.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_magic_02" filename="fx/ability_magic_02.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_explosive_surprise" filename="fx/ability_explosive_surprise.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_deep_cut" filename="fx/ability_deep_cut.wav" category="fx" loop="false" stream="false" /> 
+   <sound name="ability_rain_of_knives" filename="fx/ability_rain_of_knives.wav" category="fx" loop="false" stream="false" />
+   <sound name="ability_powerful_hit" filename="fx/ability_powerful_hit.wav" category="fx" loop="false" stream="false" />
+   <sound name="ability_teleport" filename="fx/ability_teleport.wav" category="fx" loop="false" stream="false" />
+   <sound name="ability_spikes" filename="fx/ability_spikes.wav" category="fx" loop="false" stream="false" />
+   <sound name="ability_trap" filename="fx/ability_trap.wav" category="fx" loop="false" stream="false" />
+   
+   <!-- Monsters Deaths -->
+   <sound name="monster_dying_1" filename="fx/monster_dying_1.wav" category="fx" loop="false" stream="false" />
+   <sound name="monster_dying_2" filename="fx/monster_dying_2.wav" category="fx" loop="false" stream="false" />
+   <sound name="monster_dying_3" filename="fx/monster_dying_3.wav" category="fx" loop="false" stream="false" />
+   <sound name="monster_dying_4" filename="fx/monster_dying_4.wav" category="fx" loop="false" stream="false" />
+   <sound name="monster_dying_5" filename="fx/monster_dying_5.wav" category="fx" loop="false" stream="false" />
+   
+   <sound name="intro_scratch" filename="intro/intro_scratch.wav" category="fx" loop="false" stream="false" />
+   
+    
+</sounds>

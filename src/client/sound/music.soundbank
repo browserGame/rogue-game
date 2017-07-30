@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sounds>
+  <sound name="BoxCat_Games_-_12_-_Passing_Time" filename="BoxCat_Games_-_12_-_Passing_Time.ogg" category="music" loop="true" stream="true" />
+  <sound name="160-B - Lilith's Rage" filename="160-B - Lilith's Rage.ogg" category="music" loop="true" stream="true" />
+  <sound name="204-A In the Wild" filename="204-A In the Wild.ogg" category="music" loop="true" stream="true" />
+  <sound name="boss_battle" filename="306_-_Tense_Battle_3.ogg" category="music" loop="true" stream="true" />
+  <sound name="boss_battle_2" filename="309 - Desert Battle.ogg" category="music" loop="true" stream="true" />  
+  <sound name="store" filename="173_Who_Left_the_Milk_Out.ogg" category="music" loop="true" stream="true" />
+  <sound name="intro_music" filename="162_Pre_Boss_Battle_Tension_Loop.ogg" category="music" loop="true" stream="true" />
+  <sound name="main_menu_sounds" filename="caverns_sounds.ogg" category="music" loop="true" stream="true" />
+  <sound name="end_music" filename="149_Serenity.ogg" category="music" loop="true" stream="true" />  
+  <sound name="cave-amb" filename="cave-amb.ogg" category="music" loop="true" stream="true" /> 
+  <sound name="intro_campfire" filename="intro/intro_campfire.ogg" category="music" loop="true" stream="true" /> 
+</sounds>
