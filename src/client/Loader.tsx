@@ -1,7 +1,16 @@
 'use strict';
 
+///ref pixl-xml.d.ts
+
 import xml = require('pixl-xml');
-/*<?xml version="1.0" standalone="no"?>
+
+
+
+/*
+
+css image-rendering: pixelated;
+
+<?xml version="1.0" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
      width="420px" height="420px">
 
@@ -44,6 +53,8 @@ export interface Asset {
     data: any;
 }
 
+const rogue = require('./rogue');
+console.log(rogue);
 const entities = {
 
     'enemies.anim': require('./entities/enemies.anim'),
