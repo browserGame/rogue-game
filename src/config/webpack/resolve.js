@@ -9,7 +9,7 @@ module.exports = {
   client: {
     extensions: ext,
     alias: {
-      'fs': resolve('src/client/fs-shim.js') // fs-shim.js  doesnt exist but want to see if webpack will try and load it
+      'fs': resolve('src/client/fs-shim.js') 
     },
     modules: ['node_modules',resolve('src/client')]
   }

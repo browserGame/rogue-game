@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-require('./Loader');
+import { createStyleSheets } from './Loader';
 
 function App() {
     return <div></div>;
@@ -11,6 +11,6 @@ function App() {
 
 
 window.onload = () => {
-    ReactDOM.render(<App />, document.getElementById('app'));
+    createStyleSheets().then(() => ReactDOM.render(<App />, document.getElementById('app')));
 };
 

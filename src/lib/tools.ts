@@ -3,6 +3,10 @@ import { Vector } from './math';
 import { SymbolBase, codedItems } from './Symbols';
 import { Layout, $Room, getNameSpace } from './Room';
 
+///ref pixl-xml.d.ts
+
+import xml = require('pixl-xml');
+
 export function parseLayout(layout: Layout) {
 
 
@@ -13,7 +17,7 @@ export function parseLayout(layout: Layout) {
     let metaInfo = mapSymbols(layout.symbols);
 
     const pk = layout.id;
-   
+
     let left = 0;
     let top = 0;
 
@@ -69,15 +73,15 @@ export function parseLayout(layout: Layout) {
         });
 
         dtag.forEach((key) => {
-            let si = metaInfo.get(key) || { e:key };
-            
+            let si = metaInfo.get(key) || { e: key };
+
             let processor = codedItems[(si && si.e) || key];
             if (processor) {
                 //   console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
                 processor(matrix, width, room, itemPalette[key], si);
             }
             else {
-                 console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+                console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
                 // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
             }
             //console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
@@ -172,3 +176,73 @@ export function flatten(...arr: any[]): any[] {
     }
     return rc;
 }
+
+
+
+export type HTTPMethod = 'GET' | 'POST' | 'PATCH' | 'PUT';
+export type ProgressFunction = (arg: { comuteLength: boolean; total: number; progress: number }) => void;
+
+export function loadXMLAsset(method: HTTPMethod, url: string, cb?: ProgressFunction): Promise<any> {
+
+    return new Promise<any>((resolve, reject) => {
+
+        let error = false;
+
+        const xhr = new XMLHttpRequest();
+        xhr.overrideMimeType('application/xml');
+        xhr.withCredentials = true; //for session cookies and such 
+        xhr.open(method, url, true);
+
+        xhr.onreadystatechange = function orsc() {
+            if (xhr.HEADERS_RECEIVED === xhr.readyState) {
+                if (xhr.status === 404) {
+                    xhr.abort(); // dont care, note, this will set xhr.status to zero and
+                }
+            }
+        };
+
+        xhr.onprogress = function op(e) {
+            if (cb) {
+                cb({ comuteLength: e.lengthComputable, total: e.total, progress: e.loaded });
+            }
+        };
+
+        xhr.onloadend = function ole() {
+
+            if (!(xhr.status >= 200 && xhr.status < 300)) {
+
+                !error && reject(new ErrorEvent(`status:${xhr.status}, ${xhr.statusText}`));
+                error = true;
+                return;
+            }
+            try {
+                let data = xml.parse(xhr.response, { preserveAttributes: false, preserveDocumentNode: true });
+                return resolve(data);
+            }
+            catch (e) {
+                !error && reject(e);
+                error = true;
+                return;
+            }
+        };
+
+        xhr.onerror = function oe(e) {
+            !error && reject(e);
+            error = true;
+            return;
+        };
+
+        try {
+            xhr.send(null);
+        }
+        catch (e) {
+            !error && reject(e);
+            error = true;
+            return;
+        }
+    });
+
+
+
+}
+

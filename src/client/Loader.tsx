@@ -1,13 +1,55 @@
 'use strict';
 
-///ref pixl-xml.d.ts
-
-import xml = require('pixl-xml');
-
 
 
 /*
 
+        .enemies {
+            background: url('images/enemies.png');
+            background-origin: border-box;
+            background-size: 1024px 512px;
+            image-rendering: pixelated;
+
+            animation-duration: 1s;
+            animation-timing-function: steps(1);
+            animation-delay: 0ms;
+            animation-iteration-count:infinite;
+        }
+
+        .blackBat {
+            width: 48px;
+            height: 48px;
+            border: 1px solid grey;
+            animation-name: blackBat;
+        }
+
+        @keyframes blackBat {
+            from {
+                background-position: -48px -48px;
+            }
+            50% {
+                background-position: 0px -48px;
+            }
+        }
+
+        h2 {
+
+            background-repeat: no-repeat;
+            background-clip: border-box;
+            background-size: 200% auto;
+
+            image-rendering: pixelated;
+
+            color: white;
+            font-weight: bold;
+            font-size: 360%;
+            height: calc( 100% - 20px);
+            line-height: 1;
+            padding: 25px;
+            text-shadow: 0 0 1px black;
+            border: 4px dashed green;
+        }
+    
 css image-rendering: pixelated;
 
 <?xml version="1.0" standalone="no"?>
@@ -43,6 +85,10 @@ path {
 }
 */
 
+import {
+    loadXMLAsset
+} from '../lib/tools';
+
 export interface Asset {
     pk: string;
     url: string;
@@ -54,8 +100,11 @@ export interface Asset {
 }
 
 const rogue = require('./rogue');
-console.log(rogue);
-const entities = {
+
+console.log(rogue); // just testing
+
+
+const entities: { [index: string]: string; } = {
 
     'enemies.anim': require('./entities/enemies.anim'),
     'enemies.png': require('./entities/enemies.png'),
@@ -70,7 +119,9 @@ const entities = {
 
 };
 
-const dungeon = {
+
+
+const dungeon: { [index: string]: string; } = {
     'common_floor_objects.anim': require('./dungeon/common_floor_objects.anim'),
     'common_floor_objects.png': require('./dungeon/common_floor_objects.png'),
     'common_floor_objects.sheet': require('./dungeon/common_floor_objects.sheet'),
@@ -97,32 +148,38 @@ const dungeon = {
     'liquid_water.sheet': require('./dungeon/liquid_water.sheet'),
 };
 
-console.log(entities);
-console.log(dungeon);
+dungeon;
 
+//create stylesheets
 
-const xhr = new XMLHttpRequest();
+export function createStyleSheets(): Promise<any> {
+    const xmlEnemies = Object.keys(entities).filter((f) => /\.(anim|sheet)$/.test(f)).reduce((coll, x) => {
+        coll[x] = {
+            url: x,
+            promise: loadXMLAsset('GET', entities[x]),
+            data: null
+        };
+        return coll;
+    }, {} as { [index: string]: { url: string; promise: Promise<any>; data: any; } });
 
-xhr.overrideMimeType('application/xml');
+    return Promise.all(Object.keys(xmlEnemies).map((m) => xmlEnemies[m].promise))
+        .then(() => {
+            for (let key in xmlEnemies) {
+                // enemies, all promises resolved so thenables are executed immediatly
+                xmlEnemies[key].promise.then((data) => xmlEnemies[key].data = data);
+            }
+            return xmlEnemies;
+        })
+        .then(() => {
+            //everything loaded
+            //create enemy stylesheet
+            const enemySprites = entities['enemies.png'];
+            const enemySheet = xmlEnemies['enemies.sheet'];
+            const enemyAnimations = xmlEnemies['enemies.anim'];
 
-xhr.onreadystatechange = function orsc(e) {
-    console.log('READYSTATE:', xhr.readyState, e);
+        })
+        .catch(() => {
+            //error stuff
+    });
 
-};
-
-xhr.open('GET', entities['enemies.sheet'], true);
-console.log('OPENED', xhr.readyState); // readyState will be 1
-
-xhr.onprogress = function op(e) {
-    // readystatet will be 3
-    console.log(`LOADING, state: ${xhr.readyState} , can compute lenght:${e.lengthComputable} length:${e.total}, progress:${e.loaded}`);
-};
-
-xhr.onloadend = function ole(e) {
-    console.log('DONE', xhr.readyState, e); // readyState will be 4
-    //console.log(xhr.response);
-    console.log(xml.parse(xhr.response));
-
-};
-
-xhr.send(null);
+}
