@@ -7,7 +7,8 @@
         .enemies {
             background: url('images/enemies.png');
             background-origin: border-box;
-            background-size: 1024px 512px;
+            background-size: 1024px 512px; //normal size 48px 48px
+            background-size: 1280px 640px; //boss size  60px 60px
             image-rendering: pixelated;
 
             animation-duration: 1s;
@@ -89,6 +90,9 @@ import {
     loadXMLAsset
 } from '../lib/tools';
 
+//{"name":"elf03_01","texture":"enemies.png","ox":"12","oy":"24","x":"144","y":"72","width":"24","height":"24"}
+
+/*
 export interface Asset {
     pk: string;
     url: string;
@@ -97,6 +101,17 @@ export interface Asset {
     progress: number;
     error?: Error;
     data: any;
+}*/
+
+interface Sprite {
+    name: string;
+    textture: string;
+    ox: number;
+    oy: number;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
 }
 
 const rogue = require('./rogue');
@@ -150,6 +165,7 @@ const dungeon: { [index: string]: string; } = {
 
 dungeon;
 
+
 //create stylesheets
 
 export function createStyleSheets(): Promise<any> {
@@ -175,11 +191,131 @@ export function createStyleSheets(): Promise<any> {
             //create enemy stylesheet
             const enemySprites = entities['enemies.png'];
             const enemySheet = xmlEnemies['enemies.sheet'];
-            const enemyAnimations = xmlEnemies['enemies.anim'];
+            //const enemyAnimations = xmlEnemies['enemies.anim'];
+
+            let dStyle = document.createElement('style');
+            let attTextCss = document.createAttribute('type');
+            attTextCss.value = 'text/css';
+            dStyle.setAttributeNode(attTextCss);
+
+            // need to add the style to the document otherwise dsStyle.sheet will be "null"
+            document.head.appendChild(dStyle);
+            const sheet: CSSStyleSheet = dStyle.sheet as any;
+            // now we insert rules 
+            //
+            // 1 insert basic size 48x48 and boss 60x60 (25% bigger, as measured by "Gump")
+            let i = 0;
+            console.log('creating rules');
+            sheet.insertRule(` 
+            .enemy-spritemap { 
+                background: url('${enemySprites}'); 
+                background-origin: border-box; 
+                background-size: 1024px 512px; 
+                image-rendering: pixelated;
+                animation-duration: 900ms;
+                animation-timing-function: steps(1);
+                animation-delay: 0ms;
+                animation-iteration-count:infinite;
+            }`, i++);
+
+            sheet.insertRule(` 
+            .enemy-spritemap.boss { 
+                background-size: 1280px 640px; 
+            }`, i++);
+
+            sheet.insertRule(`
+            .normal {
+                width: 48px;
+                height: 48px;    
+            }    
+            `, i++);
+            sheet.insertRule(`
+            .boss {
+                width: 60px;
+                height: 60px;    
+            }    
+            `, i++);
+
+            sheet.insertRule(`
+            .right {
+                transform: scaleX(-1);
+             }    
+            `, i++);
+
+
+            //{"name":"elf03_01","texture":"enemies.png","ox":"12","oy":"24","x":"144","y":"72","width":"24","height":"24"}
+            let c: { [index: string]: { f: Sprite; s: Sprite; } } = {};
+            (enemySheet.data.sheets.sheet as Sprite[]).reduce((collector, itm) => {
+                let [_, rootName, index] = Array.from(itm.name.match(/^([^\_]+)_(\d{2})$/) || []);
+                _;
+                if (!rootName) {
+                    rootName = itm.name;
+                    index = '01';
+                }
+                //console.log({ _, rootName, index });
+                let sprite: Sprite = {
+                    name: rootName,
+                    textture: '',
+                    ox: Number.parseInt(itm.ox as any),
+                    oy: Number.parseInt(itm.oy as any),
+                    x: Number.parseInt(itm.x as any),
+                    y: Number.parseInt(itm.y as any),
+                    width: Number.parseInt(itm.width as any),
+                    height: Number.parseInt(itm.height as any)
+                };
+                collector[rootName] = collector[rootName] || {};
+                collector[rootName][index === '01' ? 'f' : 's'] = sprite;
+
+                return collector;
+            }, c);
+            //create 
+            for (let duo in c) {
+                let { x, y } = c[duo].f;
+                let { x: x2, y: y2 } = c[duo].s || c[duo].f;
+
+                sheet.insertRule(`
+                    .${duo} {
+                        animation-name: ${duo};
+                    }                
+                `, i++);
+
+                sheet.insertRule(`
+                    @keyframes ${duo} {
+                        from {
+                            background-position: -${x * 2}px -${y * 2}px;
+                        }
+                        50% {
+                            background-position: -${x2 * 2}px -${y2 * 2}px;
+                        }
+                    }                
+                `, i++);
+                sheet.insertRule(`
+                    .${duo}.boss {
+                        animation-name: ${duo}-boss;
+                    }                
+                `, i++);
+
+                sheet.insertRule(`
+                    @keyframes ${duo}-boss {
+                        from {
+                            background-position: -${x * 2.5}px -${y * 2.5}px;
+                        }
+                        50% {
+                            background-position: -${x2 * 2.5}px -${y2 * 2.5}px;
+                        }
+                    }                
+                `, i++);
+
+
+            }
+            console.log({ c });
+
+
+
 
         })
         .catch(() => {
             //error stuff
-    });
+        });
 
 }
