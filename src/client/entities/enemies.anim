@@ -688,7 +688,7 @@
         <frame duration="300.0">knight02_01</frame>
         <frame duration="300.0">knight02_02</frame>
     </anim>
-	<anim name="knight03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
+    <anim name="knight03_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
         <frame duration="300.0">knight03_01</frame>
         <frame duration="300.0">knight03_02</frame>
     </anim>
@@ -986,11 +986,11 @@
     </anim>
     <anim name="ogre04_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
         <frame duration="300.0">ogre04_01</frame>
-		<frame duration="300.0">ogre04_02</frame>
+        <frame duration="300.0">ogre04_02</frame>
     </anim>
     <anim name="ogre04_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
         <frame duration="300.0">ogre04_01</frame>
-		<frame duration="300.0">ogre04_02</frame>
+        <frame duration="300.0">ogre04_02</frame>
     </anim>
     <anim name="fairy01_idle" sprite_sheet="enemies" play_mode="play_once" loop="true" speed="300.00">
         <frame duration="300.0">fairy01_01</frame>

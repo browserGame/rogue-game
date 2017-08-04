@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sheets>
-    <sheet name="shadow" texture="shadow.png" ox="12" oy="5" x="0" y="0" width="24" height="10" />
+    <sheet 
+    name="shadow" 
+    texture="shadow.png" 
+    ox="12" 
+    oy="5" 
+    x="0" 
+    y="0" 
+    width="24" 
+    height="10" />
 </sheets>

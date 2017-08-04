@@ -1,10 +1,7 @@
 'use strict';
 
-
-
 /*
-
-        .enemies {
+  .enemies {
             background: url('images/enemies.png');
             background-origin: border-box;
             background-size: 1024px 512px; //normal size 48px 48px
@@ -17,18 +14,28 @@
             animation-iteration-count:infinite;
         }
 
-        .blackBat {
-            width: 48px;
-            height: 48px;
-            border: 1px solid grey;
-            animation-name: blackBat;
+         <anim name="assassin02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
+        <frame duration="300.0">assassin02_01</frame>
+        <frame duration="300.0">assassin02_02</frame>
+    </anim>
+
+        .assassin02_attack {
+            width: 24px;
+            height: 24px;
+            animation-name: assassin02_01, assassin02_02;
+            animation-duration: 600ms, 600ms;
+            animation-delay: 0s, 300ms;
+            animation-iteration-count: infinite;
         }
 
-        @keyframes blackBat {
+        @keyframes assassin02_01 {
             from {
                 background-position: -48px -48px;
             }
-            50% {
+        }
+
+        @keyframes assassin02_02 {
+            from {
                 background-position: 0px -48px;
             }
         }
@@ -90,33 +97,16 @@ import {
     loadXMLAsset
 } from '../lib/tools';
 
-//{"name":"elf03_01","texture":"enemies.png","ox":"12","oy":"24","x":"144","y":"72","width":"24","height":"24"}
+import {
+    SpriteSheet,
+    //Sprite
+} from './Sprite';
 
-/*
-export interface Asset {
-    pk: string;
-    url: string;
-    mime: string;
-    size: number; // -1 is unknown
-    progress: number;
-    error?: Error;
-    data: any;
-}*/
-
-interface Sprite {
-    name: string;
-    textture: string;
-    ox: number;
-    oy: number;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-}
-
-const rogue = require('./rogue');
-
-console.log(rogue); // just testing
+import {
+    //Animation,
+    AnimationData,
+    AnimationSheet
+} from './Animation';
 
 
 const entities: { [index: string]: string; } = {
@@ -165,9 +155,6 @@ const dungeon: { [index: string]: string; } = {
 
 dungeon;
 
-
-//create stylesheets
-
 export function createStyleSheets(): Promise<any> {
     const xmlEnemies = Object.keys(entities).filter((f) => /\.(anim|sheet)$/.test(f)).reduce((coll, x) => {
         coll[x] = {
@@ -182,140 +169,39 @@ export function createStyleSheets(): Promise<any> {
         .then(() => {
             for (let key in xmlEnemies) {
                 // enemies, all promises resolved so thenables are executed immediatly
-                xmlEnemies[key].promise.then((data) => xmlEnemies[key].data = data);
+                xmlEnemies[key].promise.then((data) => {
+                    xmlEnemies[key].data = data;
+                });
+
             }
-            return xmlEnemies;
+            return xmlEnemies; // thenables will be resolved before return is executed (dark behavior).
         })
         .then(() => {
-            //everything loaded
             //create enemy stylesheet
-            const enemySprites = entities['enemies.png'];
-            const enemySheet = xmlEnemies['enemies.sheet'];
+            const enemySpriteMapUrl = entities['enemies.png'];
+            const enemySheetData = xmlEnemies['enemies.sheet'];
+            const enemyAnimationData = xmlEnemies['enemies.anim'];
+
+            let enemySprites = new SpriteSheet({ originalUrl: 'enemies.png', actualUrl: enemySpriteMapUrl, sprites: enemySheetData.data.sheets.sheet });
+            enemySprites;
+            //some transformations and cleanup
+            enemyAnimationData.data.anims.anim.forEach((itm: AnimationData) => {
+                itm.spriteSheetName = (itm as any)['sprite_sheet'] + '.png';
+                itm.frame = !(itm.frame instanceof Array) ? [itm.frame] : itm.frame;
+                itm.frame.forEach((fr) => fr.spriteName = (fr as any)['_Data']);
+            });
+            let enemyAnimations = new AnimationSheet('enemies', enemyAnimationData.data.anims.anim);
+            console.log(enemyAnimations.CSSAscii());
+            //console.log({ debug_anims: enemyAnimations });
+            
             //const enemyAnimations = xmlEnemies['enemies.anim'];
-
-            let dStyle = document.createElement('style');
-            let attTextCss = document.createAttribute('type');
-            attTextCss.value = 'text/css';
-            dStyle.setAttributeNode(attTextCss);
-
-            // need to add the style to the document otherwise dsStyle.sheet will be "null"
-            document.head.appendChild(dStyle);
-            const sheet: CSSStyleSheet = dStyle.sheet as any;
-            // now we insert rules 
-            //
-            // 1 insert basic size 48x48 and boss 60x60 (25% bigger, as measured by "Gump")
-            let i = 0;
-            console.log('creating rules');
-            sheet.insertRule(` 
-            .enemy-spritemap { 
-                background: url('${enemySprites}'); 
-                background-origin: border-box; 
-                background-size: 1024px 512px; 
-                image-rendering: pixelated;
-                animation-duration: 900ms;
-                animation-timing-function: steps(1);
-                animation-delay: 0ms;
-                animation-iteration-count:infinite;
-            }`, i++);
-
-            sheet.insertRule(` 
-            .enemy-spritemap.boss { 
-                background-size: 1280px 640px; 
-            }`, i++);
-
-            sheet.insertRule(`
-            .normal {
-                width: 48px;
-                height: 48px;    
-            }    
-            `, i++);
-            sheet.insertRule(`
-            .boss {
-                width: 60px;
-                height: 60px;    
-            }    
-            `, i++);
-
-            sheet.insertRule(`
-            .right {
-                transform: scaleX(-1);
-             }    
-            `, i++);
-
-
-            //{"name":"elf03_01","texture":"enemies.png","ox":"12","oy":"24","x":"144","y":"72","width":"24","height":"24"}
-            let c: { [index: string]: { f: Sprite; s: Sprite; } } = {};
-            (enemySheet.data.sheets.sheet as Sprite[]).reduce((collector, itm) => {
-                let [_, rootName, index] = Array.from(itm.name.match(/^([^\_]+)_(\d{2})$/) || []);
-                _;
-                if (!rootName) {
-                    rootName = itm.name;
-                    index = '01';
-                }
-                //console.log({ _, rootName, index });
-                let sprite: Sprite = {
-                    name: rootName,
-                    textture: '',
-                    ox: Number.parseInt(itm.ox as any),
-                    oy: Number.parseInt(itm.oy as any),
-                    x: Number.parseInt(itm.x as any),
-                    y: Number.parseInt(itm.y as any),
-                    width: Number.parseInt(itm.width as any),
-                    height: Number.parseInt(itm.height as any)
-                };
-                collector[rootName] = collector[rootName] || {};
-                collector[rootName][index === '01' ? 'f' : 's'] = sprite;
-
-                return collector;
-            }, c);
-            //create 
-            for (let duo in c) {
-                let { x, y } = c[duo].f;
-                let { x: x2, y: y2 } = c[duo].s || c[duo].f;
-
-                sheet.insertRule(`
-                    .${duo} {
-                        animation-name: ${duo};
-                    }                
-                `, i++);
-
-                sheet.insertRule(`
-                    @keyframes ${duo} {
-                        from {
-                            background-position: -${x * 2}px -${y * 2}px;
-                        }
-                        50% {
-                            background-position: -${x2 * 2}px -${y2 * 2}px;
-                        }
-                    }                
-                `, i++);
-                sheet.insertRule(`
-                    .${duo}.boss {
-                        animation-name: ${duo}-boss;
-                    }                
-                `, i++);
-
-                sheet.insertRule(`
-                    @keyframes ${duo}-boss {
-                        from {
-                            background-position: -${x * 2.5}px -${y * 2.5}px;
-                        }
-                        50% {
-                            background-position: -${x2 * 2.5}px -${y2 * 2.5}px;
-                        }
-                    }                
-                `, i++);
-
-
-            }
-            console.log({ c });
-
-
+            //Need to add the style to the document otherwise dsStyle.sheet will be "null"
 
 
         })
-        .catch(() => {
+        .catch((e) => {
             //error stuff
+            console.log(`%c There was an error: ${JSON.stringify(e)}.`, 'color:red');
         });
 
 }

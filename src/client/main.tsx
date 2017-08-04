@@ -10,8 +10,9 @@ const cssRogue = require('./rogue');
 
 function App() {
     return <div className={cssRogue['container']}>
-        <div className="enemy-spritemap boss dragon02 right"></div>
-        <div className="enemy-spritemap boss lizard05 right"></div>
+        <div className="enemy-spritemap dragon02"></div>
+        {/*<div className="enemy-spritemap boss lizard05 right"></div>
+        <div className="enemy-spritemap boss death03 static zoom"></div>*/}
         </div>;
 }
 
