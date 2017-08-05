@@ -38,7 +38,7 @@ const inliner = {
 const identity = {
     test: /\.anim$/,
     include: [],
-    use: function (source) { return source; }
+    use: 'identity-loader'
 };
 
 

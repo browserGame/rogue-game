@@ -5,6 +5,6 @@ module.exports = {
     rules: [styles, tslint, ts, inliner]
   },
   server: {
-    rules: [/*raw,*/ styles, tslint, ts]
+    rules: [/*raw,*/ styles, tslint, ts, identity]
   }
 };
