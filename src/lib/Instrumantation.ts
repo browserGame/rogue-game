@@ -1,98 +1,5 @@
 'use strict';
 
-/*
-  .enemies {
-            background: url('images/enemies.png');
-            background-origin: border-box;
-            background-size: 1024px 512px; //normal size 48px 48px
-            background-size: 1280px 640px; //boss size  60px 60px
-            image-rendering: pixelated;
-
-            animation-duration: 1s;
-            animation-timing-function: steps(1);
-            animation-delay: 0ms;
-            animation-iteration-count:infinite;
-        }
-
-         <anim name="assassin02_attack" sprite_sheet="enemies" play_mode="play_once" loop="false" speed="300.00">
-        <frame duration="300.0">assassin02_01</frame>
-        <frame duration="300.0">assassin02_02</frame>
-    </anim>
-
-        .assassin02_attack {
-            width: 24px;
-            height: 24px;
-            animation-name: assassin02_01, assassin02_02;
-            animation-duration: 600ms, 600ms;
-            animation-delay: 0s, 300ms;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes assassin02_01 {
-            from {
-                background-position: -48px -48px;
-            }
-        }
-
-        @keyframes assassin02_02 {
-            from {
-                background-position: 0px -48px;
-            }
-        }
-
-        h2 {
-
-            background-repeat: no-repeat;
-            background-clip: border-box;
-            background-size: 200% auto;
-
-            image-rendering: pixelated;
-
-            color: white;
-            font-weight: bold;
-            font-size: 360%;
-            height: calc( 100% - 20px);
-            line-height: 1;
-            padding: 25px;
-            text-shadow: 0 0 1px black;
-            border: 4px dashed green;
-        }
-    
-css image-rendering: pixelated;
-
-<?xml version="1.0" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-     width="420px" height="420px">
-
-      <circle cx="200" cy="200" r="75"  />
-
-      <path  
-            d="
-            M 200, 200
-            m -75, 0
-            a 75,75 0 0,1 150,0.00001
-           
-            "
-      />
-
-</svg>
-
-circle, path {
-    fill: none;
-    stroke-width: 5;
-    stroke-opacity: 0.5;
-}
-
-circle {
-    stroke: red;
-}
-
-path {
-    stroke: blue;
-    stroke-opacity: 1;
-}
-*/
-
 import {
     loadXMLAsset
 } from '../lib/tools';
@@ -110,7 +17,8 @@ import {
 
 
 export const entities: { [index: string]: string; } = {
-    'enemies.anim': require('./entities/enemies.anim'),
+
+    'enemies.anim': require('../client/entities/enemies.anim'),
     'enemies.png': require('./entities/enemies.png'),
     'enemies.sheet': require('./entities/enemies.sheet'),
     'heroes.anim': require('./entities/heroes.anim'),
@@ -120,9 +28,8 @@ export const entities: { [index: string]: string; } = {
     'shadow.png': require('./entities/shadow.png'),
     'shopkeeper.sheet': require('./entities/shopkeeper.sheet'),
     'shopkeeper.anim': require('./entities/shopkeeper.anim'),
+
 };
-
-
 
 
 export const dungeon: { [index: string]: string; } = {

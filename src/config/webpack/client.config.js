@@ -11,7 +11,7 @@ module.exports = {
         filename: p ? '[name].[chunkhash].js' : '[name].js'
     },
     devtool: require('./devtool'),
-    module: require('./module'),
+    module: require('./module').client,
     plugins: require('./plugins').client,
     resolve: require('./resolve').client,
 };

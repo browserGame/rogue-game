@@ -21,18 +21,26 @@ const css = {
     }
 };
 
+
 const inliner = {
-    test: /\.(png|jpg|gif|anim|sheet)$/,
+    test: /\.(png|jpg|anim|gif|sheet)$/,
     include: [],
     use: [
         {
             loader: 'url-loader',
             options: {
-                limit: 1 // * 1024 //embed if the resource is 1kb or less
+                limit: 1 /*1024 ,embed if the resource is 1kb or less*/
             }
         }
     ]
 };
+
+const identity = {
+    test: /\.anim$/,
+    include: [],
+    use: function (source) { return source; }
+};
+
 
 const postcss = {
     loader: 'postcss-loader',
@@ -45,7 +53,7 @@ const postcss = {
 };
 
 const raw = {
-    test: /\.sql/,
+    test: /\.(sql|anim)/,
     exclude,
     include: [],
     use: 'raw-loader'
@@ -115,4 +123,4 @@ const tslint = {
     ]
 };
 
-module.exports = { raw, styles, ts, tslint, inliner };
+module.exports = { raw, styles, ts, tslint, inliner, identity };

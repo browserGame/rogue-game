@@ -1,0 +1,4331 @@
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+        }
+
+
+        .enemies>div {
+            background: url('./enemies.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+
+        .assassin01_idle>div {
+            animation-name: assassin01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes assassin01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -0px;
+            }
+        }
+
+        .assassin01_attack>div {
+            animation-name: assassin01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes assassin01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -0px;
+            }
+        }
+
+        .viking02_idle>div {
+            animation-name: viking02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes viking02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -144px;
+            }
+        }
+
+        .viking02_attack>div {
+            animation-name: viking02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes viking02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -144px;
+            }
+        }
+
+        .darkelf02_idle>div {
+            animation-name: darkelf02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes darkelf02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -72px;
+            }
+        }
+
+        .darkelf02_attack>div {
+            animation-name: darkelf02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes darkelf02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -72px;
+            }
+        }
+
+        .darkelf03_idle>div {
+            animation-name: darkelf03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes darkelf03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -48px;
+            }
+        }
+
+        .darkelf03_attack>div {
+            animation-name: darkelf03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes darkelf03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -48px;
+            }
+        }
+
+        .elf03_idle>div {
+            animation-name: elf03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes elf03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -0px;
+            }
+        }
+
+        .elf03_attack>div {
+            animation-name: elf03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes elf03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -0px;
+            }
+        }
+
+        .grayelf06_idle>div {
+            animation-name: grayelf06_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes grayelf06_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -168px;
+            }
+        }
+
+        .grayelf06_attack>div {
+            animation-name: grayelf06_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes grayelf06_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -168px;
+            }
+        }
+
+        .grayelf08_idle>div {
+            animation-name: grayelf08_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes grayelf08_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -168px;
+            }
+        }
+
+        .grayelf08_attack>div {
+            animation-name: grayelf08_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes grayelf08_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -168px;
+            }
+        }
+
+        .lizard03_idle>div {
+            animation-name: lizard03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes lizard03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -192px;
+            }
+        }
+
+        .lizard03_attack>div {
+            animation-name: lizard03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes lizard03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -192px;
+            }
+        }
+
+        .lizard05_idle>div {
+            animation-name: lizard05_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes lizard05_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -192px;
+            }
+        }
+
+        .lizard05_attack>div {
+            animation-name: lizard05_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes lizard05_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -192px;
+            }
+        }
+
+        .gnome01_idle>div {
+            animation-name: gnome01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -192px;
+            }
+        }
+
+        .gnome01_attack>div {
+            animation-name: gnome01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -192px;
+            }
+        }
+
+        .gnome02_idle>div {
+            animation-name: gnome02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -120px;
+            }
+        }
+
+        .gnome02_attack>div {
+            animation-name: gnome02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -120px;
+            }
+        }
+
+        .gnome04_idle>div {
+            animation-name: gnome04_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome04_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -168px;
+            }
+        }
+
+        .gnome04_attack>div {
+            animation-name: gnome04_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome04_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -168px;
+            }
+        }
+
+        .gnome05_idle>div {
+            animation-name: gnome05_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome05_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -120px;
+            }
+        }
+
+        .gnome05_attack>div {
+            animation-name: gnome05_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gnome05_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -120px;
+            }
+        }
+
+        .werewolf01_idle>div {
+            animation-name: werewolf01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes werewolf01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -192px;
+            }
+        }
+
+        .werewolf01_attack>div {
+            animation-name: werewolf01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes werewolf01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -192px;
+            }
+        }
+
+        .minotaur01_idle>div {
+            animation-name: minotaur01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minotaur01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -168px;
+            }
+        }
+
+        .minotaur01_attack>div {
+            animation-name: minotaur01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minotaur01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -168px;
+            }
+        }
+
+        .minotaur03_idle>div {
+            animation-name: minotaur03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minotaur03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -192px;
+            }
+        }
+
+        .minotaur03_attack>div {
+            animation-name: minotaur03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minotaur03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -192px;
+            }
+        }
+
+        .gargoyle01_idle>div {
+            animation-name: gargoyle01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gargoyle01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -72px;
+            }
+        }
+
+        .gargoyle01_attack>div {
+            animation-name: gargoyle01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gargoyle01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -72px;
+            }
+        }
+
+        .gargoyle02_idle>div {
+            animation-name: gargoyle02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gargoyle02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -96px;
+            }
+        }
+
+        .gargoyle02_attack>div {
+            animation-name: gargoyle02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes gargoyle02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -96px;
+            }
+        }
+
+        .robot02_idle>div {
+            animation-name: robot02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -48px;
+            }
+        }
+
+        .robot02_attack>div {
+            animation-name: robot02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -48px;
+            }
+        }
+
+        .robot04_idle>div {
+            animation-name: robot04_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot04_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -0px;
+            }
+        }
+
+        .robot04_attack>div {
+            animation-name: robot04_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot04_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -0px;
+            }
+        }
+
+        .robot05_idle>div {
+            animation-name: robot05_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot05_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -96px;
+            }
+        }
+
+        .robot05_attack>div {
+            animation-name: robot05_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes robot05_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -96px;
+            }
+        }
+
+        .genie01_idle>div {
+            animation-name: genie01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes genie01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -120px;
+            }
+        }
+
+        .genie01_attack>div {
+            animation-name: genie01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes genie01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -120px;
+            }
+        }
+
+        .tree01_idle>div {
+            animation-name: tree01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tree01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -24px;
+            }
+        }
+
+        .tree01_attack>div {
+            animation-name: tree01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tree01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -24px;
+            }
+        }
+
+        .chest01_idle>div {
+            animation-name: chest01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes chest01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -48px;
+            }
+        }
+
+        .chest01_attack>div {
+            animation-name: chest01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes chest01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -48px;
+            }
+        }
+
+        .blob01_idle>div {
+            animation-name: blob01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -0px;
+            }
+        }
+
+        .blob01_attack>div {
+            animation-name: blob01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -0px;
+            }
+        }
+
+        .bat_idle>div {
+            animation-name: bat_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bat_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -24px;
+            }
+        }
+
+        .bat_attack>div {
+            animation-name: bat_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bat_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -24px;
+            }
+        }
+
+        .bat02_idle>div {
+            animation-name: bat02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bat02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -24px;
+            }
+        }
+
+        .bat02_attack>div {
+            animation-name: bat02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bat02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -24px;
+            }
+        }
+
+        .minion01_idle>div {
+            animation-name: minion01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minion01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -120px;
+            }
+        }
+
+        .minion01_attack>div {
+            animation-name: minion01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes minion01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -120px;
+            }
+        }
+
+        .rat_idle>div {
+            animation-name: rat_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rat_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -24px;
+            }
+        }
+
+        .rat_attack>div {
+            animation-name: rat_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rat_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -24px;
+            }
+        }
+
+        .rat02_idle>div {
+            animation-name: rat02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rat02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -0px;
+            }
+        }
+
+        .rat02_attack>div {
+            animation-name: rat02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rat02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -0px;
+            }
+        }
+
+        .bug01_idle>div {
+            animation-name: bug01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bug01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -96px;
+            }
+        }
+
+        .bug01_attack>div {
+            animation-name: bug01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes bug01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -96px;
+            }
+        }
+
+        .eagle02_idle>div {
+            animation-name: eagle02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eagle02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -96px;
+            }
+        }
+
+        .eagle02_attack>div {
+            animation-name: eagle02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eagle02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -96px;
+            }
+        }
+
+        .eagle03_idle>div {
+            animation-name: eagle03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eagle03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -48px;
+            }
+        }
+
+        .eagle03_attack>div {
+            animation-name: eagle03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eagle03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -48px;
+            }
+        }
+
+        .orc01_idle>div {
+            animation-name: orc01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -24px;
+            }
+        }
+
+        .orc01_attack>div {
+            animation-name: orc01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -24px;
+            }
+        }
+
+        .orc03_idle>div {
+            animation-name: orc03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -48px;
+            }
+        }
+
+        .orc03_attack>div {
+            animation-name: orc03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -48px;
+            }
+        }
+
+        .orc06_idle>div {
+            animation-name: orc06_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc06_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -120px;
+            }
+        }
+
+        .orc06_attack>div {
+            animation-name: orc06_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes orc06_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -120px;
+            }
+        }
+
+        .troll01_idle>div {
+            animation-name: troll01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes troll01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -72px;
+            }
+        }
+
+        .troll01_attack>div {
+            animation-name: troll01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes troll01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -72px;
+            }
+        }
+
+        .troll02_idle>div {
+            animation-name: troll02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes troll02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -96px;
+            }
+        }
+
+        .troll02_attack>div {
+            animation-name: troll02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes troll02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -96px;
+            }
+        }
+
+        .ogre01_idle>div {
+            animation-name: ogre01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ogre01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -48px;
+            }
+        }
+
+        .ogre01_attack>div {
+            animation-name: ogre01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ogre01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -48px;
+            }
+        }
+
+        .knight01_idle>div {
+            animation-name: knight01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -120px;
+            }
+        }
+
+        .knight01_attack>div {
+            animation-name: knight01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -120px;
+            }
+        }
+
+        .knight02_idle>div {
+            animation-name: knight02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -168px;
+            }
+        }
+
+        .knight02_attack>div {
+            animation-name: knight02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -168px;
+            }
+        }
+
+        .knight03_idle>div {
+            animation-name: knight03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -120px;
+            }
+        }
+
+        .knight03_attack>div {
+            animation-name: knight03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes knight03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -120px;
+            }
+        }
+
+        .mudmonster01_idle>div {
+            animation-name: mudmonster01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mudmonster01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -192px;
+            }
+        }
+
+        .mudmonster01_attack>div {
+            animation-name: mudmonster01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mudmonster01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -192px;
+            }
+        }
+
+        .mudmonster02_idle>div {
+            animation-name: mudmonster02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mudmonster02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -0px;
+            }
+        }
+
+        .mudmonster02_attack>div {
+            animation-name: mudmonster02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mudmonster02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -0px;
+            }
+        }
+
+        .zombie01_idle>div {
+            animation-name: zombie01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes zombie01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -96px;
+            }
+        }
+
+        .zombie01_attack>div {
+            animation-name: zombie01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes zombie01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -96px;
+            }
+        }
+
+        .skeleton_idle>div {
+            animation-name: skeleton_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -144px;
+            }
+        }
+
+        .skeleton_attack>div {
+            animation-name: skeleton_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -144px;
+            }
+        }
+
+        .skeleton02_idle>div {
+            animation-name: skeleton02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -144px;
+            }
+        }
+
+        .skeleton02_attack>div {
+            animation-name: skeleton02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -144px;
+            }
+        }
+
+        .skeleton03_idle>div {
+            animation-name: skeleton03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -96px;
+            }
+        }
+
+        .skeleton03_attack>div {
+            animation-name: skeleton03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes skeleton03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -168px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -96px;
+            }
+        }
+
+        .ghost01_idle>div {
+            animation-name: ghost01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ghost01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -168px;
+            }
+        }
+
+        .ghost01_attack>div {
+            animation-name: ghost01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ghost01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -168px;
+            }
+        }
+
+        .ghost02_idle>div {
+            animation-name: ghost02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ghost02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -144px;
+            }
+        }
+
+        .ghost02_attack>div {
+            animation-name: ghost02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ghost02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -144px;
+            }
+        }
+
+        .mummy01_idle>div {
+            animation-name: mummy01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mummy01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -24px;
+            }
+        }
+
+        .mummy01_attack>div {
+            animation-name: mummy01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mummy01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -24px;
+            }
+        }
+
+        .mummy02_idle>div {
+            animation-name: mummy02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mummy02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -0px;
+            }
+        }
+
+        .mummy02_attack>div {
+            animation-name: mummy02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes mummy02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -0px;
+            }
+        }
+
+        .death02_idle>div {
+            animation-name: death02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes death02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -96px;
+            }
+        }
+
+        .death02_attack>div {
+            animation-name: death02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes death02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -96px;
+            }
+        }
+
+        .death03_idle>div {
+            animation-name: death03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes death03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -0px;
+            }
+        }
+
+        .death03_attack>div {
+            animation-name: death03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes death03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -96px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -0px;
+            }
+        }
+
+        .vampire01_idle>div {
+            animation-name: vampire01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -48px;
+            }
+        }
+
+        .vampire01_attack>div {
+            animation-name: vampire01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -384px -48px;
+            }
+        }
+
+        .vampire02_idle>div {
+            animation-name: vampire02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -168px;
+            }
+        }
+
+        .vampire02_attack>div {
+            animation-name: vampire02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -288px -144px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -264px -168px;
+            }
+        }
+
+        .vampire03_idle>div {
+            animation-name: vampire03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -48px;
+            }
+        }
+
+        .vampire03_attack>div {
+            animation-name: vampire03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes vampire03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -192px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -408px -48px;
+            }
+        }
+
+        .witch03_idle>div {
+            animation-name: witch03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes witch03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -456px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -24px;
+            }
+        }
+
+        .witch03_attack>div {
+            animation-name: witch03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes witch03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -456px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -24px;
+            }
+        }
+
+        .dragon01_idle>div {
+            animation-name: dragon01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -24px;
+            }
+        }
+
+        .dragon01_attack>div {
+            animation-name: dragon01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -24px;
+            }
+        }
+
+        .dragon02_idle>div {
+            animation-name: dragon02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -48px;
+            }
+        }
+
+        .dragon02_attack>div {
+            animation-name: dragon02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -48px;
+            }
+        }
+
+        .dragon04_idle>div {
+            animation-name: dragon04_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon04_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -24px;
+            }
+        }
+
+        .dragon04_attack>div {
+            animation-name: dragon04_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes dragon04_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -24px;
+            }
+        }
+
+        .yeti01_idle>div {
+            animation-name: yeti01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes yeti01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -480px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -456px -24px;
+            }
+        }
+
+        .yeti01_attack>div {
+            animation-name: yeti01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes yeti01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -480px -0px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -456px -24px;
+            }
+        }
+
+        .yeti02_idle>div {
+            animation-name: yeti02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes yeti02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -120px;
+            }
+        }
+
+        .yeti02_attack>div {
+            animation-name: yeti02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes yeti02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -120px;
+            }
+        }
+
+        .worm01_idle>div {
+            animation-name: worm01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes worm01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -96px;
+            }
+        }
+
+        .worm01_attack>div {
+            animation-name: worm01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes worm01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -336px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -360px -96px;
+            }
+        }
+
+        .ogre03_idle>div {
+            animation-name: ogre03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ogre03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -0px;
+            }
+        }
+
+        .ogre03_attack>div {
+            animation-name: ogre03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ogre03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -240px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -0px;
+            }
+        }
+
+        .devil01_idle>div {
+            animation-name: devil01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes devil01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -0px;
+            }
+        }
+
+        .devil01_attack>div {
+            animation-name: devil01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes devil01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -120px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -0px;
+            }
+        }
+
+        .blob03_idle>div {
+            animation-name: blob03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -24px;
+            }
+        }
+
+        .blob03_attack>div {
+            animation-name: blob03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -72px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -96px -24px;
+            }
+        }
+
+        .tuber02_idle>div {
+            animation-name: tuber02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tuber02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -0px;
+            }
+        }
+
+        .tuber02_attack>div {
+            animation-name: tuber02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tuber02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -312px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -432px -0px;
+            }
+        }
+
+        .liquiddrop03_idle>div {
+            animation-name: liquiddrop03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes liquiddrop03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -144px;
+            }
+        }
+
+        .liquiddrop03_attack>div {
+            animation-name: liquiddrop03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes liquiddrop03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -144px;
+            }
+        }
+
+        .eye01_idle>div {
+            animation-name: eye01_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eye01_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -96px;
+            }
+        }
+
+        .eye01_attack>div {
+            animation-name: eye01_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eye01_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -168px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -144px -96px;
+            }
+        }
+
+        .eye02_idle>div {
+            animation-name: eye02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eye02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -48px;
+            }
+        }
+
+        .eye02_attack>div {
+            animation-name: eye02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eye02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -24px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -192px -48px;
+            }
+        }
+
+        .geloman02_idle>div {
+            animation-name: geloman02_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes geloman02_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -96px;
+            }
+        }
+
+        .geloman02_attack>div {
+            animation-name: geloman02_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes geloman02_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -216px -96px;
+            }
+        }
+
+        .geloman03_idle>div {
+            animation-name: geloman03_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes geloman03_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -120px;
+            }
+        }
+
+        .geloman03_attack>div {
+            animation-name: geloman03_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes geloman03_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -120px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -120px;
+            }
+        }
+
+        .blob05_idle>div {
+            animation-name: blob05_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob05_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -48px;
+            }
+        }
+
+        .blob05_attack>div {
+            animation-name: blob05_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob05_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -48px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -24px -48px;
+            }
+        }
+
+        .blob07_idle>div {
+            animation-name: blob07_idle;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob07_idle {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -48px;
+            }
+        }
+
+        .blob07_attack>div {
+            animation-name: blob07_attack;
+            animation-duration: 600ms;
+            animation-delay: 0ms;
+            animation-timing-function: steps(1);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blob07_attack {
+
+            from,
+            to {
+                width: 24px;
+                height: 24px;
+                background-position: -0px -72px;
+            }
+
+
+            50% {
+                width: 24px;
+                height: 24px;
+                background-position: -48px -48px;
+            }
+        }
+
+        .rel {
+            position: relative;
+        }
+
+        .abs {
+            position: absolute;
+        }
+
+        .center {
+            transform: translateX(-50%) translateY(-50%);
+        }
+        /* inverted index */
+
+        .normal.assassin01_idle,
+        .normal.assassin01_attack,
+        .normal.viking02_idle,
+        .normal.viking02_attack,
+        .normal.darkelf02_idle,
+        .normal.darkelf02_attack,
+        .normal.darkelf03_idle,
+        .normal.darkelf03_attack,
+        .normal.elf03_idle,
+        .normal.elf03_attack,
+        .normal.grayelf06_idle,
+        .normal.grayelf06_attack,
+        .normal.grayelf08_idle,
+        .normal.grayelf08_attack,
+        .normal.lizard03_idle,
+        .normal.lizard03_attack,
+        .normal.lizard05_idle,
+        .normal.lizard05_attack,
+        .normal.gnome01_idle,
+        .normal.gnome01_attack,
+        .normal.gnome02_idle,
+        .normal.gnome02_attack,
+        .normal.gnome04_idle,
+        .normal.gnome04_attack,
+        .normal.gnome05_idle,
+        .normal.gnome05_attack,
+        .normal.werewolf01_idle,
+        .normal.werewolf01_attack,
+        .normal.minotaur01_idle,
+        .normal.minotaur01_attack,
+        .normal.minotaur03_idle,
+        .normal.minotaur03_attack,
+        .normal.gargoyle01_idle,
+        .normal.gargoyle01_attack,
+        .normal.gargoyle02_idle,
+        .normal.gargoyle02_attack,
+        .normal.robot02_idle,
+        .normal.robot02_attack,
+        .normal.robot04_idle,
+        .normal.robot04_attack,
+        .normal.robot05_idle,
+        .normal.robot05_attack,
+        .normal.genie01_idle,
+        .normal.genie01_attack,
+        .normal.tree01_idle,
+        .normal.tree01_attack,
+        .normal.chest01_idle,
+        .normal.chest01_attack,
+        .normal.blob01_idle,
+        .normal.blob01_attack,
+        .normal.bat_idle,
+        .normal.bat_attack,
+        .normal.bat02_idle,
+        .normal.bat02_attack,
+        .normal.minion01_idle,
+        .normal.minion01_attack,
+        .normal.rat_idle,
+        .normal.rat_attack,
+        .normal.rat02_idle,
+        .normal.rat02_attack,
+        .normal.bug01_idle,
+        .normal.bug01_attack,
+        .normal.eagle02_idle,
+        .normal.eagle02_attack,
+        .normal.eagle03_idle,
+        .normal.eagle03_attack,
+        .normal.orc01_idle,
+        .normal.orc01_attack,
+        .normal.orc03_idle,
+        .normal.orc03_attack,
+        .normal.orc06_idle,
+        .normal.orc06_attack,
+        .normal.troll01_idle,
+        .normal.troll01_attack,
+        .normal.troll02_idle,
+        .normal.troll02_attack,
+        .normal.ogre01_idle,
+        .normal.ogre01_attack,
+        .normal.knight01_idle,
+        .normal.knight01_attack,
+        .normal.knight02_idle,
+        .normal.knight02_attack,
+        .normal.knight03_idle,
+        .normal.knight03_attack,
+        .normal.mudmonster01_idle,
+        .normal.mudmonster01_attack,
+        .normal.mudmonster02_idle,
+        .normal.mudmonster02_attack,
+        .normal.zombie01_idle,
+        .normal.zombie01_attack,
+        .normal.skeleton_idle,
+        .normal.skeleton_attack,
+        .normal.skeleton02_idle,
+        .normal.skeleton02_attack,
+        .normal.skeleton03_idle,
+        .normal.skeleton03_attack,
+        .normal.ghost01_idle,
+        .normal.ghost01_attack,
+        .normal.ghost02_idle,
+        .normal.ghost02_attack,
+        .normal.mummy01_idle,
+        .normal.mummy01_attack,
+        .normal.mummy02_idle,
+        .normal.mummy02_attack,
+        .normal.death02_idle,
+        .normal.death02_attack,
+        .normal.death03_idle,
+        .normal.death03_attack,
+        .normal.vampire01_idle,
+        .normal.vampire01_attack,
+        .normal.vampire02_idle,
+        .normal.vampire02_attack,
+        .normal.vampire03_idle,
+        .normal.vampire03_attack,
+        .normal.witch03_idle,
+        .normal.witch03_attack,
+        .normal.dragon01_idle,
+        .normal.dragon01_attack,
+        .normal.dragon02_idle,
+        .normal.dragon02_attack,
+        .normal.dragon04_idle,
+        .normal.dragon04_attack,
+        .normal.yeti01_idle,
+        .normal.yeti01_attack,
+        .normal.yeti02_idle,
+        .normal.yeti02_attack,
+        .normal.worm01_idle,
+        .normal.worm01_attack,
+        .normal.ogre03_idle,
+        .normal.ogre03_attack,
+        .normal.devil01_idle,
+        .normal.devil01_attack,
+        .normal.blob03_idle,
+        .normal.blob03_attack,
+        .normal.tuber02_idle,
+        .normal.tuber02_attack,
+        .normal.liquiddrop03_idle,
+        .normal.liquiddrop03_attack,
+        .normal.eye01_idle,
+        .normal.eye01_attack,
+        .normal.eye02_idle,
+        .normal.eye02_attack,
+        .normal.geloman02_idle,
+        .normal.geloman02_attack,
+        .normal.geloman03_idle,
+        .normal.geloman03_attack,
+        .normal.blob05_idle,
+        .normal.blob05_attack,
+        .normal.blob07_idle,
+        .normal.blob07_attack {
+            height: 48px;
+            width: 48px;
+        }
+
+        .boss.super.assassin01_idle,
+        .boss.super.assassin01_attack,
+        .boss.super.viking02_idle,
+        .boss.super.viking02_attack,
+        .boss.super.darkelf02_idle,
+        .boss.super.darkelf02_attack,
+        .boss.super.darkelf03_idle,
+        .boss.super.darkelf03_attack,
+        .boss.super.elf03_idle,
+        .boss.super.elf03_attack,
+        .boss.super.grayelf06_idle,
+        .boss.super.grayelf06_attack,
+        .boss.super.grayelf08_idle,
+        .boss.super.grayelf08_attack,
+        .boss.super.lizard03_idle,
+        .boss.super.lizard03_attack,
+        .boss.super.lizard05_idle,
+        .boss.super.lizard05_attack,
+        .boss.super.gnome01_idle,
+        .boss.super.gnome01_attack,
+        .boss.super.gnome02_idle,
+        .boss.super.gnome02_attack,
+        .boss.super.gnome04_idle,
+        .boss.super.gnome04_attack,
+        .boss.super.gnome05_idle,
+        .boss.super.gnome05_attack,
+        .boss.super.werewolf01_idle,
+        .boss.super.werewolf01_attack,
+        .boss.super.minotaur01_idle,
+        .boss.super.minotaur01_attack,
+        .boss.super.minotaur03_idle,
+        .boss.super.minotaur03_attack,
+        .boss.super.gargoyle01_idle,
+        .boss.super.gargoyle01_attack,
+        .boss.super.gargoyle02_idle,
+        .boss.super.gargoyle02_attack,
+        .boss.super.robot02_idle,
+        .boss.super.robot02_attack,
+        .boss.super.robot04_idle,
+        .boss.super.robot04_attack,
+        .boss.super.robot05_idle,
+        .boss.super.robot05_attack,
+        .boss.super.genie01_idle,
+        .boss.super.genie01_attack,
+        .boss.super.tree01_idle,
+        .boss.super.tree01_attack,
+        .boss.super.chest01_idle,
+        .boss.super.chest01_attack,
+        .boss.super.blob01_idle,
+        .boss.super.blob01_attack,
+        .boss.super.bat_idle,
+        .boss.super.bat_attack,
+        .boss.super.bat02_idle,
+        .boss.super.bat02_attack,
+        .boss.super.minion01_idle,
+        .boss.super.minion01_attack,
+        .boss.super.rat_idle,
+        .boss.super.rat_attack,
+        .boss.super.rat02_idle,
+        .boss.super.rat02_attack,
+        .boss.super.bug01_idle,
+        .boss.super.bug01_attack,
+        .boss.super.eagle02_idle,
+        .boss.super.eagle02_attack,
+        .boss.super.eagle03_idle,
+        .boss.super.eagle03_attack,
+        .boss.super.orc01_idle,
+        .boss.super.orc01_attack,
+        .boss.super.orc03_idle,
+        .boss.super.orc03_attack,
+        .boss.super.orc06_idle,
+        .boss.super.orc06_attack,
+        .boss.super.troll01_idle,
+        .boss.super.troll01_attack,
+        .boss.super.troll02_idle,
+        .boss.super.troll02_attack,
+        .boss.super.ogre01_idle,
+        .boss.super.ogre01_attack,
+        .boss.super.knight01_idle,
+        .boss.super.knight01_attack,
+        .boss.super.knight02_idle,
+        .boss.super.knight02_attack,
+        .boss.super.knight03_idle,
+        .boss.super.knight03_attack,
+        .boss.super.mudmonster01_idle,
+        .boss.super.mudmonster01_attack,
+        .boss.super.mudmonster02_idle,
+        .boss.super.mudmonster02_attack,
+        .boss.super.zombie01_idle,
+        .boss.super.zombie01_attack,
+        .boss.super.skeleton_idle,
+        .boss.super.skeleton_attack,
+        .boss.super.skeleton02_idle,
+        .boss.super.skeleton02_attack,
+        .boss.super.skeleton03_idle,
+        .boss.super.skeleton03_attack,
+        .boss.super.ghost01_idle,
+        .boss.super.ghost01_attack,
+        .boss.super.ghost02_idle,
+        .boss.super.ghost02_attack,
+        .boss.super.mummy01_idle,
+        .boss.super.mummy01_attack,
+        .boss.super.mummy02_idle,
+        .boss.super.mummy02_attack,
+        .boss.super.death02_idle,
+        .boss.super.death02_attack,
+        .boss.super.death03_idle,
+        .boss.super.death03_attack,
+        .boss.super.vampire01_idle,
+        .boss.super.vampire01_attack,
+        .boss.super.vampire02_idle,
+        .boss.super.vampire02_attack,
+        .boss.super.vampire03_idle,
+        .boss.super.vampire03_attack,
+        .boss.super.witch03_idle,
+        .boss.super.witch03_attack,
+        .boss.super.dragon01_idle,
+        .boss.super.dragon01_attack,
+        .boss.super.dragon02_idle,
+        .boss.super.dragon02_attack,
+        .boss.super.dragon04_idle,
+        .boss.super.dragon04_attack,
+        .boss.super.yeti01_idle,
+        .boss.super.yeti01_attack,
+        .boss.super.yeti02_idle,
+        .boss.super.yeti02_attack,
+        .boss.super.worm01_idle,
+        .boss.super.worm01_attack,
+        .boss.super.ogre03_idle,
+        .boss.super.ogre03_attack,
+        .boss.super.devil01_idle,
+        .boss.super.devil01_attack,
+        .boss.super.blob03_idle,
+        .boss.super.blob03_attack,
+        .boss.super.tuber02_idle,
+        .boss.super.tuber02_attack,
+        .boss.super.liquiddrop03_idle,
+        .boss.super.liquiddrop03_attack,
+        .boss.super.eye01_idle,
+        .boss.super.eye01_attack,
+        .boss.super.eye02_idle,
+        .boss.super.eye02_attack,
+        .boss.super.geloman02_idle,
+        .boss.super.geloman02_attack,
+        .boss.super.geloman03_idle,
+        .boss.super.geloman03_attack,
+        .boss.super.blob05_idle,
+        .boss.super.blob05_attack,
+        .boss.super.blob07_idle,
+        .boss.super.blob07_attack {
+            height: 168px;
+            width: 168px;
+        }
+
+
+        .boss.assassin01_idle,
+        .boss.assassin01_attack,
+        .boss.viking02_idle,
+        .boss.viking02_attack,
+        .boss.darkelf02_idle,
+        .boss.darkelf02_attack,
+        .boss.darkelf03_idle,
+        .boss.darkelf03_attack,
+        .boss.elf03_idle,
+        .boss.elf03_attack,
+        .boss.grayelf06_idle,
+        .boss.grayelf06_attack,
+        .boss.grayelf08_idle,
+        .boss.grayelf08_attack,
+        .boss.lizard03_idle,
+        .boss.lizard03_attack,
+        .boss.lizard05_idle,
+        .boss.lizard05_attack,
+        .boss.gnome01_idle,
+        .boss.gnome01_attack,
+        .boss.gnome02_idle,
+        .boss.gnome02_attack,
+        .boss.gnome04_idle,
+        .boss.gnome04_attack,
+        .boss.gnome05_idle,
+        .boss.gnome05_attack,
+        .boss.werewolf01_idle,
+        .boss.werewolf01_attack,
+        .boss.minotaur01_idle,
+        .boss.minotaur01_attack,
+        .boss.minotaur03_idle,
+        .boss.minotaur03_attack,
+        .boss.gargoyle01_idle,
+        .boss.gargoyle01_attack,
+        .boss.gargoyle02_idle,
+        .boss.gargoyle02_attack,
+        .boss.robot02_idle,
+        .boss.robot02_attack,
+        .boss.robot04_idle,
+        .boss.robot04_attack,
+        .boss.robot05_idle,
+        .boss.robot05_attack,
+        .boss.genie01_idle,
+        .boss.genie01_attack,
+        .boss.tree01_idle,
+        .boss.tree01_attack,
+        .boss.chest01_idle,
+        .boss.chest01_attack,
+        .boss.blob01_idle,
+        .boss.blob01_attack,
+        .boss.bat_idle,
+        .boss.bat_attack,
+        .boss.bat02_idle,
+        .boss.bat02_attack,
+        .boss.minion01_idle,
+        .boss.minion01_attack,
+        .boss.rat_idle,
+        .boss.rat_attack,
+        .boss.rat02_idle,
+        .boss.rat02_attack,
+        .boss.bug01_idle,
+        .boss.bug01_attack,
+        .boss.eagle02_idle,
+        .boss.eagle02_attack,
+        .boss.eagle03_idle,
+        .boss.eagle03_attack,
+        .boss.orc01_idle,
+        .boss.orc01_attack,
+        .boss.orc03_idle,
+        .boss.orc03_attack,
+        .boss.orc06_idle,
+        .boss.orc06_attack,
+        .boss.troll01_idle,
+        .boss.troll01_attack,
+        .boss.troll02_idle,
+        .boss.troll02_attack,
+        .boss.ogre01_idle,
+        .boss.ogre01_attack,
+        .boss.knight01_idle,
+        .boss.knight01_attack,
+        .boss.knight02_idle,
+        .boss.knight02_attack,
+        .boss.knight03_idle,
+        .boss.knight03_attack,
+        .boss.mudmonster01_idle,
+        .boss.mudmonster01_attack,
+        .boss.mudmonster02_idle,
+        .boss.mudmonster02_attack,
+        .boss.zombie01_idle,
+        .boss.zombie01_attack,
+        .boss.skeleton_idle,
+        .boss.skeleton_attack,
+        .boss.skeleton02_idle,
+        .boss.skeleton02_attack,
+        .boss.skeleton03_idle,
+        .boss.skeleton03_attack,
+        .boss.ghost01_idle,
+        .boss.ghost01_attack,
+        .boss.ghost02_idle,
+        .boss.ghost02_attack,
+        .boss.mummy01_idle,
+        .boss.mummy01_attack,
+        .boss.mummy02_idle,
+        .boss.mummy02_attack,
+        .boss.death02_idle,
+        .boss.death02_attack,
+        .boss.death03_idle,
+        .boss.death03_attack,
+        .boss.vampire01_idle,
+        .boss.vampire01_attack,
+        .boss.vampire02_idle,
+        .boss.vampire02_attack,
+        .boss.vampire03_idle,
+        .boss.vampire03_attack,
+        .boss.witch03_idle,
+        .boss.witch03_attack,
+        .boss.dragon01_idle,
+        .boss.dragon01_attack,
+        .boss.dragon02_idle,
+        .boss.dragon02_attack,
+        .boss.dragon04_idle,
+        .boss.dragon04_attack,
+        .boss.yeti01_idle,
+        .boss.yeti01_attack,
+        .boss.yeti02_idle,
+        .boss.yeti02_attack,
+        .boss.worm01_idle,
+        .boss.worm01_attack,
+        .boss.ogre03_idle,
+        .boss.ogre03_attack,
+        .boss.devil01_idle,
+        .boss.devil01_attack,
+        .boss.blob03_idle,
+        .boss.blob03_attack,
+        .boss.tuber02_idle,
+        .boss.tuber02_attack,
+        .boss.liquiddrop03_idle,
+        .boss.liquiddrop03_attack,
+        .boss.eye01_idle,
+        .boss.eye01_attack,
+        .boss.eye02_idle,
+        .boss.eye02_attack,
+        .boss.geloman02_idle,
+        .boss.geloman02_attack,
+        .boss.geloman03_idle,
+        .boss.geloman03_attack,
+        .boss.blob05_idle,
+        .boss.blob05_attack,
+        .boss.blob07_idle,
+        .boss.blob07_attack {
+            height: 60px;
+            width: 60px;
+        }
+
+        .super>div,
+        .boss>div,
+        .normal>div {
+            transform-origin: 0 0;
+            position: absolute;
+        }
+
+        .normal>div {
+            transform: scale(2);
+        }
+
+        .boss.super>div {
+            transform: scale(7);
+        }
+
+        .boss>div {
+            transform: scale(2.5);
+        }
+
+        .super.boss.look-right>div,
+        .normal.look-right>div,
+        .boss.look-right>div {
+            transform-origin: right top;
+        }
+
+        .normal.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(2);
+        }
+
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(2.5);
+        }
+
+        .super.boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(7);
+        }
+
+        .smooth,
+        .smooth>div {
+            transition: all 2s;
+        }
+
+        .smooth {
+            outline: 2px green dashed;
+        }
+
+        .smooth>div {
+            outline: 2px red dashed;
+        }
+
+        .margX10px {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="rel normal enemies lizard03_idle look-right margX10px">
+            <div></div>
+        </div>
+
+        <div class="rel normal enemies lizard03_idle margX10px">
+            <div></div>
+        </div>
+
+        <div class="rel super boss enemies death03_idle smooth  margX10px">
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

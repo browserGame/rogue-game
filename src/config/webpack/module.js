@@ -1,5 +1,10 @@
-const { raw, styles, ts, tslint , inliner } = require('./loaders');
+const { raw, styles, ts, tslint, inliner, identity } = require('./loaders');
 
 module.exports = {
-  rules: [ raw, styles, tslint, ts , inliner ]
+  client: {
+    rules: [styles, tslint, ts, inliner]
+  },
+  server: {
+    rules: [/*raw,*/ styles, tslint, ts]
+  }
 };

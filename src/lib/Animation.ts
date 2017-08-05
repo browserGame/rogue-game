@@ -86,20 +86,20 @@ export class Animation {
     public asCSSStyleSheetSnippets() {
 
         // if this animation doesnt have valid frames then no-go 
-        if (this.hasValidFrames()) {
+        if (!this.hasValidFrames()) {
             return ''; //empty string nothning here
         }
 
         // Collect totall time of all frames
         let cummulants = this.frames.reduce((cummulative, fr) => {
-            let next = cummulants[cummulants.length - 1] + fr.duration;
-            cummulants.push(next);
+            let next = cummulative[cummulative.length - 1] + fr.duration;
+            cummulative.push(next);
             return cummulative;
         }, [0]);
 
         let totalTime = cummulants.pop() || 1;
         let percentages = cummulants.map((m) => {
-            return `${Math.round(m * 100 / totalTime) / 100}`;
+            return `${Math.round(m * 100 / totalTime)}%`;
         });
 
         let keyFrames = percentages.map((m, idx) => {
@@ -118,12 +118,12 @@ export class Animation {
         });
 
         return ` .${this.animationName} > div {
-                animation-name: ${this.animationName};
-                animation-duration: ${totalTime}ms;
-                animation-delay: 0ms;
-                animation-timing-function: steps(1);
-                animation-iteration-count: infinite;
-           
+                    animation-name: ${this.animationName};
+                    animation-duration: ${totalTime}ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
                 @keyframes ${this.animationName} {
                     ${keyFrames.join('\n')}
                 }
@@ -200,8 +200,34 @@ export class AnimationSheet {
             };
         });
 
-        console.log({ headers, cssAnims, allSizes });
-        return '';
+        // invert
+        let inverted = allSizes.reduce((inv, itm) => {
+            inv[itm.normal] = inv[itm.normal] || [];
+            inv[itm.normal].push(`.normal.${itm.name}`);
+
+            inv[itm.boss] = inv[itm.boss] || [];
+            inv[itm.boss].push(`.boss.${itm.name}`);
+
+            inv[itm.super] = inv[itm.super] || [];
+            inv[itm.super].push(`.boss.super.${itm.name}`);
+
+            return inv;
+        }, {} as { [index: string]: string[]; });
+
+        let allSizesStrings = Object.keys(inverted).map((key) => {
+            return ` ${inverted[key].join(',\n')} {
+                ${key}
+            }`;
+        });
+        //here we put it all together
+        return `
+            ${headers}
+            ${cssAnims}
+            ${allSizesStrings.join('\n\n')}
+        `;
+
+        //console.log({ headers, cssAnims, allSizes, allSizesStrings });
+        //return '';
     }
 
     public get(animName: string) {

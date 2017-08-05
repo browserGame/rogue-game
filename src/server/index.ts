@@ -6,6 +6,9 @@ import * as path from 'path';
 
 import { compileDungeon } from '../lib/MockDungeon';
 
+export const test = require('../client/dungeon/common_floor_objects.anim'); 
+console.log({test});
+
 let app = express();
 
 app.use(

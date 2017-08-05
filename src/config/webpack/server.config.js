@@ -15,11 +15,11 @@ module.exports = {
     },
     devtool: require('./devtool'),
     externals: require('./externals'),
-    module: require('./module'),
+    module: require('./module').server,
     plugins: require('./plugins').server,
     resolve: require('./resolve').server,
 };
 
 // Server files live in <projectRoot>/src/{server,lib}
 for (const rule of module.exports.module.rules)
-    rule.include.push(resolve('src/server'), resolve('src/lib'));
+    rule.include.push(resolve('src/server'), resolve('src/lib'), resolve('src/client/dungeon'));
