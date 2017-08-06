@@ -1,5 +1,6 @@
 # Rogue
 
+(work in progress)
 Rogue [Quest for Dungeons](https://www.questofdungeons.com/) remake using only HTML5/CSS3/JS (no canvas) 
 The original game written in Using C++ OpenGL, by [Upfall Studios](http://www.upfallstudios.com/)
 
@@ -7,9 +8,30 @@ _Created with permission of Upfall Studios_
 
 ## How to install
 
-`
-clone the project  
+clone the project
 
+```bash
+  git clone https://github.com/jacobbogers/rogue-game.git
+  cd rogue-game
+```
+
+optionally regenerate the scss sheets from game xml _.sheet_ and _.anim_ files
+
+```bash
+  npm run create:scss
+```
+
+build both client and server parts and run
+
+```bash
+  npm run build:server:dev
+  npm run build:client:dev
+  npm start
+```
+
+go to _localhost:8080_ and view the demo
+
+PS:Mock dungeon used
 
 ```code
                                        ┏━━━━━━┓            ┏━━━━━━━━━┓      
