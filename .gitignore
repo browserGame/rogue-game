@@ -1,7 +1,9 @@
 #this section added by J. Bogers
 .awcache
 dist/
+src/client/test
 TODO
+
 
 # Logs
 logs

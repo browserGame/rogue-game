@@ -48,29 +48,6 @@ export class Sprite {
             throw new TypeError(`Invalid number in constructor argument: ${JSON.stringify(o)}`);
         }
         let attrs: string;
-        /**
-         * documentation for regexp
-         * "assassin01_some_attr_01".match(/^([^_]+)(_|_(.*)_)([^_]+)$/)
-                 [
-                     "assassin01_some_attr_01", 
-                     "assassin01", 
-                     "_some_attr_", 
-                     "some_attr", 
-                     "01", 
-                     index: 0, 
-                     input: "assassin01_some_attr_01"
-                 ]
-            "assassin01_01".match(/^([^_]+)(_|_(.*)_)([^_]+)$/)
-                 [
-                     "assassin01_01", 
-                     "assassin01", 
-                     "_", 
-                     undefined, 
-                     "01", 
-                     index: 0, 
-                     input: "assassin01_01"
-                 ]
-         */
         [, this._rootName, , attrs, this._ext] = Array.from(this.name.match(/^([^_]+)(_|_(.*)_)([^_]+)$/) || []);
         this._attrs = attrs && attrs.split('_').filter((f) => f) || [];
     }
@@ -98,8 +75,20 @@ export class Sprite {
     public cssHeight(scale = 1): string {
         return `height: ${this.height * scale}px`;
     }
+    public cssWidthHeight(scale = 1): string {
+        return `${this.cssHeight(scale)}; ${this.cssWidth(scale)};`;
+    }
     get name(): string {
         return this._name;
+    }
+    get fullCSS(): string {
+        return `
+            .${this._name} > div {
+                ${this.cssBackgroundPosition};
+                ${this.cssWidth()};
+                ${this.cssHeight()};
+            }
+        `;
     }
 }
 
@@ -117,6 +106,7 @@ export class SpriteSheet {
     private sprites: Map<string, Sprite>;
 
     constructor({ actualUrl, originalUrl, sprites }: SpriteSheetProperties) {
+
         this._name = (originalUrl.match(/(.*)\.png$/i) || [])[1];
         if (!this._name) {
             throw new Error(`pngUrl argument has an invalide name , must be '*.png', but is ${originalUrl}`);
@@ -154,73 +144,77 @@ export class SpriteSheet {
         return this._name;
     }
 
-    public renderCSSparts() {
-        return `.${this._name} > div {
+    public renderCSSparts(exclusion?: string[]) {
+        let spriteList: string = '';
+
+        let exclusionObj: { [index: string]: string } = {};
+
+        if (exclusion) {
+            exclusion.reduce((c, str) => {
+                c[str] = '';
+                return c;
+            }, exclusionObj);
+        }
+        let sprites: Sprite[] = Array.from(this.sprites.values()).filter((f) => !(f.name in exclusionObj));
+        let allSizes = sprites.map((m) => {
+            return {
+                name: m.name,
+                normal: m.cssWidthHeight(2),
+                boss: m.cssWidthHeight(2.5),
+                super: m.cssWidthHeight(7)
+            };
+        });
+
+         // invert
+        let inverted = allSizes.reduce((inv, itm) => {
+            inv[itm.normal] = inv[itm.normal] || [];
+            inv[itm.normal].push(`.normal.${itm.name}`);
+
+            inv[itm.boss] = inv[itm.boss] || [];
+            inv[itm.boss].push(`.boss.${itm.name}`);
+
+            inv[itm.super] = inv[itm.super] || [];
+            inv[itm.super].push(`.boss.super.${itm.name}`);
+
+            return inv;
+        }, {} as { [index: string]: string[]; });
+
+        let allSizesStrings = Object.keys(inverted).map((key) => {
+            return ` ${inverted[key].join(',\n')} {
+                ${key}
+            }`;
+        }).join('\n');
+        
+        spriteList = sprites.map((m) => m.fullCSS).join('\n');
+
+       
+
+        return `
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .${this._name} > div {
             background: url('./${this._name}.png');
             background-origin: border-box;
             image-rendering: pixelated;
-        }`;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        ${spriteList}
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+        ${allSizesStrings} 
+        `;
     }
 
 
 }
-
-  /*
-  
-
-type SpriteCollector = { [index: string]: { [index: string]: Sprite; } };
-
-function collectSprites(sprites: Sprite[]): SpriteCollector {
-    let c: SpriteCollector = {};
-    sprites.reduce((collector, itm) => {
-        let [_, rootName, index] = Array.from(itm.name.match(/^([^\_]+)_(\d{2})$/) || []);
-        _;
-        if (!rootName) {
-            rootName = itm.name;
-            index = '01';
-        }
-        //console.log({ _, rootName, index });
-        let sprite: Sprite = {
-            name: rootName,
-            textture: '',
-            ox: Number.parseInt(itm.ox as any),
-            oy: Number.parseInt(itm.oy as any),
-            x: Number.parseInt(itm.x as any),
-            y: Number.parseInt(itm.y as any),
-            width: Number.parseInt(itm.width as any),
-            height: Number.parseInt(itm.height as any)
-        };
-        collector[rootName] = collector[rootName] || {};
-        collector[rootName][index] = sprite;
-
-        return collector;
-    }, c);
-    return c;
-}
-
-  
-  let dStyle = document.createElement('style');
-            let attTextCss = document.createAttribute('type');
-            attTextCss.value = 'text/css';
-            dStyle.setAttributeNode(attTextCss);
-
-            document.head.appendChild(dStyle);
-            const sheet: CSSStyleSheet = dStyle.sheet as any;
-            // now we insert rules 
-
-              let i = 0;
-            sheet.insertRule(` 
-            .enemy-spritemap { 
-                background: url('${enemySprites}'); 
-                background-origin: border-box; 
-                image-rendering: pixelated;         
-                animation-timing-function: steps(1);
-                animation-delay: 0ms;
-                animation-iteration-count: infinite;
-            }`, i++);
-
-
-            */
-
-
-

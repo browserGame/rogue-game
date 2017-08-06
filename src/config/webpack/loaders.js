@@ -3,6 +3,7 @@ const { resolve } = require('path');
 
 // Which files should be excluded from the compilation?
 const exclude = /node_modules/;
+const include = [];
 // Loaders respond differently depending on the NODE_ENV environment variable
 const p = process.env.NODE_ENV === 'production';
 
@@ -23,8 +24,8 @@ const css = {
 
 
 const inliner = {
-    test: /\.(png|jpg|anim|gif|sheet)$/,
-    include: [],
+    test: /\.(png|jpg|gif)$/,
+    include,
     use: [
         {
             loader: 'url-loader',
@@ -34,13 +35,6 @@ const inliner = {
         }
     ]
 };
-
-const identity = {
-    test: /\.anim$/,
-    include: [],
-    use: 'identity-loader'
-};
-
 
 const postcss = {
     loader: 'postcss-loader',
@@ -52,11 +46,18 @@ const postcss = {
     }
 };
 
-const raw = {
-    test: /\.(sql|anim)/,
+const sql = {
+    test: /\.sql/,
     exclude,
-    include: [],
+    include,
     use: 'raw-loader'
+}
+
+const xml = {
+    test: /\.(anim|sheet)/,
+    exclude,
+    include,
+    use: 'xml-loader'
 }
 
 const scss = {
@@ -123,4 +124,4 @@ const tslint = {
     ]
 };
 
-module.exports = { raw, styles, ts, tslint, inliner, identity };
+module.exports = { sql, styles, ts, tslint, inliner, xml };

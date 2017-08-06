@@ -132,20 +132,6 @@ const floor_asymetric_choices: Sample<BaseImageOrientation>[] = [{
 ];
 
 
-
-
-/*
-function sample_without_replacement(multinomial_arr: number[]): { idx: number, next: number[] } {
-    let cpy = multinomial_arr.splice(0, 0);
-    let idx = multinomial_random_sample(cpy);
-    cpy.splice(idx, 1);
-    normalize(cpy);
-    return { idx: idx, next: cpy };
-}
-*/
-
-
-
 function cloneRoom(r: Room) {
     let rc: Room = {
         decorations:[],
@@ -511,14 +497,12 @@ export function createDoors(root: Room): void {
         let horizontalWallBottom = root.upDown[0].room.b;
         let roomsTopSide = collectRoomsSharingBottomWall(root.upDown[0], horizontalWallBottom);
         let roomsBottomSide = collectRoomsSharingTopWall(root.upDown[1], horizontalWallBottom + 1);
-        //console.log('updown', horizontalWallBottom, roomsTopSide, roomsBottomSide);
         intersectProcessor = createIntersectProcessor('horizontal', [roomsTopSide, roomsBottomSide]);
     }
     if (root.leftRight) {
         let verticalWallRight = root.leftRight[0].room.r;
         let roomsLeftSide = collectRoomsSharingRightWall(root.leftRight[0], verticalWallRight);
         let roomsRightSide = collectRoomsSharingLeftWall(root.leftRight[1], verticalWallRight + 1);
-        //console.log('leftright', verticalWallRight, roomsLeftSide, roomsRightSide);
         intersectProcessor = createIntersectProcessor('vertical', [roomsLeftSide, roomsRightSide]);
     }
     (<Function>intersectProcessor)();

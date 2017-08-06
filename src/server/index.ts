@@ -3,11 +3,10 @@
 import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-
+import { createStyleSheets } from '../lib/Instrumentation';
 import { compileDungeon } from '../lib/MockDungeon';
 
-export const test = require('../client/dungeon/common_floor_objects.anim'); 
-console.log({test});
+createStyleSheets();
 
 let app = express();
 
@@ -62,7 +61,6 @@ app.use(bodyParser.raw({
 
 app.use('/', express.static(path.resolve('dist/client')));
 
-
 function init(): Promise<boolean> {
     app.get('/processing', (req, resp) => {
         req;
@@ -92,8 +90,6 @@ function init(): Promise<boolean> {
         resp.send(`width ${width}, height:${height}\n${grid.join('\n')}`);
 
     });
-
-
     return Promise.resolve(true);
 }
 

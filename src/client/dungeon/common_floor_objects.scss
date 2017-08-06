@@ -1,0 +1,432 @@
+
+            /*  Computer Generated CSS, */
+            
+            
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .common_floor_objects > div {
+            background: url('./common_floor_objects.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        
+            .safe > div {
+                background-position: -0px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .safe_open > div {
+                background-position: -24px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .carpet_red > div {
+                background-position: -48px -0px;
+                width: 72px;
+                height: 72px;
+            }
+        
+
+            .carpet_blue > div {
+                background-position: -120px -0px;
+                width: 72px;
+                height: 72px;
+            }
+        
+
+            .dungeon_entrance > div {
+                background-position: -192px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .shrine > div {
+                background-position: -48px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .shrine_disabled > div {
+                background-position: -72px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .star_block > div {
+                background-position: -96px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .star_block_disabled > div {
+                background-position: -120px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .moon_block_disabled > div {
+                background-position: -144px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .moon_block > div {
+                background-position: -168px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .fountain_empty > div {
+                background-position: -0px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .sign > div {
+                background-position: -72px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .quest_stone_disabled > div {
+                background-position: -168px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .carpet_red_horizontal > div {
+                background-position: -0px -120px;
+                width: 72px;
+                height: 48px;
+            }
+        
+
+            .carpet_blue_horizontal > div {
+                background-position: -72px -120px;
+                width: 72px;
+                height: 48px;
+            }
+        
+
+            .carpet_red_square > div {
+                background-position: -144px -120px;
+                width: 48px;
+                height: 48px;
+            }
+        
+
+            .carpet_blue_square > div {
+                background-position: -0px -168px;
+                width: 48px;
+                height: 48px;
+            }
+        
+
+            .hazard_spikes > div {
+                background-position: -192px -48px;
+                width: 23px;
+                height: 23px;
+            }
+        
+
+            .hazard_trap > div {
+                background-position: -216px -48px;
+                width: 22px;
+                height: 23px;
+            }
+        
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+         .normal.safe,
+.normal.safe_open,
+.normal.dungeon_entrance,
+.normal.shrine,
+.normal.shrine_disabled,
+.normal.star_block,
+.normal.star_block_disabled,
+.normal.moon_block_disabled,
+.normal.moon_block,
+.normal.fountain_empty,
+.normal.sign,
+.normal.quest_stone_disabled {
+                height: 48px; width: 48px;
+            }
+ .boss.safe,
+.boss.safe_open,
+.boss.dungeon_entrance,
+.boss.shrine,
+.boss.shrine_disabled,
+.boss.star_block,
+.boss.star_block_disabled,
+.boss.moon_block_disabled,
+.boss.moon_block,
+.boss.fountain_empty,
+.boss.sign,
+.boss.quest_stone_disabled {
+                height: 60px; width: 60px;
+            }
+ .boss.super.safe,
+.boss.super.safe_open,
+.boss.super.dungeon_entrance,
+.boss.super.shrine,
+.boss.super.shrine_disabled,
+.boss.super.star_block,
+.boss.super.star_block_disabled,
+.boss.super.moon_block_disabled,
+.boss.super.moon_block,
+.boss.super.fountain_empty,
+.boss.super.sign,
+.boss.super.quest_stone_disabled {
+                height: 168px; width: 168px;
+            }
+ .normal.carpet_red,
+.normal.carpet_blue {
+                height: 144px; width: 144px;
+            }
+ .boss.carpet_red,
+.boss.carpet_blue {
+                height: 180px; width: 180px;
+            }
+ .boss.super.carpet_red,
+.boss.super.carpet_blue {
+                height: 504px; width: 504px;
+            }
+ .normal.carpet_red_horizontal,
+.normal.carpet_blue_horizontal {
+                height: 96px; width: 144px;
+            }
+ .boss.carpet_red_horizontal,
+.boss.carpet_blue_horizontal {
+                height: 120px; width: 180px;
+            }
+ .boss.super.carpet_red_horizontal,
+.boss.super.carpet_blue_horizontal {
+                height: 336px; width: 504px;
+            }
+ .normal.carpet_red_square,
+.normal.carpet_blue_square {
+                height: 96px; width: 96px;
+            }
+ .boss.carpet_red_square,
+.boss.carpet_blue_square {
+                height: 120px; width: 120px;
+            }
+ .boss.super.carpet_red_square,
+.boss.super.carpet_blue_square {
+                height: 336px; width: 336px;
+            }
+ .normal.hazard_spikes {
+                height: 46px; width: 46px;
+            }
+ .boss.hazard_spikes {
+                height: 57.5px; width: 57.5px;
+            }
+ .boss.super.hazard_spikes {
+                height: 161px; width: 161px;
+            }
+ .normal.hazard_trap {
+                height: 46px; width: 44px;
+            }
+ .boss.hazard_trap {
+                height: 57.5px; width: 55px;
+            }
+ .boss.super.hazard_trap {
+                height: 161px; width: 154px;
+            } 
+        
+            
+            /* Animations */
+            /* Animations */
+            /* Animations */
+            
+             .fountain_mana > div {
+                    animation-name: fountain_mana;
+                    animation-duration: 250ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes fountain_mana {
+                     
+                from, to {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -0px -72px;
+                }
+                
+ 
+                50% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -24px -72px;
+                }
+                
+                }
+            
+ .fountain_hp > div {
+                    animation-name: fountain_hp;
+                    animation-duration: 300ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes fountain_hp {
+                     
+                from, to {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -0px -48px;
+                }
+                
+ 
+                50% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -24px -48px;
+                }
+                
+                }
+            
+ .teleportation > div {
+                    animation-name: teleportation;
+                    animation-duration: 400ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes teleportation {
+                     
+                from, to {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -24px -96px;
+                }
+                
+ 
+                50% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -48px -96px;
+                }
+                
+                }
+            
+ .quest_stone > div {
+                    animation-name: quest_stone;
+                    animation-duration: 750ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes quest_stone {
+                     
+                from, to {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -96px -96px;
+                }
+                
+ 
+                33% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -120px -96px;
+                }
+                
+ 
+                67% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -144px -96px;
+                }
+                
+                }
+            
+ .candles > div {
+                    animation-name: candles;
+                    animation-duration: 400ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes candles {
+                     
+                from, to {
+                    width: 21px;
+                    height: 24px;
+                    background-position: -193px -24px;
+                }
+                
+ 
+                50% {
+                    width: 19px;
+                    height: 24px;
+                    background-position: -218px -24px;
+                }
+                
+                }
+            
+            
+            /* Animation Sizes */
+            /* Animation Sizes */
+            /* Animation Sizes */
+            
+             .normal.fountain_mana,
+.normal.fountain_hp,
+.normal.teleportation,
+.normal.quest_stone {
+                height: 48px; width: 48px;
+            }
+
+ .boss.fountain_mana,
+.boss.fountain_hp,
+.boss.teleportation,
+.boss.quest_stone {
+                height: 60px; width: 60px;
+            }
+
+ .boss.super.fountain_mana,
+.boss.super.fountain_hp,
+.boss.super.teleportation,
+.boss.super.quest_stone {
+                height: 168px; width: 168px;
+            }
+
+ .normal.candles {
+                height: 48px; width: 42px;
+            }
+
+ .boss.candles {
+                height: 60px; width: 52.5px;
+            }
+
+ .boss.super.candles {
+                height: 168px; width: 147px;
+            }
+        

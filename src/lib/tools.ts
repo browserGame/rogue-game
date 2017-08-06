@@ -3,9 +3,27 @@ import { Vector } from './math';
 import { SymbolBase, codedItems } from './Symbols';
 import { Layout, $Room, getNameSpace } from './Room';
 
-///ref pixl-xml.d.ts
 
-import xml = require('pixl-xml');
+export function dotPath<T>(a: any, path: string): T {
+
+  function _dotp(b: any, ammo: string[]): any {
+    if (b === undefined) {
+      return Object.assign({}, b);
+    }
+    if (!ammo.length) {
+      return Object.assign({}, b);
+    }
+    if (!(b instanceof Object)) {
+      return undefined;
+    }
+    let key = ammo.shift() || '';
+    let bn = b[key];
+    return _dotp(bn, ammo);
+  }
+
+  return _dotp(a, (path || '').split('.'));
+}
+
 
 export function parseLayout(layout: Layout) {
 
@@ -216,7 +234,7 @@ export function loadXMLAsset(method: HTTPMethod, url: string, cb?: ProgressFunct
                 return;
             }
             try {
-                let data = xml.parse(xhr.response, { preserveAttributes: false, preserveDocumentNode: true });
+                let data;  //xml.parse(xhr.response, { preserveAttributes: false, preserveDocumentNode: true });
                 return resolve(data);
             }
             catch (e) {

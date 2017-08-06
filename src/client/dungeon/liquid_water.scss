@@ -1,0 +1,278 @@
+
+            /*  Computer Generated CSS, */
+            
+            
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .liquid_water > div {
+            background: url('./liquid_water.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        
+            .top_top_left_corner > div {
+                background-position: -0px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top_right_corner > div {
+                background-position: -48px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_bottom_left_corner > div {
+                background-position: -0px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_bottom_right_corner > div {
+                background-position: -48px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_left > div {
+                background-position: -0px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_right > div {
+                background-position: -48px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_bottom > div {
+                background-position: -24px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_single > div {
+                background-position: -24px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top > div {
+                background-position: -24px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .inner_bottom_right > div {
+                background-position: -48px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .inner_top_right > div {
+                background-position: -72px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .inner_bottom_left > div {
+                background-position: -96px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .bottom_top_left > div {
+                background-position: -72px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_top > div {
+                background-position: -72px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_right > div {
+                background-position: -96px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_bottom > div {
+                background-position: -72px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_left > div {
+                background-position: -96px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_horizontal > div {
+                background-position: -0px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_vertical > div {
+                background-position: -24px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .single_cross > div {
+                background-position: -48px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+         .normal.top_top_left_corner,
+.normal.top_top_right_corner,
+.normal.top_bottom_left_corner,
+.normal.top_bottom_right_corner,
+.normal.top_left,
+.normal.top_right,
+.normal.top_bottom,
+.normal.top_single,
+.normal.top_top,
+.normal.inner_bottom_right,
+.normal.inner_top_right,
+.normal.inner_bottom_left,
+.normal.bottom_top_left,
+.normal.single_top,
+.normal.single_right,
+.normal.single_bottom,
+.normal.single_left,
+.normal.single_horizontal,
+.normal.single_vertical,
+.normal.single_cross {
+                height: 48px; width: 48px;
+            }
+ .boss.top_top_left_corner,
+.boss.top_top_right_corner,
+.boss.top_bottom_left_corner,
+.boss.top_bottom_right_corner,
+.boss.top_left,
+.boss.top_right,
+.boss.top_bottom,
+.boss.top_single,
+.boss.top_top,
+.boss.inner_bottom_right,
+.boss.inner_top_right,
+.boss.inner_bottom_left,
+.boss.bottom_top_left,
+.boss.single_top,
+.boss.single_right,
+.boss.single_bottom,
+.boss.single_left,
+.boss.single_horizontal,
+.boss.single_vertical,
+.boss.single_cross {
+                height: 60px; width: 60px;
+            }
+ .boss.super.top_top_left_corner,
+.boss.super.top_top_right_corner,
+.boss.super.top_bottom_left_corner,
+.boss.super.top_bottom_right_corner,
+.boss.super.top_left,
+.boss.super.top_right,
+.boss.super.top_bottom,
+.boss.super.top_single,
+.boss.super.top_top,
+.boss.super.inner_bottom_right,
+.boss.super.inner_top_right,
+.boss.super.inner_bottom_left,
+.boss.super.bottom_top_left,
+.boss.super.single_top,
+.boss.super.single_right,
+.boss.super.single_bottom,
+.boss.super.single_left,
+.boss.super.single_horizontal,
+.boss.super.single_vertical,
+.boss.super.single_cross {
+                height: 168px; width: 168px;
+            } 
+        
+            
+            /* Animations */
+            /* Animations */
+            /* Animations */
+            
+             .liquid > div {
+                    animation-name: liquid;
+                    animation-duration: 1800ms;
+                    animation-delay: 0ms;
+                    animation-timing-function: steps(1);
+                    animation-iteration-count: infinite;
+                }
+                @keyframes liquid {
+                     
+                from, to {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -0px -0px;
+                }
+                
+ 
+                50% {
+                    width: 24px;
+                    height: 24px;
+                    background-position: -24px -0px;
+                }
+                
+                }
+            
+            
+            /* Animation Sizes */
+            /* Animation Sizes */
+            /* Animation Sizes */
+            
+             .normal.liquid {
+                height: 48px; width: 48px;
+            }
+
+ .boss.liquid {
+                height: 60px; width: 60px;
+            }
+
+ .boss.super.liquid {
+                height: 168px; width: 168px;
+            }
+        

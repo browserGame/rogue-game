@@ -1,0 +1,209 @@
+
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .floor_crypt > div {
+            background: url('./floor_crypt.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        
+            .top_single > div {
+                background-position: -0px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .floor_0 > div {
+                background-position: -72px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .floor_1 > div {
+                background-position: -96px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .floor_2 > div {
+                background-position: -120px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .floor_3 > div {
+                background-position: -144px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .stairs_up > div {
+                background-position: -168px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .stairs_down > div {
+                background-position: -192px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .wall_side_1 > div {
+                background-position: -336px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top_left_corner > div {
+                background-position: -384px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top_right_corner > div {
+                background-position: -408px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_bottom_left_corner > div {
+                background-position: -432px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_bottom_right_corner > div {
+                background-position: -456px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .wall_side_2 > div {
+                background-position: -120px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top_2 > div {
+                background-position: -144px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .door > div {
+                background-position: -168px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .door_open > div {
+                background-position: -192px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_empty > div {
+                background-position: -0px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .top_top_1 > div {
+                background-position: -264px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+         .normal.top_single,
+.normal.floor_0,
+.normal.floor_1,
+.normal.floor_2,
+.normal.floor_3,
+.normal.stairs_up,
+.normal.stairs_down,
+.normal.wall_side_1,
+.normal.top_top_left_corner,
+.normal.top_top_right_corner,
+.normal.top_bottom_left_corner,
+.normal.top_bottom_right_corner,
+.normal.wall_side_2,
+.normal.top_top_2,
+.normal.door,
+.normal.door_open,
+.normal.top_empty,
+.normal.top_top_1 {
+                height: 48px; width: 48px;
+            }
+ .boss.top_single,
+.boss.floor_0,
+.boss.floor_1,
+.boss.floor_2,
+.boss.floor_3,
+.boss.stairs_up,
+.boss.stairs_down,
+.boss.wall_side_1,
+.boss.top_top_left_corner,
+.boss.top_top_right_corner,
+.boss.top_bottom_left_corner,
+.boss.top_bottom_right_corner,
+.boss.wall_side_2,
+.boss.top_top_2,
+.boss.door,
+.boss.door_open,
+.boss.top_empty,
+.boss.top_top_1 {
+                height: 60px; width: 60px;
+            }
+ .boss.super.top_single,
+.boss.super.floor_0,
+.boss.super.floor_1,
+.boss.super.floor_2,
+.boss.super.floor_3,
+.boss.super.stairs_up,
+.boss.super.stairs_down,
+.boss.super.wall_side_1,
+.boss.super.top_top_left_corner,
+.boss.super.top_top_right_corner,
+.boss.super.top_bottom_left_corner,
+.boss.super.top_bottom_right_corner,
+.boss.super.wall_side_2,
+.boss.super.top_top_2,
+.boss.super.door,
+.boss.super.door_open,
+.boss.super.top_empty,
+.boss.super.top_top_1 {
+                height: 168px; width: 168px;
+            } 
+        

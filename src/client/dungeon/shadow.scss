@@ -1,0 +1,39 @@
+
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .shadow > div {
+            background: url('./shadow.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        
+            .shadow > div {
+                background-position: -0px -0px;
+                width: 24px;
+                height: 10px;
+            }
+        
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+         .normal.shadow {
+                height: 20px; width: 48px;
+            }
+ .boss.shadow {
+                height: 25px; width: 60px;
+            }
+ .boss.super.shadow {
+                height: 70px; width: 168px;
+            } 
+        

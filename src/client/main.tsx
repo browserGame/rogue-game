@@ -3,9 +3,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { createStyleSheets } from './Loader';
+const cssRogue: { [index: string]: string } = {}; // require('./rogue');
 
-const cssRogue = require('./rogue');
+require('./rogue');
+require('./dungeon/common_floor_objects');
 
 
 function App() {
@@ -13,15 +14,14 @@ function App() {
         <div className="enemy-spritemap dragon02"></div>
         {/*<div className="enemy-spritemap boss lizard05 right"></div>
         <div className="enemy-spritemap boss death03 static zoom"></div>*/}
-        </div>;
+    </div>;
 }
-
 
 window.onload = () => {
     let app = document.getElementById('app');
-    if (app){
+    if (app) {
         app.classList.add(cssRogue['main']);
-        createStyleSheets().then(() => ReactDOM.render(<App />, app));
+        ReactDOM.render(<App />, app);
     }
 };
 

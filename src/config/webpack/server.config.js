@@ -20,6 +20,12 @@ module.exports = {
     resolve: require('./resolve').server,
 };
 
-// Server files live in <projectRoot>/src/{server,lib}
-for (const rule of module.exports.module.rules)
-    rule.include.push(resolve('src/server'), resolve('src/lib'), resolve('src/client/dungeon'));
+for (const rule of module.exports.module.rules) {
+    rule.include = rule.include || [];
+    rule.include.push(
+        resolve('src/server'),
+        resolve('src/lib'),
+        resolve('src/client/dungeon'),
+        resolve('src/client/entities')
+    );
+}

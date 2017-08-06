@@ -1,0 +1,269 @@
+
+        
+        /* SpriteSheet */
+        /* SpriteSheet */
+        /* SpriteSheet */
+        
+        .dungeon_decor_props > div {
+            background: url('./dungeon_decor_props.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+        }
+        
+        /* Static Sprites */
+        /* Static Sprites */
+        /* Static Sprites */
+        
+        
+            .skeleton_remains_01 > div {
+                background-position: -0px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_02 > div {
+                background-position: -24px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_03 > div {
+                background-position: -48px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_04 > div {
+                background-position: -72px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_05 > div {
+                background-position: -96px -0px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_06 > div {
+                background-position: -0px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_07 > div {
+                background-position: -24px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area12 > div {
+                background-position: -48px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area13 > div {
+                background-position: -72px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area14 > div {
+                background-position: -96px -24px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area20 > div {
+                background-position: -0px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area21 > div {
+                background-position: -24px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area22 > div {
+                background-position: -48px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_01 > div {
+                background-position: -72px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_02 > div {
+                background-position: -96px -48px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_03 > div {
+                background-position: -0px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_04 > div {
+                background-position: -24px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_05 > div {
+                background-position: -48px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .spiderweb_06 > div {
+                background-position: -72px -72px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .skeleton_remains_08 > div {
+                background-position: -96px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area40 > div {
+                background-position: -0px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area41 > div {
+                background-position: -24px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area42 > div {
+                background-position: -48px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+
+            .area43 > div {
+                background-position: -72px -96px;
+                width: 24px;
+                height: 24px;
+            }
+        
+        
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        /* Static Sprites Sizes */
+        
+        
+         .normal.skeleton_remains_01,
+.normal.skeleton_remains_02,
+.normal.skeleton_remains_03,
+.normal.skeleton_remains_04,
+.normal.skeleton_remains_05,
+.normal.skeleton_remains_06,
+.normal.skeleton_remains_07,
+.normal.area12,
+.normal.area13,
+.normal.area14,
+.normal.area20,
+.normal.area21,
+.normal.area22,
+.normal.spiderweb_01,
+.normal.spiderweb_02,
+.normal.spiderweb_03,
+.normal.spiderweb_04,
+.normal.spiderweb_05,
+.normal.spiderweb_06,
+.normal.skeleton_remains_08,
+.normal.area40,
+.normal.area41,
+.normal.area42,
+.normal.area43 {
+                height: 48px; width: 48px;
+            }
+ .boss.skeleton_remains_01,
+.boss.skeleton_remains_02,
+.boss.skeleton_remains_03,
+.boss.skeleton_remains_04,
+.boss.skeleton_remains_05,
+.boss.skeleton_remains_06,
+.boss.skeleton_remains_07,
+.boss.area12,
+.boss.area13,
+.boss.area14,
+.boss.area20,
+.boss.area21,
+.boss.area22,
+.boss.spiderweb_01,
+.boss.spiderweb_02,
+.boss.spiderweb_03,
+.boss.spiderweb_04,
+.boss.spiderweb_05,
+.boss.spiderweb_06,
+.boss.skeleton_remains_08,
+.boss.area40,
+.boss.area41,
+.boss.area42,
+.boss.area43 {
+                height: 60px; width: 60px;
+            }
+ .boss.super.skeleton_remains_01,
+.boss.super.skeleton_remains_02,
+.boss.super.skeleton_remains_03,
+.boss.super.skeleton_remains_04,
+.boss.super.skeleton_remains_05,
+.boss.super.skeleton_remains_06,
+.boss.super.skeleton_remains_07,
+.boss.super.area12,
+.boss.super.area13,
+.boss.super.area14,
+.boss.super.area20,
+.boss.super.area21,
+.boss.super.area22,
+.boss.super.spiderweb_01,
+.boss.super.spiderweb_02,
+.boss.super.spiderweb_03,
+.boss.super.spiderweb_04,
+.boss.super.spiderweb_05,
+.boss.super.spiderweb_06,
+.boss.super.skeleton_remains_08,
+.boss.super.area40,
+.boss.super.area41,
+.boss.super.area42,
+.boss.super.area43 {
+                height: 168px; width: 168px;
+            } 
+        

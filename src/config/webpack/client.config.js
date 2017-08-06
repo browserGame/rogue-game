@@ -18,6 +18,11 @@ module.exports = {
 
 for (const rule of module.exports.module.rules) {
     rule.include = rule.inculde || [];
-    rule.include.push(resolve('src/client'), resolve('src/lib'));
+    rule.include.push(
+        resolve('src/client'), 
+        resolve('src/lib'),
+        resolve('src/client/dungeon') //for loading png files not xml 
+       
+    );
 }
 

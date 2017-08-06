@@ -4,18 +4,11 @@ import {
     getSpriteSheetByName
 } from './Sprite';
 
-/**
- * <anim name="assassin_attack" sprite_sheet="heroes" play_mode="play_once" loop="false" speed="300.00">
-        <frame duration="300.0">assassin_idle_01</frame>
-        <frame duration="300.0">assassin_idle_02</frame>
-    </anim>
-*/
-
 const gCache = new Map<string, AnimationSheet>();
 
 export interface AnimationFrameData {
     spriteName: string;
-    duration: string; //milliseconds
+    duration: string;
 }
 
 export class AnimationFrame {
@@ -28,11 +21,11 @@ export class AnimationFrame {
         this._duration = duration;
     }
 
-    public widthHeight(scale: number = 1) {
+    public cssWidthHeight(scale: number = 1) {
         if (!this._sprite) {
             return undefined;
         }
-        return `${this._sprite.cssHeight(scale)}; ${this._sprite.cssWidth(scale)};`;
+        return this._sprite.cssWidthHeight(scale);
     }
 
     public get duration() {
@@ -136,7 +129,7 @@ export class Animation {
     }
 
     public firstFrameWidthHeight(scale: number = 1) {
-        let text = this.frames[0].widthHeight(scale);
+        let text = this.frames[0].cssWidthHeight(scale);
         if (!text) {
             throw new Error(`not a valid cssHeightWidth for first frame of animation:${this.animationName}`);
         }
@@ -166,7 +159,7 @@ export class AnimationSheet {
         gCache.set(sheetName, this);
     }
 
-    public CSSAscii(): string {
+    public CSSAscii(exclusion?: string[]): string {
 
         if (!this.animations.size) {
             return `/* no sprite sheet detected for this animation sheet */`;
@@ -181,12 +174,7 @@ export class AnimationSheet {
         }, set);
 
         let headers = Array.from(set.values()).map((h) => {
-            return `.${h.name} {
-                background: url('${h.pngOriginal}');
-                background-origin: border-box;
-                image-rendering: pixelated;
-            }
-        `;
+            return h.renderCSSparts(exclusion);
         }).join('\n');
 
         let cssAnims = allAnims.map((m) => m.asCSSStyleSheetSnippets()).join('\n');
@@ -221,8 +209,20 @@ export class AnimationSheet {
         });
         //here we put it all together
         return `
+            /*  Computer Generated CSS, */
+            
             ${headers}
+            
+            /* Animations */
+            /* Animations */
+            /* Animations */
+            
             ${cssAnims}
+            
+            /* Animation Sizes */
+            /* Animation Sizes */
+            /* Animation Sizes */
+            
             ${allSizesStrings.join('\n\n')}
         `;
 

@@ -20,11 +20,3 @@ body {
     align-items: center;
 }
 
-.canvas-cup {
-    background: rgb(255, 255, 255);
-    /*width: calc( 100% - 2px );*/
-    /*height: calc( 100% - #{$container-padding} );*/
-    /* overflow:hidden;*/
-    border: 1px black solid;
-    background-image: url('./entities/enemies.png');
-}
