@@ -1,12 +1,28 @@
 'use strict';
 
+import * as path from 'path';
+
+
 import * as  express from 'express';
 import * as bodyParser from 'body-parser';
-import * as path from 'path';
 import { createStyleSheets } from '../lib/Instrumentation';
 import { compileDungeon } from '../lib/MockDungeon';
 
-createStyleSheets();
+if (process.argv.length > 2) {
+
+    let isNode = /(node(.exe)?)$/.test(process.argv[0]);
+    let isJs = /\.js/i.test(process.argv[1]);
+    let isSCSS = /^--scss$/i.test(process.argv[2]);
+    if (isNode && isJs && isSCSS) {
+        createStyleSheets();
+        console.log('scss files created');
+        process.exit(0);
+    }
+    console.log('Wrong commad line argument use -scss to generate scss sheets.');
+    process.exit(1);
+}
+
+
 
 let app = express();
 

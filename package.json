@@ -48,7 +48,7 @@
     "prestart": "echo prestart",
     "start": "cross-env DEBUGx=express-session,cookie node dist/server/server.js",
     "poststart": "echo poststart",
-    "start-gulp": "cross-env DEBUGx=express-session,cookie node dist/index.js",
+    "create:scss": "cross-env node dist/server/server.js --scss",
     "start-server": "cross-env DEBUGx=express-session,cookie node dist/server/server.js",
     "prestop": "echo prestop",
     "stop": "echo stop",
