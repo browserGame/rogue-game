@@ -3,17 +3,29 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const cssRogue: { [index: string]: string } = {}; // require('./rogue');
+const cssRogue = require('./rogue');
 
-require('./rogue');
-require('./dungeon/common_floor_objects');
+
+
+function rogue(...rest: string[]): string {
+    let self = require('./rogue');
+    let arr = rest.map((c) => self[c]);
+    return arr.join(' ');
+}
+
+function enemy(...rest: string[]): string {
+    let self = require('./dungeon/enemies');
+    let arr = rest.map((c) => self[c]);
+    return arr.join(' ');
+}
+
 
 
 function App() {
-    return <div className={cssRogue['container']}>
-        <div className="enemy-spritemap dragon02"></div>
-        {/*<div className="enemy-spritemap boss lizard05 right"></div>
-        <div className="enemy-spritemap boss death03 static zoom"></div>*/}
+    return <div className={rogue('container')}>
+        <div className={enemy('enemies', 'normal', 'dragon02_idle')}><div></div></div>
+        <div className={enemy('enemies', 'boss', 'lizard05_idle')}><div></div></div>
+        < div className={enemy('enemies', 'boss', 'death03_idle')} ><div></div></div>
     </div>;
 }
 

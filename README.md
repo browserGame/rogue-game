@@ -1,6 +1,14 @@
-# rogue-game
-Free code camp Rogue game
+# Rogue
 
+Rogue [Quest for Dungeons](https://www.questofdungeons.com/) remake using only HTML5/CSS3/JS (no canvas) 
+The original game written in Using C++ OpenGL, by [Upfall Studios](http://www.upfallstudios.com/)
+
+_Created with permission of Upfall Studios_
+
+## How to install
+
+`
+clone the project  
 
 
 ```code

@@ -260,7 +260,5 @@ export function loadXMLAsset(method: HTTPMethod, url: string, cb?: ProgressFunct
         }
     });
 
-
-
 }
 

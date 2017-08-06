@@ -9,6 +9,62 @@
             background-origin: border-box;
             image-rendering: pixelated;
         }
+
+        /* general sizing */
+        /* general sizing */
+        /* general sizing */
+
+        .super>div,
+        .boss>div,
+        .normal>div {
+            transform-origin: 0 0;
+            position: absolute;
+        }
+
+        .normal>div {
+            transform: scale(2);
+        }
+
+        .boss.super>div {
+            transform: scale(7);
+        }
+
+        .boss>div {
+            transform: scale(2.5);
+        }
+
+        .super.boss.look-right>div,
+        .normal.look-right>div,
+        .boss.look-right>div {
+            transform-origin: right top;
+        }
+
+        .normal.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(2);
+        }
+
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(2.5);
+        }
+
+        .super.boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(7);
+        }
+
+        .smooth,
+        .smooth>div {
+            transition: all 2s;
+        }
+
+        .smooth {
+            outline: 2px green dashed;
+        }
+
+        .smooth>div {
+            outline: 2px red dashed;
+        }
+
+             
         
         /* Static Sprites */
         /* Static Sprites */
@@ -206,4 +262,6 @@
 .boss.super.top_top_1 {
                 height: 168px; width: 168px;
             } 
+
+
         
