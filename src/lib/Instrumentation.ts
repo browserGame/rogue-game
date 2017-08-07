@@ -22,8 +22,6 @@ const entities: { [index: string]: string; } = {
     'enemies.sheet': require('../client/dungeon/enemies.sheet'),
     'heroes.anim': require('../client/dungeon/heroes.anim'),
     'heroes.sheet': require('../client/dungeon/heroes.sheet'),
-    'shopkeeper.sheet': require('../client/dungeon/shopkeeper.sheet'),
-    'shopkeeper.anim': require('../client/dungeon/shopkeeper.anim'),
     'common_floor_objects.anim': require('../client/dungeon/common_floor_objects.anim'),
     'common_floor_objects.sheet': require('../client/dungeon/common_floor_objects.sheet'),
     'dungeon_objects.anim': require('../client/dungeon/dungeon_objects.anim'),

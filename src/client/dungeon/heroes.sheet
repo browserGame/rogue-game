@@ -15,9 +15,10 @@
     <sheet name="cadence_idle_02" texture="heroes.png" ox="11" oy="24" x="24" y="96" width="24" height="24" />
     <sheet name="cadence_idle_03" texture="heroes.png" ox="11" oy="24" x="48" y="96" width="24" height="24" />
     <sheet name="cadence_idle_04" texture="heroes.png" ox="11" oy="24" x="72" y="96" width="24" height="24" />
-	
-	<sheet name="cadence_shovel_idle_01" texture="heroes.png" ox="11" oy="24" x="48" y="0" width="24" height="24" />
+    <sheet name="cadence_shovel_idle_01" texture="heroes.png" ox="11" oy="24" x="48" y="0" width="24" height="24" />
     <sheet name="cadence_shovel_idle_02" texture="heroes.png" ox="11" oy="24" x="72" y="0" width="24" height="24" />
     <sheet name="cadence_shovel_idle_03" texture="heroes.png" ox="11" oy="24" x="48" y="24" width="24" height="24" />
     <sheet name="cadence_shovel_idle_04" texture="heroes.png" ox="11" oy="24" x="72" y="24" width="24" height="24" />
+    <sheet name="shopkeeper_01" texture="heroes.png" ox="12" oy="24" x="96" y="0" width="24" height="24" />
+    <sheet name="shopkeeper_02" texture="heroes.png" ox="12" oy="24" x="96" y="24" width="24" height="24" />
 </sheets>

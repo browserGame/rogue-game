@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<anims>
-    <anim name="shopkeeper_idle" sprite_sheet="shopkeeper" play_mode="play_once" loop="true" speed="500.00">
-        <frame duration="500.0">shopkeeper_01</frame>
-        <frame duration="500.0">shopkeeper_02</frame>
-    </anim>
-</anims>
