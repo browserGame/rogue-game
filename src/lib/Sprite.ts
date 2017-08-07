@@ -187,8 +187,6 @@ export class SpriteSheet {
 
         spriteList = sprites.map((m) => m.fullCSS).join('\n');
 
-
-
         return `
         
         /* SpriteSheet */
@@ -246,15 +244,6 @@ export class SpriteSheet {
         .smooth>div {
             transition: all 2s;
         }
-
-        .smooth {
-            outline: 2px green dashed;
-        }
-
-        .smooth>div {
-            outline: 2px red dashed;
-        }
-
              
         
         /* Static Sprites */
@@ -266,10 +255,8 @@ export class SpriteSheet {
         /* Static Sprites Sizes */
         /* Static Sprites Sizes */
         /* Static Sprites Sizes */
-        
-        
+                
         ${allSizesStrings} 
-
 
         `;
     }

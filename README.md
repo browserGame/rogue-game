@@ -15,16 +15,14 @@ clone the project
   cd rogue-game
 ```
 
-optionally regenerate the scss sheets from game xml _.sheet_ and _.anim_ files
-
-```bash
-  npm run create:scss
-```
 
 build both client and server parts and run
 
 ```bash
   npm run build:server:dev
+  #
+  npm run create:scss  # optional step: create scss files from .sheet and .anim files
+  #
   npm run build:client:dev
   npm start
 ```
