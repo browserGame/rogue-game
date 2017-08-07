@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="cursor" texture="cursor.png" ox="7" oy="20" x="0" y="4" width="60" height="53" />
+    <sheet name="cursor_click" texture="cursor_hand.png" ox="15" oy="20" x="63" y="7" width="61" height="52" />
+    <sheet name="cursor_attack" texture="cursor_hand.png" ox="6" oy="9" x="4" y="58" width="58" height="51" />
+</sheets>

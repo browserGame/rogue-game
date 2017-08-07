@@ -4,8 +4,8 @@
         /* SpriteSheet */
         /* SpriteSheet */
         
-        .shadow > div {
-            background: url('./shadow.png');
+        .cursor > div {
+            background: url('./cursor.png');
             background-origin: border-box;
             image-rendering: pixelated;
         }
@@ -62,10 +62,24 @@
         /* Static Sprites */
         
         
-            .shadow > div {
-                background-position: -0px -0px;
-                width: 24px;
-                height: 10px;
+            .cursor > div {
+                background-position: -0px -4px;
+                width: 60px;
+                height: 53px;
+            }
+        
+
+            .cursor_click > div {
+                background-position: -63px -7px;
+                width: 61px;
+                height: 52px;
+            }
+        
+
+            .cursor_attack > div {
+                background-position: -4px -58px;
+                width: 58px;
+                height: 51px;
             }
         
         
@@ -73,14 +87,32 @@
         /* Static Sprites Sizes */
         /* Static Sprites Sizes */
                 
-         .normal.shadow {
-                height: 20px; width: 48px;
+         .normal.cursor {
+                height: 106px; width: 120px;
             }
- .boss.shadow {
-                height: 25px; width: 60px;
+ .boss.cursor {
+                height: 132.5px; width: 150px;
             }
- .boss.super.shadow {
-                height: 70px; width: 168px;
+ .boss.super.cursor {
+                height: 371px; width: 420px;
+            }
+ .normal.cursor_click {
+                height: 104px; width: 122px;
+            }
+ .boss.cursor_click {
+                height: 130px; width: 152.5px;
+            }
+ .boss.super.cursor_click {
+                height: 364px; width: 427px;
+            }
+ .normal.cursor_attack {
+                height: 102px; width: 116px;
+            }
+ .boss.cursor_attack {
+                height: 127.5px; width: 145px;
+            }
+ .boss.super.cursor_attack {
+                height: 357px; width: 406px;
             } 
 
         

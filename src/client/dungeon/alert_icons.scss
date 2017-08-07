@@ -4,8 +4,8 @@
         /* SpriteSheet */
         /* SpriteSheet */
         
-        .shadow > div {
-            background: url('./shadow.png');
+        .alert_icons > div {
+            background: url('./alert_icons.png');
             background-origin: border-box;
             image-rendering: pixelated;
         }
@@ -62,10 +62,17 @@
         /* Static Sprites */
         
         
-            .shadow > div {
-                background-position: -0px -0px;
+            .alerted > div {
+                background-position: -2px -0px;
+                width: 14px;
+                height: 32px;
+            }
+        
+
+            .sleeping > div {
+                background-position: -19px -0px;
                 width: 24px;
-                height: 10px;
+                height: 32px;
             }
         
         
@@ -73,14 +80,23 @@
         /* Static Sprites Sizes */
         /* Static Sprites Sizes */
                 
-         .normal.shadow {
-                height: 20px; width: 48px;
+         .normal.alerted {
+                height: 64px; width: 28px;
             }
- .boss.shadow {
-                height: 25px; width: 60px;
+ .boss.alerted {
+                height: 80px; width: 35px;
             }
- .boss.super.shadow {
-                height: 70px; width: 168px;
+ .boss.super.alerted {
+                height: 224px; width: 98px;
+            }
+ .normal.sleeping {
+                height: 64px; width: 48px;
+            }
+ .boss.sleeping {
+                height: 80px; width: 60px;
+            }
+ .boss.super.sleeping {
+                height: 224px; width: 168px;
             } 
 
         

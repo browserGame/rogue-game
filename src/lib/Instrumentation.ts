@@ -40,6 +40,9 @@ const entities: { [index: string]: string; } = {
     'floor_crypt.sheet': require('../client/dungeon/floor_crypt.sheet'),
     'dungeon_decor_props.sheet': require('../client/dungeon/dungeon_decor_props.sheet'),
     'shadow.sheet': require('../client/dungeon/shadow.sheet'),
+    'alert_icons.sheet': require('../client/dungeon/alert_icons.sheet'),
+    'cursor.sheet': require('../client/dungeon/cursor.sheet'),
+    'game_menus.sheet':require('../client/dungeon/game_menus.sheet') 
 };
 
 
@@ -48,19 +51,19 @@ function createSpriteSheet(name: string, xmlSheet: any): SpriteSheet {
     const png = `${name}.png`;
 
     const spriteData: SpriteData[] = xmlSheet.sheets.sheet.filter((f: any) => f.$.name)
-    .map((m: any) => {
-        let rc: SpriteData = {
-            name: m.$.name,
-            textture: png,
-            ox: m.$.ox,
-            oy: m.$.oy,
-            x: m.$.x,
-            y: m.$.y,
-            width: m.$.width,
-            height: m.$.height
-        };
-        return rc;
-    });
+        .map((m: any) => {
+            let rc: SpriteData = {
+                name: m.$.name,
+                textture: png,
+                ox: m.$.ox,
+                oy: m.$.oy,
+                x: m.$.x,
+                y: m.$.y,
+                width: m.$.width,
+                height: m.$.height
+            };
+            return rc;
+        });
     const spSheet = new SpriteSheet({
         originalUrl: png,
         actualUrl: png,
@@ -104,7 +107,7 @@ export function createStyleSheets(): Promise<any> {
         const xmlAnim = anims[animKey];
         const xmlSheet = anims[sheetKey];
 
-        createSpriteSheet(anim, xmlSheet); 
+        createSpriteSheet(anim, xmlSheet);
 
         let spriteNames: string[] = [];
 
@@ -143,7 +146,7 @@ export function createStyleSheets(): Promise<any> {
     });
 
     sheetKeys.forEach((sheet) => {
-    
+
         const sheetKey = `${sheet}.sheet`;
         const xmlSheet = singleSheets[sheetKey];
 

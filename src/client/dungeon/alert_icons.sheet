@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="alerted" texture="alert_icons.png" ox="7" oy="37" x="2" y="0" width="14" height="32" />
+    <sheet name="sleeping" texture="alert_icons.png" ox="12" oy="0" x="19" y="0" width="24" height="32" />
+</sheets>
