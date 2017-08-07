@@ -16,10 +16,6 @@
   },
   "license": "ISC",
   "author": "jacob bogers",
-  "browser:disabled": "./dist/client/bundle.js",
-  "browser:doc": "https://github.com/defunctzombie/package-browser-field-spec",
-  "module:disabled": "",
-  "module:doc": "https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md",
   "main": "makes no sense when we deploy as library ./dist/index.js",
   "repository": {
     "type": "git",
@@ -31,6 +27,7 @@
     "build:server:dev": "cross-env NODE_ENV=development webpack --config src/config/webpack/server.config",
     "build:server:prod": "cross-env NODE_ENV=production webpack --config src/config/webpack/server.config",
     "clear": "rimraf ./dist",
+    "create:scss": "cross-env node dist/server/server.js --scss",
     "fixtypes": "cpr extra/index.d.ts node_modules/@types/express-session/index.d.ts -o",
     "preinstall": "echo preinstall",
     "install": "echo install",
@@ -48,7 +45,6 @@
     "prestart": "echo prestart",
     "start": "cross-env DEBUGx=express-session,cookie node dist/server/server.js",
     "poststart": "echo poststart",
-    "create:scss": "cross-env node dist/server/server.js --scss",
     "start-server": "cross-env DEBUGx=express-session,cookie node dist/server/server.js",
     "prestop": "echo prestop",
     "stop": "echo stop",
@@ -140,5 +136,9 @@
     "webpack-node-externals": "^1.6.0",
     "xml-loader": "^1.2.1"
   },
-  "optionalDependencies": {}
+  "optionalDependencies": {},
+  "browser:disabled": "./dist/client/bundle.js",
+  "browser:doc": "https://github.com/defunctzombie/package-browser-field-spec",
+  "module:disabled": "",
+  "module:doc": "https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md"
 }
