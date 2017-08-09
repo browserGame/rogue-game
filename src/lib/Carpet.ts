@@ -2,7 +2,7 @@
 import {
     $Room,
     getNameSpace,
-    isValidArea
+    
 } from './Room';
 
 import {
@@ -16,6 +16,10 @@ import {
 import {
     floorExtrusion
 } from './Floor';
+
+import {
+    isValidArea
+} from './tools';
 
 import { $Item } from './Room';
 

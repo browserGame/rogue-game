@@ -2,10 +2,23 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { compileDungeon } from '../lib/MockDungeon';
 
 const cssRogue = require('./rogue');
 
+function createCSSClassMapper(scssResource: string) {
 
+    return function classList(...rest: string[]): string {
+
+        let self = require(`./dungeon/${scssResource}.scss`);
+
+        let arr = rest.map((c) => self[c]);
+
+        return arr.join(' ');
+    };
+}
+
+const enemy = createCSSClassMapper('enemies');
 
 function rogue(...rest: string[]): string {
     let self = require('./rogue');
@@ -13,11 +26,6 @@ function rogue(...rest: string[]): string {
     return arr.join(' ');
 }
 
-function enemy(...rest: string[]): string {
-    let self = require('./dungeon/enemies');
-    let arr = rest.map((c) => self[c]);
-    return arr.join(' ');
-}
 
 
 
@@ -32,6 +40,7 @@ function App() {
 window.onload = () => {
     let app = document.getElementById('app');
     if (app) {
+        compileDungeon();
         app.classList.add(cssRogue['main']);
         ReactDOM.render(<App />, app);
     }

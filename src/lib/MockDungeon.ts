@@ -1210,7 +1210,7 @@ export const mockDungeon: Layout[] = [
 ];
 
 
-export function compileDungeon(): string {
+export function compileDungeon() {
 
     let roomsDone = new Map<number, $Room>();
     let roomsToDo = new Map<number, $Room>();
@@ -1290,9 +1290,7 @@ export function compileDungeon(): string {
         }
     });
 
-    console.log(`${JSON.stringify({ nrDone: roomsDone.size, nrTodo: roomsToDo.size })}`);
-
-
+   
     let totalWidth = 0;
     let totalHeight = 0;
 
@@ -1314,29 +1312,7 @@ export function compileDungeon(): string {
         totalHeight = Math.max(v.top + v.height, totalHeight);
     });
 
-    console.log({ totalWidth, totalHeight });
+    console.log({ dimension: { totalWidth, totalHeight } } );
 
-    // ascii formatting, just for testing
-
-    let matrix = new Array(totalWidth * totalHeight);
-    matrix.fill(' ');
-
-    for (let i = 1; i <= 35; i++) {
-        let room = roomsDone.get(i);
-        if (room) {
-            // room.stamp(matrix, totalWidth);
-        }
-    }
-
-    let rc: string[] = [];
-
-    for (let i = 0; i < totalHeight; i++) {
-        let line = matrix.slice(i * totalWidth, (i + 1) * totalWidth).join('');
-        rc.push(line);
-        console.log('>' + line + '<');
-    }
-    return rc.join('\n');
-
-
-
+      
 }

@@ -6,7 +6,7 @@ import * as path from 'path';
 import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import { createStyleSheets } from '../lib/Instrumentation';
-import { compileDungeon } from '../lib/MockDungeon';
+
 
 if (process.argv.length > 2) {
 
@@ -78,11 +78,11 @@ app.use(bodyParser.raw({
 app.use('/', express.static(path.resolve('dist/client')));
 
 function init(): Promise<boolean> {
-    app.get('/processing', (req, resp) => {
+    /*app.get('/processing', (req, resp) => {
         req;
         resp.set({ 'Content-Type': 'text/plain' });
         resp.send(compileDungeon());
-    });
+    });*/
 
     app.get('/room/:width/:height', (req, resp) => {
         let width = Number.parseInt(req.params['width']);

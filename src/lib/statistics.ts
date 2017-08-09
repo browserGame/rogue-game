@@ -4,7 +4,7 @@ export interface Sample<T> {
     payload: T;
 }
 
-export function sampleOfList<T>(sSpace: Sample<T>[]): T {
+export function sampleFromList<T>(sSpace: Sample<T>[]): T {
     let probabilities: number[] = sSpace.map((itm: Sample<T>) => {
         return itm.probability;
     });
@@ -12,7 +12,7 @@ export function sampleOfList<T>(sSpace: Sample<T>[]): T {
     return sSpace[idx].payload;
 }
 
-export function sampleOfListNoReplacement<T>(sSpace: Sample<T>[]): { selected: T, next: Sample<T>[] } {
+export function sampleFromListNoReplacement<T>(sSpace: Sample<T>[]): { selected: T, next: Sample<T>[] } {
     let rc: Sample<T>;
     let probabilities: number[] = sSpace.map((itm: Sample<T>) => {
         return itm.probability;
@@ -30,13 +30,8 @@ export interface NumberProps {
 export interface FnProfiler {
     (N: number): number[];
 }
-/*
-interface FnProfilerFactory {
-    (name: string, options: NumberProps): FnProfiler;
-}*/
 
-
-export function normalize(arr: number[], scale: number = 1): number[] {
+function normalize(arr: number[], scale: number = 1): number[] {
     let tsum = arr.reduce((rsum, itm) => {
         rsum += itm;
         return rsum;
@@ -68,8 +63,14 @@ export function profilerFactory(name: string, options: NumberProps): FnProfiler 
                 return normalize(rc);
             };
         default:
-            throw new Error('Invalid profiler used');
+        case 'uniform':
+            return function uniform(N: number) {
+                let rc = new Array(N);
+                rc.fill(1);
+                return normalize(rc);
+            };
     }
+    throw new Error('Invalid profiler used');
 }
 
 export function multinomial_random_sample(multinomial_arr: number[]): number {
@@ -91,5 +92,6 @@ export function multinomial_random_sample(multinomial_arr: number[]): number {
             return i;
         }
     }
+    //should never happen    
     throw new Error('Propability uniform multinomial Mapping error');
 }

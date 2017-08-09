@@ -14,13 +14,24 @@ export interface Layout {
     symbols: (SymbolBase<string>)[];
 }
 
+export type $GUISizeType = 'normal' | 'boss' | 'super';
+
+
+export interface $GFragment {
+    size: $GUISizeType[];
+    classNames: string;
+    left: number;
+    top: number;
+    zIndex: number;
+}
+
 export interface $Item {
     namespace?: string;
     tag: string;
     p: Vector;
     br?: Vector;
+    gui?: $GFragment;
 }
-
 
 export interface $Room {
     pk: number;
@@ -34,7 +45,7 @@ export interface $Room {
 }
 
 export function isRoom(r: any): r is $Room {
-    
+
     let arr: (keyof $Room)[];
     arr = ['pk', 'top', 'left', 'width', 'height'];
 
@@ -53,7 +64,7 @@ export function getNameSpace(r: $Room, key: string): $Item[] {
 }
 
 
-export function addContent(r: $Room, key: string, value: $Item): boolean {
+/* function addContent(r: $Room, key: string, value: $Item): boolean {
     r.body = r.body || new Map();
     let content = r.body.get(key);
     if (!content) {
@@ -67,7 +78,7 @@ export function addContent(r: $Room, key: string, value: $Item): boolean {
     }
     content.push(value);
     return true;
-}
+}*/
 
 export function getContentAt(r: $Room, p: Vector, select: string = ''): $Item[] | undefined {
     let all = flatten(Array.from(r.body.values())) as $Item[];
@@ -93,23 +104,3 @@ export function getContentAt(r: $Room, p: Vector, select: string = ''): $Item[] 
     return undefined;
 }
 
-export function isValidArea(coords: Vector[]): { isValid: boolean; first: Vector; last: Vector } {
-
-    let cp = coords.slice(0);
-    cp.sort((a, b) => a.y - b.y || a.x - b.x); //first is top-left, last is bottom right
-
-    let first = cp[0];
-    let last = cp[cp.length - 1];
-
-    let isValid = true;
-    end:
-    for (let x = first.x; x <= last.x; x++) {
-        for (let y = first.y; y <= last.y; y++) {
-            if (!cp.find((i) => i.x === x && i.y === y)) {
-                isValid = false;
-                break end;
-            }
-        }
-    }
-    return { isValid, first, last };
-}

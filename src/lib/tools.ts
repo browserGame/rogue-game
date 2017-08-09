@@ -4,24 +4,47 @@ import { SymbolBase, codedItems } from './Symbols';
 import { Layout, $Room, getNameSpace } from './Room';
 
 
+
+export function isValidArea(coords: Vector[]): { isValid: boolean; first: Vector; last: Vector } {
+
+    let cp = coords.slice(0);
+    cp.sort((a, b) => a.y - b.y || a.x - b.x); //first is top-left, last is bottom right
+
+    let first = cp[0];
+    let last = cp[cp.length - 1];
+
+    let isValid = true;
+    end:
+    for (let x = first.x; x <= last.x; x++) {
+        for (let y = first.y; y <= last.y; y++) {
+            if (!cp.find((i) => i.x === x && i.y === y)) {
+                isValid = false;
+                break end;
+            }
+        }
+    }
+    return { isValid, first, last };
+}
+
+
 export function dotPath<T>(a: any, path: string): T {
 
-  function _dotp(b: any, ammo: string[]): any {
-    if (b === undefined) {
-      return Object.assign({}, b);
+    function _dotp(b: any, ammo: string[]): any {
+        if (b === undefined) {
+            return Object.assign({}, b);
+        }
+        if (!ammo.length) {
+            return Object.assign({}, b);
+        }
+        if (!(b instanceof Object)) {
+            return undefined;
+        }
+        let key = ammo.shift() || '';
+        let bn = b[key];
+        return _dotp(bn, ammo);
     }
-    if (!ammo.length) {
-      return Object.assign({}, b);
-    }
-    if (!(b instanceof Object)) {
-      return undefined;
-    }
-    let key = ammo.shift() || '';
-    let bn = b[key];
-    return _dotp(bn, ammo);
-  }
 
-  return _dotp(a, (path || '').split('.'));
+    return _dotp(a, (path || '').split('.'));
 }
 
 
@@ -70,7 +93,6 @@ export function parseLayout(layout: Layout) {
         body: new Map()
     };
 
-
     raw.map((matrix, idx) => {
         let itemPalette = createPalette(matrix, width, ' ');
         //process doors first
@@ -99,7 +121,8 @@ export function parseLayout(layout: Layout) {
                 processor(matrix, width, room, itemPalette[key], si);
             }
             else {
-                console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+                console.log('%c %s', 'color:red', `ERROR ERROR, unprocessed, pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
+                //throw new Error('stopped');
                 // console.log('pk:%d, key:%s, no ip for: %s->%s', pk, key, si && si.e, si && si.m);
             }
             //console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);

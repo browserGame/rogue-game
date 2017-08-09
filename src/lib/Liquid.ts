@@ -21,8 +21,9 @@ import {
     floorExtrusion
 } from './Floor';
 
-import { $Item, isValidArea } from './Room';
+import { $Item, } from './Room';
 
+import { isValidArea } from './tools';
 
 export interface $ItemLiquid extends $Item {
     br: Vector;

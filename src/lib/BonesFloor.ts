@@ -3,7 +3,7 @@
 import {
     $Room,
     getNameSpace,
-    isValidArea
+
 } from './Room';
 
 import {
@@ -17,6 +17,10 @@ import {
 import {
     $ItemCarpet
 } from './Carpet';
+
+import {
+    isValidArea
+} from './tools';
 
 export function processSkullAndBones(matrix: string[], width: number, room: $Room, coords: Vector[]) {
     matrix;

@@ -207,7 +207,6 @@ export class SpriteSheet {
         .boss>div,
         .normal>div {
             transform-origin: 0 0;
-            position: absolute;
         }
 
         .normal>div {
