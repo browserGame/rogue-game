@@ -19,7 +19,7 @@ export type $GUISizeType = 'normal' | 'boss' | 'super';
 
 export interface $GFragment {
     size: $GUISizeType[];
-    classNames: string;
+    auxClassNames: string[];
     left: number;
     top: number;
     zIndex: number;

@@ -479,7 +479,7 @@ export const mockDungeon: Layout[] = [
         symbols: [
             <DoorBottom>{ e: 'v', toRoom: 10 },
             <Vase>{
-                e: 'J', color: 'red', has: [<Coin>{e:'M', credit:1, color:'grey'}]  
+                e: 'J', color: 'red', has: [<Coin>{ e: 'M', credit: 1, color: 'grey' }]
             },
             <BeerBarrel>{
                 e: '{', has: [
@@ -1190,7 +1190,7 @@ export const mockDungeon: Layout[] = [
             <Stone>{ e: 'L', color: 'white', credit: 4 },
             <GreenWizard>{
                 e: '@', xp: 10, hp: 40, level: 1, has: [
-                <PantsGreen>{ e: 'ç', addDp: 15 }
+                    <PantsGreen>{ e: 'ç', addDp: 15 }
                 ]
             }
         ],
@@ -1209,8 +1209,13 @@ export const mockDungeon: Layout[] = [
     }
 ];
 
+export interface DungeonGameModel {
+    width: number;
+    height: number;
+    rooms: Map<number, $Room>;
+}
 
-export function compileDungeon() {
+export function compileDungeon(): DungeonGameModel {
 
     let roomsDone = new Map<number, $Room>();
     let roomsToDo = new Map<number, $Room>();
@@ -1290,7 +1295,7 @@ export function compileDungeon() {
         }
     });
 
-   
+
     let totalWidth = 0;
     let totalHeight = 0;
 
@@ -1312,7 +1317,12 @@ export function compileDungeon() {
         totalHeight = Math.max(v.top + v.height, totalHeight);
     });
 
-    console.log({ dimension: { totalWidth, totalHeight } } );
+    return {
+        width: totalWidth,
+        height: totalHeight,
+        rooms: roomsDone
+    };
 
-      
+
+
 }

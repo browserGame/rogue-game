@@ -180,7 +180,7 @@ export interface CPU {
     [index: string]: Function | 0;
 }
 
-export const codedItems: CPU = {
+export  const codedItems: CPU = {
     //
     // primary
     //
