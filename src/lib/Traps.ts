@@ -6,6 +6,7 @@ import {
     $Room,
     getNameSpace,
     $Item,
+    $GFragment,
     getContentAt
 } from './Room';
 
@@ -14,21 +15,34 @@ import {
 } from './math';
 
 import {
-    Spikes,
-    BearTrap
+    AllTraps
 } from './Symbols';
 
 export interface $ItemTrap extends $Item {
     delHp: number;
 }
 
-export function processTraps(matrix: string[], width: number, room: $Room, coords: Vector[], si: Spikes | BearTrap) {
+export function processTraps(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: AllTraps) {
 
-    matrix;
-    width;
+    const select = {
+        w:'hazard_spikes', //spikes
+        S:'hazard_trap' //beartrap
+    };
+
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: [ 'common_floor_objects', select[si.e]],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
 
     let itms: $ItemTrap[] = coords.map((m) => {
-        return { tag: si.e, p: m, delHp: si.delHp || 10 }; //default 10 points lost if not specified
+        return { 
+            tag: si.e, 
+            p: m, 
+            delHp: si.delHp || 10, 
+            gui }; //default 10 points lost if not specified
     });
     //
     let err = itms.filter((f) => {

@@ -6,6 +6,17 @@ import {
 
 const gCache = new Map<string, AnimationSheet>();
 
+
+export function getAnimationSheetByName(url: string) {
+    return gCache.get(url);
+}
+
+export function removeAnimationSheetByName(url: string) {
+    return gCache.delete(url);
+}
+
+
+
 export interface AnimationFrameData {
     spriteName: string;
     duration: string;

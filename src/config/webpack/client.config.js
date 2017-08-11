@@ -22,7 +22,6 @@ for (const rule of module.exports.module.rules) {
         resolve('src/client'), 
         resolve('src/lib'),
         resolve('src/client/dungeon') //for loading png files not xml 
-       
     );
 }
 

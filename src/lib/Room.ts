@@ -1,5 +1,4 @@
 
-
 import { SymbolBase } from './Symbols';
 import { Vector } from './math';
 import { flatten } from './tools';
@@ -17,8 +16,8 @@ export interface Layout {
 export type $GUISizeType = 'normal' | 'boss' | 'super';
 
 export interface $GFragment {
-    size: $GUISizeType | $GUISizeType[];
-    auxClassNames: string[];
+    size: $GUISizeType | $GUISizeType[]| undefined;
+    auxClassNames: string[]|undefined;
     left: number;
     top: number;
     zIndex: number;
@@ -29,7 +28,7 @@ export interface $Item {
     tag: string;
     p: Vector;
     br?: Vector;
-    gui?: $GFragment;
+    gui: $GFragment;
 }
 
 export interface $Room {

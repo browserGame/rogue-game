@@ -3,6 +3,7 @@ import {
     isRoom,
     getNameSpace,
     $Item,
+    $GFragment
 } from './Room';
 
 import {
@@ -11,9 +12,12 @@ import {
 
 import {
     AllEdibles,
-  //  GeneralContent
+    //  GeneralContent
 } from './Symbols';
 
+import {
+    sampleFromListEqualProb
+} from '../lib/statistics';
 
 import {
     GeneralContainer
@@ -26,21 +30,69 @@ export interface $ItemEdible extends $Item {
 }
 
 export function processEdible(
-    matrix: string[], 
-    width: number, 
-    container: GeneralContainer, 
-    coords: Vector[], 
+    _matrix: string[],
+    _width: number,
+    container: GeneralContainer,
+    coords: Vector[],
     si: AllEdibles) {
 
-    matrix;
-    width;
+    /*
+
+    export type EdibleType =
+    's' | //   bottle water
+    'p' | // bottle  milk
+    'r' | //   chicken-bone
+    'q' | //   cheese
+    'i' | //   elixer
+    ';' | //   fish
+    '§' | //   mana
+    'l'; //   magic-potion
+ BottleWater | BottleMilk | ChickenBone | Cheese | Elixer | Fish | Mana | MagicPotion;
+
+namespace: .common_items
+
+    .milk
+    .water
+    .chicken_leg
+    .cheese
+    .rotten_cheese
+    .hp_elixir
+    .hp_tube
+    .fish
+    .mana_tube
+    .magic_bottle
+ */
+
+
+    const select = {
+        s: 'water',
+        p: 'milk',
+        r: 'chicken_leg',
+        q: sampleFromListEqualProb(['cheese', 'rotten_cheese']),
+        i: sampleFromListEqualProb(['hp_elixir', 'hp_tube']),
+        ';': 'fish',
+        '§': 'mana_tube',
+        l: 'magic_bottle'
+    };
+
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: ['common_items', select[si.e]],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
+
+
+
 
     let itm: $ItemEdible = {
         tag: si.e,
         p: coords[0],
         addMana: si.addMana || 0,
         addHp: si.addHp || 0,
-        poisen: si.poisen || { add: 0, release: 0 }
+        poisen: si.poisen || { add: 0, release: 0 },
+        gui
     };
     //
     //
@@ -59,6 +111,5 @@ export function processEdible(
         return;
     }
 
-
-    console.log('Error, not a valid portal its not positioned on a floor tile:', JSON.stringify(itm));
+    console.log(`Error, not a valid Edible to be placed at ${{ x, y }} %s`, JSON.stringify(itm));
 }

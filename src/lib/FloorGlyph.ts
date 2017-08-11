@@ -15,7 +15,6 @@ import {
 
 import {
     AllGlyphs,
-    FloorGlyphsType
 } from './Symbols';
 
 export interface $ItemFloor extends $Item {
@@ -23,31 +22,26 @@ export interface $ItemFloor extends $Item {
 }
 
 
-function getFloorClassName(type: FloorGlyphsType): string {
-    // = 'I' | 'm' | 'R'; //[I] red pentagram,  [m] half moon trap, [R] pentagram){
-    let select = {
-        I:'star_block',
-        m:'moon_block',
-        R:'shrine'
-    };
-    return select[type];    
-}
+export function processGlyphs(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: AllGlyphs) {
 
-export function processGlyphs(matrix: string[], width: number, room: $Room, coords: Vector[], si: AllGlyphs) {
 
-    matrix;
-    width;
     /*
-    export type RedPentagram = FloorGlyphs<'I'>;
-export type HalfMoonTrap = FloorGlyphs<'m'>;
-export type Pentagram = FloorGlyphs<'R'>;
+        export type RedPentagram = FloorGlyphs<'I'>;
+        export type HalfMoonTrap = FloorGlyphs<'m'>;
+        export type Pentagram = FloorGlyphs<'R'>;
+        export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram |DungeonEntrance;
+    */
+    let select = {
+        I: 'star_block',
+        m: 'moon_block',
+        R: 'shrine',
+        '²': 'dungeon_entrance'
+    };
 
-export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
-*/
     let itms: $ItemFloor[] = coords.map((m) => {
         let gui: $GFragment = {
             size: 'normal',
-            auxClassNames: ['common_floor_objects', getFloorClassName(si.e)],
+            auxClassNames: ['common_floor_objects', select[si.e]],
             top: 0,
             left: 0,
             zIndex: 0
@@ -61,7 +55,7 @@ export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
     });
     //
     let err = itms.filter((f) => {
-        let other = getContentAt(room, f.p, '.'); //must be on a floor (carpets etc extrude objects anyway)
+        let other = getContentAt(room, f.p, '.é'); //must be on a floor or carpet
         return (!other) ? true : false;
     });
     //

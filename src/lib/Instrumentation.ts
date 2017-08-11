@@ -66,6 +66,13 @@ function createSpriteSheet(name: string, xmlSheet: any): SpriteSheet {
             };
             return rc;
         });
+    /* 
+        The animationsheet is registered in a singloton map accessible by the functions
+        function getAnimationSheetByName(url: string);
+        function removeAnimationSheetByName(url: string);
+    */
+
+
     const spSheet = new SpriteSheet({
         originalUrl: png,
         actualUrl: png,
@@ -75,7 +82,7 @@ function createSpriteSheet(name: string, xmlSheet: any): SpriteSheet {
 }
 
 
-export function createStyleSheets(): Promise<any> {
+export function createStyleSheets(createFiles: boolean = true): Promise<any> {
 
     if (typeof process.env.CSSDIR !== 'string') {
         return Promise.reject('process.env.CSSDIR is not defined, please check your webpack config');
@@ -141,10 +148,12 @@ export function createStyleSheets(): Promise<any> {
         //console.log({ enemySprites });
         //console.log({ spriteNames });
         //console.log(animations.CSSAscii(spriteNames));
-        fs.writeFileSync(
-            path.join(process.env.CSSDIR, `${anim}.scss`),
-            animations.CSSAscii(spriteNames),
-            'utf-8');
+        if (createFiles) {
+            fs.writeFileSync(
+                path.join(process.env.CSSDIR, `${anim}.scss`),
+                animations.CSSAscii(spriteNames),
+                'utf-8');
+        }
     });
 
     sheetKeys.forEach((sheet) => {
@@ -153,15 +162,14 @@ export function createStyleSheets(): Promise<any> {
         const xmlSheet = singleSheets[sheetKey];
 
         const spSheet = createSpriteSheet(sheet, xmlSheet);
-
-        fs.writeFileSync(
-            path.join(process.env.CSSDIR, `${sheet}.scss`),
-            spSheet.renderCSSparts(),
-            'utf-8');
+        if (createFiles) {
+            fs.writeFileSync(
+                path.join(process.env.CSSDIR, `${sheet}.scss`),
+                spSheet.renderCSSparts(),
+                'utf-8');
+        }
 
     });
-
-
     return Promise.resolve(true);
 }
 

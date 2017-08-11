@@ -27,9 +27,7 @@ export interface $ItemBreakable extends $Item {
 
 export function processBreakable(matrix: string[], width: number, room: $Room, coords: Vector[], si: AllBreakables) {
 
-    matrix;
-    width;
-
+   
     //barril_2  barril_1 barril_broken
 
     let gui: $GFragment = {

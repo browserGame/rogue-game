@@ -196,7 +196,8 @@ export const codedItems: CPU = {
     K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: processSkullAndBones, //xx skull , floor or carper below, blood seeps below
     é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
-    '=': 0x0, //"(bloodà) seeps to floor or carpet"
+    '=': 0x0, //"(bloodà) seeps to floor or carpet",
+    '²': processGlyphs,
     //
     // doorways and portals
     //
@@ -249,7 +250,7 @@ export const codedItems: CPU = {
     //
     //enemies
     //
-    T: processEnemies, //xxx skelton-enemy
+    T: processEnemies, //xxx skeleton-enemy
     '%': processEnemies, //xx boss 
     E: processEnemies, //xx goblin
     F: processEnemies, //xx bat
@@ -396,7 +397,7 @@ export type AllOpenables = Closet | TreasureChest | Coffin | Table;
 //
 //  FloorSymbols (pentagrams, half moons etc)
 //
-export type FloorGlyphsType = 'I' | 'm' | 'R'; //[I] red pentagram,  [m] half moon trap, [R] pentagram
+export type FloorGlyphsType = 'I' | 'm' | 'R' | '²'; //[I] red pentagram,  [m] half moon trap, [R] pentagram [²], dungeon entrance
 
 export interface FloorGlyphs<I extends FloorGlyphsType> extends SymbolBase<I> {
 
@@ -405,6 +406,8 @@ export interface FloorGlyphs<I extends FloorGlyphsType> extends SymbolBase<I> {
 export type RedPentagram = FloorGlyphs<'I'>;
 export type HalfMoonTrap = FloorGlyphs<'m'>;
 export type Pentagram = FloorGlyphs<'R'>;
+export type Entrance = FloorGlyphs<'²'>;
+
 
 export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
 
@@ -423,6 +426,7 @@ export interface ClawSpikes<T extends ClawSpikesTypes> extends SymbolBase<T> {
 }
 export type Spikes = ClawSpikes<'w'>;
 export type BearTrap = ClawSpikes<'S'>;
+export type AllTraps = Spikes | BearTrap;
 
 //
 // discoverable and walkable when opened
@@ -453,7 +457,7 @@ export type AllBreakables = TwirlStone | BeerBarrel | CrossTombStone | TombStone
 //
 // enemies
 //
-export type EnemyTypes = 'T' | //xxx skelton-enemy
+export type EnemyTypes = 'T' | //xxx -enemy
     '%' | //xx boss 
     'E' | //xx goblin
     'F' | //xx bat
@@ -486,10 +490,14 @@ export type AllEnemies = Skeleton | Boss | Goblin | Bat | Rat | GreenWizard;
 //learnables
 //
 export type LearnableType = 'u';
-export interface MagicSpellBook extends SymbolBase<'u'> {
+
+export interface Learnable<I extends LearnableType> extends SymbolBase<I> {
     spell: string;
 }
-export type AllSpells = MagicSpellBook;
+
+export type MagicSpellBook = Learnable<'u'>;
+
+export type AllSpells = MagicSpellBook; // TODO add more magic charms, scrolls, etc))
 
 export function isSpell(sp: any): sp is AllSpells {
     return sp && sp.spell;

@@ -42,11 +42,8 @@ function chooseBones(): string {
 }
 
 
-export function processSkullAndBones(matrix: string[], width: number, room: $Room, coords: Vector[]) {
-    matrix;
-    width;
-    //room;
-    //coords;
+export function processSkullAndBones(_matrix: string[], _width: number, room: $Room, coords: Vector[]) {
+  
 
     let skulls = coords.map((v) => {
 

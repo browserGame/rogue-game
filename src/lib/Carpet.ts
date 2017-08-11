@@ -47,11 +47,9 @@ function getCarpet(size: Vector, color: 'red' | 'blue'): string {
 
 }
 
-export function processCarpet(matrix: string[], width: number, room: $Room, coords: Vector[], si: Carpet) {
+export function processCarpet(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: Carpet) {
 
-    matrix;
-    width;
-
+ 
 
     let { isValid, first, last } = isValidArea(coords);
 

@@ -3,6 +3,7 @@ import {
     isRoom,
     getNameSpace,
     $Item,
+    $GFragment
 } from './Room';
 
 import {
@@ -11,15 +12,14 @@ import {
 
 import {
     AllSpells,
-   //  GeneralContent
+
 } from './Symbols';
 
 /*
-export type LearnableType = 'u';
-export interface MagicSpellBook extends SymbolBase<'u'> {
-    spell: string;
-}
-
+    export type LearnableType = 'u';
+    export interface MagicSpellBook extends SymbolBase<'u'> {
+        spell: string;
+    }
 */
 
 
@@ -32,19 +32,30 @@ export interface $ItemKnowable extends $Item {
 }
 
 export function processKnowable(
-    matrix: string[],
-    width: number,
+    _matrix: string[],
+    _width: number,
     container: GeneralContainer,
     coords: Vector[],
     si: AllSpells) {
 
-    matrix;
-    width;
+    const select = {
+        u: 'book_skill',
+        //other things to add later
+    };
+
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: ['common_items', select[si.e]],
+        top: 0,
+        left: 0,
+        zIndex: 0
+    };
 
     let itm: $ItemKnowable = {
         tag: si.e,
         p: coords[0],
-        spell: si.spell
+        spell: si.spell,
+        gui
     };
     //
     //

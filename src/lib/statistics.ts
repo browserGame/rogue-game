@@ -4,6 +4,13 @@ export interface Sample<T> {
     payload: T;
 }
 
+export function sampleFromListEqualProb<T>(sample: T[]) {
+    let samples: Sample<T>[] = sample.map((m) => {
+        return { payload: m, probability: (1 / sample.length) };
+    });
+    return sampleFromList<T>(samples);
+}
+
 export function sampleFromList<T>(sSpace: Sample<T>[]): T {
     let probabilities: number[] = sSpace.map((itm: Sample<T>) => {
         return itm.probability;

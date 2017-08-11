@@ -3,6 +3,7 @@ import {
     $Room,
     getNameSpace,
     $Item,
+    $GFragment,
     getContentAt
 } from './Room';
 
@@ -22,16 +23,30 @@ export interface $ItemPortal extends $Item {
     portal: Indirection | PortalType;
 }
 
-export function processPortal(matrix: string[], width: number, room: $Room, coords: Vector[], si: TelePortal) {
+export function processPortal(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: TelePortal) {
 
-    matrix;
-    width;
 
-    let itm: $ItemPortal = { tag: si.e, p: coords[0], toRoom: si.toRoom, portal:si.portal, alias: si.m };
-    
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: ['common_floor_objects', 'teleportation'],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
+
+    let itm: $ItemPortal = {
+        tag: si.e,
+        p: coords[0],
+        toRoom:
+        si.toRoom,
+        portal: si.portal,
+        alias: si.m,
+        gui
+    };
+
     let other = getContentAt(room, coords[0], '.');
-    
-    if (other){
+
+    if (other) {
         let portal = getNameSpace(room, 'portal');
         portal.push(itm);
         console.log({ portal: itm });

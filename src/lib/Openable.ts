@@ -2,7 +2,8 @@
 import {
     $Room,
     getNameSpace,
-    $Item
+    $Item,
+    $GFragment
 } from './Room';
 
 import {
@@ -10,8 +11,12 @@ import {
 } from './math';
 
 import {
+    sampleFromListEqualProb
+} from './statistics';
+
+import {
     AllOpenables,
-  
+
 } from './Symbols';
 
 import {
@@ -21,17 +26,49 @@ import {
 
 export interface $ItemOpenable extends $Item {
     has: GeneralContents[];
+    opened: boolean;
 }
 
 export function processOpenable(matrix: string[], width: number, room: $Room, coords: Vector[], si: AllOpenables) {
 
+    //export type DiscoverableType = 'z' | '&' | 'H' | '*';
+    /** 
+    export type Closet = Discoverable<'z'>;
+    export type TreasureChest = Discoverable<'&'>;
+    export type Coffin = Discoverable<'H'>;
+    export type Table = Discoverable<'*'>; 
+    */
+    const select = {
+        z: sampleFromListEqualProb(['bookshelf_1', 'bookshelf_2']), //bookshelf_1_searched, bookshelf_2_searched
+        '&': 'safe', //safe_open
+        H: sampleFromListEqualProb(['coffin_02', 'coffin_01']), // coffine_open_02, //coffin_open_01
+        '*': sampleFromListEqualProb(['table_1', 'table_2']) //table_broken
+    };
+
+    const namespace = {
+        z: 'dungeon_objects',
+        '&': 'common_floor_objects',
+        H: 'dungeon_objects',
+        '*': 'dungeon_objects'
+    };
+
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: [namespace[si.e], select[si.e]],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
+
     let itm: $ItemOpenable = {
         tag: si.e,
         p: coords[0],
-        has: []
+        has: [],
+        opened: false,
+        gui
     };
     si.has && si.has.forEach((c) => processContents(matrix, width, itm, c));
- 
+
     // secret has to be on a tile (prolly has checks for carpets)
 
     let secret = getNameSpace(room, 'openable');

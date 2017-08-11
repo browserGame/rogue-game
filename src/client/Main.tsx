@@ -3,6 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { compileDungeon } from '../lib/MockDungeon';
+import { createStyleSheets } from '../lib/Instrumentation';
 
 const cssRogue = require('./rogue');
 
@@ -37,6 +38,7 @@ function App() {
 window.onload = () => {
     let app = document.getElementById('app');
     if (app) {
+        createStyleSheets(false);
         compileDungeon();
         app.classList.add(cssRogue['main']);
         ReactDOM.render(<App />, app);
