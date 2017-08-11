@@ -41,6 +41,7 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
         p: coords[0],
         has: []
     };
+    
     si.has && si.has.forEach((c) => processContents(matrix, width, itm, c));
  
     // secret has to be on a tile (prolly has checks for carpets)

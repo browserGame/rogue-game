@@ -3,6 +3,8 @@
 import {
     $Room,
     getNameSpace,
+    $GFragment,
+    $Item
 
 } from './Room';
 
@@ -11,16 +13,34 @@ import {
 } from './math';
 
 import {
-    Carpet
-} from './Symbols';
+    Sample,
+    sampleFromList,
+} from './statistics';
 
-import {
-    $ItemCarpet
-} from './Carpet';
+type SkeletonAndBonusType =
+    'skeleton_remains_01'
+    | 'skeleton_remains_02'
+    | 'skeleton_remains_03'
+    | 'skeleton_remains_04'
+    | 'skeleton_remains_08';
 
-import {
-    isValidArea
-} from './tools';
+function chooseBones(): string {
+    return sampleFromList<SkeletonAndBonusType>([0, 1, 2, 3, 4, 8].map((c) => {
+        let rc: Sample<SkeletonAndBonusType> = {
+            probability: 1,
+            payload: ([
+                'skeleton_remains_01',
+                'skeleton_remains_02',
+                'skeleton_remains_03',
+                'skeleton_remains_04',
+                'skeleton_remains_08'
+            ] as SkeletonAndBonusType[])[c]
+        };
+        return rc;
+    }));
+
+}
+
 
 export function processSkullAndBones(matrix: string[], width: number, room: $Room, coords: Vector[]) {
     matrix;
@@ -28,33 +48,24 @@ export function processSkullAndBones(matrix: string[], width: number, room: $Roo
     //room;
     //coords;
 
-    let skulls = coords.map((v) => { return { tag: 'A', p: v }; });
+    let skulls = coords.map((v) => {
 
+        let gui: $GFragment = {
+            size: 'normal',
+            auxClassNames: ['dungeon_decor_props', chooseBones()],
+            left: 0,
+            top: 0,
+            zIndex: 0
+        };
+
+        let rc: $Item = {
+            tag: 'A', p: v, gui
+        };
+
+        return rc;
+
+
+    });
     let bones = getNameSpace(room, 'skull&bones');
     bones.splice(0, bones.length, ...skulls);
 }
-
-
-export function processCarpet(matrix: string[], width: number, room: $Room, coords: Vector[], si: Carpet) {
-
-    matrix;
-    width;
-
-    let result = isValidArea(coords);
-
-    if (!result.isValid) {
-        console.log(`room: ${room.pk} has an invalid carpet (${result.first.x},${result.first.y})->(${result.last.x},${result.last.y})`);
-        return; //do nothing
-    }
-
-    let bones = getNameSpace(room, 'bones-floor');
-    let itm: $ItemCarpet = { tag: si.e, p: result.first, br: result.last, color: si.type };
-    bones.push(itm);
-
-}
-
-
-
-
-
-

@@ -21,7 +21,10 @@ import {
     floorExtrusion
 } from './Floor';
 
-import { $Item, } from './Room';
+import {
+    $Item,
+    $GFragment
+} from './Room';
 
 import { isValidArea } from './tools';
 
@@ -37,13 +40,28 @@ export function processLiquid(matrix: string[], width: number, room: $Room, coor
     width;
 
     let { isValid, first, last } = isValidArea(coords);
-   
+
     if (!isValid) {
         console.log(`room: ${room.pk} has an invalid liquid (${first.x},${first.y})->(${last.x},${last.y}) ${JSON.stringify(coords)}`);
         return; //do nothing
     }
 
-    let itm: $ItemLiquid = { tag: si.e, p: first, br: last };
+    let select = {
+        O: 'liquid_water',
+        '(': 'liquid_lava',
+        $: 'liquid_acid',
+        '£': 'liquid_swamp'
+    };
+
+    let gui: $GFragment = {
+        size: 'normal',
+        auxClassNames: [select[si.e]],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
+
+    let itm: $ItemLiquid = { tag: si.e, p: first, br: last, gui };
     console.log({ liquid: itm });
     floorExtrusion(room, itm);
     let liquid = getNameSpace(room, 'liquid');

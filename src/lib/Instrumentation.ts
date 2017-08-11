@@ -37,12 +37,14 @@ const entities: { [index: string]: string; } = {
     //
     // not anims
     //
+    'equipment.sheet': require('../client/dungeon/equipment.sheet'),
+    'common_items.sheet': require('../client/dungeon/common_items.sheet'),
     'floor_crypt.sheet': require('../client/dungeon/floor_crypt.sheet'),
     'dungeon_decor_props.sheet': require('../client/dungeon/dungeon_decor_props.sheet'),
     'shadow.sheet': require('../client/dungeon/shadow.sheet'),
     'alert_icons.sheet': require('../client/dungeon/alert_icons.sheet'),
     'cursor.sheet': require('../client/dungeon/cursor.sheet'),
-    'game_menus.sheet':require('../client/dungeon/game_menus.sheet') 
+    'game_menus.sheet': require('../client/dungeon/game_menus.sheet')
 };
 
 

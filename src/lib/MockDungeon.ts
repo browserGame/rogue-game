@@ -386,7 +386,7 @@ export const mockDungeon: Layout[] = [
                 ]
 
             },
-            <Carpet>{ e: 'é', type: 'blue' }
+            <Carpet>{ e: 'é', color: 'blue' }
         ],
         id: 9,
         room: [`
@@ -514,7 +514,7 @@ export const mockDungeon: Layout[] = [
                     <Coin>{ credit: 1, color: 'gold', e: 'M' }
                 ]
             },
-            <Carpet>{ e: 'é', type: 'red' }
+            <Carpet>{ e: 'é', color: 'red' }
         ],
         id: 12,
         room: [`
@@ -641,7 +641,7 @@ export const mockDungeon: Layout[] = [
     {
         symbols: [
             <DoorUp>{ e: '^', toRoom: 15 },
-            <Carpet>{ e: 'é', type: 'blue' },
+            <Carpet>{ e: 'é', color: 'blue' },
             <Stone>{ e: 'L', color: 'green', credit: 2 }
         ],
         id: 17,
@@ -1166,8 +1166,7 @@ export const mockDungeon: Layout[] = [
             },
             <Vase>{ e: 'J', color: 'green' },
             <Stone>{ m: '6', e: 'L', color: 'gold', credit: 4 },
-            <Carpet>{ e: 'é', type: 'red' }
-
+            <Carpet>{ e: 'é', color: 'red' }
         ],
         id: 33,
         room:

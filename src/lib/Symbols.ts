@@ -180,7 +180,7 @@ export interface CPU {
     [index: string]: Function | 0;
 }
 
-export  const codedItems: CPU = {
+export const codedItems: CPU = {
     //
     // primary
     //
@@ -217,6 +217,7 @@ export  const codedItems: CPU = {
 
     O: processLiquid, //xx water
     $: processLiquid, //acid bath
+    '£': processLiquid,
     //
     // discoverables via unlocking / open
     //
@@ -312,10 +313,15 @@ export type QuestRing = QuestResult<'N'>;
 //dungeon floor coverings
 //
 export type DungeonFloorCoverType = 'K' | 'A' | 'é';
+
 export interface DungeonFloorCover<T extends DungeonFloorCoverType> extends SymbolBase<T> {
-    type: string;
+
 }
-export type Carpet = DungeonFloorCover<'é'>;
+
+export interface Carpet extends DungeonFloorCover<'é'> {
+    color: 'red' | 'blue';
+}
+
 export type CobWeb = DungeonFloorCover<'K'>;
 export type SkullBones = DungeonFloorCover<'A'>;
 //
@@ -352,7 +358,7 @@ export interface LevelStairs extends SymbolBase<'µ'> {
 // [O] water
 // [$] acid bath
 //
-export type LiquidType = '$' | '(' | 'O';
+export type LiquidType = '$' | '(' | 'O' | '£';
 export type ObstructableType = '"' | '!' | 'U' | 'Q' | LiquidType;
 
 
@@ -364,7 +370,8 @@ export interface Obstructable<T extends ObstructableType> extends SymbolBase<T> 
 export type Lava = Obstructable<'('>;
 export type Water = Obstructable<'O'>;
 export type Acid = Obstructable<'$'>;
-export type AllLiquids = Lava | Water | Acid;
+export type Swamp = Obstructable<'£'>;
+export type AllLiquids = Lava | Water | Acid | Swamp;
 
 export type Torch = Obstructable<'!'>;
 export type Trader = Obstructable<'U'>;

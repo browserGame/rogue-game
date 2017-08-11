@@ -26,9 +26,6 @@ function rogue(...rest: string[]): string {
     return arr.join(' ');
 }
 
-
-
-
 function App() {
     return <div className={rogue('container')}>
         <div className={enemy('enemies', 'normal', 'dragon02_idle')}><div></div></div>

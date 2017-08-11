@@ -16,9 +16,8 @@ export interface Layout {
 
 export type $GUISizeType = 'normal' | 'boss' | 'super';
 
-
 export interface $GFragment {
-    size: $GUISizeType[];
+    size: $GUISizeType | $GUISizeType[];
     auxClassNames: string[];
     left: number;
     top: number;

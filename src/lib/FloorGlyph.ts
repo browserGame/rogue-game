@@ -5,6 +5,7 @@ import {
     $Room,
     getNameSpace,
     $Item,
+    $GFragment,
     getContentAt
 } from './Room';
 
@@ -13,20 +14,50 @@ import {
 } from './math';
 
 import {
-    AllGlyphs
+    AllGlyphs,
+    FloorGlyphsType
 } from './Symbols';
 
-export interface $ItemGlyph extends $Item {
-   //connect triggered items here
+export interface $ItemFloor extends $Item {
+    enabled: boolean;
+}
+
+
+function getFloorClassName(type: FloorGlyphsType): string {
+    // = 'I' | 'm' | 'R'; //[I] red pentagram,  [m] half moon trap, [R] pentagram){
+    let select = {
+        I:'star_block',
+        m:'moon_block',
+        R:'shrine'
+    };
+    return select[type];    
 }
 
 export function processGlyphs(matrix: string[], width: number, room: $Room, coords: Vector[], si: AllGlyphs) {
 
     matrix;
     width;
+    /*
+    export type RedPentagram = FloorGlyphs<'I'>;
+export type HalfMoonTrap = FloorGlyphs<'m'>;
+export type Pentagram = FloorGlyphs<'R'>;
 
-    let itms: $ItemGlyph[] = coords.map((m) => {
-        return { tag: si.e, p: m }; //default 10 points lost if not specified
+export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
+*/
+    let itms: $ItemFloor[] = coords.map((m) => {
+        let gui: $GFragment = {
+            size: 'normal',
+            auxClassNames: ['common_floor_objects', getFloorClassName(si.e)],
+            top: 0,
+            left: 0,
+            zIndex: 0
+        };
+        return {
+            tag: si.e,
+            p: m,
+            enabled: false,
+            gui
+        }; //default 10 points lost if not specified
     });
     //
     let err = itms.filter((f) => {

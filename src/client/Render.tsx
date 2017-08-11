@@ -79,7 +79,6 @@ export function InitDungeonGUI(compiled: DungeonGameModel) {
     const palette = [''];
     palette;
     
-    
     compiled.rooms.forEach((room) => {
         room;
     });

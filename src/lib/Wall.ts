@@ -1,25 +1,101 @@
-import { $Room, $Item, getNameSpace } from './Room';
+import { $Room, $Item, $GFragment, getNameSpace } from './Room';
 import { Vector, addV, negV } from './math';
 import { $Door } from './Door';
+import {
+    sampleFromList,
+    /*profilerFactory*/
+} from './statistics';
 
+type HWallType = 'top_top_1' | 'top_top_2';
+type VWallType = 'wall_side_1' | 'wall_side_2';
+//type FloorTypes = 'floor_0' | 'floor_1' | 'floor_2' | 'floor_3';
+
+
+function getRandomVerticalWall(): VWallType {
+    return sampleFromList<VWallType>([{
+        probability: 4,
+        payload: 'wall_side_1'
+    }, {
+        probability: 1,
+        payload: 'wall_side_2' //cracked vertical
+    }]);
+}
+
+
+function getRandomHorizontalWall(): HWallType {
+    return sampleFromList<HWallType>([{
+        probability: 4,
+        payload: 'top_top_1'
+    }, {
+        probability: 1,
+        payload: 'top_top_2' //cracked horizontal
+    }]);
+}
+
+const dudFragment: $GFragment = {
+    size: 'normal',
+    auxClassNames: [],
+    left: 0,
+    top: 0,
+    zIndex: 0
+};
+
+
+
+
+function mapAsciiToGUIWall(token: string): $GFragment {
+
+
+    let wallName: string;
+    switch (token) {
+        case '┃':
+            wallName = getRandomVerticalWall();
+            break;
+        case '━':
+            wallName = getRandomHorizontalWall();
+            break;
+        case '┗':
+            wallName = 'top_bottom_left_corner';
+            break;
+        case '┛':
+            wallName = 'top_bottom_right_corner';
+            break;
+        case '┏':
+            wallName = 'top_top_left_corner';
+            break;
+        case '┓':
+            wallName = 'top_top_right_corner';
+            break;
+        default:
+            throw new Error(`Wrong token for wall ${token}`);
+    }
+
+    return {
+        size: 'normal',
+        auxClassNames: ['floor_crypt', getRandomVerticalWall()],
+        left: 0,  //parameter adjusted for the gui state used by the render
+        top: 0,
+        zIndex: 0
+    };
+}
 
 function createCursor(coords: Vector[], width: number, height: number, doors: $Door[], pk: number) {
 
     let marked = coords.map((vec) => {
-        let w: $Item = { tag: '#', p: vec };
+        let w: $Item = { tag: '#', p: vec, gui: dudFragment };
         return w;
     });
 
     // add doors
     marked.splice(0, 0, ...doors.map((d) => {
-        let wd: $Item = { tag: d.dir, p: d.p };
+        let wd: $Item = { tag: d.dir, p: d.p, gui: dudFragment };
         return wd;
     }));
 
     const fidx = (p: Vector): $Item | undefined => {
         if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height) {
             let i = marked.findIndex((itm) => p.x === itm.p.x && p.y === itm.p.y);
-            return (i === -1) ? { tag: '.', p } : marked[i];
+            return (i === -1) ? { tag: '.', p, gui: dudFragment } : marked[i];
         }
         return undefined;
     };
@@ -45,13 +121,16 @@ function createCursor(coords: Vector[], width: number, height: number, doors: $D
 
     const set = (p: Vector, mark: string) => {
         let itm = fidx(p);
+        let gui = mapAsciiToGUIWall(mark[0]);
         if (!itm) {
             if (p.x >= 0 && p.x < width && p.y >= 0 && p.y < height) {
-                marked.push({ tag: mark[0], p });
+                itm = { tag: mark[0], p, gui };
+                marked.push(itm);
             }
         }
         else {
             itm.tag = mark[0];
+            itm.gui = gui;
         }
     };
 

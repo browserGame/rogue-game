@@ -3,12 +3,14 @@ import {
     $Room,
     $Item,
     getNameSpace,
-    getContentAt
+    getContentAt,
+    $GFragment
 } from './Room';
 
 import {
     Vector, addV
 } from './math';
+
 
 export function processCobWeb(matrix: string[], width: number, room: $Room, coords: Vector[]) {
 
@@ -74,12 +76,7 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
 
         //let start = bools.findIndex((val) => val === false); // this is index 5
         //let startReverse = bools.reverse().findIndex((val) => val === true); // this is index 4  000 11111
-
-
-
     };
-
-
 
     /* 
     There are different kind of cobwebs because cobwebs sit in the corners of rooms 
@@ -91,10 +88,21 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
             return undefined;
         }
         let tile = getContentAt(room, v, '.');
-        if (!tile){
+        if (!tile) {
             return undefined;
         }
-        let rc: $Item = { tag: `${selected[0]}`, p: v };
+
+        let className = ['spiderweb_03', 'spiderweb_04', 'spiderweb_05', 'spiderweb_06'][selected[0]];
+
+        let gui: $GFragment = {
+            size: 'normal',
+            auxClassNames: ['dungeon_decor_props', className],
+            left: 0,
+            top: 0,
+            zIndex: 0
+        };
+
+        let rc: $Item = { tag: `${selected[0]}`, p: v, gui };
         return rc;
     }).filter((i) => i !== undefined);
 

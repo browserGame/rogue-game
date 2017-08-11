@@ -1,13 +1,50 @@
 import {
+
     $Room,
     $Item,
     getNameSpace,
-    getContentAt
+    getContentAt,
+    $GFragment
+
 } from './Room';
+
+import {
+
+    Sample,
+    sampleFromList,
+    /*profilerFactory*/
+
+} from './statistics';
 
 import {
     Vector, addV
 } from './math';
+
+
+type FloorTypes = 'floor_0' | 'floor_1' | 'floor_2' | 'floor_3';
+
+
+export function getRandomFloor(): $GFragment {
+
+    let samples = [100 - 15 - 10 - 3, 15, 10, 3].map((c, idx) => {
+        let rc = {
+            probability: c,
+            payload: `floor_${idx}`
+        } as Sample<FloorTypes>;
+        return rc;
+    });
+    let s = sampleFromList(samples);
+
+    return {
+        size: 'normal',
+        auxClassNames: ['floor_crypt', s],
+        left: 0,
+        top: 0,
+        zIndex: 0
+    };
+
+}
+
 
 export function processFloor(matrix: string[], width: number, room: $Room) {
 
@@ -22,7 +59,7 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
         // [(]lava
         // [O] water
         // [$] acid bath
-       
+
     };
 
     let done: Vector[] = [];
@@ -52,7 +89,7 @@ export function processFloor(matrix: string[], width: number, room: $Room) {
         );
     }
     let floor = getNameSpace(room, 'floor');
-    floor.splice(0, floor.length, ...done.map((p) => <$Item>{ tag: '.', p }).sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x));
+    floor.splice(0, floor.length, ...done.map((p) => <$Item>{ tag: '.', p, gui: getRandomFloor() }).sort((a, b) => a.p.y - b.p.y || a.p.x - b.p.x));
 
 }
 
@@ -70,7 +107,7 @@ export function floorExtrusion(room: $Room, i: $Item): void {
 
     });
 
-    if (floor.length !== copy.length){
+    if (floor.length !== copy.length) {
         console.log(` number of floor types reduced: ${floor.length - copy.length}`);
     }
 
