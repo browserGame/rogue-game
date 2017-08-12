@@ -18,7 +18,8 @@ import {
     WizardStatue,
     Goblin,
     TelePortal,
-    BootsDamaged,
+    Boots,
+    Pants,
     Bat,
     Rat,
     Boss,
@@ -28,7 +29,7 @@ import {
     QuestRing,
     Acid,
     MagicSpellBook,
-    MaceCracked,
+    Mace,
     Skeleton,
     Elixer,
     TreasureChest,
@@ -39,17 +40,13 @@ import {
     Carpet,
     BottleMilk,
     GreenWizard,
-    BootsRed,
     ChickenBone,
     Closet,
     RedPentagram,
     Mana,
     Fish,
     Table,
-    PantsRed,
     TwirlStone,
-    PantsGreen,
-    Mace,
     MagicPotion,
     //Spikes,
     BearTrap,
@@ -160,7 +157,7 @@ export const mockDungeon: Layout[] = [
     },
     {
         symbols: [
-            <Stone>{ e: 'L', color: 'gold', credit: 1 },
+            <Stone>{ e: 'L', color: 'yellow', credit: 1 },
             <Bat>{
                 e: 'F', has: [
                     <Coin>{ e: 'M', color: 'gold', credit: 4 }
@@ -212,9 +209,9 @@ export const mockDungeon: Layout[] = [
                 xp: 100,
                 level: 1,
                 e: '%', has: [
-                    <BootsDamaged>{ addDp: 10 },
+                    <Boots>{ addDp: 10 },
                     <MagicSpellBook>{ spell: 'defense' },
-                    <MaceCracked>{ addHp: 40 },
+                    <Mace>{ addHp: 40 },
                 ]
             }
         ],
@@ -239,7 +236,7 @@ export const mockDungeon: Layout[] = [
             <DoorUp>{ e: '^', toRoom: 5, inset: true },
             <DoorBottom>{ e: 'v', toRoom: 12 },
             <DoorLeft>{ e: '<', toRoom: 7, inset: true },
-            <Stone>{ e: 'L', color: 'gold', credit: 5 },
+            <Stone>{ e: 'L', color: 'yellow', credit: 5 },
             <Vase>{ e: 'J', color: 'green' },
             <Bat>{
                 e: 'F', has: [<Coin>{ credit: 5, e: 'M', color: 'gold' }]
@@ -248,7 +245,7 @@ export const mockDungeon: Layout[] = [
             <Vase>{ m: '1', e: 'J', color: 'red' },
             <Rat>{
                 m: '2', e: 'G', has: [
-                    <Stone>{ credit: 1, color: 'gold' },
+                    <Stone>{ credit: 1, color: 'yellow' },
                     <Coin>{ credit: 2, color: 'gray' }
                 ]
             },
@@ -282,7 +279,7 @@ export const mockDungeon: Layout[] = [
             <DoorRight>{ e: '>', toRoom: 6 },
             <Skeleton>{
                 m: '1', e: 'T', has: [
-                    <Stone>{ color: 'gold', credit: 4 },
+                    <Stone>{ color: 'yellow', credit: 4 },
                 ]
             },
             <Shield>{ e: 'Z', addDp: 20 },
@@ -479,12 +476,12 @@ export const mockDungeon: Layout[] = [
         symbols: [
             <DoorBottom>{ e: 'v', toRoom: 10 },
             <Vase>{
-                e: 'J', color: 'red', has: [<Coin>{ e: 'M', credit: 1, color: 'grey' }]
+                e: 'J', color: 'red', has: [<Coin>{ e: 'M', credit: 1, color: 'gray' }]
             },
             <BeerBarrel>{
                 e: '{', has: [
                     <Coin>{ e: 'M', credit: 3, color: 'gold' },
-                    <Stone>{ e: 'L', credit: 4, color: 'gold' }
+                    <Stone>{ e: 'L', credit: 4, color: 'yellow' }
                 ]
             },
 
@@ -688,7 +685,7 @@ export const mockDungeon: Layout[] = [
                 hp: 10,
                 level: 1,
                 has: [
-                    <BootsRed>{ e: 'à', addDp: 10, addXp: 10 }
+                    <Boots>{ e: 'x', addDp: 10, addXp: 10 }
                 ]
             },
             <GreenWizard>{
@@ -800,7 +797,7 @@ export const mockDungeon: Layout[] = [
             },
             <Bat>{
                 e: 'F', has: [
-                    <Stone>{ color: 'gold', credit: 4, e: 'L' }
+                    <Stone>{ color: 'yellow', credit: 4, e: 'L' }
                 ]
             },
         ],
@@ -830,7 +827,7 @@ export const mockDungeon: Layout[] = [
             <DoorUp>{ e: '^', toRoom: 24, inset: true },
             <DoorBottom>{ e: 'v', toRoom: 22 },
             <DoorRight>{ e: '>', toRoom: 32, inset: true },
-            <Stone>{ e: 'L', color: 'gold', credit: 4 },
+            <Stone>{ e: 'L', color: 'yellow', credit: 4 },
             <BeerBarrel>{
                 e: '{', has: [
                     <Coin>{ e: 'M', credit: 1, color: 'gold' }
@@ -910,12 +907,12 @@ export const mockDungeon: Layout[] = [
         symbols: [
             <DoorUp>{ e: '^', toRoom: 21 },
             <DoorBottom>{ e: 'v', toRoom: 27, inset: true },
-            <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'grey', e: 'M' }] },
+            <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'gray', e: 'M' }] },
             <TombStone>{
                 e: 'V', has: [
                     <Fish>{ e: ';', addHp: 15 },
                     <Mana>{ e: '§', addMana: 14 },
-                    <Coin>{ e: 'M', credit: 1, color: 'grey' }
+                    <Coin>{ e: 'M', credit: 1, color: 'gray' }
                 ]
             },
         ],
@@ -942,7 +939,7 @@ export const mockDungeon: Layout[] = [
             <DoorUp>{ e: '^', toRoom: 26 },
             <DoorRight>{ e: '>', toRoom: 28, inset: true },
             <Coin>{ e: 'M', credit: 3, color: 'gold' },
-            <Stone>{ m: '1', e: 'L', color: 'gold', credit: 3 },
+            <Stone>{ m: '1', e: 'L', color: 'yellow', credit: 3 },
             <Stone>{ m: '2', e: 'L', color: 'green', credit: 4 },
         ],
         id: 27,
@@ -964,7 +961,7 @@ export const mockDungeon: Layout[] = [
             <Bat>{ e: 'F', has: [<Coin>{ e: 'M', credit: 1, color: 'gold' }] },
             <Vase>{ e: 'J', has: [<Coin>{ e: 'M', credit: 3, color: 'gold' }], color: 'red' },
             <Bat>{ m: '1', e: 'F', has: [<Coin>{ e: 'M', credit: 4, color: 'gray' }] },
-            <Bat>{ m: '2', e: 'F', xp: 10, hp: 3, level: 1, has: [<PantsRed>{ e: '~', addHp: 10 }] },
+            <Bat>{ m: '2', e: 'F', xp: 10, hp: 3, level: 1, has: [<Pants>{ e: 'ç', addHp: 10 }] },
             <TelePortal>{ e: 'X', toRoom: 1, portal: 'X' },
             <Table>{ e: '*', has: [] }
         ],
@@ -1089,14 +1086,14 @@ export const mockDungeon: Layout[] = [
                     <BottleMilk>{ e: 'p', addHp: 25 }
                 ]
             },
-            <Stone>{ m: '3', e: 'L', color: 'gold', credit: 4 },
+            <Stone>{ m: '3', e: 'L', color: 'yellow', credit: 4 },
             <Stone>{ m: '4', e: 'L', color: 'white', credit: 3 },
             <Bat>{
                 m: '5', e: 'F', xp: 10, hp: 10, has: [
                     <Coin>{ e: 'M', credit: 4, color: 'gray' }
                 ]
             },
-            <Stone>{ m: '6', e: 'L', color: 'gold', credit: 2 },
+            <Stone>{ m: '6', e: 'L', color: 'yellow', credit: 2 },
             <Vase>{
                 m: '7', e: 'J', color: 'blue', has: [
                     <MagicSpellBook>{ e: 'u', spell: 'earthquake' },
@@ -1108,11 +1105,11 @@ export const mockDungeon: Layout[] = [
             <Rat>{
                 m: '9', e: 'G', xp: 10, hp: 10, has: [
                     <Coin>{ e: 'M', color: 'gold', credit: 1 },
-                    <Coin>{ e: 'M', color: 'silver', credit: 1 }
+                    <Coin>{ e: 'M', color: 'gray', credit: 1 }
                 ]
             },
             <Bat>{ m: 'a', e: 'F', xp: 10, hp: 10 },
-            <Stone>{ m: 'b', e: 'L', color: 'gold', credit: 4 },
+            <Stone>{ m: 'b', e: 'L', color: 'yellow', credit: 4 },
             <Bat>{
                 m: 'c', e: 'F', xp: 10, hp: 10, has: [
                     <Fish>{ e: ';', addHp: 25, poisen: { add: 10, release: 2 } },
@@ -1165,7 +1162,7 @@ export const mockDungeon: Layout[] = [
                 ]
             },
             <Vase>{ e: 'J', color: 'green' },
-            <Stone>{ m: '6', e: 'L', color: 'gold', credit: 4 },
+            <Stone>{ m: '6', e: 'L', color: 'yellow', credit: 4 },
             <Carpet>{ e: 'é', color: 'red' }
         ],
         id: 33,
@@ -1189,7 +1186,7 @@ export const mockDungeon: Layout[] = [
             <Stone>{ e: 'L', color: 'white', credit: 4 },
             <GreenWizard>{
                 e: '@', xp: 10, hp: 40, level: 1, has: [
-                    <PantsGreen>{ e: 'ç', addDp: 15 }
+                    <Pants>{ e: 'ç', addDp: 15 }
                 ]
             }
         ],

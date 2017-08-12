@@ -51,12 +51,10 @@
 
 //. [Z] shield
 //. [t] mace
-//. [x] damage boots
-//. [à] boots
-//. [+] cracked-mace
-//. [~] red-pants
-//. [ç] green pants
-//. [ù] leather-boots
+//. [ç] pants
+//. [x] boots
+
+
 
 //valuebles
 
@@ -196,7 +194,7 @@ export const codedItems: CPU = {
     K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: processSkullAndBones, //xx skull , floor or carper below, blood seeps below
     é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
-    '=': 0x0, //"(bloodà) seeps to floor or carpet",
+    '=': 0x0, //"(blood) seeps to floor or carpet",
     '²': processGlyphs,
     //
     // doorways and portals
@@ -265,12 +263,9 @@ export const codedItems: CPU = {
     //
     Z: processWeapons, //... shield
     t: processWeapons, //... mace
-    x: processWeapons, //... damaged boots
-    à: processWeapons, //... boots
-    '+': processWeapons, //... cracked-mace
-    '~': processWeapons, //... red-pants
-    ç: processWeapons, //... green-pants
-    ù: processWeapons, //... leather-boots
+    x: processWeapons, //... boots
+    ç: processWeapons, //... pants
+ 
     //
     //valuables
     //
@@ -509,12 +504,9 @@ export function isSpell(sp: any): sp is AllSpells {
 export type ArsenalType =
     'Z' |  //... shield
     't' | //... mace
-    'x' | //... damaged boots
-    'à' | //... boots-red
-    '+' | //... cracked-mace
-    '~' | //... red-pants
-    'ç' | //... green-pants
-    'ù'; //... leather-boots
+    'x' | //... boots
+    'ç'; //... pants
+  
 //
 export interface Arsenal<T extends ArsenalType> extends SymbolBase<T> {
     addHp?: number;
@@ -524,21 +516,18 @@ export interface Arsenal<T extends ArsenalType> extends SymbolBase<T> {
 
 export type Shield = Arsenal<'Z'>;
 export type Mace = Arsenal<'t'>;
-export type BootsRed = Arsenal<'à'>;
-export type BootsDamaged = Arsenal<'x'>;
-export type MaceCracked = Arsenal<'+'>;
-export type PantsRed = Arsenal<'~'>;
-export type PantsGreen = Arsenal<'ç'>;
-export type BootsLeather = Arsenal<'ù'>;
+export type Boots = Arsenal<'x'>;
+export type Pants = Arsenal<'ç'>;
 
-export type AllWeapons = Shield | Mace | BootsRed | BootsDamaged | MaceCracked | PantsRed | PantsGreen | BootsLeather;
+
+export type AllWeapons = Shield | Mace |  Boots | Pants;
 
 export function isWeapon(w: any): w is AllWeapons {
     if (!w) {
         return false;
     }
     let c = typeof w.addHp === 'string' || typeof w.addXp === 'string' || typeof w.addDp === 'string';
-    return c && 'Ztàx+~çù'.indexOf(w.e) >= 0;
+    return c && 'Ztx~ç'.indexOf(w.e) >= 0;
 }
 
 //
@@ -550,16 +539,32 @@ export type ValuableType =
 
 export interface Valuable<T extends ValuableType> extends SymbolBase<T> {
     credit: number;
-    color?: string;
+}
+
+export type ColorStonesType = 'gray' | 'green' | 'yellow' | 'blue' | 'red' | 'white' | 'purple';
+
+export interface Stone extends Valuable<'L'> {
+    color: ColorStonesType;
+}
+
+export type ColorCoinType = 'gold' | 'gray' | 'yellow';
+
+export interface Coin extends Valuable<'M'> {
+    color: ColorCoinType;
+}
+
+export function isStone(v: any): v is Stone {
+    return v.e === 'L' && typeof v.credit === 'number';
+}
+
+export function isCoin(v: any): v is Coin {
+    return v.e === 'M' && typeof v.credit === 'number';
 }
 
 export function isValuable(v: any): v is Stone | Coin {
-    return (typeof v.e === 'string' && 'LM'.indexOf(v.e) >= 0 && typeof v.credit === 'number');
+    return isCoin(v) || isStone(v);
 }
-//
-export type Stone = Valuable<'L'>;
-export type Coin = Valuable<'M'>;
-//
+
 export type AllValuebles = Stone | Coin;
 //
 // edibales
