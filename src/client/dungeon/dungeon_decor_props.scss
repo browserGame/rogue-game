@@ -21,16 +21,17 @@
         }
 
         .normal>div {
-            transform: scale(2.5);
-        }
-
-        .boss.super>div {
-            transform: scale(3.125);
+            transform: scale(3);
         }
 
         .boss>div {
-            transform: scale(8.75);
+            transform: scale(3.75);
         }
+
+        .boss.super>div {
+            transform: scale(10.5);
+        }
+
 
         .super.boss.look-right>div,
         .normal.look-right>div,
@@ -39,15 +40,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2.5);
+            transform: scaleX(-1) translateX(100%) scale(3);
         }
 
         .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.125);
+            transform: scaleX(-1) translateX(100%) scale(3.75);
         }
 
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(8.75);
+            transform: scaleX(-1) translateX(100%) scale(10.5);
         }
 
         .smooth,
@@ -257,7 +258,7 @@
 .normal.area41,
 .normal.area42,
 .normal.area43 {
-                height: 60px; width: 60px;
+                height: 72px; width: 72px;
             }
  .boss.skeleton_remains_01,
 .boss.skeleton_remains_02,
@@ -283,7 +284,7 @@
 .boss.area41,
 .boss.area42,
 .boss.area43 {
-                height: 75px; width: 75px;
+                height: 90px; width: 90px;
             }
  .boss.super.skeleton_remains_01,
 .boss.super.skeleton_remains_02,
@@ -309,7 +310,7 @@
 .boss.super.area41,
 .boss.super.area42,
 .boss.super.area43 {
-                height: 210px; width: 210px;
+                height: 252px; width: 252px;
             } 
 
         

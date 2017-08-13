@@ -24,16 +24,17 @@
         }
 
         .normal>div {
-            transform: scale(2.5);
-        }
-
-        .boss.super>div {
-            transform: scale(3.125);
+            transform: scale(3);
         }
 
         .boss>div {
-            transform: scale(8.75);
+            transform: scale(3.75);
         }
+
+        .boss.super>div {
+            transform: scale(10.5);
+        }
+
 
         .super.boss.look-right>div,
         .normal.look-right>div,
@@ -42,15 +43,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2.5);
+            transform: scaleX(-1) translateX(100%) scale(3);
         }
 
         .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.125);
+            transform: scaleX(-1) translateX(100%) scale(3.75);
         }
 
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(8.75);
+            transform: scaleX(-1) translateX(100%) scale(10.5);
         }
 
         .smooth,

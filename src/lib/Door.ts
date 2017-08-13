@@ -47,7 +47,7 @@ export function processDoor(matrix: string[], width: number, room: $Room, coords
         dir: si.e,
         gui
     };
-
+    
     room.doors.push(door);
 
 }

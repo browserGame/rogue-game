@@ -9,7 +9,7 @@ function createCSSClassMapper(scssResource: string) {
 }
 
 export const cssFn = {
-    enemy: createCSSClassMapper('enemies'),
+    enemies: createCSSClassMapper('enemies'),
     hero: createCSSClassMapper('heroes'),
     common_fo: createCSSClassMapper('common_floor_objects'),
     dungeon_o: createCSSClassMapper('dungeon_objects'),

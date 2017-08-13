@@ -21,16 +21,17 @@
         }
 
         .normal>div {
-            transform: scale(2.5);
-        }
-
-        .boss.super>div {
-            transform: scale(3.125);
+            transform: scale(3);
         }
 
         .boss>div {
-            transform: scale(8.75);
+            transform: scale(3.75);
         }
+
+        .boss.super>div {
+            transform: scale(10.5);
+        }
+
 
         .super.boss.look-right>div,
         .normal.look-right>div,
@@ -39,15 +40,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2.5);
+            transform: scaleX(-1) translateX(100%) scale(3);
         }
 
         .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.125);
+            transform: scaleX(-1) translateX(100%) scale(3.75);
         }
 
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(8.75);
+            transform: scaleX(-1) translateX(100%) scale(10.5);
         }
 
         .smooth,
@@ -1311,7 +1312,7 @@
 .normal.pants_9,
 .normal.pants_10,
 .normal.pants_11 {
-                height: 40px; width: 40px;
+                height: 48px; width: 48px;
             }
  .boss.area0,
 .boss.area1,
@@ -1467,7 +1468,7 @@
 .boss.pants_9,
 .boss.pants_10,
 .boss.pants_11 {
-                height: 50px; width: 50px;
+                height: 60px; width: 60px;
             }
  .boss.super.area0,
 .boss.super.area1,
@@ -1623,25 +1624,25 @@
 .boss.super.pants_9,
 .boss.super.pants_10,
 .boss.super.pants_11 {
-                height: 140px; width: 140px;
+                height: 168px; width: 168px;
             }
  .normal.arrow {
-                height: 10px; width: 52.5px;
+                height: 12px; width: 63px;
             }
  .boss.arrow {
-                height: 12.5px; width: 65.625px;
+                height: 15px; width: 78.75px;
             }
  .boss.super.arrow {
-                height: 35px; width: 183.75px;
+                height: 42px; width: 220.5px;
             }
  .normal.knive_throw {
-                height: 12.5px; width: 45px;
+                height: 15px; width: 54px;
             }
  .boss.knive_throw {
-                height: 15.625px; width: 56.25px;
+                height: 18.75px; width: 67.5px;
             }
  .boss.super.knive_throw {
-                height: 43.75px; width: 157.5px;
+                height: 52.5px; width: 189px;
             } 
 
         

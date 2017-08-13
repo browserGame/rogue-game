@@ -82,17 +82,17 @@ export function parseLayout(layout: Layout) {
         return idx ? matrix.join('').replace(/[#\^<v>.]/g, ' ').split('') : matrix;
     });
 
-    let room: $Room = {
+    let room: $Room = new $Room({
         pk,
         top,
         left,
+        base:raw[0],
         width,
         height,
-        doors: [],
-        base: raw[0],
+        doors:[],
         body: new Map()
-    };
-
+    });
+   
     raw.map((matrix, idx) => {
         let itemPalette = createPalette(matrix, width, ' ');
         //process doors first

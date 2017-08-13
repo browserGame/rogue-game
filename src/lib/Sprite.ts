@@ -1,8 +1,8 @@
 const gCache = new Map<string, SpriteSheet>();
 
-const NORMAL = 2.5;
-const BOSS = 3.125;
-const SUPER = 8.75;
+const NORMAL = 3;
+const BOSS = NORMAL * 2.5 / 2;
+const SUPER = NORMAL * (7 / 2);
 
 export function getSpriteSheetByName(url: string) {
     return gCache.get(url);
@@ -217,13 +217,14 @@ export class SpriteSheet {
             transform: scale(${NORMAL});
         }
 
-        .boss.super>div {
+        .boss>div {
             transform: scale(${BOSS});
         }
 
-        .boss>div {
+        .boss.super>div {
             transform: scale(${SUPER});
         }
+
 
         .super.boss.look-right>div,
         .normal.look-right>div,
