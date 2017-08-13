@@ -21,15 +21,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -39,15 +39,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -73,13 +73,13 @@
         /* Static Sprites Sizes */
                 
          .normal.shadow {
-                height: 20px; width: 48px;
-            }
- .boss.shadow {
                 height: 25px; width: 60px;
             }
+ .boss.shadow {
+                height: 31.25px; width: 75px;
+            }
  .boss.super.shadow {
-                height: 70px; width: 168px;
+                height: 87.5px; width: 210px;
             } 
 
         

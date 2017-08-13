@@ -21,15 +21,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -39,15 +39,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -578,84 +578,84 @@
                 
          .normal.close_btn,
 .normal.close_btn_over {
-                height: 54px; width: 54px;
+                height: 67.5px; width: 67.5px;
             }
  .boss.close_btn,
 .boss.close_btn_over {
-                height: 67.5px; width: 67.5px;
+                height: 84.375px; width: 84.375px;
             }
  .boss.super.close_btn,
 .boss.super.close_btn_over {
-                height: 189px; width: 189px;
+                height: 236.25px; width: 236.25px;
             }
  .normal.items_slot,
 .normal.items_slot_hover {
-                height: 82px; width: 82px;
+                height: 102.5px; width: 102.5px;
             }
  .boss.items_slot,
 .boss.items_slot_hover {
-                height: 102.5px; width: 102.5px;
+                height: 128.125px; width: 128.125px;
             }
  .boss.super.items_slot,
 .boss.super.items_slot_hover {
-                height: 287px; width: 287px;
+                height: 358.75px; width: 358.75px;
             }
  .normal.inventory_menu {
-                height: 1200px; width: 640px;
-            }
- .boss.inventory_menu {
                 height: 1500px; width: 800px;
             }
+ .boss.inventory_menu {
+                height: 1875px; width: 1000px;
+            }
  .boss.super.inventory_menu {
-                height: 4200px; width: 2240px;
+                height: 5250px; width: 2800px;
             }
  .normal.menu_pause {
-                height: 398px; width: 408px;
-            }
- .boss.menu_pause {
                 height: 497.5px; width: 510px;
             }
+ .boss.menu_pause {
+                height: 621.875px; width: 637.5px;
+            }
  .boss.super.menu_pause {
-                height: 1393px; width: 1428px;
+                height: 1741.25px; width: 1785px;
             }
  .normal.pause_menu_btn_bkg {
-                height: 152px; width: 324px;
-            }
- .boss.pause_menu_btn_bkg {
                 height: 190px; width: 405px;
             }
+ .boss.pause_menu_btn_bkg {
+                height: 237.5px; width: 506.25px;
+            }
  .boss.super.pause_menu_btn_bkg {
-                height: 532px; width: 1134px;
+                height: 665px; width: 1417.5px;
             }
  .normal.selection_mark,
 .normal.selection_mark_enemies {
-                height: 50px; width: 50px;
+                height: 62.5px; width: 62.5px;
             }
  .boss.selection_mark,
 .boss.selection_mark_enemies {
-                height: 62.5px; width: 62.5px;
+                height: 78.125px; width: 78.125px;
             }
  .boss.super.selection_mark,
 .boss.super.selection_mark_enemies {
-                height: 175px; width: 175px;
+                height: 218.75px; width: 218.75px;
             }
  .normal.gold {
-                height: 86px; width: 80px;
-            }
- .boss.gold {
                 height: 107.5px; width: 100px;
             }
+ .boss.gold {
+                height: 134.375px; width: 125px;
+            }
  .boss.super.gold {
-                height: 301px; width: 280px;
+                height: 376.25px; width: 350px;
             }
  .normal.pause_menu_btn_bkg_over {
-                height: 150px; width: 324px;
-            }
- .boss.pause_menu_btn_bkg_over {
                 height: 187.5px; width: 405px;
             }
+ .boss.pause_menu_btn_bkg_over {
+                height: 234.375px; width: 506.25px;
+            }
  .boss.super.pause_menu_btn_bkg_over {
-                height: 525px; width: 1134px;
+                height: 656.25px; width: 1417.5px;
             }
  .normal.btn_inventory,
 .normal.btn_character,
@@ -669,7 +669,7 @@
 .normal.btn_map_over,
 .normal.btn_abilities_menu_detailed,
 .normal.btn_abilities_menu_compact {
-                height: 92px; width: 92px;
+                height: 115px; width: 115px;
             }
  .boss.btn_inventory,
 .boss.btn_character,
@@ -683,7 +683,7 @@
 .boss.btn_map_over,
 .boss.btn_abilities_menu_detailed,
 .boss.btn_abilities_menu_compact {
-                height: 115px; width: 115px;
+                height: 143.75px; width: 143.75px;
             }
  .boss.super.btn_inventory,
 .boss.super.btn_character,
@@ -697,76 +697,76 @@
 .boss.super.btn_map_over,
 .boss.super.btn_abilities_menu_detailed,
 .boss.super.btn_abilities_menu_compact {
-                height: 322px; width: 322px;
+                height: 402.5px; width: 402.5px;
             }
  .normal.game_over {
-                height: 80px; width: 480px;
-            }
- .boss.game_over {
                 height: 100px; width: 600px;
             }
+ .boss.game_over {
+                height: 125px; width: 750px;
+            }
  .boss.super.game_over {
-                height: 280px; width: 1680px;
+                height: 350px; width: 2100px;
             }
  .normal.health_indicator_background {
-                height: 248px; width: 44px;
-            }
- .boss.health_indicator_background {
                 height: 310px; width: 55px;
             }
+ .boss.health_indicator_background {
+                height: 387.5px; width: 68.75px;
+            }
  .boss.super.health_indicator_background {
-                height: 868px; width: 154px;
+                height: 1085px; width: 192.5px;
             }
  .normal.health_indicator_hp_tube,
 .normal.health_indicator_mana_tube {
-                height: 228px; width: 44px;
+                height: 285px; width: 55px;
             }
  .boss.health_indicator_hp_tube,
 .boss.health_indicator_mana_tube {
-                height: 285px; width: 55px;
+                height: 356.25px; width: 68.75px;
             }
  .boss.super.health_indicator_hp_tube,
 .boss.super.health_indicator_mana_tube {
-                height: 798px; width: 154px;
+                height: 997.5px; width: 192.5px;
             }
  .normal.enemy_life_bar,
 .normal.enemy_behind_bar {
-                height: 22px; width: 256px;
+                height: 27.5px; width: 320px;
             }
  .boss.enemy_life_bar,
 .boss.enemy_behind_bar {
-                height: 27.5px; width: 320px;
+                height: 34.375px; width: 400px;
             }
  .boss.super.enemy_life_bar,
 .boss.super.enemy_behind_bar {
-                height: 77px; width: 896px;
+                height: 96.25px; width: 1120px;
             }
  .normal.action_bkg_unselected,
 .normal.action_bkg_selected {
-                height: 120px; width: 120px;
+                height: 150px; width: 150px;
             }
  .boss.action_bkg_unselected,
 .boss.action_bkg_selected {
-                height: 150px; width: 150px;
+                height: 187.5px; width: 187.5px;
             }
  .boss.super.action_bkg_unselected,
 .boss.super.action_bkg_selected {
-                height: 420px; width: 420px;
+                height: 525px; width: 525px;
             }
  .normal.inv_defense_icon,
 .normal.inv_magic_icon,
 .normal.inv_attack_icon {
-                height: 48px; width: 48px;
+                height: 60px; width: 60px;
             }
  .boss.inv_defense_icon,
 .boss.inv_magic_icon,
 .boss.inv_attack_icon {
-                height: 60px; width: 60px;
+                height: 75px; width: 75px;
             }
  .boss.super.inv_defense_icon,
 .boss.super.inv_magic_icon,
 .boss.super.inv_attack_icon {
-                height: 168px; width: 168px;
+                height: 210px; width: 210px;
             }
  .normal.eq_slot_weapon,
 .normal.eq_slot_shield,
@@ -775,7 +775,7 @@
 .normal.eq_slot_body_armor,
 .normal.eq_slot_boots,
 .normal.eq_slot_pants {
-                height: 114px; width: 114px;
+                height: 142.5px; width: 142.5px;
             }
  .boss.eq_slot_weapon,
 .boss.eq_slot_shield,
@@ -784,7 +784,7 @@
 .boss.eq_slot_body_armor,
 .boss.eq_slot_boots,
 .boss.eq_slot_pants {
-                height: 142.5px; width: 142.5px;
+                height: 178.125px; width: 178.125px;
             }
  .boss.super.eq_slot_weapon,
 .boss.super.eq_slot_shield,
@@ -793,160 +793,160 @@
 .boss.super.eq_slot_body_armor,
 .boss.super.eq_slot_boots,
 .boss.super.eq_slot_pants {
-                height: 399px; width: 399px;
+                height: 498.75px; width: 498.75px;
             }
  .normal.shopkeeper_menu {
-                height: 846px; width: 594px;
-            }
- .boss.shopkeeper_menu {
                 height: 1057.5px; width: 742.5px;
             }
+ .boss.shopkeeper_menu {
+                height: 1321.875px; width: 928.125px;
+            }
  .boss.super.shopkeeper_menu {
-                height: 2961px; width: 2079px;
+                height: 3701.25px; width: 2598.75px;
             }
  .normal.scroll {
-                height: 42px; width: 36px;
-            }
- .boss.scroll {
                 height: 52.5px; width: 45px;
             }
+ .boss.scroll {
+                height: 65.625px; width: 56.25px;
+            }
  .boss.super.scroll {
-                height: 147px; width: 126px;
+                height: 183.75px; width: 157.5px;
             }
  .normal.arrow_up_scroll,
 .normal.arrow_down_scroll {
-                height: 46px; width: 48px;
+                height: 57.5px; width: 60px;
             }
  .boss.arrow_up_scroll,
 .boss.arrow_down_scroll {
-                height: 57.5px; width: 60px;
+                height: 71.875px; width: 75px;
             }
  .boss.super.arrow_up_scroll,
 .boss.super.arrow_down_scroll {
-                height: 161px; width: 168px;
+                height: 201.25px; width: 210px;
             }
  .normal.scroll_bar {
-                height: 28px; width: 16px;
-            }
- .boss.scroll_bar {
                 height: 35px; width: 20px;
             }
+ .boss.scroll_bar {
+                height: 43.75px; width: 25px;
+            }
  .boss.super.scroll_bar {
-                height: 98px; width: 56px;
+                height: 122.5px; width: 70px;
             }
  .normal.abandon_btn {
-                height: 66px; width: 192px;
-            }
- .boss.abandon_btn {
                 height: 82.5px; width: 240px;
             }
+ .boss.abandon_btn {
+                height: 103.125px; width: 300px;
+            }
  .boss.super.abandon_btn {
-                height: 231px; width: 672px;
+                height: 288.75px; width: 840px;
             }
  .normal.journal_menu {
-                height: 812px; width: 1088px;
-            }
- .boss.journal_menu {
                 height: 1015px; width: 1360px;
             }
+ .boss.journal_menu {
+                height: 1268.75px; width: 1700px;
+            }
  .boss.super.journal_menu {
-                height: 2842px; width: 3808px;
+                height: 3552.5px; width: 4760px;
             }
  .normal.props_label_action_btn,
 .normal.props_label_action_btn_hover {
-                height: 68px; width: 192px;
+                height: 85px; width: 240px;
             }
  .boss.props_label_action_btn,
 .boss.props_label_action_btn_hover {
-                height: 85px; width: 240px;
+                height: 106.25px; width: 300px;
             }
  .boss.super.props_label_action_btn,
 .boss.super.props_label_action_btn_hover {
-                height: 238px; width: 672px;
+                height: 297.5px; width: 840px;
             }
  .normal.props_label_bkg {
-                height: 190px; width: 198px;
-            }
- .boss.props_label_bkg {
                 height: 237.5px; width: 247.5px;
             }
+ .boss.props_label_bkg {
+                height: 296.875px; width: 309.375px;
+            }
  .boss.super.props_label_bkg {
-                height: 665px; width: 693px;
+                height: 831.25px; width: 866.25px;
             }
  .normal.enemy_life_bar_small,
 .normal.enemy_behind_bar_small {
-                height: 8px; width: 48px;
+                height: 10px; width: 60px;
             }
  .boss.enemy_life_bar_small,
 .boss.enemy_behind_bar_small {
-                height: 10px; width: 60px;
+                height: 12.5px; width: 75px;
             }
  .boss.super.enemy_life_bar_small,
 .boss.super.enemy_behind_bar_small {
-                height: 28px; width: 168px;
+                height: 35px; width: 210px;
             }
  .normal.ability_selection_opener_open,
 .normal.ability_selection_opener {
-                height: 96px; width: 82px;
+                height: 120px; width: 102.5px;
             }
  .boss.ability_selection_opener_open,
 .boss.ability_selection_opener {
-                height: 120px; width: 102.5px;
+                height: 150px; width: 128.125px;
             }
  .boss.super.ability_selection_opener_open,
 .boss.super.ability_selection_opener {
-                height: 336px; width: 287px;
+                height: 420px; width: 358.75px;
             }
  .normal.tiny_page {
-                height: 28px; width: 28px;
-            }
- .boss.tiny_page {
                 height: 35px; width: 35px;
             }
+ .boss.tiny_page {
+                height: 43.75px; width: 43.75px;
+            }
  .boss.super.tiny_page {
-                height: 98px; width: 98px;
+                height: 122.5px; width: 122.5px;
             }
  .normal.checkbox,
 .normal.checkbox_ticked {
-                height: 56px; width: 56px;
+                height: 70px; width: 70px;
             }
  .boss.checkbox,
 .boss.checkbox_ticked {
-                height: 70px; width: 70px;
+                height: 87.5px; width: 87.5px;
             }
  .boss.super.checkbox,
 .boss.super.checkbox_ticked {
-                height: 196px; width: 196px;
+                height: 245px; width: 245px;
             }
  .normal.tab_normal,
 .normal.tab_selected {
-                height: 130px; width: 260px;
+                height: 162.5px; width: 325px;
             }
  .boss.tab_normal,
 .boss.tab_selected {
-                height: 162.5px; width: 325px;
+                height: 203.125px; width: 406.25px;
             }
  .boss.super.tab_normal,
 .boss.super.tab_selected {
-                height: 455px; width: 910px;
+                height: 568.75px; width: 1137.5px;
             }
  .normal.equip_character {
-                height: 318px; width: 222px;
-            }
- .boss.equip_character {
                 height: 397.5px; width: 277.5px;
             }
+ .boss.equip_character {
+                height: 496.875px; width: 346.875px;
+            }
  .boss.super.equip_character {
-                height: 1113px; width: 777px;
+                height: 1391.25px; width: 971.25px;
             }
  .normal.inventory_gamepad {
-                height: 90px; width: 82px;
-            }
- .boss.inventory_gamepad {
                 height: 112.5px; width: 102.5px;
             }
+ .boss.inventory_gamepad {
+                height: 140.625px; width: 128.125px;
+            }
  .boss.super.inventory_gamepad {
-                height: 315px; width: 287px;
+                height: 393.75px; width: 358.75px;
             }
  .normal.gamepad_zoom_out,
 .normal.gamepad_zoom_out_over,
@@ -956,7 +956,7 @@
 .normal.wiiugamepad_mode_on,
 .normal.gamepad_zoom_in,
 .normal.gamepad_zoom_in_over {
-                height: 36px; width: 36px;
+                height: 45px; width: 45px;
             }
  .boss.gamepad_zoom_out,
 .boss.gamepad_zoom_out_over,
@@ -966,7 +966,7 @@
 .boss.wiiugamepad_mode_on,
 .boss.gamepad_zoom_in,
 .boss.gamepad_zoom_in_over {
-                height: 45px; width: 45px;
+                height: 56.25px; width: 56.25px;
             }
  .boss.super.gamepad_zoom_out,
 .boss.super.gamepad_zoom_out_over,
@@ -976,28 +976,28 @@
 .boss.super.wiiugamepad_mode_on,
 .boss.super.gamepad_zoom_in,
 .boss.super.gamepad_zoom_in_over {
-                height: 126px; width: 126px;
+                height: 157.5px; width: 157.5px;
             }
  .normal.quick_slot_inv_expand,
 .normal.quick_slot_inv_collapse {
-                height: 26px; width: 36px;
+                height: 32.5px; width: 45px;
             }
  .boss.quick_slot_inv_expand,
 .boss.quick_slot_inv_collapse {
-                height: 32.5px; width: 45px;
+                height: 40.625px; width: 56.25px;
             }
  .boss.super.quick_slot_inv_expand,
 .boss.super.quick_slot_inv_collapse {
-                height: 91px; width: 126px;
+                height: 113.75px; width: 157.5px;
             }
  .normal.equip_character_no_bk {
-                height: 244px; width: 160px;
-            }
- .boss.equip_character_no_bk {
                 height: 305px; width: 200px;
             }
+ .boss.equip_character_no_bk {
+                height: 381.25px; width: 250px;
+            }
  .boss.super.equip_character_no_bk {
-                height: 854px; width: 560px;
+                height: 1067.5px; width: 700px;
             } 
 
         

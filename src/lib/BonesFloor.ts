@@ -13,43 +13,20 @@ import {
 } from './math';
 
 import {
-    Sample,
-    sampleFromList,
+    sampleFromListEqualProb
 } from './statistics';
 
-type SkeletonAndBonusType =
-    'skeleton_remains_01'
-    | 'skeleton_remains_02'
-    | 'skeleton_remains_03'
-    | 'skeleton_remains_04'
-    | 'skeleton_remains_08';
-
-function chooseBones(): string {
-    return sampleFromList<SkeletonAndBonusType>([0, 1, 2, 3, 4, 8].map((c) => {
-        let rc: Sample<SkeletonAndBonusType> = {
-            probability: 1,
-            payload: ([
-                'skeleton_remains_01',
-                'skeleton_remains_02',
-                'skeleton_remains_03',
-                'skeleton_remains_04',
-                'skeleton_remains_08'
-            ] as SkeletonAndBonusType[])[c]
-        };
-        return rc;
-    }));
-
-}
+const skeletons = [1, 2, 3, 4, 5 , 8].map((sk) => `skeleton_remains_0${sk}`);
 
 
 export function processSkullAndBones(_matrix: string[], _width: number, room: $Room, coords: Vector[]) {
-  
+
 
     let skulls = coords.map((v) => {
 
         let gui: $GFragment = {
             size: 'normal',
-            auxClassNames: ['dungeon_decor_props', chooseBones()],
+            auxClassNames: ['dungeon_decor_props', sampleFromListEqualProb(skeletons)],
             left: 0,
             top: 0,
             zIndex: 0

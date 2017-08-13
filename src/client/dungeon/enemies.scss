@@ -24,15 +24,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -42,15 +42,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -76,13 +76,13 @@
         /* Static Sprites Sizes */
                 
          .normal.streetpass_icon {
-                height: 14px; width: 14px;
-            }
- .boss.streetpass_icon {
                 height: 17.5px; width: 17.5px;
             }
+ .boss.streetpass_icon {
+                height: 21.875px; width: 21.875px;
+            }
  .boss.super.streetpass_icon {
-                height: 49px; width: 49px;
+                height: 61.25px; width: 61.25px;
             } 
 
         

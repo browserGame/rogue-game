@@ -24,15 +24,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -42,15 +42,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -386,7 +386,7 @@
 .normal.grave_1,
 .normal.grave_2,
 .normal.grave_broken {
-                height: 48px; width: 48px;
+                height: 60px; width: 60px;
             }
  .boss.bookshelf_1_searched,
 .boss.bookshelf_2_searched,
@@ -405,7 +405,7 @@
 .boss.grave_1,
 .boss.grave_2,
 .boss.grave_broken {
-                height: 60px; width: 60px;
+                height: 75px; width: 75px;
             }
  .boss.super.bookshelf_1_searched,
 .boss.super.bookshelf_2_searched,
@@ -424,145 +424,145 @@
 .boss.super.grave_1,
 .boss.super.grave_2,
 .boss.super.grave_broken {
-                height: 168px; width: 168px;
+                height: 210px; width: 210px;
             }
  .normal.box_1,
 .normal.box_1_broken {
-                height: 48px; width: 42px;
+                height: 60px; width: 52.5px;
             }
  .boss.box_1,
 .boss.box_1_broken {
-                height: 60px; width: 52.5px;
+                height: 75px; width: 65.625px;
             }
  .boss.super.box_1,
 .boss.super.box_1_broken {
-                height: 168px; width: 147px;
+                height: 210px; width: 183.75px;
             }
  .normal.vase_1,
 .normal.vase_3,
 .normal.vase_5,
 .normal.vase_7,
 .normal.vase_9 {
-                height: 44px; width: 34px;
+                height: 55px; width: 42.5px;
             }
  .boss.vase_1,
 .boss.vase_3,
 .boss.vase_5,
 .boss.vase_7,
 .boss.vase_9 {
-                height: 55px; width: 42.5px;
+                height: 68.75px; width: 53.125px;
             }
  .boss.super.vase_1,
 .boss.super.vase_3,
 .boss.super.vase_5,
 .boss.super.vase_7,
 .boss.super.vase_9 {
-                height: 154px; width: 119px;
+                height: 192.5px; width: 148.75px;
             }
  .normal.vase_2,
 .normal.vase_4,
 .normal.vase_6,
 .normal.vase_8,
 .normal.vase_10 {
-                height: 44px; width: 32px;
+                height: 55px; width: 40px;
             }
  .boss.vase_2,
 .boss.vase_4,
 .boss.vase_6,
 .boss.vase_8,
 .boss.vase_10 {
-                height: 55px; width: 40px;
+                height: 68.75px; width: 50px;
             }
  .boss.super.vase_2,
 .boss.super.vase_4,
 .boss.super.vase_6,
 .boss.super.vase_8,
 .boss.super.vase_10 {
-                height: 154px; width: 112px;
+                height: 192.5px; width: 140px;
             }
  .normal.vase_1_broken,
 .normal.vase_3_broken,
 .normal.vase_5_broken,
 .normal.vase_7_broken,
 .normal.vase_9_broken {
-                height: 30px; width: 32px;
+                height: 37.5px; width: 40px;
             }
  .boss.vase_1_broken,
 .boss.vase_3_broken,
 .boss.vase_5_broken,
 .boss.vase_7_broken,
 .boss.vase_9_broken {
-                height: 37.5px; width: 40px;
+                height: 46.875px; width: 50px;
             }
  .boss.super.vase_1_broken,
 .boss.super.vase_3_broken,
 .boss.super.vase_5_broken,
 .boss.super.vase_7_broken,
 .boss.super.vase_9_broken {
-                height: 105px; width: 112px;
+                height: 131.25px; width: 140px;
             }
  .normal.statue_1 {
-                height: 48px; width: 46px;
-            }
- .boss.statue_1 {
                 height: 60px; width: 57.5px;
             }
+ .boss.statue_1 {
+                height: 75px; width: 71.875px;
+            }
  .boss.super.statue_1 {
-                height: 168px; width: 161px;
+                height: 210px; width: 201.25px;
             }
  .normal.statue_broken {
-                height: 30px; width: 46px;
-            }
- .boss.statue_broken {
                 height: 37.5px; width: 57.5px;
             }
+ .boss.statue_broken {
+                height: 46.875px; width: 71.875px;
+            }
  .boss.super.statue_broken {
-                height: 105px; width: 161px;
+                height: 131.25px; width: 201.25px;
             }
  .normal.barril_2,
 .normal.barril_1 {
-                height: 48px; width: 40px;
+                height: 60px; width: 50px;
             }
  .boss.barril_2,
 .boss.barril_1 {
-                height: 60px; width: 50px;
+                height: 75px; width: 62.5px;
             }
  .boss.super.barril_2,
 .boss.super.barril_1 {
-                height: 168px; width: 140px;
+                height: 210px; width: 175px;
             }
  .normal.barril_broken {
-                height: 28px; width: 38px;
-            }
- .boss.barril_broken {
                 height: 35px; width: 47.5px;
             }
+ .boss.barril_broken {
+                height: 43.75px; width: 59.375px;
+            }
  .boss.super.barril_broken {
-                height: 98px; width: 133px;
+                height: 122.5px; width: 166.25px;
             }
  .normal.coffin_01,
 .normal.coffin_open_01,
 .normal.coffin_open_02 {
-                height: 48px; width: 38px;
+                height: 60px; width: 47.5px;
             }
  .boss.coffin_01,
 .boss.coffin_open_01,
 .boss.coffin_open_02 {
-                height: 60px; width: 47.5px;
+                height: 75px; width: 59.375px;
             }
  .boss.super.coffin_01,
 .boss.super.coffin_open_01,
 .boss.super.coffin_open_02 {
-                height: 168px; width: 133px;
+                height: 210px; width: 166.25px;
             }
  .normal.coffin_02 {
-                height: 48px; width: 44px;
-            }
- .boss.coffin_02 {
                 height: 60px; width: 55px;
             }
+ .boss.coffin_02 {
+                height: 75px; width: 68.75px;
+            }
  .boss.super.coffin_02 {
-                height: 168px; width: 154px;
+                height: 210px; width: 192.5px;
             } 
 
         

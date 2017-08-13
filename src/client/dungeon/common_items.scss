@@ -21,15 +21,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -39,15 +39,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -1033,7 +1033,7 @@
 .normal.quest_item_6,
 .normal.quest_item_7,
 .normal.quest_item_8 {
-                height: 32px; width: 32px;
+                height: 40px; width: 40px;
             }
  .boss.mana_tube,
 .boss.magic_tube,
@@ -1156,7 +1156,7 @@
 .boss.quest_item_6,
 .boss.quest_item_7,
 .boss.quest_item_8 {
-                height: 40px; width: 40px;
+                height: 50px; width: 50px;
             }
  .boss.super.mana_tube,
 .boss.super.magic_tube,
@@ -1279,7 +1279,7 @@
 .boss.super.quest_item_6,
 .boss.super.quest_item_7,
 .boss.super.quest_item_8 {
-                height: 112px; width: 112px;
+                height: 140px; width: 140px;
             } 
 
         

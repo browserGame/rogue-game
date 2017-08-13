@@ -21,15 +21,15 @@
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(2.5);
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(3.125);
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(8.75);
         }
 
         .super.boss.look-right>div,
@@ -39,15 +39,15 @@
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
-        }
-
-        .boss.look-right>div {
             transform: scaleX(-1) translateX(100%) scale(2.5);
         }
 
+        .boss.look-right>div {
+            transform: scaleX(-1) translateX(100%) scale(3.125);
+        }
+
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(8.75);
         }
 
         .smooth,
@@ -80,22 +80,22 @@
         /* Static Sprites Sizes */
                 
          .normal.alerted {
-                height: 64px; width: 28px;
-            }
- .boss.alerted {
                 height: 80px; width: 35px;
             }
+ .boss.alerted {
+                height: 100px; width: 43.75px;
+            }
  .boss.super.alerted {
-                height: 224px; width: 98px;
+                height: 280px; width: 122.5px;
             }
  .normal.sleeping {
-                height: 64px; width: 48px;
-            }
- .boss.sleeping {
                 height: 80px; width: 60px;
             }
+ .boss.sleeping {
+                height: 100px; width: 75px;
+            }
  .boss.super.sleeping {
-                height: 224px; width: 168px;
+                height: 280px; width: 210px;
             } 
 
         

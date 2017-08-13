@@ -1,11 +1,9 @@
 function createCSSClassMapper(scssResource: string) {
+    
+    let self = require(`./dungeon/${scssResource}.scss`);
 
     return function classList(...rest: string[]): string {
-
-        let self = require(`./dungeon/${scssResource}.scss`);
-
         let arr = rest.map((c) => self[c]);
-
         return arr.join(' ');
     };
 }
@@ -23,6 +21,7 @@ export const cssFn = {
     dungeon_decor_props: createCSSClassMapper('dungeon_decor_props'),
     alert_icons: createCSSClassMapper('alert_icons'),
     cursor: createCSSClassMapper('cursor'),
-    game_menus: createCSSClassMapper('game_menus')
+    game_menus: createCSSClassMapper('game_menus'),
+    general: (...rest: string[]) => rest.map((r) => require('./rogue')[r]).join(' ')
 };
 

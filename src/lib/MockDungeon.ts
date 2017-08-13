@@ -89,7 +89,7 @@ export const mockDungeon: DungeonData = {
             `
 #########
 #....q..#
-#..A....#
+#..A..A.#
 #.....A.#
 #..C....>
 #.F..E..#

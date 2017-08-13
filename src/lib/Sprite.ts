@@ -1,5 +1,9 @@
 const gCache = new Map<string, SpriteSheet>();
 
+const NORMAL = 2.5;
+const BOSS = 3.125;
+const SUPER = 8.75;
+
 export function getSpriteSheetByName(url: string) {
     return gCache.get(url);
 }
@@ -159,9 +163,9 @@ export class SpriteSheet {
         let allSizes = sprites.map((m) => {
             return {
                 name: m.name,
-                normal: m.cssWidthHeight(2),
-                boss: m.cssWidthHeight(2.5),
-                super: m.cssWidthHeight(7)
+                normal: m.cssWidthHeight(NORMAL),
+                boss: m.cssWidthHeight(BOSS),
+                super: m.cssWidthHeight(SUPER)
             };
         });
 
@@ -210,15 +214,15 @@ export class SpriteSheet {
         }
 
         .normal>div {
-            transform: scale(2);
+            transform: scale(${NORMAL});
         }
 
         .boss.super>div {
-            transform: scale(7);
+            transform: scale(${BOSS});
         }
 
         .boss>div {
-            transform: scale(2.5);
+            transform: scale(${SUPER});
         }
 
         .super.boss.look-right>div,
@@ -228,15 +232,15 @@ export class SpriteSheet {
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2);
+            transform: scaleX(-1) translateX(100%) scale(${NORMAL});
         }
 
         .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(2.5);
+            transform: scaleX(-1) translateX(100%) scale(${BOSS});
         }
 
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(7);
+            transform: scaleX(-1) translateX(100%) scale(${SUPER});
         }
 
         .smooth,
