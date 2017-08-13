@@ -214,7 +214,10 @@ export class SpriteSheet {
         }
 
         .normal>div {
-            transform: scale(${NORMAL});
+            transform: scale(${NORMAL}) translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
         }
 
         .boss>div {

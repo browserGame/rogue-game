@@ -47,6 +47,8 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         T: 'skeleton_idle'
     };
 
+    const orientation = sampleFromListEqualProb(['look-right', '']);
+
     /*
     export type EnemyTypes = 
         'T' | //xxx skeleton-enemy //skeleton_idle, skeleton_attack
@@ -60,7 +62,7 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         size: si.e === '%' ? 'boss' : 'normal',
         left: 0,
         top: 0,
-        auxClassNames: ['enemies', select[si.e]],
+        auxClassNames: ['enemies', select[si.e], orientation],
         zIndex: 0
     };
 

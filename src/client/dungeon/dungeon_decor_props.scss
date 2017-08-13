@@ -17,11 +17,14 @@
         .super>div,
         .boss>div,
         .normal>div {
-            transform-origin: 0 0;
+            transform-origin: 50% 50%;
         }
 
         .normal>div {
-            transform: scale(3);
+            transform:  translateX(-50%) translateY(-50%) scale(3);
+            position: absolute;
+            left: 50%;
+            top: 50%;
         }
 
         .boss>div {

@@ -127,10 +127,10 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let carpets: JSX.Element[] = this.renderNameSpace('carpet', cssFn.common_fo);
         let stairs: JSX.Element[] = this.renderNameSpace('stairs', cssFn.floor_crypt);
         let skullBones: JSX.Element[] = this.renderNameSpace('skull&bones', cssFn.dungeon_decor_props, 1);
-        let cobWebs: JSX.Element[] = this.renderNameSpace('cobwebs', cssFn.dungeon_decor_props, 1);
-        let breakable: JSX.Element[] = this.renderNameSpace('breakable', cssFn.dungeon_o, 2, 0, -7);
-        let openable: JSX.Element[] = this.renderNameSpace('openable', cssFn.dungeon_o, 4, 0, -7);
-        let enemies: JSX.Element[] = this.renderNameSpace('enemy', cssFn.enemies, 0, 0, -7);
+        let cobWebs: JSX.Element[] = this.renderNameSpace('cobwebs', cssFn.dungeon_decor_props);
+        let breakable: JSX.Element[] = this.renderNameSpace('breakable', cssFn.dungeon_o, 2);
+        let openable: JSX.Element[] = this.renderNameSpace('openable', cssFn.dungeon_o, 4);
+        let enemies: JSX.Element[] = this.renderNameSpace('enemy', cssFn.enemies, 7);
         return (<div style={styles} >
             {walls}
             {floorTiles}

@@ -20,11 +20,15 @@
         .super>div,
         .boss>div,
         .normal>div {
-            transform-origin: 0 0;
+            transform-origin: 50% 50%;
         }
 
         .normal>div {
-            transform: scale(3);
+            transform:  translateX(-50%) translateY(-50%) scale(3);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+           
         }
 
         .boss>div {
@@ -448,32 +452,32 @@
 .normal.fountain_hp,
 .normal.teleportation,
 .normal.quest_stone {
-                height: 48px; width: 48px;
+                height: 72px; width: 72px;
             }
 
  .boss.fountain_mana,
 .boss.fountain_hp,
 .boss.teleportation,
 .boss.quest_stone {
-                height: 60px; width: 60px;
+                height: 90px; width: 90px;
             }
 
  .boss.super.fountain_mana,
 .boss.super.fountain_hp,
 .boss.super.teleportation,
 .boss.super.quest_stone {
-                height: 168px; width: 168px;
+                height: 252px; width: 252px;
             }
 
  .normal.candles {
-                height: 48px; width: 42px;
+                height: 72px; width: 63px;
             }
 
  .boss.candles {
-                height: 60px; width: 52.5px;
+                height: 90px; width: 78.75px;
             }
 
  .boss.super.candles {
-                height: 168px; width: 147px;
+                height: 252px; width: 220.5px;
             }
         

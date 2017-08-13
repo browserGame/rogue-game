@@ -6,6 +6,9 @@ import {
 
 const gCache = new Map<string, AnimationSheet>();
 
+const NORMAL = JSON.parse(process.env.NORMAL);
+const BOSS = JSON.parse(process.env.BOSS);
+const SUPER = JSON.parse(process.env.SUPER);
 
 export function getAnimationSheetByName(url: string) {
     return gCache.get(url);
@@ -193,9 +196,9 @@ export class AnimationSheet {
         let allSizes = allAnims.map((m) => {
             return {
                 name: m.name,
-                normal: m.firstFrameWidthHeight(2),
-                boss: m.firstFrameWidthHeight(2.5),
-                super: m.firstFrameWidthHeight(7)
+                normal: m.firstFrameWidthHeight(NORMAL),
+                boss: m.firstFrameWidthHeight(BOSS),
+                super: m.firstFrameWidthHeight(SUPER)
             };
         });
 

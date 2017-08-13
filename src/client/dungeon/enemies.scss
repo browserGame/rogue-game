@@ -20,38 +20,47 @@
         .super>div,
         .boss>div,
         .normal>div {
-            transform-origin: 0 0;
+            transform-origin: 50% 50%;
         }
 
         .normal>div {
-            transform: scale(3);
+            transform: translateX(-50%) translateY(50%) scale(3);
+            position: absolute;
+            left: 50%;
+            bottom: 80%;
         }
 
         .boss>div {
-            transform: scale(3.75);
+            transform: translateX(-50%) translateY(50%) scale(3.75);
+            position: absolute;
+            left: 50%;
+            bottom: 90%;
         }
 
         .boss.super>div {
-            transform: scale(10.5);
+            transform: translateX(-50%) translateY(50%) scale(10.5);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
         }
 
 
         .super.boss.look-right>div,
         .normal.look-right>div,
         .boss.look-right>div {
-            transform-origin: right top;
+            transform-origin: 50% 50%;
         }
 
         .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
+            transform: translateX(-50%) translateY(50%) scale(3) scaleX(-1);
         }
 
         .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
+            transform: translateX(-50%) translateY(50%) scale(3.75) scaleX(-1);
         }
 
         .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
+            transform: translateX(-50%) translateY(50%) scale(10.5) scaleX(-1);
         }
 
         .smooth,
@@ -3847,7 +3856,7 @@
 .normal.blob05_attack,
 .normal.blob07_idle,
 .normal.blob07_attack {
-                height: 48px; width: 48px;
+                height: 72px; width: 72px;
             }
 
  .boss.assassin01_idle,
@@ -4000,7 +4009,7 @@
 .boss.blob05_attack,
 .boss.blob07_idle,
 .boss.blob07_attack {
-                height: 60px; width: 60px;
+                height: 72px; width: 72px;
             }
 
  .boss.super.assassin01_idle,
@@ -4153,6 +4162,6 @@
 .boss.super.blob05_attack,
 .boss.super.blob07_idle,
 .boss.super.blob07_attack {
-                height: 168px; width: 168px;
+                height: 72px; width: 72px;
             }
         

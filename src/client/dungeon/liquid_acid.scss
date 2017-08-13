@@ -24,7 +24,10 @@
         }
 
         .normal>div {
-            transform: scale(3);
+            transform: scale(3) translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
         }
 
         .boss>div {
@@ -312,14 +315,14 @@
             /* Animation Sizes */
             
              .normal.liquid {
-                height: 48px; width: 48px;
+                height: 72px; width: 72px;
             }
 
  .boss.liquid {
-                height: 60px; width: 60px;
+                height: 90px; width: 90px;
             }
 
  .boss.super.liquid {
-                height: 168px; width: 168px;
+                height: 252px; width: 252px;
             }
         

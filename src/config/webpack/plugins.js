@@ -25,19 +25,28 @@ const cleanServer = new (require('clean-webpack-plugin'))(['server'], {
     /* exclude: ['client']*/
 });
 
-const sharedProd = !p ? [
+
+const NORMAL = 3;
+
+const serverAndClientShares = [
     new webpack.DefinePlugin({
         'process.env.CSSDIR': JSON.stringify(resolve('src/client/dungeon'))
-    })
-] :
-    [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': N.stringify('production')
-        }),
+    }),
+    new webpack.DefinePlugin({
+        'process.env.NORMAL': JSON.stringify(`${NORMAL}`),
+        'process.env.BOSS': JSON.stringify(`${NORMAL * 2.5 / 2}`),
+        'process.env.SUPER': JSON.stringify(`${NORMAL * 7 / 2}`)
+    }),
+]
+if (p) {
+    serverAndClientShares.push(new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production')
+    }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true
         })
-    ];
+    );
+}
 
 const html = new (require('html-webpack-plugin'))({
     title: 'Quest For Dunguen (HTML5 version)',
@@ -103,8 +112,8 @@ clientProd = !p ? [] : [
 
 
 
-const client = tools.flatten(cleanClient, sharedProd, html, clientProd);
-const server = tools.flatten(cleanServer, sharedProd);
+const client = tools.flatten(cleanClient, serverAndClientShares, html, clientProd);
+const server = tools.flatten(cleanServer, serverAndClientShares);
 
 
 module.exports = { client, server };

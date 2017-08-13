@@ -21,7 +21,10 @@
         }
 
         .normal>div {
-            transform: scale(3);
+            transform: scale(3) translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
         }
 
         .boss>div {

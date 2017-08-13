@@ -24,7 +24,10 @@
         }
 
         .normal>div {
-            transform: scale(3);
+            transform: scale(3) translateX(-50%);
+            position: absolute;
+            left: 50%;
+            bottom: 30%;
         }
 
         .boss>div {
@@ -603,7 +606,7 @@
 .normal.necrodancer_attack,
 .normal.necrodancer_die,
 .normal.shopkeeper_idle {
-                height: 48px; width: 48px;
+                height: 72px; width: 72px;
             }
 
  .boss.warrior_idle,
@@ -624,7 +627,7 @@
 .boss.necrodancer_attack,
 .boss.necrodancer_die,
 .boss.shopkeeper_idle {
-                height: 60px; width: 60px;
+                height: 90px; width: 90px;
             }
 
  .boss.super.warrior_idle,
@@ -645,6 +648,6 @@
 .boss.super.necrodancer_attack,
 .boss.super.necrodancer_die,
 .boss.super.shopkeeper_idle {
-                height: 168px; width: 168px;
+                height: 252px; width: 252px;
             }
         
