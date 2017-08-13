@@ -29,7 +29,7 @@ import {
 
 export interface $ItemValuable extends $Item {
     credit: number;
-    color: ColorCoinType|ColorStonesType;
+    color: ColorCoinType | ColorStonesType;
 }
 
 
@@ -69,13 +69,13 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
     };
 
     let className = (() => {
-        if (isStone(si.e)) {
+        if (isStone(si)) {
             return `treasure_stone_${select.L[(<Stone>si).color]}`;
         }
-        if (isCoin(si.e)) {
+        if (isCoin(si)) {
             return `gold_${select.M[(<Coin>si).color]}`;
         }
-        throw new Error(`wrong valuable type: ${si.e}`);
+        throw new Error(`wrong valuable type: ${JSON.stringify(si)}`);
     })();
 
     let gui: $GFragment = {

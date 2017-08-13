@@ -60,9 +60,7 @@ export function processSkullAndBones(_matrix: string[], _width: number, room: $R
         };
 
         return rc;
-
-
     });
     let bones = getNameSpace(room, 'skull&bones');
-    bones.splice(0, bones.length, ...skulls);
+    bones.push(...skulls);
 }

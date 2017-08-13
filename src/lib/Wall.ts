@@ -72,7 +72,7 @@ function mapAsciiToGUIWall(token: string): $GFragment {
 
     return {
         size: 'normal',
-        auxClassNames: ['floor_crypt', getRandomVerticalWall()],
+        auxClassNames: ['floor_crypt', wallName],
         left: 0,  //parameter adjusted for the gui state used by the render
         top: 0,
         zIndex: 0

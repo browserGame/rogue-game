@@ -1,6 +1,6 @@
 import {
     Layout,
-    $Room
+    $Room,
 } from './Room';
 
 import {
@@ -48,14 +48,18 @@ import {
     Table,
     TwirlStone,
     MagicPotion,
-    //Spikes,
     BearTrap,
-    Shield
+    Shield,
+    CrossTombStone
 } from './Symbols';
 
+export interface DungeonData {
+    [index: number]: Layout[];
+}
 
-export const mockDungeon: Layout[] = [
-    {
+
+export const mockDungeon: DungeonData = {
+    0: [{
         symbols: [
             <Cheese>{ e: 'q', addHp: 5 },
             <SecretPlate>{
@@ -220,8 +224,8 @@ export const mockDungeon: Layout[] = [
 ####^######
 ##........#
 #.!.....!.#
-#.11......#
-#.11......#
+#..11.....#
+#..11.....#
 #.....22..#
 #....%22..#
 #..33.....#
@@ -245,7 +249,7 @@ export const mockDungeon: Layout[] = [
             <Vase>{ m: '1', e: 'J', color: 'red' },
             <Rat>{
                 m: '2', e: 'G', has: [
-                    <Stone>{ credit: 1, color: 'yellow' },
+                    <Stone>{ e: 'L', credit: 1, color: 'yellow' },
                     <Coin>{ credit: 2, color: 'gray' }
                 ]
             },
@@ -279,12 +283,12 @@ export const mockDungeon: Layout[] = [
             <DoorRight>{ e: '>', toRoom: 6 },
             <Skeleton>{
                 m: '1', e: 'T', has: [
-                    <Stone>{ color: 'yellow', credit: 4 },
+                    <Stone>{ e: 'L', color: 'yellow', credit: 4 },
                 ]
             },
             <Shield>{ e: 'Z', addDp: 20 },
             <Skeleton>{ e: 'T' },
-            <Vase>{ e: 'J', color: 'cyan' },
+            <Vase>{ e: 'J', color: 'blue' },
             <Rat>{ e: 'G', has: [<Coin>{ credit: 5, color: 'gold' }] },
         ],
         id: 7,
@@ -318,12 +322,12 @@ export const mockDungeon: Layout[] = [
             },
             <Bat>{
                 m: '2', e: 'F', has: [
-                    <Stone>{ color: 'green', credit: 4 },
+                    <Stone>{ e: 'L', color: 'green', credit: 4 },
                 ]
 
             },
             <WizardStatue>{ e: 'B' },
-            <Vase>{ e: 'J', color: 'cyan' },
+            <Vase>{ e: 'J', color: 'blue' },
             <Rat>{
                 e: 'G', has: [
                     <Coin>{ credit: 5, color: 'gold' }
@@ -511,7 +515,8 @@ export const mockDungeon: Layout[] = [
                     <Coin>{ credit: 1, color: 'gold', e: 'M' }
                 ]
             },
-            <Carpet>{ e: 'é', color: 'red' }
+            <Carpet>{ e: 'é', color: 'red' },
+            <CrossTombStone>{ e: 'Y' }
         ],
         id: 12,
         room: [`
@@ -528,11 +533,11 @@ export const mockDungeon: Layout[] = [
 #...."....#
 #....²....#
 #.........#
-#.........#
+#......Y..#
 ###########
 `]
     }
-    ,
+        ,
     {
         symbols: [
             <DoorUp>{ e: '^', toRoom: 12 },
@@ -620,7 +625,7 @@ export const mockDungeon: Layout[] = [
 ##########v###
 `]
     }
-    ,
+        ,
     {
         symbols: [
             <DoorBottom>{ e: 'v', toRoom: 15 },
@@ -646,22 +651,12 @@ export const mockDungeon: Layout[] = [
             `
 ###^###
 #A....#
-#.....#
-#L....#
-#.....#
-#.....#
-#######
-`,
-            `
-#######
-#.....#
 #.ééé.#
-#.ééé.#
+#Lééé.#
 #.....#
 #.....#
 #######
-`,
-            `
+`, `
 #######
 #.....#
 #.!U!.#
@@ -734,7 +729,7 @@ export const mockDungeon: Layout[] = [
 #####v##
 `]
     }
-    ,
+        ,
     {
         symbols: [
             <DoorUp>{ e: '^', toRoom: 22, inset: true },
@@ -1140,8 +1135,8 @@ export const mockDungeon: Layout[] = [
     {
         symbols: [
             <DoorUp>{ e: '^', toRoom: 32 },
-            <Stone>{ m: '1', e: 'L', color: 'green' },
-            <Stone>{ m: '2', e: 'L', color: 'white' },
+            <Stone>{ m: '1', e: 'L', color: 'green', credit: 4 },
+            <Stone>{ m: '2', e: 'L', color: 'white', credit: 7 },
             <TreasureChest>{
                 m: '3', e: '&', has: [
                     <Mace>{ e: 't', addXp: 100 },
@@ -1203,122 +1198,125 @@ export const mockDungeon: Layout[] = [
 #####v#####
 `]
     }
-];
+    ]
+};
 
 export interface DungeonGameModel {
-    width: number;
-    height: number;
-    rooms: Map<number, $Room>;
+    [index: number]: {
+        width: number;
+        height: number;
+        rooms: Map<number, $Room>;
+    };
 }
+
+export const gGame: DungeonGameModel = {};
 
 export function compileDungeon(): DungeonGameModel {
 
-    let roomsDone = new Map<number, $Room>();
-    let roomsToDo = new Map<number, $Room>();
+    // for each level
+    for (let level in mockDungeon) {
+        let rooms = mockDungeon[level].map((room) => parseLayout(room));
 
-    let rooms = mockDungeon.map((layout) => {
-        return parseLayout(layout);
-    });
+        let roomsDone = new Map<number, $Room>();
+        let roomsToDo = new Map<number, $Room>();
+
+        rooms.forEach((r) => roomsToDo.set(r.pk, r));
 
 
-    rooms.forEach((r) => roomsToDo.set(r.pk, r));
+        function formatRooms(room: $Room) {
+
+            if (roomsDone.has(room.pk)) {
+                return;
+            }
+            //let _doors = <$ItemDoor[]>getNameSpace(room, 'doors');
+            let door = room.doors.find((d) => roomsDone.has(d.to));
+            
+            if (!door) {
+                throw new Error(`room ${room.pk} cannot be formatted, not connected to a formatted reference`);
+            }
 
 
-    function formatRooms(room: $Room) {
+            let fr = <$Room>roomsDone.get(door.to);
 
-        if (roomsDone.has(room.pk)) {
-            return;
+            let myId = room.pk;
+            let toId = fr.pk;
+            let counterDoor = fr.doors.find((d) => d.to === myId);
+
+            if (!counterDoor) {
+                throw new Error(`room ${myId} has no counterpart in room ${toId}`);
+            }
+
+            if (counterDoor.p.x > 0 && counterDoor.p.y === 0) {
+                room.top = fr.top - room.height;
+                room.left = fr.left + counterDoor.p.x - door.p.x;
+            }
+
+            if (counterDoor.p.x > 0 && counterDoor.p.y === (fr.height - 1)) {
+                room.top = fr.top + fr.height;
+                room.left = fr.left + counterDoor.p.x - door.p.x;
+            }
+
+            if (counterDoor.p.x > 0 && counterDoor.p.y > 0 && counterDoor.p.y < (fr.height - 1)) {
+                room.left = fr.left + fr.width;
+                room.top = fr.top + counterDoor.p.y - door.p.y;
+            }
+
+            if (counterDoor.p.x === 0) {
+                room.left = fr.left - room.width;
+                room.top = fr.top + counterDoor.p.y - door.p.y;
+            }
+
+            roomsDone.set(room.pk, room);
+            roomsToDo.delete(room.pk);
+
+            for (let d of room.doors) {
+                let r = roomsToDo.get(d.to);
+                r && formatRooms(r);
+            }
         }
 
-        let door = room.doors.find((d) => roomsDone.has(d.to));
+        //
+        // let gWidth = 0;
+        //
 
-        if (!door) {
-            throw new Error(`room ${room.pk} cannot be formatted, not connected to a formatted reference`);
-        }
+        let initRoom = <$Room>rooms.shift();
+        roomsToDo.delete(initRoom.pk);
+        roomsDone.set(initRoom.pk, initRoom);
 
-
-        let fr = <$Room>roomsDone.get(door.to);
-
-        let myId = room.pk;
-        let toId = fr.pk;
-        let counterDoor = fr.doors.find((d) => d.to === myId);
-
-        if (!counterDoor) {
-            throw new Error(`room ${myId} has no counterpart in room ${toId}`);
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y === 0) {
-            room.top = fr.top - room.height;
-            room.left = fr.left + counterDoor.p.x - door.p.x;
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y === (fr.height - 1)) {
-            room.top = fr.top + fr.height;
-            room.left = fr.left + counterDoor.p.x - door.p.x;
-        }
-
-        if (counterDoor.p.x > 0 && counterDoor.p.y > 0 && counterDoor.p.y < (fr.height - 1)) {
-            room.left = fr.left + fr.width;
-            room.top = fr.top + counterDoor.p.y - door.p.y;
-        }
-
-        if (counterDoor.p.x === 0) {
-            room.left = fr.left - room.width;
-            room.top = fr.top + counterDoor.p.y - door.p.y;
-        }
-
-        roomsDone.set(room.pk, room);
-        roomsToDo.delete(room.pk);
-
-        for (let d of room.doors) {
+        initRoom.doors.forEach((d) => {
             let r = roomsToDo.get(d.to);
-            r && formatRooms(r);
-        }
+            if (r) {
+                formatRooms(r);
+            }
+        });
+
+
+        let totalWidth = 0;
+        let totalHeight = 0;
+
+        let minTop = 0;
+        let minLeft = 0;
+
+        roomsDone.forEach((v: $Room) => {
+            minTop = Math.min(v.top, minTop);
+            minLeft = Math.min(v.left, minLeft);
+        });
+
+        roomsDone.forEach((v: $Room) => {
+            v.top -= minTop;
+            v.left -= minLeft;
+        });
+
+        roomsDone.forEach((v: $Room) => {
+            totalWidth = Math.max(v.left + v.width, totalWidth);
+            totalHeight = Math.max(v.top + v.height, totalHeight);
+        });
+
+        gGame[level] = {
+            width: totalWidth,
+            height: totalHeight,
+            rooms: roomsDone
+        };
     }
-
-    //
-    // let gWidth = 0;
-    //
-
-    let initRoom = <$Room>rooms.shift();
-    roomsToDo.delete(initRoom.pk);
-    roomsDone.set(initRoom.pk, initRoom);
-
-    initRoom.doors.forEach((d) => {
-        let r = roomsToDo.get(d.to);
-        if (r) {
-            formatRooms(r);
-        }
-    });
-
-
-    let totalWidth = 0;
-    let totalHeight = 0;
-
-    let minTop = 0;
-    let minLeft = 0;
-
-    roomsDone.forEach((v: $Room) => {
-        minTop = Math.min(v.top, minTop);
-        minLeft = Math.min(v.left, minLeft);
-    });
-
-    roomsDone.forEach((v: $Room) => {
-        v.top -= minTop;
-        v.left -= minLeft;
-    });
-
-    roomsDone.forEach((v: $Room) => {
-        totalWidth = Math.max(v.left + v.width, totalWidth);
-        totalHeight = Math.max(v.top + v.height, totalHeight);
-    });
-
-    return {
-        width: totalWidth,
-        height: totalHeight,
-        rooms: roomsDone
-    };
-
-
-
+    return gGame;
 }

@@ -265,7 +265,7 @@ export const codedItems: CPU = {
     t: processWeapons, //... mace
     x: processWeapons, //... boots
     ç: processWeapons, //... pants
- 
+
     //
     //valuables
     //
@@ -437,14 +437,16 @@ export type BreakableTypes =
 
 export interface Breakable<T extends BreakableTypes> extends SymbolBase<T> {
     has: SIGeneralContent[];
-    color?: string;
+}
+
+export interface Vase extends Breakable<'J'> {
+    color: 'gold' | 'green' | 'red' | 'blue' | 'gray';
 }
 
 export type TwirlStone = Breakable<'P'>;
 export type BeerBarrel = Breakable<'{'>;
 export type CrossTombStone = Breakable<'Y'>;
 export type TombStone = Breakable<'V'>;
-export type Vase = Breakable<'J'>;
 export type WizardStatue = Breakable<'B'>;
 
 export type AllBreakables = TwirlStone | BeerBarrel | CrossTombStone | TombStone | Vase | WizardStatue;
@@ -506,7 +508,7 @@ export type ArsenalType =
     't' | //... mace
     'x' | //... boots
     'ç'; //... pants
-  
+
 //
 export interface Arsenal<T extends ArsenalType> extends SymbolBase<T> {
     addHp?: number;
@@ -520,7 +522,7 @@ export type Boots = Arsenal<'x'>;
 export type Pants = Arsenal<'ç'>;
 
 
-export type AllWeapons = Shield | Mace |  Boots | Pants;
+export type AllWeapons = Shield | Mace | Boots | Pants;
 
 export function isWeapon(w: any): w is AllWeapons {
     if (!w) {
