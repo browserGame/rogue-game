@@ -39,11 +39,11 @@
     top: 0;
 }
 
-.d3object {
+.normal.d3obj {
     transform-origin: 50% 100%;
 }
 
-.d3Object.normal {
+.normal.d3obj {
     transform: translateX(-50%) scale(3);
     left: 50%;
     bottom: 30%

@@ -69,11 +69,10 @@ export function processKnowable(
         console.log('drops', JSON.stringify(itm));
         return;
     }
+
     if (!isRoom(container)) {
         container.has.push(itm);
         return;
     }
-
-
     console.log('Error, not a valid portal its not positioned on a floor tile:', JSON.stringify(itm));
 }

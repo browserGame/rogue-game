@@ -82,7 +82,7 @@ export class $Room {
     }
 
     get doors(): $Door[] {
-        return this._doors;
+        return this.getNameSpace('doors') as $Door[];
     }
 
     contentNS(p: Vector, select: string = ''): $Item[] | undefined {

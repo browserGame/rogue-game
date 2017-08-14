@@ -88,7 +88,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: $D
 
     // add doors
     marked.splice(0, 0, ...doors.map((d) => {
-        let wd: $Item = { tag: d.dir, p: d.p, gui: dudFragment };
+        let wd: $Item = { tag: d.tag, p: d.p, gui: dudFragment };
         return wd;
     }));
 
@@ -110,7 +110,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: $D
     let nn: string;
     let dd: string;
 
-    let { dir, p } = doors[0];
+    let { tag: dir, p } = doors[0];
 
     const has = (arr: string, i?: $Item) => {
         if (!(i && i.tag)) {

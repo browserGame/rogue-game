@@ -86,18 +86,15 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         roomPks.reduce((coll, id) => {
             let r = floorPlan.rooms.get(id) as $Room;
             let asset = getNameSpace(r, name);
-            let htmlWall = asset.map((itm) => {
-                if (!itm.gui.size) {
-                    throw new Error(`[${asset}] has no gui size in room ${id} ${JSON.stringify(itm.p)}`);
-                }
+            let html = asset.filter((f) => !!f.gui.size).map((itm) => {
                 let styles: React.CSSProperties = {
                     zIndex: globZ(r, itm.p.y) + zOffset,
                     top: `${globTop(r, itm.p.y, _s) + dy * _s}px`,
                     left: `${globLeft(r, itm.p.x, _s) + dx * _s}px`,
                     position: 'absolute'
                 };
-                let size = !(itm.gui.size instanceof Array) ? [itm.gui.size] : itm.gui.size;
-                let classN = cssResolver(...(itm.gui.auxClassNames || []), ...size);
+                let size: string[] = (!(itm.gui.size instanceof Array) ? [itm.gui.size] : itm.gui.size) as string[];
+                let classN = cssResolver(...(itm.gui.auxClassNames || []), ...(size));
                 return (<div
                     key={`${this.level}:${id}:${itm.p.x}:${itm.p.y}`}
                     style={styles}
@@ -106,7 +103,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                     <div></div>
                 </div >);
             });
-            coll.push(...htmlWall);
+            coll.push(...html);
             return coll;
         }, walls);
         return walls;
@@ -131,6 +128,8 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let breakable: JSX.Element[] = this.renderNameSpace('breakable', cssFn.dungeon_o, 2);
         let openable: JSX.Element[] = this.renderNameSpace('openable', cssFn.dungeon_o, 4);
         let enemies: JSX.Element[] = this.renderNameSpace('enemy', cssFn.enemies, 7);
+        let doors: JSX.Element[] = this.renderNameSpace('doors',  cssFn.floor_crypt, 7);
+        ///doors;
         return (<div style={styles} >
             {walls}
             {floorTiles}
@@ -141,6 +140,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             {breakable}
             {openable}
             {enemies}
+            {doors}
         </div>);
     }
 
