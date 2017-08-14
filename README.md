@@ -8,7 +8,7 @@ _Created with permission of Upfall Studios_
 
 Screenshot, click on the image to view the prototype dunegon (in progress)
 
-  [![screenshot dungeon](https://raw.githubusercontent.com/jacobbogers/rogue-game/master/screenshot.png)](http://www.jacob-bogers.com)
+![screenshot dungeon](https://raw.githubusercontent.com/jacobbogers/rogue-game/master/screenshot.png)
 
 ## How to install
 
