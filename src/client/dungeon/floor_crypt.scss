@@ -14,19 +14,19 @@
         /* general sizing */
         /* general sizing */
 
-        .super>div,
-        .boss>div,
+       /* .super>div,
+        .boss>div,*/
         .normal>div {
-            transform-origin: 50% 50%;
+            transform-origin: 0 0;
         }
 
         .normal>div {
-            transform: translateX(-50%) translateY(-50%) scale(3);
+            transform: scale(3);
             position: absolute;
-            left: 50%;
-            top: 50%;
+            left: 0%;
+            top: 0%;
         }
-
+/*
         .boss>div {
             transform: scale(3.75);
         }
@@ -34,8 +34,8 @@
         .boss.super>div {
             transform: scale(10.5);
         }
-
-
+*/
+/*
         .super.boss.look-right>div,
         .normal.look-right>div,
         .boss.look-right>div {
@@ -59,7 +59,7 @@
             transition: all 2s;
         }
              
-        
+  */      
         /* Static Sprites */
         /* Static Sprites */
         /* Static Sprites */
@@ -215,6 +215,7 @@
 .normal.top_top_1 {
                 height: 72px; width: 72px;
             }
+            /*
  .boss.top_single,
 .boss.floor_0,
 .boss.floor_1,
@@ -255,5 +256,5 @@
 .boss.super.top_top_1 {
                 height: 252px; width: 252px;
             } 
-
+*/
         
