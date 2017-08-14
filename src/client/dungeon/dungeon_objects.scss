@@ -20,15 +20,15 @@
         .super>div,
         .boss>div,
         .normal>div {
-            transform-origin: 50% 50%;
+            transform-origin: 50% 100%;
         }
 
         .normal>div {
-            transform: translateX(-50%) scale(3);
+            transform: translateY(0%) translateX(-50%) scale(3);
             position: absolute;
             left: 50%;
             bottom: 30%;
-            transform-origin: 50% 100%;
+           
         }
 
         .boss>div {

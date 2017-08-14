@@ -20,47 +20,40 @@
         .super>div,
         .boss>div,
         .normal>div {
-            transform-origin: 50% 50%;
+            transform-origin: 50% 100%;
         }
 
         .normal>div {
-            transform: translateX(-50%) translateY(50%) scale(3);
+            transform: translateX(-50%) scale(3);
             position: absolute;
             left: 50%;
-            bottom: 80%;
+            bottom: 30%;
         }
 
         .boss>div {
-            transform: translateX(-50%) translateY(50%) scale(3.75);
+            transform: translateX(-50%)  scale(3.75);
             position: absolute;
             left: 50%;
-            bottom: 90%;
+            bottom: 30%;
         }
 
         .boss.super>div {
-            transform: translateX(-50%) translateY(50%) scale(10.5);
+            transform: translateX(-50%)  scale(10.5);
             position: absolute;
             left: 50%;
-            bottom: 100%;
-        }
-
-
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: 50% 50%;
+            bottom: 30%;
         }
 
         .normal.look-right>div {
-            transform: translateX(-50%) translateY(50%) scale(3) scaleX(-1);
+            transform: translateX(-50%) scale(3) scaleX(-1);
         }
 
         .boss.look-right>div {
-            transform: translateX(-50%) translateY(50%) scale(3.75) scaleX(-1);
+            transform: translateX(-50%) scale(3.75) scaleX(-1);
         }
 
         .super.boss.look-right>div {
-            transform: translateX(-50%) translateY(50%) scale(10.5) scaleX(-1);
+            transform: translateX(-50%) scale(10.5) scaleX(-1);
         }
 
         .smooth,
