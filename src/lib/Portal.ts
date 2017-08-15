@@ -27,7 +27,7 @@ export function processPortal(_matrix: string[], _width: number, room: $Room, co
 
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['common_floor_objects', 'teleportation'],
         left: 0,
         top: 0,

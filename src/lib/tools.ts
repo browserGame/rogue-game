@@ -285,3 +285,10 @@ export function loadXMLAsset(method: HTTPMethod, url: string, cb?: ProgressFunct
 
 }
 
+export function toArray<T>(v: T|T[]): T[] {
+    if (v instanceof Array){
+        return v;
+    }
+    return [v];
+}
+

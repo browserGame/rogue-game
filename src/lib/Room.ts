@@ -13,15 +13,24 @@ export interface Layout {
     symbols: (SymbolBase<string>)[];
 }
 
-export type $GUISizeType = 'normal' | 'boss' | 'super';
+export interface GUISizeType {
+    normal: 1;
+    boss: 1;
+    super: 1;
+    plts3: 1; //position top-left scale 3
+    fsc3: 1; // fix scale container 3
+}
+
+export type $GUISizeType = keyof GUISizeType;
 
 export interface $GFragment {
-    size: $GUISizeType | $GUISizeType[] | undefined;
-    auxClassNames: string[] | undefined;
+    size: $GUISizeType[];
+    auxClassNames: string[];
     left: number;
     top: number;
     zIndex: number;
 }
+
 
 export interface $Item {
     namespace?: string;
@@ -127,12 +136,12 @@ export function isRoom(r: any): r is $Room {
 
 export function getNameSpace(r: $Room, key: string): $Item[] {
     return r.getNameSpace(key);
-   /* let ns = r.body.get(key);
-    if (!ns) {
-        ns = [];
-        r.body.set(key, ns);
-    }
-    return ns;*/
+    /* let ns = r.body.get(key);
+     if (!ns) {
+         ns = [];
+         r.body.set(key, ns);
+     }
+     return ns;*/
 }
 
 

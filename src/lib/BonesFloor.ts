@@ -25,7 +25,7 @@ export function processSkullAndBones(_matrix: string[], _width: number, room: $R
     let skulls = coords.map((v) => {
 
         let gui: $GFragment = {
-            size: 'normal',
+            size: ['normal'],
             auxClassNames: ['dungeon_decor_props', sampleFromListEqualProb(skeletons)],
             left: 0,
             top: 0,

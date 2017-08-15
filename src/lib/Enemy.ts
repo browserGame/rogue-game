@@ -59,7 +59,7 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         '@';  //xx green wizard shaman throws fire //lizard05_idle
     */
     let gui: $GFragment = {
-        size: si.e === '%' ? 'boss' : 'normal',
+        size: [si.e === '%' ? 'boss' : 'normal'],
         left: 0,
         top: 0,
         auxClassNames: ['enemies', select[si.e], orientation],

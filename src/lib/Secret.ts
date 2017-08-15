@@ -38,8 +38,8 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
     }
 
     let gui: $GFragment = {
-        size: undefined,
-        auxClassNames: undefined, 
+        size: [],
+        auxClassNames: [], 
         left: 0,
         top: 0,
         zIndex: 0

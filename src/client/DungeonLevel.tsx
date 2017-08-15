@@ -2,8 +2,12 @@
 import * as React from 'react';
 
 import {
+    $Item,
     $Room,
-    getNameSpace
+    getNameSpace,
+    //$GUISizeType,
+    //is$GUISizeType,
+
 } from '../lib/Room';
 
 import {
@@ -14,6 +18,19 @@ import {
 import {
     cssFn
 } from './Css';
+
+import {
+    //toArray
+} from '../lib/tools';
+
+import {
+    //LiquidType
+} from '../lib/Symbols';
+
+import {
+    Vector
+} from '../lib/math';
+
 
 /*
 Design decisions for ReactJS,
@@ -77,12 +94,114 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         this._s = props.scale;
     }
 
+    private renderLiquid() {
+        let floorPlan = gGame[this.level];
+        let roomPks = Array.from(floorPlan.rooms.keys());
+        console.log(`drawing ns:${name}`);
+        let elts: JSX.Element[] = [];
+        roomPks.reduce((coll, id) => {
+            let room = floorPlan.rooms.get(id) as $Room;
+            let liquids = room.getNameSpace('liquid');
+            liquids.forEach((l) => {
+                coll.push(...this.renderLiquidRoom(room, l));
+            });
+            return coll;
+        }, elts);
+        return elts;
+    }
+
+    private renderLiquidRoom(r: $Room, m: $Item): JSX.Element[] {
+        let brx = (m.br as Vector).x;
+        let bry = (m.br as Vector).y;
+        let _s = this._s;
+        let rc: JSX.Element[] = [];
+        let nrCellsx = brx - m.p.x;
+        let nrCellsy = bry - m.p.y;
+
+        let select: { [index: string]: (...rest: string[]) => string; } = {
+            $: cssFn.liquid_acid,
+            '(': cssFn.liquid_lava,
+            O: cssFn.liquid_water,
+            '£': cssFn.liquid_swamp
+        };
+       
+        let resolver = select[m.tag];
+
+        for (let i = 0; i <= nrCellsx; i++) {
+            for (let j = 0; j <= nrCellsy; j++) {
+                let top = globTop(r, m.p.y + j, _s);
+                let left = globLeft(r, m.p.x + i, _s);
+                let zIndex = globZ(r, m.p.y);
+
+                let LiquidAnim: React.CSSProperties = {
+                    zIndex,
+                    top: `${top}px`,
+                    left: `${left}px`,
+                    position: 'absolute'
+                };
+
+                rc.push(<div
+                    key={`${r.pk}:${top}:${left}:${m.tag}:l`}
+                    className={resolver(...m.gui.auxClassNames, ...m.gui.size, 'liquid')}
+                    style={LiquidAnim} >
+                    <div></div>
+                </div>);
+
+                let frame: React.CSSProperties = {
+                    zIndex: zIndex + 1,
+                    top: LiquidAnim.top,
+                    left: LiquidAnim.left,
+                    position: 'absolute'
+                };
+
+                let cl = (() => {
+                    //singlespot
+                    if (nrCellsx === nrCellsy && nrCellsy === 0) return 'top_single';
+                    //horizontal line 1 dim
+                    if (i === 0 && nrCellsy === 0) return 'single_left';
+                    if (i === nrCellsx && nrCellsy === 0) return 'single_right';
+                    if (nrCellsy === 0) return 'single_horizontal';
+                    //vertical line 1 dim
+                    if (j === 0 && nrCellsx === 0) return 'single_top';
+                    if (j === nrCellsy && nrCellsx === 0) return 'single_bottom';
+                    if (nrCellsx === 0) return 'single_vertical';
+                    //some area at leas 2x2
+                    //top line
+                    if (j === 0 && i === 0) return 'top_top_left_corner';
+                    if (j === 0 && i === nrCellsx) return 'top_top_right_corner';
+                    if (j === 0) return 'top_top';
+                    //bottom line
+                    if (j === nrCellsy && i === 0) return 'top_bottom_left_corner';
+                    if (j === nrCellsy && i === nrCellsx) return 'top_bottom_right_corner';
+                    if (j === nrCellsy) return 'top_bottom';
+                    //left wall
+                    if (i === 0) return 'top_left';
+                    //right wall
+                    if (i === nrCellsx) return 'top_right';
+                    // everything else, has no frame
+                    return undefined;
+                })();
+                if (cl === undefined) continue;
+                rc.push(<div
+                    key={`${r.pk}:${top}:${left}:${m.tag}:f`}
+                    className={resolver(...m.gui.auxClassNames, ...m.gui.size, cl)}
+                    style={frame} >
+                    <div></div>
+                </div>);
+            }
+        }
+
+        return rc;
+
+    }
+
+
     private renderNameSpace(name: string, cssResolver: (...rest: string[]) => string, zOffset: number = 0, dx: number = 0, dy: number = 0) {
         let _s = this._s;
         let floorPlan = gGame[this.level];
         let roomPks = Array.from(floorPlan.rooms.keys());
-        console.log(`number of rooms to drow:${roomPks.length}`);
-        let walls: JSX.Element[] = [];
+        console.log(`drawing ns:${name}`);
+        let elts: JSX.Element[] = [];
         roomPks.reduce((coll, id) => {
             let r = floorPlan.rooms.get(id) as $Room;
             let asset = getNameSpace(r, name);
@@ -105,8 +224,8 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             });
             coll.push(...html);
             return coll;
-        }, walls);
-        return walls;
+        }, elts);
+        return elts;
     }
 
     render() {
@@ -128,11 +247,15 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let breakable: JSX.Element[] = this.renderNameSpace('breakable', cssFn.dungeon_o, 2);
         let openable: JSX.Element[] = this.renderNameSpace('openable', cssFn.dungeon_o, 4);
         let enemies: JSX.Element[] = this.renderNameSpace('enemy', cssFn.enemies, 7);
-        let doors: JSX.Element[] = this.renderNameSpace('doors',  cssFn.floor_crypt, 7);
-        ///doors;
+        let doors: JSX.Element[] = this.renderNameSpace('doors', cssFn.floor_crypt, 7);
+        let liquids: JSX.Element[] = this.renderLiquid();
+        //
+        // doors;
+        //
         return (<div style={styles} >
             {walls}
             {floorTiles}
+            {liquids}
             {carpets}
             {stairs}
             {skullBones}

@@ -101,3 +101,79 @@ B3-B3-F-G-D-E
 
 n = width - 4*2
 
+# dungeon_decor_props
+#
+skeleton_remains_01 
+skeleton_remains_02
+skeleton_remains_03
+skeleton_remains_04
+.
+.
+skeleton_remains_08
+skeleton_remains_06 -- dont use
+skeleton_remains_07 -- dont use
+skeleton_remains_
+
+bloodsplatter
+
+area12
+area13
+area14
+area20
+
+area21 (green blood?)
+area22 (green blood?)
+
+spiderweb_01 (weird)
+spiderweb_02 (weird)
+
+spiderweb_03 (top-left)
+spiderweb_04 (top-right)
+spiderweb_05 (bottom-right)
+spiderweb_06 (bottom-left)
+
+
+ .door
+.door_open
+floor_crypt
+
+
+
+
+============================
+
+liquid_acid
+
+12345
+6789A
+BCDEF
+GHIJK
+LMN
+
+top_top_left_corner = 6
+top_top_right_corner = 8
+top_bottom_left_corner = G
+top_bottom_right_corner = I
+
+top_left = B
+top_right = D
+top_bottom = H
+top_top = 7
+
+top_single = C
+inner_bottom_right = 3
+inner_top_right = 4
+inner_bottom_left = 5
+ 
+bottom_top_left = 9
+single_top = E
+single_right = F
+single_bottom = J
+single_left = K
+single_horizontal = L
+single_vertical = M
+single_cross = N
+
+
+  
+

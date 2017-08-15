@@ -60,7 +60,7 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: [cssSheet[si.e], select[si.e]],
         left: 0,
         top: 0,

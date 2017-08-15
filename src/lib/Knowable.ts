@@ -44,7 +44,7 @@ export function processKnowable(
     };
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['common_items', select[si.e]],
         top: 0,
         left: 0,

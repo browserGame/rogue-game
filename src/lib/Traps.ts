@@ -30,7 +30,7 @@ export function processTraps(_matrix: string[], _width: number, room: $Room, coo
     };
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: [ 'common_floor_objects', select[si.e]],
         left: 0,
         top: 0,

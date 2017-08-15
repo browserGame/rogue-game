@@ -34,10 +34,7 @@ export interface $ItemLiquid extends $Item {
 }
 
 
-export function processLiquid(matrix: string[], width: number, room: $Room, coords: Vector[], si: Water | Acid | Lava) {
-
-    matrix;
-    width;
+export function processLiquid(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: Water | Acid | Lava) {
 
     let { isValid, first, last } = isValidArea(coords);
 
@@ -46,7 +43,7 @@ export function processLiquid(matrix: string[], width: number, room: $Room, coor
         return; //do nothing
     }
 
-    let select = {
+    let NS = {
         O: 'liquid_water',
         '(': 'liquid_lava',
         $: 'liquid_acid',
@@ -54,8 +51,8 @@ export function processLiquid(matrix: string[], width: number, room: $Room, coor
     };
 
     let gui: $GFragment = {
-        size: 'normal',
-        auxClassNames: [select[si.e]],
+        size: ['plts3', 'fsc3'],
+        auxClassNames: [NS[si.e]],
         left: 0,
         top: 0,
         zIndex: 0

@@ -353,7 +353,7 @@ export interface LevelStairs extends SymbolBase<'µ'> {
 // [(]lava
 // [O] water
 // [$] acid bath
-//
+// [&] swamp
 export type LiquidType = '$' | '(' | 'O' | '£';
 export type ObstructableType = '"' | '!' | 'U' | 'Q' | LiquidType;
 

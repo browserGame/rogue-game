@@ -79,7 +79,7 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
     })();
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['common_test_items', className],
         left: 0,
         top: 0,

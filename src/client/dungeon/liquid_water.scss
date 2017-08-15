@@ -17,49 +17,18 @@
         /* general sizing */
         /* general sizing */
 
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 0 0;
-        }
+        /*
+           
+             pcs3 = [p]osition [c]entral, [s]cale 3
+         */
 
-        .normal>div {
-            transform: scale(3) translateX(-50%);
+     
+        .fsc3>div {
+            transform-origin: 50% 50%;
+            transform:  translateX(-50%) translateY(-50%) scale(3);
             position: absolute;
             left: 50%;
-            bottom: 30%;
-        }
-
-        .boss>div {
-            transform: scale(3.75);
-        }
-
-        .boss.super>div {
-            transform: scale(10.5);
-        }
-
-
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: right top;
-        }
-
-        .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
-        }
-
-        .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
-        }
-
-        .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
-        }
-
-        .smooth,
-        .smooth>div {
-            transition: all 2s;
+            top: 50%;
         }
              
         
@@ -212,73 +181,29 @@
         /* Static Sprites Sizes */
         /* Static Sprites Sizes */
                 
-         .normal.top_top_left_corner,
-.normal.top_top_right_corner,
-.normal.top_bottom_left_corner,
-.normal.top_bottom_right_corner,
-.normal.top_left,
-.normal.top_right,
-.normal.top_bottom,
-.normal.top_single,
-.normal.top_top,
-.normal.inner_bottom_right,
-.normal.inner_top_right,
-.normal.inner_bottom_left,
-.normal.bottom_top_left,
-.normal.single_top,
-.normal.single_right,
-.normal.single_bottom,
-.normal.single_left,
-.normal.single_horizontal,
-.normal.single_vertical,
-.normal.single_cross {
+         .fsc3.top_top_left_corner,
+.fsc3.top_top_right_corner,
+.fsc3.top_bottom_left_corner,
+.fsc3.top_bottom_right_corner,
+.fsc3.top_left,
+.fsc3.top_right,
+.fsc3.top_bottom,
+.fsc3.top_single,
+.fsc3.top_top,
+.fsc3.inner_bottom_right,
+.fsc3.inner_top_right,
+.fsc3.inner_bottom_left,
+.fsc3.bottom_top_left,
+.fsc3.single_top,
+.fsc3.single_right,
+.fsc3.single_bottom,
+.fsc3.single_left,
+.fsc3.single_horizontal,
+.fsc3.single_vertical,
+.fsc3.single_cross {
                 height: 72px; width: 72px;
             }
- .boss.top_top_left_corner,
-.boss.top_top_right_corner,
-.boss.top_bottom_left_corner,
-.boss.top_bottom_right_corner,
-.boss.top_left,
-.boss.top_right,
-.boss.top_bottom,
-.boss.top_single,
-.boss.top_top,
-.boss.inner_bottom_right,
-.boss.inner_top_right,
-.boss.inner_bottom_left,
-.boss.bottom_top_left,
-.boss.single_top,
-.boss.single_right,
-.boss.single_bottom,
-.boss.single_left,
-.boss.single_horizontal,
-.boss.single_vertical,
-.boss.single_cross {
-                height: 90px; width: 90px;
-            }
- .boss.super.top_top_left_corner,
-.boss.super.top_top_right_corner,
-.boss.super.top_bottom_left_corner,
-.boss.super.top_bottom_right_corner,
-.boss.super.top_left,
-.boss.super.top_right,
-.boss.super.top_bottom,
-.boss.super.top_single,
-.boss.super.top_top,
-.boss.super.inner_bottom_right,
-.boss.super.inner_top_right,
-.boss.super.inner_bottom_left,
-.boss.super.bottom_top_left,
-.boss.super.single_top,
-.boss.super.single_right,
-.boss.super.single_bottom,
-.boss.super.single_left,
-.boss.super.single_horizontal,
-.boss.super.single_vertical,
-.boss.super.single_cross {
-                height: 252px; width: 252px;
-            } 
-
+ 
         
             
             /* Animations */
@@ -314,15 +239,8 @@
             /* Animation Sizes */
             /* Animation Sizes */
             
-             .normal.liquid {
+             .fsc3.liquid {
                 height: 72px; width: 72px;
             }
 
- .boss.liquid {
-                height: 90px; width: 90px;
-            }
-
- .boss.super.liquid {
-                height: 252px; width: 252px;
-            }
-        
+ 

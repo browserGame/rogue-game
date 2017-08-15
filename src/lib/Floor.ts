@@ -36,7 +36,7 @@ export function getRandomFloor(): $GFragment {
     let s = sampleFromList(samples);
 
     return {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['floor_crypt', s],
         left: 0,
         top: 0,

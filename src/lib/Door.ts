@@ -28,8 +28,8 @@ export function processDoor(matrix: string[], width: number, room: $Room, coords
     matrix;
 
     let gui: $GFragment = {
-        size: !si.inset ? undefined : 'normal',
-        auxClassNames: !si.inset ? undefined : ['floor_crypt', 'door', /* just plain 'door_open'  for open door */],
+        size: !si.inset ? [] : ['normal'],
+        auxClassNames: !si.inset ? [] : ['floor_crypt', 'door', /* just plain 'door_open'  for open door */],
         left: 0,
         top: 0,
         zIndex: 0

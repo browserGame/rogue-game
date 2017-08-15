@@ -33,7 +33,7 @@ function getRandomHorizontalWall(): HWallType {
 }
 
 const dudFragment: $GFragment = {
-    size: 'normal',
+    size: ['normal'],
     auxClassNames: [],
     left: 0,
     top: 0,
@@ -71,7 +71,7 @@ function mapAsciiToGUIWall(token: string): $GFragment {
     }
 
     return {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['floor_crypt', wallName],
         left: 0,  //parameter adjusted for the gui state used by the render
         top: 0,

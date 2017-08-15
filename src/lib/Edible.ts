@@ -76,7 +76,7 @@ namespace: .common_items
     };
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: ['common_items', select[si.e]],
         left: 0,
         top: 0,

@@ -1,89 +1,80 @@
-
-        
-        /* SpriteSheet */
-        /* SpriteSheet */
-        /* SpriteSheet */
-        
-        .shadow > div {
-            background: url('./shadow.png');
-            background-origin: border-box;
-            image-rendering: pixelated;
-        }
-
-        /* general sizing */
-        /* general sizing */
-        /* general sizing */
-
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 0 0;
-        }
-
-        .normal>div {
-            transform: scale(3) translateX(-50%);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
-
-        .boss>div {
-            transform: scale(3.75);
-        }
-
-        .boss.super>div {
-            transform: scale(10.5);
-        }
+/* SpriteSheet */
 
 
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: right top;
-        }
+/* SpriteSheet */
 
-        .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
-        }
 
-        .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
-        }
+/* SpriteSheet */
 
-        .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
-        }
+.shadow>div {
+    background: url('./shadow.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+}
 
-        .smooth,
-        .smooth>div {
-            transition: all 2s;
-        }
-             
-        
-        /* Static Sprites */
-        /* Static Sprites */
-        /* Static Sprites */
-        
-        
-            .shadow > div {
-                background-position: -0px -0px;
-                width: 24px;
-                height: 10px;
-            }
-        
-        
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-                
-         .normal.shadow {
-                height: 30px; width: 72px;
-            }
- .boss.shadow {
-                height: 37.5px; width: 90px;
-            }
- .boss.super.shadow {
-                height: 105px; width: 252px;
-            } 
 
-        
+/* general sizing */
+
+
+/* general sizing */
+
+
+/* general sizing */
+
+         /*
+             co = central origin
+             pcs3 = [p]osition [c]entral, [s]cale 3
+             pcs375
+             fcs3 [f]ixed [c]ontainer [s]ize 3
+         */
+
+.co>div {
+    transform-origin: 50% 50%;
+}
+
+.pcs3>div {
+    transform: translateX(-50%) translateY(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.pcs375 >div {
+    transform:  translateX(-50%) translateY(-50%) scale(3.75);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+/* Static Sprites */
+/* Static Sprites */
+/* Static Sprites */
+
+.shadow>div {
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+}
+
+
+/* Static Sprites Sizes */
+/* Static Sprites Sizes */
+/* Static Sprites Sizes */
+
+.pcs3.shadow {
+    height: 30px;
+    width: 72px;
+}
+
+.pcs375.shadow {
+    height: 37.5px;
+    width: 90px;
+}
+
+.fcs3.shadow {
+    height: 72px;
+    width: 72px;
+}
+
+
+

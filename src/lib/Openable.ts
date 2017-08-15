@@ -53,7 +53,7 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
     };
 
     let gui: $GFragment = {
-        size: 'normal',
+        size: ['normal'],
         auxClassNames: [namespace[si.e], select[si.e]],
         left: 0,
         top: 0,
