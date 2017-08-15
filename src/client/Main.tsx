@@ -17,8 +17,7 @@ function App() {
         <div className={enemy('enemies', 'boss', 'death03_idle')} ><div></div></div>
         */}
         {
-        
-            <div style={
+          <div style={
             {
                 position: 'fixed',
                 top: '0px',
