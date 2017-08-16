@@ -2,11 +2,7 @@
 
 
 /* SpriteSheet */
-
-
 /* SpriteSheet */
-
-
 /* SpriteSheet */
 
 .common_floor_objects>div {
@@ -17,19 +13,43 @@
 
 
 /* general sizing */
-
-
+/* general sizing */
 /* general sizing */
 
+/* plts3 = [p]osition [l]eft [t]op, [s]cale 3 */
 
-/* general sizing */
+.plts3>div {
+    transform-origin: 0 0;
+    transform: scale(3);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
+/* fix container on 72 = ( 3*24 ) px */
 
-/*   .super>div,
-        .boss>div,*/
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
+
+/* pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
+
+.pxcb30ps3 > div {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+}
+
+.pxcb30ps3.right > div {
+    transform: translateX(-50) scaleX(-1) scale(3);
+}
 
 .normal>div {
-    transform-origin: 0% 0%;
+    transform-origin: 
+    0% 0%;
 }
 
 .normal>div {
@@ -37,16 +57,6 @@
     position: absolute;
     left: 0;
     top: 0;
-}
-
-.normal.d3obj {
-    transform-origin: 50% 100%;
-}
-
-.normal.d3obj {
-    transform: translateX(-50%) scale(3);
-    left: 50%;
-    bottom: 30%
 }
 
 
@@ -269,8 +279,8 @@
                 height: 252px; width: 252px;
             }*/
 
-.normal.carpet_red,
-.normal.carpet_blue {
+.plts3.carpet_red,
+.plts3.carpet_blue {
     height: 216px;
     width: 216px;
 }
@@ -289,8 +299,8 @@
     width: 756px;
 }*/
 
-.normal.carpet_red_horizontal,
-.normal.carpet_blue_horizontal {
+.plts3.carpet_red_horizontal,
+.plts3.carpet_blue_horizontal {
     height: 144px;
     width: 216px;
 }
@@ -310,8 +320,8 @@
 }
 */
 
-.normal.carpet_red_square,
-.normal.carpet_blue_square {
+.plts3.carpet_red_square,
+.plts3.carpet_blue_square {
     height: 144px;
     width: 144px;
 }

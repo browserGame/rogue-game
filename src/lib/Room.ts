@@ -19,6 +19,7 @@ export interface GUISizeType {
     super: 1;
     plts3: 1; //position top-left scale 3
     fsc3: 1; // fix scale container 3
+    pxcb30ps3: 1;
 }
 
 export type $GUISizeType = keyof GUISizeType;

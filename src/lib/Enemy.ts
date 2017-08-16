@@ -47,7 +47,7 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         T: 'skeleton_idle'
     };
 
-    const orientation = sampleFromListEqualProb(['look-right', '']);
+    const orientation = sampleFromListEqualProb(['right', '']);
 
     /*
     export type EnemyTypes = 
@@ -59,12 +59,15 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         '@';  //xx green wizard shaman throws fire //lizard05_idle
     */
     let gui: $GFragment = {
-        size: [si.e === '%' ? 'boss' : 'normal'],
+        size: ['fsc3', 'pxcb30ps3'], //, si.e === '%' ? 'boss' : ''],
         left: 0,
         top: 0,
         auxClassNames: ['enemies', select[si.e], orientation],
         zIndex: 0
     };
+    if (si.e === '%'){
+        gui.size.push('boss');
+    }
 
     let itm: $ItemEnemy = {
         tag: si.e,

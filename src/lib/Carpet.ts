@@ -59,7 +59,7 @@ export function processCarpet(_matrix: string[], _width: number, room: $Room, co
     }
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['plts3'],
         auxClassNames: [
             'common_floor_objects', 
             getCarpet({ x: last.x - first.x + 1, y: last.y - first.y + 1 }, si.color)

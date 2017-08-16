@@ -220,6 +220,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                     className={classN}
                 >
                     <div></div>
+                    <div></div>
                 </div >);
             });
             coll.push(...html);

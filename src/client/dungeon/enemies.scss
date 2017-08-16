@@ -1,60 +1,93 @@
-
-            /*  Computer Generated CSS, */
-            
-            
+        
         
         /* SpriteSheet */
         /* SpriteSheet */
         /* SpriteSheet */
         
-        .enemies > div {
+        .enemies > div:first-child {
             background: url('./enemies.png');
             background-origin: border-box;
             image-rendering: pixelated;
+            z-index:1;
         }
+
+        .enemies > div:last-child {
+            background: url('./shadow.png');
+            background-origin: border-box;
+            image-rendering: pixelated;
+            z-index: 0;
+        }
+
+        
 
         /* general sizing */
         /* general sizing */
         /* general sizing */
 
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 50% 100%;
-        }
+        /* plts3 = [p]osition [l]eft [t]op, [s]cale 3 */
 
-        .normal>div {
-            transform: translateX(-50%) scale(3);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
+/*.plts3>div {
+    transform-origin: 0 0;
+    transform: scale(3);
+    position: absolute;
+    left: 0;
+    top: 0;
+}*/
 
-        .boss>div {
-            transform: translateX(-50%)  scale(3.75);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
+/* fix container on 72 = ( 3*24 ) px */
 
-        .boss.super>div {
-            transform: translateX(-50%)  scale(10.5);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
 
-        .normal.look-right>div {
-            transform: translateX(-50%) scale(3) scaleX(-1);
-        }
+/* 
+    pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] 
+*/
 
-        .boss.look-right>div {
-            transform: translateX(-50%) scale(3.75) scaleX(-1);
-        }
+.pxcb30ps3 > div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    //outline:1px red dashed;
+}
 
-        .super.boss.look-right>div {
-            transform: translateX(-50%) scale(10.5) scaleX(-1);
-        }
+.pxcb30ps3 > div:last-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 12.5%;
+    opacity: 0.5;
+}
+
+.pxcb30ps3.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3);
+}
+
+.pxcb30ps3.boss > div:last-child,
+.pxcb30ps3.boss > div:first-child {
+    transform: translateX(-50%) translateY(0) scale(3.75);
+}
+
+
+.pxcb30ps3.boss.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3.75);
+}
+
+.pxcb30ps3.boss.super > div:first-child {
+    transform: translateX(-50%) translateY(0)  scale(10.5);
+}
+
+.pxcb30ps3.boss.super.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(10.5);
+}
+
 
         .smooth,
         .smooth>div {
@@ -67,7 +100,7 @@
         /* Static Sprites */
         
         
-            .streetpass_icon > div {
+            .streetpass_icon > div:first-child {
                 background-position: -7px -225px;
                 width: 7px;
                 height: 7px;
@@ -94,7 +127,7 @@
             /* Animations */
             /* Animations */
             
-             .assassin01_idle > div {
+             .assassin01_idle > div:first-child {
                     animation-name: assassin01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -118,7 +151,7 @@
                 
                 }
             
- .assassin01_attack > div {
+ .assassin01_attack > div:first-child {
                     animation-name: assassin01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -142,7 +175,7 @@
                 
                 }
             
- .viking02_idle > div {
+ .viking02_idle > div:first-child {
                     animation-name: viking02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -166,7 +199,7 @@
                 
                 }
             
- .viking02_attack > div {
+ .viking02_attack > div:first-child {
                     animation-name: viking02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -190,7 +223,7 @@
                 
                 }
             
- .darkelf02_idle > div {
+ .darkelf02_idle > div:first-child {
                     animation-name: darkelf02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -214,7 +247,7 @@
                 
                 }
             
- .darkelf02_attack > div {
+ .darkelf02_attack > div:first-child {
                     animation-name: darkelf02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -238,7 +271,7 @@
                 
                 }
             
- .darkelf03_idle > div {
+ .darkelf03_idle > div:first-child {
                     animation-name: darkelf03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -262,7 +295,7 @@
                 
                 }
             
- .darkelf03_attack > div {
+ .darkelf03_attack > div:first-child {
                     animation-name: darkelf03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -286,7 +319,7 @@
                 
                 }
             
- .elf03_idle > div {
+ .elf03_idle > div:first-child {
                     animation-name: elf03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -310,7 +343,7 @@
                 
                 }
             
- .elf03_attack > div {
+ .elf03_attack > div:first-child {
                     animation-name: elf03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -334,7 +367,7 @@
                 
                 }
             
- .grayelf06_idle > div {
+ .grayelf06_idle > div:first-child {
                     animation-name: grayelf06_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -358,7 +391,7 @@
                 
                 }
             
- .grayelf06_attack > div {
+ .grayelf06_attack > div:first-child {
                     animation-name: grayelf06_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -382,7 +415,7 @@
                 
                 }
             
- .grayelf08_idle > div {
+ .grayelf08_idle > div:first-child {
                     animation-name: grayelf08_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -406,7 +439,7 @@
                 
                 }
             
- .grayelf08_attack > div {
+ .grayelf08_attack > div:first-child {
                     animation-name: grayelf08_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -430,7 +463,7 @@
                 
                 }
             
- .lizard03_idle > div {
+ .lizard03_idle > div:first-child {
                     animation-name: lizard03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -454,7 +487,7 @@
                 
                 }
             
- .lizard03_attack > div {
+ .lizard03_attack > div:first-child {
                     animation-name: lizard03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -478,7 +511,7 @@
                 
                 }
             
- .lizard05_idle > div {
+ .lizard05_idle > div:first-child {
                     animation-name: lizard05_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -502,7 +535,7 @@
                 
                 }
             
- .lizard05_attack > div {
+ .lizard05_attack > div:first-child {
                     animation-name: lizard05_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -526,7 +559,7 @@
                 
                 }
             
- .gnome01_idle > div {
+ .gnome01_idle > div:first-child {
                     animation-name: gnome01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -550,7 +583,7 @@
                 
                 }
             
- .gnome01_attack > div {
+ .gnome01_attack > div:first-child {
                     animation-name: gnome01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -574,7 +607,7 @@
                 
                 }
             
- .gnome02_idle > div {
+ .gnome02_idle > div:first-child {
                     animation-name: gnome02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -598,7 +631,7 @@
                 
                 }
             
- .gnome02_attack > div {
+ .gnome02_attack > div:first-child {
                     animation-name: gnome02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -622,7 +655,7 @@
                 
                 }
             
- .gnome04_idle > div {
+ .gnome04_idle > div:first-child {
                     animation-name: gnome04_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -646,7 +679,7 @@
                 
                 }
             
- .gnome04_attack > div {
+ .gnome04_attack > div:first-child {
                     animation-name: gnome04_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -670,7 +703,7 @@
                 
                 }
             
- .gnome05_idle > div {
+ .gnome05_idle > div:first-child {
                     animation-name: gnome05_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -694,7 +727,7 @@
                 
                 }
             
- .gnome05_attack > div {
+ .gnome05_attack > div:first-child {
                     animation-name: gnome05_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -718,7 +751,7 @@
                 
                 }
             
- .werewolf01_idle > div {
+ .werewolf01_idle > div:first-child {
                     animation-name: werewolf01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -742,7 +775,7 @@
                 
                 }
             
- .werewolf01_attack > div {
+ .werewolf01_attack > div:first-child {
                     animation-name: werewolf01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -766,7 +799,7 @@
                 
                 }
             
- .minotaur01_idle > div {
+ .minotaur01_idle > div:first-child {
                     animation-name: minotaur01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -790,7 +823,7 @@
                 
                 }
             
- .minotaur01_attack > div {
+ .minotaur01_attack > div:first-child {
                     animation-name: minotaur01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -814,7 +847,7 @@
                 
                 }
             
- .minotaur03_idle > div {
+ .minotaur03_idle > div:first-child {
                     animation-name: minotaur03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -838,7 +871,7 @@
                 
                 }
             
- .minotaur03_attack > div {
+ .minotaur03_attack > div:first-child {
                     animation-name: minotaur03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -862,7 +895,7 @@
                 
                 }
             
- .gargoyle01_idle > div {
+ .gargoyle01_idle > div:first-child {
                     animation-name: gargoyle01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -886,7 +919,7 @@
                 
                 }
             
- .gargoyle01_attack > div {
+ .gargoyle01_attack > div:first-child {
                     animation-name: gargoyle01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -910,7 +943,7 @@
                 
                 }
             
- .gargoyle02_idle > div {
+ .gargoyle02_idle > div:first-child {
                     animation-name: gargoyle02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -934,7 +967,7 @@
                 
                 }
             
- .gargoyle02_attack > div {
+ .gargoyle02_attack > div:first-child {
                     animation-name: gargoyle02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -958,7 +991,7 @@
                 
                 }
             
- .robot02_idle > div {
+ .robot02_idle > div:first-child {
                     animation-name: robot02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -982,7 +1015,7 @@
                 
                 }
             
- .robot02_attack > div {
+ .robot02_attack > div:first-child {
                     animation-name: robot02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1006,7 +1039,7 @@
                 
                 }
             
- .robot04_idle > div {
+ .robot04_idle > div:first-child {
                     animation-name: robot04_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1030,7 +1063,7 @@
                 
                 }
             
- .robot04_attack > div {
+ .robot04_attack > div:first-child {
                     animation-name: robot04_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1054,7 +1087,7 @@
                 
                 }
             
- .robot05_idle > div {
+ .robot05_idle > div:first-child {
                     animation-name: robot05_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1078,7 +1111,7 @@
                 
                 }
             
- .robot05_attack > div {
+ .robot05_attack > div:first-child {
                     animation-name: robot05_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1102,7 +1135,7 @@
                 
                 }
             
- .genie01_idle > div {
+ .genie01_idle > div:first-child {
                     animation-name: genie01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1126,7 +1159,7 @@
                 
                 }
             
- .genie01_attack > div {
+ .genie01_attack > div:first-child {
                     animation-name: genie01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1150,7 +1183,7 @@
                 
                 }
             
- .tree01_idle > div {
+ .tree01_idle > div:first-child {
                     animation-name: tree01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1174,7 +1207,7 @@
                 
                 }
             
- .tree01_attack > div {
+ .tree01_attack > div:first-child {
                     animation-name: tree01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1198,7 +1231,7 @@
                 
                 }
             
- .chest01_idle > div {
+ .chest01_idle > div:first-child {
                     animation-name: chest01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1222,7 +1255,7 @@
                 
                 }
             
- .chest01_attack > div {
+ .chest01_attack > div:first-child {
                     animation-name: chest01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1246,7 +1279,7 @@
                 
                 }
             
- .blob01_idle > div {
+ .blob01_idle > div:first-child {
                     animation-name: blob01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1270,7 +1303,7 @@
                 
                 }
             
- .blob01_attack > div {
+ .blob01_attack > div:first-child {
                     animation-name: blob01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1294,7 +1327,7 @@
                 
                 }
             
- .bat_idle > div {
+ .bat_idle > div:first-child {
                     animation-name: bat_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1318,7 +1351,7 @@
                 
                 }
             
- .bat_attack > div {
+ .bat_attack > div:first-child {
                     animation-name: bat_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1342,7 +1375,7 @@
                 
                 }
             
- .bat02_idle > div {
+ .bat02_idle > div:first-child {
                     animation-name: bat02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1366,7 +1399,7 @@
                 
                 }
             
- .bat02_attack > div {
+ .bat02_attack > div:first-child {
                     animation-name: bat02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1390,7 +1423,7 @@
                 
                 }
             
- .minion01_idle > div {
+ .minion01_idle > div:first-child {
                     animation-name: minion01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1414,7 +1447,7 @@
                 
                 }
             
- .minion01_attack > div {
+ .minion01_attack > div:first-child {
                     animation-name: minion01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1438,7 +1471,7 @@
                 
                 }
             
- .rat_idle > div {
+ .rat_idle > div:first-child {
                     animation-name: rat_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1462,7 +1495,7 @@
                 
                 }
             
- .rat_attack > div {
+ .rat_attack > div:first-child {
                     animation-name: rat_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1486,7 +1519,7 @@
                 
                 }
             
- .rat02_idle > div {
+ .rat02_idle > div:first-child {
                     animation-name: rat02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1510,7 +1543,7 @@
                 
                 }
             
- .rat02_attack > div {
+ .rat02_attack > div:first-child {
                     animation-name: rat02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1534,7 +1567,7 @@
                 
                 }
             
- .bug01_idle > div {
+ .bug01_idle > div:first-child {
                     animation-name: bug01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1558,7 +1591,7 @@
                 
                 }
             
- .bug01_attack > div {
+ .bug01_attack > div:first-child {
                     animation-name: bug01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1582,7 +1615,7 @@
                 
                 }
             
- .eagle02_idle > div {
+ .eagle02_idle > div:first-child {
                     animation-name: eagle02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1606,7 +1639,7 @@
                 
                 }
             
- .eagle02_attack > div {
+ .eagle02_attack > div:first-child {
                     animation-name: eagle02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1630,7 +1663,7 @@
                 
                 }
             
- .eagle03_idle > div {
+ .eagle03_idle > div:first-child {
                     animation-name: eagle03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1654,7 +1687,7 @@
                 
                 }
             
- .eagle03_attack > div {
+ .eagle03_attack > div:first-child {
                     animation-name: eagle03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1678,7 +1711,7 @@
                 
                 }
             
- .orc01_idle > div {
+ .orc01_idle > div:first-child {
                     animation-name: orc01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1702,7 +1735,7 @@
                 
                 }
             
- .orc01_attack > div {
+ .orc01_attack > div:first-child {
                     animation-name: orc01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1726,7 +1759,7 @@
                 
                 }
             
- .orc03_idle > div {
+ .orc03_idle > div:first-child {
                     animation-name: orc03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1750,7 +1783,7 @@
                 
                 }
             
- .orc03_attack > div {
+ .orc03_attack > div:first-child {
                     animation-name: orc03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1774,7 +1807,7 @@
                 
                 }
             
- .orc06_idle > div {
+ .orc06_idle > div:first-child {
                     animation-name: orc06_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1798,7 +1831,7 @@
                 
                 }
             
- .orc06_attack > div {
+ .orc06_attack > div:first-child {
                     animation-name: orc06_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1822,7 +1855,7 @@
                 
                 }
             
- .troll01_idle > div {
+ .troll01_idle > div:first-child {
                     animation-name: troll01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1846,7 +1879,7 @@
                 
                 }
             
- .troll01_attack > div {
+ .troll01_attack > div:first-child {
                     animation-name: troll01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1870,7 +1903,7 @@
                 
                 }
             
- .troll02_idle > div {
+ .troll02_idle > div:first-child {
                     animation-name: troll02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1894,7 +1927,7 @@
                 
                 }
             
- .troll02_attack > div {
+ .troll02_attack > div:first-child {
                     animation-name: troll02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1918,7 +1951,7 @@
                 
                 }
             
- .ogre01_idle > div {
+ .ogre01_idle > div:first-child {
                     animation-name: ogre01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1942,7 +1975,7 @@
                 
                 }
             
- .ogre01_attack > div {
+ .ogre01_attack > div:first-child {
                     animation-name: ogre01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1966,7 +1999,7 @@
                 
                 }
             
- .knight01_idle > div {
+ .knight01_idle > div:first-child {
                     animation-name: knight01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -1990,7 +2023,7 @@
                 
                 }
             
- .knight01_attack > div {
+ .knight01_attack > div:first-child {
                     animation-name: knight01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2014,7 +2047,7 @@
                 
                 }
             
- .knight02_idle > div {
+ .knight02_idle > div:first-child {
                     animation-name: knight02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2038,7 +2071,7 @@
                 
                 }
             
- .knight02_attack > div {
+ .knight02_attack > div:first-child {
                     animation-name: knight02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2062,7 +2095,7 @@
                 
                 }
             
- .knight03_idle > div {
+ .knight03_idle > div:first-child {
                     animation-name: knight03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2086,7 +2119,7 @@
                 
                 }
             
- .knight03_attack > div {
+ .knight03_attack > div:first-child {
                     animation-name: knight03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2110,7 +2143,7 @@
                 
                 }
             
- .mudmonster01_idle > div {
+ .mudmonster01_idle > div:first-child {
                     animation-name: mudmonster01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2134,7 +2167,7 @@
                 
                 }
             
- .mudmonster01_attack > div {
+ .mudmonster01_attack > div:first-child {
                     animation-name: mudmonster01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2158,7 +2191,7 @@
                 
                 }
             
- .mudmonster02_idle > div {
+ .mudmonster02_idle > div:first-child {
                     animation-name: mudmonster02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2182,7 +2215,7 @@
                 
                 }
             
- .mudmonster02_attack > div {
+ .mudmonster02_attack > div:first-child {
                     animation-name: mudmonster02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2206,7 +2239,7 @@
                 
                 }
             
- .zombie01_idle > div {
+ .zombie01_idle > div:first-child {
                     animation-name: zombie01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2230,7 +2263,7 @@
                 
                 }
             
- .zombie01_attack > div {
+ .zombie01_attack > div:first-child {
                     animation-name: zombie01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2254,7 +2287,7 @@
                 
                 }
             
- .skeleton_idle > div {
+ .skeleton_idle > div:first-child {
                     animation-name: skeleton_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2278,7 +2311,7 @@
                 
                 }
             
- .skeleton_attack > div {
+ .skeleton_attack > div:first-child {
                     animation-name: skeleton_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2302,7 +2335,7 @@
                 
                 }
             
- .skeleton02_idle > div {
+ .skeleton02_idle > div:first-child {
                     animation-name: skeleton02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2326,7 +2359,7 @@
                 
                 }
             
- .skeleton02_attack > div {
+ .skeleton02_attack > div:first-child {
                     animation-name: skeleton02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2350,7 +2383,7 @@
                 
                 }
             
- .skeleton03_idle > div {
+ .skeleton03_idle > div:first-child {
                     animation-name: skeleton03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2374,7 +2407,7 @@
                 
                 }
             
- .skeleton03_attack > div {
+ .skeleton03_attack > div:first-child {
                     animation-name: skeleton03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2398,7 +2431,7 @@
                 
                 }
             
- .ghost01_idle > div {
+ .ghost01_idle > div:first-child {
                     animation-name: ghost01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2422,7 +2455,7 @@
                 
                 }
             
- .ghost01_attack > div {
+ .ghost01_attack > div:first-child {
                     animation-name: ghost01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2446,7 +2479,7 @@
                 
                 }
             
- .ghost02_idle > div {
+ .ghost02_idle > div:first-child {
                     animation-name: ghost02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2470,7 +2503,7 @@
                 
                 }
             
- .ghost02_attack > div {
+ .ghost02_attack > div:first-child {
                     animation-name: ghost02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2494,7 +2527,7 @@
                 
                 }
             
- .mummy01_idle > div {
+ .mummy01_idle > div:first-child {
                     animation-name: mummy01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2518,7 +2551,7 @@
                 
                 }
             
- .mummy01_attack > div {
+ .mummy01_attack > div:first-child {
                     animation-name: mummy01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2542,7 +2575,7 @@
                 
                 }
             
- .mummy02_idle > div {
+ .mummy02_idle > div:first-child {
                     animation-name: mummy02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2566,7 +2599,7 @@
                 
                 }
             
- .mummy02_attack > div {
+ .mummy02_attack > div:first-child {
                     animation-name: mummy02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2590,7 +2623,7 @@
                 
                 }
             
- .death02_idle > div {
+ .death02_idle > div:first-child {
                     animation-name: death02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2614,7 +2647,7 @@
                 
                 }
             
- .death02_attack > div {
+ .death02_attack > div:first-child {
                     animation-name: death02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2638,7 +2671,7 @@
                 
                 }
             
- .death03_idle > div {
+ .death03_idle > div:first-child {
                     animation-name: death03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2662,7 +2695,7 @@
                 
                 }
             
- .death03_attack > div {
+ .death03_attack > div:first-child {
                     animation-name: death03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2686,7 +2719,7 @@
                 
                 }
             
- .vampire01_idle > div {
+ .vampire01_idle > div:first-child {
                     animation-name: vampire01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2710,7 +2743,7 @@
                 
                 }
             
- .vampire01_attack > div {
+ .vampire01_attack > div:first-child {
                     animation-name: vampire01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2734,7 +2767,7 @@
                 
                 }
             
- .vampire02_idle > div {
+ .vampire02_idle > div:first-child {
                     animation-name: vampire02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2758,7 +2791,7 @@
                 
                 }
             
- .vampire02_attack > div {
+ .vampire02_attack > div:first-child {
                     animation-name: vampire02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2782,7 +2815,7 @@
                 
                 }
             
- .vampire03_idle > div {
+ .vampire03_idle > div:first-child {
                     animation-name: vampire03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2806,7 +2839,7 @@
                 
                 }
             
- .vampire03_attack > div {
+ .vampire03_attack > div:first-child {
                     animation-name: vampire03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2830,7 +2863,7 @@
                 
                 }
             
- .witch03_idle > div {
+ .witch03_idle > div:first-child {
                     animation-name: witch03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2854,7 +2887,7 @@
                 
                 }
             
- .witch03_attack > div {
+ .witch03_attack > div:first-child {
                     animation-name: witch03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2878,7 +2911,7 @@
                 
                 }
             
- .dragon01_idle > div {
+ .dragon01_idle > div:first-child {
                     animation-name: dragon01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2902,7 +2935,7 @@
                 
                 }
             
- .dragon01_attack > div {
+ .dragon01_attack > div:first-child {
                     animation-name: dragon01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2926,7 +2959,7 @@
                 
                 }
             
- .dragon02_idle > div {
+ .dragon02_idle > div:first-child {
                     animation-name: dragon02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2950,7 +2983,7 @@
                 
                 }
             
- .dragon02_attack > div {
+ .dragon02_attack > div:first-child {
                     animation-name: dragon02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2974,7 +3007,7 @@
                 
                 }
             
- .dragon04_idle > div {
+ .dragon04_idle > div:first-child {
                     animation-name: dragon04_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -2998,7 +3031,7 @@
                 
                 }
             
- .dragon04_attack > div {
+ .dragon04_attack > div:first-child {
                     animation-name: dragon04_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3022,7 +3055,7 @@
                 
                 }
             
- .yeti01_idle > div {
+ .yeti01_idle > div:first-child {
                     animation-name: yeti01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3046,7 +3079,7 @@
                 
                 }
             
- .yeti01_attack > div {
+ .yeti01_attack > div:first-child {
                     animation-name: yeti01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3070,7 +3103,7 @@
                 
                 }
             
- .yeti02_idle > div {
+ .yeti02_idle > div:first-child {
                     animation-name: yeti02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3094,7 +3127,7 @@
                 
                 }
             
- .yeti02_attack > div {
+ .yeti02_attack > div:first-child {
                     animation-name: yeti02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3118,7 +3151,7 @@
                 
                 }
             
- .worm01_idle > div {
+ .worm01_idle > div:first-child {
                     animation-name: worm01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3142,7 +3175,7 @@
                 
                 }
             
- .worm01_attack > div {
+ .worm01_attack > div:first-child {
                     animation-name: worm01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3166,7 +3199,7 @@
                 
                 }
             
- .ogre03_idle > div {
+ .ogre03_idle > div:first-child {
                     animation-name: ogre03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3190,7 +3223,7 @@
                 
                 }
             
- .ogre03_attack > div {
+ .ogre03_attack > div:first-child {
                     animation-name: ogre03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3214,7 +3247,7 @@
                 
                 }
             
- .devil01_idle > div {
+ .devil01_idle > div:first-child {
                     animation-name: devil01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3238,7 +3271,7 @@
                 
                 }
             
- .devil01_attack > div {
+ .devil01_attack > div:first-child {
                     animation-name: devil01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3262,7 +3295,7 @@
                 
                 }
             
- .blob03_idle > div {
+ .blob03_idle > div:first-child {
                     animation-name: blob03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3286,7 +3319,7 @@
                 
                 }
             
- .blob03_attack > div {
+ .blob03_attack > div:first-child {
                     animation-name: blob03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3310,7 +3343,7 @@
                 
                 }
             
- .tuber02_idle > div {
+ .tuber02_idle > div:first-child {
                     animation-name: tuber02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3334,7 +3367,7 @@
                 
                 }
             
- .tuber02_attack > div {
+ .tuber02_attack > div:first-child {
                     animation-name: tuber02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3358,7 +3391,7 @@
                 
                 }
             
- .liquiddrop03_idle > div {
+ .liquiddrop03_idle > div:first-child {
                     animation-name: liquiddrop03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3382,7 +3415,7 @@
                 
                 }
             
- .liquiddrop03_attack > div {
+ .liquiddrop03_attack > div:first-child {
                     animation-name: liquiddrop03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3406,7 +3439,7 @@
                 
                 }
             
- .eye01_idle > div {
+ .eye01_idle > div:first-child {
                     animation-name: eye01_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3430,7 +3463,7 @@
                 
                 }
             
- .eye01_attack > div {
+ .eye01_attack > div:first-child {
                     animation-name: eye01_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3454,7 +3487,7 @@
                 
                 }
             
- .eye02_idle > div {
+ .eye02_idle > div:first-child {
                     animation-name: eye02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3478,7 +3511,7 @@
                 
                 }
             
- .eye02_attack > div {
+ .eye02_attack > div:first-child {
                     animation-name: eye02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3502,7 +3535,7 @@
                 
                 }
             
- .geloman02_idle > div {
+ .geloman02_idle > div:first-child {
                     animation-name: geloman02_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3526,7 +3559,7 @@
                 
                 }
             
- .geloman02_attack > div {
+ .geloman02_attack > div:first-child {
                     animation-name: geloman02_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3550,7 +3583,7 @@
                 
                 }
             
- .geloman03_idle > div {
+ .geloman03_idle > div:first-child {
                     animation-name: geloman03_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3574,7 +3607,7 @@
                 
                 }
             
- .geloman03_attack > div {
+ .geloman03_attack > div:first-child {
                     animation-name: geloman03_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3598,7 +3631,7 @@
                 
                 }
             
- .blob05_idle > div {
+ .blob05_idle > div:first-child {
                     animation-name: blob05_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3622,7 +3655,7 @@
                 
                 }
             
- .blob05_attack > div {
+ .blob05_attack > div:first-child {
                     animation-name: blob05_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3646,7 +3679,7 @@
                 
                 }
             
- .blob07_idle > div {
+ .blob07_idle > div:first-child {
                     animation-name: blob07_idle;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3670,7 +3703,7 @@
                 
                 }
             
- .blob07_attack > div {
+ .blob07_attack > div:first-child {
                     animation-name: blob07_attack;
                     animation-duration: 600ms;
                     animation-delay: 0ms;
@@ -3698,463 +3731,4 @@
             /* Animation Sizes */
             /* Animation Sizes */
             /* Animation Sizes */
-            
-             .normal.assassin01_idle,
-.normal.assassin01_attack,
-.normal.viking02_idle,
-.normal.viking02_attack,
-.normal.darkelf02_idle,
-.normal.darkelf02_attack,
-.normal.darkelf03_idle,
-.normal.darkelf03_attack,
-.normal.elf03_idle,
-.normal.elf03_attack,
-.normal.grayelf06_idle,
-.normal.grayelf06_attack,
-.normal.grayelf08_idle,
-.normal.grayelf08_attack,
-.normal.lizard03_idle,
-.normal.lizard03_attack,
-.normal.lizard05_idle,
-.normal.lizard05_attack,
-.normal.gnome01_idle,
-.normal.gnome01_attack,
-.normal.gnome02_idle,
-.normal.gnome02_attack,
-.normal.gnome04_idle,
-.normal.gnome04_attack,
-.normal.gnome05_idle,
-.normal.gnome05_attack,
-.normal.werewolf01_idle,
-.normal.werewolf01_attack,
-.normal.minotaur01_idle,
-.normal.minotaur01_attack,
-.normal.minotaur03_idle,
-.normal.minotaur03_attack,
-.normal.gargoyle01_idle,
-.normal.gargoyle01_attack,
-.normal.gargoyle02_idle,
-.normal.gargoyle02_attack,
-.normal.robot02_idle,
-.normal.robot02_attack,
-.normal.robot04_idle,
-.normal.robot04_attack,
-.normal.robot05_idle,
-.normal.robot05_attack,
-.normal.genie01_idle,
-.normal.genie01_attack,
-.normal.tree01_idle,
-.normal.tree01_attack,
-.normal.chest01_idle,
-.normal.chest01_attack,
-.normal.blob01_idle,
-.normal.blob01_attack,
-.normal.bat_idle,
-.normal.bat_attack,
-.normal.bat02_idle,
-.normal.bat02_attack,
-.normal.minion01_idle,
-.normal.minion01_attack,
-.normal.rat_idle,
-.normal.rat_attack,
-.normal.rat02_idle,
-.normal.rat02_attack,
-.normal.bug01_idle,
-.normal.bug01_attack,
-.normal.eagle02_idle,
-.normal.eagle02_attack,
-.normal.eagle03_idle,
-.normal.eagle03_attack,
-.normal.orc01_idle,
-.normal.orc01_attack,
-.normal.orc03_idle,
-.normal.orc03_attack,
-.normal.orc06_idle,
-.normal.orc06_attack,
-.normal.troll01_idle,
-.normal.troll01_attack,
-.normal.troll02_idle,
-.normal.troll02_attack,
-.normal.ogre01_idle,
-.normal.ogre01_attack,
-.normal.knight01_idle,
-.normal.knight01_attack,
-.normal.knight02_idle,
-.normal.knight02_attack,
-.normal.knight03_idle,
-.normal.knight03_attack,
-.normal.mudmonster01_idle,
-.normal.mudmonster01_attack,
-.normal.mudmonster02_idle,
-.normal.mudmonster02_attack,
-.normal.zombie01_idle,
-.normal.zombie01_attack,
-.normal.skeleton_idle,
-.normal.skeleton_attack,
-.normal.skeleton02_idle,
-.normal.skeleton02_attack,
-.normal.skeleton03_idle,
-.normal.skeleton03_attack,
-.normal.ghost01_idle,
-.normal.ghost01_attack,
-.normal.ghost02_idle,
-.normal.ghost02_attack,
-.normal.mummy01_idle,
-.normal.mummy01_attack,
-.normal.mummy02_idle,
-.normal.mummy02_attack,
-.normal.death02_idle,
-.normal.death02_attack,
-.normal.death03_idle,
-.normal.death03_attack,
-.normal.vampire01_idle,
-.normal.vampire01_attack,
-.normal.vampire02_idle,
-.normal.vampire02_attack,
-.normal.vampire03_idle,
-.normal.vampire03_attack,
-.normal.witch03_idle,
-.normal.witch03_attack,
-.normal.dragon01_idle,
-.normal.dragon01_attack,
-.normal.dragon02_idle,
-.normal.dragon02_attack,
-.normal.dragon04_idle,
-.normal.dragon04_attack,
-.normal.yeti01_idle,
-.normal.yeti01_attack,
-.normal.yeti02_idle,
-.normal.yeti02_attack,
-.normal.worm01_idle,
-.normal.worm01_attack,
-.normal.ogre03_idle,
-.normal.ogre03_attack,
-.normal.devil01_idle,
-.normal.devil01_attack,
-.normal.blob03_idle,
-.normal.blob03_attack,
-.normal.tuber02_idle,
-.normal.tuber02_attack,
-.normal.liquiddrop03_idle,
-.normal.liquiddrop03_attack,
-.normal.eye01_idle,
-.normal.eye01_attack,
-.normal.eye02_idle,
-.normal.eye02_attack,
-.normal.geloman02_idle,
-.normal.geloman02_attack,
-.normal.geloman03_idle,
-.normal.geloman03_attack,
-.normal.blob05_idle,
-.normal.blob05_attack,
-.normal.blob07_idle,
-.normal.blob07_attack {
-                height: 72px; width: 72px;
-            }
-
- .boss.assassin01_idle,
-.boss.assassin01_attack,
-.boss.viking02_idle,
-.boss.viking02_attack,
-.boss.darkelf02_idle,
-.boss.darkelf02_attack,
-.boss.darkelf03_idle,
-.boss.darkelf03_attack,
-.boss.elf03_idle,
-.boss.elf03_attack,
-.boss.grayelf06_idle,
-.boss.grayelf06_attack,
-.boss.grayelf08_idle,
-.boss.grayelf08_attack,
-.boss.lizard03_idle,
-.boss.lizard03_attack,
-.boss.lizard05_idle,
-.boss.lizard05_attack,
-.boss.gnome01_idle,
-.boss.gnome01_attack,
-.boss.gnome02_idle,
-.boss.gnome02_attack,
-.boss.gnome04_idle,
-.boss.gnome04_attack,
-.boss.gnome05_idle,
-.boss.gnome05_attack,
-.boss.werewolf01_idle,
-.boss.werewolf01_attack,
-.boss.minotaur01_idle,
-.boss.minotaur01_attack,
-.boss.minotaur03_idle,
-.boss.minotaur03_attack,
-.boss.gargoyle01_idle,
-.boss.gargoyle01_attack,
-.boss.gargoyle02_idle,
-.boss.gargoyle02_attack,
-.boss.robot02_idle,
-.boss.robot02_attack,
-.boss.robot04_idle,
-.boss.robot04_attack,
-.boss.robot05_idle,
-.boss.robot05_attack,
-.boss.genie01_idle,
-.boss.genie01_attack,
-.boss.tree01_idle,
-.boss.tree01_attack,
-.boss.chest01_idle,
-.boss.chest01_attack,
-.boss.blob01_idle,
-.boss.blob01_attack,
-.boss.bat_idle,
-.boss.bat_attack,
-.boss.bat02_idle,
-.boss.bat02_attack,
-.boss.minion01_idle,
-.boss.minion01_attack,
-.boss.rat_idle,
-.boss.rat_attack,
-.boss.rat02_idle,
-.boss.rat02_attack,
-.boss.bug01_idle,
-.boss.bug01_attack,
-.boss.eagle02_idle,
-.boss.eagle02_attack,
-.boss.eagle03_idle,
-.boss.eagle03_attack,
-.boss.orc01_idle,
-.boss.orc01_attack,
-.boss.orc03_idle,
-.boss.orc03_attack,
-.boss.orc06_idle,
-.boss.orc06_attack,
-.boss.troll01_idle,
-.boss.troll01_attack,
-.boss.troll02_idle,
-.boss.troll02_attack,
-.boss.ogre01_idle,
-.boss.ogre01_attack,
-.boss.knight01_idle,
-.boss.knight01_attack,
-.boss.knight02_idle,
-.boss.knight02_attack,
-.boss.knight03_idle,
-.boss.knight03_attack,
-.boss.mudmonster01_idle,
-.boss.mudmonster01_attack,
-.boss.mudmonster02_idle,
-.boss.mudmonster02_attack,
-.boss.zombie01_idle,
-.boss.zombie01_attack,
-.boss.skeleton_idle,
-.boss.skeleton_attack,
-.boss.skeleton02_idle,
-.boss.skeleton02_attack,
-.boss.skeleton03_idle,
-.boss.skeleton03_attack,
-.boss.ghost01_idle,
-.boss.ghost01_attack,
-.boss.ghost02_idle,
-.boss.ghost02_attack,
-.boss.mummy01_idle,
-.boss.mummy01_attack,
-.boss.mummy02_idle,
-.boss.mummy02_attack,
-.boss.death02_idle,
-.boss.death02_attack,
-.boss.death03_idle,
-.boss.death03_attack,
-.boss.vampire01_idle,
-.boss.vampire01_attack,
-.boss.vampire02_idle,
-.boss.vampire02_attack,
-.boss.vampire03_idle,
-.boss.vampire03_attack,
-.boss.witch03_idle,
-.boss.witch03_attack,
-.boss.dragon01_idle,
-.boss.dragon01_attack,
-.boss.dragon02_idle,
-.boss.dragon02_attack,
-.boss.dragon04_idle,
-.boss.dragon04_attack,
-.boss.yeti01_idle,
-.boss.yeti01_attack,
-.boss.yeti02_idle,
-.boss.yeti02_attack,
-.boss.worm01_idle,
-.boss.worm01_attack,
-.boss.ogre03_idle,
-.boss.ogre03_attack,
-.boss.devil01_idle,
-.boss.devil01_attack,
-.boss.blob03_idle,
-.boss.blob03_attack,
-.boss.tuber02_idle,
-.boss.tuber02_attack,
-.boss.liquiddrop03_idle,
-.boss.liquiddrop03_attack,
-.boss.eye01_idle,
-.boss.eye01_attack,
-.boss.eye02_idle,
-.boss.eye02_attack,
-.boss.geloman02_idle,
-.boss.geloman02_attack,
-.boss.geloman03_idle,
-.boss.geloman03_attack,
-.boss.blob05_idle,
-.boss.blob05_attack,
-.boss.blob07_idle,
-.boss.blob07_attack {
-                height: 72px; width: 72px;
-            }
-
- .boss.super.assassin01_idle,
-.boss.super.assassin01_attack,
-.boss.super.viking02_idle,
-.boss.super.viking02_attack,
-.boss.super.darkelf02_idle,
-.boss.super.darkelf02_attack,
-.boss.super.darkelf03_idle,
-.boss.super.darkelf03_attack,
-.boss.super.elf03_idle,
-.boss.super.elf03_attack,
-.boss.super.grayelf06_idle,
-.boss.super.grayelf06_attack,
-.boss.super.grayelf08_idle,
-.boss.super.grayelf08_attack,
-.boss.super.lizard03_idle,
-.boss.super.lizard03_attack,
-.boss.super.lizard05_idle,
-.boss.super.lizard05_attack,
-.boss.super.gnome01_idle,
-.boss.super.gnome01_attack,
-.boss.super.gnome02_idle,
-.boss.super.gnome02_attack,
-.boss.super.gnome04_idle,
-.boss.super.gnome04_attack,
-.boss.super.gnome05_idle,
-.boss.super.gnome05_attack,
-.boss.super.werewolf01_idle,
-.boss.super.werewolf01_attack,
-.boss.super.minotaur01_idle,
-.boss.super.minotaur01_attack,
-.boss.super.minotaur03_idle,
-.boss.super.minotaur03_attack,
-.boss.super.gargoyle01_idle,
-.boss.super.gargoyle01_attack,
-.boss.super.gargoyle02_idle,
-.boss.super.gargoyle02_attack,
-.boss.super.robot02_idle,
-.boss.super.robot02_attack,
-.boss.super.robot04_idle,
-.boss.super.robot04_attack,
-.boss.super.robot05_idle,
-.boss.super.robot05_attack,
-.boss.super.genie01_idle,
-.boss.super.genie01_attack,
-.boss.super.tree01_idle,
-.boss.super.tree01_attack,
-.boss.super.chest01_idle,
-.boss.super.chest01_attack,
-.boss.super.blob01_idle,
-.boss.super.blob01_attack,
-.boss.super.bat_idle,
-.boss.super.bat_attack,
-.boss.super.bat02_idle,
-.boss.super.bat02_attack,
-.boss.super.minion01_idle,
-.boss.super.minion01_attack,
-.boss.super.rat_idle,
-.boss.super.rat_attack,
-.boss.super.rat02_idle,
-.boss.super.rat02_attack,
-.boss.super.bug01_idle,
-.boss.super.bug01_attack,
-.boss.super.eagle02_idle,
-.boss.super.eagle02_attack,
-.boss.super.eagle03_idle,
-.boss.super.eagle03_attack,
-.boss.super.orc01_idle,
-.boss.super.orc01_attack,
-.boss.super.orc03_idle,
-.boss.super.orc03_attack,
-.boss.super.orc06_idle,
-.boss.super.orc06_attack,
-.boss.super.troll01_idle,
-.boss.super.troll01_attack,
-.boss.super.troll02_idle,
-.boss.super.troll02_attack,
-.boss.super.ogre01_idle,
-.boss.super.ogre01_attack,
-.boss.super.knight01_idle,
-.boss.super.knight01_attack,
-.boss.super.knight02_idle,
-.boss.super.knight02_attack,
-.boss.super.knight03_idle,
-.boss.super.knight03_attack,
-.boss.super.mudmonster01_idle,
-.boss.super.mudmonster01_attack,
-.boss.super.mudmonster02_idle,
-.boss.super.mudmonster02_attack,
-.boss.super.zombie01_idle,
-.boss.super.zombie01_attack,
-.boss.super.skeleton_idle,
-.boss.super.skeleton_attack,
-.boss.super.skeleton02_idle,
-.boss.super.skeleton02_attack,
-.boss.super.skeleton03_idle,
-.boss.super.skeleton03_attack,
-.boss.super.ghost01_idle,
-.boss.super.ghost01_attack,
-.boss.super.ghost02_idle,
-.boss.super.ghost02_attack,
-.boss.super.mummy01_idle,
-.boss.super.mummy01_attack,
-.boss.super.mummy02_idle,
-.boss.super.mummy02_attack,
-.boss.super.death02_idle,
-.boss.super.death02_attack,
-.boss.super.death03_idle,
-.boss.super.death03_attack,
-.boss.super.vampire01_idle,
-.boss.super.vampire01_attack,
-.boss.super.vampire02_idle,
-.boss.super.vampire02_attack,
-.boss.super.vampire03_idle,
-.boss.super.vampire03_attack,
-.boss.super.witch03_idle,
-.boss.super.witch03_attack,
-.boss.super.dragon01_idle,
-.boss.super.dragon01_attack,
-.boss.super.dragon02_idle,
-.boss.super.dragon02_attack,
-.boss.super.dragon04_idle,
-.boss.super.dragon04_attack,
-.boss.super.yeti01_idle,
-.boss.super.yeti01_attack,
-.boss.super.yeti02_idle,
-.boss.super.yeti02_attack,
-.boss.super.worm01_idle,
-.boss.super.worm01_attack,
-.boss.super.ogre03_idle,
-.boss.super.ogre03_attack,
-.boss.super.devil01_idle,
-.boss.super.devil01_attack,
-.boss.super.blob03_idle,
-.boss.super.blob03_attack,
-.boss.super.tuber02_idle,
-.boss.super.tuber02_attack,
-.boss.super.liquiddrop03_idle,
-.boss.super.liquiddrop03_attack,
-.boss.super.eye01_idle,
-.boss.super.eye01_attack,
-.boss.super.eye02_idle,
-.boss.super.eye02_attack,
-.boss.super.geloman02_idle,
-.boss.super.geloman02_attack,
-.boss.super.geloman03_idle,
-.boss.super.geloman03_attack,
-.boss.super.blob05_idle,
-.boss.super.blob05_attack,
-.boss.super.blob07_idle,
-.boss.super.blob07_attack {
-                height: 72px; width: 72px;
-            }
-        
+            /* no specific animation sizes*/

@@ -17,17 +17,18 @@ function App() {
         <div className={enemy('enemies', 'boss', 'death03_idle')} ><div></div></div>
         */}
         {
-          <div style={
-            {
-                position: 'fixed',
-                top: '0px',
-                left: '0px',
-                bottom: '0px',
-                right: '0px',
-                backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1), rgba(0,0,0,0.8)',
-                zIndex:999999
-            }
-        }></div>
+            <div style={
+                {
+                    position: 'fixed',
+                    top: '0px',
+                    left: '0px',
+                    bottom: '0px',
+                    right: '0px',
+                    backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1), rgba(0,0,0,0.8)',
+                    pointerEvents: 'none',
+                    zIndex: 999999
+                }
+            }></div>
         }
     </div>;
 }
