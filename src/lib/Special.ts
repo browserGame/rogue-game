@@ -3,7 +3,8 @@ import {
     $Room,
     getNameSpace,
     $Item,
-    $GFragment
+    $GFragment,
+    $GUISizeType
     //getContentAt
 } from './Room';
 
@@ -52,6 +53,13 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
         '"': 'sign'
     };
 
+    const sizes: { [index: string]: $GUISizeType[]; } = {
+        '!': ['normal'],
+        U: ['normal'],
+        Q: ['normal'],
+        '"': ['normal']
+    };
+
     const selectContext = {
         '!': undefined,
         U: undefined,
@@ -60,7 +68,7 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: sizes[si.e],
         auxClassNames: [cssSheet[si.e], select[si.e]],
         left: 0,
         top: 0,
@@ -68,37 +76,27 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
 
-    if (coords.length !== 1) {
-        return console.log(`room:${room.pk} has wrong coords for ${si.e}`);
+    if (coords.length !== 1 && 'U"'.indexOf(si.e) >= 0) {
+        return console.log('%c %s', 'color:red', `room:${room.pk} has wrong number of coords for ${si.e}`);
     }
     //
     //
-    let itm: $ItemSpecial = {
-        tag: si.e,
-        p: coords[0],
-        gui,
-        context : selectContext[si.e]
-    };
+    let itms = coords.map((c) => {
+        let itm: $ItemSpecial = {
+            tag: si.e,
+            p: c,
+            gui,
+            context: selectContext[si.e]
+        };
+        return itm;
+    });
     //
     //map to namespace
     //
-    let nsMap = {
-        '!': 'torch',
-        U: 'trader',
-        Q: 'quest-generator',
-        '"': 'death-totem'
-    };
 
-    let namespace = nsMap[si.e];
-
-    if (!namespace) {
-        console.log(`room: ${room.pk} , error, the speciality tag ${si.e} could not be mapped`);
-        return;
-    }
-
-    let special = getNameSpace(room, namespace);
-    special.push(itm);
-    console.log(namespace, JSON.stringify(itm));
+    let special = getNameSpace(room, 'specials');
+    special.push(...itms);
+    console.log('specials', JSON.stringify(itms));
     return;
 
 }

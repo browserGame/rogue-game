@@ -5,11 +5,11 @@ import * as ReactDOM from 'react-dom';
 import { compileDungeon } from '../lib/MockDungeon';
 import { createStyleSheets } from '../lib/Instrumentation';
 import { DungeonLevel } from './DungeonLevel';
-import { cssFn } from './Css';
+import { css } from './Css';
 const cssRogue = require('./rogue');
 
 function App() {
-    return <div className={cssFn.general('container')}>
+    return <div className={css.general('container')}>
         <DungeonLevel level={0} scale={3} />
         {/*
         <div className={enemy('enemies', 'normal', 'dragon02_idle')}><div></div></div>

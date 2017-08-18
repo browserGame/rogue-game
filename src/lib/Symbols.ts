@@ -74,7 +74,7 @@
 
 // 99 nothing above (this class mutall excludes) 
 // ["] death totum
-// [!]tourch
+// [!] tourch
 // [U]trader
 // [N] quest-result
 // .[z] closet
@@ -174,11 +174,136 @@ import {
     processGlyphs
 } from './FloorGlyph';
 
-export interface CPU {
-    [index: string]: Function | 0;
+import {
+    $Room
+} from './Room';
+
+import {
+    Vector
+} from './math';
+
+export type DungParser =
+    (matrix: string[], width: number, room: $Room, coords: Vector[], si: SymbolBase<string>) => void;
+
+
+// generic interface to make sure you have 
+
+export interface CPU<T> {
+    //
+    // primary
+    //
+    '#': T; //xx wall
+    '.': T; //xx floor
+    //
+    //quest reults
+    //
+    N: T; //treasure quest-result
+    //
+    //dungeon floor coverings
+    //
+    K: T; //xx cobweb, same as carpet, everything above
+    A: T;  //xx skull , floor or carper below, blood seeps below
+    é: T; //xx carpet, like a floor nothing more, nothing below this
+    '=': T;  //"(blood) seeps to floor or carpet",
+    '²': T;
+    //
+    // doorways and portals
+    //
+    '^': T;  //xx door north ,top
+    '>': T;  //xx door east  ,top
+    '<': T;  //xx door west  ,top
+    v: T;  //xx door south   ,top
+    X: T;  //teleport, exclusive
+    µ: T;  //stairs change level , exclusive  
+    //
+    //obstructables
+    //
+    '"': T;  //xx death-totum
+    '(': T;  //xx lava
+    '!': T;  //xx tourch
+    U: T;  //xx trader
+    Q: T;  //xx quest regenerator
+
+    O: T;  //xx water
+    $: T; //acid bath
+    '£': T;
+    //
+    // discoverables via unlocking / open
+    //
+    z: T;  //xx closet
+    '&': T;  //xx treasure chest
+    H: T;  //xx coffin
+    '*': T;  //xx table
+    //
+    // activatable plating
+    //
+    I: T;  //xx red pentagram trap
+    m: T;  //xx half moon trap
+    R: T;  //xx pentagram
+    C: T;  //xx secret pressure plate
+    //
+    // claws, spikes
+    //
+    w: T;  //xx spikes
+    S: T;  //xx bear trap
+    //
+    //discoverables via breaking
+    //
+    P: T;  //xx twirl-stone, looks like dna helix#
+    '{': T;  //xx beer barrel
+    Y: T;  //xx cross tombstone
+    V: T;  //xxx tombstone
+    J: T;  //xx vase 
+    B: T;  //xx statue wizard
+    //
+    //enemies
+    //
+    T: T;  //xxx skeleton-enemy
+    '%': T;  //xx boss 
+    E: T;  //xx goblin
+    F: T;  //xx bat
+    G: T;  //xx rat
+    '@': T;  //xx green wizard shaman throws fire
+    //
+    //learnables
+    //
+    u: T;  //... magic spellbook (earth-quake, defense, warrior shout)
+    //
+    //arsanal
+    //
+    Z: T;  //... shield
+    t: T;  //... mace
+    x: T;  //... boots
+    ç: T;  //... pants
+
+    //
+    //valuables
+    //
+    L: T;  //... stone
+    M: T;  //... coin, gold
+    //
+    // edibales
+    //
+    s: T;  //   bottle water
+    p: T;  //   bottle milk
+    r: T;  //   chicken-bone
+    q: T;  //   cheese
+    i: T;  //   elixer
+    ';': T;  //   fish
+    '§': T;  //   mana
+    l: T; //   magic-potion
+    [index: string]: T;
 }
 
-export const codedItems: CPU = {
+function forbidden(_matrix: string[], _width: number, room: $Room, _coords: Vector[], si: SymbolBase<string>) {
+    throw new Error(`Error in room: ${room.pk} not allowed to process this token ${si.e}`);
+}
+
+function dud(_matrix: string[], _width: number, _room: $Room, _coords: Vector[], _si: SymbolBase<string>) {
+    return;
+}
+
+export const codedItems: CPU<DungParser> = {
     //
     // primary
     //
@@ -187,14 +312,14 @@ export const codedItems: CPU = {
     //
     //quest reults
     //
-    N: 0x0, //treasure quest-result
+    N: dud, //treasure quest-result
     //
     //dungeon floor coverings
     //
     K: processCobWeb, //xx cobweb, same as carpet, everything above
     A: processSkullAndBones, //xx skull , floor or carper below, blood seeps below
     é: processCarpet, //xx carpet, like a floor nothing more, nothing below this
-    '=': 0x0, //"(blood) seeps to floor or carpet",
+    '=': forbidden, //"(blood) seeps to floor or carpet",
     '²': processGlyphs,
     //
     // doorways and portals
@@ -404,7 +529,7 @@ export type Pentagram = FloorGlyphs<'R'>;
 export type Entrance = FloorGlyphs<'²'>;
 
 
-export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram;
+export type AllGlyphs = RedPentagram | HalfMoonTrap | Pentagram | Entrance;
 
 // secretplates
 

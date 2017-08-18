@@ -40,7 +40,7 @@ export function processGlyphs(_matrix: string[], _width: number, room: $Room, co
 
     let itms: $ItemFloor[] = coords.map((m) => {
         let gui: $GFragment = {
-            size: ['normal'],
+            size: ['pccs3', 'fsc3'],
             auxClassNames: ['common_floor_objects', select[si.e]],
             top: 0,
             left: 0,

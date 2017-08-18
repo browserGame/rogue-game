@@ -6,6 +6,8 @@ import {
     /*profilerFactory*/
 } from './statistics';
 
+import { SymbolBase } from './Symbols';
+
 type HWallType = 'top_top_1' | 'top_top_2';
 type VWallType = 'wall_side_1' | 'wall_side_2';
 //type FloorTypes = 'floor_0' | 'floor_1' | 'floor_2' | 'floor_3';
@@ -319,7 +321,7 @@ function createCursor(coords: Vector[], width: number, height: number, doors: $D
     };
 }
 
-export function processWalls(matrix: string[], width: number, room: $Room, coords: Vector[]) {
+export function processWalls(matrix: string[], width: number, room: $Room, coords: Vector[], _si: SymbolBase<string>) {
 
     let height = matrix.length / width;
 

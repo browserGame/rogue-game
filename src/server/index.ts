@@ -78,12 +78,7 @@ app.use(bodyParser.raw({
 app.use('/', express.static(path.resolve('dist/client')));
 
 function init(): Promise<boolean> {
-    /*app.get('/processing', (req, resp) => {
-        req;
-        resp.set({ 'Content-Type': 'text/plain' });
-        resp.send(compileDungeon());
-    });*/
-
+    
     app.get('/room/:width/:height', (req, resp) => {
         let width = Number.parseInt(req.params['width']);
         let height = Number.parseInt(req.params['height']);

@@ -5,18 +5,15 @@ import {
     $Item,
     $Room,
     getNameSpace,
-    //$GUISizeType,
-    //is$GUISizeType,
-
 } from '../lib/Room';
 
 import {
     gGame,
-    // DungeonGameModel 
 } from '../lib/MockDungeon';
 
 import {
-    cssFn
+    // css, 
+    resolverMap
 } from './Css';
 
 import {
@@ -79,6 +76,16 @@ export interface DungeonLevelProperties {
     scale: number;
 }
 
+interface RenderProps {
+    ns: string;
+    zOffset?: number;
+    dx?: number;
+    dy?: number;
+    hasShadow?: boolean;
+}
+
+
+
 const globZ = (r: $Room, y: number) => (r.top + y) * 100;
 const globTop = (r: $Room, y: number, scale: number) => (r.top + y) * cellDim * scale;
 const globLeft = (r: $Room, x: number, scale: number) => (r.left + x) * cellDim * scale;
@@ -118,14 +125,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let nrCellsx = brx - m.p.x;
         let nrCellsy = bry - m.p.y;
 
-        let select: { [index: string]: (...rest: string[]) => string; } = {
-            $: cssFn.liquid_acid,
-            '(': cssFn.liquid_lava,
-            O: cssFn.liquid_water,
-            '£': cssFn.liquid_swamp
-        };
-       
-        let resolver = select[m.tag];
+        let resolver = resolverMap[m.tag];
 
         for (let i = 0; i <= nrCellsx; i++) {
             for (let j = 0; j <= nrCellsy; j++) {
@@ -196,7 +196,16 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
     }
 
 
-    private renderNameSpace(name: string, cssResolver: (...rest: string[]) => string, zOffset: number = 0, dx: number = 0, dy: number = 0) {
+    private renderNameSpace(props: RenderProps) {
+        /*name: string, cssResolver: (...rest: string[]) => string, zOffset: number = 0, dx: number = 0, dy: number = 0) {
+          */
+        let name = props.ns;
+
+        let zOffset = props.zOffset || 0;
+        let dx = props.dx || 0;
+        let dy = props.dy || 0;
+        let shadow = props.hasShadow || false;
+
         let _s = this._s;
         let floorPlan = gGame[this.level];
         let roomPks = Array.from(floorPlan.rooms.keys());
@@ -213,14 +222,19 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                     position: 'absolute'
                 };
                 let size: string[] = (!(itm.gui.size instanceof Array) ? [itm.gui.size] : itm.gui.size) as string[];
-                let classN = cssResolver(...(itm.gui.auxClassNames || []), ...(size));
+
+                let select = '┗┓┛┏┃━#'.indexOf(itm.tag) >= 0 ? '#' : itm.tag;
+                select = '0123'.indexOf(itm.tag) >= 0 ? 'K' : select;
+
+                let resolver = resolverMap[select];
+                let classN = resolver(...(itm.gui.auxClassNames || []), ...(size));
                 return (<div
                     key={`${this.level}:${id}:${itm.p.x}:${itm.p.y}`}
                     style={styles}
                     className={classN}
                 >
                     <div></div>
-                    <div></div>
+                    {shadow ? <div></div> : undefined}
                 </div >);
             });
             coll.push(...html);
@@ -239,17 +253,20 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         //
         // allwallfragments, allFloorTyles
         //
-        let walls: JSX.Element[] = this.renderNameSpace('walls', cssFn.floor_crypt);
-        let floorTiles: JSX.Element[] = this.renderNameSpace('floor', cssFn.floor_crypt);
-        let carpets: JSX.Element[] = this.renderNameSpace('carpet', cssFn.common_fo);
-        let stairs: JSX.Element[] = this.renderNameSpace('stairs', cssFn.floor_crypt);
-        let skullBones: JSX.Element[] = this.renderNameSpace('skull&bones', cssFn.dungeon_decor_props, 1);
-        let cobWebs: JSX.Element[] = this.renderNameSpace('cobwebs', cssFn.dungeon_decor_props);
-        let breakable: JSX.Element[] = this.renderNameSpace('breakable', cssFn.dungeon_o, 2);
-        let openable: JSX.Element[] = this.renderNameSpace('openable', cssFn.dungeon_o, 4);
-        let enemies: JSX.Element[] = this.renderNameSpace('enemy', cssFn.enemies, 7);
-        let doors: JSX.Element[] = this.renderNameSpace('doors', cssFn.floor_crypt, 7);
+        let walls: JSX.Element[] = this.renderNameSpace({ ns: 'walls' });
+        let floorTiles: JSX.Element[] = this.renderNameSpace({ ns: 'floor' });
+        let carpets: JSX.Element[] = this.renderNameSpace({ ns: 'carpet' });
+        let stairs: JSX.Element[] = this.renderNameSpace({ ns: 'stairs' });
+        let skullBones: JSX.Element[] = this.renderNameSpace({ ns: 'skull&bones', zOffset: 1 });
+        let cobWebs: JSX.Element[] = this.renderNameSpace({ ns: 'cobwebs' });
+        let breakable: JSX.Element[] = this.renderNameSpace({ ns: 'breakable', zOffset: 2 });
+        let openable: JSX.Element[] = this.renderNameSpace({ ns: 'openable', zOffset: 4 });
+        let enemies: JSX.Element[] = this.renderNameSpace({ ns: 'enemy', zOffset: 7, hasShadow: true });
+        let doors: JSX.Element[] = this.renderNameSpace({ ns: 'doors', zOffset: 7 });
+        let floorGlyphs: JSX.Element[] = this.renderNameSpace({ ns: 'floor-glyphs', zOffset: 1 });
+        let specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1 });
         let liquids: JSX.Element[] = this.renderLiquid();
+
         //
         // doors;
         //
@@ -259,8 +276,10 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             {liquids}
             {carpets}
             {stairs}
+            {floorGlyphs}
             {skullBones}
             {cobWebs}
+            {specials}
             {breakable}
             {openable}
             {enemies}

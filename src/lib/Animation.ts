@@ -18,8 +18,6 @@ export function removeAnimationSheetByName(url: string) {
     return gCache.delete(url);
 }
 
-
-
 export interface AnimationFrameData {
     spriteName: string;
     duration: string;
