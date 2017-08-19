@@ -16,6 +16,15 @@
 /* general sizing */
 /* general sizing */
 
+
+
+/* fix container on 72 = ( 3*24 ) px */
+
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
+
 /* plts3 = [p]osition [l]eft [t]op, [s]cale 3 */
 
 .plts3>div {
@@ -37,13 +46,6 @@
 }
 
 
-/* fix container on 72 = ( 3*24 ) px */
-
-.fsc3 {
-    height: 72px !important;
-    width: 72px !important;
-}
-
 /* pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
 
 .pxcb30ps3 > div {
@@ -52,10 +54,13 @@
     position: absolute;
     left: 50%;
     bottom: 30%;
+    //outline: 1px solid orangered;
 }
 
+
+
 .pxcb30ps3.right > div {
-    transform: translateX(-50) scaleX(-1) scale(3);
+    transform: translateX(-50%) scaleX(-1) scale(3);
 }
 
 .normal>div {
@@ -490,11 +495,13 @@
     animation-delay: 0ms;
     animation-timing-function: steps(1);
     animation-iteration-count: infinite;
+    //animation-play-state:paused;
+    //outline: 1px red solid;
 }
 
 @keyframes candles {
-    from,
-    to {
+    from, to
+     {
         width: 21px;
         height: 24px;
         background-position: -193px -24px;
@@ -540,12 +547,12 @@
     height: 252px;
     width: 252px;
 }*/
-
+/*
 .normal.candles {
     height: 72px;
     width: 63px;
 }
-
+*/
 
 /*
 .boss.candles {

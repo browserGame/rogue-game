@@ -54,10 +54,10 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
     const sizes: { [index: string]: $GUISizeType[]; } = {
-        '!': ['normal'],
+        '!': ['pxcb30ps3', 'fsc3'],
         U: ['normal'],
         Q: ['normal'],
-        '"': ['normal']
+        '"': ['pccs3', 'fsc3']
     };
 
     const selectContext = {
