@@ -1,618 +1,476 @@
-
-        /*  Computer Generated CSS, */
-                       
-        
-        /* SpriteSheet */
-        /* SpriteSheet */
-        /* SpriteSheet */
-        
-        .dungeon_objects > div {
-            background: url('./dungeon_objects.png');
-            background-origin: border-box;
-            image-rendering: pixelated;
-        }
-
-        /* general sizing */
-        /* general sizing */
-        /* general sizing */
-
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 50% 100%;
-        }
-
-        .normal>div {
-            transform: translateY(0%) translateX(-50%) scale(3);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-           
-        }
-
-        .boss>div {
-            transform: scale(3.75);
-        }
-
-        .boss.super>div {
-            transform: scale(10.5);
-        }
+/*  Computer Generated CSS, */
 
 
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: right top;
-        }
+/* SpriteSheet */
+/* SpriteSheet */
+/* SpriteSheet */
 
-        .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
-        }
+.dungeon_objects>div:first-child {
+    background: url('./dungeon_objects.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+    z-index: 1;
+}
 
-        .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
-        }
+.dungeon_objects>div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+    z-index: 0;
+}
 
-        .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
-        }
 
-        .smooth,
-        .smooth>div {
-            transition: all 2s;
-        }
-             
-        
-        /* Static Sprites */
-        /* Static Sprites */
-        /* Static Sprites */
-        
-        
-            .bookshelf_1_searched > div {
-                background-position: -0px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
+/* general sizing */
+/* general sizing */
+/* general sizing */
 
-            .bookshelf_2_searched > div {
-                background-position: -24px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
 
-            .bookshelf_1 > div {
-                background-position: -48px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
+/* fix container on 72 = ( 3*24 ) px */
 
-            .bookshelf_2 > div {
-                background-position: -72px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
 
-            .table_1 > div {
-                background-position: -96px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
 
-            .table_2 > div {
-                background-position: -120px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
+/* plts3 = [p]osition [l]eft [t]op, [s]cale 3 */
 
-            .table_broken > div {
-                background-position: -186px -0px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.plts3>div:first-child {
+    transform-origin: 0 0;
+    transform: scale(3);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
-            .box_1 > div {
-                background-position: -144px -0px;
-                width: 21px;
-                height: 24px;
-            }
-        
 
-            .box_1_broken > div {
-                background-position: -165px -0px;
-                width: 21px;
-                height: 24px;
-            }
-        
+/* pccs3  =[p]osition [c]enter [c]enter, [s]cale [3] */
 
-            .vase_1 > div {
-                background-position: -1px -25px;
-                width: 17px;
-                height: 22px;
-            }
-        
+.pccs3>div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
 
-            .vase_2 > div {
-                background-position: -19px -25px;
-                width: 16px;
-                height: 22px;
-            }
-        
 
-            .vase_1_broken > div {
-                background-position: -36px -32px;
-                width: 16px;
-                height: 15px;
-            }
-        
+/* pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
 
-            .vase_3 > div {
-                background-position: -53px -25px;
-                width: 17px;
-                height: 22px;
-            }
-        
+.pxcb30ps3>div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+}
 
-            .vase_4 > div {
-                background-position: -71px -25px;
-                width: 16px;
-                height: 22px;
-            }
-        
+.pxcb30ps3>div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+}
 
-            .vase_3_broken > div {
-                background-position: -88px -32px;
-                width: 16px;
-                height: 15px;
-            }
-        
+.pxcb30ps3>div:last-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 12.5%;
+    opacity: 0.5;
+}
 
-            .statue_1 > div {
-                background-position: -147px -24px;
-                width: 23px;
-                height: 24px;
-            }
-        
+/* Static Sprites */
+/* Static Sprites */
+/* Static Sprites */
 
-            .statue_broken > div {
-                background-position: -171px -33px;
-                width: 23px;
-                height: 15px;
-            }
-        
+.bookshelf_1_searched>div:first-child {
+    background-position: -0px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .statue_2 > div {
-                background-position: -194px -24px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.bookshelf_2_searched>div:first-child {
+    background-position: -24px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .statue_3 > div {
-                background-position: -218px -24px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.bookshelf_1>div:first-child {
+    background-position: -48px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .monument_1 > div {
-                background-position: -0px -48px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.bookshelf_2>div:first-child {
+    background-position: -72px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .monument_2 > div {
-                background-position: -24px -48px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.table_1>div:first-child {
+    background-position: -96px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .monument_broken > div {
-                background-position: -48px -48px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.table_2>div:first-child {
+    background-position: -120px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .monument_3 > div {
-                background-position: -72px -48px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.table_broken>div:first-child {
+    background-position: -186px -0px;
+    width: 24px;
+    height: 24px;
+}
 
-            .monument_4 > div {
-                background-position: -96px -48px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.box_1>div:first-child {
+    background-position: -144px -0px;
+    width: 21px;
+    height: 24px;
+}
 
-            .grave_1 > div {
-                background-position: -105px -96px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.box_1_broken>div:first-child {
+    background-position: -165px -0px;
+    width: 21px;
+    height: 24px;
+}
 
-            .grave_2 > div {
-                background-position: -129px -96px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.vase_1>div:first-child {
+    background-position: -1px -25px;
+    width: 17px;
+    height: 22px;
+}
 
-            .grave_broken > div {
-                background-position: -153px -96px;
-                width: 24px;
-                height: 24px;
-            }
-        
+.vase_2>div:first-child {
+    background-position: -19px -25px;
+    width: 16px;
+    height: 22px;
+}
 
-            .vase_5 > div {
-                background-position: -1px -74px;
-                width: 17px;
-                height: 22px;
-            }
-        
+.vase_1_broken>div:first-child {
+    background-position: -36px -32px;
+    width: 16px;
+    height: 15px;
+}
 
-            .vase_6 > div {
-                background-position: -19px -74px;
-                width: 16px;
-                height: 22px;
-            }
-        
+.vase_3>div:first-child {
+    background-position: -53px -25px;
+    width: 17px;
+    height: 22px;
+}
 
-            .vase_7 > div {
-                background-position: -1px -98px;
-                width: 17px;
-                height: 22px;
-            }
-        
+.vase_4>div:first-child {
+    background-position: -71px -25px;
+    width: 16px;
+    height: 22px;
+}
 
-            .vase_8 > div {
-                background-position: -19px -98px;
-                width: 16px;
-                height: 22px;
-            }
-        
+.vase_3_broken>div:first-child {
+    background-position: -88px -32px;
+    width: 16px;
+    height: 15px;
+}
 
-            .vase_9 > div {
-                background-position: -53px -98px;
-                width: 17px;
-                height: 22px;
-            }
-        
+.statue_1>div:first-child {
+    background-position: -147px -24px;
+    width: 23px;
+    height: 24px;
+}
 
-            .vase_10 > div {
-                background-position: -71px -98px;
-                width: 16px;
-                height: 22px;
-            }
-        
+.statue_broken>div:first-child {
+    background-position: -171px -33px;
+    width: 23px;
+    height: 15px;
+}
 
-            .vase_5_broken > div {
-                background-position: -36px -81px;
-                width: 16px;
-                height: 15px;
-            }
-        
+.statue_2>div:first-child {
+    background-position: -194px -24px;
+    width: 24px;
+    height: 24px;
+}
 
-            .vase_7_broken > div {
-                background-position: -36px -105px;
-                width: 16px;
-                height: 15px;
-            }
-        
+.statue_3>div:first-child {
+    background-position: -218px -24px;
+    width: 24px;
+    height: 24px;
+}
 
-            .vase_9_broken > div {
-                background-position: -88px -105px;
-                width: 16px;
-                height: 15px;
-            }
-        
+.monument_1>div:first-child {
+    background-position: -0px -48px;
+    width: 24px;
+    height: 24px;
+}
 
-            .barril_2 > div {
-                background-position: -160px -72px;
-                width: 20px;
-                height: 24px;
-            }
-        
+.monument_2>div:first-child {
+    background-position: -24px -48px;
+    width: 24px;
+    height: 24px;
+}
 
-            .barril_1 > div {
-                background-position: -139px -72px;
-                width: 20px;
-                height: 24px;
-            }
-        
+.monument_broken>div:first-child {
+    background-position: -48px -48px;
+    width: 24px;
+    height: 24px;
+}
 
-            .barril_broken > div {
-                background-position: -181px -82px;
-                width: 19px;
-                height: 14px;
-            }
-        
+.monument_3>div:first-child {
+    background-position: -72px -48px;
+    width: 24px;
+    height: 24px;
+}
 
-            .coffin_01 > div {
-                background-position: -56px -72px;
-                width: 19px;
-                height: 24px;
-            }
-        
+.monument_4>div:first-child {
+    background-position: -96px -48px;
+    width: 24px;
+    height: 24px;
+}
 
-            .coffin_open_01 > div {
-                background-position: -76px -72px;
-                width: 19px;
-                height: 24px;
-            }
-        
+.grave_1>div:first-child {
+    background-position: -105px -96px;
+    width: 24px;
+    height: 24px;
+}
 
-            .coffin_02 > div {
-                background-position: -96px -72px;
-                width: 22px;
-                height: 24px;
-            }
-        
+.grave_2>div:first-child {
+    background-position: -129px -96px;
+    width: 24px;
+    height: 24px;
+}
 
-            .coffin_open_02 > div {
-                background-position: -119px -72px;
-                width: 19px;
-                height: 24px;
-            }
-        
-        
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-                
-         .normal.bookshelf_1_searched,
-.normal.bookshelf_2_searched,
-.normal.bookshelf_1,
-.normal.bookshelf_2,
-.normal.table_1,
-.normal.table_2,
-.normal.table_broken,
-.normal.statue_2,
-.normal.statue_3,
-.normal.monument_1,
-.normal.monument_2,
-.normal.monument_broken,
-.normal.monument_3,
-.normal.monument_4,
-.normal.grave_1,
-.normal.grave_2,
-.normal.grave_broken {
-                height: 72px; width: 72px;
-            }
- .boss.bookshelf_1_searched,
-.boss.bookshelf_2_searched,
-.boss.bookshelf_1,
-.boss.bookshelf_2,
-.boss.table_1,
-.boss.table_2,
-.boss.table_broken,
-.boss.statue_2,
-.boss.statue_3,
-.boss.monument_1,
-.boss.monument_2,
-.boss.monument_broken,
-.boss.monument_3,
-.boss.monument_4,
-.boss.grave_1,
-.boss.grave_2,
-.boss.grave_broken {
-                height: 90px; width: 90px;
-            }
- .boss.super.bookshelf_1_searched,
-.boss.super.bookshelf_2_searched,
-.boss.super.bookshelf_1,
-.boss.super.bookshelf_2,
-.boss.super.table_1,
-.boss.super.table_2,
-.boss.super.table_broken,
-.boss.super.statue_2,
-.boss.super.statue_3,
-.boss.super.monument_1,
-.boss.super.monument_2,
-.boss.super.monument_broken,
-.boss.super.monument_3,
-.boss.super.monument_4,
-.boss.super.grave_1,
-.boss.super.grave_2,
-.boss.super.grave_broken {
-                height: 252px; width: 252px;
-            }
- .normal.box_1,
-.normal.box_1_broken {
-                height: 72px; width: 72px;
-            }
- .boss.box_1,
-.boss.box_1_broken {
-                height: 90px; width: 78.75px;
-            }
- .boss.super.box_1,
-.boss.super.box_1_broken {
-                height: 252px; width: 220.5px;
-            }
- .normal.vase_1,
-.normal.vase_3,
-.normal.vase_5,
-.normal.vase_7,
-.normal.vase_9 {
-    height: 72px; width: 72px;
-            }
- .boss.vase_1,
-.boss.vase_3,
-.boss.vase_5,
-.boss.vase_7,
-.boss.vase_9 {
-                height: 82.5px; width: 63.75px;
-            }
- .boss.super.vase_1,
-.boss.super.vase_3,
-.boss.super.vase_5,
-.boss.super.vase_7,
-.boss.super.vase_9 {
-                height: 231px; width: 178.5px;
-            }
- .normal.vase_2,
-.normal.vase_4,
-.normal.vase_6,
-.normal.vase_8,
-.normal.vase_10 {
-    height: 72px; width: 72px;
-            }
- .boss.vase_2,
-.boss.vase_4,
-.boss.vase_6,
-.boss.vase_8,
-.boss.vase_10 {
-                height: 82.5px; width: 60px;
-            }
- .boss.super.vase_2,
-.boss.super.vase_4,
-.boss.super.vase_6,
-.boss.super.vase_8,
-.boss.super.vase_10 {
-                height: 231px; width: 168px;
-            }
- .normal.vase_1_broken,
-.normal.vase_3_broken,
-.normal.vase_5_broken,
-.normal.vase_7_broken,
-.normal.vase_9_broken {
-    height: 72px; width: 72px;
-            }
- .boss.vase_1_broken,
-.boss.vase_3_broken,
-.boss.vase_5_broken,
-.boss.vase_7_broken,
-.boss.vase_9_broken {
-                height: 56.25px; width: 60px;
-            }
- .boss.super.vase_1_broken,
-.boss.super.vase_3_broken,
-.boss.super.vase_5_broken,
-.boss.super.vase_7_broken,
-.boss.super.vase_9_broken {
-                height: 157.5px; width: 168px;
-            }
- .normal.statue_1 {
-    height: 72px; width: 72px;
-            }
- .boss.statue_1 {
-                height: 90px; width: 86.25px;
-            }
- .boss.super.statue_1 {
-                height: 252px; width: 241.5px;
-            }
- .normal.statue_broken {
-    height: 72px; width: 72px;
-            }
- .boss.statue_broken {
-                height: 56.25px; width: 86.25px;
-            }
- .boss.super.statue_broken {
-                height: 157.5px; width: 241.5px;
-            }
- .normal.barril_2,
-.normal.barril_1 {
-    height: 72px; width: 72px;
-            }
- .boss.barril_2,
-.boss.barril_1 {
-                height: 90px; width: 75px;
-            }
- .boss.super.barril_2,
-.boss.super.barril_1 {
-                height: 252px; width: 210px;
-            }
- .normal.barril_broken {
-    height: 72px; width: 72px;
-            }
- .boss.barril_broken {
-                height: 52.5px; width: 71.25px;
-            }
- .boss.super.barril_broken {
-                height: 147px; width: 199.5px;
-            }
- .normal.coffin_01,
-.normal.coffin_open_01,
-.normal.coffin_open_02 {
-    height: 72px; width: 72px;
-            }
- .boss.coffin_01,
-.boss.coffin_open_01,
-.boss.coffin_open_02 {
-                height: 90px; width: 71.25px;
-            }
- .boss.super.coffin_01,
-.boss.super.coffin_open_01,
-.boss.super.coffin_open_02 {
-                height: 252px; width: 199.5px;
-            }
- .normal.coffin_02 {
-    height: 72px; width: 72px;
-            }
- .boss.coffin_02 {
-                height: 90px; width: 82.5px;
-            }
- .boss.super.coffin_02 {
-                height: 252px; width: 231px;
-            } 
+.grave_broken>div:first-child {
+    background-position: -153px -96px;
+    width: 24px;
+    height: 24px;
+}
 
-        
-            
-            /* Animations */
-            /* Animations */
-            /* Animations */
-            
-             .campfire > div {
-                    animation-name: campfire;
-                    animation-duration: 800ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes campfire {
-                     
-                from, to {
-                    width: 20px;
-                    height: 22px;
-                    background-position: -105px -26px;
-                }
-                
- 
-                50% {
-                    width: 20px;
-                    height: 22px;
-                    background-position: -126px -26px;
-                }
-                
-                }
-            
-            
-            /* Animation Sizes */
-            /* Animation Sizes */
-            /* Animation Sizes */
-            
-             .normal.campfire {
-                height: 72px; width: 72px;
-            }
+.vase_5>div:first-child {
+    background-position: -1px -74px;
+    width: 17px;
+    height: 22px;
+}
 
- .boss.campfire {
-                height: 82.5px; width: 75px;
-            }
+.vase_6>div:first-child {
+    background-position: -19px -74px;
+    width: 16px;
+    height: 22px;
+}
 
- .boss.super.campfire {
-                height: 231px; width: 210px;
-            }
-        
+.vase_7>div:first-child {
+    background-position: -1px -98px;
+    width: 17px;
+    height: 22px;
+}
+
+.vase_8>div:first-child {
+    background-position: -19px -98px;
+    width: 16px;
+    height: 22px;
+}
+
+.vase_9>div:first-child {
+    background-position: -53px -98px;
+    width: 17px;
+    height: 22px;
+}
+
+.vase_10>div:first-child {
+    background-position: -71px -98px;
+    width: 16px;
+    height: 22px;
+}
+
+.vase_5_broken>div:first-child {
+    background-position: -36px -81px;
+    width: 16px;
+    height: 15px;
+}
+
+.vase_7_broken>div:first-child {
+    background-position: -36px -105px;
+    width: 16px;
+    height: 15px;
+}
+
+.vase_9_broken>div:first-child {
+    background-position: -88px -105px;
+    width: 16px;
+    height: 15px;
+}
+
+.barril_2>div:first-child {
+    background-position: -160px -72px;
+    width: 20px;
+    height: 24px;
+}
+
+.barril_1>div:first-child {
+    background-position: -139px -72px;
+    width: 20px;
+    height: 24px;
+}
+
+.barril_broken>div:first-child {
+    background-position: -181px -82px;
+    width: 19px;
+    height: 14px;
+}
+
+.coffin_01>div:first-child {
+    background-position: -56px -72px;
+    width: 19px;
+    height: 24px;
+}
+
+.coffin_open_01>div:first-child {
+    background-position: -76px -72px;
+    width: 19px;
+    height: 24px;
+}
+
+.coffin_02>div:first-child {
+    background-position: -96px -72px;
+    width: 22px;
+    height: 24px;
+}
+
+.coffin_open_02>div:first-child {
+    background-position: -119px -72px;
+    width: 19px;
+    height: 24px;
+}
+
+
+/* Static Sprites Sizes */
+
+
+/* Static Sprites Sizes */
+
+
+/* Static Sprites Sizes */
+
+.fsc3.bookshelf_1_searched,
+.fsc3.bookshelf_2_searched,
+.fsc3.bookshelf_1,
+.fsc3.bookshelf_2,
+.fsc3.table_1,
+.fsc3.table_2,
+.fsc3.table_broken,
+.fsc3.statue_2,
+.fsc3.statue_3,
+.fsc3.monument_1,
+.fsc3.monument_2,
+.fsc3.monument_broken,
+.fsc3.monument_3,
+.fsc3.monument_4,
+.fsc3.grave_1,
+.fsc3.grave_2,
+.fsc3.grave_broken {
+    height: 72px;
+    width: 72px;
+}
+
+.fsc3.box_1,
+.fsc3.box_1_broken {
+    height: 72px;
+    width: 72px;
+}
+
+
+.pxcb30ps3.vase_1,
+.pxcb30ps3.vase_3,
+.pxcb30ps3.vase_5,
+.pxcb30ps3.vase_7,
+.pxcb30ps3.vase_9 {
+    height: 72px;
+    width: 72px;
+}
+
+.pxcb30ps3.vase_2,
+.pxcb30ps3.vase_4,
+.pxcb30ps3.vase_6,
+.pxcb30ps3.vase_8,
+.pxcb30ps3.vase_10 {
+    height: 72px;
+    width: 72px;
+}
+
+.fsc3.vase_1_broken,
+.fsc3.vase_3_broken,
+.fsc3.vase_5_broken,
+.fsc3.vase_7_broken,
+.fsc3.vase_9_broken,
+.fsc3.statue_1,
+.fsc3.statue_broken,
+.fsc3.barril_2,
+.fsc3.barril_1,
+.fsc3.barril_broken,
+.fsc3.coffin_01,
+.fsc3.coffin_02,
+.fsc3.coffin_open_01,
+.fsc3.coffin_open_02 {
+    height: 72px;
+    width: 72px;
+}
+
+
+/* Animations */
+
+
+/* Animations */
+
+
+/* Animations */
+
+.campfire>div:first-child {
+    animation-name: campfire;
+    animation-duration: 800ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes campfire {
+    from,
+    to {
+        width: 20px;
+        height: 22px;
+        background-position: -105px -26px;
+    }
+    50% {
+        width: 20px;
+        height: 22px;
+        background-position: -126px -26px;
+    }
+}
+
+
+/* Animation Sizes */
+
+
+/* Animation Sizes */
+
+
+/* Animation Sizes */
+
+.fsc3.campfire {
+    height: 72px;
+    width: 72px;
+}
+
+.boss.campfire {
+    height: 82.5px;
+    width: 75px;
+}
+
+.boss.super.campfire {
+    height: 231px;
+    width: 210px;
+}

@@ -43,7 +43,7 @@ export function processBreakable(matrix: string[], width: number, room: $Room, c
         Y: 'monument_2',
         V: sampleFromListEqualProb(['grave_1', 'grave_2']),
         J: {
-            gold:sampleFromListEqualProb(['vase_3', 'vase_4']),
+            gold: sampleFromListEqualProb(['vase_3', 'vase_4']),
             green: sampleFromListEqualProb(['vase_1', 'vase_2']),
             red: sampleFromListEqualProb(['vase_9', 'vase_10']),
             blue: sampleFromListEqualProb(['vase_7', 'vase_8']),
@@ -51,12 +51,12 @@ export function processBreakable(matrix: string[], width: number, room: $Room, c
         },
         B: 'statue_1'
     };
-   
+
     let obj = si.e === 'J' ? select[si.e][si.color] : select[si.e];
-    
+
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['pxcb30ps3', 'fsc3'],
         auxClassNames: ['dungeon_objects', obj],
         top: 0,
         left: 0,

@@ -79,10 +79,10 @@ export const resolverMap: CPU<Resolver> = Object.freeze({
     //
     // discoverables via unlocking / open
     //
-    z: css.common_fo, //xx closet
+    z: css.dungeon_o, //xx closet
     '&': css.common_fo, //xx treasure chest
-    H: css.common_fo, //xx coffin
-    '*': css.common_fo, //xx table
+    H: css.dungeon_o, //xx coffin
+    '*': css.dungeon_o, //xx table
     //
     // activatable plating
     //
@@ -99,12 +99,12 @@ export const resolverMap: CPU<Resolver> = Object.freeze({
     //
     //discoverables via breaking
     //
-    P: css.common_fo, //xx twirl-stone, looks like dna helix#
-    '{': css.common_fo, //xx beer barrel
-    Y: css.common_fo, //xx cross tombstone
-    V: css.common_fo, //xxx tombstone
-    J: css.common_fo, //xx vase 
-    B: css.common_fo, //xx statue wizard
+    P: css.dungeon_o, //xx twirl-stone, looks like dna helix#
+    '{': css.dungeon_o, //xx beer barrel
+    Y: css.dungeon_o, //xx cross tombstone
+    V: css.dungeon_o, //xxx tombstone
+    J: css.dungeon_o, //xx vase 
+    B: css.dungeon_o, //xx statue wizard
     //
     //enemies
     //

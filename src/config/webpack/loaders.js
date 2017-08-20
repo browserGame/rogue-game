@@ -23,7 +23,7 @@ const css = {
 };
 
 
-const inliner = {
+const non_inliner = {
     test: /\.(png|jpg|gif)$/,
     include,
     use: [
@@ -31,6 +31,20 @@ const inliner = {
             loader: 'url-loader',
             options: {
                 limit: 1 /*1024 ,embed if the resource is 1kb or less*/
+            }
+        }
+    ]
+};
+
+
+const pic_inliner = {
+    test: /\.(png|jpg|gif)$/,
+    include,
+    use: [
+        {
+            loader: 'url-loader',
+            options: {
+                limit: 1024*1024 // 1mg ,embed if the resource is 1kb or less*/
             }
         }
     ]
@@ -124,4 +138,4 @@ const tslint = {
     ]
 };
 
-module.exports = { sql, styles, ts, tslint, inliner, xml };
+module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner ,xml  };

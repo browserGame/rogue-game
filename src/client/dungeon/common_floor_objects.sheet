@@ -28,7 +28,9 @@
     <sheet name="carpet_red_square" texture="common_floor_objects.png" ox="12" oy="12" x="144" y="120" width="48" height="48" />
     <sheet name="carpet_blue_square" texture="common_floor_objects.png" ox="12" oy="12" x="0" y="168" width="48" height="48" />
     <sheet name="candles_pedestral_1" texture="common_floor_objects.png" ox="10" oy="22" x="193" y="24" width="21" height="24" />
-    <sheet name="candles_pedestral_2" texture="common_floor_objects.png" ox="9" oy="22" x="218" y="24" width="19" height="24" />
+    <!-- chrome css centering bug , correction below 
+        sheet name="candles_pedestral_2" texture="common_floor_objects.png" ox="9" oy="22" x="218" y="24" width="19" height="24" /-->
+    <sheet name="candles_pedestral_2" texture="common_floor_objects.png" ox="9" oy="22" x="217" y="24" width="21" height="24" />
     <sheet name="hazard_spikes" texture="common_floor_objects.png" ox="11" oy="11" x="192" y="48" width="23" height="23" />
     <sheet name="hazard_trap" texture="common_floor_objects.png" ox="11" oy="11" x="216" y="48" width="22" height="23" />
 </sheets>

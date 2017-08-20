@@ -7,6 +7,96 @@ import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import { createStyleSheets } from '../lib/Instrumentation';
 
+/** */
+/*
+import * as fs from 'fs';
+const PNG = require('pngjs').PNG;
+
+let png = require('../client/dungeon/common_floor_objects.png').replace(/^data:image\/[^;]+\;base64\,/, '');
+
+const buf = new Buffer(png, 'base64');
+buf;
+fs.writeFileSync('./test2.png', png, 'base64');
+
+//const rs = fs.createReadStream(png, { encoding: 'base64' });
+
+let _png = new PNG({
+    //filterType: 4
+});
+
+_png.on('metadata', function md() {
+    console.log(JSON.stringify(arguments));
+});
+
+_png.on('error', function err() {
+    console.log('error:' + JSON.stringify(arguments));
+});
+
+let src = PNG.sync.read(buf);
+let dst = new PNG({ width: src.width, height: src.height });
+//function(src, dst, srcX, srcY, width, height, deltaX, deltaY) { 
+PNG.bitblt(src, dst, 0, 0, src.width, src.height, 0, 0);
+//<sheet 
+    //name="candles_pedestral_1" 
+    //texture="common_floor_objects.png" 
+    //ox="10" 
+    //oy="22" 
+    //x="193" 
+    //y="24" 
+    //width="21" 
+    //height="24" 
+    // />
+//<sheet 
+//  name="candles_pedestral_2" 
+//  texture="common_floor_objects.png" 
+//  ox="9" 
+//  oy="22" 
+//  x="218" 
+//  y="24" 
+//  width="19" 
+//  height="24" 
+// />
+PNG.bitblt(src, dst, 218, 24, 19, 24, 48 + 21 / 2 - 19 / 2, 168);
+
+
+for (let x = 0; x < dst.width; x++) {
+    for (let y = 0; y < dst.height; y++) {
+        let c = (y * dst.width + x) << 2;
+        dst.data[c + 0] = 255;
+        dst.data[c + 1] = 0;
+        dst.data[c + 2] = 0;
+        dst.data[c + 3] = 128;
+    }
+}
+
+//console.log({ dst });
+dst.pack().pipe(fs.createWriteStream('out.png'));
+
+
+
+
+.on('parsed', function () {
+
+    for (var y = 0; y < this.height; y++) {
+        for (var x = 0; x < this.width; x++) {
+            var idx = (this.width * y + x) << 2;
+
+            // invert color 
+            this.data[idx] = 255 - this.data[idx];
+            this.data[idx + 1] = 255 - this.data[idx + 1];
+            this.data[idx + 2] = 255 - this.data[idx + 2];
+
+            // and reduce opacity 
+            this.data[idx + 3] = this.data[idx + 3] >> 1;
+        }
+    }
+
+    this.pack().pipe(fs.createWriteStream('out.png'));
+});
+*/
+
+
+
 
 if (process.argv.length > 2) {
 
@@ -78,7 +168,7 @@ app.use(bodyParser.raw({
 app.use('/', express.static(path.resolve('dist/client')));
 
 function init(): Promise<boolean> {
-    
+
     app.get('/room/:width/:height', (req, resp) => {
         let width = Number.parseInt(req.params['width']);
         let height = Number.parseInt(req.params['height']);

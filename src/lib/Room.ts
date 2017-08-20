@@ -31,6 +31,7 @@ export interface $GFragment {
     left: number;
     top: number;
     zIndex: number;
+    hasShadow?: boolean;
 }
 
 

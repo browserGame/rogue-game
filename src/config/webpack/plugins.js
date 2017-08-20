@@ -30,14 +30,15 @@ const NORMAL = 3;
 
 const serverAndClientShares = [
     new webpack.DefinePlugin({
-        'process.env.CSSDIR': JSON.stringify(resolve('src/client/dungeon'))
-    }),
-    new webpack.DefinePlugin({
+        'process.env.CSSDIR': JSON.stringify(resolve('src/client/dungeon')),
+        'process.env.PNGDIR': JSON.stringify(resolve('src/client/dungeon')),
         'process.env.NORMAL': JSON.stringify(`${NORMAL}`),
         'process.env.BOSS': JSON.stringify(`${NORMAL * 2.5 / 2}`),
         'process.env.SUPER': JSON.stringify(`${NORMAL * 7 / 2}`)
+       
     }),
 ]
+
 if (p) {
     serverAndClientShares.push(new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production')

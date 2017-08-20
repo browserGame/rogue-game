@@ -229,7 +229,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                 let resolver = resolverMap[select];
                 let classN = resolver(...(itm.gui.auxClassNames || []), ...(size));
                 return (<div
-                    key={`${this.level}:${id}:${itm.p.x}:${itm.p.y}`}
+                    key={`${itm.tag}:${this.level}:${id}:${itm.p.x}:${itm.p.y}`}
                     style={styles}
                     className={classN}
                 >
@@ -259,12 +259,12 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let stairs: JSX.Element[] = this.renderNameSpace({ ns: 'stairs' });
         let skullBones: JSX.Element[] = this.renderNameSpace({ ns: 'skull&bones', zOffset: 1 });
         let cobWebs: JSX.Element[] = this.renderNameSpace({ ns: 'cobwebs' });
-        let breakable: JSX.Element[] = this.renderNameSpace({ ns: 'breakable', zOffset: 2 });
-        let openable: JSX.Element[] = this.renderNameSpace({ ns: 'openable', zOffset: 4 });
+        let breakable: JSX.Element[] = this.renderNameSpace({ ns: 'breakable', zOffset: 2, hasShadow: true });
+        let openable: JSX.Element[] = this.renderNameSpace({ ns: 'openable', zOffset: 4, hasShadow: true });
         let enemies: JSX.Element[] = this.renderNameSpace({ ns: 'enemy', zOffset: 7, hasShadow: true });
         let doors: JSX.Element[] = this.renderNameSpace({ ns: 'doors', zOffset: 7 });
         let floorGlyphs: JSX.Element[] = this.renderNameSpace({ ns: 'floor-glyphs', zOffset: 1 });
-        let specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1 });
+        let specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1, hasShadow:true });
         let liquids: JSX.Element[] = this.renderLiquid();
 
         //

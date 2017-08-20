@@ -55,9 +55,9 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
 
     const sizes: { [index: string]: $GUISizeType[]; } = {
         '!': ['pxcb30ps3', 'fsc3'],
-        U: ['normal'],
-        Q: ['normal'],
-        '"': ['pccs3', 'fsc3']
+        U: ['pxcb30ps3', 'fsc3'],
+        Q: ['pxcb30ps3', 'fsc3'],
+        '"': ['pxcb30ps3', 'fsc3']
     };
 
     const selectContext = {

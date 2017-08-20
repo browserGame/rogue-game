@@ -1,653 +1,570 @@
-
-            /*  Computer Generated CSS, */
-            
-            
-        
-        /* SpriteSheet */
-        /* SpriteSheet */
-        /* SpriteSheet */
-        
-        .heroes > div {
-            background: url('./heroes.png');
-            background-origin: border-box;
-            image-rendering: pixelated;
-        }
-
-        /* general sizing */
-        /* general sizing */
-        /* general sizing */
-
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 0 0;
-        }
-
-        .normal>div {
-            transform: scale(3) translateX(-50%);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
-
-        .boss>div {
-            transform: scale(3.75);
-        }
-
-        .boss.super>div {
-            transform: scale(10.5);
-        }
+/*  Computer Generated CSS, */
 
 
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: right top;
-        }
+/* SpriteSheet */
 
-        .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
-        }
 
-        .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
-        }
+/* SpriteSheet */
 
-        .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
-        }
 
-        .smooth,
-        .smooth>div {
-            transition: all 2s;
-        }
-             
-        
-        /* Static Sprites */
-        /* Static Sprites */
-        /* Static Sprites */
-        
-        
-        
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-                
-         
+/* SpriteSheet */
 
-        
-            
-            /* Animations */
-            /* Animations */
-            /* Animations */
-            
-             .warrior_idle > div {
-                    animation-name: warrior_idle;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes warrior_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -0px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -0px;
-                }
-                
-                }
-            
- .warrior_attack > div {
-                    animation-name: warrior_attack;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes warrior_attack {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -0px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -0px;
-                }
-                
-                }
-            
- .warrior_die > div {
-                    animation-name: warrior_die;
-                    animation-duration: 2300ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes warrior_die {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -0px;
-                }
-                
- 
-                43% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -0px;
-                }
-                
- 
-                87% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -0px;
-                }
-                
-                }
-            
- .shaman_idle > div {
-                    animation-name: shaman_idle;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes shaman_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -24px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -24px;
-                }
-                
-                }
-            
- .shaman_attack > div {
-                    animation-name: shaman_attack;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes shaman_attack {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -24px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -24px;
-                }
-                
-                }
-            
- .shaman_die > div {
-                    animation-name: shaman_die;
-                    animation-duration: 2300ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes shaman_die {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -24px;
-                }
-                
- 
-                43% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -24px;
-                }
-                
- 
-                87% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -24px;
-                }
-                
-                }
-            
- .wizard_idle > div {
-                    animation-name: wizard_idle;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes wizard_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -48px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -48px;
-                }
-                
-                }
-            
- .wizard_attack > div {
-                    animation-name: wizard_attack;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes wizard_attack {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -48px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -48px;
-                }
-                
-                }
-            
- .wizard_die > div {
-                    animation-name: wizard_die;
-                    animation-duration: 2300ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes wizard_die {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -48px;
-                }
-                
- 
-                43% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -48px;
-                }
-                
- 
-                87% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -48px;
-                }
-                
-                }
-            
- .assassin_idle > div {
-                    animation-name: assassin_idle;
-                    animation-duration: 1000ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes assassin_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -72px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -72px;
-                }
-                
-                }
-            
- .assassin_attack > div {
-                    animation-name: assassin_attack;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes assassin_attack {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -72px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -72px;
-                }
-                
-                }
-            
- .assassin_die > div {
-                    animation-name: assassin_die;
-                    animation-duration: 2300ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes assassin_die {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -72px;
-                }
-                
- 
-                43% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -72px;
-                }
-                
- 
-                87% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -72px;
-                }
-                
-                }
-            
- .assassin_bow > div {
-                    animation-name: assassin_bow;
-                    animation-duration: 220ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes assassin_bow {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -48px -72px;
-                }
-                
- 
-                18% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -72px -72px;
-                }
-                
- 
-                59% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -96px -72px;
-                }
-                
-                }
-            
- .necrodancer_idle > div {
-                    animation-name: necrodancer_idle;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes necrodancer_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -96px;
-                }
-                
- 
-                25% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -96px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -48px -96px;
-                }
-                
- 
-                75% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -72px -96px;
-                }
-                
-                }
-            
- .necrodancer_idle_shovel > div {
-                    animation-name: necrodancer_idle_shovel;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes necrodancer_idle_shovel {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -48px -0px;
-                }
-                
- 
-                25% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -72px -0px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -48px -24px;
-                }
-                
- 
-                75% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -72px -24px;
-                }
-                
-                }
-            
- .necrodancer_attack > div {
-                    animation-name: necrodancer_attack;
-                    animation-duration: 600ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes necrodancer_attack {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -96px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -96px;
-                }
-                
-                }
-            
- .necrodancer_die > div {
-                    animation-name: necrodancer_die;
-                    animation-duration: 2300ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes necrodancer_die {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -0px -96px;
-                }
-                
- 
-                43% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -96px;
-                }
-                
- 
-                87% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -24px -96px;
-                }
-                
-                }
-            
- .shopkeeper_idle > div {
-                    animation-name: shopkeeper_idle;
-                    animation-duration: 1000ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes shopkeeper_idle {
-                     
-                from, to {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -96px -0px;
-                }
-                
- 
-                50% {
-                    width: 24px;
-                    height: 24px;
-                    background-position: -96px -24px;
-                }
-                
-                }
-            
-            
-            /* Animation Sizes */
-            /* Animation Sizes */
-            /* Animation Sizes */
-            
-             .normal.warrior_idle,
-.normal.warrior_attack,
-.normal.warrior_die,
-.normal.shaman_idle,
-.normal.shaman_attack,
-.normal.shaman_die,
-.normal.wizard_idle,
-.normal.wizard_attack,
-.normal.wizard_die,
-.normal.assassin_idle,
-.normal.assassin_attack,
-.normal.assassin_die,
-.normal.assassin_bow,
-.normal.necrodancer_idle,
-.normal.necrodancer_idle_shovel,
-.normal.necrodancer_attack,
-.normal.necrodancer_die,
-.normal.shopkeeper_idle {
-                height: 72px; width: 72px;
-            }
+.heroes>div:first-child {
+    background: url('./heroes.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+}
 
- .boss.warrior_idle,
-.boss.warrior_attack,
-.boss.warrior_die,
-.boss.shaman_idle,
-.boss.shaman_attack,
-.boss.shaman_die,
-.boss.wizard_idle,
-.boss.wizard_attack,
-.boss.wizard_die,
-.boss.assassin_idle,
-.boss.assassin_attack,
-.boss.assassin_die,
-.boss.assassin_bow,
-.boss.necrodancer_idle,
-.boss.necrodancer_idle_shovel,
-.boss.necrodancer_attack,
-.boss.necrodancer_die,
-.boss.shopkeeper_idle {
-                height: 90px; width: 90px;
-            }
+.heroes>div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+    z-index: 0;
+}
 
- .boss.super.warrior_idle,
-.boss.super.warrior_attack,
-.boss.super.warrior_die,
-.boss.super.shaman_idle,
-.boss.super.shaman_attack,
-.boss.super.shaman_die,
-.boss.super.wizard_idle,
-.boss.super.wizard_attack,
-.boss.super.wizard_die,
-.boss.super.assassin_idle,
-.boss.super.assassin_attack,
-.boss.super.assassin_die,
-.boss.super.assassin_bow,
-.boss.super.necrodancer_idle,
-.boss.super.necrodancer_idle_shovel,
-.boss.super.necrodancer_attack,
-.boss.super.necrodancer_die,
-.boss.super.shopkeeper_idle {
-                height: 252px; width: 252px;
-            }
-        
+
+/* general sizing */
+
+
+/* general sizing */
+
+
+/* general sizing */
+
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
+
+/* 
+pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] 
+*/
+
+.pxcb30ps3>div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+}
+
+.pxcb30ps3>div:last-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 12.5%;
+    opacity: 0.5;
+}
+
+.pxcb30ps3.right>div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3);
+}
+
+
+/* Static Sprites */
+
+
+/* Static Sprites */
+
+
+/* Static Sprites */
+
+
+/* Static Sprites Sizes */
+
+
+/* Static Sprites Sizes */
+
+
+/* Static Sprites Sizes */
+
+
+/* Animations */
+
+
+/* Animations */
+
+
+/* Animations */
+
+.warrior_idle>div:first-child {
+    animation-name: warrior_idle;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes warrior_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -0px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -0px;
+    }
+}
+
+.warrior_attack>div:first-child {
+    animation-name: warrior_attack;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes warrior_attack {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -0px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -0px;
+    }
+}
+
+.warrior_die>div:first-child {
+    animation-name: warrior_die;
+    animation-duration: 2300ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes warrior_die {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -0px;
+    }
+    43% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -0px;
+    }
+    87% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -0px;
+    }
+}
+
+.shaman_idle>div:first-child {
+    animation-name: shaman_idle;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes shaman_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -24px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -24px;
+    }
+}
+
+.shaman_attack>div:first-child {
+    animation-name: shaman_attack;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes shaman_attack {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -24px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -24px;
+    }
+}
+
+.shaman_die>div:first-child {
+    animation-name: shaman_die;
+    animation-duration: 2300ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes shaman_die {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -24px;
+    }
+    43% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -24px;
+    }
+    87% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -24px;
+    }
+}
+
+.wizard_idle>div:first-child {
+    animation-name: wizard_idle;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes wizard_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -48px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -48px;
+    }
+}
+
+.wizard_attack>div:first-child {
+    animation-name: wizard_attack;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes wizard_attack {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -48px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -48px;
+    }
+}
+
+.wizard_die>div:first-child {
+    animation-name: wizard_die;
+    animation-duration: 2300ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes wizard_die {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -48px;
+    }
+    43% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -48px;
+    }
+    87% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -48px;
+    }
+}
+
+.assassin_idle>div:first-child {
+    animation-name: assassin_idle;
+    animation-duration: 1000ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes assassin_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -72px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -72px;
+    }
+}
+
+.assassin_attack>div:first-child {
+    animation-name: assassin_attack;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes assassin_attack {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -72px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -72px;
+    }
+}
+
+.assassin_die>div:first-child {
+    animation-name: assassin_die;
+    animation-duration: 2300ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes assassin_die {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -72px;
+    }
+    43% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -72px;
+    }
+    87% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -72px;
+    }
+}
+
+.assassin_bow>div:first-child {
+    animation-name: assassin_bow;
+    animation-duration: 220ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes assassin_bow {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -48px -72px;
+    }
+    18% {
+        width: 24px;
+        height: 24px;
+        background-position: -72px -72px;
+    }
+    59% {
+        width: 24px;
+        height: 24px;
+        background-position: -96px -72px;
+    }
+}
+
+.necrodancer_idle>div:first-child {
+    animation-name: necrodancer_idle;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes necrodancer_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -96px;
+    }
+    25% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -96px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -48px -96px;
+    }
+    75% {
+        width: 24px;
+        height: 24px;
+        background-position: -72px -96px;
+    }
+}
+
+.necrodancer_idle_shovel>div:first-child {
+    animation-name: necrodancer_idle_shovel;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes necrodancer_idle_shovel {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -48px -0px;
+    }
+    25% {
+        width: 24px;
+        height: 24px;
+        background-position: -72px -0px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -48px -24px;
+    }
+    75% {
+        width: 24px;
+        height: 24px;
+        background-position: -72px -24px;
+    }
+}
+
+.necrodancer_attack>div:first-child {
+    animation-name: necrodancer_attack;
+    animation-duration: 600ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes necrodancer_attack {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -96px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -96px;
+    }
+}
+
+.necrodancer_die>div:first-child {
+    animation-name: necrodancer_die;
+    animation-duration: 2300ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes necrodancer_die {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -0px -96px;
+    }
+    43% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -96px;
+    }
+    87% {
+        width: 24px;
+        height: 24px;
+        background-position: -24px -96px;
+    }
+}
+
+.shopkeeper_idle>div:first-child {
+    animation-name: shopkeeper_idle;
+    animation-duration: 1000ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes shopkeeper_idle {
+    from,
+    to {
+        width: 24px;
+        height: 24px;
+        background-position: -96px -0px;
+    }
+    50% {
+        width: 24px;
+        height: 24px;
+        background-position: -96px -24px;
+    }
+}
+
+
+/* Animation Sizes */
+
+
+/* Animation Sizes */
+
+
+/* Animation Sizes */
+
+.pxcb30ps3.warrior_idle,
+.pxcb30ps3.warrior_attack,
+.pxcb30ps3.warrior_die,
+.pxcb30ps3.shaman_idle,
+.pxcb30ps3.shaman_attack,
+.pxcb30ps3.shaman_die,
+.pxcb30ps3.wizard_idle,
+.pxcb30ps3.wizard_attack,
+.pxcb30ps3.wizard_die,
+.pxcb30ps3.assassin_idle,
+.pxcb30ps3.assassin_attack,
+.pxcb30ps3.assassin_die,
+.pxcb30ps3.assassin_bow,
+.pxcb30ps3.necrodancer_idle,
+.pxcb30ps3.necrodancer_idle_shovel,
+.pxcb30ps3.necrodancer_attack,
+.pxcb30ps3.necrodancer_die,
+.pxcb30ps3.shopkeeper_idle {
+    height: 72px;
+    width: 72px;
+}
+
