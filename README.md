@@ -27,7 +27,7 @@ build both client and server parts and run
 ```bash
   npm run build:server:dev
   #
-  npm run create:scss  # optional step: create scss files from .sheet and .anim files
+  # (disabled for now) npm run create:scss  # optional step: create scss files from .sheet and .anim files
   #
   npm run build:client:dev
   npm start
