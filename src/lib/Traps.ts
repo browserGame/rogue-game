@@ -25,24 +25,26 @@ export interface $ItemTrap extends $Item {
 export function processTraps(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: AllTraps) {
 
     const select = {
-        w:'hazard_spikes', //spikes
-        S:'hazard_trap' //beartrap
+        w: 'hazard_spikes', //spikes
+        S: 'hazard_trap' //beartrap
     };
 
     let gui: $GFragment = {
-        size: ['normal'],
-        auxClassNames: [ 'common_floor_objects', select[si.e]],
+        size: ['plts3', 'fsc3'],
+        auxClassNames: ['common_floor_objects', select[si.e]],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: false
     };
 
     let itms: $ItemTrap[] = coords.map((m) => {
-        return { 
-            tag: si.e, 
-            p: m, 
-            delHp: si.delHp || 10, 
-            gui }; //default 10 points lost if not specified
+        return {
+            tag: si.e,
+            p: m,
+            delHp: si.delHp || 10,
+            gui
+        }; //default 10 points lost if not specified
     });
     //
     let err = itms.filter((f) => {

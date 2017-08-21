@@ -6,10 +6,18 @@
 
 /* SpriteSheet */
 
-.equipment>div {
+.equipment>div:first-child {
     background: url('./equipment.png');
     background-origin: border-box;
     image-rendering: pixelated;
+    z-index: 1;
+}
+
+.equipment.shadow>div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
+    image-rendering: pixelated;
+    z-index: 0;
 }
 
 
@@ -21,52 +29,65 @@
 
 /* general sizing */
 
-.super>div,
-.boss>div,
-.normal>div {
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
+
+
+/* pxcycs3 = [p]osition [xc]enter [yc]enter [s]cale [3]  */
+
+.pxcycs3>div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(3);
     position: absolute;
     left: 50%;
     top: 50%;
+}
+
+.pxcycs3.shadow>div:last-child {
     transform-origin: 50% 50%;
-}
-
-.normal>div {
-    transform: translateX(-50%) translateY(-50%) scale(3);
-}
-
-.boss>div {
-    transform: translateX(-50%) translateY(-50%) scale(3.75);
-}
-
-.boss.super>div {
-    transform: translateX(-50%) translateY(-50%) scale(10.5);
-}
-
-.super.boss.look-right>div,
-.normal.look-right>div,
-.boss.look-right>div {
-    transform-origin: right top;
+    transform: translateX(-50%) translateY(-50%) scale(2.5);
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    opacity: 0.5;
 }
 
 
-/*
-.normal.look-right>div {
-    transform: scaleX(-1) translateX(100%) scale(3);
+/*  pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
+
+.pxcb30ps3>div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
 }
 
-.boss.look-right>div {
-    transform: scaleX(-1) translateX(100%) scale(3.75);
+.pxcb30ps3.shadow>div:last-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    background-position: -0px -0px;
+    width: 24px;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    bottom: 12.5%;
+    opacity: 0.5;
 }
 
-.super.boss.look-right>div {
-    transform: scaleX(-1) translateX(100%) scale(10.5);
-}
 
-.smooth,
-.smooth>div {
-    transition: all 2s;
-}
-*/
+/* general sizing */
+
+
+/* general sizing */
+
+
+/* general sizing */
 
 
 /* Static Sprites */
@@ -77,1430 +98,938 @@
 
 /* Static Sprites */
 
-.area0>div {
+.area0>div:first-child {
     background-position: -0px -0px;
     width: 16px;
     height: 16px;
 }
 
-.area1>div {
+.area1>div:first-child {
     background-position: -16px -0px;
     width: 16px;
     height: 16px;
 }
 
-.area2>div {
+.area2>div:first-child {
     background-position: -32px -0px;
     width: 16px;
     height: 16px;
 }
 
-.area3>div {
+.area3>div:first-child {
     background-position: -48px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_1>div {
+.mace_1>div:first-child {
     background-position: -64px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_2>div {
+.mace_2>div:first-child {
     background-position: -80px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_3>div {
+.mace_3>div:first-child {
     background-position: -96px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_4>div {
+.mace_4>div:first-child {
     background-position: -112px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_5>div {
+.mace_5>div:first-child {
     background-position: -128px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_6>div {
+.mace_6>div:first-child {
     background-position: -144px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_7>div {
+.mace_7>div:first-child {
     background-position: -160px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_8>div {
+.mace_8>div:first-child {
     background-position: -176px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_9>div {
+.mace_9>div:first-child {
     background-position: -192px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_10>div {
+.mace_10>div:first-child {
     background-position: -208px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_11>div {
+.mace_11>div:first-child {
     background-position: -224px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_12>div {
+.mace_12>div:first-child {
     background-position: -240px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_13>div {
+.mace_13>div:first-child {
     background-position: -256px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_14>div {
+.mace_14>div:first-child {
     background-position: -272px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_15>div {
+.mace_15>div:first-child {
     background-position: -288px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_16>div {
+.mace_16>div:first-child {
     background-position: -304px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_17>div {
+.mace_17>div:first-child {
     background-position: -320px -0px;
     width: 16px;
     height: 16px;
 }
 
-.mace_18>div {
+.mace_18>div:first-child {
     background-position: -336px -0px;
     width: 16px;
     height: 16px;
 }
 
-.arrow>div {
+.arrow>div:first-child {
     background-position: -352px -3px;
     width: 21px;
     height: 4px;
 }
 
-.staff_1>div {
+.staff_1>div:first-child {
     background-position: -0px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_2>div {
+.staff_2>div:first-child {
     background-position: -16px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_3>div {
+.staff_3>div:first-child {
     background-position: -32px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_4>div {
+.staff_4>div:first-child {
     background-position: -48px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_5>div {
+.staff_5>div:first-child {
     background-position: -64px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_6>div {
+.staff_6>div:first-child {
     background-position: -80px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_7>div {
+.staff_7>div:first-child {
     background-position: -96px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_8>div {
+.staff_8>div:first-child {
     background-position: -112px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_9>div {
+.staff_9>div:first-child {
     background-position: -128px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_10>div {
+.staff_10>div:first-child {
     background-position: -144px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_11>div {
+.staff_11>div:first-child {
     background-position: -160px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_12>div {
+.staff_12>div:first-child {
     background-position: -176px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_13>div {
+.staff_13>div:first-child {
     background-position: -192px -16px;
     width: 16px;
     height: 16px;
 }
 
-.staff_14>div {
+.staff_14>div:first-child {
     background-position: -208px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_1>div {
+.bow_1>div:first-child {
     background-position: -224px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_2>div {
+.bow_2>div:first-child {
     background-position: -240px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_3>div {
+.bow_3>div:first-child {
     background-position: -256px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_4>div {
+.bow_4>div:first-child {
     background-position: -272px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_5>div {
+.bow_5>div:first-child {
     background-position: -288px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_6>div {
+.bow_6>div:first-child {
     background-position: -304px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_7>div {
+.bow_7>div:first-child {
     background-position: -320px -16px;
     width: 16px;
     height: 16px;
 }
 
-.bow_8>div {
+.bow_8>div:first-child {
     background-position: -336px -16px;
     width: 16px;
     height: 16px;
 }
 
-.sword_1>div {
+.sword_1>div:first-child {
     background-position: -0px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_2>div {
+.sword_2>div:first-child {
     background-position: -16px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_3>div {
+.sword_3>div:first-child {
     background-position: -32px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_4>div {
+.sword_4>div:first-child {
     background-position: -48px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_5>div {
+.sword_5>div:first-child {
     background-position: -64px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_6>div {
+.sword_6>div:first-child {
     background-position: -80px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_7>div {
+.sword_7>div:first-child {
     background-position: -96px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_8>div {
+.sword_8>div:first-child {
     background-position: -112px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_9>div {
+.sword_9>div:first-child {
     background-position: -128px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_10>div {
+.sword_10>div:first-child {
     background-position: -144px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_11>div {
+.sword_11>div:first-child {
     background-position: -160px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_12>div {
+.sword_12>div:first-child {
     background-position: -176px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_13>div {
+.sword_13>div:first-child {
     background-position: -192px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_14>div {
+.sword_14>div:first-child {
     background-position: -208px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_15>div {
+.sword_15>div:first-child {
     background-position: -224px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_16>div {
+.sword_16>div:first-child {
     background-position: -240px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_17>div {
+.sword_17>div:first-child {
     background-position: -256px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_18>div {
+.sword_18>div:first-child {
     background-position: -272px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_19>div {
+.sword_19>div:first-child {
     background-position: -288px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_20>div {
+.sword_20>div:first-child {
     background-position: -304px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_21>div {
+.sword_21>div:first-child {
     background-position: -320px -32px;
     width: 16px;
     height: 16px;
 }
 
-.sword_22>div {
+.sword_22>div:first-child {
     background-position: -336px -32px;
     width: 16px;
     height: 16px;
 }
 
-.shield_1>div {
+.shield_1>div:first-child {
     background-position: -0px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_2>div {
+.shield_2>div:first-child {
     background-position: -16px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_3>div {
+.shield_3>div:first-child {
     background-position: -32px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_4>div {
+.shield_4>div:first-child {
     background-position: -48px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_5>div {
+.shield_5>div:first-child {
     background-position: -64px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_6>div {
+.shield_6>div:first-child {
     background-position: -80px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_7>div {
+.shield_7>div:first-child {
     background-position: -96px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_8>div {
+.shield_8>div:first-child {
     background-position: -112px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_9>div {
+.shield_9>div:first-child {
     background-position: -128px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_10>div {
+.shield_10>div:first-child {
     background-position: -144px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_11>div {
+.shield_11>div:first-child {
     background-position: -160px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_12>div {
+.shield_12>div:first-child {
     background-position: -176px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_13>div {
+.shield_13>div:first-child {
     background-position: -192px -48px;
     width: 16px;
     height: 16px;
 }
 
-.shield_14>div {
+.shield_14>div:first-child {
     background-position: -208px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_1>div {
+.ring_1>div:first-child {
     background-position: -224px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_2>div {
+.ring_2>div:first-child {
     background-position: -240px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_3>div {
+.ring_3>div:first-child {
     background-position: -256px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_4>div {
+.ring_4>div:first-child {
     background-position: -272px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_5>div {
+.ring_5>div:first-child {
     background-position: -288px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_6>div {
+.ring_6>div:first-child {
     background-position: -304px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_7>div {
+.ring_7>div:first-child {
     background-position: -320px -48px;
     width: 16px;
     height: 16px;
 }
 
-.ring_8>div {
+.ring_8>div:first-child {
     background-position: -336px -48px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_11>div {
+.chest_armor_11>div:first-child {
     background-position: -0px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_12>div {
+.chest_armor_12>div:first-child {
     background-position: -16px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_13>div {
+.chest_armor_13>div:first-child {
     background-position: -32px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_14>div {
+.chest_armor_14>div:first-child {
     background-position: -48px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_15>div {
+.chest_armor_15>div:first-child {
     background-position: -64px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_16>div {
+.chest_armor_16>div:first-child {
     background-position: -80px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_17>div {
+.chest_armor_17>div:first-child {
     background-position: -96px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_18>div {
+.chest_armor_18>div:first-child {
     background-position: -112px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_19>div {
+.chest_armor_19>div:first-child {
     background-position: -128px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_20>div {
+.chest_armor_20>div:first-child {
     background-position: -144px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_21>div {
+.chest_armor_21>div:first-child {
     background-position: -160px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_22>div {
+.chest_armor_22>div:first-child {
     background-position: -176px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_23>div {
+.chest_armor_23>div:first-child {
     background-position: -192px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_24>div {
+.chest_armor_24>div:first-child {
     background-position: -208px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_25>div {
+.chest_armor_25>div:first-child {
     background-position: -224px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area143>div {
+.area143>div:first-child {
     background-position: -240px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area144>div {
+.area144>div:first-child {
     background-position: -256px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area145>div {
+.area145>div:first-child {
     background-position: -272px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area146>div {
+.area146>div:first-child {
     background-position: -288px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area147>div {
+.area147>div:first-child {
     background-position: -304px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area148>div {
+.area148>div:first-child {
     background-position: -320px -64px;
     width: 16px;
     height: 16px;
 }
 
-.area149>div {
+.area149>div:first-child {
     background-position: -336px -64px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_1>div {
+.chest_armor_1>div:first-child {
     background-position: -0px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_2>div {
+.chest_armor_2>div:first-child {
     background-position: -16px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_3>div {
+.chest_armor_3>div:first-child {
     background-position: -32px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_4>div {
+.chest_armor_4>div:first-child {
     background-position: -48px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_5>div {
+.chest_armor_5>div:first-child {
     background-position: -64px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_6>div {
+.chest_armor_6>div:first-child {
     background-position: -80px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_7>div {
+.chest_armor_7>div:first-child {
     background-position: -96px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_8>div {
+.chest_armor_8>div:first-child {
     background-position: -112px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_9>div {
+.chest_armor_9>div:first-child {
     background-position: -128px -80px;
     width: 16px;
     height: 16px;
 }
 
-.chest_armor_10>div {
+.chest_armor_10>div:first-child {
     background-position: -144px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_1>div {
+.helmet_1>div:first-child {
     background-position: -160px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_2>div {
+.helmet_2>div:first-child {
     background-position: -176px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_3>div {
+.helmet_3>div:first-child {
     background-position: -192px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_4>div {
+.helmet_4>div:first-child {
     background-position: -208px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_5>div {
+.helmet_5>div:first-child {
     background-position: -224px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_6>div {
+.helmet_6>div:first-child {
     background-position: -240px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_7>div {
+.helmet_7>div:first-child {
     background-position: -256px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_8>div {
+.helmet_8>div:first-child {
     background-position: -272px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_9>div {
+.helmet_9>div:first-child {
     background-position: -288px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_10>div {
+.helmet_10>div:first-child {
     background-position: -304px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_11>div {
+.helmet_11>div:first-child {
     background-position: -320px -80px;
     width: 16px;
     height: 16px;
 }
 
-.helmet_12>div {
+.helmet_12>div:first-child {
     background-position: -336px -80px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_1>div {
+.shoes_1>div:first-child {
     background-position: -0px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_2>div {
+.shoes_2>div:first-child {
     background-position: -16px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_3>div {
+.shoes_3>div:first-child {
     background-position: -32px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_4>div {
+.shoes_4>div:first-child {
     background-position: -48px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_5>div {
+.shoes_5>div:first-child {
     background-position: -64px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_6>div {
+.shoes_6>div:first-child {
     background-position: -80px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_7>div {
+.shoes_7>div:first-child {
     background-position: -96px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_8>div {
+.shoes_8>div:first-child {
     background-position: -112px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_9>div {
+.shoes_9>div:first-child {
     background-position: -128px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_10>div {
+.shoes_10>div:first-child {
     background-position: -144px -96px;
     width: 16px;
     height: 16px;
 }
 
-.shoes_11>div {
+.shoes_11>div:first-child {
     background-position: -160px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_1>div {
+.pants_1>div:first-child {
     background-position: -176px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_2>div {
+.pants_2>div:first-child {
     background-position: -192px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_3>div {
+.pants_3>div:first-child {
     background-position: -208px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_4>div {
+.pants_4>div:first-child {
     background-position: -224px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_5>div {
+.pants_5>div:first-child {
     background-position: -240px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_6>div {
+.pants_6>div:first-child {
     background-position: -256px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_7>div {
+.pants_7>div:first-child {
     background-position: -272px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_8>div {
+.pants_8>div:first-child {
     background-position: -288px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_9>div {
+.pants_9>div:first-child {
     background-position: -304px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_10>div {
+.pants_10>div:first-child {
     background-position: -320px -96px;
     width: 16px;
     height: 16px;
 }
 
-.pants_11>div {
+.pants_11>div:first-child {
     background-position: -336px -96px;
     width: 16px;
     height: 16px;
 }
 
-.knive_throw>div {
+.knive_throw>div:first-child {
     background-position: -353px -9px;
     width: 18px;
     height: 5px;
-}
-
-
-/* Static Sprites Sizes */
-
-
-/* Static Sprites Sizes */
-
-
-/* Static Sprites Sizes */
-
-.normal.area0,
-.normal.area1,
-.normal.area2,
-.normal.area3,
-.normal.mace_1,
-.normal.mace_2,
-.normal.mace_3,
-.normal.mace_4,
-.normal.mace_5,
-.normal.mace_6,
-.normal.mace_7,
-.normal.mace_8,
-.normal.mace_9,
-.normal.mace_10,
-.normal.mace_11,
-.normal.mace_12,
-.normal.mace_13,
-.normal.mace_14,
-.normal.mace_15,
-.normal.mace_16,
-.normal.mace_17,
-.normal.mace_18,
-.normal.staff_1,
-.normal.staff_2,
-.normal.staff_3,
-.normal.staff_4,
-.normal.staff_5,
-.normal.staff_6,
-.normal.staff_7,
-.normal.staff_8,
-.normal.staff_9,
-.normal.staff_10,
-.normal.staff_11,
-.normal.staff_12,
-.normal.staff_13,
-.normal.staff_14,
-.normal.bow_1,
-.normal.bow_2,
-.normal.bow_3,
-.normal.bow_4,
-.normal.bow_5,
-.normal.bow_6,
-.normal.bow_7,
-.normal.bow_8,
-.normal.sword_1,
-.normal.sword_2,
-.normal.sword_3,
-.normal.sword_4,
-.normal.sword_5,
-.normal.sword_6,
-.normal.sword_7,
-.normal.sword_8,
-.normal.sword_9,
-.normal.sword_10,
-.normal.sword_11,
-.normal.sword_12,
-.normal.sword_13,
-.normal.sword_14,
-.normal.sword_15,
-.normal.sword_16,
-.normal.sword_17,
-.normal.sword_18,
-.normal.sword_19,
-.normal.sword_20,
-.normal.sword_21,
-.normal.sword_22,
-.normal.shield_1,
-.normal.shield_2,
-.normal.shield_3,
-.normal.shield_4,
-.normal.shield_5,
-.normal.shield_6,
-.normal.shield_7,
-.normal.shield_8,
-.normal.shield_9,
-.normal.shield_10,
-.normal.shield_11,
-.normal.shield_12,
-.normal.shield_13,
-.normal.shield_14,
-.normal.ring_1,
-.normal.ring_2,
-.normal.ring_3,
-.normal.ring_4,
-.normal.ring_5,
-.normal.ring_6,
-.normal.ring_7,
-.normal.ring_8,
-.normal.chest_armor_11,
-.normal.chest_armor_12,
-.normal.chest_armor_13,
-.normal.chest_armor_14,
-.normal.chest_armor_15,
-.normal.chest_armor_16,
-.normal.chest_armor_17,
-.normal.chest_armor_18,
-.normal.chest_armor_19,
-.normal.chest_armor_20,
-.normal.chest_armor_21,
-.normal.chest_armor_22,
-.normal.chest_armor_23,
-.normal.chest_armor_24,
-.normal.chest_armor_25,
-.normal.area143,
-.normal.area144,
-.normal.area145,
-.normal.area146,
-.normal.area147,
-.normal.area148,
-.normal.area149,
-.normal.chest_armor_1,
-.normal.chest_armor_2,
-.normal.chest_armor_3,
-.normal.chest_armor_4,
-.normal.chest_armor_5,
-.normal.chest_armor_6,
-.normal.chest_armor_7,
-.normal.chest_armor_8,
-.normal.chest_armor_9,
-.normal.chest_armor_10,
-.normal.helmet_1,
-.normal.helmet_2,
-.normal.helmet_3,
-.normal.helmet_4,
-.normal.helmet_5,
-.normal.helmet_6,
-.normal.helmet_7,
-.normal.helmet_8,
-.normal.helmet_9,
-.normal.helmet_10,
-.normal.helmet_11,
-.normal.helmet_12,
-.normal.shoes_1,
-.normal.shoes_2,
-.normal.shoes_3,
-.normal.shoes_4,
-.normal.shoes_5,
-.normal.shoes_6,
-.normal.shoes_7,
-.normal.shoes_8,
-.normal.shoes_9,
-.normal.shoes_10,
-.normal.shoes_11,
-.normal.pants_1,
-.normal.pants_2,
-.normal.pants_3,
-.normal.pants_4,
-.normal.pants_5,
-.normal.pants_6,
-.normal.pants_7,
-.normal.pants_8,
-.normal.pants_9,
-.normal.pants_10,
-.normal.pants_11 {
-    height: 72px;
-    width: 72px;
-}
-
-.boss.area0,
-.boss.area1,
-.boss.area2,
-.boss.area3,
-.boss.mace_1,
-.boss.mace_2,
-.boss.mace_3,
-.boss.mace_4,
-.boss.mace_5,
-.boss.mace_6,
-.boss.mace_7,
-.boss.mace_8,
-.boss.mace_9,
-.boss.mace_10,
-.boss.mace_11,
-.boss.mace_12,
-.boss.mace_13,
-.boss.mace_14,
-.boss.mace_15,
-.boss.mace_16,
-.boss.mace_17,
-.boss.mace_18,
-.boss.staff_1,
-.boss.staff_2,
-.boss.staff_3,
-.boss.staff_4,
-.boss.staff_5,
-.boss.staff_6,
-.boss.staff_7,
-.boss.staff_8,
-.boss.staff_9,
-.boss.staff_10,
-.boss.staff_11,
-.boss.staff_12,
-.boss.staff_13,
-.boss.staff_14,
-.boss.bow_1,
-.boss.bow_2,
-.boss.bow_3,
-.boss.bow_4,
-.boss.bow_5,
-.boss.bow_6,
-.boss.bow_7,
-.boss.bow_8,
-.boss.sword_1,
-.boss.sword_2,
-.boss.sword_3,
-.boss.sword_4,
-.boss.sword_5,
-.boss.sword_6,
-.boss.sword_7,
-.boss.sword_8,
-.boss.sword_9,
-.boss.sword_10,
-.boss.sword_11,
-.boss.sword_12,
-.boss.sword_13,
-.boss.sword_14,
-.boss.sword_15,
-.boss.sword_16,
-.boss.sword_17,
-.boss.sword_18,
-.boss.sword_19,
-.boss.sword_20,
-.boss.sword_21,
-.boss.sword_22,
-.boss.shield_1,
-.boss.shield_2,
-.boss.shield_3,
-.boss.shield_4,
-.boss.shield_5,
-.boss.shield_6,
-.boss.shield_7,
-.boss.shield_8,
-.boss.shield_9,
-.boss.shield_10,
-.boss.shield_11,
-.boss.shield_12,
-.boss.shield_13,
-.boss.shield_14,
-.boss.ring_1,
-.boss.ring_2,
-.boss.ring_3,
-.boss.ring_4,
-.boss.ring_5,
-.boss.ring_6,
-.boss.ring_7,
-.boss.ring_8,
-.boss.chest_armor_11,
-.boss.chest_armor_12,
-.boss.chest_armor_13,
-.boss.chest_armor_14,
-.boss.chest_armor_15,
-.boss.chest_armor_16,
-.boss.chest_armor_17,
-.boss.chest_armor_18,
-.boss.chest_armor_19,
-.boss.chest_armor_20,
-.boss.chest_armor_21,
-.boss.chest_armor_22,
-.boss.chest_armor_23,
-.boss.chest_armor_24,
-.boss.chest_armor_25,
-.boss.area143,
-.boss.area144,
-.boss.area145,
-.boss.area146,
-.boss.area147,
-.boss.area148,
-.boss.area149,
-.boss.chest_armor_1,
-.boss.chest_armor_2,
-.boss.chest_armor_3,
-.boss.chest_armor_4,
-.boss.chest_armor_5,
-.boss.chest_armor_6,
-.boss.chest_armor_7,
-.boss.chest_armor_8,
-.boss.chest_armor_9,
-.boss.chest_armor_10,
-.boss.helmet_1,
-.boss.helmet_2,
-.boss.helmet_3,
-.boss.helmet_4,
-.boss.helmet_5,
-.boss.helmet_6,
-.boss.helmet_7,
-.boss.helmet_8,
-.boss.helmet_9,
-.boss.helmet_10,
-.boss.helmet_11,
-.boss.helmet_12,
-.boss.shoes_1,
-.boss.shoes_2,
-.boss.shoes_3,
-.boss.shoes_4,
-.boss.shoes_5,
-.boss.shoes_6,
-.boss.shoes_7,
-.boss.shoes_8,
-.boss.shoes_9,
-.boss.shoes_10,
-.boss.shoes_11,
-.boss.pants_1,
-.boss.pants_2,
-.boss.pants_3,
-.boss.pants_4,
-.boss.pants_5,
-.boss.pants_6,
-.boss.pants_7,
-.boss.pants_8,
-.boss.pants_9,
-.boss.pants_10,
-.boss.pants_11 {
-    height: 72px;
-    width: 72px;
-}
-
-.boss.super.area0,
-.boss.super.area1,
-.boss.super.area2,
-.boss.super.area3,
-.boss.super.mace_1,
-.boss.super.mace_2,
-.boss.super.mace_3,
-.boss.super.mace_4,
-.boss.super.mace_5,
-.boss.super.mace_6,
-.boss.super.mace_7,
-.boss.super.mace_8,
-.boss.super.mace_9,
-.boss.super.mace_10,
-.boss.super.mace_11,
-.boss.super.mace_12,
-.boss.super.mace_13,
-.boss.super.mace_14,
-.boss.super.mace_15,
-.boss.super.mace_16,
-.boss.super.mace_17,
-.boss.super.mace_18,
-.boss.super.staff_1,
-.boss.super.staff_2,
-.boss.super.staff_3,
-.boss.super.staff_4,
-.boss.super.staff_5,
-.boss.super.staff_6,
-.boss.super.staff_7,
-.boss.super.staff_8,
-.boss.super.staff_9,
-.boss.super.staff_10,
-.boss.super.staff_11,
-.boss.super.staff_12,
-.boss.super.staff_13,
-.boss.super.staff_14,
-.boss.super.bow_1,
-.boss.super.bow_2,
-.boss.super.bow_3,
-.boss.super.bow_4,
-.boss.super.bow_5,
-.boss.super.bow_6,
-.boss.super.bow_7,
-.boss.super.bow_8,
-.boss.super.sword_1,
-.boss.super.sword_2,
-.boss.super.sword_3,
-.boss.super.sword_4,
-.boss.super.sword_5,
-.boss.super.sword_6,
-.boss.super.sword_7,
-.boss.super.sword_8,
-.boss.super.sword_9,
-.boss.super.sword_10,
-.boss.super.sword_11,
-.boss.super.sword_12,
-.boss.super.sword_13,
-.boss.super.sword_14,
-.boss.super.sword_15,
-.boss.super.sword_16,
-.boss.super.sword_17,
-.boss.super.sword_18,
-.boss.super.sword_19,
-.boss.super.sword_20,
-.boss.super.sword_21,
-.boss.super.sword_22,
-.boss.super.shield_1,
-.boss.super.shield_2,
-.boss.super.shield_3,
-.boss.super.shield_4,
-.boss.super.shield_5,
-.boss.super.shield_6,
-.boss.super.shield_7,
-.boss.super.shield_8,
-.boss.super.shield_9,
-.boss.super.shield_10,
-.boss.super.shield_11,
-.boss.super.shield_12,
-.boss.super.shield_13,
-.boss.super.shield_14,
-.boss.super.ring_1,
-.boss.super.ring_2,
-.boss.super.ring_3,
-.boss.super.ring_4,
-.boss.super.ring_5,
-.boss.super.ring_6,
-.boss.super.ring_7,
-.boss.super.ring_8,
-.boss.super.chest_armor_11,
-.boss.super.chest_armor_12,
-.boss.super.chest_armor_13,
-.boss.super.chest_armor_14,
-.boss.super.chest_armor_15,
-.boss.super.chest_armor_16,
-.boss.super.chest_armor_17,
-.boss.super.chest_armor_18,
-.boss.super.chest_armor_19,
-.boss.super.chest_armor_20,
-.boss.super.chest_armor_21,
-.boss.super.chest_armor_22,
-.boss.super.chest_armor_23,
-.boss.super.chest_armor_24,
-.boss.super.chest_armor_25,
-.boss.super.area143,
-.boss.super.area144,
-.boss.super.area145,
-.boss.super.area146,
-.boss.super.area147,
-.boss.super.area148,
-.boss.super.area149,
-.boss.super.chest_armor_1,
-.boss.super.chest_armor_2,
-.boss.super.chest_armor_3,
-.boss.super.chest_armor_4,
-.boss.super.chest_armor_5,
-.boss.super.chest_armor_6,
-.boss.super.chest_armor_7,
-.boss.super.chest_armor_8,
-.boss.super.chest_armor_9,
-.boss.super.chest_armor_10,
-.boss.super.helmet_1,
-.boss.super.helmet_2,
-.boss.super.helmet_3,
-.boss.super.helmet_4,
-.boss.super.helmet_5,
-.boss.super.helmet_6,
-.boss.super.helmet_7,
-.boss.super.helmet_8,
-.boss.super.helmet_9,
-.boss.super.helmet_10,
-.boss.super.helmet_11,
-.boss.super.helmet_12,
-.boss.super.shoes_1,
-.boss.super.shoes_2,
-.boss.super.shoes_3,
-.boss.super.shoes_4,
-.boss.super.shoes_5,
-.boss.super.shoes_6,
-.boss.super.shoes_7,
-.boss.super.shoes_8,
-.boss.super.shoes_9,
-.boss.super.shoes_10,
-.boss.super.shoes_11,
-.boss.super.pants_1,
-.boss.super.pants_2,
-.boss.super.pants_3,
-.boss.super.pants_4,
-.boss.super.pants_5,
-.boss.super.pants_6,
-.boss.super.pants_7,
-.boss.super.pants_8,
-.boss.super.pants_9,
-.boss.super.pants_10,
-.boss.super.pants_11 {
-    height: 72px;
-    width: 72px;
-}
-
-.normal.arrow,
-.boss.arrow,
-.boss.super.arrow,
-.normal.knive_throw,
-.boss.knive_throw .boss.super.knive_throw {
-    height: 72px;
-    width: 72px;
 }

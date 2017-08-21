@@ -64,6 +64,7 @@ namespace: .common_items
  */
 
 
+
     const select = {
         s: 'water',
         p: 'milk',
@@ -76,11 +77,12 @@ namespace: .common_items
     };
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['fsc3', 'pxcycs3'],
         auxClassNames: ['common_items', select[si.e]],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true
     };
 
 
@@ -101,9 +103,9 @@ namespace: .common_items
     //  Not hidden it is on the playboard
     //
     if (x >= 0 && y >= 0 && isRoom(container)) {
-        let drops = getNameSpace(container, 'drops');
+        let drops = getNameSpace(container, 'edible');
         drops.push(itm);
-        console.log('drops', JSON.stringify(itm));
+        console.log('edible', JSON.stringify(itm));
         return;
     }
     if (!isRoom(container)) {

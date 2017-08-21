@@ -61,6 +61,7 @@ export interface DungeonData {
 export const mockDungeon: DungeonData = {
     0: [{
         symbols: [
+            <ChickenBone>{ e: 'r', addHp: 12 },
             <Cheese>{ e: 'q', addHp: 5 },
             <SecretPlate>{
                 e: 'C', has: [
@@ -102,10 +103,10 @@ export const mockDungeon: DungeonData = {
 #.......#
 #.......#
 #.....B.#
+#..r....#
 #.......#
 #.......#
-#.......#
-#.......#
+#...l...#
 #########
 `]
     },
@@ -1230,7 +1231,7 @@ export function compileDungeon(): DungeonGameModel {
             }
             //let _doors = <$ItemDoor[]>getNameSpace(room, 'doors');
             let door = room.doors.find((d) => roomsDone.has(d.to));
-            
+
             if (!door) {
                 throw new Error(`room ${room.pk} cannot be formatted, not connected to a formatted reference`);
             }

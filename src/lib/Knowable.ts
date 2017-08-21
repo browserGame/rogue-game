@@ -15,8 +15,7 @@ import {
 
 } from './Symbols';
 
-/*
-    export type LearnableType = 'u';
+/*  export type LearnableType = 'u';
     export interface MagicSpellBook extends SymbolBase<'u'> {
         spell: string;
     }
@@ -38,18 +37,16 @@ export function processKnowable(
     coords: Vector[],
     si: AllSpells) {
 
-    const select = {
-        u: 'book_skill',
-        //other things to add later
-    };
 
     let gui: $GFragment = {
-        size: ['normal'],
-        auxClassNames: ['common_items', select[si.e]],
+        size: ['fsc3', 'pxcycs3'],
+        auxClassNames: ['common_items', 'book_skill'],
         top: 0,
         left: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true
     };
+
 
     let itm: $ItemKnowable = {
         tag: si.e,

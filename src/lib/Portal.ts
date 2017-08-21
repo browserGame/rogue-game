@@ -27,11 +27,12 @@ export function processPortal(_matrix: string[], _width: number, room: $Room, co
 
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['pxcb30ps3', 'fsc3'],
         auxClassNames: ['common_floor_objects', 'teleportation'],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true,
     };
 
     let itm: $ItemPortal = {

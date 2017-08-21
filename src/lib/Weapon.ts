@@ -59,26 +59,17 @@ export function processWeapons(
     //. [ç] pants  pants_1 t/m pants_11
     //. [x] boots shoes_1 t/m shoes_11 
     //
-    export interface Arsenal<T extends ArsenalType> extends SymbolBase<T> {
-    addHp?: number;
-    addXp?: number;
-    addDp?: number;
-    }
-    
-    export type Shield = Arsenal<'Z'>;
-    export type Mace = Arsenal<'t'>;
-    export type Boots = Arsenal<'x'>;
-    export type Pants = Arsenal<'ç'>;
-    
+   
     */
 
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['pxcycs3', 'fsc3'],
         auxClassNames: ['equipment', sampleFromListEqualProb(select[si.e])],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true
     };
 
 
@@ -97,9 +88,9 @@ export function processWeapons(
     //  Not hidden it is on the playboard
     //
     if (x >= 0 && y >= 0 && isRoom(container)) {
-        let drops = getNameSpace(container, 'drops');
+        let drops = getNameSpace(container, 'weapons');
         drops.push(itm);
-        console.log('drops', JSON.stringify(itm));
+        console.log('weapons', JSON.stringify(itm));
         return;
     }
     if (!isRoom(container)) {

@@ -16,7 +16,7 @@
 //. [I] red pentagram
 //. [m] half moon trap
 //. [R] pentagram
-// SecretPlates 
+// SecretPlates ==
 //. [C] secret pressure plate
 // Traps
 //. [w] spikes
@@ -39,10 +39,10 @@
 //.  [V] normal tombstone
 //.  [J] vase
 //.  [B] statue wizard
-
-// 98 ineventory items (only on cells 97,0,-1 (except teleport),-3 (except level stairs))
-// stackable  
-
+//.
+//98 ineventory items (only on cells 97,0,-1 (except teleport),-3 (except level stairs))
+//stackable  
+//.
 //knowable
 
 //.[u] magic speelbook

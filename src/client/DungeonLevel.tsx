@@ -204,7 +204,6 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let zOffset = props.zOffset || 0;
         let dx = props.dx || 0;
         let dy = props.dy || 0;
-        let shadow = props.hasShadow || false;
 
         let _s = this._s;
         let floorPlan = gGame[this.level];
@@ -227,7 +226,9 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                 select = '0123'.indexOf(itm.tag) >= 0 ? 'K' : select;
 
                 let resolver = resolverMap[select];
-                let classN = resolver(...(itm.gui.auxClassNames || []), ...(size));
+                let shadow = itm.gui.hasShadow === undefined ? props.hasShadow : itm.gui.hasShadow;
+                let classN = resolver(...(itm.gui.auxClassNames || []), ...(size), shadow ? 'shadow' : '');
+
                 return (<div
                     key={`${itm.tag}:${this.level}:${id}:${itm.p.x}:${itm.p.y}`}
                     style={styles}
@@ -264,9 +265,12 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let enemies: JSX.Element[] = this.renderNameSpace({ ns: 'enemy', zOffset: 7, hasShadow: true });
         let doors: JSX.Element[] = this.renderNameSpace({ ns: 'doors', zOffset: 7 });
         let floorGlyphs: JSX.Element[] = this.renderNameSpace({ ns: 'floor-glyphs', zOffset: 1 });
-        let specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1, hasShadow:true });
+        let specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1, hasShadow: true });
         let liquids: JSX.Element[] = this.renderLiquid();
-
+        let drops: JSX.Element[] = this.renderNameSpace({ ns: 'drops', zOffset: 1 });
+        let edible: JSX.Element[] = this.renderNameSpace({ ns: 'edible', zOffset: 1 });
+        let weapons: JSX.Element[] = this.renderNameSpace({ ns: 'weapons', zOffset: 1 });
+        let traps: JSX.Element[] = this.renderNameSpace({ ns: 'traps', zOffset: 1 });
         //
         // doors;
         //
@@ -276,6 +280,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             {liquids}
             {carpets}
             {stairs}
+            {traps}
             {floorGlyphs}
             {skullBones}
             {cobWebs}
@@ -284,6 +289,9 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             {openable}
             {enemies}
             {doors}
+            {drops}
+            {edible}
+            {weapons}
         </div>);
     }
 

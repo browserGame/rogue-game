@@ -50,6 +50,12 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
      *  .gold_6 , gray
      *  .gold_10 , yellow
     */
+
+    const shadow = {
+        L: true,
+        M: false,
+    };
+
     const select = {
         L: {
             gray: 1,
@@ -79,11 +85,12 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
     })();
 
     let gui: $GFragment = {
-        size: ['normal'],
-        auxClassNames: ['common_test_items', className],
+        size: ['fsc3', 'pxcycs3'],
+        auxClassNames: ['common_items', className],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: shadow[si.e]
     };
 
     let itm: $ItemValuable = {
