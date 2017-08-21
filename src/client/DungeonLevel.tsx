@@ -271,6 +271,9 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         let edible: JSX.Element[] = this.renderNameSpace({ ns: 'edible', zOffset: 1 });
         let weapons: JSX.Element[] = this.renderNameSpace({ ns: 'weapons', zOffset: 1 });
         let traps: JSX.Element[] = this.renderNameSpace({ ns: 'traps', zOffset: 1 });
+        let teleport: JSX.Element[] = this.renderNameSpace({ ns: 'portal', zOffset: 4 });
+        
+        
         //
         // doors;
         //
@@ -292,6 +295,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
             {drops}
             {edible}
             {weapons}
+            {teleport}
         </div>);
     }
 
