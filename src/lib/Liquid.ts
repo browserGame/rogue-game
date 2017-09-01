@@ -51,7 +51,7 @@ export function processLiquid(_matrix: string[], _width: number, room: $Room, co
     };
 
     let gui: $GFragment = {
-        size: ['plts3', 'fsc3'],
+        size: ['pccs3', 'fsc3'],
         auxClassNames: [NS[si.e]],
         left: 0,
         top: 0,

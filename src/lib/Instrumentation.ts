@@ -30,14 +30,14 @@ export interface Entities {
     'common_floor_objects.sheet': AssetEntity;
     /* 'dungeon_objects.anim': AssetEntity;
      'dungeon_objects.sheet': AssetEntity;
-     'liquid_acid.anim': AssetEntity;
-     'liquid_acid.sheet': AssetEntity;
-     'liquid_lava.anim': AssetEntity;
-     'liquid_lava.sheet': AssetEntity;
-     'liquid_swamp.anim': AssetEntity;
-     'liquid_swamp.sheet': AssetEntity;
-     'liquid_water.anim': AssetEntity;
-     'liquid_water.sheet': AssetEntity;*/
+    */ 'liquid_acid.anim': AssetEntity;
+    'liquid_acid.sheet': AssetEntity;
+    'liquid_lava.anim': AssetEntity;
+    'liquid_lava.sheet': AssetEntity;
+    'liquid_swamp.anim': AssetEntity;
+    'liquid_swamp.sheet': AssetEntity;
+    'liquid_water.anim': AssetEntity;
+    'liquid_water.sheet': AssetEntity;
     //
     //'equipment.sheet': AssetEntity;
     'common_items.sheet': AssetEntity;
@@ -84,18 +84,61 @@ const entities: Entities = {
     /* 
      'dungeon_objects.anim': { asset: require('../client/dungeon/dungeon_objects.anim'), props: {} },
      'dungeon_objects.sheet': { asset: require('../client/dungeon/dungeon_objects.sheet'), props: {} },
-     'liquid_acid.anim': { asset: require('../client/dungeon/liquid_acid.anim'), props: {} },
-     'liquid_acid.sheet': { asset: require('../client/dungeon/liquid_acid.sheet'), props: {} },
-     'liquid_lava.anim': { asset: require('../client/dungeon/liquid_lava.anim'), props: {} },
-     'liquid_lava.sheet': { asset: require('../client/dungeon/liquid_lava.sheet'), props: {} },
-     'liquid_swamp.anim': { asset: require('../client/dungeon/liquid_swamp.anim'), props: {} },
-     'liquid_swamp.sheet': { asset: require('../client/dungeon/liquid_swamp.sheet'), props: {} },
-     'liquid_water.anim': { asset: require('../client/dungeon/liquid_water.anim'), props: {} },
-     'liquid_water.sheet': { asset: require('../client/dungeon/liquid_water.sheet'), props: {} },
-     //
-     // not anims...
-     //
-     */
+    */
+    'liquid_acid.anim': {
+        asset: require('../client/dungeon/liquid_acid.anim'),
+        props: {
+            pccs: [{ scale: 3 }],
+            fsc: [{ scale: 3 }],
+        }
+    },
+    'liquid_acid.sheet': {
+        asset: require('../client/dungeon/liquid_acid.sheet'),
+        props: {
+    
+        }
+    },
+    'liquid_lava.anim': {
+        asset: require('../client/dungeon/liquid_lava.anim'),
+        props: {
+            pccs: [{ scale: 3 }],
+            fsc: [{ scale: 3 }],
+        }
+    },
+    'liquid_lava.sheet': {
+        asset: require('../client/dungeon/liquid_lava.sheet'),
+        props: {
+        }
+    },
+    'liquid_swamp.anim': {
+        asset: require('../client/dungeon/liquid_swamp.anim'),
+        props: {
+            pccs: [{ scale: 3 }],
+            fsc: [{ scale: 3 }],
+
+        }
+    },
+    'liquid_swamp.sheet': {
+        asset: require('../client/dungeon/liquid_swamp.sheet'),
+        props: {
+        }
+    },
+    'liquid_water.anim': {
+        asset: require('../client/dungeon/liquid_water.anim'),
+        props: {
+            pccs: [{ scale: 3 }],
+            fsc: [{ scale: 3 }],
+        }
+    },
+    'liquid_water.sheet': {
+        asset: require('../client/dungeon/liquid_water.sheet'),
+        props: {
+        }
+    },
+    //
+    // not anims...
+    //
+
     'common_items.sheet': {
         asset: require('../client/dungeon/common_items.sheet'),
         props: {
@@ -111,8 +154,8 @@ const entities: Entities = {
     'dungeon_decor_props.sheet': {
         asset: require('../client/dungeon/dungeon_decor_props.sheet'),
         props: {
-            fsc:[{scale:3}],
-            pccs:[{scale:3}]
+            fsc: [{ scale: 3 }],
+            pccs: [{ scale: 3 }]
         }
     },
     // 'shadow.sheet': { asset: require('../client/dungeon/shadow.sheet'), props: {} },
