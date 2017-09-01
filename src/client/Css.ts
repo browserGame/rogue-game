@@ -15,20 +15,20 @@ function createCSSClassMapper(scssResource: string): Resolver {
 
 export const css = {
     enemies: createCSSClassMapper('enemies'),
-    hero: createCSSClassMapper('heroes'),
-    common_itm: createCSSClassMapper('common_items2'),
-    common_fo: createCSSClassMapper('common_floor_objects2'),
-    dungeon_o: createCSSClassMapper('dungeon_objects2'),
-    liquid_acid: createCSSClassMapper('liquid_acid2'),
-    liquid_lava: createCSSClassMapper('liquid_lava2'),
-    liquid_swamp: createCSSClassMapper('liquid_swamp2'),
-    liquid_water: createCSSClassMapper('liquid_water2'),
-    floor_crypt: createCSSClassMapper('floor_crypt2'),
-    dungeon_decor_props: createCSSClassMapper('dungeon_decor_props2'),
-    alert_icons: createCSSClassMapper('alert_icons'),
-    cursor: createCSSClassMapper('cursor'),
-    game_menus: createCSSClassMapper('game_menus'),
-    equipment: createCSSClassMapper('equipment2'),
+    hero: createCSSClassMapper('heroes'), //
+    common_itm: createCSSClassMapper('common_items'),
+    common_fo: createCSSClassMapper('common_floor_objects'),
+    dungeon_o: createCSSClassMapper('dungeon_objects'),
+    liquid_acid: createCSSClassMapper('liquid_acid'),
+    liquid_lava: createCSSClassMapper('liquid_lava'),
+    liquid_swamp: createCSSClassMapper('liquid_swamp'),
+    liquid_water: createCSSClassMapper('liquid_water'),
+    floor_crypt: createCSSClassMapper('floor_crypt'),
+    dungeon_decor_props: createCSSClassMapper('dungeon_decor_props'),
+    alert_icons: createCSSClassMapper('alert_icons'), //
+    cursor: createCSSClassMapper('cursor'), //
+    game_menus: createCSSClassMapper('game_menus'), //
+    equipment: createCSSClassMapper('equipment'),
     general: (...rest: string[]) => rest.map((r) => require('./rogue')[r]).join(' ')
 };
 

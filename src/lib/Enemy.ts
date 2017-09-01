@@ -3,7 +3,9 @@ import {
     $Room,
     getNameSpace,
     $Item,
-    $GFragment
+    $GFragment,
+    $GUISizeType
+
     //getContentAt
 } from './Room';
 
@@ -49,6 +51,23 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
 
     const orientation = sampleFromListEqualProb(['right', '']);
 
+    const shadows = {
+        '%': 'shadow3p75s30',
+        E: 'shadow3s30',
+        F: 'shadow3s30',
+        G: 'shadow3s30',
+        '@': 'shadow3s30',
+        T: 'shadow3s30'
+    };
+
+    const sizes: { [index: string]: $GUISizeType} = {
+        '%': 'pxcb3p75s30',
+        E: 'pxcb3s30',
+        F: 'pxcb3s30',
+        G: 'pxcb3s30',
+        '@': 'pxcb3s30',
+        T: 'pxcb3s30'
+    };
     /*
     export type EnemyTypes = 
         'T' | //xxx skeleton-enemy //skeleton_idle, skeleton_attack
@@ -59,14 +78,14 @@ export function processEnemies(matrix: string[], width: number, room: $Room, coo
         '@';  //xx green wizard shaman throws fire //lizard05_idle
     */
     let gui: $GFragment = {
-        size: ['fsc3', 'pxcb30ps3'], //, si.e === '%' ? 'boss' : ''],
+        size: [sizes[si.e], 'fsc3'], //, si.e === '%' ? 'boss' : ''],
         left: 0,
         top: 0,
-        auxClassNames: ['enemies', select[si.e], orientation],
+        auxClassNames: ['enemies', select[si.e], orientation, shadows[si.e]],
         zIndex: 0
     };
-    if (si.e === '%'){
-        gui.size.push('boss');
+    if (si.e === '%') {
+        gui.size.splice(0, 1, 'pxcb3p75s30');
     }
 
     let itm: $ItemEnemy = {

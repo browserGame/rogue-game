@@ -1,43 +1,44 @@
-/* SpriteSheet */
+
+/*  
+   Computer Generated CSS, 
+   See README.md on how to (re)-generate 
+*/
 
 
-/* SpriteSheet */
-
-
-/* SpriteSheet */
-
-.common_items>div:first-child {
-    background: url('./common_items.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
-    z-index: 1;
-}
-
-.common_items.shadow>div:last-child {
-    background: url('./shadow.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
-    z-index: 0;
+.common_items > div:first-child {
+   background: url('./common_items.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
 }
 
 
-/* general sizing */
-
-
-/* general sizing */
-
-
-/* general sizing */
-
+/* 
+fix container size scale 3 
+*/    
 .fsc3 {
     height: 72px !important;
     width: 72px !important;
+}        
+
+
+/* 
+plts3 = [p]osition [l]eft [t]op, [s]cale 3 
+*/
+.plts3 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(3);
+   position: absolute;
+   left: 0;
+   top: 0;
 }
 
 
-/* pxcycs3 = [p]osition [xc]enter [yc]enter [s]cale [3]  */
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
 
-.pccs3>div:first-child {
+.pccs3 > div:first-child {
     transform-origin: 50% 50%;
     transform: translateX(-50%) translateY(-50%) scale(3);
     position: absolute;
@@ -45,22 +46,12 @@
     top: 50%;
 }
 
-.pxcycs3.shadow>div:last-child {
-    transform-origin: 50% 50%;
-    transform: translateX(-50%) translateY(-50%) scale(2.5);
-    background-position: -0px -0px;
-    width: 24px;
-    height: 10px;
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
-    opacity: 0.5;
-}
 
+/* 
+ xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
+*/
 
-/*  pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
-
-.pxcb30ps3>div:first-child {
+.pxcb3s30 > div:first-child {
     transform-origin: 50% 100%;
     transform: translateX(-50%) translateY(0) scale(3);
     position: absolute;
@@ -68,1133 +59,887 @@
     bottom: 30%;
 }
 
-.pxcb30ps3.shadow>div:last-child {
-    transform-origin: 50% 100%;
-    transform: translateX(-50%) translateY(0) scale(3);
+
+.shadow2p5s20 > div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
     background-position: -0px -0px;
+    /* */
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(0) scale(2.5);
+    /* */
     width: 24px;
     height: 10px;
-    position: absolute;
     left: 50%;
-    bottom: 12.5%;
+    bottom: 15%;
+    /* */
+    image-rendering: pixelated;
+    position: absolute;
+    z-index: 0;
     opacity: 0.5;
 }
 
 
-/* Static Sprites */
+/* 
+Static Sprites
+Static Sprites 
+Static Sprites 
+*/        
 
 
-/* Static Sprites */
-
+.mana_tube > div:first-child {
+   background-position: -0px -0px;
+   width: 16px;
+   height: 16px;
+}
 
-/* Static Sprites */
 
-.mana_tube>div:first-child {
-    background-position: -0px -0px;
-    width: 16px;
-    height: 16px;
+.magic_tube > div:first-child {
+   background-position: -16px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.magic_tube>div:first-child {
-    background-position: -16px -0px;
-    width: 16px;
-    height: 16px;
-}
 
-.hp_tube>div:first-child {
-    background-position: -32px -0px;
-    width: 16px;
-    height: 16px;
+.hp_tube > div:first-child {
+   background-position: -32px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.extralife_tube>div:first-child {
-    background-position: -48px -0px;
-    width: 16px;
-    height: 16px;
-}
 
-.defense_tube>div:first-child {
-    background-position: -64px -0px;
-    width: 16px;
-    height: 16px;
+.extralife_tube > div:first-child {
+   background-position: -48px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area38>div:first-child {
-    background-position: -80px -0px;
-    width: 16px;
-    height: 16px;
+.defense_tube > div:first-child {
+   background-position: -64px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.mana_bottle>div:first-child {
-    background-position: -96px -0px;
-    width: 16px;
-    height: 16px;
+
+.area38 > div:first-child {
+   background-position: -80px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.magic_bottle>div:first-child {
-    background-position: -112px -0px;
-    width: 16px;
-    height: 16px;
+.mana_bottle > div:first-child {
+   background-position: -96px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.hp_bottle>div:first-child {
-    background-position: -128px -0px;
-    width: 16px;
-    height: 16px;
+
+.magic_bottle > div:first-child {
+   background-position: -112px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.extralife_bottle>div:first-child {
-    background-position: -144px -0px;
-    width: 16px;
-    height: 16px;
+.hp_bottle > div:first-child {
+   background-position: -128px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.area43>div:first-child {
-    background-position: -160px -0px;
-    width: 16px;
-    height: 16px;
+
+.extralife_bottle > div:first-child {
+   background-position: -144px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area44>div:first-child {
-    background-position: -176px -0px;
-    width: 16px;
-    height: 16px;
+.area43 > div:first-child {
+   background-position: -160px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.mana_elixir>div:first-child {
-    background-position: -192px -0px;
-    width: 16px;
-    height: 16px;
+
+.area44 > div:first-child {
+   background-position: -176px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.magic_elixir>div:first-child {
-    background-position: -208px -0px;
-    width: 16px;
-    height: 16px;
+.mana_elixir > div:first-child {
+   background-position: -192px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.hp_elixir>div:first-child {
-    background-position: -224px -0px;
-    width: 16px;
-    height: 16px;
+
+.magic_elixir > div:first-child {
+   background-position: -208px -0px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.extralife_elixir>div:first-child {
-    background-position: -0px -112px;
-    width: 16px;
-    height: 16px;
+.hp_elixir > div:first-child {
+   background-position: -224px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.area49>div:first-child {
-    background-position: -16px -112px;
-    width: 16px;
-    height: 16px;
+
+.extralife_elixir > div:first-child {
+   background-position: -0px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.defense_elixir>div:first-child {
-    background-position: -32px -112px;
-    width: 16px;
-    height: 16px;
+
+.area49 > div:first-child {
+   background-position: -16px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area51>div:first-child {
-    background-position: -48px -112px;
-    width: 16px;
-    height: 16px;
+.defense_elixir > div:first-child {
+   background-position: -32px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.area52>div:first-child {
-    background-position: -64px -112px;
-    width: 16px;
-    height: 16px;
+
+.area51 > div:first-child {
+   background-position: -48px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area53>div:first-child {
-    background-position: -80px -112px;
-    width: 16px;
-    height: 16px;
+.area52 > div:first-child {
+   background-position: -64px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.area54>div:first-child {
-    background-position: -96px -112px;
-    width: 16px;
-    height: 16px;
+
+.area53 > div:first-child {
+   background-position: -80px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.chicken_leg>div:first-child {
-    background-position: -112px -112px;
-    width: 16px;
-    height: 16px;
+.area54 > div:first-child {
+   background-position: -96px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.half_eaten_chicken_leg>div:first-child {
-    background-position: -128px -112px;
-    width: 16px;
-    height: 16px;
+
+.chicken_leg > div:first-child {
+   background-position: -112px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.fish>div:first-child {
-    background-position: -144px -112px;
-    width: 16px;
-    height: 16px;
+.half_eaten_chicken_leg > div:first-child {
+   background-position: -128px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.egg>div:first-child {
-    background-position: -160px -112px;
-    width: 16px;
-    height: 16px;
+
+.fish > div:first-child {
+   background-position: -144px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.cheese>div:first-child {
-    background-position: -176px -112px;
-    width: 16px;
-    height: 16px;
+.egg > div:first-child {
+   background-position: -160px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.rotten_cheese>div:first-child {
-    background-position: -192px -112px;
-    width: 16px;
-    height: 16px;
+
+.cheese > div:first-child {
+   background-position: -176px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.apple>div:first-child {
-    background-position: -208px -112px;
-    width: 16px;
-    height: 16px;
+.rotten_cheese > div:first-child {
+   background-position: -192px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.beer>div:first-child {
-    background-position: -224px -112px;
-    width: 16px;
-    height: 16px;
+
+.apple > div:first-child {
+   background-position: -208px -112px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.quest_item_9>div:first-child {
-    background-position: -0px -16px;
-    width: 16px;
-    height: 16px;
+.beer > div:first-child {
+   background-position: -224px -112px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_10>div:first-child {
-    background-position: -16px -16px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_9 > div:first-child {
+   background-position: -0px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_11>div:first-child {
-    background-position: -32px -16px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_10 > div:first-child {
+   background-position: -16px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.quest_item_12>div:first-child {
-    background-position: -48px -16px;
-    width: 16px;
-    height: 16px;
+.quest_item_11 > div:first-child {
+   background-position: -32px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_13>div:first-child {
-    background-position: -64px -16px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_12 > div:first-child {
+   background-position: -48px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.quest_item_14>div:first-child {
-    background-position: -80px -16px;
-    width: 16px;
-    height: 16px;
+.quest_item_13 > div:first-child {
+   background-position: -64px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_stone_1>div:first-child {
-    background-position: -96px -16px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_14 > div:first-child {
+   background-position: -80px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_stone_2>div:first-child {
-    background-position: -112px -16px;
-    width: 16px;
-    height: 16px;
+.treasure_stone_1 > div:first-child {
+   background-position: -96px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_stone_3>div:first-child {
-    background-position: -128px -16px;
-    width: 16px;
-    height: 16px;
+
+.treasure_stone_2 > div:first-child {
+   background-position: -112px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_stone_4>div:first-child {
-    background-position: -144px -16px;
-    width: 16px;
-    height: 16px;
+.treasure_stone_3 > div:first-child {
+   background-position: -128px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_stone_5>div:first-child {
-    background-position: -160px -16px;
-    width: 16px;
-    height: 16px;
+
+.treasure_stone_4 > div:first-child {
+   background-position: -144px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_stone_6>div:first-child {
-    background-position: -176px -16px;
-    width: 16px;
-    height: 16px;
+.treasure_stone_5 > div:first-child {
+   background-position: -160px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_stone_7>div:first-child {
-    background-position: -192px -16px;
-    width: 16px;
-    height: 16px;
+
+.treasure_stone_6 > div:first-child {
+   background-position: -176px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.dark_potion_tube>div:first-child {
-    background-position: -208px -16px;
-    width: 16px;
-    height: 16px;
+.treasure_stone_7 > div:first-child {
+   background-position: -192px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.dark_potion_bottle>div:first-child {
-    background-position: -224px -16px;
-    width: 16px;
-    height: 16px;
+
+.dark_potion_tube > div:first-child {
+   background-position: -208px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.dark_potion_elixir>div:first-child {
-    background-position: -240px -32px;
-    width: 16px;
-    height: 16px;
+.dark_potion_bottle > div:first-child {
+   background-position: -224px -16px;
+   width: 16px;
+   height: 16px;
 }
 
-.milk>div:first-child {
-    background-position: -240px -0px;
-    width: 16px;
-    height: 16px;
+
+.dark_potion_elixir > div:first-child {
+   background-position: -240px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.water>div:first-child {
-    background-position: -240px -16px;
-    width: 16px;
-    height: 16px;
+.milk > div:first-child {
+   background-position: -240px -0px;
+   width: 16px;
+   height: 16px;
 }
 
-.page_white>div:first-child {
-    background-position: -0px -32px;
-    width: 16px;
-    height: 16px;
+
+.water > div:first-child {
+   background-position: -240px -16px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.page_brown>div:first-child {
-    background-position: -16px -32px;
-    width: 16px;
-    height: 16px;
+.page_white > div:first-child {
+   background-position: -0px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.page_black>div:first-child {
-    background-position: -32px -32px;
-    width: 16px;
-    height: 16px;
+
+.page_brown > div:first-child {
+   background-position: -16px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.page_yellow>div:first-child {
-    background-position: -48px -32px;
-    width: 16px;
-    height: 16px;
+.page_black > div:first-child {
+   background-position: -32px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.page_cream>div:first-child {
-    background-position: -64px -32px;
-    width: 16px;
-    height: 16px;
+
+.page_yellow > div:first-child {
+   background-position: -48px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_rubi_1>div:first-child {
-    background-position: -160px -32px;
-    width: 16px;
-    height: 16px;
+.page_cream > div:first-child {
+   background-position: -64px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_rubi_2>div:first-child {
-    background-position: -176px -32px;
-    width: 16px;
-    height: 16px;
+
+.treasure_rubi_1 > div:first-child {
+   background-position: -160px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_rubi_3>div:first-child {
-    background-position: -192px -32px;
-    width: 16px;
-    height: 16px;
+.treasure_rubi_2 > div:first-child {
+   background-position: -176px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_rubi_4>div:first-child {
-    background-position: -208px -32px;
-    width: 16px;
-    height: 16px;
+
+.treasure_rubi_3 > div:first-child {
+   background-position: -192px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_pendant_1>div:first-child {
-    background-position: -224px -32px;
-    width: 16px;
-    height: 16px;
+.treasure_rubi_4 > div:first-child {
+   background-position: -208px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_pendant_2>div:first-child {
-    background-position: -0px -80px;
-    width: 16px;
-    height: 16px;
+
+.treasure_pendant_1 > div:first-child {
+   background-position: -224px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_pendant_3>div:first-child {
-    background-position: -16px -80px;
-    width: 16px;
-    height: 16px;
+.treasure_pendant_2 > div:first-child {
+   background-position: -0px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_pendant_4>div:first-child {
-    background-position: -32px -80px;
-    width: 16px;
-    height: 16px;
+
+.treasure_pendant_3 > div:first-child {
+   background-position: -16px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_pendant_5>div:first-child {
-    background-position: -48px -80px;
-    width: 16px;
-    height: 16px;
+.treasure_pendant_4 > div:first-child {
+   background-position: -32px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_pendant_6>div:first-child {
-    background-position: -64px -80px;
-    width: 16px;
-    height: 16px;
+
+.treasure_pendant_5 > div:first-child {
+   background-position: -48px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.treasure_pendant_7>div:first-child {
-    background-position: -80px -80px;
-    width: 16px;
-    height: 16px;
+
+.treasure_pendant_6 > div:first-child {
+   background-position: -64px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.treasure_pendant_8>div:first-child {
-    background-position: -96px -80px;
-    width: 16px;
-    height: 16px;
+.treasure_pendant_7 > div:first-child {
+   background-position: -80px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.book_brown>div:first-child {
-    background-position: -0px -48px;
-    width: 16px;
-    height: 16px;
+
+.treasure_pendant_8 > div:first-child {
+   background-position: -96px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.book_black>div:first-child {
-    background-position: -16px -48px;
-    width: 16px;
-    height: 16px;
+.book_brown > div:first-child {
+   background-position: -0px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.book_torned>div:first-child {
-    background-position: -32px -48px;
-    width: 16px;
-    height: 16px;
+
+.book_black > div:first-child {
+   background-position: -16px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.book_skill>div:first-child {
-    background-position: -48px -48px;
-    width: 16px;
-    height: 16px;
+.book_torned > div:first-child {
+   background-position: -32px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.book_green>div:first-child {
-    background-position: -64px -48px;
-    width: 16px;
-    height: 16px;
+
+.book_skill > div:first-child {
+   background-position: -48px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area134>div:first-child {
-    background-position: -80px -48px;
-    width: 16px;
-    height: 16px;
+.book_green > div:first-child {
+   background-position: -64px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.gold_3>div:first-child {
-    background-position: -96px -48px;
-    width: 16px;
-    height: 16px;
+
+.area134 > div:first-child {
+   background-position: -80px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.gold_6>div:first-child {
-    background-position: -112px -48px;
-    width: 16px;
-    height: 16px;
+.gold_3 > div:first-child {
+   background-position: -96px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.gold_10>div:first-child {
-    background-position: -128px -48px;
-    width: 16px;
-    height: 16px;
+
+.gold_6 > div:first-child {
+   background-position: -112px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area138>div:first-child {
-    background-position: -144px -48px;
-    width: 16px;
-    height: 16px;
+.gold_10 > div:first-child {
+   background-position: -128px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.area139>div:first-child {
-    background-position: -160px -48px;
-    width: 16px;
-    height: 16px;
+
+.area138 > div:first-child {
+   background-position: -144px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area140>div:first-child {
-    background-position: -176px -48px;
-    width: 16px;
-    height: 16px;
+.area139 > div:first-child {
+   background-position: -160px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.area141>div:first-child {
-    background-position: -192px -48px;
-    width: 16px;
-    height: 16px;
+
+.area140 > div:first-child {
+   background-position: -176px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area142>div:first-child {
-    background-position: -208px -48px;
-    width: 16px;
-    height: 16px;
+.area141 > div:first-child {
+   background-position: -192px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.area143>div:first-child {
-    background-position: -224px -48px;
-    width: 16px;
-    height: 16px;
+
+.area142 > div:first-child {
+   background-position: -208px -48px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area161>div:first-child {
-    background-position: -0px -64px;
-    width: 16px;
-    height: 16px;
+.area143 > div:first-child {
+   background-position: -224px -48px;
+   width: 16px;
+   height: 16px;
 }
 
-.area162>div:first-child {
-    background-position: -16px -64px;
-    width: 16px;
-    height: 16px;
+
+.area161 > div:first-child {
+   background-position: -0px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area163>div:first-child {
-    background-position: -32px -64px;
-    width: 16px;
-    height: 16px;
+.area162 > div:first-child {
+   background-position: -16px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area164>div:first-child {
-    background-position: -48px -64px;
-    width: 16px;
-    height: 16px;
+
+.area163 > div:first-child {
+   background-position: -32px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area165>div:first-child {
-    background-position: -64px -64px;
-    width: 16px;
-    height: 16px;
+.area164 > div:first-child {
+   background-position: -48px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_5>div:first-child {
-    background-position: -80px -64px;
-    width: 16px;
-    height: 16px;
+
+.area165 > div:first-child {
+   background-position: -64px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area167>div:first-child {
-    background-position: -96px -64px;
-    width: 16px;
-    height: 16px;
+.quest_item_5 > div:first-child {
+   background-position: -80px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area168>div:first-child {
-    background-position: -112px -64px;
-    width: 16px;
-    height: 16px;
+
+.area167 > div:first-child {
+   background-position: -96px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area169>div:first-child {
-    background-position: -128px -64px;
-    width: 16px;
-    height: 16px;
+.area168 > div:first-child {
+   background-position: -112px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area170>div:first-child {
-    background-position: -144px -64px;
-    width: 16px;
-    height: 16px;
+
+.area169 > div:first-child {
+   background-position: -128px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area171>div:first-child {
-    background-position: -160px -64px;
-    width: 16px;
-    height: 16px;
+.area170 > div:first-child {
+   background-position: -144px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area172>div:first-child {
-    background-position: -176px -64px;
-    width: 16px;
-    height: 16px;
+
+.area171 > div:first-child {
+   background-position: -160px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area173>div:first-child {
-    background-position: -192px -64px;
-    width: 16px;
-    height: 16px;
+.area172 > div:first-child {
+   background-position: -176px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area174>div:first-child {
-    background-position: -208px -64px;
-    width: 16px;
-    height: 16px;
+
+.area173 > div:first-child {
+   background-position: -192px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.area175>div:first-child {
-    background-position: -224px -64px;
-    width: 16px;
-    height: 16px;
+
+.area174 > div:first-child {
+   background-position: -208px -64px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area176>div:first-child {
-    background-position: -112px -80px;
-    width: 16px;
-    height: 16px;
+.area175 > div:first-child {
+   background-position: -224px -64px;
+   width: 16px;
+   height: 16px;
 }
 
-.square_gem_1>div:first-child {
-    background-position: -128px -80px;
-    width: 16px;
-    height: 16px;
+
+.area176 > div:first-child {
+   background-position: -112px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.square_gem_2>div:first-child {
-    background-position: -144px -80px;
-    width: 16px;
-    height: 16px;
+.square_gem_1 > div:first-child {
+   background-position: -128px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.square_gem_3>div:first-child {
-    background-position: -160px -80px;
-    width: 16px;
-    height: 16px;
+
+.square_gem_2 > div:first-child {
+   background-position: -144px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.square_gem_4>div:first-child {
-    background-position: -176px -80px;
-    width: 16px;
-    height: 16px;
+.square_gem_3 > div:first-child {
+   background-position: -160px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.square_gem_5>div:first-child {
-    background-position: -192px -80px;
-    width: 16px;
-    height: 16px;
+
+.square_gem_4 > div:first-child {
+   background-position: -176px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.square_gem_6>div:first-child {
-    background-position: -208px -80px;
-    width: 16px;
-    height: 16px;
+.square_gem_5 > div:first-child {
+   background-position: -192px -80px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_1>div:first-child {
-    background-position: -0px -96px;
-    width: 16px;
-    height: 16px;
+
+.square_gem_6 > div:first-child {
+   background-position: -208px -80px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.quest_item_2>div:first-child {
-    background-position: -16px -96px;
-    width: 16px;
-    height: 16px;
+.quest_item_1 > div:first-child {
+   background-position: -0px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_3>div:first-child {
-    background-position: -32px -96px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_2 > div:first-child {
+   background-position: -16px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area228>div:first-child {
-    background-position: -48px -96px;
-    width: 16px;
-    height: 16px;
+.quest_item_3 > div:first-child {
+   background-position: -32px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.area229>div:first-child {
-    background-position: -64px -96px;
-    width: 16px;
-    height: 16px;
+
+.area228 > div:first-child {
+   background-position: -48px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.key_item1>div:first-child {
-    background-position: -80px -96px;
-    width: 16px;
-    height: 16px;
+.area229 > div:first-child {
+   background-position: -64px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.key_item2>div:first-child {
-    background-position: -96px -96px;
-    width: 16px;
-    height: 16px;
+
+.key_item1 > div:first-child {
+   background-position: -80px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.key_item6>div:first-child {
-    background-position: -112px -96px;
-    width: 16px;
-    height: 16px;
+.key_item2 > div:first-child {
+   background-position: -96px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.key_item4>div:first-child {
-    background-position: -128px -96px;
-    width: 16px;
-    height: 16px;
+
+.key_item6 > div:first-child {
+   background-position: -112px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.key_item5>div:first-child {
-    background-position: -144px -96px;
-    width: 16px;
-    height: 16px;
+.key_item4 > div:first-child {
+   background-position: -128px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.key_item3>div:first-child {
-    background-position: -160px -96px;
-    width: 16px;
-    height: 16px;
+
+.key_item5 > div:first-child {
+   background-position: -144px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area236>div:first-child {
-    background-position: -176px -96px;
-    width: 16px;
-    height: 16px;
+.key_item3 > div:first-child {
+   background-position: -160px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.area237>div:first-child {
-    background-position: -192px -96px;
-    width: 16px;
-    height: 16px;
+
+.area236 > div:first-child {
+   background-position: -176px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.area238>div:first-child {
-    background-position: -208px -96px;
-    width: 16px;
-    height: 16px;
+.area237 > div:first-child {
+   background-position: -192px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_4>div:first-child {
-    background-position: -224px -96px;
-    width: 16px;
-    height: 16px;
+
+.area238 > div:first-child {
+   background-position: -208px -96px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.lantern_of_all_light>div:first-child {
-    background-position: -80px -32px;
-    width: 16px;
-    height: 16px;
+.quest_item_4 > div:first-child {
+   background-position: -224px -96px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_6>div:first-child {
-    background-position: -96px -32px;
-    width: 16px;
-    height: 16px;
+
+.lantern_of_all_light > div:first-child {
+   background-position: -80px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
-.quest_item_7>div:first-child {
-    background-position: -112px -32px;
-    width: 16px;
-    height: 16px;
+.quest_item_6 > div:first-child {
+   background-position: -96px -32px;
+   width: 16px;
+   height: 16px;
 }
 
-.quest_item_8>div:first-child {
-    background-position: -128px -32px;
-    width: 16px;
-    height: 16px;
+
+.quest_item_7 > div:first-child {
+   background-position: -112px -32px;
+   width: 16px;
+   height: 16px;
 }
+
 
+.quest_item_8 > div:first-child {
+   background-position: -128px -32px;
+   width: 16px;
+   height: 16px;
+}
 
-/* Static Sprites Sizes */
 
+/* 
+Expanded sizes
+Expanded sizes
+Expanded sizes 
+*/      
 
-/* Static Sprites Sizes */
 
 
-/* Static Sprites Sizes */
-/*
-.normal.mana_tube,
-.normal.magic_tube,
-.normal.hp_tube,
-.normal.extralife_tube,
-.normal.defense_tube,
-.normal.area38,
-.normal.mana_bottle,
-.normal.magic_bottle,
-.normal.hp_bottle,
-.normal.extralife_bottle,
-.normal.area43,
-.normal.area44,
-.normal.mana_elixir,
-.normal.magic_elixir,
-.normal.hp_elixir,
-.normal.extralife_elixir,
-.normal.area49,
-.normal.defense_elixir,
-.normal.area51,
-.normal.area52,
-.normal.area53,
-.normal.area54,
-.normal.chicken_leg,
-.normal.half_eaten_chicken_leg,
-.normal.fish,
-.normal.egg,
-.normal.cheese,
-.normal.rotten_cheese,
-.normal.apple,
-.normal.beer,
-.normal.quest_item_9,
-.normal.quest_item_10,
-.normal.quest_item_11,
-.normal.quest_item_12,
-.normal.quest_item_13,
-.normal.quest_item_14,
-.normal.treasure_stone_1,
-.normal.treasure_stone_2,
-.normal.treasure_stone_3,
-.normal.treasure_stone_4,
-.normal.treasure_stone_5,
-.normal.treasure_stone_6,
-.normal.treasure_stone_7,
-.normal.dark_potion_tube,
-.normal.dark_potion_bottle,
-.normal.dark_potion_elixir,
-.normal.milk,
-.normal.water,
-.normal.page_white,
-.normal.page_brown,
-.normal.page_black,
-.normal.page_yellow,
-.normal.page_cream,
-.normal.treasure_rubi_1,
-.normal.treasure_rubi_2,
-.normal.treasure_rubi_3,
-.normal.treasure_rubi_4,
-.normal.treasure_pendant_1,
-.normal.treasure_pendant_2,
-.normal.treasure_pendant_3,
-.normal.treasure_pendant_4,
-.normal.treasure_pendant_5,
-.normal.treasure_pendant_6,
-.normal.treasure_pendant_7,
-.normal.treasure_pendant_8,
-.normal.book_brown,
-.normal.book_black,
-.normal.book_torned,
-.normal.book_skill,
-.normal.book_green,
-.normal.area134,
-.normal.gold_3,
-.normal.gold_6,
-.normal.gold_10,
-.normal.area138,
-.normal.area139,
-.normal.area140,
-.normal.area141,
-.normal.area142,
-.normal.area143,
-.normal.area161,
-.normal.area162,
-.normal.area163,
-.normal.area164,
-.normal.area165,
-.normal.quest_item_5,
-.normal.area167,
-.normal.area168,
-.normal.area169,
-.normal.area170,
-.normal.area171,
-.normal.area172,
-.normal.area173,
-.normal.area174,
-.normal.area175,
-.normal.area176,
-.normal.square_gem_1,
-.normal.square_gem_2,
-.normal.square_gem_3,
-.normal.square_gem_4,
-.normal.square_gem_5,
-.normal.square_gem_6,
-.normal.quest_item_1,
-.normal.quest_item_2,
-.normal.quest_item_3,
-.normal.area228,
-.normal.area229,
-.normal.key_item1,
-.normal.key_item2,
-.normal.key_item6,
-.normal.key_item4,
-.normal.key_item5,
-.normal.key_item3,
-.normal.area236,
-.normal.area237,
-.normal.area238,
-.normal.quest_item_4,
-.normal.lantern_of_all_light,
-.normal.quest_item_6,
-.normal.quest_item_7,
-.normal.quest_item_8 {
-    height: 48px;
-    width: 48px;
-}
 
-.boss.mana_tube,
-.boss.magic_tube,
-.boss.hp_tube,
-.boss.extralife_tube,
-.boss.defense_tube,
-.boss.area38,
-.boss.mana_bottle,
-.boss.magic_bottle,
-.boss.hp_bottle,
-.boss.extralife_bottle,
-.boss.area43,
-.boss.area44,
-.boss.mana_elixir,
-.boss.magic_elixir,
-.boss.hp_elixir,
-.boss.extralife_elixir,
-.boss.area49,
-.boss.defense_elixir,
-.boss.area51,
-.boss.area52,
-.boss.area53,
-.boss.area54,
-.boss.chicken_leg,
-.boss.half_eaten_chicken_leg,
-.boss.fish,
-.boss.egg,
-.boss.cheese,
-.boss.rotten_cheese,
-.boss.apple,
-.boss.beer,
-.boss.quest_item_9,
-.boss.quest_item_10,
-.boss.quest_item_11,
-.boss.quest_item_12,
-.boss.quest_item_13,
-.boss.quest_item_14,
-.boss.treasure_stone_1,
-.boss.treasure_stone_2,
-.boss.treasure_stone_3,
-.boss.treasure_stone_4,
-.boss.treasure_stone_5,
-.boss.treasure_stone_6,
-.boss.treasure_stone_7,
-.boss.dark_potion_tube,
-.boss.dark_potion_bottle,
-.boss.dark_potion_elixir,
-.boss.milk,
-.boss.water,
-.boss.page_white,
-.boss.page_brown,
-.boss.page_black,
-.boss.page_yellow,
-.boss.page_cream,
-.boss.treasure_rubi_1,
-.boss.treasure_rubi_2,
-.boss.treasure_rubi_3,
-.boss.treasure_rubi_4,
-.boss.treasure_pendant_1,
-.boss.treasure_pendant_2,
-.boss.treasure_pendant_3,
-.boss.treasure_pendant_4,
-.boss.treasure_pendant_5,
-.boss.treasure_pendant_6,
-.boss.treasure_pendant_7,
-.boss.treasure_pendant_8,
-.boss.book_brown,
-.boss.book_black,
-.boss.book_torned,
-.boss.book_skill,
-.boss.book_green,
-.boss.area134,
-.boss.gold_3,
-.boss.gold_6,
-.boss.gold_10,
-.boss.area138,
-.boss.area139,
-.boss.area140,
-.boss.area141,
-.boss.area142,
-.boss.area143,
-.boss.area161,
-.boss.area162,
-.boss.area163,
-.boss.area164,
-.boss.area165,
-.boss.quest_item_5,
-.boss.area167,
-.boss.area168,
-.boss.area169,
-.boss.area170,
-.boss.area171,
-.boss.area172,
-.boss.area173,
-.boss.area174,
-.boss.area175,
-.boss.area176,
-.boss.square_gem_1,
-.boss.square_gem_2,
-.boss.square_gem_3,
-.boss.square_gem_4,
-.boss.square_gem_5,
-.boss.square_gem_6,
-.boss.quest_item_1,
-.boss.quest_item_2,
-.boss.quest_item_3,
-.boss.area228,
-.boss.area229,
-.boss.key_item1,
-.boss.key_item2,
-.boss.key_item6,
-.boss.key_item4,
-.boss.key_item5,
-.boss.key_item3,
-.boss.area236,
-.boss.area237,
-.boss.area238,
-.boss.quest_item_4,
-.boss.lantern_of_all_light,
-.boss.quest_item_6,
-.boss.quest_item_7,
-.boss.quest_item_8 {
-    height: 60px;
-    width: 60px;
-}
-
-.boss.super.mana_tube,
-.boss.super.magic_tube,
-.boss.super.hp_tube,
-.boss.super.extralife_tube,
-.boss.super.defense_tube,
-.boss.super.area38,
-.boss.super.mana_bottle,
-.boss.super.magic_bottle,
-.boss.super.hp_bottle,
-.boss.super.extralife_bottle,
-.boss.super.area43,
-.boss.super.area44,
-.boss.super.mana_elixir,
-.boss.super.magic_elixir,
-.boss.super.hp_elixir,
-.boss.super.extralife_elixir,
-.boss.super.area49,
-.boss.super.defense_elixir,
-.boss.super.area51,
-.boss.super.area52,
-.boss.super.area53,
-.boss.super.area54,
-.boss.super.chicken_leg,
-.boss.super.half_eaten_chicken_leg,
-.boss.super.fish,
-.boss.super.egg,
-.boss.super.cheese,
-.boss.super.rotten_cheese,
-.boss.super.apple,
-.boss.super.beer,
-.boss.super.quest_item_9,
-.boss.super.quest_item_10,
-.boss.super.quest_item_11,
-.boss.super.quest_item_12,
-.boss.super.quest_item_13,
-.boss.super.quest_item_14,
-.boss.super.treasure_stone_1,
-.boss.super.treasure_stone_2,
-.boss.super.treasure_stone_3,
-.boss.super.treasure_stone_4,
-.boss.super.treasure_stone_5,
-.boss.super.treasure_stone_6,
-.boss.super.treasure_stone_7,
-.boss.super.dark_potion_tube,
-.boss.super.dark_potion_bottle,
-.boss.super.dark_potion_elixir,
-.boss.super.milk,
-.boss.super.water,
-.boss.super.page_white,
-.boss.super.page_brown,
-.boss.super.page_black,
-.boss.super.page_yellow,
-.boss.super.page_cream,
-.boss.super.treasure_rubi_1,
-.boss.super.treasure_rubi_2,
-.boss.super.treasure_rubi_3,
-.boss.super.treasure_rubi_4,
-.boss.super.treasure_pendant_1,
-.boss.super.treasure_pendant_2,
-.boss.super.treasure_pendant_3,
-.boss.super.treasure_pendant_4,
-.boss.super.treasure_pendant_5,
-.boss.super.treasure_pendant_6,
-.boss.super.treasure_pendant_7,
-.boss.super.treasure_pendant_8,
-.boss.super.book_brown,
-.boss.super.book_black,
-.boss.super.book_torned,
-.boss.super.book_skill,
-.boss.super.book_green,
-.boss.super.area134,
-.boss.super.gold_3,
-.boss.super.gold_6,
-.boss.super.gold_10,
-.boss.super.area138,
-.boss.super.area139,
-.boss.super.area140,
-.boss.super.area141,
-.boss.super.area142,
-.boss.super.area143,
-.boss.super.area161,
-.boss.super.area162,
-.boss.super.area163,
-.boss.super.area164,
-.boss.super.area165,
-.boss.super.quest_item_5,
-.boss.super.area167,
-.boss.super.area168,
-.boss.super.area169,
-.boss.super.area170,
-.boss.super.area171,
-.boss.super.area172,
-.boss.super.area173,
-.boss.super.area174,
-.boss.super.area175,
-.boss.super.area176,
-.boss.super.square_gem_1,
-.boss.super.square_gem_2,
-.boss.super.square_gem_3,
-.boss.super.square_gem_4,
-.boss.super.square_gem_5,
-.boss.super.square_gem_6,
-.boss.super.quest_item_1,
-.boss.super.quest_item_2,
-.boss.super.quest_item_3,
-.boss.super.area228,
-.boss.super.area229,
-.boss.super.key_item1,
-.boss.super.key_item2,
-.boss.super.key_item6,
-.boss.super.key_item4,
-.boss.super.key_item5,
-.boss.super.key_item3,
-.boss.super.area236,
-.boss.super.area237,
-.boss.super.area238,
-.boss.super.quest_item_4,
-.boss.super.lantern_of_all_light,
-.boss.super.quest_item_6,
-.boss.super.quest_item_7,
-.boss.super.quest_item_8 {
-    height: 168px;
-    width: 168px;
-}*/

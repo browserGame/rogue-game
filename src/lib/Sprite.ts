@@ -103,11 +103,13 @@ export class Sprite {
 export interface ScaleItem {
     scale: number;
     items?: string[];
+    lookToTheRight?: boolean;
 }
 
 export interface ScaledItemPerc {
     scale: { s: number; perc: number; };
     items?: string[];
+    lookToTheRight?: boolean;
 }
 
 
@@ -308,22 +310,31 @@ plts${scale} = [p]osition [l]eft [t]op, [s]cale ${scale}
     *  @returns CSS snippet  
     */
 
-    public renderPositionCenterBottom(scale: number = 1, bottom: number = 30) {
+    public renderPositionCenterBottom(scale: number = 1, bottom: number = 30, hasRightLooking: boolean = false) {
 
         const b = `${bottom}`.replace('.', 'p');
-        return `
+        const s = `${scale}`.replace('.', 'p');
+        let snips = [];
+        snips.push(`
 /* 
  xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
 */
 
-.pxcb${scale}s${b} > div:first-child {
+.pxcb${s}s${b} > div:first-child {
     transform-origin: 50% 100%;
     transform: translateX(-50%) translateY(0) scale(${scale});
     position: absolute;
     left: 50%;
     bottom: ${bottom}%;
 }
-`;
+`);
+        hasRightLooking && snips.push(`
+.pxcb${s}s${b}.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(${scale});
+}         
+`);
+        return snips.join('\n');
+
     }
 
     private renderShadow(scale: number = 1, bottom = 12.5) {
@@ -383,7 +394,7 @@ Expanded sizes
         let fsc = this._o.fsc && this._o.fsc.map((m) => this.renderFixedSizeContainer(m.scale));
         let plts = this._o.plts && this._o.plts.map((m) => this.renderPositionLeftTop(m.scale));
         let pccs = this._o.pccs && this._o.pccs.map((m) => this.renderPositionCenterCenter(m.scale));
-        let pxcb = this._o.pxcb && this._o.pxcb.map((m) => this.renderPositionCenterBottom(m.scale.s, m.scale.perc));
+        let pxcb = this._o.pxcb && this._o.pxcb.map((m) => this.renderPositionCenterBottom(m.scale.s, m.scale.perc, m.lookToTheRight));
         let shadow = this._o.shadow && this._o.shadow.map((m) => this.renderShadow(m.scale.s, m.scale.perc));
 
         const select = {

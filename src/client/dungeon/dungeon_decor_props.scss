@@ -1,30 +1,32 @@
-/* SpriteSheet */
+
+/*  
+   Computer Generated CSS, 
+   See README.md on how to (re)-generate 
+*/
 
 
-/* SpriteSheet */
-
-
-/* SpriteSheet */
-
-.dungeon_decor_props>div:first-child {
-    background: url('./dungeon_decor_props.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
+.dungeon_decor_props > div:first-child {
+   background: url('./dungeon_decor_props.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
 }
 
 
-/* general sizing */
+/* 
+fix container size scale 3 
+*/    
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}        
 
 
-/* general sizing */
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
 
-
-/* general sizing */
-
-
-/* pxcycs3 = [p]osition [xc]enter [yc]enter [s]cale [3]  */
-
-.pxcycs3>div:first-child {
+.pccs3 > div:first-child {
     transform-origin: 50% 50%;
     transform: translateX(-50%) translateY(-50%) scale(3);
     position: absolute;
@@ -33,155 +35,185 @@
 }
 
 
-/* Static Sprites */
-/* Static Sprites */
-/* Static Sprites */
+/* 
+Static Sprites
+Static Sprites 
+Static Sprites 
+*/        
 
-.skeleton_remains_01>div:first-child {
-    background-position: -0px -0px;
-    width: 24px;
-    height: 24px;
-}
 
-.skeleton_remains_02>div:first-child {
-    background-position: -24px -0px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_03>div:first-child {
-    background-position: -48px -0px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_04>div:first-child {
-    background-position: -72px -0px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_05>div:first-child {
-    background-position: -96px -0px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_06>div:first-child {
-    background-position: -0px -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_07>div:first-child {
-    background-position: -24px -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.area12>div:first-child {
-    background-position: -48px -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.area13>div:first-child {
-    background-position: -72px -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.area14>div:first-child {
-    background-position: -96px -24px;
-    width: 24px;
-    height: 24px;
-}
-
-.area20>div:first-child {
-    background-position: -0px -48px;
-    width: 24px;
-    height: 24px;
-}
-
-.area21>div:first-child {
-    background-position: -24px -48px;
-    width: 24px;
-    height: 24px;
-}
-
-.area22>div:first-child {
-    background-position: -48px -48px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_01>div:first-child {
-    background-position: -72px -48px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_02>div:first-child {
-    background-position: -96px -48px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_03>div:first-child {
-    background-position: -0px -72px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_04>div:first-child {
-    background-position: -24px -72px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_05>div:first-child {
-    background-position: -48px -72px;
-    width: 24px;
-    height: 24px;
-}
-
-.spiderweb_06>div:first-child {
-    background-position: -72px -72px;
-    width: 24px;
-    height: 24px;
-}
-
-.skeleton_remains_08>div:first-child {
-    background-position: -96px -96px;
-    width: 24px;
-    height: 24px;
-}
-
-.area40>div:first-child {
-    background-position: -0px -96px;
-    width: 24px;
-    height: 24px;
-}
-
-.area41>div:first-child {
-    background-position: -24px -96px;
-    width: 24px;
-    height: 24px;
-}
-
-.area42>div:first-child {
-    background-position: -48px -96px;
-    width: 24px;
-    height: 24px;
-}
-
-.area43>div:first-child {
-    background-position: -72px -96px;
-    width: 24px;
-    height: 24px;
+.skeleton_remains_01 > div:first-child {
+   background-position: -0px -0px;
+   width: 24px;
+   height: 24px;
 }
 
 
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
+.skeleton_remains_02 > div:first-child {
+   background-position: -24px -0px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_03 > div:first-child {
+   background-position: -48px -0px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_04 > div:first-child {
+   background-position: -72px -0px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_05 > div:first-child {
+   background-position: -96px -0px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_06 > div:first-child {
+   background-position: -0px -24px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_07 > div:first-child {
+   background-position: -24px -24px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area12 > div:first-child {
+   background-position: -48px -24px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area13 > div:first-child {
+   background-position: -72px -24px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area14 > div:first-child {
+   background-position: -96px -24px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area20 > div:first-child {
+   background-position: -0px -48px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area21 > div:first-child {
+   background-position: -24px -48px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area22 > div:first-child {
+   background-position: -48px -48px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_01 > div:first-child {
+   background-position: -72px -48px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_02 > div:first-child {
+   background-position: -96px -48px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_03 > div:first-child {
+   background-position: -0px -72px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_04 > div:first-child {
+   background-position: -24px -72px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_05 > div:first-child {
+   background-position: -48px -72px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.spiderweb_06 > div:first-child {
+   background-position: -72px -72px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.skeleton_remains_08 > div:first-child {
+   background-position: -96px -96px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area40 > div:first-child {
+   background-position: -0px -96px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area41 > div:first-child {
+   background-position: -24px -96px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area42 > div:first-child {
+   background-position: -48px -96px;
+   width: 24px;
+   height: 24px;
+}
+
+
+.area43 > div:first-child {
+   background-position: -72px -96px;
+   width: 24px;
+   height: 24px;
+}
+
+
+/* 
+Expanded sizes
+Expanded sizes
+Expanded sizes 
+*/      
+
+

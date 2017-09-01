@@ -23,6 +23,9 @@ export interface GUISizeType {
     pccs3: 1;
     pxcycs3: 1;
     pxcb3s30: 1;
+    pxcb3p75s30: 1;
+    pxcb10p5s30: 1;
+    
 }
 
 export type $GUISizeType = keyof GUISizeType;
