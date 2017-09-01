@@ -23,31 +23,6 @@ fix container size scale 3
 
 
 /* 
-plts3 = [p]osition [l]eft [t]op, [s]cale 3 
-*/
-.plts3 > div:first-child {
-   transform-origin: 0 0;
-   transform: scale(3);
-   position: absolute;
-   left: 0;
-   top: 0;
-}
-
-
-/* 
- pccs  =[p]osition [c]enter [c]enter, [s]cale  
-*/
-
-.pccs3 > div:first-child {
-    transform-origin: 50% 50%;
-    transform: translateX(-50%) translateY(-50%) scale(3);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-}
-
-
-/* 
  xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
 */
 
@@ -60,7 +35,7 @@ plts3 = [p]osition [l]eft [t]op, [s]cale 3
 }
 
 
-.shadow2.5s20 > div:last-child {
+.shadow2p5s20 > div:last-child {
     background: url('./shadow.png');
     background-origin: border-box;
     background-position: -0px -0px;
@@ -1184,7 +1159,5 @@ Expanded sizes
 Expanded sizes
 Expanded sizes 
 */      
-
-
 
 

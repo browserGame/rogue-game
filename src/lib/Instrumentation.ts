@@ -22,15 +22,17 @@ export interface AssetEntity {
 
 
 export interface Entities {
-    /* 'enemies.anim': AssetEntity;
+    /* 
+     'enemies.anim': AssetEntity;
      'enemies.sheet': AssetEntity;
      'heroes.anim': AssetEntity;
-     'heroes.sheet': AssetEntity;*/
+     'heroes.sheet': AssetEntity;
+     */
     'common_floor_objects.anim': AssetEntity;
     'common_floor_objects.sheet': AssetEntity;
-    /* 'dungeon_objects.anim': AssetEntity;
-     'dungeon_objects.sheet': AssetEntity;
-    */ 'liquid_acid.anim': AssetEntity;
+    'dungeon_objects.anim': AssetEntity;
+    'dungeon_objects.sheet': AssetEntity;
+    'liquid_acid.anim': AssetEntity;
     'liquid_acid.sheet': AssetEntity;
     'liquid_lava.anim': AssetEntity;
     'liquid_lava.sheet': AssetEntity;
@@ -39,11 +41,10 @@ export interface Entities {
     'liquid_water.anim': AssetEntity;
     'liquid_water.sheet': AssetEntity;
     //
-    //'equipment.sheet': AssetEntity;
+    'equipment.sheet': AssetEntity;
     'common_items.sheet': AssetEntity;
-    //'floor_crypt.sheet': AssetEntity;
+    'floor_crypt.sheet': AssetEntity;
     'dungeon_decor_props.sheet': AssetEntity;
-    //'shadow.sheet': AssetEntity;
     //'alert_icons.sheet': AssetEntity;
     //'cursor.sheet': AssetEntity;
     //'game_menus.sheet': AssetEntity;*/
@@ -81,10 +82,23 @@ const entities: Entities = {
     'common_floor_objects.sheet': {
         asset: require('../client/dungeon/common_floor_objects.sheet'), props: {} //copy from anim
     },
-    /* 
-     'dungeon_objects.anim': { asset: require('../client/dungeon/dungeon_objects.anim'), props: {} },
-     'dungeon_objects.sheet': { asset: require('../client/dungeon/dungeon_objects.sheet'), props: {} },
-    */
+    'dungeon_objects.anim': {
+        asset: require('../client/dungeon/dungeon_objects.anim'),
+        props: {
+            fsc: [{ scale: 3 }],
+            plts: [{ scale: 3 }],
+            pccs: [{ scale: 3 }],
+            pxcb: [{ scale: { s: 3, perc: 30 } }],
+            shadow: [{ scale: { s: 3, perc: 30 } }]
+        }
+    },
+    'dungeon_objects.sheet': {
+        asset: require('../client/dungeon/dungeon_objects.sheet'),
+        props: {
+
+        }
+    },
+
     'liquid_acid.anim': {
         asset: require('../client/dungeon/liquid_acid.anim'),
         props: {
@@ -95,7 +109,7 @@ const entities: Entities = {
     'liquid_acid.sheet': {
         asset: require('../client/dungeon/liquid_acid.sheet'),
         props: {
-    
+
         }
     },
     'liquid_lava.anim': {
@@ -149,16 +163,29 @@ const entities: Entities = {
             shadow: [{ scale: { s: 2.5, perc: 20 } }]
         }
     },
-    // 'equipment.sheet': { asset: require('../client/dungeon/equipment.sheet'), props: {} },
-    // 'floor_crypt.sheet': { asset: require('../client/dungeon/floor_crypt.sheet'), props: {} },
+    'equipment.sheet': { 
+        asset: require('../client/dungeon/equipment.sheet'), 
+        props: {
+            fsc: [{ scale: 3 }],
+            pxcb: [{ scale: { s: 3, perc: 30 } }],
+            shadow: [{ scale: { s: 2.5, perc: 20 } }]
+        } 
+    },
+    'floor_crypt.sheet': {
+        asset: require('../client/dungeon/floor_crypt.sheet'),
+        props: {
+            fsc: [{ scale: 3 }],
+            plts: [{ scale: 3 }]
+        }
+    },
     'dungeon_decor_props.sheet': {
         asset: require('../client/dungeon/dungeon_decor_props.sheet'),
         props: {
             fsc: [{ scale: 3 }],
             pccs: [{ scale: 3 }]
+            
         }
     },
-    // 'shadow.sheet': { asset: require('../client/dungeon/shadow.sheet'), props: {} },
     // 'alert_icons.sheet': { asset: require('../client/dungeon/alert_icons.sheet'), props: {} },
     // 'cursor.sheet': { asset: require('../client/dungeon/cursor.sheet'), props: {} },
     // 'game_menus.sheet': { asset: require('../client/dungeon/game_menus.sheet'), props: {} },*/

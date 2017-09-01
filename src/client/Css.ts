@@ -18,17 +18,17 @@ export const css = {
     hero: createCSSClassMapper('heroes'),
     common_itm: createCSSClassMapper('common_items2'),
     common_fo: createCSSClassMapper('common_floor_objects2'),
-    dungeon_o: createCSSClassMapper('dungeon_objects'),
+    dungeon_o: createCSSClassMapper('dungeon_objects2'),
     liquid_acid: createCSSClassMapper('liquid_acid2'),
     liquid_lava: createCSSClassMapper('liquid_lava2'),
     liquid_swamp: createCSSClassMapper('liquid_swamp2'),
     liquid_water: createCSSClassMapper('liquid_water2'),
-    floor_crypt: createCSSClassMapper('floor_crypt'),
+    floor_crypt: createCSSClassMapper('floor_crypt2'),
     dungeon_decor_props: createCSSClassMapper('dungeon_decor_props2'),
     alert_icons: createCSSClassMapper('alert_icons'),
     cursor: createCSSClassMapper('cursor'),
     game_menus: createCSSClassMapper('game_menus'),
-    equipment: createCSSClassMapper('equipment'),
+    equipment: createCSSClassMapper('equipment2'),
     general: (...rest: string[]) => rest.map((r) => require('./rogue')[r]).join(' ')
 };
 

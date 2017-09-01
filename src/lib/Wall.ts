@@ -73,7 +73,7 @@ function mapAsciiToGUIWall(token: string): $GFragment {
     }
 
     return {
-        size: ['normal'],
+        size: ['fsc3', 'plts3'],
         auxClassNames: ['floor_crypt', wallName],
         left: 0,  //parameter adjusted for the gui state used by the render
         top: 0,

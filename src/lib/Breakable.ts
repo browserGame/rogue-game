@@ -56,8 +56,8 @@ export function processBreakable(matrix: string[], width: number, room: $Room, c
 
 
     let gui: $GFragment = {
-        size: ['pxcb30ps3', 'fsc3'],
-        auxClassNames: ['dungeon_objects', 'shadow', obj],
+        size: ['pxcb3s30', 'fsc3'],
+        auxClassNames: ['dungeon_objects', 'shadow3s30', obj],
         top: 0,
         left: 0,
         zIndex: 0

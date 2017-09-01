@@ -4,7 +4,7 @@ import {
     getNameSpace,
     $Item,
     $GFragment,
-    $GUISizeType
+
 } from './Room';
 
 import {
@@ -46,23 +46,9 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
         '*': 'dungeon_objects'
     };
 
-    const sizes: { [index: string]: $GUISizeType[]; } = {
-        z: ['pxcb30ps3', 'fsc3'],
-        '&': ['pxcb3s30', 'fsc3'],
-        H: ['pxcb30ps3', 'fsc3'],
-        '*': ['pxcb30ps3', 'fsc3']
-    };
-
-    const shadows = {
-        z: 'shadow',
-        '&': 'shadow3s30',
-        H: 'shadow',
-        '*': 'shadow'
-    };
-
     let gui: $GFragment = {
-        size: sizes[si.e],
-        auxClassNames: [shadows[si.e], namespace[si.e], select[si.e]],
+        size:  ['pxcb3s30', 'fsc3'],
+        auxClassNames: ['shadow3s30', namespace[si.e], select[si.e]],
         left: 0,
         top: 0,
         zIndex: 0,
@@ -85,7 +71,7 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
 
     let secret = getNameSpace(room, 'openable');
     secret.push(itm);
-    console.log('openablex', JSON.stringify(itm));
+    console.log('openable', JSON.stringify(itm));
     return;
 
 }

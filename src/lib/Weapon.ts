@@ -64,8 +64,8 @@ export function processWeapons(
 
 
     let gui: $GFragment = {
-        size: ['pxcycs3', 'fsc3'],
-        auxClassNames: ['equipment', sampleFromListEqualProb(select[si.e])],
+        size: ['pxcb3s30', 'fsc3'],
+        auxClassNames: ['shadow2p5s20', 'equipment', sampleFromListEqualProb(select[si.e])],
         left: 0,
         top: 0,
         zIndex: 0,

@@ -34,7 +34,7 @@ export function processStairs(matrix: string[], width: number, room: $Room, coor
     width;
 
     let gui: $GFragment = {
-        size: ['normal'],
+        size: ['plts3', 'fsc3'],
         auxClassNames: ['floor_crypt', 'stairs_down'],
         left: 0,
         top: 0,
