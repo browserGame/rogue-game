@@ -44,7 +44,8 @@ export function processGlyphs(_matrix: string[], _width: number, room: $Room, co
             auxClassNames: ['common_floor_objects', select[si.e]],
             top: 0,
             left: 0,
-            zIndex: 0
+            zIndex: 0,
+            hasShadow: false
         };
         return {
             tag: si.e,

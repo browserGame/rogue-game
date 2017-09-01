@@ -27,8 +27,8 @@ export function processPortal(_matrix: string[], _width: number, room: $Room, co
 
 
     let gui: $GFragment = {
-        size: ['pxcb30ps3', 'fsc3'],
-        auxClassNames: ['common_floor_objects', 'teleportation'],
+        size: ['pxcb3s30', 'fsc3'],
+        auxClassNames: ['shadow3s30', 'common_floor_objects', 'teleportation'],
         left: 0,
         top: 0,
         zIndex: 0,

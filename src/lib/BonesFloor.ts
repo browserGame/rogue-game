@@ -16,7 +16,7 @@ import {
     sampleFromListEqualProb
 } from './statistics';
 
-const skeletons = [1, 2, 3, 4, 5 , 8].map((sk) => `skeleton_remains_0${sk}`);
+const skeletons = [1, 2, 3, 4, 5, 8].map((sk) => `skeleton_remains_0${sk}`);
 
 
 export function processSkullAndBones(_matrix: string[], _width: number, room: $Room, coords: Vector[]) {
@@ -25,7 +25,7 @@ export function processSkullAndBones(_matrix: string[], _width: number, room: $R
     let skulls = coords.map((v) => {
 
         let gui: $GFragment = {
-            size: ['normal'],
+            size: ['fsc3', 'pccs3'],
             auxClassNames: ['dungeon_decor_props', sampleFromListEqualProb(skeletons)],
             left: 0,
             top: 0,

@@ -77,8 +77,8 @@ namespace: .common_items
     };
 
     let gui: $GFragment = {
-        size: ['fsc3', 'pxcycs3'],
-        auxClassNames: ['common_items', select[si.e]],
+        size: ['fsc3', 'pccs3'],
+        auxClassNames: ['common_items', 'shadow2p5s20', select[si.e]],
         left: 0,
         top: 0,
         zIndex: 0,

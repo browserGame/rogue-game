@@ -37,7 +37,7 @@
 
 /* pxcycs3 = [p]osition [xc]enter [yc]enter [s]cale [3]  */
 
-.pxcycs3>div:first-child {
+.pccs3>div:first-child {
     transform-origin: 50% 50%;
     transform: translateX(-50%) translateY(-50%) scale(3);
     position: absolute;
@@ -823,7 +823,7 @@
 
 
 /* Static Sprites Sizes */
-
+/*
 .normal.mana_tube,
 .normal.magic_tube,
 .normal.hp_tube,
@@ -1197,4 +1197,4 @@
 .boss.super.quest_item_8 {
     height: 168px;
     width: 168px;
-}
+}*/

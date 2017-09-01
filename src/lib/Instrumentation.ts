@@ -3,6 +3,7 @@
 import {
     SpriteSheet,
     SpriteData,
+    SpriteSheetPropertyBase
 } from '../lib/Sprite';
 
 import {
@@ -14,44 +15,119 @@ import {
 import * as fs from 'fs';
 import * as path from 'path';
 
+export interface AssetEntity {
+    asset: string;
+    props: SpriteSheetPropertyBase;
+}
 
 
-const entities: { [index: string]: string; } = {
+export interface Entities {
+    /* 'enemies.anim': AssetEntity;
+     'enemies.sheet': AssetEntity;
+     'heroes.anim': AssetEntity;
+     'heroes.sheet': AssetEntity;*/
+    'common_floor_objects.anim': AssetEntity;
+    'common_floor_objects.sheet': AssetEntity;
+    /* 'dungeon_objects.anim': AssetEntity;
+     'dungeon_objects.sheet': AssetEntity;
+     'liquid_acid.anim': AssetEntity;
+     'liquid_acid.sheet': AssetEntity;
+     'liquid_lava.anim': AssetEntity;
+     'liquid_lava.sheet': AssetEntity;
+     'liquid_swamp.anim': AssetEntity;
+     'liquid_swamp.sheet': AssetEntity;
+     'liquid_water.anim': AssetEntity;
+     'liquid_water.sheet': AssetEntity;*/
+    //
+    //'equipment.sheet': AssetEntity;
+    'common_items.sheet': AssetEntity;
+    //'floor_crypt.sheet': AssetEntity;
+    'dungeon_decor_props.sheet': AssetEntity;
+    //'shadow.sheet': AssetEntity;
+    //'alert_icons.sheet': AssetEntity;
+    //'cursor.sheet': AssetEntity;
+    //'game_menus.sheet': AssetEntity;*/
+
+}
+
+const entities: Entities = {
     //Animations
-    'enemies.anim': require('../client/dungeon/enemies.anim'),
-    'enemies.sheet': require('../client/dungeon/enemies.sheet'),
-    'heroes.anim': require('../client/dungeon/heroes.anim'),
-    'heroes.sheet': require('../client/dungeon/heroes.sheet'),
-    'common_floor_objects.anim': require('../client/dungeon/common_floor_objects.anim'),
-    'common_floor_objects.sheet': require('../client/dungeon/common_floor_objects.sheet'),
-    'dungeon_objects.anim': require('../client/dungeon/dungeon_objects.anim'),
-    'dungeon_objects.sheet': require('../client/dungeon/dungeon_objects.sheet'),
-    'liquid_acid.anim': require('../client/dungeon/liquid_acid.anim'),
-    'liquid_acid.sheet': require('../client/dungeon/liquid_acid.sheet'),
-    'liquid_lava.anim': require('../client/dungeon/liquid_lava.anim'),
-    'liquid_lava.sheet': require('../client/dungeon/liquid_lava.sheet'),
-    'liquid_swamp.anim': require('../client/dungeon/liquid_swamp.anim'),
-    'liquid_swamp.sheet': require('../client/dungeon/liquid_swamp.sheet'),
-    'liquid_water.anim': require('../client/dungeon/liquid_water.anim'),
-    'liquid_water.sheet': require('../client/dungeon/liquid_water.sheet'),
-    //
-    // not anims
-    //
-    'equipment.sheet': require('../client/dungeon/equipment.sheet'),
-    'common_items.sheet': require('../client/dungeon/common_items.sheet'),
-    'floor_crypt.sheet': require('../client/dungeon/floor_crypt.sheet'),
-    'dungeon_decor_props.sheet': require('../client/dungeon/dungeon_decor_props.sheet'),
-    'shadow.sheet': require('../client/dungeon/shadow.sheet'),
-    'alert_icons.sheet': require('../client/dungeon/alert_icons.sheet'),
-    'cursor.sheet': require('../client/dungeon/cursor.sheet'),
-    'game_menus.sheet': require('../client/dungeon/game_menus.sheet')
+    /*'enemies.anim': { asset: require('../client/dungeon/enemies.anim'), props: {} },
+    'enemies.sheet': { asset: require('../client/dungeon/enemies.sheet'), props: {} },
+    'heroes.anim': { asset: require('../client/dungeon/heroes.anim'), props: {} },
+    'heroes.sheet': { asset: require('../client/dungeon/heroes.sheet'), props: {} },*/
+    'common_floor_objects.anim': {
+        asset: require('../client/dungeon/common_floor_objects.anim'),
+        props: {
+            fsc: [{ scale: 3 }],
+            plts: [{
+                scale: 3, items: [
+                    'carpet_red',
+                    'carpet_blue',
+                    'carpet_red_horizontal',
+                    'carpet_blue_horizontal',
+                    'carpet_red_square',
+                    'carpet_blue_square',
+                    'hazard_spikes',
+                    'hazard_trap'
+                ]
+            },
+            ],
+            pccs: [{ scale: 3 }],
+            pxcb: [{ scale: { s: 3, perc: 30 } }],
+            shadow: [{ scale: { s: 3, perc: 30 } }]
+        },
+    },
+    'common_floor_objects.sheet': {
+        asset: require('../client/dungeon/common_floor_objects.sheet'), props: {} //copy from anim
+    },
+    /* 
+     'dungeon_objects.anim': { asset: require('../client/dungeon/dungeon_objects.anim'), props: {} },
+     'dungeon_objects.sheet': { asset: require('../client/dungeon/dungeon_objects.sheet'), props: {} },
+     'liquid_acid.anim': { asset: require('../client/dungeon/liquid_acid.anim'), props: {} },
+     'liquid_acid.sheet': { asset: require('../client/dungeon/liquid_acid.sheet'), props: {} },
+     'liquid_lava.anim': { asset: require('../client/dungeon/liquid_lava.anim'), props: {} },
+     'liquid_lava.sheet': { asset: require('../client/dungeon/liquid_lava.sheet'), props: {} },
+     'liquid_swamp.anim': { asset: require('../client/dungeon/liquid_swamp.anim'), props: {} },
+     'liquid_swamp.sheet': { asset: require('../client/dungeon/liquid_swamp.sheet'), props: {} },
+     'liquid_water.anim': { asset: require('../client/dungeon/liquid_water.anim'), props: {} },
+     'liquid_water.sheet': { asset: require('../client/dungeon/liquid_water.sheet'), props: {} },
+     //
+     // not anims...
+     //
+     */
+    'common_items.sheet': {
+        asset: require('../client/dungeon/common_items.sheet'),
+        props: {
+            fsc: [{ scale: 3 }],
+            plts: [{ scale: 3 }],
+            pccs: [{ scale: 3 }],
+            pxcb: [{ scale: { s: 3, perc: 30 } }],
+            shadow: [{ scale: { s: 2.5, perc: 20 } }]
+        }
+    },
+    // 'equipment.sheet': { asset: require('../client/dungeon/equipment.sheet'), props: {} },
+    // 'floor_crypt.sheet': { asset: require('../client/dungeon/floor_crypt.sheet'), props: {} },
+    'dungeon_decor_props.sheet': {
+        asset: require('../client/dungeon/dungeon_decor_props.sheet'),
+        props: {
+            fsc:[{scale:3}],
+            pccs:[{scale:3}]
+        }
+    },
+    // 'shadow.sheet': { asset: require('../client/dungeon/shadow.sheet'), props: {} },
+    // 'alert_icons.sheet': { asset: require('../client/dungeon/alert_icons.sheet'), props: {} },
+    // 'cursor.sheet': { asset: require('../client/dungeon/cursor.sheet'), props: {} },
+    // 'game_menus.sheet': { asset: require('../client/dungeon/game_menus.sheet'), props: {} },*/
+
 };
 
 
-function createSpriteSheet(name: string, xmlSheet: any): SpriteSheet {
+function createSpriteSheet(name: string, xmlSheet: any, props: SpriteSheetPropertyBase = {}): SpriteSheet {
+
 
     const png = `${name}.png`;
-
+    // <sheet name="warrior_idle_01" texture="heroes.png" ox="11" oy="24" x="0" y="0" width="24" height="24" />
     const spriteData: SpriteData[] = xmlSheet.sheets.sheet.filter((f: any) => f.$.name)
         .map((m: any) => {
             let rc: SpriteData = {
@@ -72,11 +148,10 @@ function createSpriteSheet(name: string, xmlSheet: any): SpriteSheet {
         function removeAnimationSheetByName(url: string);
     */
 
-
     const spSheet = new SpriteSheet({
-        originalUrl: png,
         actualUrl: png,
-        sprites: spriteData
+        sprites: spriteData,
+        options: props
     });
     return spSheet;
 }
@@ -88,22 +163,21 @@ export function createStyleSheets(createFiles: boolean = true): Promise<any> {
         return Promise.reject('process.env.CSSDIR is not defined, please check your webpack config');
     }
 
-    let anims: { [index: string]: any } = {};
-    let singleSheets: { [index: string]: any } = {};
+    let anims: { [index: string]: any } = {}; // will hold xml data of .anim files 
+    let singleSheets: { [index: string]: any } = {}; //will hold xml data of .sheet files 
     let animKeys: string[] = [];
-    let sheetKeys: string[] = [];
-    Object.keys(entities).filter((f) => /\.anim$/.test(f)).reduce((c, m) => {
+    let sheetKeys: (keyof Entities)[] = [];
+    Object.keys(entities).filter((f: keyof Entities) => /\.anim$/.test(f)).reduce((c, m: keyof Entities) => {
         animKeys.push(m.replace(/\.anim$/, ''));
         c[m] = entities[m];
-        let sheet = m.replace(/\.anim$/, '.sheet');
+        let sheet: keyof Entities = m.replace(/\.anim$/, '.sheet') as (keyof Entities);
         c[sheet] = entities[sheet];
-        //c[m.replace(/\.anim$/, '.png')] = '';
         return c;
     }, anims);
 
     Object.keys(entities).filter((f) => !(f in anims)).reduce((c, m) => {
-        sheetKeys.push(m.replace(/\.sheet$/, ''));
-        c[m] = entities[m];
+        sheetKeys.push(m.replace(/\.sheet$/, '') as any);
+        c[m] = entities[(m as keyof Entities)];
         return c;
     }, singleSheets);
 
@@ -113,10 +187,11 @@ export function createStyleSheets(createFiles: boolean = true): Promise<any> {
         const sheetKey = `${anim}.sheet`;
         const animKey = `${anim}.anim`;
 
-        const xmlAnim = anims[animKey];
-        const xmlSheet = anims[sheetKey];
+        const xmlAnim = anims[animKey].asset;
+        const xmlSheet = anims[sheetKey].asset;
+        const props = anims[animKey].props;
 
-        createSpriteSheet(anim, xmlSheet);
+        createSpriteSheet(anim, xmlSheet, props);
 
         let spriteNames: string[] = [];
 
@@ -150,7 +225,7 @@ export function createStyleSheets(createFiles: boolean = true): Promise<any> {
         //console.log(animations.CSSAscii(spriteNames));
         if (createFiles) {
             fs.writeFileSync(
-                path.join(process.env.CSSDIR, `${anim}.scss`),
+                path.join(process.env.CSSDIR, `${anim}2.scss`),
                 animations.CSSAscii(spriteNames),
                 'utf-8');
         }
@@ -159,12 +234,13 @@ export function createStyleSheets(createFiles: boolean = true): Promise<any> {
     sheetKeys.forEach((sheet) => {
 
         const sheetKey = `${sheet}.sheet`;
-        const xmlSheet = singleSheets[sheetKey];
+        const xmlSheet = singleSheets[sheetKey].asset;
+        const props = singleSheets[sheetKey].props;
 
-        const spSheet = createSpriteSheet(sheet, xmlSheet);
+        const spSheet = createSpriteSheet(sheet, xmlSheet, props);
         if (createFiles) {
             fs.writeFileSync(
-                path.join(process.env.CSSDIR, `${sheet}.scss`),
+                path.join(process.env.CSSDIR, `${sheet}2.scss`),
                 spSheet.renderCSSparts(),
                 'utf-8');
         }

@@ -39,8 +39,8 @@ export function processKnowable(
 
 
     let gui: $GFragment = {
-        size: ['fsc3', 'pxcycs3'],
-        auxClassNames: ['common_items', 'book_skill'],
+        size: ['fsc3', 'pccs3'],
+        auxClassNames: ['common_items', 'pccs3', 'book_skill'],
         top: 0,
         left: 0,
         zIndex: 0,

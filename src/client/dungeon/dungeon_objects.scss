@@ -2,7 +2,11 @@
 
 
 /* SpriteSheet */
+
+
 /* SpriteSheet */
+
+
 /* SpriteSheet */
 
 .dungeon_objects>div:first-child {
@@ -12,20 +16,19 @@
     z-index: 1;
 }
 
-.dungeon_objects>div:last-child {
-    background: url('./shadow.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
-    z-index: 0;
-}
 
 
 /* general sizing */
-/* general sizing */
+
+
 /* general sizing */
 
 
-/* fix container on 72 = ( 3*24 ) px */
+/* general sizing */
+
+
+/* [f]ixed [s]izd [c]ontainer [s]cale [n] ,aka 72 = ( 3*24 ) px */
+
 
 .fsc3 {
     height: 72px !important;
@@ -59,34 +62,38 @@
 
 .pxcb30ps3>div:first-child {
     transform-origin: 50% 100%;
-    transform: translateX(-50%) scale(3);
-    position: absolute;
-    left: 50%;
-    bottom: 30%;
-}
-
-.pxcb30ps3>div:first-child {
-    transform-origin: 50% 100%;
     transform: translateX(-50%) translateY(0) scale(3);
     position: absolute;
     left: 50%;
     bottom: 30%;
 }
 
-.pxcb30ps3>div:last-child {
-    transform-origin: 50% 100%;
-    transform: translateX(-50%) translateY(0) scale(3);
+.shadow>div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
     background-position: -0px -0px;
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(3);
+   
+    position: absolute;
+    z-index: 0;
+    
     width: 24px;
     height: 10px;
-    position: absolute;
     left: 50%;
     bottom: 12.5%;
+   
+    image-rendering: pixelated;
     opacity: 0.5;
 }
 
+
 /* Static Sprites */
+
+
 /* Static Sprites */
+
+
 /* Static Sprites */
 
 .bookshelf_1_searched>div:first-child {
@@ -348,79 +355,6 @@
 }
 
 
-/* Static Sprites Sizes */
-
-
-/* Static Sprites Sizes */
-
-
-/* Static Sprites Sizes */
-
-.fsc3.bookshelf_1_searched,
-.fsc3.bookshelf_2_searched,
-.fsc3.bookshelf_1,
-.fsc3.bookshelf_2,
-.fsc3.table_1,
-.fsc3.table_2,
-.fsc3.table_broken,
-.fsc3.statue_2,
-.fsc3.statue_3,
-.fsc3.monument_1,
-.fsc3.monument_2,
-.fsc3.monument_broken,
-.fsc3.monument_3,
-.fsc3.monument_4,
-.fsc3.grave_1,
-.fsc3.grave_2,
-.fsc3.grave_broken {
-    height: 72px;
-    width: 72px;
-}
-
-.fsc3.box_1,
-.fsc3.box_1_broken {
-    height: 72px;
-    width: 72px;
-}
-
-
-.pxcb30ps3.vase_1,
-.pxcb30ps3.vase_3,
-.pxcb30ps3.vase_5,
-.pxcb30ps3.vase_7,
-.pxcb30ps3.vase_9 {
-    height: 72px;
-    width: 72px;
-}
-
-.pxcb30ps3.vase_2,
-.pxcb30ps3.vase_4,
-.pxcb30ps3.vase_6,
-.pxcb30ps3.vase_8,
-.pxcb30ps3.vase_10 {
-    height: 72px;
-    width: 72px;
-}
-
-.fsc3.vase_1_broken,
-.fsc3.vase_3_broken,
-.fsc3.vase_5_broken,
-.fsc3.vase_7_broken,
-.fsc3.vase_9_broken,
-.fsc3.statue_1,
-.fsc3.statue_broken,
-.fsc3.barril_2,
-.fsc3.barril_1,
-.fsc3.barril_broken,
-.fsc3.coffin_01,
-.fsc3.coffin_02,
-.fsc3.coffin_open_01,
-.fsc3.coffin_open_02 {
-    height: 72px;
-    width: 72px;
-}
-
-
 /* Animations */
 
 
@@ -449,28 +383,4 @@
         height: 22px;
         background-position: -126px -26px;
     }
-}
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-.fsc3.campfire {
-    height: 72px;
-    width: 72px;
-}
-
-.boss.campfire {
-    height: 82.5px;
-    width: 75px;
-}
-
-.boss.super.campfire {
-    height: 231px;
-    width: 210px;
 }

@@ -66,7 +66,9 @@ export function processCarpet(_matrix: string[], _width: number, room: $Room, co
         ],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: false
+
     };
 
     let itm: $ItemCarpet = { tag: si.e, p: first, br: last, gui };

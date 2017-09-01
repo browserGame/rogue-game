@@ -54,10 +54,17 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
     const sizes: { [index: string]: $GUISizeType[]; } = {
-        '!': ['pxcb30ps3', 'fsc3'],
+        '!': ['pxcb3s30', 'fsc3'],
         U: ['pxcb30ps3', 'fsc3'],
-        Q: ['pxcb30ps3', 'fsc3'],
-        '"': ['pxcb30ps3', 'fsc3']
+        Q: ['pxcb3s30', 'fsc3'],
+        '"': ['pxcb3s30', 'fsc3']
+    };
+
+    const shadow = {
+        '!': 'shadow3s30',
+        U: 'shadow',
+        Q: 'shadow3s30',
+        '"': 'shadow3s30'
     };
 
     const selectContext = {
@@ -69,10 +76,11 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
 
     let gui: $GFragment = {
         size: sizes[si.e],
-        auxClassNames: [cssSheet[si.e], select[si.e]],
+        auxClassNames: [shadow[si.e], cssSheet[si.e], select[si.e]],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true
     };
 
 

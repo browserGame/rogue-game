@@ -3,7 +3,8 @@ import {
     $Room,
     getNameSpace,
     $Item,
-    $GFragment
+    $GFragment,
+    $GUISizeType
 } from './Room';
 
 import {
@@ -31,14 +32,6 @@ export interface $ItemOpenable extends $Item {
 
 export function processOpenable(matrix: string[], width: number, room: $Room, coords: Vector[], si: AllOpenables) {
 
-    //export type DiscoverableType = 'z' | '&' | 'H' | '*';
-    /** 
-    export type Closet = Discoverable<'z'>;
-    export type TreasureChest = Discoverable<'&'>;
-    export type Coffin = Discoverable<'H'>;
-    export type Table = Discoverable<'*'>; 
-    */
-   
     const select = {
         z: sampleFromListEqualProb(['bookshelf_1', 'bookshelf_2']), //bookshelf_1_searched, bookshelf_2_searched
         '&': 'safe', //safe_open
@@ -53,12 +46,27 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
         '*': 'dungeon_objects'
     };
 
+    const sizes: { [index: string]: $GUISizeType[]; } = {
+        z: ['pxcb30ps3', 'fsc3'],
+        '&': ['pxcb3s30', 'fsc3'],
+        H: ['pxcb30ps3', 'fsc3'],
+        '*': ['pxcb30ps3', 'fsc3']
+    };
+
+    const shadows = {
+        z: 'shadow',
+        '&': 'shadow3s30',
+        H: 'shadow',
+        '*': 'shadow'
+    };
+
     let gui: $GFragment = {
-        size: ['pxcb30ps3', 'fsc3'],
-        auxClassNames: [namespace[si.e], select[si.e]],
+        size: sizes[si.e],
+        auxClassNames: [shadows[si.e], namespace[si.e], select[si.e]],
         left: 0,
         top: 0,
-        zIndex: 0
+        zIndex: 0,
+        hasShadow: true
     };
 
     let itm: $ItemOpenable = {

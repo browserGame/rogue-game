@@ -85,13 +85,17 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
     })();
 
     let gui: $GFragment = {
-        size: ['fsc3', 'pxcycs3'],
+        size: ['fsc3', 'pccs3'],
         auxClassNames: ['common_items', className],
         left: 0,
         top: 0,
         zIndex: 0,
         hasShadow: shadow[si.e]
     };
+
+    if (gui.hasShadow){
+        gui.auxClassNames.push('shadow2p5s20');
+    }
 
     let itm: $ItemValuable = {
         tag: si.e,

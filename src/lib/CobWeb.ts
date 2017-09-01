@@ -95,7 +95,7 @@ export function processCobWeb(matrix: string[], width: number, room: $Room, coor
         let className = ['spiderweb_03', 'spiderweb_04', 'spiderweb_05', 'spiderweb_06'][selected[0]];
 
         let gui: $GFragment = {
-            size: ['normal'],
+            size: ['pccs3', 'fsc3'],
             auxClassNames: ['dungeon_decor_props', className],
             left: 0,
             top: 0,

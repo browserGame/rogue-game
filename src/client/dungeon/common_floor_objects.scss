@@ -1,9 +1,7 @@
-/*  Computer Generated CSS, */
-
-
-/* SpriteSheet */
-/* SpriteSheet */
-/* SpriteSheet */
+/*  
+ Computer Generated CSS, 
+ See README.md on how to (re)-generate 
+*/
 
 .common_floor_objects>div:first-child {
     background: url('./common_floor_objects.png');
@@ -13,12 +11,16 @@
 }
 
 
-/* general sizing */
-/* general sizing */
-/* general sizing */
+/* 
+general sizing 
+general sizing 
+general sizing 
+*/
 
 
-/* fix container on 72 = ( 3*24 ) px */
+/* 
+fix container sizes 
+*/
 
 .fsc3 {
     height: 72px !important;
@@ -26,7 +28,9 @@
 }
 
 
-/* plts3 = [p]osition [l]eft [t]op, [s]cale 3 */
+/* 
+plts = [p]osition [l]eft [t]op, [s]cale  
+*/
 
 .plts3>div:first-child {
     transform-origin: 0 0;
@@ -37,7 +41,9 @@
 }
 
 
-/* pccs3  =[p]osition [c]enter [c]enter, [s]cale [3] */
+/* 
+pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
 
 .pccs3>div:first-child {
     transform-origin: 50% 50%;
@@ -48,9 +54,11 @@
 }
 
 
-/* pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] */
+/* 
+pxcbXpsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
+*/
 
-.pxcb30ps3>div:first-child {
+.pxcb3s30>div:first-child {
     transform-origin: 50% 100%;
     transform: translateX(-50%) scale(3);
     position: absolute;
@@ -58,25 +66,31 @@
     bottom: 30%; //outline: 1px solid orangered;
 }
 
-.pxcb30ps3>div:last-child {
+.shadow3s12p5>div:last-child {
     background: url('./shadow.png');
     background-origin: border-box;
-    image-rendering: pixelated;
-    z-index: 0;
+    background-position: -0px -0px;
+    /**/
     transform-origin: 50% 100%;
     transform: translateX(-50%) translateY(0) scale(3);
-    background-position: -0px -0px;
+    /**/
     width: 24px;
     height: 10px;
-    position: absolute;
     left: 50%;
     bottom: 12.5%;
+    /**/
+    image-rendering: pixelated;
+    position: absolute;
+    z-index: 0;
     opacity: 0.5;
 }
 
-/* Static Sprites */
-/* Static Sprites */
-/* Static Sprites */
+
+/* 
+Static Sprites
+Static Sprites 
+Static Sprites 
+*/
 
 .safe>div:first-child {
     background-position: -0px -0px;
@@ -199,25 +213,11 @@
 }
 
 
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
-
-.pxcb30ps3.safe,
-.pxcb30ps3.safe_open,
-.plts3.dungeon_entrance,
-.pxcb30ps3.shrine,
-.pxcb30ps3.shrine_disabled,
-.plts3.star_block,
-.plts3.star_block_disabled,
-.plts3.moon_block_disabled,
-.plts3.moon_block,
-.pxcb30ps3.fountain_empty,
-.pxcb30ps3.sign,
-.pxcb30ps3.quest_stone_disabled {
-    height: 72px;
-    width: 72px;
-}
+/* 
+  expanded sizes
+  expanded sizes
+  expanded sizes 
+*/
 
 .plts3.carpet_red,
 .plts3.carpet_blue {
@@ -249,7 +249,11 @@
 
 
 /* Animations */
+
+
 /* Animations */
+
+
 /* Animations */
 
 .fountain_mana>div:first-child {
@@ -366,21 +370,4 @@
         height: 24px;
         background-position: -217px -24px;
     }
-}
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-.pxcb30ps3.fountain_mana,
-.pxcb30ps3.fountain_hp,
-.pxcb30ps3.teleportation,
-.pxcb30ps3.quest_stone {
-    height: 72px;
-    width: 72px;
 }

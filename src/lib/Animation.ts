@@ -6,10 +6,6 @@ import {
 
 const gCache = new Map<string, AnimationSheet>();
 
-const NORMAL = JSON.parse(process.env.NORMAL);
-const BOSS = JSON.parse(process.env.BOSS);
-const SUPER = JSON.parse(process.env.SUPER);
-
 export function getAnimationSheetByName(url: string) {
     return gCache.get(url);
 }
@@ -74,7 +70,7 @@ export class Animation {
         this.loop = JSON.parse(a.loop);
         this.playMode = a.playMode;
         this.frames = a.frame.map((m) => {
-            let _sprite = this.spriteSheet.get(m.spriteName);
+            let _sprite = this.spriteSheet.getSprite(m.spriteName);
             let duration = Number.parseFloat(m.duration);
             return new AnimationFrame({ ref: _sprite, duration });
         });
@@ -113,26 +109,27 @@ export class Animation {
                 throw new Error(`sprite was undefined on frame nr:${idx}, on animation:${this.animationName}`);
             }
             let pText = !idx ? 'from, to' : m;
-            return ` 
-                ${pText} {
-                    ${sprite.cssWidth()};
-                    ${sprite.cssHeight()};
-                    ${sprite.cssBackgroundPosition};
-                }
-                `;
+            return (
+                `    ${pText} {
+        ${sprite.cssWidth()};
+        ${sprite.cssHeight()};
+        ${sprite.cssBackgroundPosition};
+    }`);
         });
 
-        return ` .${this.animationName} > div {
-                    animation-name: ${this.animationName};
-                    animation-duration: ${totalTime}ms;
-                    animation-delay: 0ms;
-                    animation-timing-function: steps(1);
-                    animation-iteration-count: infinite;
-                }
-                @keyframes ${this.animationName} {
-                    ${keyFrames.join('\n')}
-                }
-            `;
+        return `
+.${this.animationName} > div:first-child {
+    animation-name: ${this.animationName};
+    animation-duration: ${totalTime}ms;
+    animation-delay: 0ms;
+    animation-timing-function: steps(1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes ${this.animationName} {
+${keyFrames.join('\n')}
+}
+`;
 
     }
 
@@ -174,7 +171,9 @@ export class AnimationSheet {
     public CSSAscii(exclusion?: string[]): string {
 
         if (!this.animations.size) {
-            return `/* no sprite sheet detected for this animation sheet */`;
+            return `
+/* no sprite sheet detected for this animation sheet */
+`;
         }
         // generate all sprite sheet headers
         let set = new Set<SpriteSheet>();
@@ -185,58 +184,28 @@ export class AnimationSheet {
             return collector;
         }, set);
 
-        let headers = Array.from(set.values()).map((h) => {
+        let cssSpriteSheets = Array.from(set.values()).map((h) => {
             return h.renderCSSparts(exclusion);
         }).join('\n');
 
         let cssAnims = allAnims.map((m) => m.asCSSStyleSheetSnippets()).join('\n');
 
-        let allSizes = allAnims.map((m) => {
-            return {
-                name: m.name,
-                normal: m.firstFrameWidthHeight(NORMAL),
-                boss: m.firstFrameWidthHeight(BOSS),
-                super: m.firstFrameWidthHeight(SUPER)
-            };
-        });
 
-        // invert
-        let inverted = allSizes.reduce((inv, itm) => {
-            inv[itm.normal] = inv[itm.normal] || [];
-            inv[itm.normal].push(`.normal.${itm.name}`);
 
-            inv[itm.boss] = inv[itm.boss] || [];
-            inv[itm.boss].push(`.boss.${itm.name}`);
 
-            inv[itm.super] = inv[itm.super] || [];
-            inv[itm.super].push(`.boss.super.${itm.name}`);
 
-            return inv;
-        }, {} as { [index: string]: string[]; });
-
-        let allSizesStrings = Object.keys(inverted).map((key) => {
-            return ` ${inverted[key].join(',\n')} {
-                ${key}
-            }`;
-        });
         //here we put it all together
         return `
-            /*  Computer Generated CSS, */
+${cssSpriteSheets}
             
-            ${headers}
+/* 
+Animations part
+Animations part
+Animations part 
+*/
             
-            /* Animations */
-            /* Animations */
-            /* Animations */
-            
-            ${cssAnims}
-            
-            /* Animation Sizes */
-            /* Animation Sizes */
-            /* Animation Sizes */
-            
-            ${allSizesStrings.join('\n\n')}
-        `;
+${cssAnims}
+`;
 
         //console.log({ headers, cssAnims, allSizes, allSizesStrings });
         //return '';

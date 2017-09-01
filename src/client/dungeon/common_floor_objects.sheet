@@ -32,5 +32,5 @@
         sheet name="candles_pedestral_2" texture="common_floor_objects.png" ox="9" oy="22" x="218" y="24" width="19" height="24" /-->
     <sheet name="candles_pedestral_2" texture="common_floor_objects.png" ox="9" oy="22" x="217" y="24" width="21" height="24" />
     <sheet name="hazard_spikes" texture="common_floor_objects.png" ox="11" oy="11" x="192" y="48" width="23" height="23" />
-    <sheet name="hazard_trap" texture="common_floor_objects.png" ox="11" oy="11" x="216" y="48" width="22" height="23" />
+    <sheet name="hazard_trap" texture="common_floor_objects.png" ox="11" oy="11" x="215" y="48" width="23" height="23" />
 </sheets>
