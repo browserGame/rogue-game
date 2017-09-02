@@ -25,9 +25,8 @@ export interface Entities {
 
     'enemies.anim': AssetEntity;
     'enemies.sheet': AssetEntity;
-    /* 'heroes.anim': AssetEntity;
-     'heroes.sheet': AssetEntity;
-     */
+    'heroes.anim': AssetEntity;
+    'heroes.sheet': AssetEntity;
     'common_floor_objects.anim': AssetEntity;
     'common_floor_objects.sheet': AssetEntity;
     'dungeon_objects.anim': AssetEntity;
@@ -58,22 +57,33 @@ const entities: Entities = {
         props: {
             fsc: [{ scale: 3 }],
             pxcb: [
-                { scale: { s: 3, perc: 30}, lookToTheRight: true  },
-                { scale: { s: 3.75, perc: 30}, lookToTheRight: true  },
+                { scale: { s: 3, perc: 30 }, lookToTheRight: true },
+                { scale: { s: 3.75, perc: 30 }, lookToTheRight: true },
                 { scale: { s: 10.5, perc: 30 }, lookToTheRight: true }],
             shadow: [
                 { scale: { s: 3, perc: 30 } },
                 { scale: { s: 3.75, perc: 30 } },
                 { scale: { s: 10.5, perc: 30 } }
-            ]    
+            ]
         }
     },
     'enemies.sheet': {
         asset: require('../client/dungeon/enemies.sheet'),
         props: {}
     },
-    /*'heroes.anim': { asset: require('../client/dungeon/heroes.anim'), props: {} },
-    'heroes.sheet': { asset: require('../client/dungeon/heroes.sheet'), props: {} },*/
+    'heroes.anim': {
+        asset: require('../client/dungeon/heroes.anim'), props: {
+            fsc: [{ scale: 3 }],
+            pxcb: [
+                { scale: { s: 3, perc: 30 }, lookToTheRight: true },
+                { scale: { s: 3.75, perc: 30 }, lookToTheRight: true },
+                { scale: { s: 10.5, perc: 30 }, lookToTheRight: true }],
+            shadow: [
+                { scale: { s: 3, perc: 30 } }
+           ]
+        }
+    },
+    'heroes.sheet': { asset: require('../client/dungeon/heroes.sheet'), props: {} },
     'common_floor_objects.anim': {
         asset: require('../client/dungeon/common_floor_objects.anim'),
         props: {

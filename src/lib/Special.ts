@@ -4,7 +4,7 @@ import {
     getNameSpace,
     $Item,
     $GFragment,
-    $GUISizeType
+    //$GUISizeType
     //getContentAt
 } from './Room';
 
@@ -53,19 +53,7 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
         '"': 'sign'
     };
 
-    const sizes: { [index: string]: $GUISizeType[]; } = {
-        '!': ['pxcb3s30', 'fsc3'],
-        U: ['pxcb30ps3', 'fsc3'],
-        Q: ['pxcb3s30', 'fsc3'],
-        '"': ['pxcb3s30', 'fsc3']
-    };
-
-    const shadow = {
-        '!': 'shadow3s30',
-        U: 'shadow',
-        Q: 'shadow3s30',
-        '"': 'shadow3s30'
-    };
+   
 
     const selectContext = {
         '!': undefined,
@@ -75,8 +63,8 @@ export function processSpecial(_matrix: string[], _width: number, room: $Room, c
     };
 
     let gui: $GFragment = {
-        size: sizes[si.e],
-        auxClassNames: [shadow[si.e], cssSheet[si.e], select[si.e]],
+        size: ['pxcb3s30', 'fsc3'],
+        auxClassNames: ['shadow3s30', cssSheet[si.e], select[si.e]],
         left: 0,
         top: 0,
         zIndex: 0,

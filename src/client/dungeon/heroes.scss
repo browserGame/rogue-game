@@ -1,46 +1,33 @@
-/*  Computer Generated CSS, */
 
 
-/* SpriteSheet */
+/*  
+   Computer Generated CSS, 
+   See README.md on how to (re)-generate 
+*/
 
 
-/* SpriteSheet */
-
-
-/* SpriteSheet */
-
-.heroes>div:first-child {
-    background: url('./heroes.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
-}
-
-.heroes>div:last-child {
-    background: url('./shadow.png');
-    background-origin: border-box;
-    image-rendering: pixelated;
-    z-index: 0;
+.heroes > div:first-child {
+   background: url('./heroes.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
 }
 
 
-/* general sizing */
-
-
-/* general sizing */
-
-
-/* general sizing */
-
+/* 
+fix container size scale 3 
+*/    
 .fsc3 {
     height: 72px !important;
     width: 72px !important;
-}
+}        
+
 
 /* 
-pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3] 
+ xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
 */
 
-.pxcb30ps3>div:first-child {
+.pxcb3s30 > div:first-child {
     transform-origin: 50% 100%;
     transform: translateX(-50%) translateY(0) scale(3);
     position: absolute;
@@ -48,38 +35,95 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     bottom: 30%;
 }
 
-.pxcb30ps3>div:last-child {
+
+.pxcb3s30.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3);
+}         
+
+
+/* 
+ xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
+*/
+
+.pxcb3p75s30 > div:first-child {
     transform-origin: 50% 100%;
-    transform: translateX(-50%) translateY(0) scale(3);
-    background-position: -0px -0px;
-    width: 24px;
-    height: 10px;
+    transform: translateX(-50%) translateY(0) scale(3.75);
     position: absolute;
     left: 50%;
-    bottom: 12.5%;
+    bottom: 30%;
+}
+
+
+.pxcb3p75s30.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3.75);
+}         
+
+
+/* 
+ xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
+*/
+
+.pxcb10p5s30 > div:first-child {
+    transform-origin: 50% 100%;
+    transform: translateX(-50%) translateY(0) scale(10.5);
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+}
+
+
+.pxcb10p5s30.right > div:first-child {
+    transform: translateX(-50%) translateY(0) scaleX(-1) scale(10.5);
+}         
+
+
+.shadow3s30 > div:last-child {
+    background: url('./shadow.png');
+    background-origin: border-box;
+    background-position: -0px -0px;
+    /* */
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(0) scale(3);
+    /* */
+    width: 24px;
+    height: 10px;
+    left: 50%;
+    bottom: 25%;
+    /* */
+    image-rendering: pixelated;
+    position: absolute;
+    z-index: 0;
     opacity: 0.5;
 }
 
-.pxcb30ps3.right>div:first-child {
-    transform: translateX(-50%) translateY(0) scaleX(-1) scale(3);
-}
+
+/* 
+Static Sprites
+Static Sprites 
+Static Sprites 
+*/        
 
 
-/* Static Sprites */
-/* Static Sprites */
-/* Static Sprites */
+
+/* 
+Expanded sizes
+Expanded sizes
+Expanded sizes 
+*/      
 
 
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
-/* Static Sprites Sizes */
 
 
-/* Animations */
-/* Animations */
-/* Animations */
 
-.warrior_idle>div:first-child {
+            
+/* 
+Animations part
+Animations part
+Animations part 
+*/
+            
+
+.warrior_idle > div:first-child {
     animation-name: warrior_idle;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -88,8 +132,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes warrior_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -0px;
@@ -101,7 +144,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.warrior_attack>div:first-child {
+
+.warrior_attack > div:first-child {
     animation-name: warrior_attack;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -110,8 +154,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes warrior_attack {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -0px;
@@ -123,7 +166,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.warrior_die>div:first-child {
+
+.warrior_die > div:first-child {
     animation-name: warrior_die;
     animation-duration: 2300ms;
     animation-delay: 0ms;
@@ -132,8 +176,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes warrior_die {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -0px;
@@ -150,7 +193,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.shaman_idle>div:first-child {
+
+.shaman_idle > div:first-child {
     animation-name: shaman_idle;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -159,8 +203,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes shaman_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -24px;
@@ -172,7 +215,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.shaman_attack>div:first-child {
+
+.shaman_attack > div:first-child {
     animation-name: shaman_attack;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -181,8 +225,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes shaman_attack {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -24px;
@@ -194,7 +237,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.shaman_die>div:first-child {
+
+.shaman_die > div:first-child {
     animation-name: shaman_die;
     animation-duration: 2300ms;
     animation-delay: 0ms;
@@ -203,8 +247,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes shaman_die {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -24px;
@@ -221,7 +264,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.wizard_idle>div:first-child {
+
+.wizard_idle > div:first-child {
     animation-name: wizard_idle;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -230,8 +274,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes wizard_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -48px;
@@ -243,7 +286,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.wizard_attack>div:first-child {
+
+.wizard_attack > div:first-child {
     animation-name: wizard_attack;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -252,8 +296,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes wizard_attack {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -48px;
@@ -265,7 +308,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.wizard_die>div:first-child {
+
+.wizard_die > div:first-child {
     animation-name: wizard_die;
     animation-duration: 2300ms;
     animation-delay: 0ms;
@@ -274,8 +318,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes wizard_die {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -48px;
@@ -292,7 +335,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.assassin_idle>div:first-child {
+
+.assassin_idle > div:first-child {
     animation-name: assassin_idle;
     animation-duration: 1000ms;
     animation-delay: 0ms;
@@ -301,8 +345,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes assassin_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -72px;
@@ -314,7 +357,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.assassin_attack>div:first-child {
+
+.assassin_attack > div:first-child {
     animation-name: assassin_attack;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -323,8 +367,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes assassin_attack {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -72px;
@@ -336,7 +379,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.assassin_die>div:first-child {
+
+.assassin_die > div:first-child {
     animation-name: assassin_die;
     animation-duration: 2300ms;
     animation-delay: 0ms;
@@ -345,8 +389,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes assassin_die {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -72px;
@@ -363,7 +406,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.assassin_bow>div:first-child {
+
+.assassin_bow > div:first-child {
     animation-name: assassin_bow;
     animation-duration: 220ms;
     animation-delay: 0ms;
@@ -372,8 +416,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes assassin_bow {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -48px -72px;
@@ -390,7 +433,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.necrodancer_idle>div:first-child {
+
+.necrodancer_idle > div:first-child {
     animation-name: necrodancer_idle;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -399,8 +443,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes necrodancer_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -96px;
@@ -422,7 +465,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.necrodancer_idle_shovel>div:first-child {
+
+.necrodancer_idle_shovel > div:first-child {
     animation-name: necrodancer_idle_shovel;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -431,8 +475,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes necrodancer_idle_shovel {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -48px -0px;
@@ -454,7 +497,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.necrodancer_attack>div:first-child {
+
+.necrodancer_attack > div:first-child {
     animation-name: necrodancer_attack;
     animation-duration: 600ms;
     animation-delay: 0ms;
@@ -463,8 +507,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes necrodancer_attack {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -96px;
@@ -476,7 +519,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.necrodancer_die>div:first-child {
+
+.necrodancer_die > div:first-child {
     animation-name: necrodancer_die;
     animation-duration: 2300ms;
     animation-delay: 0ms;
@@ -485,8 +529,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes necrodancer_die {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -0px -96px;
@@ -503,7 +546,8 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
     }
 }
 
-.shopkeeper_idle>div:first-child {
+
+.shopkeeper_idle > div:first-child {
     animation-name: shopkeeper_idle;
     animation-duration: 1000ms;
     animation-delay: 0ms;
@@ -512,8 +556,7 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
 }
 
 @keyframes shopkeeper_idle {
-    from,
-    to {
+    from, to {
         width: 24px;
         height: 24px;
         background-position: -96px -0px;
@@ -523,36 +566,5 @@ pxcb30ps3 = [p]osition [xc]enter [b]ottom[30p]ercent, [s]cale [3]
         height: 24px;
         background-position: -96px -24px;
     }
-}
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-
-/* Animation Sizes */
-
-.pxcb30ps3.warrior_idle,
-.pxcb30ps3.warrior_attack,
-.pxcb30ps3.warrior_die,
-.pxcb30ps3.shaman_idle,
-.pxcb30ps3.shaman_attack,
-.pxcb30ps3.shaman_die,
-.pxcb30ps3.wizard_idle,
-.pxcb30ps3.wizard_attack,
-.pxcb30ps3.wizard_die,
-.pxcb30ps3.assassin_idle,
-.pxcb30ps3.assassin_attack,
-.pxcb30ps3.assassin_die,
-.pxcb30ps3.assassin_bow,
-.pxcb30ps3.necrodancer_idle,
-.pxcb30ps3.necrodancer_idle_shovel,
-.pxcb30ps3.necrodancer_attack,
-.pxcb30ps3.necrodancer_die,
-.pxcb30ps3.shopkeeper_idle {
-    height: 72px;
-    width: 72px;
 }
 
