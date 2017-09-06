@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="main_menu_selection_btn" texture="main_menu_3ds.png" ox="42" oy="11" x="171" y="25" width="82" height="18" />
+    <sheet name="main_menu_selection_btn_hover" texture="main_menu_3ds.png" ox="42" oy="11" x="171" y="44" width="82" height="18" />
+    <sheet name="check_box" texture="main_menu_3ds.png" ox="7" oy="7" x="146" y="42" width="14" height="14" />
+    <sheet name="check_mark" texture="main_menu_3ds.png" ox="7" oy="7" x="130" y="42" width="14" height="14" />
+    <sheet name="volume_btn" texture="main_menu_3ds.png" ox="6" oy="18" x="81" y="28" width="12" height="34" />
+    <sheet name="volume_bar" texture="main_menu_3ds.png" ox="1" oy="4" x="129" y="2" width="110" height="8" />
+    <sheet name="close_volume_btn" texture="main_menu_3ds.png" ox="14" oy="14" x="244" y="1" width="10" height="8" />
+    <sheet name="close_volume_btn_over" texture="main_menu_3ds.png" ox="14" oy="14" x="112" y="0" width="11" height="13" />
+    <sheet name="resolution_apply_btn_hover" texture="main_menu_3ds.png" ox="13" oy="6" x="251" y="64" width="5" height="3" />
+    <sheet name="resolution_apply_btn" texture="main_menu_3ds.png" ox="24" oy="9" x="256" y="64" width="3" height="3" />
+    <sheet name="sub_menu" texture="main_menu_3ds.png" ox="40" oy="30" x="0" y="0" width="80" height="60" />
+    <sheet name="left_arrow_active" texture="main_menu_3ds.png" ox="4" oy="7" x="148" y="23" width="8" height="13" />
+    <sheet name="right_arrow_active" texture="main_menu_3ds.png" ox="4" oy="7" x="158" y="23" width="8" height="13" />
+    <sheet name="left_arrow_inactive" texture="main_menu_3ds.png" ox="4" oy="7" x="130" y="23" width="8" height="13" />
+    <sheet name="right_arrow_inactive" texture="main_menu_3ds.png" ox="4" oy="7" x="139" y="23" width="8" height="13" />
+    <sheet name="logo" texture="main_menu_3ds.png" ox="70" oy="8" x="110" y="11" width="145" height="11" />
+    <sheet name="btn_tab" texture="main_menu_3ds.png" ox="14" oy="9" x="81" y="0" width="28" height="14" />
+    <sheet name="btn_tab_hover" texture="main_menu_3ds.png" ox="14" oy="9" x="81" y="14" width="28" height="14" />
+    <sheet name="class_selection_box" texture="main_menu_3ds.png" ox="15" oy="27" x="93" y="28" width="31" height="31" />
+</sheets>

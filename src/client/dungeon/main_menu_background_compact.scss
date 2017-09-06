@@ -1,0 +1,625 @@
+
+/*  
+   Computer Generated CSS, 
+   See README.md on how to (re)-generate 
+*/
+
+
+.main_menu_background_compact > div:first-child {
+   background: url('./main_menu_background_compact.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
+}
+
+
+/* 
+fix container size scale 3 
+*/    
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}        
+
+
+/* 
+fix container size scale 2 
+*/    
+.fsc2 {
+    height: 48px !important;
+    width: 48px !important;
+}        
+
+
+/* 
+fix container size scale 1 
+*/    
+.fsc1 {
+    height: 24px !important;
+    width: 24px !important;
+}        
+
+
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
+
+.pccs3 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
+
+.pccs2 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
+
+.pccs1 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/* 
+ pccs  =[p]osition [c]enter [c]enter, [s]cale  
+*/
+
+.pccs0p6 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/* 
+Static Sprites
+Static Sprites 
+Static Sprites 
+*/        
+
+
+.main_menu_1 > div:first-child {
+   background-position: -0px -0px;
+   width: 512px;
+   height: 512px;
+}
+
+
+.assassin > div:first-child {
+   background-position: -696px -260px;
+   width: 184px;
+   height: 179px;
+}
+
+
+.shaman > div:first-child {
+   background-position: -568px -28px;
+   width: 169px;
+   height: 210px;
+}
+
+
+.warrior > div:first-child {
+   background-position: -743px -24px;
+   width: 251px;
+   height: 211px;
+}
+
+
+.wizard > div:first-child {
+   background-position: -530px -262px;
+   width: 132px;
+   height: 204px;
+}
+
+
+.monsters > div:first-child {
+   background-position: -0px -722px;
+   width: 299px;
+   height: 206px;
+}
+
+
+.fog > div:first-child {
+   background-position: -0px -536px;
+   width: 513px;
+   height: 175px;
+}
+
+
+.eyes_0 > div:first-child {
+   background-position: -515px -550px;
+   width: 19px;
+   height: 21px;
+}
+
+
+.eyes_1 > div:first-child {
+   background-position: -596px -556px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_2 > div:first-child {
+   background-position: -620px -509px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_3 > div:first-child {
+   background-position: -660px -517px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_4 > div:first-child {
+   background-position: -624px -550px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_8 > div:first-child {
+   background-position: -612px -587px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_11 > div:first-child {
+   background-position: -601px -607px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_12 > div:first-child {
+   background-position: -625px -623px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_18 > div:first-child {
+   background-position: -613px -674px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_17 > div:first-child {
+   background-position: -580px -680px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_16 > div:first-child {
+   background-position: -558px -676px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_15 > div:first-child {
+   background-position: -536px -666px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_14 > div:first-child {
+   background-position: -515px -676px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_19 > div:first-child {
+   background-position: -543px -701px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_21 > div:first-child {
+   background-position: -539px -778px;
+   width: 28px;
+   height: 26px;
+}
+
+
+.eyes_20 > div:first-child {
+   background-position: -513px -796px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_9 > div:first-child {
+   background-position: -636px -585px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_5 > div:first-child {
+   background-position: -651px -555px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_6 > div:first-child {
+   background-position: -719px -537px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_7 > div:first-child {
+   background-position: -765px -523px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_22 > div:first-child {
+   background-position: -822px -533px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_24 > div:first-child {
+   background-position: -799px -578px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_10 > div:first-child {
+   background-position: -677px -586px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_13 > div:first-child {
+   background-position: -687px -604px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_26 > div:first-child {
+   background-position: -770px -617px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_33 > div:first-child {
+   background-position: -734px -667px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_34 > div:first-child {
+   background-position: -734px -692px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_35 > div:first-child {
+   background-position: -764px -672px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_32 > div:first-child {
+   background-position: -777px -654px;
+   width: 26px;
+   height: 15px;
+}
+
+
+.eyes_23 > div:first-child {
+   background-position: -882px -549px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_25 > div:first-child {
+   background-position: -879px -577px;
+   width: 19px;
+   height: 19px;
+}
+
+
+.eyes_27 > div:first-child {
+   background-position: -890px -614px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_28 > div:first-child {
+   background-position: -913px -610px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_29 > div:first-child {
+   background-position: -956px -613px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_31 > div:first-child {
+   background-position: -966px -630px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_30 > div:first-child {
+   background-position: -877px -632px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_39 > div:first-child {
+   background-position: -902px -650px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_37 > div:first-child {
+   background-position: -828px -658px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_36 > div:first-child {
+   background-position: -815px -688px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_38 > div:first-child {
+   background-position: -872px -682px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_40 > div:first-child {
+   background-position: -937px -676px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_41 > div:first-child {
+   background-position: -953px -686px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_42 > div:first-child {
+   background-position: -976px -687px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_43 > div:first-child {
+   background-position: -996px -687px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_44 > div:first-child {
+   background-position: -813px -804px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_52 > div:first-child {
+   background-position: -545px -517px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_50 > div:first-child {
+   background-position: -949px -799px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_51 > div:first-child {
+   background-position: -951px -816px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_49 > div:first-child {
+   background-position: -930px -807px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_48 > div:first-child {
+   background-position: -911px -812px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_46 > div:first-child {
+   background-position: -884px -796px;
+   width: 16px;
+   height: 16px;
+}
+
+
+.eyes_47 > div:first-child {
+   background-position: -881px -809px;
+   width: 23px;
+   height: 17px;
+}
+
+
+.eyes_45 > div:first-child {
+   background-position: -833px -808px;
+   width: 33px;
+   height: 25px;
+}
+
+
+/* 
+Expanded sizes
+Expanded sizes
+Expanded sizes 
+*/      
+
+
+
+
+
+.pccs3.shaman {
+    height: 630px; 
+    width: 507px;
+}
+
+
+.pccs3.assassin {
+    height: 537px; 
+    width: 552px;
+}
+
+
+.pccs3.warrior {
+    height: 633px; 
+    width: 753px;
+}
+
+
+.pccs3.wizard {
+    height: 612px; 
+    width: 396px;
+}
+
+
+.pccs2.shaman {
+    height: 420px; 
+    width: 338px;
+}
+
+
+.pccs2.assassin {
+    height: 358px; 
+    width: 368px;
+}
+
+
+.pccs2.warrior {
+    height: 422px; 
+    width: 502px;
+}
+
+
+.pccs2.wizard {
+    height: 408px; 
+    width: 264px;
+}
+
+
+.pccs1.shaman {
+    height: 210px; 
+    width: 169px;
+}
+
+
+.pccs1.assassin {
+    height: 179px; 
+    width: 184px;
+}
+
+
+.pccs1.warrior {
+    height: 211px; 
+    width: 251px;
+}
+
+
+.pccs1.wizard {
+    height: 204px; 
+    width: 132px;
+}
+
+
+.pccs0p6.shaman {
+    height: 126px; 
+    width: 101.39999999999999px;
+}
+
+
+.pccs0p6.assassin {
+    height: 107.39999999999999px; 
+    width: 110.39999999999999px;
+}
+
+
+.pccs0p6.warrior {
+    height: 126.6px; 
+    width: 150.6px;
+}
+
+
+.pccs0p6.wizard {
+    height: 122.39999999999999px; 
+    width: 79.2px;
+}

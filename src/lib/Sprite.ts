@@ -230,9 +230,11 @@ fix container size scale ${scale}
     }
 
     public renderExpandedSize(sizeName: string, si: ScaleItem) {
+
         if (!si.items) {
             return;
         }
+        let _name = sizeName.replace('.', 'p');
         let spriteNames = si.items;
         let sprites = <Sprite[]>spriteNames.map((name) => this.getSprite(name)).filter((f) => !!f);
         let spriteSizesScaled = sprites.map((s: Sprite) => s.cssWidthHeight(si.scale));
@@ -240,7 +242,7 @@ fix container size scale ${scale}
         let inverted: { [index: string]: string[]; } = {};
         spriteSizesScaled.reduce((prev, key, idx) => {
             prev[key] = prev[key] || [];
-            prev[key].push(`.${sizeName}.${sprites[idx].name}`);
+            prev[key].push(`.${_name}.${sprites[idx].name}`);
             return prev;
         }, inverted);
         // inversion complete , render blender
@@ -287,13 +289,13 @@ plts${scale} = [p]osition [l]eft [t]op, [s]cale ${scale}
      */
 
     public renderPositionCenterCenter(scale: number = 1) {
-
+        let _s = `${scale}`.replace('.', 'p');
         return `
 /* 
  pccs  =[p]osition [c]enter [c]enter, [s]cale  
 */
 
-.pccs${scale} > div:first-child {
+.pccs${_s} > div:first-child {
     transform-origin: 50% 50%;
     transform: translateX(-50%) translateY(-50%) scale(${scale});
     position: absolute;
@@ -430,6 +432,7 @@ Expanded sizes
         );
 
         // get cross product scale and sprite dimensions
+
         let fscExpanded = this._o.fsc && this._o.fsc.map((m) => this.renderExpandedSize(`fsc${m.scale}`, m));
         let pltsExpanded = this._o.plts && this._o.plts.map((m) => this.renderExpandedSize(`plts${m.scale}`, m));
         let pccsExpanded = this._o.pccs && this._o.pccs.map((m) => this.renderExpandedSize(`pccs${m.scale}`, m));

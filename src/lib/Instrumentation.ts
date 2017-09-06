@@ -44,6 +44,9 @@ export interface Entities {
     'common_items.sheet': AssetEntity;
     'floor_crypt.sheet': AssetEntity;
     'dungeon_decor_props.sheet': AssetEntity;
+    'main_menu_background_3ds.sheet': AssetEntity;
+    'main_menu_background_compact.sheet': AssetEntity;
+    'main_menu_background.sheet': AssetEntity;
     //'alert_icons.sheet': AssetEntity;
     //'cursor.sheet': AssetEntity;
     //'game_menus.sheet': AssetEntity;*/
@@ -80,7 +83,7 @@ const entities: Entities = {
                 { scale: { s: 10.5, perc: 30 }, lookToTheRight: true }],
             shadow: [
                 { scale: { s: 3, perc: 30 } }
-           ]
+            ]
         }
     },
     'heroes.sheet': { asset: require('../client/dungeon/heroes.sheet'), props: {} },
@@ -213,9 +216,90 @@ const entities: Entities = {
 
         }
     },
-    // 'alert_icons.sheet': { asset: require('../client/dungeon/alert_icons.sheet'), props: {} },
-    // 'cursor.sheet': { asset: require('../client/dungeon/cursor.sheet'), props: {} },
-    // 'game_menus.sheet': { asset: require('../client/dungeon/game_menus.sheet'), props: {} },*/
+    'main_menu_background_3ds.sheet': {
+        asset: require('../client/dungeon/main_menu_background_3ds.sheet'),
+        props: {
+            fsc: [{ scale: 3 }, { scale: 1 }],
+            pccs: [{ scale: 3 }, { scale: 1 }]
+        }
+    },
+    'main_menu_background_compact.sheet': {
+        asset: require('../client/dungeon/main_menu_background_compact.sheet'),
+        props: {
+            fsc: [{ scale: 3 }, { scale: 2 }, { scale: 1 }],
+            pccs: [
+                {
+                    scale: 3, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                },
+                {
+                    scale: 2, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }, {
+                    scale: 1, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }, {
+                    scale: 0.6, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }
+            ]
+        }
+    },
+    'main_menu_background.sheet': {
+        asset: require('../client/dungeon/main_menu_background.sheet'),
+        props: {
+            fsc: [{ scale: 3 }, { scale: 2 }, { scale: 1 }],
+            pccs: [
+                {
+                    scale: 3, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                },
+                {
+                    scale: 2, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }, {
+                    scale: 1, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }, {
+                    scale: 0.6, items: [
+                        'shaman',
+                        'assassin',
+                        'warrior',
+                        'wizard'
+                    ]
+                }
+            ]
+        }
+    }
+
 
 };
 
