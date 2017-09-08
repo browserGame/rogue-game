@@ -1,7 +1,14 @@
+function stickyNull(f: Function, ...p: number[]) {
+    let rc = f(...p);
+    if (Math.abs(rc) < Number.EPSILON) {
+        rc = 0;
+    }
+    return rc;
+}
 
-const sin = Math.sin;
-const cos = Math.cos;
-
+const cos = stickyNull.bind(undefined, Math.cos);
+const sin = stickyNull.bind(undefined, Math.sin);
+const d2r = Math.PI / 180;
 
 export interface Vector {
     x: number;
@@ -24,65 +31,160 @@ export function inProduct(v1: number[], v2: number[]) {
     return v1[0] * v2[0] + v1[1] * v2[0] + v1[2] * v2[2];
 }
 
-export function transpose(m2: number[]): number[] {
-    return [
-        m2[0], m2[4], m2[8], m2[12],
-        m2[1], m2[5], m2[9], m2[13],
-        m2[2], m2[6], m2[10], m2[14],
-        m2[3], m2[7], m2[11], m2[15],
-    ];
-}
-
-
-export function matrixMultmatrix(m1: number[], m2: number[]): number[] {
-    let v1 = [
-        ...matrix4MultVec4(m1, [m2[0], m2[4], m2[8], m2[12]]),
-        ...matrix4MultVec4(m1, [m2[1], m2[5], m2[9], m2[13]]),
-        ...matrix4MultVec4(m1, [m2[2], m2[6], m2[10], m2[14]]),
-        ...matrix4MultVec4(m1, [m2[3], m2[7], m2[11], m2[15]]),
-    ];
-    return transpose(v1);
-}
-
-
-function matrix4MultVec4(m1: number[], v: number[]): number[] {
-    let rc = new Array(4);
-    rc.fill(0);
-    for (let i = 0; i < 4; i++) {
-        rc[i] = inProduct([m1[4 * i], m1[4 * i + 1], m1[4 * i + 2], m1[4 * i + 3]], v);
-    }
-    return rc;
-}
 
 
 export class Matrix {
 
-
-
     private m: number[];
+    private _cols: number;
+    private _rows: number;
 
-    private init() {
-        this.m = [
-            1, 0, 0, 0,
-            0, 1, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1
-        ];
+    private init(matrix?: Matrix) {
+
+        if (matrix) {
+            this.m = matrix.m.slice(0);
+            this._cols = matrix.cols;
+            this._rows = matrix.rows;
+            return;
+        }
+        this.identity(0);
     }
 
-    contructor() {
-        this.init();
+    get [Symbol.toStringTag]() {
+        return 'Matrix';
     }
 
-    public rotateY(p: number) {
-        let rc = [
-            -sin(p), 0, cos(p), 0,
-            cos(p), 0, sin(p), 0,
-            0, 0, 0, 1
-        ];
-        this.m = matrixMultmatrix(rc, this.m);
+    public get cols() {
+        return this._cols;
+    }
+
+    public get rows() {
+        return this._rows;
+    }
+
+    public get data() {
+        return { c: this._cols, r: this._rows, m: this.m.slice(0) };
+    }
+
+    public set data({ c, r, m }) {
+        if (m.length !== c * r) {
+            throw new TypeError(`set data, Dimensions of matrix data dont match c:${c}, r:${r}, numCells:${m.length}`);
+        }
+        this._cols = c;
+        this._rows = r;
+        this.m = !m ? new Array(c * r).fill(0) : m.slice(0);
+    }
+
+    public rowd(i: number) {
+        if (i >= this._rows) {
+            return [];
+        }
+        return this.m.slice(i * this._cols, this._cols);
+    }
+
+    public cold(i: number) {
+        if (i >= this._cols) {
+            return [];
+        }
+        let rc = new Array(this._cols).fill(0);
+        rc.forEach((_, idx, arr) => arr[idx * this._cols + i]);
+        return rc;
+    }
+
+    public identity(rank: number) {
+        this.m = new Array(rank * rank).fill(0);
+        this._cols = rank;
+        this._rows = rank;
+        for (let i = 0; i < rank; i++) {
+            this.m[i * rank + i] = 1;
+        }
         return this;
     }
 
+    public mul(m2: Matrix) {
+
+        if (this._cols !== m2.rows) {
+            throw new TypeError(`matrices cannot be multiplied m1.cols:${this._cols} !== m2.rows:${m2.rows}.`);
+        }
+
+        let rc = new Array(this._rows * m2.cols).fill(0);
+
+        for (let i = 0; i < this._rows; i++) {
+            for (let j = 0; j < m2.cols; j++) {
+                for (let k = 0; k < this._cols; k++) {
+                    rc[i * m2.cols + j] += this.m[this._cols * i + k] * m2.m[m2.rows * j + k];
+                }
+            }
+        }
+
+        this.m = rc;
+        this._cols = m2.cols;
+        return this;
+    }
+
+    contructor(matrix?: Matrix) {
+        this.init(matrix);
+    }
+
+    public rotateY(p: number) {
+        let rc = new Matrix();
+        let sp = sin(p);
+        let cp = cos(p);
+        rc.data = {
+            c: 4,
+            r: 4,
+            m: [
+                cp, 0, sp, 0,
+                0, 1, 0, 0,
+                -sp, 0, cp, 0,
+                0, 0, 0, 1
+            ]
+        };
+        return rc.mul(this);
+    }
+    public rotateYd(p: number) {
+        return this.rotateY(p * d2r);
+    }
+    public rotateZ(p: number) {
+        let rc = new Matrix();
+        let sp = sin(p);
+        let cp = cos(p);
+        rc.data = {
+            c: 4,
+            r: 4,
+            m: [
+                cp, -sp, 0, 0,
+                sp, cp, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+            ]
+        };
+        return rc.mul(this);
+    }
+
+    public rotateZd(p: number) {
+        return this.rotateZ(p * d2r);
+    }
+
+    public rotateX(p: number) {
+        let rc = new Matrix();
+        let sp = sin(p);
+        let cp = cos(p);
+        rc.data = {
+            c: 4,
+            r: 4,
+            m: [
+                1, 0, 0, 0,
+                0, cp, -sp, 0,
+                0, sp, cp, 0,
+                0, 0, 0, 1
+            ]
+        };
+        return rc.mul(rc);
+    }
+    public rotateXd(p: number) {
+        return this.rotateX(p * d2r);
+    }
 
 }
+
