@@ -6,7 +6,6 @@ import * as path from 'path';
 import * as  express from 'express';
 import * as bodyParser from 'body-parser';
 import { createStyleSheets } from '../lib/Instrumentation';
-import { Matrix } from '../lib/math';
 
 /** */
 /*
@@ -199,7 +198,7 @@ init().then(() => {
     let server = app.listen(8080, function listen() {
         console.log('app is listening on ', server.address().port);
         //logger.warn('app is listening on 8080');
-        console.log(`some data:${JSON.stringify(new Matrix().identity(4).rotateY(Math.PI / 2).data)}`);
+      
 
     });
 });
