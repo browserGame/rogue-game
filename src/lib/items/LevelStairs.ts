@@ -1,57 +1,44 @@
 'use strict';
-import {
-    $Room,
-    getNameSpace,
-    $Item,
-    $GFragment
-} from './Room';
 
-import {
-    Vector
-} from './math';
+import { floorExtrusion, IGFragment, IItem, Room } from '~items';
 
-import {
-    LevelStairs,
-    Indirection,
-    LevelStairsType
-} from './Symbols';
+import { IVector } from '~math';
 
+import { IIndirection, ILevelStairs, ILevelStairsType } from '~symbols';
 
-import {
-    floorExtrusion
-} from './Floor';
-
-export interface $ItemStairs extends $Item {
-    toRoom: number;
-    alias?: Indirection;
-    stairs: Indirection | LevelStairsType;
-    level: number;
+export interface IItemStairs extends IItem {
+  toRoom: number;
+  alias?: IIndirection;
+  stairs: IIndirection | ILevelStairsType;
+  level: number;
 }
 
-export function processStairs(matrix: string[], width: number, room: $Room, coords: Vector[], si: LevelStairs) {
+export function processStairs(
+  _matrix: string[],
+  _width: number,
+  room: Room,
+  coords: IVector[],
+  si: ILevelStairs
+) {
+  const gui: IGFragment = {
+    auxClassNames: ['floor_crypt', 'stairs_down'],
+    left: 0,
+    size: ['plts3', 'fsc3'],
+    top: 0,
+    zIndex: 0
+  };
 
-    matrix;
-    width;
-
-    let gui: $GFragment = {
-        size: ['plts3', 'fsc3'],
-        auxClassNames: ['floor_crypt', 'stairs_down'],
-        left: 0,
-        top: 0,
-        zIndex: 0
-    };
-
-    let itm: $ItemStairs = {
-        tag: si.e,
-        p: coords[0],
-        toRoom: si.toRoom,
-        level: si.level,
-        alias: si.m,
-        stairs: si.stairs,
-        gui
-    };
-    console.log({ stairs: itm });
-    let stairs = getNameSpace(room, 'stairs');
-    floorExtrusion(room, itm);
-    stairs.push(itm);
+  const itm: IItemStairs = {
+    alias: si.m,
+    gui,
+    level: si.level,
+    p: coords[0],
+    stairs: si.stairs,
+    tag: si.e,
+    toRoom: si.toRoom
+  };
+  console.log({ stairs: itm });
+  const stairs = room.getNameSpace('stairs');
+  floorExtrusion(room, itm);
+  stairs.push(itm);
 }

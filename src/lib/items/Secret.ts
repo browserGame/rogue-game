@@ -21,7 +21,7 @@ import {
     processContents
 } from './GeneralContent';
 
-export interface $ItemSecret extends $Item {
+export interface IItemSecret extends $Item {
     has: GeneralContents[];
     hidden: boolean;
 }
@@ -31,13 +31,13 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
     matrix;
     width;
 
-    let fi = getContentAt(room, coords[0], '.');
+    const fi = getContentAt(room, coords[0], '.');
     if (!fi) {
         console.log('secret plate only possible on a floor tile:', coords[0]);
         return;
     }
 
-    let gui: $GFragment = {
+    const gui: $GFragment = {
         size: [],
         auxClassNames: [], 
         left: 0,
@@ -45,7 +45,7 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
         zIndex: 0
     };
 
-    let itm: $ItemSecret = {
+    const itm: $ItemSecret = {
         tag: si.e,
         p: coords[0],
         has: [],
@@ -57,7 +57,7 @@ export function processSecret(matrix: string[], width: number, room: $Room, coor
 
     // secret has to be on a tile (prolly has checks for carpets)
 
-    let secret = getNameSpace(room, 'secret');
+    const secret = getNameSpace(room, 'secret');
     secret.push(itm);
     console.log('secret', JSON.stringify(itm));
     return;

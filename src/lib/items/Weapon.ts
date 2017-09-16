@@ -11,8 +11,8 @@ import {
 } from './math';
 
 import {
-    AllWeapons,
-    //GeneralContent
+    AllWeapons
+    // GeneralContent
 } from './Symbols';
 
 import {
@@ -24,14 +24,14 @@ import {
 } from './GeneralContainer';
 
 
-export interface $ItemArsenal extends $Item {
+export interface IItemArsenal extends $Item {
     addXp: number;
     addHp: number;
     addDp: number;
 }
 
 const strArrGen = (l: number, prefix: string) => {
-    let arr = new Array(l);
+    const arr = new Array(l);
     arr.fill(0);
     return arr.map((_c, idx) => `${prefix}_${idx + 1}`);
 };
@@ -52,18 +52,18 @@ export function processWeapons(
     si: AllWeapons) {
 
     /**
-    
+
     export type ArsenalType =
     //. [Z] shield shield_1 t/m shield_14
     //. [t] mace mace_1 t/m mace_18
     //. [ç] pants  pants_1 t/m pants_11
-    //. [x] boots shoes_1 t/m shoes_11 
+    //. [x] boots shoes_1 t/m shoes_11
     //
-   
+
     */
 
 
-    let gui: $GFragment = {
+    const gui: $GFragment = {
         size: ['pxcb3s30', 'fsc3'],
         auxClassNames: ['shadow2p5s20', 'equipment', sampleFromListEqualProb(select[si.e])],
         left: 0,
@@ -73,7 +73,7 @@ export function processWeapons(
     };
 
 
-    let itm: $ItemArsenal = {
+    const itm: $ItemArsenal = {
         tag: si.e,
         p: coords[0],
         addHp: si.addHp || 0,
@@ -83,12 +83,12 @@ export function processWeapons(
     };
     //
     //
-    let { x, y } = coords[0];
+    const { x, y } = coords[0];
     //
     //  Not hidden it is on the playboard
     //
     if (x >= 0 && y >= 0 && isRoom(container)) {
-        let drops = getNameSpace(container, 'weapons');
+        const drops = getNameSpace(container, 'weapons');
         drops.push(itm);
         console.log('weapons', JSON.stringify(itm));
         return;

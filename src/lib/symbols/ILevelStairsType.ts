@@ -1,1 +1,1 @@
-export type LevelStairsType = 'µ';
+export type ILevelStairsType = 'µ';

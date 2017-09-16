@@ -26,12 +26,10 @@ import {
 } from './GeneralContainer';
 
 
-
-export interface $ItemValuable extends $Item {
+export interface IItemValuable extends $Item {
     credit: number;
     color: ColorCoinType | ColorStonesType;
 }
-
 
 
 export function processValuable(_matrix: string[], _width: number, container: GeneralContainer, coords: Vector[], si: AllValuebles) {
@@ -74,7 +72,7 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
         }
     };
 
-    let className = (() => {
+    const className = (() => {
         if (isStone(si)) {
             return `treasure_stone_${select.L[(<Stone>si).color]}`;
         }
@@ -97,7 +95,7 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
         gui.auxClassNames.push('shadow2p5s20');
     }
 
-    let itm: $ItemValuable = {
+    const itm: $ItemValuable = {
         tag: si.e,
         p: coords[0],
         credit: si.credit,
@@ -106,18 +104,18 @@ export function processValuable(_matrix: string[], _width: number, container: Ge
     };
     //
     //
-    let { x, y } = coords[0];
+    const { x, y } = coords[0];
     //
     //  Not hidden it is on the playboard
     //
     if (x >= 0 && y >= 0 && isRoom(container)) {
-        let drops = getNameSpace(container, 'drops');
+        const drops = getNameSpace(container, 'drops');
         drops.push(itm);
         console.log('drops', JSON.stringify(itm));
         return;
     }
     //
-    // 
+    //
     //
     if (!isRoom(container)) {
         container.has.push(itm);

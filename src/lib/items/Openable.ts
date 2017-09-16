@@ -25,7 +25,7 @@ import {
     processContents
 } from './GeneralContent';
 
-export interface $ItemOpenable extends $Item {
+export interface IItemOpenable extends $Item {
     has: GeneralContents[];
     opened: boolean;
 }
@@ -35,7 +35,7 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
     const select = {
         z: sampleFromListEqualProb(['bookshelf_1', 'bookshelf_2']), //bookshelf_1_searched, bookshelf_2_searched
         '&': 'safe', //safe_open
-        H: sampleFromListEqualProb(['coffin_02', 'coffin_01']), // coffine_open_02, //coffin_open_01
+        H: sampleFromListEqualProb(['coffin_02', 'coffin_01']), // Coffine_open_02, //coffin_open_01
         '*': sampleFromListEqualProb(['table_1', 'table_2']) //table_broken
     };
 
@@ -46,7 +46,7 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
         '*': 'dungeon_objects'
     };
 
-    let gui: $GFragment = {
+    const gui: $GFragment = {
         size:  ['pxcb3s30', 'fsc3'],
         auxClassNames: ['shadow3s30', namespace[si.e], select[si.e]],
         left: 0,
@@ -69,7 +69,7 @@ export function processOpenable(matrix: string[], width: number, room: $Room, co
 
     // secret has to be on a tile (prolly has checks for carpets)
 
-    let secret = getNameSpace(room, 'openable');
+    const secret = getNameSpace(room, 'openable');
     secret.push(itm);
     console.log('openable', JSON.stringify(itm));
     return;

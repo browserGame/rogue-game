@@ -1,3 +1,3 @@
 import { IDoorWay } from './IDoorWay';
 
-export type IDoorRight = IDoorWay<'<'>;
+export type IDoorRight = IDoorWay<'>'>;

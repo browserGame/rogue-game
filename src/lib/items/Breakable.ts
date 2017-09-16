@@ -20,7 +20,7 @@ import {
     processContents
 } from './GeneralContent';
 
-interface IItemBreakable extends IItem {
+export interface IItemBreakable extends IItem {
     has: GeneralContents[];
     broken: boolean;
 }

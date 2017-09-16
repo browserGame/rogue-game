@@ -1,4 +1,4 @@
-import { Room } from '~items/Room';
+import { Room } from '~items';
 
 export function isRoom(r: any): r is Room {
 

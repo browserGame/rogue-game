@@ -1,7 +1,7 @@
 
-import { ISymbolBase } from '~items';
-import { Room } from '~items/Room';
+import { Room } from '~items';
 import { IVector } from '~linear-algebra';
+import { ISymbolBase } from '~symbols';
 
-export type TDungParser =
+export type IDungParser =
 (matrix: string[], width: number, room: Room, coords: IVector[], si: ISymbolBase<string>) => void;

@@ -1,4 +1,4 @@
 import { IArsenal } from './IArsenal';
 
-export type IBoots = IArsenal<'Z'>;
+export type IBoots = IArsenal<'x'>;
 

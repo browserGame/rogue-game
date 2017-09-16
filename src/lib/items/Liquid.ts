@@ -1,66 +1,53 @@
 'use strict';
+import { floorExtrusion, IGFragment, IItem, Room } from '~items';
 
-// [(]lava
-// [O] water
-// [$] acid bath
+import { IVector } from '~math';
 
-import {
-    $Room,
-    getNameSpace
-} from './Room';
+import { IAllLiquids } from '~symbols';
 
-import {
-    Vector
-} from './math';
+import { coordsNoExtrusions } from '~utils';
 
-import {
-    Water, Acid, Lava
-} from './Symbols';
-
-import {
-    floorExtrusion
-} from './Floor';
-
-import {
-    $Item,
-    $GFragment
-} from './Room';
-
-import { isValidArea } from '~utils';
-
-export interface $ItemLiquid extends $Item {
-    br: Vector;
-    /*color: string;*/
+export interface IItemLiquid extends IItem {
+  br: IVector;
 }
 
+export function processLiquid(
+  _matrix: string[],
+  _width: number,
+  room: Room,
+  coords: IVector[],
+  si: IAllLiquids
+) {
+  const { isValid, first, last } = coordsNoExtrusions(coords);
 
-export function processLiquid(_matrix: string[], _width: number, room: $Room, coords: Vector[], si: Water | Acid | Lava) {
+  if (!isValid) {
+    console.log(
+      `room: ${room.pk} has an invalid liquid (${first.x},${first.y})->(${last.x},${last.y}) ${JSON.stringify(
+        coords
+      )}`
+    );
 
-    let { isValid, first, last } = isValidArea(coords);
+    return; // Do nothing
+  }
 
-    if (!isValid) {
-        console.log(`room: ${room.pk} has an invalid liquid (${first.x},${first.y})->(${last.x},${last.y}) ${JSON.stringify(coords)}`);
-        return; //do nothing
-    }
+  const NS = {
+    '$': 'liquid_acid',
+    '(': 'liquid_lava',
+    'O': 'liquid_water',
+    '£': 'liquid_swamp'
+  };
 
-    let NS = {
-        O: 'liquid_water',
-        '(': 'liquid_lava',
-        $: 'liquid_acid',
-        '£': 'liquid_swamp'
-    };
+  const gui: IGFragment = {
+    auxClassNames: [NS[si.e]],
+    left: 0,
+    size: ['pccs3', 'fsc3'],
+    top: 0,
+    zIndex: 0
+  };
 
-    let gui: $GFragment = {
-        size: ['pccs3', 'fsc3'],
-        auxClassNames: [NS[si.e]],
-        left: 0,
-        top: 0,
-        zIndex: 0
-    };
-
-    let itm: $ItemLiquid = { tag: si.e, p: first, br: last, gui };
-    console.log({ liquid: itm });
-    floorExtrusion(room, itm);
-    let liquid = getNameSpace(room, 'liquid');
-    liquid.push(itm);
+  const itm: IItemLiquid = { tag: si.e, p: first, br: last, gui };
+  console.log({ liquid: itm });
+  floorExtrusion(room, itm);
+  const liquid = room.getNameSpace('liquid');
+  liquid.push(itm);
 }
