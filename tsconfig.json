@@ -1,31 +1,79 @@
 {
+  "compilerOptions": {
+    "allowUnreachableCode": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": [
+      "es6",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "paths": {
+      "~assets/*": [
+        "src/client/dungeon/*",
+        "src/client/sound/*"
+      ],
+      "~instrumentation": [
+        "src/lib/instrumentation/index.ts"
+      ],
+      "~instrumentation/*": [
+        "src/lib/instrumentation/*"
+      ],
+      "~items": [
+        "src/lib/items/index.ts"
+      ],
+      "~items/*": [
+        "src/lib/items/*",
+        "src/lib/items/interfaces/*"
+      ],
+      "~lib/*": [
+        "src/lib/*"
+      ],
+      "~linear-algebra": [
+        "src/lib/math/linear-algebra/index.ts"
+      ],
+      "~math": [
+        "src/lib/math/index.ts"
+      ],
+      "~math/*": [
+        "src/lib/math/*"
+      ],
+      "~stats": [
+        "src/lib/math/statistics/index.ts"
+      ],
+      "~symbols": [
+        "src/lib/symbols/index.ts"
+      ],
+      "~symbols/*": [
+        "src/lib/symbols/*",
+        "src/lib/symbols/typeguards/*"
+      ],
+      "~ui/*": [
+        "src/lib/client/*"
+      ],
+      "~utils": [
+        "src/lib/utils/index.ts"
+      ]
+    },
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017"
+  },
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "compilerOptions": {
-    "strict": true,
-    "declaration": true,
-    "target": "es2017",
-    "jsx": "react",
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "module": "commonjs",
-    "sourceMap": true,
-    "rootDir": "./",
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "experimentalDecorators": true,
-    "allowUnreachableCode":true,
-    /*outDir is overriden in the gulp file*/
-    "outDir": "dist"
-  }
+  ]
 }

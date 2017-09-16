@@ -21,6 +21,7 @@ for (const rule of module.exports.module.rules) {
     rule.include.push(
         resolve('src/client'), 
         resolve('src/lib'),
+        resolve('src/lib/instrumentation'),
         resolve('src/client/dungeon') //for loading png files not xml 
     );
 }
