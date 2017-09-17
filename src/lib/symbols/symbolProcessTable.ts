@@ -21,7 +21,7 @@ import {
   processValuable,
   processWalls,
   processWeapons
-} from '../items';
+} from '~items';
 
 import { IAllSymbols } from '~symbols';
 
