@@ -38,7 +38,7 @@
     "no-non-null-assertion": false,
     "no-parameter-reassignment": true,
     "no-reference": true,
-    "no-unnecessary-type-assertion": true,
+    "no-unnecessary-type-assertion": false,
     "no-var-requires": false,
     "only-arrow-functions": [
       true,

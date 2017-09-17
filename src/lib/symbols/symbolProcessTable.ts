@@ -23,7 +23,12 @@ import {
   processValuable,
   processWalls,
   processWeapons
-} from '~items';
+} from '../items';
+
+
+// X import { processDoor } from '../items/processDoor';
+// X import { processWalls } from '../items/processWalls';
+
 
 import { IAllSymbols } from '~symbols';
 

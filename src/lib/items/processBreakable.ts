@@ -5,17 +5,17 @@ import {
     IItem,
     processContents,
     Room
-} from '~items';
+} from '../items';
 
 
 import {
     IVector,
     sampleFromListEqualProb
- } from '~math';
+ } from '../math';
 
 import {
     IAllBreakables
-} from '~symbols';
+} from '../symbols';
 
 
 export interface IItemBreakable extends IItem {

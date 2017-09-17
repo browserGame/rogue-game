@@ -19,7 +19,7 @@ export * from './processSpecial';
 export * from './processStairs';
 export * from './processTraps';
 export * from './processValuable';
-export { processWalls } from './processWalls';
+export * from './processWalls';
 export * from './processWeapons';
 export * from './Room';
 export * from './interfaces/ICarpet';
