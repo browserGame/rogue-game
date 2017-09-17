@@ -46,7 +46,7 @@
       "allow-declarations"
     ],
     "prefer-for-of": true,
-    "promise-function-async": true,
+    "promise-function-async": false,
     "typedef": false,
     "typedef-whitespace": [
       true,
@@ -68,7 +68,7 @@
     "unified-signatures": true,
 
     /* --- Functionality --- */
-    "await-promise": true, // Thenable?
+    "await-promise": false, // Thenable?
     "ban": false,
     "curly": [true, "ignore-same-line"],
     "forin": false,
@@ -84,7 +84,7 @@
     "no-duplicate-variable": [true, "check-parameters"],
     "no-empty": true,
     "no-eval": true,
-    "no-floating-promises": true,
+    "no-floating-promises": false,
     "no-for-in-array": true,
     "no-inferred-empty-object-type": false,
     "no-invalid-template-strings": true,

@@ -12,7 +12,7 @@ import {
   IEntities
 } from './';
 
-export async function createStyleSheets(createFiles: boolean = true): Promise<any> {
+export function createStyleSheets(createFiles: boolean = true): Promise<any> {
   if (typeof process.env.CSSDIR !== 'string') {
     return Promise.reject(
       'process.env.CSSDIR is not defined, please check your webpack config'

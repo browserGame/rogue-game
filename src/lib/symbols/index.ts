@@ -1,4 +1,3 @@
-export * from './forbiddenProcess';
 export * from './IAcid';
 export * from './IAllBreakables';
 export * from './IAllEdibles';
@@ -103,7 +102,6 @@ export * from './IVase';
 export * from './IWater';
 export * from './IWizardStatue';
 export * from './IQuestRing';
-export * from './noopProcess';
 export * from './symbolProcessTable';
 export * from './TypeDungeonParser';
 export * from './typeguards/isCoin';

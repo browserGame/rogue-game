@@ -19,9 +19,10 @@ if (process.argv.length > 2) {
       console.log('something went wrong', e);
       process.exit(2);
     });
+  } else {
+    console.log('Wrong commad line argument use --scss to generate scss sheets.');
+    process.exit(1);
   }
-  console.log('Wrong commad line argument use --scss to generate scss sheets.');
-  process.exit(1);
 }
 
 const app = express();

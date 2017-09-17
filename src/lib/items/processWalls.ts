@@ -1,5 +1,5 @@
-import { IDoor, IGFragment, IItem, Room } from '~items';
-import { addV, IVector, negV, sampleFromList } from '~math';
+import { addV, IVector, negV, sampleFromList } from '../math';
+import { IDoor, IGFragment, IItem, Room } from './';
 
 type HWallType = 'top_top_1' | 'top_top_2';
 type VWallType = 'wall_side_1' | 'wall_side_2';
