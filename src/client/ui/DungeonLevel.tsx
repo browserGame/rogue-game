@@ -2,22 +2,18 @@
 import * as React from 'react';
 
 import {
-    $Item,
-    $Room,
-    getNameSpace
-} from '../lib/Room';
-
-import {
-    gGame
-} from '../lib/MockDungeon';
+    gGame,
+    IItem,
+    Room
+} from '~items';
 
 import {
     resolverMap
 } from './Css';
 
 import {
-    Vector
-} from '../lib/math';
+    IVector
+} from '~math';
 
 /*
 Design decisions for ReactJS,
@@ -63,12 +59,12 @@ TO avoid this:
 
 const cellDim = 24;
 
-export interface DungeonLevelProperties {
+export interface IDungeonLevelProperties {
     level: number;
     scale: number;
 }
 
-interface RenderProps {
+interface IRenderProps {
     ns: string;
     zOffset?: number;
     dx?: number;
@@ -76,19 +72,73 @@ interface RenderProps {
     hasShadow?: boolean;
 }
 
-const globZ = (r: $Room, y: number) => (r.top + y) * 100;
-const globTop = (r: $Room, y: number, scale: number) => (r.top + y) * cellDim * scale;
-const globLeft = (r: $Room, x: number, scale: number) => (r.left + x) * cellDim * scale;
+const globZ = (r: Room, y: number) => (r.top + y) * 100;
+const globTop = (r: Room, y: number, scale: number) => (r.top + y) * cellDim * scale;
+const globLeft = (r: Room, x: number, scale: number) => (r.left + x) * cellDim * scale;
 
-export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
+export class DungeonLevel extends React.Component<IDungeonLevelProperties> {
 
     private level: number;
     private _s: number;
 
-    public constructor(props: DungeonLevelProperties) {
+    public constructor(props: IDungeonLevelProperties) {
         super(props);
         this.level = props.level;
         this._s = props.scale;
+    }
+
+    public render() {
+        const _s = this._s;
+        const fp = gGame[this.level];
+        const styles = {
+            height: `${fp.height * _s * cellDim}px`,
+            width: `${fp.width * _s * cellDim}px`
+        };
+        //
+        // Allwallfragments, allFloorTyles
+        //
+        const walls: JSX.Element[] = this.renderNameSpace({ ns: 'walls' });
+        const floorTiles: JSX.Element[] = this.renderNameSpace({ ns: 'floor' });
+        const carpets: JSX.Element[] = this.renderNameSpace({ ns: 'carpet' });
+        const stairs: JSX.Element[] = this.renderNameSpace({ ns: 'stairs' });
+        const skullBones: JSX.Element[] = this.renderNameSpace({ ns: 'skull&bones', zOffset: 1 });
+        const cobWebs: JSX.Element[] = this.renderNameSpace({ ns: 'cobwebs' });
+        const breakable: JSX.Element[] = this.renderNameSpace({ ns: 'breakable', zOffset: 2, hasShadow: true });
+        const openable: JSX.Element[] = this.renderNameSpace({ ns: 'openable', zOffset: 4, hasShadow: true });
+        const enemies: JSX.Element[] = this.renderNameSpace({ ns: 'enemy', zOffset: 7, hasShadow: true });
+        const doors: JSX.Element[] = this.renderNameSpace({ ns: 'doors', zOffset: 7 });
+        const floorGlyphs: JSX.Element[] = this.renderNameSpace({ ns: 'floor-glyphs', zOffset: 1 });
+        const specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1, hasShadow: true });
+        const liquids: JSX.Element[] = this.renderLiquid();
+        const drops: JSX.Element[] = this.renderNameSpace({ ns: 'drops', zOffset: 1 });
+        const edible: JSX.Element[] = this.renderNameSpace({ ns: 'edible', zOffset: 1 });
+        const weapons: JSX.Element[] = this.renderNameSpace({ ns: 'weapons', zOffset: 1 });
+        const traps: JSX.Element[] = this.renderNameSpace({ ns: 'traps', zOffset: 1 });
+        const teleport: JSX.Element[] = this.renderNameSpace({ ns: 'portal', zOffset: 4 });
+
+        //
+        // Doors;
+        //
+        return (<div style={styles} >
+            {walls}
+            {floorTiles}
+            {liquids}
+            {carpets}
+            {stairs}
+            {traps}
+            {floorGlyphs}
+            {skullBones}
+            {cobWebs}
+            {specials}
+            {breakable}
+            {openable}
+            {enemies}
+            {doors}
+            {drops}
+            {edible}
+            {weapons}
+            {teleport}
+        </div>);
     }
 
     private renderLiquid() {
@@ -97,19 +147,21 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         console.log(`drawing ns:${name}`);
         const elts: JSX.Element[] = [];
         roomPks.reduce((coll, id) => {
-            const room = floorPlan.rooms.get(id) as $Room;
+            const room = floorPlan.rooms.get(id) as Room;
             const liquids = room.getNameSpace('liquid');
             liquids.forEach(l => {
                 coll.push(...this.renderLiquidRoom(room, l));
             });
+
             return coll;
         },             elts);
+
         return elts;
     }
 
-    private renderLiquidRoom(r: $Room, m: $Item): JSX.Element[] {
-        const brx = (m.br as Vector).x;
-        const bry = (m.br as Vector).y;
+    private renderLiquidRoom(r: Room, m: IItem): JSX.Element[] {
+        const brx = (m.br as IVector).x;
+        const bry = (m.br as IVector).y;
         const _s = this._s;
         const rc: JSX.Element[] = [];
         const nrCellsx = brx - m.p.x;
@@ -124,10 +176,10 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                 const zIndex = globZ(r, m.p.y);
 
                 const LiquidAnim: React.CSSProperties = {
-                    zIndex,
-                    top: `${top}px`,
                     left: `${left}px`,
-                    position: 'absolute'
+                    position: 'absolute',
+                    top: `${top}px`,
+                    zIndex
                 };
 
                 rc.push(<div
@@ -138,10 +190,10 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                 </div>);
 
                 const frame: React.CSSProperties = {
-                    zIndex: zIndex + 1,
-                    top: LiquidAnim.top,
                     left: LiquidAnim.left,
-                    position: 'absolute'
+                    position: 'absolute',
+                    top: LiquidAnim.top,
+                    zIndex: zIndex + 1
                 };
 
                 const cl = (() => {
@@ -169,6 +221,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                     // Right wall
                     if (i === nrCellsx) return 'top_right';
                     // Everything else, has no frame
+
                     return undefined;
                 })();
                 if (cl === undefined) continue;
@@ -184,7 +237,7 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         return rc;
     }
 
-    private renderNameSpace(props: RenderProps) {
+    private renderNameSpace(props: IRenderProps) {
         /*name: string, cssResolver: (...rest: string[]) => string, zOffset: number = 0, dx: number = 0, dy: number = 0) {
           */
         const name = props.ns;
@@ -199,14 +252,14 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
         console.log(`drawing ns:${name}`);
         const elts: JSX.Element[] = [];
         roomPks.reduce((coll, id) => {
-            const r = floorPlan.rooms.get(id) as $Room;
-            const asset = getNameSpace(r, name);
+            const r = floorPlan.rooms.get(id) as Room;
+            const asset = r.getNameSpace(name);
             const html = asset.filter(f => !!f.gui.size).map(itm => {
                 const styles: React.CSSProperties = {
-                    zIndex: globZ(r, itm.p.y) + zOffset,
-                    top: `${globTop(r, itm.p.y, _s) + dy * _s}px`,
                     left: `${globLeft(r, itm.p.x, _s) + dx * _s}px`,
-                    position: 'absolute'
+                    position: 'absolute',
+                    top: `${globTop(r, itm.p.y, _s) + dy * _s}px`,
+                    zIndex: globZ(r, itm.p.y) + zOffset
                 };
                 const size: string[] = (!(itm.gui.size instanceof Array) ? [itm.gui.size] : itm.gui.size) as string[];
 
@@ -227,62 +280,12 @@ export class DungeonLevel extends React.Component<DungeonLevelProperties, {}> {
                 </div >);
             });
             coll.push(...html);
+
             return coll;
         },             elts);
+
         return elts;
     }
 
-    public render() {
-        const _s = this._s;
-        const fp = gGame[this.level];
-        const styles = {
-            width: `${fp.width * _s * cellDim}px`,
-            height: `${fp.height * _s * cellDim}px`
-        };
-        //
-        // Allwallfragments, allFloorTyles
-        //
-        const walls: JSX.Element[] = this.renderNameSpace({ ns: 'walls' });
-        const floorTiles: JSX.Element[] = this.renderNameSpace({ ns: 'floor' });
-        const carpets: JSX.Element[] = this.renderNameSpace({ ns: 'carpet' });
-        const stairs: JSX.Element[] = this.renderNameSpace({ ns: 'stairs' });
-        const skullBones: JSX.Element[] = this.renderNameSpace({ ns: 'skull&bones', zOffset: 1 });
-        const cobWebs: JSX.Element[] = this.renderNameSpace({ ns: 'cobwebs' });
-        const breakable: JSX.Element[] = this.renderNameSpace({ ns: 'breakable', zOffset: 2, hasShadow: true });
-        const openable: JSX.Element[] = this.renderNameSpace({ ns: 'openable', zOffset: 4, hasShadow: true });
-        const enemies: JSX.Element[] = this.renderNameSpace({ ns: 'enemy', zOffset: 7, hasShadow: true });
-        const doors: JSX.Element[] = this.renderNameSpace({ ns: 'doors', zOffset: 7 });
-        const floorGlyphs: JSX.Element[] = this.renderNameSpace({ ns: 'floor-glyphs', zOffset: 1 });
-        const specials: JSX.Element[] = this.renderNameSpace({ ns: 'specials', zOffset: 1, hasShadow: true });
-        const liquids: JSX.Element[] = this.renderLiquid();
-        const drops: JSX.Element[] = this.renderNameSpace({ ns: 'drops', zOffset: 1 });
-        const edible: JSX.Element[] = this.renderNameSpace({ ns: 'edible', zOffset: 1 });
-        const weapons: JSX.Element[] = this.renderNameSpace({ ns: 'weapons', zOffset: 1 });
-        const traps: JSX.Element[] = this.renderNameSpace({ ns: 'traps', zOffset: 1 });
-        const teleport: JSX.Element[] = this.renderNameSpace({ ns: 'portal', zOffset: 4 });
-        //
-        // Doors;
-        //
-        return (<div style={styles} >
-            {walls}
-            {floorTiles}
-            {liquids}
-            {carpets}
-            {stairs}
-            {traps}
-            {floorGlyphs}
-            {skullBones}
-            {cobWebs}
-            {specials}
-            {breakable}
-            {openable}
-            {enemies}
-            {doors}
-            {drops}
-            {edible}
-            {weapons}
-            {teleport}
-        </div>);
-    }
 }
 

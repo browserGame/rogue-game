@@ -1,8 +1,10 @@
 'use strict';
 import {
+    IGeneralContents,
     IGFragment,
     IGUISizeTypeKeys,
     IItem,
+    processContents,
     Room
 } from '~items';
 
@@ -15,17 +17,13 @@ import {
     IAllEnemies
 } from '~symbols';
 
-import {
-    GeneralContents,
-    processContents
-} from './GeneralContent';
 
 export interface IItemEnemy extends IItem {
     xp: number;
     hp: number;
     level: number;
     triggeredBy?: string;
-    has: GeneralContents[];
+    has: IGeneralContents[];
 }
 
 export function isEnemyItem(s: any): s is IItemEnemy {

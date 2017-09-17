@@ -1,5 +1,6 @@
 'use strict';
 import {
+    floorExtrusion,
     IGFragment,
     IItem,
     Room
@@ -12,10 +13,6 @@ import {
 import {
     ICarpet
 } from '~symbols';
-
-import {
-    floorExtrusion
-} from './Floor';
 
 import {
     coordsNoExtrusions

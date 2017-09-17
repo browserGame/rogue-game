@@ -1,4 +1,4 @@
-import { IIndirection } from '~items';
+import { IIndirection } from './';
 
 export interface ISymbolBase<T> {
     m?: IIndirection;

@@ -12,9 +12,13 @@ if (process.argv.length > 2) {
   const isJs = /\.js/i.test(process.argv[1]);
   const isSCSS = /^--scss$/i.test(process.argv[2]);
   if (isNode && isJs && isSCSS) {
-    createStyleSheets();
-    console.log('scss files created');
-    process.exit(0);
+    createStyleSheets()
+    .then(() => console.log('scss files created'))
+    .then(() => process.exit(0))
+    .catch(e => {
+      console.log('something went wrong', e);
+      process.exit(2);
+    });
   }
   console.log('Wrong commad line argument use --scss to generate scss sheets.');
   process.exit(1);

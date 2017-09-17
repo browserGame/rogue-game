@@ -119,7 +119,7 @@ fix container size scale ${scale}
   public renderExpandedSize(sizeName: string, si: IScaleItem) {
 
     if (!si.items) {
-      return;
+      return undefined;
     }
     const _name = sizeName.replace('.', 'p');
     const spriteNames = si.items;

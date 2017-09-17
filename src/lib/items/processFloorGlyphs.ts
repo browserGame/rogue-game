@@ -8,7 +8,7 @@ export interface IItemFloor extends IItem {
   enabled: boolean;
 }
 
-export function processGlyphs(
+export function processFloorGlyphs(
   _matrix: string[],
   _width: number,
   room: Room,

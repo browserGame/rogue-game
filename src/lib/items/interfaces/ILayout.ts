@@ -1,4 +1,4 @@
-import { ISymbolBase } from '~items';
+import { ISymbolBase } from '~symbols';
 
 export interface ILayout {
     room: string[];

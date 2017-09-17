@@ -1,9 +1,5 @@
 import {
     IGeneralContainer,
-    IItemArsenal,
-    IItemEdible,
-    IItemKnowable,
-    IItemValuable,
     processEdible,
     processKnowable,
     processValuable,
@@ -21,8 +17,6 @@ import {
     isValuable,
     isWeapon
 } from '~symbols';
-
-export type GeneralContents = IItemEdible | IItemValuable | IItemArsenal | IItemKnowable;
 
 
 export function processContents(matrix: string[], width: number, container: IGeneralContainer, si: ISIGeneralContent) {

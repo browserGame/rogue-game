@@ -1,6 +1,6 @@
 'use strict';
 import {
-    GeneralContainer,
+    IGeneralContainer,
     IGFragment,
     IItem,
     isRoom
@@ -29,37 +29,9 @@ export interface IItemEdible extends IItem {
 export function processEdible(
     _matrix: string[],
     _width: number,
-    container: GeneralContainer,
+    container: IGeneralContainer,
     coords: IVector[],
     si: IAllEdibles) {
-
-    /*
-
-    export type EdibleType =
-    's' | //   bottle water
-    'p' | // bottle  milk
-    'r' | //   chicken-bone
-    'q' | //   cheese
-    'i' | //   elixer
-    ';' | //   fish
-    '§' | //   mana
-    'l'; //   magic-potion
- BottleWater | BottleMilk | ChickenBone | Cheese | Elixer | Fish | Mana | MagicPotion;
-
-namespace: .common_items
-
-    .milk
-    .water
-    .chicken_leg
-    .cheese
-    .rotten_cheese
-    .hp_elixir
-    .hp_tube
-    .fish
-    .mana_tube
-    .magic_bottle
- */
-
 
     const select = {
         ';': 'fish',

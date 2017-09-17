@@ -1,5 +1,5 @@
-
 'use strict';
+
 import {
     IGFragment,
     IItem,
@@ -11,15 +11,11 @@ import {
    sampleFromListEqualProb
 } from '~math';
 
-
 const skeletons = [1, 2, 3, 4, 5, 8].map(sk => `skeleton_remains_0${sk}`);
-
 
 export function processSkullAndBones(_matrix: string[], _width: number, room: Room, coords: IVector[]) {
 
-
     const skulls = coords.map(v => {
-
         const gui: IGFragment = {
             auxClassNames: ['dungeon_decor_props', sampleFromListEqualProb(skeletons)],
             left: 0,

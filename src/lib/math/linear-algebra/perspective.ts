@@ -1,4 +1,4 @@
-import { IVector } from '~math/IVector';
+import { IVector } from '~math';
 
 export function perspective(lensFocus: number, v: IVector): IVector {
 

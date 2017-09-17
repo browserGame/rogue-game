@@ -6,7 +6,7 @@ import { addV, ISample, IVector, sampleFromList } from '~math';
 export function processFloor(matrix: string[], width: number, room: Room) {
   const height = matrix.length / width;
 
-  const st = <IVector> room.doors[0].p;
+  const st = room.doors[0].p;
 
   const isObstructable = (v: IVector) => {
     const walls = room.getContentAt(v, '#┗┓┛┏┃━(O$é');

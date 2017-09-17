@@ -1,1 +1,1 @@
-export type PortalType = 'X';
+export type IPortalType = 'X';

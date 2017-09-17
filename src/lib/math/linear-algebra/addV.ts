@@ -1,7 +1,7 @@
 'use strict';
 
 import * as clone from 'clone';
-import { IVector } from '~math/IVector';
+import { IVector } from '~math';
 
 
 export function addV(a: IVector, b: IVector): IVector {

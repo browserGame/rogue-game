@@ -20,7 +20,7 @@ export class AnimationSheet {
 
   public constructor(sheetName: string, anims: IAnimationData[]) {
     this._name = sheetName;
-    this.animations = new Map(
+    this.animations = new Map<string, Animation>(
       anims.map(a => [a.name, new Animation(a)] as [string, Animation])
     );
     gCache.set(sheetName, this);

@@ -16,9 +16,8 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "paths": {
-      "~assets/*": [
-        "src/client/dungeon/*",
-        "src/client/sound/*"
+      "~assets": [
+        "src/client/dungeon/"
       ],
       "~instrumentation": [
         "src/lib/instrumentation/index.ts"

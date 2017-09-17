@@ -38,7 +38,7 @@
     "no-non-null-assertion": false,
     "no-parameter-reassignment": true,
     "no-reference": true,
-    "no-unnecessary-type-assertion": true,
+    "no-unnecessary-type-assertion": false,
     "no-var-requires": false,
     "only-arrow-functions": [
       true,
@@ -103,7 +103,7 @@
     "no-unsafe-any": false,
     "no-unsafe-finally": true,
     "no-unused-expression": false,
-    "no-unused-variable": [true, { "ignore-pattern": "^_" }],
+    "no-unused-variable": [false, { "ignore-pattern": "^_" }],
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-void-expression": [true, "ignore-arrow-function-shorthand"],
@@ -219,7 +219,7 @@
     "no-unnecessary-initializer": true,
     "no-unnecessary-qualifier": true,
     "number-literal-format": true,
-    "object-literal-key-quotes": [true, "consistent-as-needed"],
+    "object-literal-key-quotes": [false, "consistent-as-needed"],
     "object-literal-shorthand": true,
     "one-line": [
       true,

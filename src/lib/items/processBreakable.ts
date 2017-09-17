@@ -1,7 +1,9 @@
 'use strict';
 import {
+    IGeneralContents,
     IGFragment,
     IItem,
+    processContents,
     Room
 } from '~items';
 
@@ -15,13 +17,9 @@ import {
     IAllBreakables
 } from '~symbols';
 
-import {
-    GeneralContents,
-    processContents
-} from './GeneralContent';
 
 export interface IItemBreakable extends IItem {
-    has: GeneralContents[];
+    has: IGeneralContents[];
     broken: boolean;
 }
 
@@ -75,7 +73,7 @@ export function processBreakable(matrix: string[], width: number, room: Room, co
         tag: si.e
     };
 
-    si.has && si.has.forEach(c => processContents(matrix, width, itm, c));
+    if (si.has) si.has.forEach(c => processContents(matrix, width, itm, c));
 
     // Secret has to be on a tile (prolly has checks for carpets)
 

@@ -9,7 +9,7 @@ export * from './IAllOpenables';
 export * from './IAllSpells';
 export * from './IAllSymbols';
 export * from './IAllTraps';
-export * from './IAllValuables';
+export * from './IAllValuebles';
 export * from './IAllWeapons';
 export * from './IArsenal';
 export * from './IArsenalType';

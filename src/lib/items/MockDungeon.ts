@@ -1363,7 +1363,7 @@ export function compileDungeon(): IDungeonGameModel {
 
       for (const d of room.doors) {
         const r = roomsToDo.get(d.to);
-        r && formatRooms(r);
+        if (r) formatRooms(r);
       }
     }
 

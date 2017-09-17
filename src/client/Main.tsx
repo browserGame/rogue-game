@@ -3,9 +3,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { createStyleSheets } from '../lib/instrumentation/index';
-import { compileDungeon } from '../lib/MockDungeon';
-import { css } from './Css';
+import { createStyleSheets } from '~instrumentation';
+import { compileDungeon } from '~items';
+import { css } from './ui/Css';
 import { DungeonLevel } from './ui/DungeonLevel';
 const cssRogue = require('./rogue');
 
@@ -37,7 +37,7 @@ function App() {
 window.onload = () => {
     const app = document.getElementById('app');
     if (app) {
-        createStyleSheets(false);
+        createStyleSheets(false).catch(e => console.log(e));
         compileDungeon();
         app.classList.add(cssRogue['main']);
         ReactDOM.render(<App />, app);

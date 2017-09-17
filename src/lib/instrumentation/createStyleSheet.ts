@@ -1,5 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
 
 import {
   AnimationSheet,
@@ -10,7 +12,7 @@ import {
   IEntities
 } from './';
 
-export function createStyleSheets(createFiles: boolean = true): Promise<any> {
+export async function createStyleSheets(createFiles: boolean = true): Promise<any> {
   if (typeof process.env.CSSDIR !== 'string') {
     return Promise.reject(
       'process.env.CSSDIR is not defined, please check your webpack config'

@@ -1,5 +1,5 @@
 import * as clone from 'clone';
-import { IVector } from '~math/IVector';
+import { IVector } from '~math';
 
 export function negV(a: IVector): IVector {
 
