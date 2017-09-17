@@ -46,7 +46,7 @@
       "allow-declarations"
     ],
     "prefer-for-of": true,
-    "promise-function-async": true,
+    "promise-function-async": false,
     "typedef": false,
     "typedef-whitespace": [
       true,

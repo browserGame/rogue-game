@@ -12,13 +12,8 @@
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "outDir": "dist",
     "paths": {
-      "~assets": [
-        "src/client/dungeon/"
-      ],
       "~instrumentation": [
         "src/lib/instrumentation/index.ts"
       ],
@@ -61,7 +56,7 @@
         "src/lib/utils/index.ts"
       ]
     },
-    "rootDir": ".",
+    "rootDir": "./",
     "sourceMap": true,
     "strict": true,
     "target": "es2017"
@@ -72,7 +67,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "test/**/*.ts",
+    "test/**/*.tsx"
   ]
 }

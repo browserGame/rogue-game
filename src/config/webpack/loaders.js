@@ -131,11 +131,16 @@ const tslint = {
         {
             loader: 'tslint-loader',
             options: {
-                extends: resolve('tslint.json'),
-                emitErrors: true
+                configFile: resolve('tslint.json'),
+                emitErrors: false,
+                failOnHint: false,
+                typeCheck: true,
+                fix: false,
+                tsConfigFile: resolve('tsconfig.json')
             }
         }
     ]
 };
+
 
 module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner ,xml  };
