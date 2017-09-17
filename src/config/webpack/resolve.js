@@ -22,7 +22,6 @@ module.exports = {
       'fs':'src/client/shims/fs.js',
       'path':'src/client/shims/path.js'
     }
-    
   }
 };
 
