@@ -1,5 +1,5 @@
 import { IAllSymbols } from '~symbols';
-
+// tslint:disable:object-literal-key-quotes
 
 export type Resolver = (...rest: string[]) => string | never;
 

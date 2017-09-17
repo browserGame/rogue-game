@@ -1,5 +1,5 @@
 'use strict';
-
+// tslint:disable:object-literal-key-quotes
 import { IGFragment, IItem, Room } from '~items';
 import { IVector } from '~math';
 import { ISpecialtyItems } from '~symbols';

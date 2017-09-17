@@ -1,7 +1,9 @@
 'use strict';
-
+// tslint:disable:object-literal-key-quotes
 import {
+  forbidden,
   IDungeonParser,
+  noopProcess,
   processBreakable,
   processCarpet,
   processCobWeb,
@@ -25,14 +27,6 @@ import {
 
 import { IAllSymbols } from '~symbols';
 
-const dud = (): void => {
-  return;
-};
-
-const forbidden = (): never => {
-  throw new Error('forbidden');
-};
-
 
 export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
     // tslint:disable:object-literal-sort-keys
@@ -40,7 +34,7 @@ export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
     '.': processFloor, // Xx floor
     //
     // Quest reults
-    N: dud, // Treasure quest-result
+    N: noopProcess, // Treasure quest-result
     //
     // Dungeon floor coverings
     //

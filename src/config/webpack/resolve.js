@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
-const ext = ['.js', '.ts', '.jsx', '.tsx', '.scss', '.sass', '.css', '.sheet'];
+const ext = ['.js', '.ts', '.jsx', '.tsx', '.scss', '.sass', '.css', '.sheet','.anim'];
 
 module.exports = {
   server: {
