@@ -1,4 +1,4 @@
-import { Sprite } from '~instrumentation/Sprite';
+import { Sprite } from '~instrumentation/sprite';
 
 export class AnimationFrame {
 
