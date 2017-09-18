@@ -72,7 +72,7 @@ export function parseLayout(layout: ILayout) {
             dtag.forEach(key => {
                 const si = metaInfo.get(key) || { e: key };
 
-                const processor = symbolProcessTable[(si && si.e) || key];
+                const processor = symbolProcessTable((si && si.e) || key);
                 if (processor) {
                     //   Console.log(`pk:${pk} layer:${idx} key:${(si && si.e) || key}`);
                     processor(matrix, width, room, itemPalette[key], si);

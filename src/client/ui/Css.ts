@@ -34,7 +34,7 @@ export const css = {
     general: (...rest: string[]) => rest.map(r => require('../rogue')[r]).join(' ')
 };
 
-function forbidden(..._rest: string[]): never {
+function forbiddenResolver(..._rest: string[]): never {
     throw new Error('this symbol has no resolver resolveris forbidden');
 }
 
@@ -93,7 +93,7 @@ export const resolverMap: IAllSymbols<Resolver> = Object.freeze({
     m: css.common_fo, // Xx half moon trap
     R: css.common_fo, // Xx pentagram
     // Below will never be procesed coz, its a secret
-    C: forbidden, // Xx secret pressure plate
+    C: forbiddenResolver, // Xx secret pressure plate
     //
     // Claws, spikes
     //

@@ -1,7 +1,13 @@
 'use strict';
 // tslint:disable:object-literal-key-quotes
+
+/* I tried using an index.ts that re-export all the classes/types from ../items but it doesnt work for processSymbolTable
+ * I think that it has to do how webpack creates this structure at init time
+ *
+ */
+
 import {
-  forbidden,
+  forbiddenProcess,
   IDungeonParser,
   noopProcess,
   processBreakable,
@@ -23,17 +29,21 @@ import {
   processValuable,
   processWalls,
   processWeapons
-} from '../items';
-
-
-// X import { processDoor } from '../items/processDoor';
-// X import { processWalls } from '../items/processWalls';
-
+} from '~items';
 
 import { IAllSymbols } from '~symbols';
 
+/**
+ *
+ * I have to wrap it into a function because if it is a "module global" object, then
+ * the webpack will not initiate the object properly if it import uses an tsconfig path alias
+ *
+ * Yes this was tested to be so
+ *
+ */
 
-export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
+export function symbolProcessTable(key: keyof IAllSymbols<IDungeonParser>) {
+  const _symbolProcessTable: IAllSymbols<IDungeonParser> = {
     // tslint:disable:object-literal-sort-keys
     '#': processWalls, // Xx wall
     '.': processFloor, // Xx floor
@@ -46,7 +56,7 @@ export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
     K: processCobWeb, // Xx cobweb, same as carpet, everything above
     A: processSkullAndBones, // Xx skull , floor or carper below, blood seeps below
     é: processCarpet, // Xx carpet, like a floor nothing more, nothing below this
-    '=': forbidden, // "(blood) seeps to floor or carpet",
+    '=': forbiddenProcess, // "(blood) seeps to floor or carpet",
     '²': processFloorGlyphs,
     //
     // Doorways and portals
@@ -82,7 +92,7 @@ export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
     I: processFloorGlyphs, // Xx red pentagram trap
     m: processFloorGlyphs, // Xx half moon trap
     R: processFloorGlyphs, // Xx pentagram
-    C: processFloorGlyphs, // Xx secret pressure plate
+    C: noopProcess, // Xx secret pressure plate
     //
     // Claws, spikes
     //
@@ -135,5 +145,7 @@ export const symbolProcessTable: IAllSymbols<IDungeonParser> = {
     '§': processEdible, //   Mana
     l: processEdible //   Magic-potion
     // tslint:enable:object-literal-sort-keys
+  };
 
-};
+  return _symbolProcessTable[key];
+}
