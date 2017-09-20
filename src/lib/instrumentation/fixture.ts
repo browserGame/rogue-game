@@ -213,7 +213,6 @@ export const fixture: IEntities = {
             ]
         }
     },
-
     'main_menu_background_3ds.sheet': {
         asset: require('~assets/main_menu_background_3ds.sheet'),
         props: {
@@ -264,7 +263,22 @@ export const fixture: IEntities = {
                 }
             ]
         }
+    },
+    'cursor.sheet': {
+        asset: require('~assets/cursor.sheet'),
+        props: {
+            fsc: [{ scale: 3 }, { scale: 1 }]
+          // X  pccs: [{ scale: 3 }, { scale: 1 }]
+        }
+    },
+    'alert_icons.sheet': {
+        asset: require('~assets/alert_icons.sheet'),
+        props: {
+            fsc: [{ scale: 3 }, { scale: 1 }],
+            pccs: [{ scale: 3 }, { scale: 1 }]
+        }
     }
+
 
 };
 

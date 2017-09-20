@@ -1,7 +1,7 @@
 @import "reset";
 $container-padding: 1em;
 html,
-body, .main {
+body {
     height: 100%;
     width: 100%;
 }
@@ -10,13 +10,16 @@ body {
     background: black;
 }
 
-
 .container {
     position: relative;
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+* {
+    box-sizing: border-box;
 }
 

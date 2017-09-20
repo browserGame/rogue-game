@@ -3,20 +3,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import { createCSSClassMapper } from '~css-tools';
 import { createStyleSheets } from '~instrumentation';
 import { compileDungeon } from '~items';
-import { css } from './ui/Css';
-import { DungeonLevel } from './ui/DungeonLevel';
-const cssRogue = require('./rogue');
+import {
+ //   DungeonLevel
+} from '~ui-dungeon';
+import { Intro } from '~ui-intro';
+
+
+const css = createCSSClassMapper(require('main.scss'));
 
 function App() {
-    return (<div className={css.general('container')}>
-        <DungeonLevel level={0} scale={3} />
-        {/*
-        <div className={enemy('enemies', 'normal', 'dragon02_idle')}><div></div></div>
-        <div className={enemy('enemies', 'boss', 'lizard05_idle')}><div></div></div>
-        <div className={enemy('enemies', 'boss', 'death03_idle')} ><div></div></div>
-        */}
+    return (<div className={css('container')}>
+        {/*<DungeonLevel level={0} scale={3} />
         {
             <div style={
                 {
@@ -30,7 +30,8 @@ function App() {
                     zIndex: 999999
                 }
             }></div>
-          }
+          }*/}
+          <Intro />
     </div>);
 }
 
@@ -39,7 +40,7 @@ window.onload = () => {
     if (app) {
         createStyleSheets(false).catch(e => console.log(e));
         compileDungeon();
-        app.classList.add(cssRogue['main']);
+        app.classList.add(css('container'));
         ReactDOM.render(<App />, app);
     }
 };

@@ -49,9 +49,19 @@
         "src/lib/symbols/*",
         "src/lib/symbols/typeguards/*"
       ],
-      "~ui/*": [
-        "src/lib/client/*"
+      "~ui": [
+        "src/client/ui/index.ts"
       ],
+      "~ui-dungeon": [
+        "src/client/ui/dungeon/index.ts"
+      ],
+      "~css-tools":[
+        "src/client/ui/css/index.ts"
+      ],
+      "~ui-intro":[
+        "src/client/ui/intro/index.ts"
+      ],
+
       "~utils": [
         "src/lib/utils/index.ts"
       ]

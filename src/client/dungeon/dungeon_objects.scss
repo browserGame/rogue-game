@@ -1,8 +1,8 @@
 
-
-/*  
-   Computer Generated CSS, 
-   See README.md on how to (re)-generate 
+    
+/*
+   Computer Generated CSS,
+   See README.md on how to (re)-generate
 */
 
 
@@ -14,17 +14,17 @@
 }
 
 
-/* 
-fix container size scale 3 
-*/    
+/*
+fix container size scale 3
+*/
 .fsc3 {
     height: 72px !important;
     width: 72px !important;
-}        
+}
 
 
-/* 
-plts3 = [p]osition [l]eft [t]op, [s]cale 3 
+/*
+plts3 = [p]osition [l]eft [t]op, [s]cale 3
 */
 .plts3 > div:first-child {
    transform-origin: 0 0;
@@ -35,8 +35,8 @@ plts3 = [p]osition [l]eft [t]op, [s]cale 3
 }
 
 
-/* 
- pccs  =[p]osition [c]enter [c]enter, [s]cale  
+/*
+ pccs  =[p]osition [c]enter [c]enter, [s]cale
 */
 
 .pccs3 > div:first-child {
@@ -48,8 +48,8 @@ plts3 = [p]osition [l]eft [t]op, [s]cale 3
 }
 
 
-/* 
- xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y] 
+/*
+ xcbXsY = [p]osition [xc]enter [b]ottom[Xp]ercent, [s]cale [Y]
 */
 
 .pxcb3s30 > div:first-child {
@@ -81,332 +81,332 @@ plts3 = [p]osition [l]eft [t]op, [s]cale 3
 }
 
 
-/* 
+/*
 Static Sprites
-Static Sprites 
-Static Sprites 
-*/        
-
-
-.bookshelf_1_searched > div:first-child {
-   background-position: -0px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.bookshelf_2_searched > div:first-child {
-   background-position: -24px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.bookshelf_1 > div:first-child {
-   background-position: -48px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.bookshelf_2 > div:first-child {
-   background-position: -72px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.table_1 > div:first-child {
-   background-position: -96px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.table_2 > div:first-child {
-   background-position: -120px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.table_broken > div:first-child {
-   background-position: -186px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.box_1 > div:first-child {
-   background-position: -144px -0px;
-   width: 21px;
-   height: 24px;
-}
-
-
-.box_1_broken > div:first-child {
-   background-position: -165px -0px;
-   width: 21px;
-   height: 24px;
-}
-
-
-.vase_1 > div:first-child {
-   background-position: -1px -25px;
-   width: 17px;
-   height: 22px;
-}
-
-
-.vase_2 > div:first-child {
-   background-position: -19px -25px;
-   width: 16px;
-   height: 22px;
-}
-
-
-.vase_1_broken > div:first-child {
-   background-position: -36px -32px;
-   width: 16px;
-   height: 15px;
-}
-
-
-.vase_3 > div:first-child {
-   background-position: -53px -25px;
-   width: 17px;
-   height: 22px;
-}
-
-
-.vase_4 > div:first-child {
-   background-position: -71px -25px;
-   width: 16px;
-   height: 22px;
-}
-
-
-.vase_3_broken > div:first-child {
-   background-position: -88px -32px;
-   width: 16px;
-   height: 15px;
-}
-
-
-.statue_1 > div:first-child {
-   background-position: -147px -24px;
-   width: 23px;
-   height: 24px;
-}
-
-
-.statue_broken > div:first-child {
-   background-position: -171px -33px;
-   width: 23px;
-   height: 15px;
-}
-
-
-.statue_2 > div:first-child {
-   background-position: -194px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.statue_3 > div:first-child {
-   background-position: -218px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.monument_1 > div:first-child {
-   background-position: -0px -48px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.monument_2 > div:first-child {
-   background-position: -24px -48px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.monument_broken > div:first-child {
-   background-position: -48px -48px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.monument_3 > div:first-child {
-   background-position: -72px -48px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.monument_4 > div:first-child {
-   background-position: -96px -48px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.grave_1 > div:first-child {
-   background-position: -105px -96px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.grave_2 > div:first-child {
-   background-position: -129px -96px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.grave_broken > div:first-child {
-   background-position: -153px -96px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.vase_5 > div:first-child {
-   background-position: -1px -74px;
-   width: 17px;
-   height: 22px;
-}
-
-
-.vase_6 > div:first-child {
-   background-position: -19px -74px;
-   width: 16px;
-   height: 22px;
-}
-
-
-.vase_7 > div:first-child {
-   background-position: -1px -98px;
-   width: 17px;
-   height: 22px;
-}
-
-
-.vase_8 > div:first-child {
-   background-position: -19px -98px;
-   width: 16px;
-   height: 22px;
-}
-
-
-.vase_9 > div:first-child {
-   background-position: -53px -98px;
-   width: 17px;
-   height: 22px;
-}
-
-
-.vase_10 > div:first-child {
-   background-position: -71px -98px;
-   width: 16px;
-   height: 22px;
-}
-
-
-.vase_5_broken > div:first-child {
-   background-position: -36px -81px;
-   width: 16px;
-   height: 15px;
-}
-
-
-.vase_7_broken > div:first-child {
-   background-position: -36px -105px;
-   width: 16px;
-   height: 15px;
-}
-
-
-.vase_9_broken > div:first-child {
-   background-position: -88px -105px;
-   width: 16px;
-   height: 15px;
-}
-
-
-.barril_2 > div:first-child {
-   background-position: -160px -72px;
-   width: 20px;
-   height: 24px;
-}
-
-
-.barril_1 > div:first-child {
-   background-position: -139px -72px;
-   width: 20px;
-   height: 24px;
-}
-
-
-.barril_broken > div:first-child {
-   background-position: -181px -82px;
-   width: 19px;
-   height: 14px;
-}
-
-
-.coffin_01 > div:first-child {
-   background-position: -56px -72px;
-   width: 19px;
-   height: 24px;
-}
-
-
-.coffin_open_01 > div:first-child {
-   background-position: -76px -72px;
-   width: 19px;
-   height: 24px;
-}
-
-
-.coffin_02 > div:first-child {
-   background-position: -96px -72px;
-   width: 22px;
-   height: 24px;
-}
-
-
-.coffin_open_02 > div:first-child {
-   background-position: -119px -72px;
-   width: 19px;
-   height: 24px;
-}
-
-
-/* 
-Expanded sizes
-Expanded sizes
-Expanded sizes 
-*/      
-
-
-
-
-
-            
-/* 
-Animations part
-Animations part
-Animations part 
+Static Sprites
+Static Sprites
 */
-            
 
+
+  .bookshelf_1_searched > div:first-child {
+     background-position: -0px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .bookshelf_2_searched > div:first-child {
+     background-position: -24px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .bookshelf_1 > div:first-child {
+     background-position: -48px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .bookshelf_2 > div:first-child {
+     background-position: -72px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .table_1 > div:first-child {
+     background-position: -96px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .table_2 > div:first-child {
+     background-position: -120px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .table_broken > div:first-child {
+     background-position: -186px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .box_1 > div:first-child {
+     background-position: -144px -0px;
+     width: 21px;
+     height: 24px;
+  }
+  
+
+  .box_1_broken > div:first-child {
+     background-position: -165px -0px;
+     width: 21px;
+     height: 24px;
+  }
+  
+
+  .vase_1 > div:first-child {
+     background-position: -1px -25px;
+     width: 17px;
+     height: 22px;
+  }
+  
+
+  .vase_2 > div:first-child {
+     background-position: -19px -25px;
+     width: 16px;
+     height: 22px;
+  }
+  
+
+  .vase_1_broken > div:first-child {
+     background-position: -36px -32px;
+     width: 16px;
+     height: 15px;
+  }
+  
+
+  .vase_3 > div:first-child {
+     background-position: -53px -25px;
+     width: 17px;
+     height: 22px;
+  }
+  
+
+  .vase_4 > div:first-child {
+     background-position: -71px -25px;
+     width: 16px;
+     height: 22px;
+  }
+  
+
+  .vase_3_broken > div:first-child {
+     background-position: -88px -32px;
+     width: 16px;
+     height: 15px;
+  }
+  
+
+  .statue_1 > div:first-child {
+     background-position: -147px -24px;
+     width: 23px;
+     height: 24px;
+  }
+  
+
+  .statue_broken > div:first-child {
+     background-position: -171px -33px;
+     width: 23px;
+     height: 15px;
+  }
+  
+
+  .statue_2 > div:first-child {
+     background-position: -194px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .statue_3 > div:first-child {
+     background-position: -218px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .monument_1 > div:first-child {
+     background-position: -0px -48px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .monument_2 > div:first-child {
+     background-position: -24px -48px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .monument_broken > div:first-child {
+     background-position: -48px -48px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .monument_3 > div:first-child {
+     background-position: -72px -48px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .monument_4 > div:first-child {
+     background-position: -96px -48px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .grave_1 > div:first-child {
+     background-position: -105px -96px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .grave_2 > div:first-child {
+     background-position: -129px -96px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .grave_broken > div:first-child {
+     background-position: -153px -96px;
+     width: 24px;
+     height: 24px;
+  }
+  
+
+  .vase_5 > div:first-child {
+     background-position: -1px -74px;
+     width: 17px;
+     height: 22px;
+  }
+  
+
+  .vase_6 > div:first-child {
+     background-position: -19px -74px;
+     width: 16px;
+     height: 22px;
+  }
+  
+
+  .vase_7 > div:first-child {
+     background-position: -1px -98px;
+     width: 17px;
+     height: 22px;
+  }
+  
+
+  .vase_8 > div:first-child {
+     background-position: -19px -98px;
+     width: 16px;
+     height: 22px;
+  }
+  
+
+  .vase_9 > div:first-child {
+     background-position: -53px -98px;
+     width: 17px;
+     height: 22px;
+  }
+  
+
+  .vase_10 > div:first-child {
+     background-position: -71px -98px;
+     width: 16px;
+     height: 22px;
+  }
+  
+
+  .vase_5_broken > div:first-child {
+     background-position: -36px -81px;
+     width: 16px;
+     height: 15px;
+  }
+  
+
+  .vase_7_broken > div:first-child {
+     background-position: -36px -105px;
+     width: 16px;
+     height: 15px;
+  }
+  
+
+  .vase_9_broken > div:first-child {
+     background-position: -88px -105px;
+     width: 16px;
+     height: 15px;
+  }
+  
+
+  .barril_2 > div:first-child {
+     background-position: -160px -72px;
+     width: 20px;
+     height: 24px;
+  }
+  
+
+  .barril_1 > div:first-child {
+     background-position: -139px -72px;
+     width: 20px;
+     height: 24px;
+  }
+  
+
+  .barril_broken > div:first-child {
+     background-position: -181px -82px;
+     width: 19px;
+     height: 14px;
+  }
+  
+
+  .coffin_01 > div:first-child {
+     background-position: -56px -72px;
+     width: 19px;
+     height: 24px;
+  }
+  
+
+  .coffin_open_01 > div:first-child {
+     background-position: -76px -72px;
+     width: 19px;
+     height: 24px;
+  }
+  
+
+  .coffin_02 > div:first-child {
+     background-position: -96px -72px;
+     width: 22px;
+     height: 24px;
+  }
+  
+
+  .coffin_open_02 > div:first-child {
+     background-position: -119px -72px;
+     width: 19px;
+     height: 24px;
+  }
+  
+
+/*
+Expanded sizes
+Expanded sizes
+Expanded sizes
+*/
+
+
+
+
+
+
+    /*
+    Animations part
+    Animations part
+    Animations part
+    */
+
+    
 .campfire > div:first-child {
     animation-name: campfire;
     animation-duration: 800ms;
@@ -428,3 +428,4 @@ Animations part
     }
 }
 
+    

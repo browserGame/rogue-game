@@ -7,4 +7,6 @@ export * from './mapSymbols';
 export * from './parseLayout';
 export * from './validateRoomMetrics';
 export * from './createPalette';
+export * from './isString';
+export * from './isNumber';
 

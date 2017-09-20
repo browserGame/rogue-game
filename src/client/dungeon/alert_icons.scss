@@ -1,105 +1,89 @@
 
-        
-        /* SpriteSheet */
-        /* SpriteSheet */
-        /* SpriteSheet */
-        
-        .alert_icons > div {
-            background: url('./alert_icons.png');
-            background-origin: border-box;
-            image-rendering: pixelated;
-        }
-
-        /* general sizing */
-        /* general sizing */
-        /* general sizing */
-
-        .super>div,
-        .boss>div,
-        .normal>div {
-            transform-origin: 0 0;
-        }
-
-        .normal>div {
-            transform: scale(3) translateX(-50%);
-            position: absolute;
-            left: 50%;
-            bottom: 30%;
-        }
-
-        .boss>div {
-            transform: scale(3.75);
-        }
-
-        .boss.super>div {
-            transform: scale(10.5);
-        }
+/*
+   Computer Generated CSS,
+   See README.md on how to (re)-generate
+*/
 
 
-        .super.boss.look-right>div,
-        .normal.look-right>div,
-        .boss.look-right>div {
-            transform-origin: right top;
-        }
+.alert_icons > div:first-child {
+   background: url('./alert_icons.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
+}
 
-        .normal.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3);
-        }
 
-        .boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(3.75);
-        }
+/*
+fix container size scale 3
+*/
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
 
-        .super.boss.look-right>div {
-            transform: scaleX(-1) translateX(100%) scale(10.5);
-        }
 
-        .smooth,
-        .smooth>div {
-            transition: all 2s;
-        }
-             
-        
-        /* Static Sprites */
-        /* Static Sprites */
-        /* Static Sprites */
-        
-        
-            .alerted > div {
-                background-position: -2px -0px;
-                width: 14px;
-                height: 32px;
-            }
-        
+/*
+fix container size scale 1
+*/
+.fsc1 {
+    height: 24px !important;
+    width: 24px !important;
+}
 
-            .sleeping > div {
-                background-position: -19px -0px;
-                width: 24px;
-                height: 32px;
-            }
-        
-        
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-        /* Static Sprites Sizes */
-                
-         .normal.alerted {
-                height: 96px; width: 42px;
-            }
- .boss.alerted {
-                height: 120px; width: 52.5px;
-            }
- .boss.super.alerted {
-                height: 336px; width: 147px;
-            }
- .normal.sleeping {
-                height: 96px; width: 72px;
-            }
- .boss.sleeping {
-                height: 120px; width: 90px;
-            }
- .boss.super.sleeping {
-                height: 336px; width: 252px;
-            } 
 
-        
+/*
+ pccs  =[p]osition [c]enter [c]enter, [s]cale
+*/
+
+.pccs3 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/*
+ pccs  =[p]osition [c]enter [c]enter, [s]cale
+*/
+
+.pccs1 > div:first-child {
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+
+/*
+Static Sprites
+Static Sprites
+Static Sprites
+*/
+
+
+  .alerted > div:first-child {
+     background-position: -2px -0px;
+     width: 14px;
+     height: 32px;
+  }
+  
+
+  .sleeping > div:first-child {
+     background-position: -19px -0px;
+     width: 24px;
+     height: 32px;
+  }
+  
+
+/*
+Expanded sizes
+Expanded sizes
+Expanded sizes
+*/
+
+
+
+

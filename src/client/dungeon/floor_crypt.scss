@@ -1,7 +1,7 @@
 
-/*  
-   Computer Generated CSS, 
-   See README.md on how to (re)-generate 
+/*
+   Computer Generated CSS,
+   See README.md on how to (re)-generate
 */
 
 
@@ -13,17 +13,17 @@
 }
 
 
-/* 
-fix container size scale 3 
-*/    
+/*
+fix container size scale 3
+*/
 .fsc3 {
     height: 72px !important;
     width: 72px !important;
-}        
+}
 
 
-/* 
-plts3 = [p]osition [l]eft [t]op, [s]cale 3 
+/*
+plts3 = [p]osition [l]eft [t]op, [s]cale 3
 */
 .plts3 > div:first-child {
    transform-origin: 0 0;
@@ -34,143 +34,143 @@ plts3 = [p]osition [l]eft [t]op, [s]cale 3
 }
 
 
-/* 
+/*
 Static Sprites
-Static Sprites 
-Static Sprites 
-*/        
+Static Sprites
+Static Sprites
+*/
 
 
-.top_single > div:first-child {
-   background-position: -0px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .top_single > div:first-child {
+     background-position: -0px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .floor_0 > div:first-child {
+     background-position: -72px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.floor_0 > div:first-child {
-   background-position: -72px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .floor_1 > div:first-child {
+     background-position: -96px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .floor_2 > div:first-child {
+     background-position: -120px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.floor_1 > div:first-child {
-   background-position: -96px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .floor_3 > div:first-child {
+     background-position: -144px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .stairs_up > div:first-child {
+     background-position: -168px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.floor_2 > div:first-child {
-   background-position: -120px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .stairs_down > div:first-child {
+     background-position: -192px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .wall_side_1 > div:first-child {
+     background-position: -336px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.floor_3 > div:first-child {
-   background-position: -144px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .top_top_left_corner > div:first-child {
+     background-position: -384px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .top_top_right_corner > div:first-child {
+     background-position: -408px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.stairs_up > div:first-child {
-   background-position: -168px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .top_bottom_left_corner > div:first-child {
+     background-position: -432px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .top_bottom_right_corner > div:first-child {
+     background-position: -456px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.stairs_down > div:first-child {
-   background-position: -192px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .wall_side_2 > div:first-child {
+     background-position: -120px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .top_top_2 > div:first-child {
+     background-position: -144px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.wall_side_1 > div:first-child {
-   background-position: -336px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .door > div:first-child {
+     background-position: -168px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .door_open > div:first-child {
+     background-position: -192px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.top_top_left_corner > div:first-child {
-   background-position: -384px -0px;
-   width: 24px;
-   height: 24px;
-}
+  .top_empty > div:first-child {
+     background-position: -0px -24px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
+  .top_top_1 > div:first-child {
+     background-position: -264px -0px;
+     width: 24px;
+     height: 24px;
+  }
+  
 
-.top_top_right_corner > div:first-child {
-   background-position: -408px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.top_bottom_left_corner > div:first-child {
-   background-position: -432px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.top_bottom_right_corner > div:first-child {
-   background-position: -456px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.wall_side_2 > div:first-child {
-   background-position: -120px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.top_top_2 > div:first-child {
-   background-position: -144px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.door > div:first-child {
-   background-position: -168px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.door_open > div:first-child {
-   background-position: -192px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.top_empty > div:first-child {
-   background-position: -0px -24px;
-   width: 24px;
-   height: 24px;
-}
-
-
-.top_top_1 > div:first-child {
-   background-position: -264px -0px;
-   width: 24px;
-   height: 24px;
-}
-
-
-/* 
+/*
 Expanded sizes
 Expanded sizes
-Expanded sizes 
-*/      
+Expanded sizes
+*/
 
 

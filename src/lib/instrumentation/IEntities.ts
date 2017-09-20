@@ -25,7 +25,7 @@ export interface IEntities {
   'main_menu_background_3ds.sheet': IAssetEntity;
   'main_menu_background_compact.sheet': IAssetEntity;
   'main_menu_background.sheet': IAssetEntity;
-  // 'alert_icons.sheet': IAssetEntity;
-  // 'cursor.sheet': IAssetEntity;
-  // 'game_menus.sheet': IAssetEntity;*/
+  'alert_icons.sheet': IAssetEntity;
+  'cursor.sheet': IAssetEntity;
+  // 'game_menus.sheet': IAssetEntity;
 }

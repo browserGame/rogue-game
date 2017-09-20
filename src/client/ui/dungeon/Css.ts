@@ -1,50 +1,51 @@
+import { createCSSClassMapper, IResolver } from '~css-tools';
 import { IAllSymbols } from '~symbols';
+
+const css: { [index: string]: IResolver } = (function initCSS() {
+  const _css: { [index: string]: string } = {
+    enemies: 'enemies',
+    hero: 'heroes', //
+    // tslint:disable-next-line:object-literal-sort-keys
+    common_itm: 'common_items',
+    common_fo: 'common_floor_objects',
+    dungeon_o: 'dungeon_objects',
+    liquid_acid: 'liquid_acid',
+    liquid_lava: 'liquid_lava',
+    liquid_swamp: 'liquid_swamp',
+    liquid_water: 'liquid_water',
+    floor_crypt: 'floor_crypt',
+    dungeon_decor_props: 'dungeon_decor_props',
+    alert_icons: 'alert_icons', //
+    cursor: 'cursor', //
+    gameMenusCompact: 'main_menu_background_compact', //
+    gameMenus: 'main_menu_background',
+    gameMenus3ds: 'main_menu_background_3ds',
+    equipment: 'equipment'
+  };
+  const rc: { [index: string]: IResolver } = {};
+  for (const propName in _css) {
+    rc[propName] = createCSSClassMapper(
+      require(`~assets/${_css[propName]}.scss`)
+    );
+  }
+
+  return rc;
+})();
+
 // tslint:disable:object-literal-key-quotes
 
-export type Resolver = (...rest: string[]) => string | never;
-
-function createCSSClassMapper(scssResource: string): Resolver {
-
-    const self = require(`~assets/${scssResource}.scss`);
-
-    return function classList(...rest: string[]): string {
-        const arr = rest.map(c => self[c]);
-
-        return arr.join(' ');
-    };
-}
-
-export const css = {
-    enemies: createCSSClassMapper('enemies'),
-    hero: createCSSClassMapper('heroes'), //
-    // tslint:disable-next-line:object-literal-sort-keys
-    common_itm: createCSSClassMapper('common_items'),
-    common_fo: createCSSClassMapper('common_floor_objects'),
-    dungeon_o: createCSSClassMapper('dungeon_objects'),
-    liquid_acid: createCSSClassMapper('liquid_acid'),
-    liquid_lava: createCSSClassMapper('liquid_lava'),
-    liquid_swamp: createCSSClassMapper('liquid_swamp'),
-    liquid_water: createCSSClassMapper('liquid_water'),
-    floor_crypt: createCSSClassMapper('floor_crypt'),
-    dungeon_decor_props: createCSSClassMapper('dungeon_decor_props'),
-    alert_icons: createCSSClassMapper('alert_icons'), //
-    cursor: createCSSClassMapper('cursor'), //
-    game_menus: createCSSClassMapper('game_menus'), //
-    equipment: createCSSClassMapper('equipment'),
-    general: (...rest: string[]) => rest.map(r => require('../rogue')[r]).join(' ')
-};
-
 function forbiddenResolver(..._rest: string[]): never {
-    throw new Error('this symbol has no resolver resolveris forbidden');
+  throw new Error('this symbol has no resolver resolveris forbidden');
 }
 
-
-export const resolverMap: IAllSymbols<Resolver> = Object.freeze({
+export const resolverMap: IAllSymbols<IResolver> = Object.freeze(
+    // We have to do it like this because of there is an webpack loader framework with regards to tsconfig path aliases '~alias'
+  (() => ({
     //
     // Primary
     //
     '#': css.floor_crypt, // Xx wall
-    '.': css.floor_crypt,  // Xx floor
+    '.': css.floor_crypt, // Xx floor
     //
     // Quest reults
     //
@@ -61,12 +62,12 @@ export const resolverMap: IAllSymbols<Resolver> = Object.freeze({
     //
     // Doorways and portals
     //
-    '^': css.floor_crypt,  // Xx door north ,top
-    '>': css.floor_crypt,  // Xx door east  ,top
-    '<': css.floor_crypt,  // Xx door west  ,top
-    v: css.floor_crypt,  // Xx door south   ,top
+    '^': css.floor_crypt, // Xx door north ,top
+    '>': css.floor_crypt, // Xx door east  ,top
+    '<': css.floor_crypt, // Xx door west  ,top
+    v: css.floor_crypt, // Xx door south   ,top
     X: css.common_fo, // Teleport, exclusive
-    µ: css.floor_crypt,  // Stairs change level , exclusive
+    µ: css.floor_crypt, // Stairs change level , exclusive
     //
     // Obstructables
     //
@@ -145,5 +146,5 @@ export const resolverMap: IAllSymbols<Resolver> = Object.freeze({
     ';': css.common_itm, //   Fish
     '§': css.common_itm, //   Mana
     l: css.common_itm //   Magic-potion
-});
-
+  }))()
+);
