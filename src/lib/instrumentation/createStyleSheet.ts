@@ -13,7 +13,7 @@ import {
 } from './';
 
 export function createStyleSheets(createFiles: boolean = true): Promise<any> {
-  if (typeof process.env.CSSDIR !== 'string') {
+  if (createFiles && typeof process.env.CSSDIR !== 'string') {
     return Promise.reject(
       'process.env.CSSDIR is not defined, please check your webpack config'
     );
@@ -104,7 +104,7 @@ export function createStyleSheets(createFiles: boolean = true): Promise<any> {
     const sheetKey = `${sheet}.sheet`;
     const xmlSheet = singleSheets[sheetKey].asset;
     const props = singleSheets[sheetKey].props;
-
+    console.log('%c sheet key: %s', 'color:red', sheet);
     const spSheet = createSpriteSheet(sheet, xmlSheet, props);
     if (createFiles && process.env.CSSDIR) {
       fs.writeFileSync(

@@ -36,6 +36,7 @@ export class HeroesAndMonsters extends React.Component<
     const my = round(e.clientY - this.oY - this.height / 2, 2);
     const gamma = this.props.rotationMapFunction(mx, trunc(this.width / 2)) * PI / 2;
     const phi = PI / 16 * (this.props.rotationMapFunction(my, trunc(this.height))) ;
+    e.stopPropagation();
     this.setState({ mx, my, gamma: round(gamma, 4), phi: round(phi, 4) });
 
   }

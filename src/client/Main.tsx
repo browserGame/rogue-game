@@ -3,9 +3,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
+
 import { createCSSClassMapper } from '~css-tools';
 import { registerOnMouseMove, registerOnResize } from '~events';
-import { createStyleSheets } from '~instrumentation';
+import { createStyleSheets, getSpriteSheetByName } from '~instrumentation';
 import { compileDungeon } from '~items';
 import { store } from '~store';
 import { App } from './ui/App';

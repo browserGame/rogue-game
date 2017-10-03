@@ -44,7 +44,8 @@ const pic_inliner = {
         {
             loader: 'url-loader',
             options: {
-                limit: 1024*1024 // 1mg ,embed if the resource is 1kb or less*/
+                limit: 1024, // embed if the resource is 1kb or less*/
+                name: p ? '[hash].[ext]' : '[name].[ext]'
             }
         }
     ]
