@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "tslint.autoFixOnSave": true,
-    "editor.cursorStyle": "block"
+    "editor.cursorStyle": "block",
+    "prettier.singleQuote": true
 }

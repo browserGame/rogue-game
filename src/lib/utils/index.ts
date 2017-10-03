@@ -9,4 +9,5 @@ export * from './validateRoomMetrics';
 export * from './createPalette';
 export * from './isString';
 export * from './isNumber';
+export * from './isDate';
 

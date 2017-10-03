@@ -1,9 +1,11 @@
 
 .main {
    height:100%;
-   flex-grow: 1;
+   flex-grow: 0;
+   width: auto;
    color: white;
    font-family: 'Open Sans', 'Tahoma', Arial;
    font-size: 16px;
    font-weight: normal;
+   border: 4px orange dashed;
 }

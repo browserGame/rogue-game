@@ -14,6 +14,15 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "paths": {
+      "~actions": [
+        "src/client/redux/redux-actions/index.ts"
+      ],
+      "~css-tools": [
+        "src/client/ui/css/index.ts"
+      ],
+      "~events": [
+        "src/client/events/index.ts"
+      ],
       "~instrumentation": [
         "src/lib/instrumentation/index.ts"
       ],
@@ -39,8 +48,14 @@
       "~math/*": [
         "src/lib/math/*"
       ],
+      "~reducers": [
+        "src/client/redux/redux-reducers/index.ts"
+      ],
       "~stats": [
         "src/lib/math/statistics/index.ts"
+      ],
+      "~store": [
+        "src/client/redux/redux-store.ts"
       ],
       "~symbols": [
         "src/lib/symbols/index.ts"
@@ -55,13 +70,12 @@
       "~ui-dungeon": [
         "src/client/ui/dungeon/index.ts"
       ],
-      "~css-tools":[
-        "src/client/ui/css/index.ts"
-      ],
-      "~ui-intro":[
+      "~ui-intro": [
         "src/client/ui/intro/index.ts"
       ],
-
+      "~ui-utils": [
+        "src/client/ui/utils/index.ts"
+      ],
       "~utils": [
         "src/lib/utils/index.ts"
       ]

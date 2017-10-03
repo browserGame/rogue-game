@@ -2,46 +2,35 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux';
 import { createCSSClassMapper } from '~css-tools';
+import { registerOnMouseMove, registerOnResize } from '~events';
 import { createStyleSheets } from '~instrumentation';
 import { compileDungeon } from '~items';
-import {
- //   DungeonLevel
-} from '~ui-dungeon';
-import { Intro } from '~ui-intro';
+import { store } from '~store';
+import { App } from './ui/App';
+// tslint:disable-next-line:no-import-side-effect
+// tslint:disable-next-line:import-spacing
 
+const css = createCSSClassMapper(require('./main.scss'));
 
-const css = createCSSClassMapper(require('main.scss'));
-
-function App() {
-    return (<div className={css('container')}>
-        {/*<DungeonLevel level={0} scale={3} />
-        {
-            <div style={
-                {
-                    backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1), rgba(0,0,0,0.8)',
-                    bottom: '0px',
-                    left: '0px',
-                    pointerEvents: 'none',
-                    position: 'fixed',
-                    right: '0px',
-                    top: '0px',
-                    zIndex: 999999
-                }
-            }></div>
-          }*/}
-          <Intro />
-    </div>);
-}
 
 window.onload = () => {
-    const app = document.getElementById('app');
-    if (app) {
-        createStyleSheets(false).catch(e => console.log(e));
-        compileDungeon();
-        app.classList.add(css('container'));
-        ReactDOM.render(<App />, app);
-    }
-};
+  // Add global event handlers mousemove and window resize
+  // These will pump these ui-events to the redux store
+  registerOnMouseMove(store);
+  registerOnResize(store);
+  const app = document.getElementById('app');
+  if (app) {
+    app.classList.add(css('app-mount-point'));
 
+    createStyleSheets(false).catch(e => console.log(e));
+    compileDungeon();
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      app
+    );
+  }
+};

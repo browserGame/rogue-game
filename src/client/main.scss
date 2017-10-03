@@ -1,5 +1,5 @@
 @import "reset";
-$container-padding: 1em;
+
 html,
 body {
     height: 100%;
@@ -10,16 +10,10 @@ body {
     background: black;
 }
 
-.container {
+.app-mount-point {
     position: relative;
     height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-* {
-    box-sizing: border-box;
+    border: 4px solid orange;
 }
 
