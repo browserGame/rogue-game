@@ -1,75 +1,64 @@
 import * as React from 'react';
-import { createCSSClassMapper } from '~css-tools';
-import { PI, round , trunc } from '~math';
-import { resolverMap } from '~ui-dungeon';
-import { debounce } from '~ui-utils';
+import { connect } from 'react-redux';
 
-const heroesAndMonsters = createCSSClassMapper(
+
+import { createCSSClassMapper } from '~css-tools';
+import { PI, round, trunc } from '~math';
+// I import { resolverMap } from '~ui-dungeon';
+import {
+  debounce,
+  IMouseCoords,
+  IScreenSize,
+  mouseCoordsToProps,
+  screenSizeToProps
+} from '~ui-utils';
+import { createMouseMoveResponse } from './createMouseMoveResponse';
+
+const css = createCSSClassMapper(
   require('./heroesAndMonsters.scss')
 );
 
+function mapStateToProps(state: any) {
+   return {...mouseCoordsToProps(state), ...screenSizeToProps(state)};
+}
 
-export class HeroesAndMonsters extends React.Component<
-  { rotationMapFunction: (x: number, x0: number) => number },
-  { mx: number; my: number; gamma: number; phi: number }
-> {
-  private nr: number;
-  private width: number;
-  private height: number;
-  private oX: number;
-  private oY: number;
-  private html: HTMLDivElement | null;
+class HeroesAndMonsters extends React.PureComponent<IMouseCoords & IScreenSize> {
+  private clientWidth: number;
+  private clientHeight: number;
+  private html: HTMLDivElement;
 
-  public constructor(props: any) {
+  public constructor(props: IMouseCoords & IScreenSize) {
     super(props);
-    this.nr = 0;
-    this.state = { mx: 0, my: 0, gamma: 0, phi: 0 };
-    this.handleMouseMove = debounce(this.handleMouseMove.bind(this));
-  }
-
-  public handleMouseMove(e: React.MouseEvent<HTMLDivElement>): void {
-
-    this.getClientRectDim();
-    console.log(e.bubbles ? 'bubbling' : 'capturing');
-
-    const mx = round(e.clientX - this.oX - this.width / 2, 2);
-    const my = round(e.clientY - this.oY - this.height / 2, 2);
-    const gamma = this.props.rotationMapFunction(mx, trunc(this.width / 2)) * PI / 2;
-    const phi = PI / 16 * (this.props.rotationMapFunction(my, trunc(this.height))) ;
-    e.stopPropagation();
-    this.setState({ mx, my, gamma: round(gamma, 4), phi: round(phi, 4) });
-
   }
 
   public render() {
-    this.nr++;
+    console.log(this.props);
 
     return (
       <div
-        ref={r => {
-          this.html = r;
+        ref={elt => {
+          if (elt) this.html = elt;
         }}
-        className={heroesAndMonsters('main')}
-        onMouseMove={this.handleMouseMove}
-      >
-        {this.nr}, mx:{this.state.mx},my:{this.state.my}, gamma: {this.state.gamma}, phi: {this.state.phi}
-      </div>
+        className={css('main')}
+      />
     );
   }
 
   public componentDidMount() {
-    this.getClientRectDim(); // Init
+    this.getClientRectDim();
   }
 
   private getClientRectDim() {
-    this.width = 0;
-    this.height = 0;
+    this.clientWidth = 0;
+    this.clientHeight = 0;
     if (this.html) {
       const cR = this.html.getBoundingClientRect();
-      this.oX = cR.x || cR.left;
-      this.oY = cR.y || cR.top;
-      this.width = cR.width;
-      this.height = cR.height;
+      this.clientWidth = cR.width;
+      this.clientHeight = cR.height;
     }
   }
 }
+
+export const CHeroesAndMonsters = connect(mapStateToProps)(
+  HeroesAndMonsters
+);

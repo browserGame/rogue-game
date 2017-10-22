@@ -32,6 +32,30 @@ fix container size scale 1
 
 
 /*
+plts3 = [p]osition [l]eft [t]op, [s]cale 3
+*/
+.plts3 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(3);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
+plts1 = [p]osition [l]eft [t]op, [s]cale 1
+*/
+.plts1 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(1);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
 Static Sprites
 Static Sprites
 Static Sprites
@@ -66,3 +90,37 @@ Expanded sizes
 */
 
 
+.plts3.cursor {
+    height: 159px;
+      width: 180px;
+}
+
+
+.plts3.cursor_click {
+    height: 156px;
+      width: 183px;
+}
+
+
+.plts3.cursor_attack {
+    height: 153px;
+      width: 174px;
+}
+
+
+.plts1.cursor {
+    height: 53px;
+      width: 60px;
+}
+
+
+.plts1.cursor_click {
+    height: 52px;
+      width: 61px;
+}
+
+
+.plts1.cursor_attack {
+    height: 51px;
+      width: 58px;
+}

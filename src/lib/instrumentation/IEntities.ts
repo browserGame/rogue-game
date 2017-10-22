@@ -27,5 +27,6 @@ export interface IEntities {
   'main_menu_background.sheet': IAssetEntity;
   'alert_icons.sheet': IAssetEntity;
   'cursor.sheet': IAssetEntity;
+  'game_menus.sheet': IAssetEntity;
   // 'game_menus.sheet': IAssetEntity;
 }

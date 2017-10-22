@@ -5,6 +5,6 @@ export function isVector(v: any): v is IVector {
     v &&
     typeof v.x === 'number' &&
     typeof v.y === 'number' &&
-    typeof v.z === 'number'
+    (v.z && typeof v.z === 'number' || true)
   );
 }

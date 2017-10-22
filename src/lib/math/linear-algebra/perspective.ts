@@ -21,6 +21,6 @@ export function perspective(lensFocus: number, v: IVector): IVector {
     const w = v.w ? z / v.z * v.w : undefined;
     const h = v.h ? z / v.z * v.y : undefined;
 
-    return ({ x, y, z, n: 1 });
+    return ({ x, y, z, w, h, n: 1 });
 }
 

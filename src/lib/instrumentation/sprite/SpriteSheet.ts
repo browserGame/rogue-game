@@ -313,9 +313,9 @@ Expanded sizes
 
     // Get cross product scale and sprite dimensions
 
-    const fscExpanded =
+    /*const fscExpanded =
       this._o.fsc &&
-      this._o.fsc.map(m => this.renderExpandedSize(`fsc${m.scale}`, m));
+      this._o.fsc.map(m => this.renderExpandedSize(`fsc${m.scale}`, m));*/
     const pltsExpanded =
       this._o.plts &&
       this._o.plts.map(m => this.renderExpandedSize(`plts${m.scale}`, m));
@@ -334,7 +334,7 @@ Expanded sizes
       });
 
     const selectExpanded = {
-      fscExpanded,
+      /* fscExpanded, */
       pccsExpanded,
       pltsExpanded,
       pxcbExpanded

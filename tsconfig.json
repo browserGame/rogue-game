@@ -67,6 +67,9 @@
       "~ui": [
         "src/client/ui/index.ts"
       ],
+      "~ui-cursor": [
+        "src/client/ui/cursor/index.ts"
+      ],
       "~ui-dungeon": [
         "src/client/ui/dungeon/index.ts"
       ],
@@ -75,6 +78,9 @@
       ],
       "~ui-utils": [
         "src/client/ui/utils/index.ts"
+      ],
+      "~client":[
+        "src/client/index.ts"
       ],
       "~utils": [
         "src/lib/utils/index.ts"

@@ -5,16 +5,16 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 
-import { createCSSClassMapper } from '~css-tools';
+// I import { createCSSClassMapper } from '~css-tools';
 import { registerOnMouseMove, registerOnResize } from '~events';
-import { createStyleSheets, getSpriteSheetByName } from '~instrumentation';
+import { createStyleSheets } from '~instrumentation';
 import { compileDungeon } from '~items';
 import { store } from '~store';
 import { App } from './ui/App';
 // tslint:disable-next-line:no-import-side-effect
 // tslint:disable-next-line:import-spacing
 
-const css = createCSSClassMapper(require('./main.scss'));
+import { css as cssMain } from '~client';
 
 
 window.onload = () => {
@@ -24,7 +24,7 @@ window.onload = () => {
   registerOnResize(store);
   const app = document.getElementById('app');
   if (app) {
-    app.classList.add(css('app-mount-point'));
+    app.classList.add(cssMain('app-mount-point'));
 
     createStyleSheets(false).catch(e => console.log(e));
     compileDungeon();
@@ -32,7 +32,10 @@ window.onload = () => {
       <Provider store={store}>
         <App />
       </Provider>,
-      app
+      app,
+      () => {
+        window.dispatchEvent(new CustomEvent('resize')); // Trigger re-size event
+      }
     );
   }
 };

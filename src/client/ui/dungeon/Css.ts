@@ -1,7 +1,7 @@
 import { createCSSClassMapper, IResolver } from '~css-tools';
 import { IAllSymbols } from '~symbols';
 
-const css: { [index: string]: IResolver } = (function initCSS() {
+export const css: { [index: string]: IResolver } = (function initCSS() {
   const _css: { [index: string]: string } = {
     enemies: 'enemies',
     hero: 'heroes', //

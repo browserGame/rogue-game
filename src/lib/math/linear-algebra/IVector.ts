@@ -1,8 +1,8 @@
 export interface IVector {
   x: number;
   y: number;
-  z: number;
+  z?: number;
   w?: number;
   h?: number;
-  n: 1;
+  n?: 1;
 }

@@ -1,2 +1,2 @@
 export * from './DungeonLevel';
-export { resolverMap } from './Css';
+export { resolverMap, css } from './Css';
