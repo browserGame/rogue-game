@@ -1,10 +1,10 @@
-export type IMove = {
+export type IActionMove = {
   type: 'EVENT_MOVE';
   x: number;
   y: number;
 };
 
-export function mouseMove(x: number, y: number): IMove {
+export function actionMouseMove(x: number, y: number): IActionMove {
   return {
     type: 'EVENT_MOVE',
     x,
