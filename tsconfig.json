@@ -17,6 +17,9 @@
       "~actions": [
         "src/client/redux/redux-actions/index.ts"
       ],
+      "~client": [
+        "src/client/index.ts"
+      ],
       "~css-tools": [
         "src/client/ui/css/index.ts"
       ],
@@ -78,9 +81,6 @@
       ],
       "~ui-utils": [
         "src/client/ui/utils/index.ts"
-      ],
-      "~client":[
-        "src/client/index.ts"
       ],
       "~utils": [
         "src/lib/utils/index.ts"
