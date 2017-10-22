@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sheets>
+    <sheet name="main_menu_selection_btn" texture="main_menu.png" ox="82" oy="33" x="6" y="357" width="163" height="55" />
+    <sheet name="main_menu_selection_btn_hover" texture="main_menu.png" ox="82" oy="33" x="6" y="431" width="163" height="55" />
+    <sheet name="check_box" texture="main_menu.png" ox="14" oy="14" x="204" y="411" width="28" height="28" />
+    <sheet name="check_mark" texture="main_menu.png" ox="14" oy="14" x="204" y="379" width="28" height="28" />
+    <sheet name="volume_btn" texture="main_menu.png" ox="6" oy="18" x="250" y="403" width="12" height="34" />
+    <sheet name="volume_bar" texture="main_menu.png" ox="2" oy="9" x="205" y="450" width="217" height="17" />
+    <sheet name="close_volume_btn" texture="main_menu.png" ox="14" oy="14" x="323" y="407" width="27" height="27" />
+    <sheet name="close_volume_btn_over" texture="main_menu.png" ox="14" oy="14" x="353" y="407" width="27" height="27" />
+    <sheet name="resolution_apply_btn_hover" texture="main_menu.png" ox="48" oy="20" x="368" y="134" width="96" height="31" />
+    <sheet name="resolution_apply_btn" texture="main_menu.png" ox="48" oy="20" x="368" y="98" width="96" height="31" />
+    <sheet name="sub_menu" texture="main_menu.png" ox="182" oy="155" x="2" y="2" width="350" height="298" />
+    <sheet name="left_arrow_active" texture="main_menu.png" ox="18" oy="16" x="412" y="36" width="32" height="32" />
+    <sheet name="right_arrow_active" texture="main_menu.png" ox="14" oy="18" x="446" y="34" width="34" height="33" />
+    <sheet name="left_arrow_inactive" texture="main_menu.png" ox="14" oy="14" x="361" y="17" width="26" height="28" />
+    <sheet name="right_arrow_inactive" texture="main_menu.png" ox="10" oy="14" x="391" y="17" width="27" height="29" />
+    <sheet name="logo" texture="main_menu.png" ox="177" oy="21" x="1" y="302" width="364" height="40" />
+    <sheet name="btn_tab" texture="main_menu.png" ox="80" oy="40" x="353" y="169" width="158" height="65" />
+    <sheet name="btn_tab_hover" texture="main_menu.png" ox="80" oy="40" x="353" y="235" width="158" height="65" />
+</sheets>

@@ -247,6 +247,42 @@ export const fixture: IEntities = {
         }
       ]
     }
+  },
+  'main_menu.sheet': {
+    asset: require('~assets/main_menu.sheet'),
+    props: {
+      fsc: [{ scale: 3 }, { scale: 1 }],
+      plts: [
+        {
+          scale: 3,
+          items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+        },
+        {
+          scale: 1,
+          items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+        }
+      ]
+    }
+  },
+  'main_menu_3ds.sheet': {
+      asset: require('~assets/main_menu_3ds.sheet'),
+      props: {
+        fsc: [{ scale: 3 }, { scale: 1 }],
+        plts: [
+          {
+            scale: 3,
+            items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          },
+          {
+            scale: 2,
+            items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          },
+          {
+            scale: 3,
+            items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          }
+        ]
+      }
   }
 };
 

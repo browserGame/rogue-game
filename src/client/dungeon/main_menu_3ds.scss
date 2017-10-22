@@ -1,0 +1,235 @@
+
+/*
+   Computer Generated CSS,
+   See README.md on how to (re)-generate
+*/
+
+
+.main_menu_3ds > div:first-child {
+   background: url('./main_menu_3ds.png');
+   background-origin: border-box;
+   image-rendering: pixelated;
+   z-index: 1;
+}
+
+
+/*
+fix container size scale 3
+*/
+.fsc3 {
+    height: 72px !important;
+    width: 72px !important;
+}
+
+
+/*
+fix container size scale 1
+*/
+.fsc1 {
+    height: 24px !important;
+    width: 24px !important;
+}
+
+
+/*
+plts3 = [p]osition [l]eft [t]op, [s]cale 3
+*/
+.plts3 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(3);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
+plts2 = [p]osition [l]eft [t]op, [s]cale 2
+*/
+.plts2 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(2);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
+plts3 = [p]osition [l]eft [t]op, [s]cale 3
+*/
+.plts3 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(3);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
+Static Sprites
+Static Sprites
+Static Sprites
+*/
+
+
+  .main_menu_selection_btn > div:first-child {
+     background-position: -171px -25px;
+     width: 82px;
+     height: 18px;
+  }
+  
+
+  .main_menu_selection_btn_hover > div:first-child {
+     background-position: -171px -44px;
+     width: 82px;
+     height: 18px;
+  }
+  
+
+  .check_box > div:first-child {
+     background-position: -146px -42px;
+     width: 14px;
+     height: 14px;
+  }
+  
+
+  .check_mark > div:first-child {
+     background-position: -130px -42px;
+     width: 14px;
+     height: 14px;
+  }
+  
+
+  .volume_btn > div:first-child {
+     background-position: -81px -28px;
+     width: 12px;
+     height: 34px;
+  }
+  
+
+  .volume_bar > div:first-child {
+     background-position: -129px -2px;
+     width: 110px;
+     height: 8px;
+  }
+  
+
+  .close_volume_btn > div:first-child {
+     background-position: -244px -1px;
+     width: 10px;
+     height: 8px;
+  }
+  
+
+  .close_volume_btn_over > div:first-child {
+     background-position: -112px -0px;
+     width: 11px;
+     height: 13px;
+  }
+  
+
+  .resolution_apply_btn_hover > div:first-child {
+     background-position: -251px -64px;
+     width: 5px;
+     height: 3px;
+  }
+  
+
+  .resolution_apply_btn > div:first-child {
+     background-position: -256px -64px;
+     width: 3px;
+     height: 3px;
+  }
+  
+
+  .sub_menu > div:first-child {
+     background-position: -0px -0px;
+     width: 80px;
+     height: 60px;
+  }
+  
+
+  .left_arrow_active > div:first-child {
+     background-position: -148px -23px;
+     width: 8px;
+     height: 13px;
+  }
+  
+
+  .right_arrow_active > div:first-child {
+     background-position: -158px -23px;
+     width: 8px;
+     height: 13px;
+  }
+  
+
+  .left_arrow_inactive > div:first-child {
+     background-position: -130px -23px;
+     width: 8px;
+     height: 13px;
+  }
+  
+
+  .right_arrow_inactive > div:first-child {
+     background-position: -139px -23px;
+     width: 8px;
+     height: 13px;
+  }
+  
+
+  .logo > div:first-child {
+     background-position: -110px -11px;
+     width: 145px;
+     height: 11px;
+  }
+  
+
+  .btn_tab > div:first-child {
+     background-position: -81px -0px;
+     width: 28px;
+     height: 14px;
+  }
+  
+
+  .btn_tab_hover > div:first-child {
+     background-position: -81px -14px;
+     width: 28px;
+     height: 14px;
+  }
+  
+
+  .class_selection_box > div:first-child {
+     background-position: -93px -28px;
+     width: 31px;
+     height: 31px;
+  }
+  
+
+/*
+Expanded sizes
+Expanded sizes
+Expanded sizes
+*/
+
+
+.plts3.main_menu_selection_btn,
+.plts3.main_menu_selection_btn_hover {
+    height: 54px;
+      width: 246px;
+}
+
+
+.plts2.main_menu_selection_btn,
+.plts2.main_menu_selection_btn_hover {
+    height: 36px;
+      width: 164px;
+}
+
+
+.plts3.main_menu_selection_btn,
+.plts3.main_menu_selection_btn_hover {
+    height: 54px;
+      width: 246px;
+}

@@ -28,5 +28,6 @@ export interface IEntities {
   'alert_icons.sheet': IAssetEntity;
   'cursor.sheet': IAssetEntity;
   'game_menus.sheet': IAssetEntity;
-  // 'game_menus.sheet': IAssetEntity;
+  'main_menu.sheet': IAssetEntity;
+  'main_menu_3ds.sheet': IAssetEntity;
 }
