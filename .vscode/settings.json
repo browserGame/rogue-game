@@ -2,5 +2,5 @@
 {
     "tslint.autoFixOnSave": true,
     "editor.cursorStyle": "block",
-    "prettier.singleQuote": true
+    "prettier.singleQuote": false
 }
