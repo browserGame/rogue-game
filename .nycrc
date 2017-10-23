@@ -1,0 +1,8 @@
+{
+    "all": true,
+    "exclude": ["**/*.d.ts", "**/index.ts", "**/interfaces.ts", "**/vendor"],
+    "extension": [".ts", ".tsx"],
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "require": ["ts-node/register"],
+    "reporter": ["text-summary", "html"]
+}
