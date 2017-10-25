@@ -3,7 +3,6 @@ node_js:
     - "node"
 branches:
     only:
-        - testing
         - master
 cache:
     directories:
