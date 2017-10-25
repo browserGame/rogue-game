@@ -4,6 +4,7 @@ node_js:
 branches:
     only:
         - testing
+        - master
 cache:
     directories:
         - "node_modules"
