@@ -16,7 +16,10 @@ export class QuestForDungeonsLogo extends React.PureComponent<{}> {
 
   public render() {
     const css = cssDungeon['main_menu'];
-    const logo = css('main_menu', 'logo', 'plts1');
+    const logo = [
+      css('main_menu', 'logo', 'plts1'),
+      cssMain('zI1', 'rel')
+    ].join(' ');
 
 
     return (

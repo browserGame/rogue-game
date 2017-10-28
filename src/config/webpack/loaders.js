@@ -9,7 +9,7 @@ const p = process.env.NODE_ENV === 'production';
 
 const fonts = {
     test: /(\.svg|\.woff|\.woff2|\.[ot]tf|\.eot)$/,
-    loader: 'file-loader?name=[name].[ext]'
+    loader: 'file-loader?name=[hash].[ext]'
 };
 
 const css = {

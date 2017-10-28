@@ -21,6 +21,7 @@ export class Intro extends React.Component {
           <MenuButton>
             Continue <span className={cssMain('red')}>Some red</span>
           </MenuButton>
+          <QuestForDungeonsLogo/>
           <MenuButton>
             New Game
           </MenuButton>

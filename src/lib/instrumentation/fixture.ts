@@ -255,15 +255,69 @@ export const fixture: IEntities = {
       plts: [
         {
           scale: 3,
-          items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          items: [
+            'main_menu_selection_btn',
+            'main_menu_selection_btn:hover',
+            'check_mark',
+            'volume_btn',
+            'volume_bar',
+            'close_volume_btn',
+            'close_volume_btn:hover',
+            'resolution_apply_btn:hover',
+            'resolution_apply_btn',
+            'sub_menu',
+            'left_arrow_active',
+            'right_arrow_active',
+            'left_arrow_inactive',
+            'right_arrow_inactive',
+            'logo',
+            'btn_tab',
+            'btn_tab:hover'
+          ]
         },
         {
           scale: 1,
-          items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          items: [
+            'main_menu_selection_btn',
+            'main_menu_selection_btn:hover',
+            'check_mark',
+            'volume_btn',
+            'volume_bar',
+            'close_volume_btn',
+            'close_volume_btn:hover',
+            'resolution_apply_btn:hover',
+            'resolution_apply_btn',
+            'sub_menu',
+            'left_arrow_active',
+            'right_arrow_active',
+            'left_arrow_inactive',
+            'right_arrow_inactive',
+            'logo',
+            'btn_tab',
+            'btn_tab:hover'
+          ]
         },
         {
           scale: 2,
-          items: ['main_menu_selection_btn', 'main_menu_selection_btn_hover']
+          items: [
+            'main_menu_selection_btn',
+            'main_menu_selection_btn:hover',
+            'check_mark',
+            'volume_btn',
+            'volume_bar',
+            'close_volume_btn',
+            'close_volume_btn:hover',
+            'resolution_apply_btn:hover',
+            'resolution_apply_btn',
+            'sub_menu',
+            'left_arrow_active',
+            'right_arrow_active',
+            'left_arrow_inactive',
+            'right_arrow_inactive',
+            'logo',
+            'btn_tab',
+            'btn_tab:hover'
+          ]
         }
       ]
     }
