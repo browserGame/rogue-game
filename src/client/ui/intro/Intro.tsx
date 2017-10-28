@@ -1,9 +1,13 @@
 import * as React from 'react';
 
+import { QuestForDungeonsLogo } from 'ui~misc';
 import { MenuButton } from '~ui-intro-menus/MenuButton';
-import { VText } from '~ui-text';
 import { CHeroesAndMonsters } from './HeroesAndMonsters';
 import { IntroPane } from './IntroPane';
+
+import { css as cssMain } from '~client';
+// Import { css as cssDungeon } from '~ui-dungeon';
+
 
 export class Intro extends React.Component {
   public constructor(props: any) {
@@ -15,23 +19,12 @@ export class Intro extends React.Component {
       <IntroPane>
         <CHeroesAndMonsters>
           <MenuButton>
-            <VText>CONTINUE</VText>
+            Continue <span className={cssMain('red')}>Some red</span>
           </MenuButton>
           <MenuButton>
-            <VText>NEW GAME</VText>
+            New Game
           </MenuButton>
-          <MenuButton>
-            <VText>STATS</VText>
-          </MenuButton>
-          <MenuButton>
-            <VText>OPTIONS</VText>
-          </MenuButton>
-          <MenuButton>
-            <VText>CREDITS</VText>
-          </MenuButton>
-          <MenuButton>
-            <VText>EXIT</VText>
-          </MenuButton>
+
         </CHeroesAndMonsters>
       </IntroPane>
     );

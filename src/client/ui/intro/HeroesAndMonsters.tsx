@@ -32,7 +32,7 @@ class HeroesAndMonsters extends React.PureComponent<IMouseCoords & IScreenSize> 
   }
 
   public render() {
-    console.log(this.props);
+
 
     return (
       <div
