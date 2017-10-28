@@ -73,11 +73,17 @@
       "~ui-cursor": [
         "src/client/ui/cursor/index.ts"
       ],
+      "~ui-intro-menus/*": [
+        "src/client/ui/intro/menus/*"
+      ],
       "~ui-dungeon": [
         "src/client/ui/dungeon/index.ts"
       ],
       "~ui-intro": [
         "src/client/ui/intro/index.ts"
+      ],
+      "~ui-text": [
+        "src/client/ui/text/index.ts"
       ],
       "~ui-utils": [
         "src/client/ui/utils/index.ts"

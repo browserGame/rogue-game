@@ -23,6 +23,15 @@ fix container size scale 3
 
 
 /*
+fix container size scale 2
+*/
+.fsc2 {
+    height: 48px !important;
+    width: 48px !important;
+}
+
+
+/*
 fix container size scale 1
 */
 .fsc1 {
@@ -56,6 +65,18 @@ plts1 = [p]osition [l]eft [t]op, [s]cale 1
 
 
 /*
+plts2 = [p]osition [l]eft [t]op, [s]cale 2
+*/
+.plts2 > div:first-child {
+   transform-origin: 0 0;
+   transform: scale(2);
+   position: absolute;
+   left: 0;
+   top: 0;
+}
+
+
+/*
 Static Sprites
 Static Sprites
 Static Sprites
@@ -69,7 +90,7 @@ Static Sprites
   }
   
 
-  .main_menu_selection_btn_hover > div:first-child {
+  .main_menu_selection_btn:hover > div:first-child {
      background-position: -6px -431px;
      width: 163px;
      height: 55px;
@@ -195,15 +216,19 @@ Expanded sizes
 */
 
 
-.plts3.main_menu_selection_btn,
-.plts3.main_menu_selection_btn_hover {
+.plts3.main_menu_selection_btn {
     height: 165px;
       width: 489px;
 }
 
 
-.plts1.main_menu_selection_btn,
-.plts1.main_menu_selection_btn_hover {
+.plts1.main_menu_selection_btn {
     height: 55px;
       width: 163px;
+}
+
+
+.plts2.main_menu_selection_btn {
+    height: 110px;
+      width: 326px;
 }

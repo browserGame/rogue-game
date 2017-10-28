@@ -20,7 +20,9 @@ export const css: { [index: string]: IResolver } = (function initCSS() {
     gameMenusCompact: 'main_menu_background_compact', //
     gameMenus: 'main_menu_background',
     gameMenus3ds: 'main_menu_background_3ds',
-    equipment: 'equipment'
+    equipment: 'equipment',
+    main_menu: 'main_menu',
+    visitorFonts: 'visitor-fonts'
   };
   const rc: { [index: string]: IResolver } = {};
   for (const propName in _css) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sheets>
     <sheet name="main_menu_selection_btn" texture="main_menu.png" ox="82" oy="33" x="6" y="357" width="163" height="55" />
-    <sheet name="main_menu_selection_btn_hover" texture="main_menu.png" ox="82" oy="33" x="6" y="431" width="163" height="55" />
+    <sheet name="main_menu_selection_btn:hover" texture="main_menu.png" ox="82" oy="33" x="6" y="431" width="163" height="55" />
     <sheet name="check_box" texture="main_menu.png" ox="14" oy="14" x="204" y="411" width="28" height="28" />
     <sheet name="check_mark" texture="main_menu.png" ox="14" oy="14" x="204" y="379" width="28" height="28" />
     <sheet name="volume_btn" texture="main_menu.png" ox="6" oy="18" x="250" y="403" width="12" height="34" />

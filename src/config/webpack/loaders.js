@@ -7,6 +7,11 @@ const include = [];
 // Loaders respond differently depending on the NODE_ENV environment variable
 const p = process.env.NODE_ENV === 'production';
 
+const fonts = {
+    test: /(\.svg|\.woff|\.woff2|\.[ot]tf|\.eot)$/,
+    loader: 'file-loader?name=[name].[ext]'
+};
+
 const css = {
     loader: 'css-loader',
     options: {
@@ -144,4 +149,4 @@ const tslint = {
 };
 
 
-module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner ,xml  };
+module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner ,xml, fonts  };

@@ -108,7 +108,13 @@
     "build:client:prod": "cross-env NODE_ENV=production webpack --config src/config/webpack/client.config",
     "build:server:dev": "cross-env NODE_ENV=development webpack --config src/config/webpack/server.config",
     "build:server:prod": "cross-env NODE_ENV=production webpack --config src/config/webpack/server.config",
+    "cleanup": "rimraf ./dist ./.nyc_output ./coverage ./.awcache ./report.txt",
     "clear": "rimraf ./dist",
+    "coverage": "npm run coverage:test && npm run coverage:view",
+    "coverage:codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "coverage:report": "nyc report --reporter=text",
+    "coverage:test": "cross-env NODE_ENV=test TS_NODE_DISABLE_WARNINGS=true nyc mocha",
+    "coverage:view": "opn coverage/index.html",
     "create:scss": "cross-env node dist/server/server.js --scss",
     "install": "echo install",
     "lint": "tslint -c tslint.json -p . --type-check",
@@ -143,13 +149,7 @@
     "test": "cross-env TS_NODE_DISABLE_WARNINGS=true mocha",
     "test:w": "npm run test -- -w -R min",
     "uninstall": "echo uninstall",
-    "version": "echo version",
-    "cleanup": "rimraf ./dist ./.nyc_output ./coverage ./.awcache ./report.txt",
-    "coverage": "npm run coverage:test && npm run coverage:view",
-    "coverage:codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "coverage:report": "nyc report --reporter=text",
-    "coverage:test": "cross-env NODE_ENV=test TS_NODE_DISABLE_WARNINGS=true nyc mocha",
-    "coverage:view": "opn coverage/index.html"
+    "version": "echo version"
   },
   "version": "1.0.0"
 }

@@ -40,7 +40,9 @@ class HeroesAndMonsters extends React.PureComponent<IMouseCoords & IScreenSize> 
           if (elt) this.html = elt;
         }}
         className={css('main')}
-      />
+      >
+      {this.props.children}
+      </div>
     );
   }
 

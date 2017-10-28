@@ -149,3 +149,20 @@ table {
 * {
   box-sizing: border-box;
 }
+
+.rel {
+  position: relative;
+}
+.abs {
+  position: absolute;
+}
+.fix {
+  position: fixed;
+}
+.z-highest {
+  z-index: 99999999999999;
+}
+
+.z-zero {
+  z-index: 0;
+}
