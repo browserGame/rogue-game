@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { QuestForDungeonsLogo } from 'ui~misc';
 import { MenuButton } from '~ui-intro-menus/MenuButton';
+import { QuestForDungeonsLogo } from '~ui-misc';
 import { CHeroesAndMonsters } from './HeroesAndMonsters';
 import { IntroPane } from './IntroPane';
 
