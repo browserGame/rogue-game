@@ -132,14 +132,14 @@ Static Sprites
   }
   
 
-  .close_volume_btn_over > div:first-child {
+  .close_volume_btn:hover > div:first-child {
      background-position: -353px -407px;
      width: 27px;
      height: 27px;
   }
   
 
-  .resolution_apply_btn_hover > div:first-child {
+  .resolution_apply_btn:hover > div:first-child {
      background-position: -368px -134px;
      width: 96px;
      height: 31px;
@@ -202,7 +202,7 @@ Static Sprites
   }
   
 
-  .btn_tab_hover > div:first-child {
+  .btn_tab:hover > div:first-child {
      background-position: -353px -235px;
      width: 158px;
      height: 65px;
@@ -241,12 +241,14 @@ Expanded sizes
 }
 
 
-.plts3.close_volume_btn {
+.plts3.close_volume_btn,
+.plts3.close_volume_btn:hover {
     height: 81px;
       width: 81px;
 }
 
 
+.plts3.resolution_apply_btn:hover,
 .plts3.resolution_apply_btn {
     height: 93px;
       width: 288px;
@@ -289,7 +291,8 @@ Expanded sizes
 }
 
 
-.plts3.btn_tab {
+.plts3.btn_tab,
+.plts3.btn_tab:hover {
     height: 195px;
       width: 474px;
 }
@@ -320,12 +323,14 @@ Expanded sizes
 }
 
 
-.plts1.close_volume_btn {
+.plts1.close_volume_btn,
+.plts1.close_volume_btn:hover {
     height: 27px;
       width: 27px;
 }
 
 
+.plts1.resolution_apply_btn:hover,
 .plts1.resolution_apply_btn {
     height: 31px;
       width: 96px;
@@ -368,7 +373,8 @@ Expanded sizes
 }
 
 
-.plts1.btn_tab {
+.plts1.btn_tab,
+.plts1.btn_tab:hover {
     height: 65px;
       width: 158px;
 }
@@ -399,12 +405,14 @@ Expanded sizes
 }
 
 
-.plts2.close_volume_btn {
+.plts2.close_volume_btn,
+.plts2.close_volume_btn:hover {
     height: 54px;
       width: 54px;
 }
 
 
+.plts2.resolution_apply_btn:hover,
 .plts2.resolution_apply_btn {
     height: 62px;
       width: 192px;
@@ -447,7 +455,8 @@ Expanded sizes
 }
 
 
-.plts2.btn_tab {
+.plts2.btn_tab,
+.plts2.btn_tab:hover {
     height: 130px;
       width: 316px;
 }

@@ -17,9 +17,9 @@ export const css: { [index: string]: IResolver } = (function initCSS() {
     dungeon_decor_props: 'dungeon_decor_props',
     alert_icons: 'alert_icons', //
     cursor: 'cursor', //
-    gameMenusCompact: 'main_menu_background_compact', //
-    gameMenus: 'main_menu_background',
-    gameMenus3ds: 'main_menu_background_3ds',
+    main_menu_background_compact: 'main_menu_background_compact', //
+    main_menu_background: 'main_menu_background',
+    main_menu_background_3ds: 'main_menu_background_3ds',
     equipment: 'equipment',
     main_menu: 'main_menu',
     visitorFonts: 'visitor-fonts'

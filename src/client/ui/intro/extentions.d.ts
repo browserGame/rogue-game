@@ -3,4 +3,4 @@ interface ClientRect {
     x: number;
     y: number;
 }
-  // tslint:enable
+// tslint:enable

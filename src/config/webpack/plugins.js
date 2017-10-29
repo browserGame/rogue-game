@@ -29,7 +29,7 @@ const serverAndClientShares = [
         'process.env.SUPER': JSON.stringify(`${NORMAL * 7 / 2}`)
        
     }),
-]
+];
 
 if (p) {
     serverAndClientShares.push(new webpack.DefinePlugin({

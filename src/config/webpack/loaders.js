@@ -9,7 +9,7 @@ const p = process.env.NODE_ENV === 'production';
 
 const fonts = {
     test: /(\.svg|\.woff|\.woff2|\.[ot]tf|\.eot)$/,
-    loader: 'file-loader?name=[hash].[ext]'
+    loader: 'file-loader?name=[name].[ext]'
 };
 
 const css = {
@@ -19,7 +19,7 @@ const css = {
         modules: true,
         importLoaders: 1,
         // Mangle CSS class names
-        localIdentName: p ? '[hash:base64:5]' : '[name]__[local]__[hash:base64:5]',
+        localIdentName: p ? '[hash:base64:5]' : '[name]__[local].[ext]', //'[name]__[local]__[hash:base64:5]',
         // Minimize CSS for faster loading
         minimize: p,
         // Enable source maps if in production mode
@@ -35,7 +35,8 @@ const non_inliner = {
         {
             loader: 'url-loader',
             options: {
-                limit: 1 /*1024 ,embed if the resource is 1kb or less*/
+                limit: 1, /*1024 ,embed if the resource is 1kb or less*/
+                fallback: 'file-loader'
             }
         }
     ]

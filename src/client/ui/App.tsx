@@ -9,7 +9,6 @@ const css = createCSSClassMapper(require('./app.scss'));
 
 export function App() {
 
-
       return (
         <div className={css('main')}>
           <CCursor />

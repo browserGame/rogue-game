@@ -2,18 +2,35 @@ const { resolve } = require('path');
 
 const p = process.env.NODE_ENV === 'production';
 
+const LoaderOptionsPlugin = require('webpack').LoaderOptionsPlugin;
+
 module.exports = {
     entry: {
         app: resolve('src/client/Main.tsx')
     },
     output: {
         path: resolve('dist/client'),
-        filename: p ? '[name].[chunkhash].js' : '[name].js'
+        filename: p ? '[name].[chunkhash:8].js' : '[name].js'
     },
-    devtool: require('./devtool'),
+    //devtool: require('./devtool'),
+    devtool: false,
     module: require('./module').client,
-    plugins: require('./plugins').client,
+    plugins: [...require('./plugins').client, new LoaderOptionsPlugin({
+        debug: true
+      })],
     resolve: require('./resolve').client,
+    externals: [ ...require('./externals'), 'react', 'react-redux', 'react-dom' ],
+    performance: {
+        hints:'warning',
+        assetFilter:()=> true
+    },
+    stats:{
+        timings:true
+    },
+    profile:true,
+    parallelism:10,
+    cache:true
+
 };
 
 for (const rule of module.exports.module.rules) {

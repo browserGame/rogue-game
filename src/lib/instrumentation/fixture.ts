@@ -165,19 +165,19 @@ export const fixture: IEntities = {
       fsc: [{ scale: 3 }, { scale: 2 }, { scale: 1 }],
       pccs: [
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 3
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 2
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 1
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 0.6
         }
       ]
@@ -196,19 +196,19 @@ export const fixture: IEntities = {
       fsc: [{ scale: 3 }, { scale: 2 }, { scale: 1 }],
       pccs: [
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 3
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 2
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 1
         },
         {
-          items: ['shaman', 'assassin', 'warrior', 'wizard'],
+          items: ['shaman', 'assassin', 'warrior', 'wizard', 'monsters'],
           scale: 0.6
         }
       ]
@@ -239,11 +239,11 @@ export const fixture: IEntities = {
       plts: [
         {
           scale: 3,
-          items: ['pause_menu_btn_bkg', 'pause_menu_btn_bkg_over']
+          items: ['pause_menu_btn_bkg', 'pause_menu_btn_bkg:hover']
         },
         {
           scale: 1,
-          items: ['pause_menu_btn_bkg', 'pause_menu_btn_bkg_over']
+          items: ['pause_menu_btn_bkg', 'pause_menu_btn_bkg:hover']
         }
       ]
     }

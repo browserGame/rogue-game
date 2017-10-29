@@ -4,7 +4,8 @@ import * as React from 'react';
 import { css as cssMain } from '~client';
 import { css as cssDungeon } from '~ui-dungeon';
 
-export class QuestForDungeonsLogo extends React.PureComponent<{}> {
+export class Monsters extends React.PureComponent<{}> {
+
   public constructor(props: any) {
     super(props);
   }
@@ -15,16 +16,16 @@ export class QuestForDungeonsLogo extends React.PureComponent<{}> {
 
   public render() {
 
-    const css = cssDungeon['main_menu'];
+    const css = cssDungeon['main_menu_background'];
 
     const logo = [
-      css('main_menu', 'logo', 'plts1'),
+      css('main_menu_background', 'monsters', 'pccs2'),
       cssMain('zI1', 'rel')
     ].join(' ');
 
 
     return (
-      <div className={logo}>
+      <div style={{background: 'white' }} className={logo}>
         <div />
       </div>
     );
