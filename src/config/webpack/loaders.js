@@ -36,7 +36,8 @@ const non_inliner = {
             loader: 'url-loader',
             options: {
                 limit: 1, /*1024 ,embed if the resource is 1kb or less*/
-                fallback: 'file-loader'
+                fallback: 'file-loader',
+                name:'[name].[ext]'
             }
         }
     ]
@@ -84,7 +85,7 @@ const xml = {
 const scss = {
     loader: 'sass-loader',
     options: {
-        sourceMap: p // Enable scss source maps if in production
+        sourceMap: p // Enable scss source maps if in production,
     }
 };
 

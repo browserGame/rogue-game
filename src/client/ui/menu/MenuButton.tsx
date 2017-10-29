@@ -3,14 +3,14 @@
 import * as React from 'react';
 // Import * as ReactDOM from 'react-dom';
 
-import { connect } from 'react-redux';
+// I import { connect } from 'react-redux';
 
 import { css as cssMain } from '~client';
 import { css as cssDungeon } from '~ui-dungeon';
 import { isNumber, isString } from '~utils';
 // Import { IMouseCoords, mouseCoordsToProps } from '~ui-utils';
 
-export class MenuButton extends React.Component<{}> {
+export class MenuButton extends React.Component {
   public constructor(props: any) {
     super(props);
     this.decorateText = this.decorateText.bind(this);

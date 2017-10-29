@@ -4,7 +4,7 @@ import * as React from 'react';
 import { css as cssMain } from '~client';
 import { css as cssDungeon } from '~ui-dungeon';
 
-export class Monsters extends React.PureComponent<{}> {
+export class Monsters extends React.PureComponent {
 
   public constructor(props: any) {
     super(props);

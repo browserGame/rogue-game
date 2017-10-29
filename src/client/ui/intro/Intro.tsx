@@ -26,7 +26,7 @@ export class Intro extends React.Component {
           <MenuButton>
             New Game
           </MenuButton>
-          <Monsters />
+           { /*<Monsters />*/}
         </CHeroesAndMonsters>
       </IntroPane>
     );
