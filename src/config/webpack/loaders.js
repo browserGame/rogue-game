@@ -31,40 +31,37 @@ const css = {
 const non_inliner = {
     test: /\.(png|jpg|gif)$/,
     include,
-    use: [
-        {
-            loader: 'url-loader',
-            options: {
-                limit: 1, /*1024 ,embed if the resource is 1kb or less*/
-                fallback: 'file-loader',
-                name:'[name].[ext]'
-            }
+    use: [{
+        loader: 'url-loader',
+        options: {
+            limit: 1,
+            /*1024 ,embed if the resource is 1kb or less*/
+            fallback: 'file-loader',
+            name: '[name].[ext]'
         }
-    ]
+    }]
 };
 
 
 const pic_inliner = {
     test: /\.(png|jpg|gif)$/,
     include,
-    use: [
-        {
-            loader: 'url-loader',
-            options: {
-                limit: 1024, // embed if the resource is 1kb or less*/
-                name: p ? '[hash].[ext]' : '[name].[ext]'
-            }
+    use: [{
+        loader: 'url-loader',
+        options: {
+            limit: 1024, // embed if the resource is 1kb or less*/
+            name: p ? '[hash].[ext]' : '[name].[ext]'
         }
-    ]
+    }]
 };
 
 const postcss = {
     loader: 'postcss-loader',
     options: {
         plugins: loader => [
-            require('postcss-cssnext')()  // Autoprefixer
+            require('postcss-cssnext')() // Autoprefixer
         ],
-        sourceMap: p    // Enable source maps if in production
+        sourceMap: p // Enable source maps if in production
     }
 };
 
@@ -135,20 +132,18 @@ const tslint = {
     test: /\.tsx?$/,
     exclude,
     include: [],
-    use: [
-        {
-            loader: 'tslint-loader',
-            options: {
-                configFile: resolve('tslint.json'),
-                emitErrors: false,
-                failOnHint: false,
-                typeCheck: true,
-                fix: false,
-                tsConfigFile: resolve('tsconfig.json')
-            }
+    use: [{
+        loader: 'tslint-loader',
+        options: {
+            configFile: resolve('tslint.json'),
+            emitErrors: false,
+            failOnHint: false,
+            typeCheck: false,
+            fix: false,
+            tsConfigFile: resolve('tsconfig.json')
         }
-    ]
+    }]
 };
 
 
-module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner ,xml, fonts  };
+module.exports = { sql, styles, ts, tslint, non_inliner, pic_inliner, xml, fonts };
