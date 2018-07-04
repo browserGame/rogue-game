@@ -10,7 +10,7 @@ TODO
 logs
 *.log
 npm-debug.log*
-
+*.out
 # Runtime data
 pids
 *.pid
