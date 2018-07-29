@@ -1,0 +1,116 @@
+﻿
+var waitTime = 3000;
+var fadeTime = 200;
+
+var currentImage;
+var currentImageIndex = 0;
+var images = Array();
+var timer;
+var tempTimer = 0;
+var slideshow = null;
+
+//Add the slideshow loading to the document
+var oldOnload = window.onload; 
+if (typeof window.onload != 'function')
+	window.onload = loadSlideShow;
+else
+{
+	window.onload = function()
+	{ 
+		if (oldOnload) oldOnload(); 
+		loadSlideShow();
+	}
+} 
+
+function loadSlideShow()
+{
+	slideshow = document.getElementById('slideshow');
+	if(slideshow == null)
+		return;
+	var content = slideshow.childNodes;
+	for( var i in content )
+	{
+		var image = content[i];
+		if(image.nodeName != 'IMG')
+			continue;
+		images.push(image);
+	}
+	if(images.length == 0)
+		return;
+	
+	currentImage = images[currentImageIndex];
+	setOpacity(currentImage,1);
+	currentImage.style.visibility = "visible";
+	currentImage.style.display = "block";
+	
+	var nextImageIndex = (currentImageIndex+1)%images.length;
+	timer = setTimeout('startFade('+nextImageIndex+')',waitTime);
+}
+
+function startFade( nextImageIndex )
+{
+	tempTimer = fadeTime;
+	slideshow.style.background = '#fff url('+ currentImage.src +') no-repeat';
+	setOpacity(currentImage,0);
+	currentImage.style.visibility = "hidden";
+	currentImage.style.display = "none";
+	
+	currentImageIndex = nextImageIndex;	
+	currentImage = images[nextImageIndex];
+
+	setOpacity(currentImage,0);
+	currentImage.style.visibility = "visible";
+	currentImage.style.display = "block";
+	timer = setTimeout('fade()',0);
+}
+
+function fade()
+{
+	if(tempTimer>0)
+	{
+		tempTimer -= 5;
+		setOpacity( currentImage, (1.0-tempTimer/(fadeTime*1.0)) );
+		timer = setTimeout('fade()',5);
+	}
+	else
+	{
+		var nextImageIndex = (currentImageIndex+1)%images.length;
+		timer = setTimeout('startFade('+nextImageIndex+')',waitTime);
+	}
+}
+
+function setOpacity(object,opacity)
+{
+	object.style.opacity = opacity;
+	object.style.filter = 'alpha(opacity=' + Math.round(opacity*100) + ')';
+}
+
+function slideshow_next()
+{
+	clearTimeout(timer);
+	var nextImageIndex = (currentImageIndex+1) % images.length;
+	timer = setTimeout('startFade('+nextImageIndex+')',0);
+}
+
+function slideshow_prev()
+{
+	clearTimeout(timer);
+	var nextImageIndex = currentImageIndex-1;
+	if(nextImageIndex<0)
+		nextImageIndex = images.length-1;
+	timer = setTimeout('startFade('+nextImageIndex+')',0);
+}
+
+function slideshow_showNavigation()
+{
+	var nav = document.getElementById('slideshow_navigation');
+	nav.style.visibility = "visible";
+	nav.style.display = "block";
+}
+
+function slideshow_hideNavigation()
+{
+	var nav = document.getElementById('slideshow_navigation');
+	nav.style.visibility = "hidden";
+	nav.style.display = "none";
+}

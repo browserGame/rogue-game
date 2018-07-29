@@ -1,0 +1,922 @@
+//Initialize the code
+var oldOnload = window.onload; 
+if (typeof window.onload != 'function')
+	window.onload = onLoad;
+else
+{
+	window.onload = function()
+		{
+			if (oldOnload)
+				oldOnload(); 
+			onLoad();
+		}
+} 
+
+/*
+Visual glBlendFunc Tool
+Created by Anders Riggelsen.
+Copyright © Anders Riggelsen 2013
+This code may not be used elsewhere other than on www.andersriggelsen.dk without my permission. (pretty please?) :)
+*/
+
+//Global color values
+var Rs, Gs, Bs, As;
+var Rd, Gd, Bd, Ad;
+var Rb, Gb, Bb, Ab;
+//
+var sMr, sMg, sMb;	//blendFunc RGB source values
+var dMr, dMg, dMb;	//blendFunc RGB destination values
+var sMa, dMa;		//blendFunc Alpha source+destination values
+//Misc.
+var codeview, imagesources, colorpickerbox, imagePresets, displayMode, tabHeaders, tabContents;
+//Result vars
+var inputR, inputG, inputB, inputA, resultR, resultG, resultB, resultA;
+//Lists
+var source, sourceAlpha, destination, destinationAlpha, blendequation, blendequationAlpha;
+//Alpha list wrappers
+var sourceAlphaWrapper, destinationAlphaWrapper, blendequationAlphaWrapper;
+//Blending functions and equations:
+var funcSourceRGB, funcSourceAlpha, funcDestRGB, funcDestAlpha, equationRGB, equationAlpha;
+//Metoder
+var blendFuncMetode = 0;
+var blendEquationMetode = 0;
+
+//Input fields
+var backgroundURL, foregroundURL;
+var premultiplyCheckbox;
+//Image objects
+var frontImage, backImage, colorPickerImage, imageUrlsTab, blendingColorTab, imagePresetsTab;
+//Canvas objects
+var canvas, frontCanvas, backCanvas, colorpickerCanvas;
+//Contexts
+var context, frontContext, backContext, colorpickerContext;
+//Image data
+var imageData, backImageData, frontImageData, colorPickerImageData;
+//Loaded flags
+var frontLoaded = false, backLoaded = false, colorPickerLoaded = false;
+//Color picker stuff
+var hueTracker, alphaTracker, dragObject, colorX = 99, colorY = 0, isOnPicker = false;
+//The colors underneath the mouse
+var	mouse_sourceR = 'sR';
+var	mouse_sourceG = 'sG';
+var	mouse_sourceB = 'sB';
+var	mouse_sourceA = 'sA';
+var	mouse_destR = 'dR';
+var	mouse_destG = 'dG';
+var	mouse_destB = 'dB';
+var	mouse_destA = 'dA';
+var	mouse_resR = 'rR';
+var	mouse_resG = 'rG';
+var	mouse_resB = 'rB';
+var	mouse_resA = 'rA';
+
+//OpenGL blending parameters.
+var modes_rgb = [
+	function gl_zero()						{return [0,0,0];},
+	function gl_one()						{return [1,1,1];},
+	function gl_src_color()					{return [Rs,Gs,Bs];},
+	function gl_one_minus_src_color()		{return [1-Rs,1-Gs,1-Bs];},
+	function gl_dst_color()					{return [Rd,Gd,Bd,Ad];},
+	function gl_one_minus_dst_color()		{return [1-Rd,1-Gd,1-Bd];},
+	function gl_src_alpha()					{return [As,As,As];},
+	function gl_one_minus_src_alpha()		{return [1-As,1-As,1-As];},
+	function gl_dst_alpha()					{return [Ad,Ad,Ad];},
+	function gl_one_minus_dst_alpha()		{return [1-Ad,1-Ad,1-Ad];},
+	function gl_src_alpha_saturate()		{i = Math.min(As, 1.0-Ad);return [i,i,i];},
+	function gl_constant_color()			{return [Rb,Gb,Bb];},
+	function gl_one_minus_constant_color()	{return [1-Rb,1-Gb,1-Bb];},
+	function gl_constant_alpha()			{return [Ab,Ab,Ab,Ab];},
+	function gl_one_minus_constant_alpha()	{return [1-Ab,1-Ab,1-Ab];}
+];
+var modes_alpha = [
+	function gl_zero()						{return 0;},
+	function gl_one()						{return 1;},
+	function gl_src_color()					{return As;},
+	function gl_one_minus_src_color()		{return 1-As;},
+	function gl_dst_color()					{return Ad;},
+	function gl_one_minus_dst_color()		{return 1-Ad;},
+	function gl_src_alpha()					{return As;},
+	function gl_one_minus_src_alpha()		{return 1-As;},
+	function gl_dst_alpha()					{return Ad;},
+	function gl_one_minus_dst_alpha()		{return 1-Ad;},
+	function gl_src_alpha_saturate()		{return Math.min(As, 1.0-Ad);},
+	function gl_constant_color()			{return Ab;},
+	function gl_one_minus_constant_color()	{return 1-Ab;},
+	function gl_constant_alpha()			{return Ab;},
+	function gl_one_minus_constant_alpha()	{return 1-Ab;}
+];
+var modes_text = [
+	'0',
+	'1',
+	'sourceColor',
+	'(1-sourceColor)',
+	'destinationColor',
+	'(1-destinationColor)',
+	'sourceAlpha',
+	'(1-sourceAlpha)',
+	'destinationAlpha',
+	'(1-destinationAlpha',
+	'min(sourceAlpha, 1.0-destinationAlpha)',
+	'blendColor',
+	'(1-blendColor)',
+	'blendAlpha',
+	'(1-blendAlpha)',
+];
+
+var equations_rgb = [
+	function gl_func_add()
+	{
+		return [
+			(Rs*sMr)+(Rd*dMr),
+			(Gs*sMg)+(Gd*dMg),
+			(Bs*sMb)+(Bd*dMb)
+		];
+	},
+	function gl_func_subtract()
+	{
+		return [
+			(Rs*sMr)-(Rd*dMr),
+			(Gs*sMg)-(Gd*dMg),
+			(Bs*sMb)-(Bd*dMb)
+		];
+	},
+	function gl_func_reserse_subtract()
+	{
+		return [
+			(Rd*dMr)-(Rs*sMr),
+			(Gd*dMg)-(Gs*sMg),
+			(Bd*dMb)-(Bs*sMb)
+		];
+	},
+	function gl_min()
+	{
+		return [
+			Math.min(Rd,Rs),
+			Math.min(Gd,Gs),
+			Math.min(Bd,Bs)
+		];
+	},
+	function gl_max()
+	{
+		return [
+			Math.max(Rd,Rs),
+			Math.max(Gd,Gs),
+			Math.max(Bd,Bs)
+		];
+	}
+];
+
+var equations_alpha = [
+	function gl_func_add()
+	{
+		return Math.min(1,(As*sMa)+(Ad*dMa));
+	},
+	function gl_func_subtract()
+	{
+		return Math.max(0,(As*sMa)-(Ad*dMa));
+	},
+	function gl_func_reserse_subtract()
+	{
+		return Math.max(0,(Ad*dMa)-(As*sMa));
+	},
+	function gl_min()
+	{
+		return Math.min(Ad,As);
+	},
+	function gl_max()
+	{
+		return Math.max(Ad,As);
+	}
+];
+
+var equations_text = [
+			"(sourceColor*sourceFactor) + (destinationColor*destinationFactor)",
+			"(sourceColor*sourceFactor) - (destinationColor*destinationFactor)",
+			"(destinationColor*destinationFactor) - (sourceColor*sourceFactor)",
+			"min(sourceColor, destinationColor)",
+			"max(sourceColor, destinationColor)"
+]
+
+function onLoad()
+{
+	canvas = document.getElementById('display');
+	source = document.getElementById('source');
+	destination = document.getElementById('destination');
+	sourceAlpha = document.getElementById('sourceAlpha');
+	destinationAlpha = document.getElementById('destinationAlpha');
+	blendequation = document.getElementById('blendequation');
+	blendequationAlpha = document.getElementById('blendequationAlpha');	
+	
+	sourceAlphaWrapper = document.getElementById('sourceAlphaWrapper');	
+	destinationAlphaWrapper = document.getElementById('destinationAlphaWrapper');	
+	blendequationAlphaWrapper = document.getElementById('blendequationAlphaWrapper');	
+	
+	useBlendFunc(false);
+	useBlendEquation(false);
+	
+	inputR = document.getElementById('inputR');
+	inputG = document.getElementById('inputG');
+	inputB = document.getElementById('inputB');
+	inputA = document.getElementById('inputA');
+	resultR = document.getElementById('resultR');
+	resultG = document.getElementById('resultG');
+	resultB = document.getElementById('resultB');
+	resultA = document.getElementById('resultA');
+	hueTracker = document.getElementById('huetracker');
+	alphaTracker = document.getElementById('alphatracker');
+	colorpickerCanvas = document.getElementById('colorpicker');
+	codeview = document.getElementById('codeview');
+	
+	imagePresetsTab = document.getElementById('imagePresetsTab');
+	imageUrlsTab = document.getElementById('imageUrlsTab');
+	blendingColorTab = document.getElementById('blendingColorTab');
+	tabHeaders = [imagePresetsTab, imageUrlsTab, blendingColorTab];
+
+	backgroundURL = document.getElementById('backgroundURL');
+	foregroundURL = document.getElementById('foregroundURL');
+	premultiplyCheckbox = document.getElementById('changePreMultiplyState');
+	
+	imagePresets = document.getElementById('imagePresets');
+	imagesources = document.getElementById('imagesources');
+	colorpickerbox = document.getElementById('colorpickerbox');
+	tabContents = [imagePresets, imagesources, colorpickerbox];
+	
+	displayMode = document.getElementById('displayMode');
+	
+	frontCanvas = document.createElement("canvas");
+	backCanvas = document.createElement("canvas");
+	frontCanvas.width = frontCanvas.height = backCanvas.width = backCanvas.height = 400;
+	
+	context = canvas.getContext('2d');
+	frontContext = frontCanvas.getContext('2d');
+	backContext = backCanvas.getContext('2d');
+	colorpickerContext = colorpickerCanvas.getContext('2d');
+	
+	loadImages();
+	
+	imageData = context.getImageData(0,0,400,400);
+	colorPickerImageData = colorpickerContext.getImageData(0,0,100,100);
+	
+	canvas.addEventListener('mousemove', canvas_mousemove, false);
+	canvas.addEventListener('mouseout', canvas_mouseout, false);
+	
+	hueTracker.addEventListener('mousedown', mouseDown, false);
+	alphaTracker.addEventListener('mousedown', mouseDown, false);
+	colorpickerCanvas.addEventListener('mousedown', mouseDown, false);
+	document.addEventListener('mousemove', mouseMove, false);
+	document.addEventListener('mouseup', mouseUp, false);
+	
+	hueTracker.trackbar = document.getElementById('hueslider');
+	alphaTracker.trackbar = document.getElementById('alphaslider');
+	hueTracker.trackerValue = 0;
+	alphaTracker.trackerValue = 200;
+	
+	updateColorPicker();
+}
+
+function loadImages()
+{
+	frontImage = new Image();
+	frontImage.onload = function(){
+		frontLoaded = true;
+		frontContext.fillStyle = "rgba(0,0,0,0)";
+		frontContext.clearRect (0,0,400,400);
+		frontContext.drawImage(frontImage,0,0);
+		frontImageData = frontContext.getImageData(0,0,400,400);
+		if(premultiplyCheckbox.checked)
+			premultiplyImage(frontContext, frontImageData);
+		if(backLoaded == true) updateDisplay();
+	}
+	frontImage.src = foregroundURL.value;
+	
+	backImage = new Image();
+	backImage.onload = function(){
+		backLoaded = true;
+		backContext.fillStyle = "rgba(0,0,0,0)";
+		backContext.clearRect (0,0,400,400);
+		backContext.drawImage(backImage,0,0);
+		backImageData = backContext.getImageData(0,0,400,400);
+		if(premultiplyCheckbox.checked)
+			premultiplyImage(backContext, backImageData);
+		if(frontLoaded == true) updateDisplay();
+	}
+	backImage.src = backgroundURL.value;
+	
+	colorPickerImage = new Image();
+	colorPickerImage.onload = function(){
+		colorPickerLoaded = true;
+		updateColorPicker();
+	}
+	colorPickerImage.src = 'glblendfunc/colorpicker.png';
+}
+
+function changePreMultiplyState(check)
+{
+	if(check.checked==false)
+	{
+		restoreImage(frontContext, frontImage);
+		restoreImage(backContext, backImage);
+		frontImageData = frontContext.getImageData(0,0,400,400);
+		backImageData = backContext.getImageData(0,0,400,400);
+	}
+	else
+	{
+		premultiplyImage(frontContext, frontImageData);
+		premultiplyImage(backContext, backImageData);
+	}
+	updateDisplay();
+}
+
+function restoreImage(context, image)
+{
+	context.fillStyle = "rgba(0,0,0,0)";
+	context.clearRect (0,0,400,400);
+	context.drawImage(image, 0, 0);
+}
+
+function premultiplyImage(context,imageData)
+{
+	for(y=0; y<imageData.height; ++y)
+	{
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width + x)*4;
+			imageData.data[ pos ] = (imageData.data[ pos ]*imageData.data[pos+3])/255;
+			imageData.data[pos+1] = (imageData.data[pos+1]*imageData.data[pos+3])/255;
+			imageData.data[pos+2] = (imageData.data[pos+2]*imageData.data[pos+3])/255;
+		}
+	}
+	context.putImageData(imageData, 0, 0);
+}
+
+function useBlendFunc(update)
+{
+	blendFuncMetode = 0;
+	sourceAlpha.disabled = true;
+	destinationAlpha.disabled = true;
+	sourceAlphaWrapper.style.opacity = 0.4;
+	destinationAlphaWrapper.style.opacity = 0.4;
+	if(update === true)
+		updateDisplay();
+}
+
+function useBlendFuncSeparate(update)
+{
+	blendFuncMetode = 1;
+	sourceAlpha.disabled = false;
+	destinationAlpha.disabled = false;
+	
+	sourceAlphaWrapper.style.opacity = 1.0;
+	destinationAlphaWrapper.style.opacity = 1.0;
+	if(update === true)
+		updateDisplay();
+}
+
+function useBlendEquation(update)
+{
+	blendEquationMetode = 0;
+	blendequationAlpha.disabled = true;
+	blendequationAlphaWrapper.style.opacity = 0.4;
+	if(update === true)
+		updateDisplay();
+}
+
+function useBlendEquationSeparate(update)
+{
+	blendEquationMetode = 1;
+	blendequationAlpha.disabled = false;
+	blendequationAlphaWrapper.style.opacity = 1.0;
+	if(update === true)
+		updateDisplay();
+}
+
+function getNumericStyleProperty(style, prop){
+    return parseInt(style.getPropertyValue(prop),10) ;
+}
+
+function element_position(e) {
+    var x = 0, y = 0;
+    var inner = true ;
+    do {
+        x += e.offsetLeft;
+        y += e.offsetTop;
+        var style = getComputedStyle(e,null) ;
+        var borderTop = getNumericStyleProperty(style,"border-top-width") ;
+        var borderLeft = getNumericStyleProperty(style,"border-left-width") ;
+        y += borderTop ;
+        x += borderLeft ;
+        if (inner){
+          var paddingTop = getNumericStyleProperty(style,"padding-top") ;
+          var paddingLeft = getNumericStyleProperty(style,"padding-left") ;
+          y += paddingTop ;
+          x += paddingLeft ;
+        }
+        inner = false ;
+    } while (e = e.offsetParent);
+    return { x: x, y: y };
+}
+
+function findPos(obj)
+{
+	var curleft = curtop = 0;
+	if (obj.offsetParent)
+		do{
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+		}
+		while (obj = obj.offsetParent);
+	return [curleft, curtop];
+}
+
+function mouseDown(ev)
+{
+	if(typeof( this.trackerValue ) != "undefined")
+	{
+		//Trackbars
+		dragObject = this;
+		moveTracker(ev.clientX);
+	}
+	else
+	{
+		//Color picker
+		isOnPicker = true;
+		moveColorPicker(ev.clientX, ev.clientY);
+	}
+	ev.preventDefault();
+}
+
+function mouseMove(ev)
+{
+	if(dragObject != null)
+		moveTracker(ev.clientX);
+	else if(isOnPicker)
+		moveColorPicker(ev.clientX, ev.clientY);
+}
+
+function canvas_mousemove(ev)
+{
+	var canvas_pos = element_position(canvas);
+	var x = ev.clientX + document.body.scrollLeft - canvas_pos.x;
+	var y = ev.clientY  + document.body.scrollTop - canvas_pos.y;
+
+	var image_pos = (y*imageData.width+x)*4;
+	
+	readBack(image_pos);
+	readFront(image_pos);
+	
+	selectedFuncA_rgb = modes_rgb[source.selectedIndex];
+	selectedFuncA_alpha = modes_alpha[sourceAlpha.selectedIndex];
+	selectedFuncB_rgb = modes_rgb[destination.selectedIndex];
+	selectedFuncB_alpha = modes_alpha[destinationAlpha.selectedIndex];
+	eq_rgb = equations_rgb[blendequation.selectedIndex];
+	eq_alpha = equations_alpha[blendequation.selectedIndex];
+	
+	sourceRGB(selectedFuncA_rgb());
+	sMa = selectedFuncA_alpha();
+			
+	destinationRGB(selectedFuncB_rgb());
+	dMa = selectedFuncB_alpha();
+			
+	fcolor = eq_rgb();
+	falpha = eq_alpha();
+	
+	mouse_destR = Rd.toFixed(3);
+	mouse_destG = Gd.toFixed(3);
+	mouse_destB = Bd.toFixed(3);
+	mouse_destA = Ad.toFixed(3);
+	mouse_sourceR = Rs.toFixed(3);
+	mouse_sourceG = Gs.toFixed(3);
+	mouse_sourceB = Bs.toFixed(3);
+	mouse_sourceA = As.toFixed(3);
+	
+	mouse_resR = fcolor[0].toFixed(3);
+	mouse_resG = fcolor[1].toFixed(3);
+	mouse_resB = fcolor[2].toFixed(3);
+	mouse_resA = falpha.toFixed(3);
+
+	updateText();
+}
+
+function canvas_mouseout(ev)
+{
+	mouse_sourceR = 'sR';
+	mouse_sourceG = 'sG';
+	mouse_sourceB = 'sB';
+	mouse_sourceA = 'sA';
+	mouse_destR = 'dR';
+	mouse_destG = 'dG';
+	mouse_destB = 'dB';
+	mouse_destA = 'dA';
+	mouse_resR = 'rR';
+	mouse_resG = 'rG';
+	mouse_resB = 'rB';
+	mouse_resA = 'rA';
+	updateText();
+}
+
+function moveTracker(mouseX)
+{
+	dragObject.trackerValue = Math.min(Math.max(mouseX - element_position(dragObject.trackbar).x, 0),200);
+	dragObject.style.left = "" + (dragObject.trackerValue-9) + "px";
+	updateColorPicker();
+	updateText();
+}
+
+function mouseUp()
+{
+	if(dragObject != null || isOnPicker == true)
+		updateDisplay();
+	dragObject = null; isOnPicker = false;
+}
+
+function moveColorPicker(mouseX,mouseY)
+{
+	pos = element_position(colorpickerCanvas);
+	colorX = Math.min(Math.max(mouseX - pos.x, 0),99);
+	colorY = Math.min(Math.max(mouseY - pos.y, 0),99)
+	updateColorPicker();
+	updateText();
+}
+
+function updateDisplay()
+{
+	if(!frontLoaded || !backLoaded)
+		return;
+	
+	//If the blendin/equation modes for RGB and alpha should be the same
+	if(blendFuncMetode == 0)
+	{
+		sourceAlpha.selectedIndex = source.selectedIndex;
+		destinationAlpha.selectedIndex = destination.selectedIndex;
+	}
+	if(blendEquationMetode == 0)
+	{
+		blendequationAlpha.selectedIndex = blendequation.selectedIndex;
+	}
+	
+	funcSourceRGB = modes_rgb[source.selectedIndex];
+	funcSourceAlpha = modes_alpha[sourceAlpha.selectedIndex];
+	funcDestRGB = modes_rgb[destination.selectedIndex];
+	funcDestAlpha = modes_alpha[destinationAlpha.selectedIndex];
+	equationRGB = equations_rgb[blendequation.selectedIndex];
+	equationAlpha = equations_alpha[blendequationAlpha.selectedIndex];
+	
+	switch(displayMode.selectedIndex)
+	{
+		case 0: drawFinalRGB(); break;
+		case 1: drawFinalRGBA(); break;
+		case 2: drawFinalAlpha(); break;
+		case 3: drawImageRGB(frontImageData); break;
+		case 4: drawImageRGBA(frontImageData); break;
+		case 5: drawImageAlpha(frontImageData); break;
+		case 6: drawImageRGB(backImageData); break;
+		case 7: drawImageRGBA(backImageData); break;
+		case 8: drawImageAlpha(backImageData); break;
+	}
+	updateText();
+}
+
+function readBack(pos)
+{
+	Rd = backImageData.data[pos]/255.0;
+	Gd = backImageData.data[pos+1]/255.0;
+	Bd = backImageData.data[pos+2]/255.0;
+	Ad = backImageData.data[pos+3]/255.0;
+}
+
+function readFront(pos)
+{
+	Rs = frontImageData.data[pos]/255.0;
+	Gs = frontImageData.data[pos+1]/255.0;
+	Bs = frontImageData.data[pos+2]/255.0;
+	As = frontImageData.data[pos+3]/255.0;
+}
+
+function writeColor(pos,r,g,b,a)
+{
+	imageData.data[ pos ] = Math.max(0, Math.min(255, r*255));
+	imageData.data[pos+1] = Math.max(0, Math.min(255, g*255));
+	imageData.data[pos+2] = Math.max(0, Math.min(255, b*255));
+	imageData.data[pos+3] = Math.max(0, Math.min(255, a*255));
+}
+
+function sourceRGB(color)
+{
+	sMr = color[0];
+	sMg = color[1];
+	sMb = color[2];
+}
+
+function destinationRGB(color)
+{
+	dMr = color[0];
+	dMg = color[1];
+	dMb = color[2];
+}
+
+function drawFinalRGB()
+{
+	for(y=0; y<imageData.height; ++y)
+	{
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			readBack(pos);
+			readFront(pos);
+			
+			sourceRGB(funcSourceRGB());
+			destinationRGB(funcDestRGB());
+			
+			fcolor = equationRGB();
+			writeColor(pos, fcolor[0], fcolor[1], fcolor[2], 1);
+		}
+	}
+	context.putImageData(imageData, 0, 0);
+}
+
+function drawFinalRGBA()
+{
+	for(y=0; y<imageData.height; ++y)
+	{
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			readBack(pos);
+			readFront(pos);
+			
+			sourceRGB(funcSourceRGB());
+			sMa = funcSourceAlpha();
+			
+			destinationRGB(funcDestRGB());
+			dMa = funcDestAlpha();
+			
+			fcolor = equationRGB();
+			falpha = equationAlpha();
+			writeColor(pos, fcolor[0], fcolor[1], fcolor[2], falpha);
+		}
+	}
+	context.putImageData(imageData, 0, 0);
+}
+
+function drawFinalAlpha()
+{	
+	for(y=0; y<imageData.height; ++y)
+	{
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			readBack(pos);
+			readFront(pos);
+			sMa = funcSourceAlpha();
+			dMa = funcDestAlpha();
+			falpha = equationAlpha();
+			writeColor(pos, falpha, falpha, falpha, falpha);
+		}
+	}
+	context.putImageData(imageData, 0, 0);
+}
+
+function drawImageRGB(imgData)
+{
+	for(y=0; y<imageData.height; ++y)
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			imageData.data[ pos ] = imgData.data[pos];
+			imageData.data[pos+1] = imgData.data[pos+1];
+			imageData.data[pos+2] = imgData.data[pos+2];
+			imageData.data[pos+3] = 255;
+		}
+	context.putImageData(imageData, 0, 0);
+}
+
+function drawImageRGBA(imgData)
+{
+	for(y=0; y<imageData.height; ++y)
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			imageData.data[ pos ] = imgData.data[pos];
+			imageData.data[pos+1] = imgData.data[pos+1];
+			imageData.data[pos+2] = imgData.data[pos+2];
+			imageData.data[pos+3] = imgData.data[pos+3];
+		}
+	context.putImageData(imageData, 0, 0);
+}
+
+function drawImageAlpha(imgData)
+{
+	for(y=0; y<imageData.height; ++y)
+		for(x=0; x<imageData.width; ++x)
+		{
+			pos = (y*imageData.width+x)*4;
+			alpha = imgData.data[pos+3];
+			imageData.data[pos] = alpha;
+			imageData.data[pos+1] = alpha;
+			imageData.data[pos+2] = alpha;
+			imageData.data[pos+3] = 255;
+		}
+	context.putImageData(imageData, 0, 0);
+}
+
+function updateColorPicker()
+{
+	for(y=0; y<colorPickerImageData.height; ++y)
+	{
+		for(x=0; x<colorPickerImageData.width; ++x)
+		{
+			pos = (y*colorPickerImageData.width + x)*4;
+			color = hsv((hueTracker.trackerValue*359)/200,x/100.0,1-y/100.0);
+			colorPickerImageData.data[ pos ] = color[0];
+			colorPickerImageData.data[pos+1] = color[1];
+			colorPickerImageData.data[pos+2] = color[2];
+			colorPickerImageData.data[pos+3] = (alphaTracker.trackerValue*255)/200;
+		}
+	}
+	colorpickerContext.putImageData(colorPickerImageData, 0, 0);
+	if(colorPickerLoaded)
+		colorpickerContext.drawImage(colorPickerImage,colorX-5,colorY-5);
+	
+	//Update blending color value
+	pos = (colorY*colorPickerImageData.width + colorX)*4;
+	Rb = colorPickerImageData.data[ pos ] / 255.0;
+	Gb = colorPickerImageData.data[pos+1] / 255.0;
+	Bb = colorPickerImageData.data[pos+2] / 255.0;
+	Ab = colorPickerImageData.data[pos+3] / 255.0;
+	
+}
+
+function hsv(h, s, v)
+{
+    var r, g, b;
+    var i;
+    var f, p, q, t;
+     
+    if (s == 0)
+	{
+        r = g = b = v;
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+   
+    h /= 60;
+    i  = Math.floor(h);
+    f = h - i;
+    p = v *  (1 - s);
+    q = v * (1 - s * f);
+    t = v * (1 - s * (1 - f));
+   
+    switch( i ) {
+        case 0:
+            r = v;
+            g = t;
+            b = p;
+            break;
+        case 1:
+            r = q;
+            g = v;
+            b = p;
+            break;
+        case 2:
+            r = p;
+            g = v;
+            b = t;
+            break;
+        case 3:
+            r = p;
+            g = q;
+            b = v;
+            break;
+        case 4:
+            r = t;
+            g = p;
+            b = v;
+            break;
+        default:        // case 5:
+            r = v;
+            g = p;
+            b = q;
+            break;
+    }
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+function factorFormat(string, sourceColor, sourceAlpha, destinationColor, destinationAlpha, blendColor)
+{
+	string = string.replace('sourceColor', sourceColor);
+	string = string.replace('sourceAlpha', sourceAlpha);
+	string = string.replace('destinationColor', destinationColor);
+	string = string.replace('destinationAlpha', destinationAlpha);
+	string = string.replace('blendColor', blendColor.toFixed(3));
+	string = string.replace('blendAlpha', Ab.toFixed(3));
+	return string;
+}
+
+function equationFormat(string, sourceColor, sourceFactor, destinationColor, destinationFactor)
+{
+	string = string.replace('sourceColor', sourceColor);
+	string = string.replace('sourceFactor', sourceFactor);
+	string = string.replace('destinationColor', destinationColor);
+	string = string.replace('destinationFactor', destinationFactor);
+	return string;
+}
+
+function updateText()
+{
+	//Source strings to use
+	factorText_Source_RGB = modes_text[source.selectedIndex];
+	factorText_Source_Alpha = modes_text[sourceAlpha.selectedIndex];
+	factorText_Destination_RGB = modes_text[destination.selectedIndex];
+	factorText_Destination_Alpha = modes_text[destinationAlpha.selectedIndex];
+	equation_RGB = equations_text[blendequation.selectedIndex];
+	equation_Alpha = equations_text[blendequationAlpha.selectedIndex];
+	
+	//Format the factor strings
+	source_r = factorFormat(factorText_Source_RGB,			mouse_sourceR, mouse_sourceA, mouse_destR, mouse_destA, Rb);
+	source_g = factorFormat(factorText_Source_RGB,			mouse_sourceG, mouse_sourceA, mouse_destG, mouse_destA, Gb);
+	source_b = factorFormat(factorText_Source_RGB,			mouse_sourceB, mouse_sourceA, mouse_destB, mouse_destA, Bb);
+	source_a = factorFormat(factorText_Source_Alpha,		mouse_sourceA, mouse_sourceA, mouse_destA, mouse_destA, Ab);
+
+	//Format the equation strings
+	dest_r = factorFormat(factorText_Destination_RGB,		mouse_sourceR, mouse_sourceA, mouse_destR, mouse_destA, Rb);
+	dest_g = factorFormat(factorText_Destination_RGB,		mouse_sourceG, mouse_sourceA, mouse_destG, mouse_destA, Gb);
+	dest_b = factorFormat(factorText_Destination_RGB,		mouse_sourceB, mouse_sourceA, mouse_destB, mouse_destA, Bb);
+	dest_a = factorFormat(factorText_Destination_Alpha,		mouse_sourceA, mouse_sourceA, mouse_destA, mouse_destA, Ab);
+	
+	equation_R = equationFormat(equation_RGB,	mouse_sourceR, source_r, mouse_destR, dest_r);
+	equation_G = equationFormat(equation_RGB,	mouse_sourceG, source_g, mouse_destG, dest_g);
+	equation_B = equationFormat(equation_RGB,	mouse_sourceB, source_b, mouse_destB, dest_b);
+	equation_A = equationFormat(equation_Alpha,	mouse_sourceA, source_a, mouse_destA, dest_a);
+	
+	inputR.innerHTML = equation_R;
+	inputG.innerHTML = equation_G;
+	inputB.innerHTML = equation_B;
+	inputA.innerHTML = equation_A;
+	
+	resultR.innerHTML = mouse_resR;
+	resultG.innerHTML = mouse_resG;
+	resultB.innerHTML = mouse_resB;
+	resultA.innerHTML = mouse_resA;
+
+	
+	var codeView = 'glEnable(GL_BLEND);<br />';
+	
+	if(blendFuncMetode == 0)
+	{
+		codeView += 'glBlendFunc(' + source.options[source.selectedIndex].text + ', ' + destination.options[destination.selectedIndex].text + ');<br />';
+	}
+	else
+	{
+		codeView += 'glBlendFuncSeparate(' + source.options[source.selectedIndex].text + ', ' + destination.options[destination.selectedIndex].text + ', ' + sourceAlpha.options[sourceAlpha.selectedIndex].text + ', ' + destinationAlpha.options[destinationAlpha.selectedIndex].text + ');<br />';
+	}
+	
+	if(blendEquationMetode == 0)
+	{
+		codeView += 'glBlendEquation(' + blendequation.options[blendequation.selectedIndex].text+');<br />';
+	}
+	else
+	{
+		codeView += 'glBlendEquationSeparate(' + blendequation.options[blendequation.selectedIndex].text + ', ' + blendequationAlpha.options[blendequationAlpha.selectedIndex].text + ');<br />';
+	}
+	
+	if(source.selectedIndex >= 11 || sourceAlpha.selectedIndex >= 11 || destination.selectedIndex >= 11 || destinationAlpha.selectedIndex >= 11)
+		codeView += "glBlendColor("+Rb.toFixed(3)+", "+Gb.toFixed(3)+", "+Bb.toFixed(3)+", "+Ab.toFixed(3)+");";
+	
+	codeview.innerHTML = codeView;
+	
+}
+
+function showTab(id)
+{
+	for (var i=0;i<tabHeaders.length;++i)
+		tabHeaders[i].className = "";
+
+	for (var i=0;i<tabContents.length;++i)
+	{
+		tabContent = tabContents[i];
+		tabContent.style.visibility = "hidden";
+		tabContent.style.display = "none";
+	}
+		
+	tabHeaders[id].className = "selectedTab";
+	tabContents[id].style.visibility = "visible";
+	tabContents[id].style.display = "block";
+
+}
+
+function setForeground(url)
+{
+	foregroundURL.value = url;
+	if(url.substr(0,4) == 'http')		
+		frontImage.src = "glblendfunc/redirect.php?url=" + url;
+	else
+		frontImage.src = url;
+}
+
+function setBackground(url)
+{
+	backgroundURL.value = url;
+	if(url.substr(0,4) == 'http')		
+		backImage.src = "glblendfunc/redirect.php?url=" + url;
+	else
+		backImage.src = url;
+}

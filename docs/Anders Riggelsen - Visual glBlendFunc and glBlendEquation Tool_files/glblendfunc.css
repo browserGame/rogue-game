@@ -1,0 +1,237 @@
+
+#glTool{
+	font-family:  Consolas, monospace;
+	font-size: 0.9em;
+	width: 760px;
+	margin: 0 auto 0 auto;
+}
+
+#glTool p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#displayContainer{
+	width: 400px;
+	float: left;
+	padding-bottom: 20px;
+}
+
+#glTool .typeIcon{
+	vertical-align: middle;
+}
+
+#glTool select{
+	font-size: 0.9em;
+}
+
+#glTool #controls{
+	float: right;
+	width: 345px;
+}
+
+#glTool canvas{
+	background: url(transparant.png);
+}
+
+#foregroundURL, #backgroundURL{
+	width: 700px !important;
+}
+
+
+#bottomControls{
+	clear: both;
+}
+
+#glTool #display, #glTool #colorpicker{
+	float: left;
+	margin-right: 10px;
+}
+
+#glTool #explanation{
+	font-size: 0.8em;
+	color: #5555ff;
+}
+
+#glTool .tabcontent{
+	display: none;
+	visibility: hidden;
+	border: 1px solid #aaf;
+	padding: 5px;
+	height: 100px;
+}
+
+#glTool #colorpicker{cursor: crosshair;}
+#glTool #colorpickerbox{
+	position: relative;
+	height: 100px;
+}
+
+#glTool #imagesources input{
+	width: 298px;
+	margin-bottom: 5px;
+	vertical-align: top;
+}
+#glTool #imagesources img{
+	vertical-align: top;
+}
+
+#glTool #alphaslider, #glTool #hueslider{
+	width: 200px;
+	height: 22px;
+	position: relative;
+	left: 115px;
+}
+#glTool #hueslider{background: url(hue.png)}
+#glTool #alphaslider{background: url(alpha.png)}
+
+#glTool #huetracker{
+	position: absolute;
+	left: -9px;
+}
+#glTool #alphatracker{
+	position: absolute;
+	left: 191px;
+}
+
+#glTool #codeview{
+	border: 1px solid #ffcccc;
+	padding: 5px;
+	background: #ffeeee;
+	font-size: 1em;
+	height: 75px;
+	overflow: auto;
+	white-space: pre;
+}
+
+#glTool .tabBox{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0.9em;
+	height: 19px;
+}
+
+#glTool .tabBox li{
+	display: block;
+	position: relative;
+	text-align: center;
+	float: left;
+	height: 14px;
+	padding: 2px 10px 2px 10px;
+	margin-right: -1px;
+	border: 1px solid #aaf;
+	border-bottom: 0;
+	background: #eef;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-topright: 6px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	cursor: default;
+}
+
+#glTool #imagePresets{
+	visibility: visible;
+	display: block;
+}
+
+#imagePresets img{
+	background-image: url('checkers.png');
+	width: 48px;
+	height: 48px;
+	border: 1px solid #aaa;
+}
+
+#glTool .reloadImg{
+	background: url('reload.png') no-repeat;
+	width: 27px;
+	height: 22px;
+	float: right;
+}
+
+#glTool .reloadImg:active{
+	background-position: bottom;
+}
+
+#glTool .selectedTab{
+	display: block !important;
+	visibility: visible !important;
+	top: -2px;
+	height: 17px !important;
+	background: #ffffff !important;
+	padding: 3px 10px 3px 10px;
+	z-index: 800;
+}
+
+#glTool .description{
+	text-align: right;
+	font-size: 0.9em;
+	color: #aaa;
+}
+
+.floatLeft{
+	float: left;
+}
+
+.floatRight{
+	float: right;
+}
+
+#formula_table{
+	border: 0px;
+	border-spacing: 0px;
+	background: #fff;
+	text-align: center;
+	font-size: 0.85em;
+	font-weight: bold;
+}
+
+.leftBracket{
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.rightBracket{
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#inputR, #resultR{
+	color: #aa0000;
+}
+#inputG, #resultG{
+	color: #00aa00;
+}
+#inputB, #resultB{
+	color: #0000aa;
+}
+#inputA, #resultA{
+	color: #000000;
+}
+
+#blendModeSingleOrSeparate{
+	border: 1px solid #aaa;
+	margin-bottom: 16px;
+	padding: 5px;
+	background-color: #ffffdd;
+	border-radius: 5px;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.30), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.30), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.30), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.30), rgba(0,0,0,0));
+	
+	margin: 10px 0 6px 0;
+	
+	/*IE 6,7 then 8*/
+	filter: 	 progid:DXImageTransform.Microsoft.gradient(startColorStr='#aaaaaa', EndColorStr='#ffffff');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#aaaaaa', EndColorStr='#ffffff')";
+}

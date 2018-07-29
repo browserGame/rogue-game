@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)https://www.andersriggelsen.dk/glblendfunc.php -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool</title>
+	
+	<link rel="shortcut icon" href="https://www.andersriggelsen.dk/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/style-05-08-2012.css" type="text/css">
+	<script type="text/javascript" async="" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/ga.js.download"></script><script language="javascript" type="text/javascript" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/imagezoom.js.download"></script>
+	<script language="javascript" type="text/javascript" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/slideshow.js.download"></script>
+	<script language="javascript" type="text/javascript" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/glblendfunc.js.download"></script>
+	<link rel="stylesheet" href="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/glblendfunc.css" type="text/css"></head>
+<body>
+<script type="text/javascript">var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-16637936-1']); _gaq.push(['_trackPageview']); (function(){var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
+<div id="indhold">
+	<div id="top">
+		<a href="https://www.andersriggelsen.dk/index.php"><img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/andersriggelsen.png" alt="Anders Riggelsen"></a>
+		<h1>Anders Riggelsen</h1>
+	</div>
+	<ul id="menu">
+		<li><a href="https://www.andersriggelsen.dk/index.php">Home</a></li>
+		<li><a href="https://www.andersriggelsen.dk/cv.php">Curriculum vitæ</a></li>
+		<li class="visiting"><a href="https://www.andersriggelsen.dk/projects.php">Projects</a></li>
+		<li><a href="https://www.andersriggelsen.dk/clickteam.php">Clickteam</a></li>
+		<li><a href="https://www.andersriggelsen.dk/webstuff.php">Web-stuff</a></li>
+		<li><a href="https://www.andersriggelsen.dk/links.php">Links</a></li>
+	</ul>
+	<ul id="submenu">
+		<li><a href="https://www.andersriggelsen.dk/binaryfileschema.php">Binary File Schema</a></li>
+		<li class="visiting"><a href="https://www.andersriggelsen.dk/glblendfunc.php">glBlendFunc Tool</a></li>
+		<li><a href="https://www.andersriggelsen.dk/diskusageanalyzer.php">Disk Usage Analyzer</a></li>
+		<li><a href="https://www.andersriggelsen.dk/baseengine.php">BaseEngine</a></li>
+	</ul>
+
+<h1>Visual glBlendFunc + glBlendEquation Tool</h1>
+<h2>+ glBlendFuncSeparate and glBlendEquationSeparate</h2>
+<div id="glTool">
+	<div id="displayContainer">
+		<canvas id="display" width="400" height="400"></canvas>
+
+		<div class="floatLeft">
+			<input type="checkbox" id="changePreMultiplyState" onclick="changePreMultiplyState(this);"><label for="changePreMultiplyState" title="Premuliply textures before use">Premultiply</label>
+		</div>
+		<div class="floatRight">
+			<label for="displayMode" title="What to display in the above window">Display:</label>
+			<select id="displayMode" onkeyup="updateDisplay();" onchange="updateDisplay();">
+				<option value="0">Final RGB</option>
+				<option value="1">Final RGBA</option>
+				<option value="2">Final alpha</option>
+				<option value="3">Source RGB</option>
+				<option value="4">Source RGBA</option>
+				<option value="5">Source alpha</option>
+				<option value="6">Destination RGB</option>
+				<option value="7">Destination RGBA</option>
+				<option value="8">Destination alpha</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="controls">
+	
+		<div id="blendModeSingleOrSeparate">
+				<input type="radio" name="blendType" id="glBlendFunc" onclick="useBlendFunc(true);" checked=""><label for="glBlendFunc">glBlendFunc</label>
+				<input type="radio" name="blendType" id="glBlendFuncSeparate" onclick="useBlendFuncSeparate(true);"><label for="glBlendFuncSeparate">glBlendFuncSeparate</label>
+			<hr>
+				<input type="radio" name="equationType" id="glBlendEquation" onclick="useBlendEquation(true);" checked=""><label for="glBlendEquation">glEquationFunc</label>
+				<input type="radio" name="equationType" id="glBlendEquationSeparate" onclick="useBlendEquationSeparate(true);"><label for="glBlendEquationSeparate">glBlendEquationSeparate</label>
+		</div>
+		
+		Source: (foreground)<br>
+		<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/color_wheel.png" class="typeIcon" title="RGB component">
+		<select id="source" onkeyup="updateDisplay();" onchange="updateDisplay();">
+			<option value="0">GL_ZERO</option>
+			<option value="1">GL_ONE</option>
+			<option value="2">GL_SRC_COLOR</option>
+			<option value="3">GL_ONE_MINUS_SRC_COLOR</option>
+			<option value="4">GL_DST_COLOR</option>
+			<option value="5">GL_ONE_MINUS_DST_COLOR</option>
+			<option value="6" selected="">GL_SRC_ALPHA</option>
+			<option value="7">GL_ONE_MINUS_SRC_ALPHA</option>
+			<option value="8">GL_DST_ALPHA</option>
+			<option value="9">GL_ONE_MINUS_DST_ALPHA</option>
+			<option value="10">GL_SRC_ALPHA_SATURATE</option>
+			<option value="11">GL_CONSTANT_COLOR</option>
+			<option value="11">GL_ONE_MINUS_CONSTANT_COLOR</option>
+			<option value="12">GL_CONSTANT_ALPHA</option>
+			<option value="13">GL_ONE_MINUS_CONSTANT_ALPHA</option>
+		</select>
+		
+		<div id="sourceAlphaWrapper" style="opacity: 0.4;">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/contrast_low.png" class="typeIcon" title="Alpha component">
+			<select id="sourceAlpha" onkeyup="updateDisplay();" onchange="updateDisplay();" disabled="">
+				<option value="0">GL_ZERO</option>
+				<option value="1">GL_ONE</option>
+				<option value="2">GL_SRC_COLOR</option>
+				<option value="3">GL_ONE_MINUS_SRC_COLOR</option>
+				<option value="4">GL_DST_COLOR</option>
+				<option value="5">GL_ONE_MINUS_DST_COLOR</option>
+				<option value="6" selected="">GL_SRC_ALPHA</option>
+				<option value="7">GL_ONE_MINUS_SRC_ALPHA</option>
+				<option value="8">GL_DST_ALPHA</option>
+				<option value="9">GL_ONE_MINUS_DST_ALPHA</option>
+				<option value="10">GL_SRC_ALPHA_SATURATE</option>
+				<option value="11">GL_CONSTANT_COLOR</option>
+				<option value="11">GL_ONE_MINUS_CONSTANT_COLOR</option>
+				<option value="12">GL_CONSTANT_ALPHA</option>
+				<option value="13">GL_ONE_MINUS_CONSTANT_ALPHA</option>
+			</select>
+		</div>
+		<br>
+		
+		Destination: (background)<br>
+		<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/color_wheel.png" class="typeIcon" title="RGB component">
+		<select id="destination" onkeyup="updateDisplay();" onchange="updateDisplay();">
+			<option value="0">GL_ZERO</option>
+			<option value="1">GL_ONE</option>
+			<option value="2">GL_SRC_COLOR</option>
+			<option value="3">GL_ONE_MINUS_SRC_COLOR</option>
+			<option value="4">GL_DST_COLOR</option>
+			<option value="5">GL_ONE_MINUS_DST_COLOR</option>
+			<option value="6">GL_SRC_ALPHA</option>
+			<option value="7" selected="">GL_ONE_MINUS_SRC_ALPHA</option>
+			<option value="8">GL_DST_ALPHA</option>
+			<option value="9">GL_ONE_MINUS_DST_ALPHA</option>
+			<option value="10">GL_SRC_ALPHA_SATURATE</option>
+			<option value="11">GL_CONSTANT_COLOR</option>
+			<option value="11">GL_ONE_MINUS_CONSTANT_COLOR</option>
+			<option value="12">GL_CONSTANT_ALPHA</option>
+			<option value="13">GL_ONE_MINUS_CONSTANT_ALPHA</option>
+		</select>
+		
+		<div id="destinationAlphaWrapper" style="opacity: 0.4;">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/contrast_low.png" class="typeIcon" title="Alpha component">
+			<select id="destinationAlpha" onkeyup="updateDisplay();" onchange="updateDisplay();" disabled="">
+				<option value="0">GL_ZERO</option>
+				<option value="1">GL_ONE</option>
+				<option value="2">GL_SRC_COLOR</option>
+				<option value="3">GL_ONE_MINUS_SRC_COLOR</option>
+				<option value="4">GL_DST_COLOR</option>
+				<option value="5">GL_ONE_MINUS_DST_COLOR</option>
+				<option value="6">GL_SRC_ALPHA</option>
+				<option value="7" selected="">GL_ONE_MINUS_SRC_ALPHA</option>
+				<option value="8">GL_DST_ALPHA</option>
+				<option value="9">GL_ONE_MINUS_DST_ALPHA</option>
+				<option value="10">GL_SRC_ALPHA_SATURATE</option>
+				<option value="11">GL_CONSTANT_COLOR</option>
+				<option value="11">GL_ONE_MINUS_CONSTANT_COLOR</option>
+				<option value="12">GL_CONSTANT_ALPHA</option>
+				<option value="13">GL_ONE_MINUS_CONSTANT_ALPHA</option>
+			</select>
+		</div>
+		<br>
+		
+		Blend equation:<br>
+		<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/color_wheel.png" class="typeIcon" title="RGB component">
+		<select id="blendequation" onkeyup="updateDisplay();" onchange="updateDisplay();">
+			<option value="0">GL_FUNC_ADD</option>
+			<option value="1">GL_FUNC_SUBTRACT</option>
+			<option value="2">GL_FUNC_REVERSE_SUBTRACT</option>
+			<option value="3">GL_MIN</option>
+			<option value="4">GL_MAX</option>
+		</select>
+		
+		<div id="blendequationAlphaWrapper" style="opacity: 0.4;">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/contrast_low.png" class="typeIcon" title="Alpha component">
+			<select id="blendequationAlpha" onkeyup="updateDisplay();" onchange="updateDisplay();" disabled="">
+				<option value="0">GL_FUNC_ADD</option>
+				<option value="1">GL_FUNC_SUBTRACT</option>
+				<option value="2">GL_FUNC_REVERSE_SUBTRACT</option>
+				<option value="3">GL_MIN</option>
+				<option value="4">GL_MAX</option>
+			</select>
+		</div>
+		<br><br>
+		
+		
+		<table width="100%" id="formula_table">
+			<tbody><tr>
+				<td rowspan="4" class="leftBracket" width="5"></td>
+				<td id="inputR">(sR*(1-dA) + (dR*(1-sA))</td>
+				<td rowspan="4" class="rightBracket" width="5"></td>
+				<td rowspan="4" width="5">=</td>
+				<td rowspan="4" class="leftBracket" width="5"></td>
+				<td id="resultR" width="50">rR</td>
+				<td rowspan="4" class="rightBracket" width="5"></td>
+			</tr>
+			<tr>
+				<td id="inputG">(sG*(1-dA) + (dG*(1-sA))</td>
+				<td id="resultG">rG</td>
+			</tr>
+			<tr>
+				<td id="inputB">(sB*(1-dA) + (dB*(1-sA))</td>
+				<td id="resultB">rB</td>
+			</tr>
+			<tr>
+				<td id="inputA">(sA*(1-dA) + (dA*(1-sA))</td>
+				<td id="resultA">rA</td>
+			</tr>
+		</tbody></table>
+	</div>
+	
+
+
+	<div id="bottomControls">
+		<ul class="tabBox">
+			<li id="imagePresetsTab" class="selectedTab" onclick="showTab(0);">Image presets</li>
+			<li id="imageUrlsTab" onclick="showTab(1);">Image URLs</li>
+			<li id="blendingColorTab" onclick="showTab(2);">Blending color</li>
+		</ul>
+		<div id="imagePresets" class="tabcontent">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/transparent.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/colors.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/flamingos.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/tulip.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/crystalball.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/clouds.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/forrest.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/seattle.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/death_star.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/redgradient.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/greengradient.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/bluegradient.png" alt="" onclick="setForeground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/text.png" alt="" onclick="setForeground(this.src);">
+			<br>
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/transparent.png" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/colors.png" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/colors.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/flamingobg.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/newmexico.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/heaven.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/road.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/water.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/seattlebg.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/lunar.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/starrynight.jpg" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/white.png" alt="" onclick="setBackground(this.src);">
+			<img src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/black.png" alt="" onclick="setBackground(this.src);">
+		</div>
+		<div id="imagesources" class="tabcontent">
+			Foreground:<br>
+			<div class="reloadImg" onclick="setForeground(foregroundURL.value);"></div>
+			<input type="text" id="foregroundURL" onchange="setForeground(this.value);" value="glblendfunc/presets/flamingos.png">
+			<br>
+			Background:<br>
+			<div class="reloadImg" onclick="setBackground(backgroundURL.value);"></div>
+			<input type="text" id="backgroundURL" onchange="setBackground(this.value);" value="glblendfunc/presets/flamingobg.jpg">
+			<div class="description">(display image size is 400x400)</div>
+		</div>
+		<div id="colorpickerbox" class="tabcontent">
+			<canvas id="colorpicker" width="100" height="100"></canvas>
+			Hue:
+			<div id="hueslider"><img id="huetracker" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/tracker.png"></div>
+			Alpha value:
+			<div id="alphaslider"><img id="alphatracker" src="./Anders Riggelsen - Visual glBlendFunc and glBlendEquation Tool_files/tracker.png"></div>
+		</div>
+		
+		<p id="codeview">glEnable(GL_BLEND);<br>glBlendFunc(GL_ONE_MINUS_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA);<br>glBlendEquation(GL_FUNC_ADD);<br></p>
+	</div>
+</div>
+
+<p>
+	Graphics from <a href="http://www.interfacelift.com/">www.interfacelift.com</a>:
+	</p><blockquote>
+		<a href="http://interfacelift.com/wallpaper_beta/details/2354/splash.html">Splash</a> by Richard Mohler<br>
+		<a href="http://interfacelift.com/wallpaper_beta/details/2355/bisti_badlands.html">Bisti Badlands</a> by Ben DiAnna<br>
+		<a href="http://interfacelift.com/wallpaper_beta/details/1232/lazy_days_ii.html">Lazy Days II</a> by boss019<br>
+		<a href="http://interfacelift.com/wallpaper_beta/details/2262/flamingos.html">Flamingos</a> by Jestrella<br>
+		<a href="http://interfacelift.com/wallpaper_beta/details/2243/treetops_-_michaux_state_forest.html">Treetops - Michaux State Forest</a> by Se7en<br>
+		<a href="http://interfacelift.com/wallpaper_beta/details/2341/the_road_to_bonneville.html">The Road To Bonneville</a> by Chris F<br>
+		<a href="http://interfacelift.com/wallpaper_beta/email/873/clouds_over_water.html">Clouds Over Water</a> by DerekProspero<br>
+		
+		<a href="http://interfacelift.com/wallpaper/details/3370/Starry+Night.html">Starry Night</a> by ManiDProductions<br>
+		<a href="http://interfacelift.com/wallpaper/details/3322/mt_rainier_from_kerry_park.html">Mt Rainier from Kerry Park</a> by Jeffery Hayes<br>
+		<a href="http://interfacelift.com/wallpaper/details/2562/moon_rise.html">Moon Rise</a> by Phil2001<br>
+		<a href="http://gallery.burrowowl.net/images/1f/1fdcb0affb5721b1cc4d5b082b7542a3">Death Star</a> by unknown (google search)<br>
+	</blockquote>
+	
+	<h5>Thanks to:</h5>
+	Alex Huang for finding a bug in in the math for GL_FUNC_REVERSE_SUBTRACT.<br>
+	David Geier for finding a bug with GL_SRC_COLOR and alpha values.<br>
+	<a href="http://www.storminthecastle.com/">John Robinson</a> for finding a bug with the mouse-over explanatory calculations for alpha values.<br>
+	Mikkel Gjoel for finding the bug that new images wasn't premultiplied if the checkbox was checked.
+<p></p>
+
+	<div id="side-bund"></div>
+</div>
+
+</body></html>

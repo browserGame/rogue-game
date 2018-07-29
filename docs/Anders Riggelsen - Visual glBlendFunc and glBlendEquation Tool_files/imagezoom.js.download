@@ -1,0 +1,227 @@
+
+var zoomElement, zoomElementImage, currentImage;
+
+var zoomMaxWidth = 700;
+var zoomMaxHeight = 700;
+var zoomStepWait = 6;
+
+var zoomed = false;
+var zoomStep = 0.0, zoomTimer;
+var zoomStepAmount = 0.06;
+var startX, startY, endX, endY, startW, startH, endW, endH;
+
+function loadZoomImage()
+{
+	zoomElement = document.createElement('div');
+	zoomElement.zIndex = 0;
+	zoomElement.style.background = "#444";
+	zoomElement.style.position = "absolute";
+	zoomElement.style.visibility = "hidden";
+	zoomElement.style.border = "1px solid #000";
+	zoomElement.style.cursor = "pointer";
+	zoomElement.onclick = zoomHide;
+	zoomElementImage = document.createElement('img');
+	zoomElement.appendChild(zoomElementImage);
+	document.body.appendChild(zoomElement);
+}
+
+function zoomImage(image)
+{
+	currentImage = image;
+	if(zoomElement == null)
+		loadZoomImage();
+		
+	if(zoomed && zoomElementImage.src == image.src)
+	{
+		zoomHide(image);
+		return;
+	}
+		
+	zoomed = true;
+	
+	var pos = findPos(image);
+	var scroll = scrollOffset();
+	var viewport = viewportSize();
+	
+	zoomElement.style.left = pos.left +"px";
+	zoomElement.style.top = pos.top + "px";
+
+	var natural = naturalSize(image);
+	var endSize = fitBox(natural.width, natural.height);
+	
+	startW = image.width;
+	startH = image.height;	
+	
+	endW = endSize.width;
+	endH = endSize.height;
+
+	startX = pos.left;
+	startY = pos.top;
+	
+	endX = scroll.left + viewport.width/2 - endW / 2;
+	endY = scroll.top + viewport.height/2 - endH / 2;
+	
+	zoomElement.style.width = image.width + "px";
+	zoomElement.style.height = image.height + "px";
+	
+	zoomElementImage.src = image.src;
+	zoomElementImage.width = startW;
+	zoomElementImage.height = startH;
+	
+	zoomStep = 0.0;
+	clearTimeout(zoomTimer);
+	zoomTimer = setTimeout('zoomStepF(1.0)', zoomStepWait);
+}
+
+function naturalSize(element)
+{
+	if( typeof(element.naturalWidth) == 'number')
+		return {'width': element.naturalWidth, 'height': element.naturalHeight};
+	else
+	{
+		var oldWidth = element.width;
+		var oldHeight = element.height;
+		element.removeAttribute('width');
+		element.removeAttribute('height');
+		var ret = {'width': element.width, 'height': element.height};
+		element.width = oldWidth;
+		element.height = oldHeight;
+		return ret;
+	}
+}
+
+function zoomStepF(destination)
+{
+	if(zoomStep < destination)
+		zoomStep = Math.min( zoomStep + zoomStepAmount, 1.0 );
+	else
+		zoomStep = Math.max( zoomStep - zoomStepAmount*0.7, 0.0 );
+	
+	if(zoomStep == 0.0)
+	{
+		zoomElement.style.visibility = "hidden";
+		zoomElement.style.display = "none";
+	}
+	else
+	{
+		zoomElement.style.visibility = "visible";
+		zoomElement.style.display = "block";
+	}
+	
+	var newW = step(startW, endW);
+	var newH = step(startH, endH);
+	var newX = step(startX, endX);
+	var newY = step(startY, endY);
+
+	zoomElement.style.width = newW + "px";
+	zoomElement.style.height = newH + "px";
+	zoomElement.style.left = newX + "px";
+	zoomElement.style.top = newY + "px";
+	zoomElementImage.width = newW;
+	zoomElementImage.height = newH;
+	
+	var offset = "" + Math.floor(zoomStep*0.0) + "px ";
+	zoomElementImage.style.boxShadow =  offset + offset + Math.floor(zoomStep*32.0) + "px #000";
+	
+	if( zoomStep != destination )
+		zoomTimer = setTimeout('zoomStepF('+destination+')', zoomStepWait);
+}
+
+function zoomHide()
+{
+	zoomed = false;
+	var pos = findPos(currentImage);
+	startX = pos.left;
+	startY = pos.top;
+	startW = currentImage.width;
+	startH = currentImage.height;
+	clearTimeout(zoomTimer);
+	zoomTimer = setTimeout('zoomStepF(0.0)', zoomStepWait);
+}
+
+function step(a,b)
+{
+	return Math.round(a + (b-a)*zoomStep);
+}
+
+function findPos(obj)
+{
+	var curleft = curtop = 0;
+	if (obj.offsetParent)
+		do
+		{
+			curleft += obj.offsetLeft;
+			curtop += obj.offsetTop;
+		}
+		while (obj = obj.offsetParent);
+	return {'left': curleft, 'top': curtop};
+}
+
+function scrollOffset()
+{
+	var scrOfX = 0, scrOfY = 0;
+	if( typeof( window.pageYOffset ) == 'number' )
+	{
+		//Netscape compliant
+		scrOfY = window.pageYOffset;
+		scrOfX = window.pageXOffset;
+	}
+	else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) )
+	{
+		//DOM compliant
+		scrOfY = document.body.scrollTop;
+		scrOfX = document.body.scrollLeft;
+	}
+	else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) )
+	{
+		//IE6 standards compliant mode
+		scrOfY = document.documentElement.scrollTop;
+		scrOfX = document.documentElement.scrollLeft;
+	}
+	return { 'left': scrOfX, 'top': scrOfY };
+}
+
+function viewportSize()
+{
+	var myWidth = 0, myHeight = 0;
+	if( typeof( window.innerWidth ) == 'number' )
+	{
+		//Non-IE
+		myWidth = window.innerWidth;
+		myHeight = window.innerHeight;
+	}
+	else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) )
+	{
+		//IE 6+ in 'standards compliant mode'
+		myWidth = document.documentElement.clientWidth;
+		myHeight = document.documentElement.clientHeight;
+	}
+	else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) )
+	{
+		//IE 4 compatible
+		myWidth = document.body.clientWidth;
+		myHeight = document.body.clientHeight;
+	}
+	return { 'width': myWidth, 'height': myHeight };
+}
+
+function fitBox(width, height)
+{
+	var viewport = viewportSize();
+	var maxWidth = Math.min(zoomMaxWidth, viewport.width);
+	var maxHeight = Math.min(zoomMaxHeight, viewport.height);
+	var newWidth = width;
+	var newHeight = height;
+	var aspect = width / (height * 1.0);
+	if( newWidth > maxWidth )
+	{
+		newWidth = maxWidth;
+		newHeight = Math.floor(newWidth / aspect);
+	}
+	if( newHeight > maxHeight )
+	{
+		newHeight = maxHeight;
+		newWidth = Math.floor(newHeight * aspect);
+	}
+	return {'width': newWidth, 'height': newHeight};
+}
