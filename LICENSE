@@ -1,16 +1,8 @@
-MIT License
-
 Copyright (c) 2016 Jacob Bogers
 
-Additional clause: 
-All non- source code assets (like graphics, art, sound, but not limited to this examples),  are only intended to be used in the creating of any fax Facsimile this game.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission:
+The source code (javascript ,scss, html, )  can be freely adjusted and used, alsong as it is not used for any commercial purpose.
+the Graphic assets and sound assets cannot be used in any other game other then making a accurate reproduction of the orginal game of David Amador.
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
