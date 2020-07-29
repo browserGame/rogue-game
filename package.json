@@ -9,7 +9,7 @@
     "body-parser": "^1.18.1",
     "circular-json": "^0.3.3",
     "clone": "^2.1.1",
-    "dot-prop": "^4.2.0",
+    "dot-prop": "^5.1.1",
     "express": "^4.15.4",
     "immutable": "^3.8.2",
     "install": "^0.10.1",
