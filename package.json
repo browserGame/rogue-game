@@ -80,7 +80,7 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.8.1",
     "webpack-cluster": "^3.2.0",
-    "webpack-dev-server": "^2.9.3",
+    "webpack-dev-server": "^3.1.11",
     "webpack-node-externals": "^1.6.0",
     "xml-loader": "^1.2.1"
   },
